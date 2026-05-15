@@ -1,0 +1,1 @@
+assets/rom_database_optimized.sqlite filter=lfs diff=lfs merge=lfs -text
