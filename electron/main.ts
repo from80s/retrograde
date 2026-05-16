@@ -378,7 +378,15 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
     data: new Date().toLocaleString('pt-BR'),
   };
 
-  const romFiles: { path: string; name: string; ext: string; system: any }[] = [];
+  interface RomFile {
+    path: string;
+    name: string;
+    ext: string;
+    system: any;
+    parentDir: string;
+  }
+
+  const romFiles: RomFile[] = [];
 
   async function scanDirectory(dir: string) {
     const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -394,6 +402,7 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
             name: entry.name,
             ext,
             system: systems[ext],
+            parentDir: dir,
           });
         }
       }
@@ -408,61 +417,93 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
     total: romFiles.length,
   });
 
-  for (let i = 0; i < romFiles.length; i++) {
-    const file = romFiles[i];
-    const fileName = path.basename(file.name, path.extname(file.name)).toLowerCase();
+  // Group ROMs by parent directory
+  const dirGroups = new Map<string, RomFile[]>();
+  for (const file of romFiles) {
+    if (!dirGroups.has(file.parentDir)) {
+      dirGroups.set(file.parentDir, []);
+    }
+    dirGroups.get(file.parentDir)!.push(file);
+  }
 
-    const isClassic = classics.some((classic: string) =>
-      fileName.includes(classic.toLowerCase())
-    );
+  // Process each directory group
+  const processedDirs = new Set<string>();
+  let fileIndex = 0;
 
-    if (isClassic) {
-      stats.preservados_classicos++;
-      mainWindow?.webContents.send('curation-progress', {
-        type: 'file',
-        index: i,
-        fileName: file.name,
-        system: file.system.name,
-        status: 'classic',
-        rating: null,
-      });
-      continue;
+  for (const [parentDir, files] of dirGroups) {
+    if (processedDirs.has(parentDir)) continue;
+
+    // Check if this is a single-ROM folder (folder name matches ROM name)
+    const folderName = path.basename(parentDir).toLowerCase();
+    const isSingleRomFolder = files.length === 1 && folderName === path.basename(files[0].name, files[0].ext).toLowerCase();
+
+    // Determine action for this group
+    let groupAction: 'keep' | 'remove' = 'keep';
+
+    for (const file of files) {
+      const fileName = path.basename(file.name, path.extname(file.name)).toLowerCase();
+
+      const isClassic = classics.some((classic: string) =>
+        fileName.includes(classic.toLowerCase())
+      );
+
+      if (isClassic) {
+        groupAction = 'keep';
+        stats.preservados_classicos++;
+        mainWindow?.webContents.send('curation-progress', {
+          type: 'file',
+          index: fileIndex++,
+          fileName: file.name,
+          system: file.system.name,
+          status: 'classic',
+          rating: null,
+        });
+        continue;
+      }
+
+      const rating = await getGameRating(
+        path.basename(file.name, path.extname(file.name)),
+        file.system,
+        config
+      );
+
+      if (rating === null || rating >= minRating) {
+        stats.mantidos_por_nota++;
+        mainWindow?.webContents.send('curation-progress', {
+          type: 'file',
+          index: fileIndex++,
+          fileName: file.name,
+          system: file.system.name,
+          status: 'kept',
+          rating: rating,
+        });
+      } else {
+        stats.removidos++;
+        groupAction = 'remove';
+        mainWindow?.webContents.send('curation-progress', {
+          type: 'file',
+          index: fileIndex++,
+          fileName: file.name,
+          system: file.system.name,
+          status: 'removed',
+          rating: rating,
+        });
+      }
     }
 
-    const rating = await getGameRating(
-      path.basename(file.name, path.extname(file.name)),
-      file.system,
-      config
-    );
-
-    if (rating === null || rating >= minRating) {
-      stats.mantidos_por_nota++;
-      mainWindow?.webContents.send('curation-progress', {
-        type: 'file',
-        index: i,
-        fileName: file.name,
-        system: file.system.name,
-        status: 'kept',
-        rating: rating,
-      });
-    } else {
-      stats.removidos++;
+    // If it's a single-ROM folder and should be removed, remove/move the entire folder
+    if (isSingleRomFolder && groupAction === 'remove') {
       if (action === 'move') {
         const removedDir = path.join(folder, 'removidos');
         await fs.ensureDir(removedDir);
-        await fs.move(file.path, path.join(removedDir, file.name), { overwrite: true });
+        await fs.move(parentDir, path.join(removedDir, path.basename(parentDir)), { overwrite: true });
       } else {
-        await fs.remove(file.path);
+        await fs.remove(parentDir);
       }
-      mainWindow?.webContents.send('curation-progress', {
-        type: 'file',
-        index: i,
-        fileName: file.name,
-        system: file.system.name,
-        status: 'removed',
-        rating: rating,
-      });
+      processedDirs.add(parentDir);
     }
+
+    processedDirs.add(parentDir);
   }
 
   const allStats = await fs.readJson(STATS_PATH).catch(() => []);

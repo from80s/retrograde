@@ -18,6 +18,7 @@ import { ActivityLog } from './components/ActivityLog';
 import { SettingsModal } from './components/SettingsModal';
 import { StatsHistory } from './components/StatsHistory';
 import { SupportModal } from './components/SupportModal';
+import { WelcomeModal } from './components/WelcomeModal';
 import { TitleBar } from './components/TitleBar';
 import RetroGradeLogo from '../assets/images/RetroGrade.png';
 
@@ -59,16 +60,27 @@ function App() {
   const [showSettings, setShowSettings] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [hasConfig, setHasConfig] = useState(false);
   const [systems, setSystems] = useState<Record<string, any>>({});
   const [classics, setClassics] = useState<string[]>([]);
   const [version, setVersion] = useState('0.0.0');
   const [apiConnected, setApiConnected] = useState(false);
+  const [configChecked, setConfigChecked] = useState(false);
   const logRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     window.api.readSystems().then(setSystems);
     window.api.readClassics().then(setClassics);
     window.api.readVersion().then(setVersion);
+    window.api.readConfig().then((config) => {
+      setConfigChecked(true);
+      const hasAnyConfig = config && (config.IGDB_CLIENT_ID || config.TGDB_API_KEY);
+      setHasConfig(!!hasAnyConfig);
+      if (!hasAnyConfig || !apiConnected) {
+        setShowWelcome(true);
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -281,7 +293,10 @@ function App() {
             action={state.action}
             systems={systems}
             classics={classics}
-            onApiTested={setApiConnected}
+            onApiTested={(connected) => {
+              setApiConnected(connected);
+              if (connected) setShowWelcome(false);
+            }}
             onClassicsUpdated={setClassics}
             onSave={(minRating, action) => {
               setState((prev) => ({ ...prev, minRating, action }));
@@ -291,6 +306,13 @@ function App() {
         )}
         {showHistory && <StatsHistory onClose={() => setShowHistory(false)} />}
         {showSupport && <SupportModal onClose={() => setShowSupport(false)} />}
+        {showWelcome && configChecked && (
+          <WelcomeModal
+            onClose={() => setShowWelcome(false)}
+            onOpenSettings={() => setShowSettings(true)}
+            hasConfig={hasConfig}
+          />
+        )}
       </AnimatePresence>
     </div>
   );
