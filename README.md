@@ -90,7 +90,22 @@ A aplicação mantém a persistência de dados em arquivos JSON locais na pasta 
 npm run electron:build
 ```
 
-O executável será gerado em `release/RetroGrade X.X.X.exe`.
+O build gera **dois formatos** na pasta `release/`:
+
+| Arquivo | Tipo | Descrição |
+| :--- | :--- | :--- |
+| `RetroGrade Setup X.X.X.exe` | **Instalador NSIS** | Wizard de instalação com atalhos, desinstalação e opção de diretório |
+| `RetroGrade X.X.X.exe` | **Portable** | Executável único, roda direto sem instalar |
+
+**Instalador NSIS:**
+- Permite escolher o diretório de instalação
+- Cria atalhos na área de trabalho e Menu Iniciar
+- Gera desinstalador automático em "Adicionar/Remover Programas"
+
+**Portable:**
+- Não requer instalação
+- Pode ser executado de qualquer pasta ou pendrive
+- Não deixa rastros no sistema após fechar
 
 ---
 
