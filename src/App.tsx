@@ -10,12 +10,14 @@ import {
   ShieldCheck,
   CheckCircle2,
   XCircle,
+  LifeBuoy,
 } from 'lucide-react';
 import { ProgressCard } from './components/ProgressCard';
 import { StatCard } from './components/StatCard';
 import { ActivityLog } from './components/ActivityLog';
 import { SettingsModal } from './components/SettingsModal';
 import { StatsHistory } from './components/StatsHistory';
+import { SupportModal } from './components/SupportModal';
 import { TitleBar } from './components/TitleBar';
 import RetroGradeLogo from '../assets/images/RetroGrade.png';
 
@@ -56,9 +58,11 @@ function App() {
 
   const [showSettings, setShowSettings] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
+  const [showSupport, setShowSupport] = useState(false);
   const [systems, setSystems] = useState<Record<string, any>>({});
   const [classics, setClassics] = useState<string[]>([]);
   const [version, setVersion] = useState('0.0.0');
+  const [apiConnected, setApiConnected] = useState(false);
   const logRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -155,7 +159,7 @@ function App() {
 
             <button
               onClick={handleStartCuration}
-              disabled={state.isRunning || !state.folder}
+              disabled={state.isRunning || !state.folder || !apiConnected}
               className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all duration-200
                        bg-retro-success/10 text-retro-success border border-retro-success/20
                        hover:bg-retro-success/20 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -165,7 +169,9 @@ function App() {
               ) : (
                 <BarChart3 className="w-5 h-5" />
               )}
-              <span className="font-medium">{state.isRunning ? 'Processando...' : 'Iniciar Curadoria'}</span>
+              <span className="font-medium text-sm">
+                {state.isRunning ? 'Processando...' : !apiConnected ? 'APIs desconectadas' : 'Iniciar Curadoria'}
+              </span>
             </button>
 
             <button
@@ -184,6 +190,15 @@ function App() {
             >
               <History className="w-5 h-5" />
               <span className="font-medium">Histórico</span>
+            </button>
+
+            <button
+              onClick={() => setShowSupport(true)}
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all duration-200
+                       text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50"
+            >
+              <LifeBuoy className="w-5 h-5" />
+              <span className="font-medium">Suporte</span>
             </button>
           </nav>
 
@@ -266,6 +281,8 @@ function App() {
             action={state.action}
             systems={systems}
             classics={classics}
+            onApiTested={setApiConnected}
+            onClassicsUpdated={setClassics}
             onSave={(minRating, action) => {
               setState((prev) => ({ ...prev, minRating, action }));
               setShowSettings(false);
@@ -273,6 +290,7 @@ function App() {
           />
         )}
         {showHistory && <StatsHistory onClose={() => setShowHistory(false)} />}
+        {showSupport && <SupportModal onClose={() => setShowSupport(false)} />}
       </AnimatePresence>
     </div>
   );

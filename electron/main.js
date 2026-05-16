@@ -87,6 +87,66 @@ electron_1.ipcMain.handle('read-version', async () => {
         return '0.0.0';
     }
 });
+electron_1.ipcMain.handle('test-api-connections', async () => {
+    const config = await fs_extra_1.default.readJson(CONFIG_PATH).catch(() => null);
+    if (!config) {
+        return { igdb: { status: 'error', message: 'Configuração não encontrada' }, tgdb: { status: 'error', message: 'Configuração não encontrada' } };
+    }
+    const results = {
+        igdb: { status: 'pending', message: 'Testando...' },
+        tgdb: { status: 'pending', message: 'Testando...' },
+    };
+    // Test IGDB
+    try {
+        if (!config.IGDB_CLIENT_ID || !config.IGDB_CLIENT_SECRET) {
+            results.igdb = { status: 'error', message: 'Credenciais não configuradas' };
+        }
+        else {
+            const response = await axios_1.default.post('https://id.twitch.tv/oauth2/token', null, {
+                params: {
+                    client_id: config.IGDB_CLIENT_ID,
+                    client_secret: config.IGDB_CLIENT_SECRET,
+                    grant_type: 'client_credentials',
+                },
+                timeout: 10000,
+            });
+            if (response.data.access_token) {
+                results.igdb = { status: 'success', message: 'Conexão estabelecida' };
+            }
+            else {
+                results.igdb = { status: 'error', message: 'Token não recebido' };
+            }
+        }
+    }
+    catch (error) {
+        results.igdb = { status: 'error', message: error.response?.status === 401 ? 'Credenciais inválidas' : 'Erro de conexão' };
+    }
+    // Test TGDB
+    try {
+        if (!config.TGDB_API_KEY) {
+            results.tgdb = { status: 'error', message: 'API Key não configurada' };
+        }
+        else {
+            const response = await axios_1.default.get('https://api.thegamesdb.net/v1/Platforms/ByPlatformName', {
+                params: {
+                    apikey: config.TGDB_API_KEY,
+                    name: 'Nintendo Entertainment System',
+                },
+                timeout: 10000,
+            });
+            if (response.data.data) {
+                results.tgdb = { status: 'success', message: 'Conexão estabelecida' };
+            }
+            else {
+                results.tgdb = { status: 'error', message: 'Resposta inesperada' };
+            }
+        }
+    }
+    catch (error) {
+        results.tgdb = { status: 'error', message: error.response?.status === 401 ? 'API Key inválida' : 'Erro de conexão' };
+    }
+    return results;
+});
 electron_1.ipcMain.handle('select-folder', async () => {
     const result = await electron_1.dialog.showOpenDialog(mainWindow, {
         properties: ['openDirectory'],
@@ -113,6 +173,61 @@ electron_1.ipcMain.handle('read-classics', async () => {
     catch {
         return [];
     }
+});
+electron_1.ipcMain.handle('addClassic', async (_, name) => {
+    const classics = await fs_extra_1.default.readJson(CLASSICS_PATH).catch(() => []);
+    if (!classics.includes(name)) {
+        classics.push(name);
+        await fs_extra_1.default.writeJson(CLASSICS_PATH, classics, { spaces: 2 });
+    }
+    return classics;
+});
+electron_1.ipcMain.handle('removeClassic', async (_, name) => {
+    let classics = await fs_extra_1.default.readJson(CLASSICS_PATH).catch(() => []);
+    classics = classics.filter((c) => c !== name);
+    await fs_extra_1.default.writeJson(CLASSICS_PATH, classics, { spaces: 2 });
+    return classics;
+});
+electron_1.ipcMain.handle('validate-game-name', async (_, gameName) => {
+    const config = await fs_extra_1.default.readJson(CONFIG_PATH).catch(() => null);
+    if (!config) {
+        return { valid: false, message: 'Configure as credenciais de API primeiro' };
+    }
+    // Try IGDB first
+    try {
+        const token = await getIGDBToken(config);
+        const response = await axios_1.default.post('https://api.igdb.com/v4/games', `search "${gameName}"; fields name; limit 1;`, {
+            headers: {
+                'Client-ID': config.IGDB_CLIENT_ID,
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'text/plain',
+            },
+            timeout: 10000,
+        });
+        if (response.data.length > 0) {
+            return { valid: true, message: `Jogo encontrado: "${response.data[0].name}"` };
+        }
+    }
+    catch {
+        // Ignore IGDB errors, try TGDB
+    }
+    // Try TGDB
+    try {
+        const response = await axios_1.default.get('https://api.thegamesdb.net/v1/Games/ByGameName', {
+            params: {
+                apikey: config.TGDB_API_KEY,
+                name: gameName,
+            },
+            timeout: 10000,
+        });
+        if (response.data.data && response.data.data.length > 0) {
+            return { valid: true, message: `Jogo encontrado: "${response.data.data[0].game_title}"` };
+        }
+    }
+    catch {
+        // Ignore TGDB errors
+    }
+    return { valid: false, message: 'Jogo não encontrado nas APIs' };
 });
 electron_1.ipcMain.handle('read-systems', async () => {
     try {
