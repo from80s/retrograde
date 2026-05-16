@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-zinc-950 text-zinc-100;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-zinc-900/60 backdrop-blur-xl border border-zinc-800/50;
+  }
+
+  .glass-hover {
+    @apply hover:bg-zinc-800/60 hover:border-zinc-700/50 transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-retro-primary/10 text-retro-primary border border-retro-primary/30 
+           rounded-xl font-semibold hover:bg-retro-primary/20 hover:border-retro-primary/50
+           transition-all duration-200 active:scale-95;
+  }
+
+  .btn-danger {
+    @apply px-6 py-3 bg-retro-danger/10 text-retro-danger border border-retro-danger/30
+           rounded-xl font-semibold hover:bg-retro-danger/20 hover:border-retro-danger/50
+           transition-all duration-200 active:scale-95;
+  }
+
+  .stat-card {
+    @apply glass rounded-2xl p-6 flex flex-col items-center justify-center;
+  }
+
+  .stat-value {
+    @apply text-4xl font-bold font-mono;
+  }
+
+  .stat-label {
+    @apply text-zinc-400 text-sm mt-2 font-medium;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #3f3f46 #18181b;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: #18181b;
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #52525b;
+  }
+}
