@@ -8,6 +8,15 @@ export interface ApiBridge {
   readGenres: () => Promise<string[]>;
   addGenre: (genre: string) => Promise<string[]>;
   removeGenre: (genre: string) => Promise<string[]>;
+  readProtectedGames: () => Promise<string[]>;
+  addProtectedGame: (game: string) => Promise<string[]>;
+  removeProtectedGame: (game: string) => Promise<string[]>;
+  scanFolder: (folder: string) => Promise<{
+    total: number;
+    grouped: Record<string, any[]>;
+    cloneGroups: any[];
+    hasIGDB: boolean;
+  }>;
   validateGameName: (name: string) => Promise<{ valid: boolean; message: string }>;
   readSystems: () => Promise<Record<string, any>>;
   readStats: () => Promise<any[]>;

@@ -24,6 +24,7 @@ import { AboutModal } from './components/AboutModal';
 import { WelcomeModal } from './components/WelcomeModal';
 import { SplashScreen } from './components/SplashScreen';
 import { SpaceSavingsCard } from './components/SpaceSavingsCard';
+import { ScanPreviewModal } from './components/ScanPreviewModal';
 import { TitleBar } from './components/TitleBar';
 import RetroGradeLogo from '../assets/images/RetroGrade.png';
 
@@ -70,10 +71,12 @@ function App() {
   const [showAbout, setShowAbout] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
+  const [showScanPreview, setShowScanPreview] = useState(false);
   const [hasConfig, setHasConfig] = useState(false);
   const [systems, setSystems] = useState<Record<string, any>>({});
   const [classics, setClassics] = useState<string[]>([]);
   const [genres, setGenres] = useState<string[]>([]);
+  const [protectedGames, setProtectedGames] = useState<string[]>([]);
   const [version, setVersion] = useState('0.0.0');
   const [apiConnected, setApiConnected] = useState(false);
   const [configChecked, setConfigChecked] = useState(false);
@@ -83,6 +86,7 @@ function App() {
     window.api.readSystems().then(setSystems);
     window.api.readClassics().then(setClassics);
     window.api.readGenres().then(setGenres);
+    window.api.readProtectedGames().then(setProtectedGames);
     window.api.readVersion().then(setVersion);
     window.api.readConfig().then((config) => {
       setConfigChecked(true);
@@ -117,7 +121,18 @@ function App() {
 
   const handleStartCuration = useCallback(async () => {
     if (!state.folder) return;
+    setShowScanPreview(true);
+  }, [state.folder]);
 
+  const handleExecuteCuration = useCallback(async (options: {
+    folder: string;
+    minRating: number;
+    action: 'move' | 'delete';
+    removeClones: boolean;
+    preferredRegion: string;
+    protectedGames: string[];
+  }) => {
+    setShowScanPreview(false);
     setState((prev) => ({
       ...prev,
       isRunning: true,
@@ -156,11 +171,11 @@ function App() {
     });
 
     await window.api.startCuration({
-      folder: state.folder,
-      minRating: state.minRating,
-      action: state.action,
+      folder: options.folder,
+      minRating: options.minRating,
+      action: options.action,
     });
-  }, [state.folder, state.minRating, state.action]);
+  }, []);
 
   const progress = state.total > 0 ? (state.current / state.total) * 100 : 0;
 
@@ -363,16 +378,27 @@ function App() {
             systems={systems}
             classics={classics}
             genres={genres}
+            protectedGames={protectedGames}
             onApiTested={(connected) => {
               setApiConnected(connected);
               if (connected) setShowWelcome(false);
             }}
             onClassicsUpdated={setClassics}
             onGenresUpdated={setGenres}
+            onProtectedGamesUpdated={setProtectedGames}
             onSave={(minRating, action) => {
               setState((prev) => ({ ...prev, minRating, action }));
               setShowSettings(false);
             }}
+          />
+        )}
+        {showScanPreview && state.folder && (
+          <ScanPreviewModal
+            folder={state.folder}
+            minRating={state.minRating}
+            action={state.action}
+            onClose={() => setShowScanPreview(false)}
+            onStartCuration={handleExecuteCuration}
           />
         )}
         {showHistory && <StatsHistory onClose={() => setShowHistory(false)} />}

@@ -14,6 +14,7 @@ const DATA_DIR = path.join(app.getAppPath(), 'data');
 const CONFIG_PATH = path.join(DATA_DIR, 'config.json');
 const CLASSICS_PATH = path.join(DATA_DIR, 'classics.json');
 const GENRE_PATH = path.join(DATA_DIR, 'genre.json');
+const PROTECTED_GAMES_PATH = path.join(DATA_DIR, 'protected_games.json');
 const SYSTEMS_PATH = path.join(DATA_DIR, 'systems.json');
 const STATS_PATH = path.join(DATA_DIR, 'curator_stats.json');
 const PACKAGE_PATH = path.join(app.getAppPath(), 'package.json');
@@ -233,6 +234,30 @@ ipcMain.handle('removeGenre', async (_, genre: string) => {
   return genres;
 });
 
+ipcMain.handle('read-protected-games', async () => {
+  try {
+    return await fs.readJson(PROTECTED_GAMES_PATH);
+  } catch {
+    return [];
+  }
+});
+
+ipcMain.handle('add-protected-game', async (_, gameName: string) => {
+  const games = await fs.readJson(PROTECTED_GAMES_PATH).catch(() => []);
+  if (!games.includes(gameName)) {
+    games.push(gameName);
+    await fs.writeJson(PROTECTED_GAMES_PATH, games, { spaces: 2 });
+  }
+  return games;
+});
+
+ipcMain.handle('remove-protected-game', async (_, gameName: string) => {
+  let games = await fs.readJson(PROTECTED_GAMES_PATH).catch(() => []);
+  games = games.filter((g: string) => g !== gameName);
+  await fs.writeJson(PROTECTED_GAMES_PATH, games, { spaces: 2 });
+  return games;
+});
+
 ipcMain.handle('validate-game-name', async (_, gameName: string) => {
   const config = await fs.readJson(CONFIG_PATH).catch(() => null);
   if (!config) {
@@ -393,11 +418,194 @@ async function getGameRating(gameName: string, systemInfo: any, config: any): Pr
   return { rating: tgdbRating, genres: [] };
 }
 
+async function searchIGDBFull(gameName: string, platformId: number, config: any): Promise<any> {
+  try {
+    const token = await getIGDBToken(config);
+    const response = await axios.post(
+      'https://api.igdb.com/v4/games',
+      `search "${gameName}"; fields name, rating, genres.name, release_dates.y, version_title; where platforms = [${platformId}]; limit 5;`,
+      {
+        headers: {
+          'Client-ID': config.IGDB_CLIENT_ID,
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'text/plain',
+        },
+      }
+    );
+
+    if (response.data.length > 0) {
+      const game = response.data[0];
+      return {
+        name: game.name || gameName,
+        rating: game.rating || null,
+        genres: game.genres ? game.genres.map((g: any) => g.name) : [],
+        year: game.release_dates && game.release_dates.length > 0 ? game.release_dates[0].y : null,
+        version: game.version_title || '',
+      };
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function extractRegionTags(fileName: string): string[] {
+  const regionPattern = /\((USA|World|Europe|Japan|Asia|Brazil|Korea|Australia|Canada|France|Germany|Spain|Italy|UK|Scandinavia|Netherlands|Sweden|Norway|Finland|Denmark|Portugal|Russia|China|Taiwan|Hong Kong|Mexico|Argentina|Chile|Colombia|Peru|Venezuela|Ecuador|Bolivia|Paraguay|Uruguay|Costa Rica|Panama|Guatemala|Honduras|El Salvador|Nicaragua|Dominican Republic|Cuba|Puerto Rico|Jamaica|Trinidad|Barbados|Bahamas|Haiti|Guyana|Suriname|French Guiana|Falkland Islands|South Georgia|Antarctica)\)/gi;
+  const matches = fileName.match(regionPattern);
+  return matches ? matches.map(m => m.replace(/[()]/g, '')) : [];
+}
+
+function getBaseRomName(fileName: string): string {
+  return fileName
+    .replace(/\(.*?\)/g, '')
+    .replace(/\[.*?\]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+interface ScanRomInfo {
+  path: string;
+  fileName: string;
+  baseName: string;
+  ext: string;
+  system: string;
+  systemName: string;
+  size: number;
+  parentDir: string;
+  regionTags: string[];
+  metadata?: {
+    name: string;
+    rating: number | null;
+    genres: string[];
+    year: number | null;
+    version: string;
+  };
+  protectionStatus: {
+    isClassic: boolean;
+    isGenreProtected: boolean;
+    isUserProtected: boolean;
+  };
+}
+
+ipcMain.handle('scan-folder', async (_, folder: string) => {
+  const config = await fs.readJson(CONFIG_PATH);
+  const classics = await fs.readJson(CLASSICS_PATH);
+  const protectedGenres = await fs.readJson(GENRE_PATH).catch(() => []);
+  const protectedGames = await fs.readJson(PROTECTED_GAMES_PATH).catch(() => []);
+  const systems = await fs.readJson(SYSTEMS_PATH);
+
+  const romFiles: ScanRomInfo[] = [];
+
+  async function scanDirectory(dir: string) {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        await scanDirectory(fullPath);
+      } else {
+        const ext = path.extname(entry.name).toLowerCase();
+        if (systems[ext]) {
+          const fileName = path.basename(entry.name, ext);
+          const baseName = getBaseRomName(fileName);
+          const regionTags = extractRegionTags(fileName);
+          const stat = await fs.stat(fullPath);
+
+          const isClassic = classics.some((classic: string) =>
+            fileName.toLowerCase().includes(classic.toLowerCase())
+          );
+
+          const isUserProtected = protectedGames.some((game: string) =>
+            fileName.toLowerCase().includes(game.toLowerCase())
+          );
+
+          romFiles.push({
+            path: fullPath,
+            fileName: entry.name,
+            baseName,
+            ext,
+            system: ext,
+            systemName: systems[ext].name,
+            size: stat.size,
+            parentDir: dir,
+            regionTags,
+            protectionStatus: {
+              isClassic,
+              isGenreProtected: false,
+              isUserProtected,
+            },
+          });
+        }
+      }
+    }
+  }
+
+  await scanDirectory(folder);
+
+  // Fetch metadata for each ROM (batch by system to avoid rate limits)
+  const hasIGDB = config?.IGDB_CLIENT_ID && config?.IGDB_CLIENT_SECRET;
+  if (hasIGDB) {
+    for (let i = 0; i < romFiles.length; i += 5) {
+      const batch = romFiles.slice(i, i + 5);
+      const promises = batch.map(async (rom) => {
+        const metadata = await searchIGDBFull(rom.baseName, systems[rom.system].igdb, config);
+        if (metadata) {
+          rom.metadata = metadata;
+          const isGenreProtected = protectedGenres.some((genre: string) =>
+            metadata.genres.some((g: string) => g.toLowerCase().includes(genre.toLowerCase()))
+          );
+          rom.protectionStatus.isGenreProtected = isGenreProtected;
+        }
+      });
+      await Promise.all(promises);
+      if (i + 5 < romFiles.length) {
+        await new Promise(resolve => setTimeout(resolve, 200));
+      }
+    }
+  }
+
+  // Group by system
+  const grouped: Record<string, ScanRomInfo[]> = {};
+  for (const rom of romFiles) {
+    if (!grouped[rom.systemName]) {
+      grouped[rom.systemName] = [];
+    }
+    grouped[rom.systemName].push(rom);
+  }
+
+  // Detect clones/duplicates
+  const cloneGroups: { baseName: string; roms: ScanRomInfo[]; preferredRegion: string | null }[] = [];
+  const processedBases = new Set<string>();
+
+  for (const rom of romFiles) {
+    if (processedBases.has(rom.baseName)) continue;
+    const duplicates = romFiles.filter(r => r.baseName === rom.baseName && r.path !== rom.path);
+    if (duplicates.length > 0) {
+      const allInGroup = [rom, ...duplicates];
+      const regions = allInGroup.flatMap(r => r.regionTags);
+      const preferredRegion = regions.find(r => r === 'USA' || r === 'World') || regions[0] || null;
+      cloneGroups.push({
+        baseName: rom.baseName,
+        roms: allInGroup,
+        preferredRegion,
+      });
+      allInGroup.forEach(r => processedBases.add(r.baseName));
+    }
+  }
+
+  return {
+    total: romFiles.length,
+    grouped,
+    cloneGroups,
+    hasIGDB,
+  };
+});
+
 ipcMain.handle('start-curation', async (_, options: { folder: string; minRating: number; action: 'move' | 'delete' }) => {
   const { folder, minRating, action } = options;
   const config = await fs.readJson(CONFIG_PATH);
   const classics = await fs.readJson(CLASSICS_PATH);
   const protectedGenres = await fs.readJson(GENRE_PATH).catch(() => []);
+  const protectedGames = await fs.readJson(PROTECTED_GAMES_PATH).catch(() => []);
   const systems = await fs.readJson(SYSTEMS_PATH);
 
   const stats = {
@@ -493,6 +701,24 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
       );
 
       if (isClassic) {
+        groupAction = 'keep';
+        stats.preservados_classicos++;
+        mainWindow?.webContents.send('curation-progress', {
+          type: 'file',
+          index: fileIndex++,
+          fileName: file.name,
+          system: file.system.name,
+          status: 'classic',
+          rating: null,
+        });
+        continue;
+      }
+
+      const isUserProtected = protectedGames.some((game: string) =>
+        fileName.includes(game.toLowerCase())
+      );
+
+      if (isUserProtected) {
         groupAction = 'keep';
         stats.preservados_classicos++;
         mainWindow?.webContents.send('curation-progress', {

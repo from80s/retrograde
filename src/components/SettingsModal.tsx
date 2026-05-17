@@ -9,10 +9,12 @@ interface SettingsModalProps {
   systems: Record<string, any>;
   classics: string[];
   genres: string[];
+  protectedGames: string[];
   onSave: (minRating: number, action: 'move' | 'delete') => void;
   onApiTested: (hasConnection: boolean) => void;
   onClassicsUpdated: (classics: string[]) => void;
   onGenresUpdated: (genres: string[]) => void;
+  onProtectedGamesUpdated: (games: string[]) => void;
 }
 
 interface TestResult {
@@ -20,7 +22,7 @@ interface TestResult {
   message: string;
 }
 
-export function SettingsModal({ onClose, minRating, action, systems, classics, genres, onSave, onApiTested, onClassicsUpdated, onGenresUpdated }: SettingsModalProps) {
+export function SettingsModal({ onClose, minRating, action, systems, classics, genres, protectedGames, onSave, onApiTested, onClassicsUpdated, onGenresUpdated, onProtectedGamesUpdated }: SettingsModalProps) {
   const [localMinRating, setLocalMinRating] = useState(minRating);
   const [localAction, setLocalAction] = useState<'move' | 'delete'>(action);
   const [config, setConfig] = useState<any>(null);
@@ -36,6 +38,9 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
   const [genresFilter, setGenresFilter] = useState('');
   const [newGenre, setNewGenre] = useState('');
   const [showGenreDeleteConfirm, setShowGenreDeleteConfirm] = useState<string | null>(null);
+  const [protectedGamesFilter, setProtectedGamesFilter] = useState('');
+  const [newProtectedGame, setNewProtectedGame] = useState('');
+  const [showProtectedGameDeleteConfirm, setShowProtectedGameDeleteConfirm] = useState<string | null>(null);
 
   useEffect(() => {
     window.api.readConfig().then((loadedConfig) => {
@@ -126,6 +131,23 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
     const updated = await window.api.removeGenre(genre);
     onGenresUpdated(updated);
     setShowGenreDeleteConfirm(null);
+  };
+
+  const filteredProtectedGames = protectedGames.filter((g) =>
+    g.toLowerCase().includes(protectedGamesFilter.toLowerCase())
+  );
+
+  const handleAddProtectedGame = async () => {
+    if (!newProtectedGame.trim()) return;
+    const updated = await window.api.addProtectedGame(newProtectedGame.trim());
+    onProtectedGamesUpdated(updated);
+    setNewProtectedGame('');
+  };
+
+  const handleRemoveProtectedGame = async (game: string) => {
+    const updated = await window.api.removeProtectedGame(game);
+    onProtectedGamesUpdated(updated);
+    setShowProtectedGameDeleteConfirm(null);
   };
 
   const statusIcon = (status: string) => {
@@ -463,6 +485,72 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
                 </div>
               )}
             </div>
+
+            {/* User Protected Games */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
+                <Shield className="w-4 h-4 text-teal-400" />
+                Jogos Protegidos ({protectedGames.length})
+              </h3>
+              <p className="text-xs text-zinc-500 -mt-2">
+                Jogos específicos que serão sempre mantidos, independente da nota ou gênero.
+              </p>
+
+              {/* Filter */}
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                <input
+                  type="text"
+                  placeholder="Filtrar jogos protegidos..."
+                  value={protectedGamesFilter}
+                  onChange={(e) => setProtectedGamesFilter(e.target.value)}
+                  className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl pl-10 pr-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-teal-400/50 transition-colors placeholder:text-zinc-600"
+                />
+              </div>
+
+              {/* Add new protected game */}
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  placeholder="Nome do jogo..."
+                  value={newProtectedGame}
+                  onChange={(e) => setNewProtectedGame(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleAddProtectedGame()}
+                  className="flex-1 bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-teal-400/50 transition-colors placeholder:text-zinc-600"
+                />
+                <button
+                  onClick={handleAddProtectedGame}
+                  disabled={!newProtectedGame.trim()}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium transition-all
+                           bg-teal-500/10 text-teal-400 border border-teal-500/30
+                           hover:bg-teal-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <Plus className="w-4 h-4" />
+                  Adicionar
+                </button>
+              </div>
+
+              {/* Protected games list */}
+              <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto scrollbar-thin">
+                {filteredProtectedGames.map((game) => (
+                  <span
+                    key={game}
+                    className="group flex items-center gap-1 px-3 py-1 bg-teal-500/10 border border-teal-500/20 rounded-full text-xs text-teal-400"
+                  >
+                    {game}
+                    <button
+                      onClick={() => setShowProtectedGameDeleteConfirm(game)}
+                      className="ml-1 w-4 h-4 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-retro-danger/20 hover:text-retro-danger transition-all"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                ))}
+                {filteredProtectedGames.length === 0 && protectedGamesFilter && (
+                  <p className="text-xs text-zinc-600">Nenhum jogo encontrado</p>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* Footer */}
@@ -651,6 +739,53 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
                 </button>
                 <button
                   onClick={() => handleRemoveGenre(showGenreDeleteConfirm)}
+                  className="flex-1 px-4 py-2.5 rounded-xl bg-retro-danger/10 text-retro-danger border border-retro-danger/30 font-medium hover:bg-retro-danger/20 transition-all text-sm"
+                >
+                  Remover
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Delete Protected Game Confirmation Modal */}
+      <AnimatePresence>
+        {showProtectedGameDeleteConfirm && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70]"
+            onClick={() => setShowProtectedGameDeleteConfirm(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="glass rounded-2xl w-full max-w-sm overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-6 flex flex-col items-center text-center space-y-4">
+                <div className="w-12 h-12 rounded-full bg-retro-danger/10 flex items-center justify-center">
+                  <AlertTriangle className="w-6 h-6 text-retro-danger" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-zinc-100">Remover Jogo Protegido</h3>
+                  <p className="text-sm text-zinc-400 mt-1">
+                    Tem certeza que deseja remover <span className="text-teal-400 font-medium">"{showProtectedGameDeleteConfirm}"</span> da lista de jogos protegidos?
+                  </p>
+                </div>
+              </div>
+              <div className="p-6 border-t border-zinc-800/50 flex gap-3">
+                <button
+                  onClick={() => setShowProtectedGameDeleteConfirm(null)}
+                  className="flex-1 px-4 py-2.5 rounded-xl text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 transition-colors text-sm font-medium"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={() => handleRemoveProtectedGame(showProtectedGameDeleteConfirm)}
                   className="flex-1 px-4 py-2.5 rounded-xl bg-retro-danger/10 text-retro-danger border border-retro-danger/30 font-medium hover:bg-retro-danger/20 transition-all text-sm"
                 >
                   Remover
