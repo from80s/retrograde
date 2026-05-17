@@ -11,6 +11,7 @@ import {
   CheckCircle2,
   XCircle,
   LifeBuoy,
+  Info,
 } from 'lucide-react';
 import { ProgressCard } from './components/ProgressCard';
 import { StatCard } from './components/StatCard';
@@ -18,7 +19,9 @@ import { ActivityLog } from './components/ActivityLog';
 import { SettingsModal } from './components/SettingsModal';
 import { StatsHistory } from './components/StatsHistory';
 import { SupportModal } from './components/SupportModal';
+import { AboutModal } from './components/AboutModal';
 import { WelcomeModal } from './components/WelcomeModal';
+import { SplashScreen } from './components/SplashScreen';
 import { TitleBar } from './components/TitleBar';
 import RetroGradeLogo from '../assets/images/RetroGrade.png';
 
@@ -60,7 +63,9 @@ function App() {
   const [showSettings, setShowSettings] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
   const [hasConfig, setHasConfig] = useState(false);
   const [systems, setSystems] = useState<Record<string, any>>({});
   const [classics, setClassics] = useState<string[]>([]);
@@ -150,6 +155,10 @@ function App() {
 
   const progress = state.total > 0 ? (state.current / state.total) * 100 : 0;
 
+  if (showSplash) {
+    return <SplashScreen onFinish={() => setShowSplash(false)} />;
+  }
+
   return (
     <div className="h-screen flex flex-col bg-zinc-950">
       <TitleBar />
@@ -218,6 +227,15 @@ function App() {
             >
               <LifeBuoy className="w-5 h-5" />
               <span className="font-medium">Suporte</span>
+            </button>
+
+            <button
+              onClick={() => setShowAbout(true)}
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all duration-200
+                       text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50"
+            >
+              <Info className="w-5 h-5" />
+              <span className="font-medium">Sobre</span>
             </button>
           </nav>
 
@@ -313,6 +331,7 @@ function App() {
         )}
         {showHistory && <StatsHistory onClose={() => setShowHistory(false)} />}
         {showSupport && <SupportModal onClose={() => setShowSupport(false)} />}
+        {showAbout && <AboutModal onClose={() => setShowAbout(false)} version={version} />}
         {showWelcome && configChecked && (
           <WelcomeModal
             onClose={() => setShowWelcome(false)}
