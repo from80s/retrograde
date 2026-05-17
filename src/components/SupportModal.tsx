@@ -1,11 +1,20 @@
 import { motion } from 'framer-motion';
-import { X, Mail, MapPin, Heart } from 'lucide-react';
+import { X, Mail, MapPin, Heart, Copy, Check } from 'lucide-react';
+import { useState } from 'react';
 
 interface SupportModalProps {
   onClose: () => void;
 }
 
 export function SupportModal({ onClose }: SupportModalProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    await navigator.clipboard.writeText('helloretrogradeofficial@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -18,7 +27,7 @@ export function SupportModal({ onClose }: SupportModalProps) {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="glass rounded-2xl w-full max-w-md overflow-hidden"
+        className="glass rounded-2xl w-full max-w-lg overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
@@ -42,18 +51,27 @@ export function SupportModal({ onClose }: SupportModalProps) {
           </div>
 
           <div className="space-y-4">
-            <div className="flex items-center gap-4 p-4 bg-zinc-800/50 rounded-xl">
-              <div className="w-10 h-10 rounded-lg bg-retro-primary/10 flex items-center justify-center">
+            <div className="flex items-start gap-4 p-4 bg-zinc-800/50 rounded-xl">
+              <div className="w-10 h-10 rounded-lg bg-retro-primary/10 flex items-center justify-center flex-shrink-0">
                 <Mail className="w-5 h-5 text-retro-primary" />
               </div>
-              <div>
+              <div className="flex-1 min-w-0">
                 <p className="text-xs text-zinc-500 mb-1">E-mail</p>
-                <p className="text-sm font-mono text-zinc-200">helloretrograde@gmail.com</p>
+                <p className="text-sm font-mono text-zinc-200 break-all">helloretrogradeofficial@gmail.com</p>
               </div>
+              <button
+                onClick={handleCopyEmail}
+                className="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center transition-all
+                         bg-retro-primary/10 text-retro-primary border border-retro-primary/30
+                         hover:bg-retro-primary/20 active:scale-95"
+                title="Copiar email"
+              >
+                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+              </button>
             </div>
 
             <div className="flex items-center gap-4 p-4 bg-zinc-800/50 rounded-xl">
-              <div className="w-10 h-10 rounded-lg bg-retro-secondary/10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-retro-secondary/10 flex items-center justify-center flex-shrink-0">
                 <MapPin className="w-5 h-5 text-retro-secondary" />
               </div>
               <div>

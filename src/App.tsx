@@ -77,6 +77,13 @@ function App() {
       setConfigChecked(true);
       const hasAnyConfig = config && (config.IGDB_CLIENT_ID || config.TGDB_API_KEY);
       setHasConfig(!!hasAnyConfig);
+      if (config) {
+        setState((prev) => ({
+          ...prev,
+          minRating: config.minRating ?? 60,
+          action: config.action ?? 'move',
+        }));
+      }
       if (!hasAnyConfig || !apiConnected) {
         setShowWelcome(true);
       }

@@ -33,12 +33,19 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, o
   const [showDeleteConfirm, setShowDeleteConfirm] = useState<string | null>(null);
 
   useEffect(() => {
-    window.api.readConfig().then(setConfig);
+    window.api.readConfig().then((loadedConfig) => {
+      setConfig(loadedConfig);
+      if (loadedConfig) {
+        setLocalMinRating(loadedConfig.minRating ?? minRating);
+        setLocalAction(loadedConfig.action ?? action);
+      }
+    });
   }, []);
 
   const handleSave = async () => {
     if (config) {
-      await window.api.saveConfig(config);
+      const updatedConfig = { ...config, minRating: localMinRating, action: localAction };
+      await window.api.saveConfig(updatedConfig);
     }
     onSave(localMinRating, localAction);
     setSaved(true);
