@@ -5,6 +5,9 @@ export interface ApiBridge {
   readClassics: () => Promise<string[]>;
   addClassic: (name: string) => Promise<string[]>;
   removeClassic: (name: string) => Promise<string[]>;
+  readGenres: () => Promise<string[]>;
+  addGenre: (genre: string) => Promise<string[]>;
+  removeGenre: (genre: string) => Promise<string[]>;
   validateGameName: (name: string) => Promise<{ valid: boolean; message: string }>;
   readSystems: () => Promise<Record<string, any>>;
   readStats: () => Promise<any[]>;

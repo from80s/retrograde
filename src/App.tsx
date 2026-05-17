@@ -73,6 +73,7 @@ function App() {
   const [hasConfig, setHasConfig] = useState(false);
   const [systems, setSystems] = useState<Record<string, any>>({});
   const [classics, setClassics] = useState<string[]>([]);
+  const [genres, setGenres] = useState<string[]>([]);
   const [version, setVersion] = useState('0.0.0');
   const [apiConnected, setApiConnected] = useState(false);
   const [configChecked, setConfigChecked] = useState(false);
@@ -81,6 +82,7 @@ function App() {
   useEffect(() => {
     window.api.readSystems().then(setSystems);
     window.api.readClassics().then(setClassics);
+    window.api.readGenres().then(setGenres);
     window.api.readVersion().then(setVersion);
     window.api.readConfig().then((config) => {
       setConfigChecked(true);
@@ -360,11 +362,13 @@ function App() {
             action={state.action}
             systems={systems}
             classics={classics}
+            genres={genres}
             onApiTested={(connected) => {
               setApiConnected(connected);
               if (connected) setShowWelcome(false);
             }}
             onClassicsUpdated={setClassics}
+            onGenresUpdated={setGenres}
             onSave={(minRating, action) => {
               setState((prev) => ({ ...prev, minRating, action }));
               setShowSettings(false);

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Save, Shield, Trash2, MoveRight, Star, Wifi, Loader2, CheckCircle2, XCircle, Search, Plus, AlertTriangle } from 'lucide-react';
+import { X, Save, Shield, Trash2, MoveRight, Star, Wifi, Loader2, CheckCircle2, XCircle, Search, Plus, AlertTriangle, Gamepad2 } from 'lucide-react';
 
 interface SettingsModalProps {
   onClose: () => void;
@@ -8,9 +8,11 @@ interface SettingsModalProps {
   action: 'move' | 'delete';
   systems: Record<string, any>;
   classics: string[];
+  genres: string[];
   onSave: (minRating: number, action: 'move' | 'delete') => void;
   onApiTested: (hasConnection: boolean) => void;
   onClassicsUpdated: (classics: string[]) => void;
+  onGenresUpdated: (genres: string[]) => void;
 }
 
 interface TestResult {
@@ -18,7 +20,7 @@ interface TestResult {
   message: string;
 }
 
-export function SettingsModal({ onClose, minRating, action, systems, classics, onSave, onApiTested, onClassicsUpdated }: SettingsModalProps) {
+export function SettingsModal({ onClose, minRating, action, systems, classics, genres, onSave, onApiTested, onClassicsUpdated, onGenresUpdated }: SettingsModalProps) {
   const [localMinRating, setLocalMinRating] = useState(minRating);
   const [localAction, setLocalAction] = useState<'move' | 'delete'>(action);
   const [config, setConfig] = useState<any>(null);
@@ -31,6 +33,9 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, o
   const [validating, setValidating] = useState(false);
   const [validationResult, setValidationResult] = useState<{ valid: boolean; message: string } | null>(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState<string | null>(null);
+  const [genresFilter, setGenresFilter] = useState('');
+  const [newGenre, setNewGenre] = useState('');
+  const [showGenreDeleteConfirm, setShowGenreDeleteConfirm] = useState<string | null>(null);
 
   useEffect(() => {
     window.api.readConfig().then((loadedConfig) => {
@@ -105,6 +110,23 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, o
   const filteredClassics = classics.filter((c) =>
     c.toLowerCase().includes(classicsFilter.toLowerCase())
   );
+
+  const filteredGenres = genres.filter((g) =>
+    g.toLowerCase().includes(genresFilter.toLowerCase())
+  );
+
+  const handleAddGenre = async () => {
+    if (!newGenre.trim()) return;
+    const updated = await window.api.addGenre(newGenre.trim());
+    onGenresUpdated(updated);
+    setNewGenre('');
+  };
+
+  const handleRemoveGenre = async (genre: string) => {
+    const updated = await window.api.removeGenre(genre);
+    onGenresUpdated(updated);
+    setShowGenreDeleteConfirm(null);
+  };
 
   const statusIcon = (status: string) => {
     if (status === 'pending') return <Loader2 className="w-5 h-5 text-zinc-400 animate-spin" />;
@@ -353,6 +375,94 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, o
                 )}
               </div>
             </div>
+
+            {/* Protected Genres */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
+                <Gamepad2 className="w-4 h-4 text-retro-warning" />
+                Gêneros Protegidos ({genres.length})
+              </h3>
+
+              {config?.IGDB_CLIENT_ID && config?.IGDB_CLIENT_SECRET ? (
+                <>
+                  <p className="text-xs text-zinc-500 -mt-2">
+                    Jogos destes gêneros serão mantidos mesmo com nota baixa.
+                  </p>
+
+                  {/* Filter */}
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                    <input
+                      type="text"
+                      placeholder="Filtrar gêneros..."
+                      value={genresFilter}
+                      onChange={(e) => setGenresFilter(e.target.value)}
+                      className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl pl-10 pr-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-retro-warning/50 transition-colors placeholder:text-zinc-600"
+                    />
+                  </div>
+
+                  {/* Add new genre */}
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      placeholder="Ex: RPG, Luta, Aventura..."
+                      value={newGenre}
+                      onChange={(e) => setNewGenre(e.target.value)}
+                      onKeyDown={(e) => e.key === 'Enter' && handleAddGenre()}
+                      className="flex-1 bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-retro-warning/50 transition-colors placeholder:text-zinc-600"
+                    />
+                    <button
+                      onClick={handleAddGenre}
+                      disabled={!newGenre.trim()}
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium transition-all
+                               bg-retro-warning/10 text-retro-warning border border-retro-warning/30
+                               hover:bg-retro-warning/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <Plus className="w-4 h-4" />
+                      Adicionar
+                    </button>
+                  </div>
+
+                  {/* Genres list */}
+                  <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto scrollbar-thin">
+                    {filteredGenres.map((genre) => (
+                      <span
+                        key={genre}
+                        className="group flex items-center gap-1 px-3 py-1 bg-retro-warning/10 border border-retro-warning/20 rounded-full text-xs text-retro-warning"
+                      >
+                        {genre}
+                        <button
+                          onClick={() => setShowGenreDeleteConfirm(genre)}
+                          className="ml-1 w-4 h-4 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-retro-danger/20 hover:text-retro-danger transition-all"
+                        >
+                          <X className="w-3 h-3" />
+                        </button>
+                      </span>
+                    ))}
+                    {filteredGenres.length === 0 && genresFilter && (
+                      <p className="text-xs text-zinc-600">Nenhum gênero encontrado</p>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <div className="bg-zinc-800/30 border border-zinc-700/30 rounded-xl p-4 space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-zinc-700/50 flex items-center justify-center flex-shrink-0">
+                      <Gamepad2 className="w-4 h-4 text-zinc-500" />
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-sm text-zinc-300 font-medium">Feature bloqueada</p>
+                      <p className="text-xs text-zinc-500 leading-relaxed">
+                        A proteção por gêneros requer a API do <span className="text-retro-primary font-medium">IGDB</span> para identificar os gêneros dos jogos.
+                      </p>
+                      <p className="text-xs text-zinc-500 leading-relaxed">
+                        Configure o <span className="text-zinc-300 font-mono">IGDB Client ID</span> e <span className="text-zinc-300 font-mono">IGDB Client Secret</span> na seção de credenciais acima para liberar esta funcionalidade.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Footer */}
@@ -494,6 +604,53 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, o
                 </button>
                 <button
                   onClick={() => handleRemoveClassic(showDeleteConfirm)}
+                  className="flex-1 px-4 py-2.5 rounded-xl bg-retro-danger/10 text-retro-danger border border-retro-danger/30 font-medium hover:bg-retro-danger/20 transition-all text-sm"
+                >
+                  Remover
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Delete Genre Confirmation Modal */}
+      <AnimatePresence>
+        {showGenreDeleteConfirm && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70]"
+            onClick={() => setShowGenreDeleteConfirm(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="glass rounded-2xl w-full max-w-sm overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-6 flex flex-col items-center text-center space-y-4">
+                <div className="w-12 h-12 rounded-full bg-retro-danger/10 flex items-center justify-center">
+                  <AlertTriangle className="w-6 h-6 text-retro-danger" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-zinc-100">Remover Gênero</h3>
+                  <p className="text-sm text-zinc-400 mt-1">
+                    Tem certeza que deseja remover <span className="text-retro-warning font-medium">"{showGenreDeleteConfirm}"</span> da lista de gêneros protegidos?
+                  </p>
+                </div>
+              </div>
+              <div className="p-6 border-t border-zinc-800/50 flex gap-3">
+                <button
+                  onClick={() => setShowGenreDeleteConfirm(null)}
+                  className="flex-1 px-4 py-2.5 rounded-xl text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 transition-colors text-sm font-medium"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={() => handleRemoveGenre(showGenreDeleteConfirm)}
                   className="flex-1 px-4 py-2.5 rounded-xl bg-retro-danger/10 text-retro-danger border border-retro-danger/30 font-medium hover:bg-retro-danger/20 transition-all text-sm"
                 >
                   Remover

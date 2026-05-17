@@ -15,6 +15,7 @@ console.log('[RetroGrade] __dirname:', __dirname);
 const DATA_DIR = path_1.default.join(electron_1.app.getAppPath(), 'data');
 const CONFIG_PATH = path_1.default.join(DATA_DIR, 'config.json');
 const CLASSICS_PATH = path_1.default.join(DATA_DIR, 'classics.json');
+const GENRE_PATH = path_1.default.join(DATA_DIR, 'genre.json');
 const SYSTEMS_PATH = path_1.default.join(DATA_DIR, 'systems.json');
 const STATS_PATH = path_1.default.join(DATA_DIR, 'curator_stats.json');
 const PACKAGE_PATH = path_1.default.join(electron_1.app.getAppPath(), 'package.json');
@@ -188,6 +189,28 @@ electron_1.ipcMain.handle('removeClassic', async (_, name) => {
     await fs_extra_1.default.writeJson(CLASSICS_PATH, classics, { spaces: 2 });
     return classics;
 });
+electron_1.ipcMain.handle('read-genres', async () => {
+    try {
+        return await fs_extra_1.default.readJson(GENRE_PATH);
+    }
+    catch {
+        return [];
+    }
+});
+electron_1.ipcMain.handle('addGenre', async (_, genre) => {
+    const genres = await fs_extra_1.default.readJson(GENRE_PATH).catch(() => []);
+    if (!genres.includes(genre)) {
+        genres.push(genre);
+        await fs_extra_1.default.writeJson(GENRE_PATH, genres, { spaces: 2 });
+    }
+    return genres;
+});
+electron_1.ipcMain.handle('removeGenre', async (_, genre) => {
+    let genres = await fs_extra_1.default.readJson(GENRE_PATH).catch(() => []);
+    genres = genres.filter((g) => g !== genre);
+    await fs_extra_1.default.writeJson(GENRE_PATH, genres, { spaces: 2 });
+    return genres;
+});
 electron_1.ipcMain.handle('validate-game-name', async (_, gameName) => {
     const config = await fs_extra_1.default.readJson(CONFIG_PATH).catch(() => null);
     if (!config) {
@@ -269,20 +292,25 @@ async function getIGDBToken(config) {
 async function searchIGDB(gameName, platformId, config) {
     try {
         const token = await getIGDBToken(config);
-        const response = await axios_1.default.post('https://api.igdb.com/v4/games', `search "${gameName}"; fields rating; where platforms = [${platformId}]; limit 1;`, {
+        const response = await axios_1.default.post('https://api.igdb.com/v4/games', `search "${gameName}"; fields rating, genres.name; where platforms = [${platformId}]; limit 1;`, {
             headers: {
                 'Client-ID': config.IGDB_CLIENT_ID,
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'text/plain',
             },
         });
-        if (response.data.length > 0 && response.data[0].rating) {
-            return response.data[0].rating;
+        if (response.data.length > 0) {
+            const game = response.data[0];
+            const genres = game.genres ? game.genres.map((g) => g.name) : [];
+            return {
+                rating: game.rating || null,
+                genres,
+            };
         }
-        return null;
+        return { rating: null, genres: [] };
     }
     catch {
-        return null;
+        return { rating: null, genres: [] };
     }
 }
 async function searchTGDB(gameName, platformId, config) {
@@ -307,17 +335,18 @@ async function searchTGDB(gameName, platformId, config) {
     }
 }
 async function getGameRating(gameName, systemInfo, config) {
-    const igdbRating = await searchIGDB(gameName, systemInfo.igdb, config);
-    if (igdbRating !== null) {
-        return igdbRating;
+    const igdbResult = await searchIGDB(gameName, systemInfo.igdb, config);
+    if (igdbResult.rating !== null) {
+        return igdbResult;
     }
     const tgdbRating = await searchTGDB(gameName, systemInfo.tgdb, config);
-    return tgdbRating;
+    return { rating: tgdbRating, genres: [] };
 }
 electron_1.ipcMain.handle('start-curation', async (_, options) => {
     const { folder, minRating, action } = options;
     const config = await fs_extra_1.default.readJson(CONFIG_PATH);
     const classics = await fs_extra_1.default.readJson(CLASSICS_PATH);
+    const protectedGenres = await fs_extra_1.default.readJson(GENRE_PATH).catch(() => []);
     const systems = await fs_extra_1.default.readJson(SYSTEMS_PATH);
     const stats = {
         pasta: folder,
@@ -403,16 +432,17 @@ electron_1.ipcMain.handle('start-curation', async (_, options) => {
                 });
                 continue;
             }
-            const rating = await getGameRating(path_1.default.basename(file.name, path_1.default.extname(file.name)), file.system, config);
-            if (rating === null || rating >= minRating) {
+            const result = await getGameRating(path_1.default.basename(file.name, path_1.default.extname(file.name)), file.system, config);
+            const isProtectedGenre = protectedGenres.some((genre) => result.genres.some((g) => g.toLowerCase().includes(genre.toLowerCase())));
+            if (result.rating === null || result.rating >= minRating || isProtectedGenre) {
                 stats.mantidos_por_nota++;
                 mainWindow?.webContents.send('curation-progress', {
                     type: 'file',
                     index: fileIndex++,
                     fileName: file.name,
                     system: file.system.name,
-                    status: 'kept',
-                    rating: rating,
+                    status: isProtectedGenre ? 'classic' : 'kept',
+                    rating: result.rating,
                 });
             }
             else {
@@ -424,7 +454,7 @@ electron_1.ipcMain.handle('start-curation', async (_, options) => {
                     fileName: file.name,
                     system: file.system.name,
                     status: 'removed',
-                    rating: rating,
+                    rating: result.rating,
                 });
             }
         }
