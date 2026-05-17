@@ -17,6 +17,12 @@ export interface ApiBridge {
     cloneGroups: any[];
     hasIGDB: boolean;
   }>;
+  simulateCuration: (options: { folder: string; minRating: number; action: 'move' | 'delete' }) => Promise<{
+    results: any[];
+    totalFiles: number;
+    totalSizeAffected: number;
+    action: 'move' | 'delete';
+  }>;
   validateGameName: (name: string) => Promise<{ valid: boolean; message: string }>;
   readSystems: () => Promise<Record<string, any>>;
   readStats: () => Promise<any[]>;

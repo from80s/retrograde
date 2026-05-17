@@ -347,23 +347,41 @@ async function searchTGDB(gameName, platformId, config) {
         });
         if (response.data.data && response.data.data.length > 0) {
             const game = response.data.data[0];
+            let rating = null;
             if (game.ratings && game.ratings.thegamesdb) {
-                return parseFloat(game.ratings.thegamesdb) * 10;
+                rating = parseFloat(game.ratings.thegamesdb) * 10;
             }
+            const genres = game.genres ? game.genres.split(',').map((g) => g.trim()) : [];
+            return { rating, genres };
         }
-        return null;
+        return { rating: null, genres: [] };
     }
     catch {
-        return null;
+        return { rating: null, genres: [] };
     }
 }
 async function getGameRating(gameName, systemInfo, config) {
     const igdbResult = await searchIGDB(gameName, systemInfo.igdb, config);
-    if (igdbResult.rating !== null) {
-        return igdbResult;
+    const tgdbResult = await searchTGDB(gameName, systemInfo.tgdb, config);
+    // Unificar notas: pegar a maior entre IGDB e TGDB
+    const ratings = [igdbResult.rating, tgdbResult.rating].filter((r) => r !== null);
+    const bestRating = ratings.length > 0 ? Math.max(...ratings) : null;
+    // Combinar gêneros de ambas as APIs (remover duplicatas)
+    const allGenres = [...igdbResult.genres, ...tgdbResult.genres];
+    const uniqueGenres = [...new Set(allGenres.map(g => g.toLowerCase()))].map(g => allGenres.find(ag => ag.toLowerCase() === g));
+    return { rating: bestRating, genres: uniqueGenres };
+}
+async function getPathSize(filePath) {
+    const stat = await fs_extra_1.default.stat(filePath);
+    if (stat.isDirectory()) {
+        const entries = await fs_extra_1.default.readdir(filePath);
+        let size = 0;
+        for (const entry of entries) {
+            size += await getPathSize(path_1.default.join(filePath, entry));
+        }
+        return size;
     }
-    const tgdbRating = await searchTGDB(gameName, systemInfo.tgdb, config);
-    return { rating: tgdbRating, genres: [] };
+    return stat.size;
 }
 async function searchIGDBFull(gameName, platformId, config) {
     try {
@@ -540,18 +558,6 @@ electron_1.ipcMain.handle('start-curation', async (_, options) => {
     }
     await scanDirectory(folder);
     stats.total_encontrado = romFiles.length;
-    async function getPathSize(filePath) {
-        const stat = await fs_extra_1.default.stat(filePath);
-        if (stat.isDirectory()) {
-            const entries = await fs_extra_1.default.readdir(filePath);
-            let size = 0;
-            for (const entry of entries) {
-                size += await getPathSize(path_1.default.join(filePath, entry));
-            }
-            return size;
-        }
-        return stat.size;
-    }
     mainWindow?.webContents.send('curation-progress', {
         type: 'init',
         total: romFiles.length,
@@ -588,6 +594,7 @@ electron_1.ipcMain.handle('start-curation', async (_, options) => {
                     system: file.system.name,
                     status: 'classic',
                     rating: null,
+                    genres: [],
                 });
                 continue;
             }
@@ -602,6 +609,7 @@ electron_1.ipcMain.handle('start-curation', async (_, options) => {
                     system: file.system.name,
                     status: 'classic',
                     rating: null,
+                    genres: [],
                 });
                 continue;
             }
@@ -616,6 +624,7 @@ electron_1.ipcMain.handle('start-curation', async (_, options) => {
                     system: file.system.name,
                     status: isProtectedGenre ? 'classic' : 'kept',
                     rating: result.rating,
+                    genres: result.genres,
                 });
             }
             else {
@@ -628,6 +637,7 @@ electron_1.ipcMain.handle('start-curation', async (_, options) => {
                     system: file.system.name,
                     status: 'removed',
                     rating: result.rating,
+                    genres: result.genres,
                 });
             }
         }
@@ -655,6 +665,127 @@ electron_1.ipcMain.handle('start-curation', async (_, options) => {
         stats,
     });
     return stats;
+});
+electron_1.ipcMain.handle('simulate-curation', async (_, options) => {
+    const { folder, minRating, action } = options;
+    const config = await fs_extra_1.default.readJson(CONFIG_PATH);
+    const classics = await fs_extra_1.default.readJson(CLASSICS_PATH);
+    const protectedGenres = await fs_extra_1.default.readJson(GENRE_PATH).catch(() => []);
+    const protectedGames = await fs_extra_1.default.readJson(PROTECTED_GAMES_PATH).catch(() => []);
+    const systems = await fs_extra_1.default.readJson(SYSTEMS_PATH);
+    const romFiles = [];
+    async function scanDirectory(dir) {
+        const entries = await fs_extra_1.default.readdir(dir, { withFileTypes: true });
+        for (const entry of entries) {
+            const fullPath = path_1.default.join(dir, entry.name);
+            if (entry.isDirectory()) {
+                await scanDirectory(fullPath);
+            }
+            else {
+                const ext = path_1.default.extname(entry.name).toLowerCase();
+                if (systems[ext]) {
+                    const stat = await fs_extra_1.default.stat(fullPath);
+                    romFiles.push({
+                        path: fullPath,
+                        name: entry.name,
+                        ext,
+                        system: systems[ext],
+                        parentDir: dir,
+                        size: stat.size,
+                    });
+                }
+            }
+        }
+    }
+    await scanDirectory(folder);
+    // Group ROMs by parent directory
+    const dirGroups = new Map();
+    for (const file of romFiles) {
+        if (!dirGroups.has(file.parentDir)) {
+            dirGroups.set(file.parentDir, []);
+        }
+        dirGroups.get(file.parentDir).push(file);
+    }
+    const simulationResults = [];
+    const processedDirs = new Set();
+    let totalSizeAffected = 0;
+    for (const [parentDir, files] of dirGroups) {
+        if (processedDirs.has(parentDir))
+            continue;
+        const folderName = path_1.default.basename(parentDir).toLowerCase();
+        const isSingleRomFolder = files.length === 1 && folderName === path_1.default.basename(files[0].name, files[0].ext).toLowerCase();
+        let groupAction = 'keep';
+        for (const file of files) {
+            const fileName = path_1.default.basename(file.name, path_1.default.extname(file.name)).toLowerCase();
+            const isClassic = classics.some((classic) => fileName.includes(classic.toLowerCase()));
+            if (isClassic) {
+                groupAction = 'keep';
+                simulationResults.push({
+                    fileName: file.name,
+                    system: file.system.name,
+                    status: 'classic',
+                    rating: null,
+                    genres: [],
+                    size: file.size,
+                    action: 'none',
+                });
+                continue;
+            }
+            const isUserProtected = protectedGames.some((game) => fileName.includes(game.toLowerCase()));
+            if (isUserProtected) {
+                groupAction = 'keep';
+                simulationResults.push({
+                    fileName: file.name,
+                    system: file.system.name,
+                    status: 'classic',
+                    rating: null,
+                    genres: [],
+                    size: file.size,
+                    action: 'none',
+                });
+                continue;
+            }
+            const result = await getGameRating(path_1.default.basename(file.name, path_1.default.extname(file.name)), file.system, config);
+            const isProtectedGenre = protectedGenres.some((genre) => result.genres.some((g) => g.toLowerCase().includes(genre.toLowerCase())));
+            if (result.rating === null || result.rating >= minRating || isProtectedGenre) {
+                simulationResults.push({
+                    fileName: file.name,
+                    system: file.system.name,
+                    status: isProtectedGenre ? 'classic' : 'kept',
+                    rating: result.rating,
+                    genres: result.genres,
+                    size: file.size,
+                    action: 'none',
+                });
+            }
+            else {
+                groupAction = 'remove';
+                simulationResults.push({
+                    fileName: file.name,
+                    system: file.system.name,
+                    status: 'removed',
+                    rating: result.rating,
+                    genres: result.genres,
+                    size: file.size,
+                    action: action,
+                    targetPath: action === 'move' ? path_1.default.join(folder, 'removidos', file.name) : undefined,
+                });
+                totalSizeAffected += file.size;
+            }
+        }
+        if (isSingleRomFolder && groupAction === 'remove') {
+            const dirSize = await getPathSize(parentDir);
+            totalSizeAffected += dirSize;
+            processedDirs.add(parentDir);
+        }
+        processedDirs.add(parentDir);
+    }
+    return {
+        results: simulationResults,
+        totalFiles: romFiles.length,
+        totalSizeAffected,
+        action,
+    };
 });
 electron_1.ipcMain.handle('delete-removed-folder', async (_, folder) => {
     const removedDir = path_1.default.join(folder, 'removidos');

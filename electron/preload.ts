@@ -14,6 +14,8 @@ contextBridge.exposeInMainWorld('api', {
   addProtectedGame: (game: string) => ipcRenderer.invoke('add-protected-game', game),
   removeProtectedGame: (game: string) => ipcRenderer.invoke('remove-protected-game', game),
   scanFolder: (folder: string) => ipcRenderer.invoke('scan-folder', folder),
+  simulateCuration: (options: { folder: string; minRating: number; action: 'move' | 'delete' }) =>
+    ipcRenderer.invoke('simulate-curation', options),
   validateGameName: (name: string) => ipcRenderer.invoke('validate-game-name', name),
   readSystems: () => ipcRenderer.invoke('read-systems'),
   readStats: () => ipcRenderer.invoke('read-stats'),
