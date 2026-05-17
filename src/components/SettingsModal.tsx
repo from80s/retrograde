@@ -15,6 +15,7 @@ interface SettingsModalProps {
   onClassicsUpdated: (classics: string[]) => void;
   onGenresUpdated: (genres: string[]) => void;
   onProtectedGamesUpdated: (games: string[]) => void;
+  onToast: (message: string, type: 'success' | 'error' | 'info') => void;
 }
 
 interface TestResult {
@@ -22,11 +23,10 @@ interface TestResult {
   message: string;
 }
 
-export function SettingsModal({ onClose, minRating, action, systems, classics, genres, protectedGames, onSave, onApiTested, onClassicsUpdated, onGenresUpdated, onProtectedGamesUpdated }: SettingsModalProps) {
+export function SettingsModal({ onClose, minRating, action, systems, classics, genres, protectedGames, onSave, onApiTested, onClassicsUpdated, onGenresUpdated, onProtectedGamesUpdated, onToast }: SettingsModalProps) {
   const [localMinRating, setLocalMinRating] = useState(minRating);
   const [localAction, setLocalAction] = useState<'move' | 'delete'>(action);
   const [config, setConfig] = useState<any>(null);
-  const [saved, setSaved] = useState(false);
   const [testing, setTesting] = useState(false);
   const [showTestModal, setShowTestModal] = useState(false);
   const [testResults, setTestResults] = useState<{ igdb: TestResult; tgdb: TestResult } | null>(null);
@@ -53,16 +53,19 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
   }, []);
 
   const handleSave = async () => {
-    if (config) {
-      const updatedConfig = { ...config, minRating: localMinRating, action: localAction };
-      await window.api.saveConfig(updatedConfig);
+    try {
+      if (config) {
+        const updatedConfig = { ...config, minRating: localMinRating, action: localAction };
+        await window.api.saveConfig(updatedConfig);
+      }
+      onSave(localMinRating, localAction);
+      onToast('Configurações salvas com sucesso!', 'success');
+      setTimeout(() => {
+        onClose();
+      }, 1500);
+    } catch {
+      onToast('Erro ao salvar configurações.', 'error');
     }
-    onSave(localMinRating, localAction);
-    setSaved(true);
-    setTimeout(() => {
-      setSaved(false);
-      onClose();
-    }, 1000);
   };
 
   const handleConfigChange = (key: string, value: string) => {
@@ -84,7 +87,19 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
     setTestResults(results as { igdb: TestResult; tgdb: TestResult });
     setTesting(false);
 
-    const hasConnection = results.igdb.status === 'success' || results.tgdb.status === 'success';
+    const igdbSuccess = results.igdb.status === 'success';
+    const tgdbSuccess = results.tgdb.status === 'success';
+    const hasConnection = igdbSuccess || tgdbSuccess;
+
+    if (hasConnection) {
+      const savedApis = [];
+      if (igdbSuccess) savedApis.push('IGDB');
+      if (tgdbSuccess) savedApis.push('TheGamesDB');
+      onToast(`Conexão estabelecida! ${savedApis.join(' e ')} salva(s) automaticamente.`, 'success');
+    } else {
+      onToast('Nenhuma API conectada. Verifique as credenciais.', 'error');
+    }
+
     onApiTested(hasConnection);
   };
 
@@ -566,7 +581,7 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
               className="flex items-center gap-2 px-6 py-2.5 bg-retro-primary/10 text-retro-primary border border-retro-primary/30 rounded-xl font-medium hover:bg-retro-primary/20 transition-all active:scale-95"
             >
               <Save className="w-4 h-4" />
-              {saved ? 'Salvo!' : 'Salvar'}
+              Salvar
             </button>
           </div>
         </motion.div>

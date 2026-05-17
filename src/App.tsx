@@ -13,6 +13,7 @@ import {
   LifeBuoy,
   Info,
   Coffee,
+  Search,
 } from 'lucide-react';
 import { ProgressCard } from './components/ProgressCard';
 import { StatCard } from './components/StatCard';
@@ -25,6 +26,7 @@ import { WelcomeModal } from './components/WelcomeModal';
 import { SplashScreen } from './components/SplashScreen';
 import { SpaceSavingsCard } from './components/SpaceSavingsCard';
 import { ScanPreviewModal } from './components/ScanPreviewModal';
+import { Toast } from './components/Toast';
 import { TitleBar } from './components/TitleBar';
 import RetroGradeLogo from '../assets/images/RetroGrade.png';
 
@@ -42,7 +44,7 @@ interface CurationState {
   currentSystem: string;
   currentRating: number | null;
   currentStatus: 'classic' | 'kept' | 'removed' | null;
-  log: { fileName: string; status: string; rating: number | null; system: string }[];
+  log: { fileName: string; status: string; rating: number | null; system: string; genres?: string[] }[];
 }
 
 function App() {
@@ -72,6 +74,7 @@ function App() {
   const [showWelcome, setShowWelcome] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const [showScanPreview, setShowScanPreview] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
   const [hasConfig, setHasConfig] = useState(false);
   const [systems, setSystems] = useState<Record<string, any>>({});
   const [classics, setClassics] = useState<string[]>([]);
@@ -119,6 +122,16 @@ function App() {
     }
   }, []);
 
+  const showToast = (message: string, type: 'success' | 'error' | 'info') => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3000);
+  };
+
+  const handleSimulateCuration = useCallback(async () => {
+    if (!state.folder) return;
+    setShowScanPreview(true);
+  }, [state.folder]);
+
   const handleStartCuration = useCallback(async () => {
     if (!state.folder) return;
     setShowScanPreview(true);
@@ -160,7 +173,7 @@ function App() {
           removed: data.status === 'removed' ? prev.removed + 1 : prev.removed,
           log: [
             ...prev.log.slice(-99),
-            { fileName: data.fileName, status: data.status, rating: data.rating, system: data.system },
+            { fileName: data.fileName, status: data.status, rating: data.rating, system: data.system, genres: data.genres },
           ],
         }));
       } else if (data.type === 'complete') {
@@ -207,6 +220,26 @@ function App() {
             >
               <FolderOpen className="w-5 h-5" />
               <span className="font-medium">Selecionar Pasta</span>
+            </button>
+
+            {state.folder && (
+              <div className="px-4 pb-2">
+                <div className="glass rounded-xl p-3">
+                  <p className="text-xs text-zinc-500 mb-1">Pasta selecionada</p>
+                  <p className="text-sm text-zinc-300 truncate font-mono">{state.folder}</p>
+                </div>
+              </div>
+            )}
+
+            <button
+              onClick={handleSimulateCuration}
+              disabled={state.isRunning || !state.folder || !apiConnected}
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all duration-200
+                       bg-zinc-700/30 text-zinc-300 border border-zinc-600/30
+                       hover:bg-zinc-700/50 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <Search className="w-5 h-5" />
+              <span className="font-medium text-sm">Simular Curadoria</span>
             </button>
 
             <button
@@ -276,15 +309,6 @@ function App() {
               <span className="font-medium text-sm">Buy me a coffee</span>
             </a>
           </div>
-
-          {state.folder && (
-            <div className="p-4 border-t border-zinc-800/50">
-              <div className="glass rounded-xl p-3">
-                <p className="text-xs text-zinc-500 mb-1">Pasta selecionada</p>
-                <p className="text-sm text-zinc-300 truncate font-mono">{state.folder}</p>
-              </div>
-            </div>
-          )}
         </aside>
 
         {/* Main Content */}
@@ -390,6 +414,7 @@ function App() {
               setState((prev) => ({ ...prev, minRating, action }));
               setShowSettings(false);
             }}
+            onToast={showToast}
           />
         )}
         {showScanPreview && state.folder && (
@@ -412,6 +437,8 @@ function App() {
           />
         )}
       </AnimatePresence>
+
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
     </div>
   );
 }

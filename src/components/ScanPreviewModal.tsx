@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   X, Play, Filter, Search, Shield, Gamepad2, Calendar,
   ChevronDown, ChevronUp, Copy, Globe, Star, AlertTriangle,
-  Loader2
+  Loader2, XCircle
 } from 'lucide-react';
 
 interface ScanPreviewModalProps {
@@ -63,6 +63,8 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
   const [userProtectedGames, setUserProtectedGames] = useState<string[]>([]);
   const [newProtectedGame, setNewProtectedGame] = useState('');
   const [showCloneOptions, setShowCloneOptions] = useState(false);
+  const [simulating, setSimulating] = useState(false);
+  const [simulationResults, setSimulationResults] = useState<any>(null);
 
   useEffect(() => {
     window.api.scanFolder(folder).then((data) => {
@@ -89,6 +91,18 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
   const handleRemoveProtectedGame = async (game: string) => {
     const updated = await window.api.removeProtectedGame(game);
     setUserProtectedGames(updated);
+  };
+
+  const handleSimulate = async () => {
+    setSimulating(true);
+    setSimulationResults(null);
+    const results = await window.api.simulateCuration({
+      folder,
+      minRating,
+      action,
+    });
+    setSimulationResults(results);
+    setSimulating(false);
   };
 
   const filteredRoms = useMemo(() => {
@@ -449,36 +463,102 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
         </div>
 
         {/* Footer */}
-        <div className="p-6 border-t border-zinc-800/50 flex items-center justify-between">
-          <div className="flex items-center gap-4 text-xs text-zinc-500">
-            <span className="flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
-              Clássico
-            </span>
-            <span className="flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full bg-purple-400"></span>
-              Gênero
-            </span>
-            <span className="flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full bg-teal-400"></span>
-              Protegido
-            </span>
-          </div>
-          <div className="flex gap-3">
-            <button
-              onClick={onClose}
-              className="px-6 py-2.5 rounded-xl text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 transition-colors text-sm font-medium"
-            >
-              Cancelar
-            </button>
-            <button
-              onClick={handleStart}
-              disabled={scanning}
-              className="flex items-center gap-2 px-6 py-2.5 bg-retro-success/10 text-retro-success border border-retro-success/30 rounded-xl font-medium hover:bg-retro-success/20 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <Play className="w-4 h-4" />
-              Iniciar Curadoria
-            </button>
+        <div className="p-6 border-t border-zinc-800/50 space-y-4">
+          {/* Simulation Results */}
+          <AnimatePresence>
+            {simulationResults && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="bg-zinc-800/30 rounded-xl p-4 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-semibold text-zinc-200">Resultado da Simulação</h3>
+                    <span className="text-xs text-zinc-500">{simulationResults.results.length} arquivos analisados</span>
+                  </div>
+                  
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="bg-zinc-800/50 rounded-lg p-3 text-center">
+                      <p className="text-lg font-bold text-retro-success">
+                        {simulationResults.results.filter((r: any) => r.status !== 'removed').length}
+                      </p>
+                      <p className="text-xs text-zinc-500">Mantidos</p>
+                    </div>
+                    <div className="bg-zinc-800/50 rounded-lg p-3 text-center">
+                      <p className="text-lg font-bold text-retro-danger">
+                        {simulationResults.results.filter((r: any) => r.status === 'removed').length}
+                      </p>
+                      <p className="text-xs text-zinc-500">Removidos</p>
+                    </div>
+                    <div className="bg-zinc-800/50 rounded-lg p-3 text-center">
+                      <p className="text-lg font-bold text-retro-warning">
+                        {formatBytes(simulationResults.totalSizeAffected)}
+                      </p>
+                      <p className="text-xs text-zinc-500">
+                        {action === 'move' ? 'Movidos' : 'Deletados'}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="max-h-40 overflow-y-auto space-y-1 scrollbar-thin">
+                    {simulationResults.results.filter((r: any) => r.status === 'removed').map((rom: any, idx: number) => (
+                      <div key={idx} className="flex items-center gap-2 p-2 bg-zinc-800/30 rounded-lg">
+                        <XCircle className="w-4 h-4 text-retro-danger flex-shrink-0" />
+                        <span className="text-xs text-zinc-300 truncate flex-1">{rom.fileName}</span>
+                        <span className="text-xs text-zinc-500">{rom.system}</span>
+                        {rom.rating !== null && (
+                          <span className="text-xs text-retro-warning">{rom.rating.toFixed(0)}</span>
+                        )}
+                        <span className="text-xs text-zinc-500">{formatBytes(rom.size)}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4 text-xs text-zinc-500">
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
+                Clássico
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-purple-400"></span>
+                Gênero
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-teal-400"></span>
+                Protegido
+              </span>
+            </div>
+            <div className="flex gap-3">
+              <button
+                onClick={onClose}
+                className="px-6 py-2.5 rounded-xl text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 transition-colors text-sm font-medium"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={handleSimulate}
+                disabled={simulating || scanning}
+                className="flex items-center gap-2 px-6 py-2.5 bg-zinc-700/50 text-zinc-300 border border-zinc-600/30 rounded-xl font-medium hover:bg-zinc-700 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {simulating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
+                Simular Curadoria
+              </button>
+              <button
+                onClick={handleStart}
+                disabled={scanning}
+                className="flex items-center gap-2 px-6 py-2.5 bg-retro-success/10 text-retro-success border border-retro-success/30 rounded-xl font-medium hover:bg-retro-success/20 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <Play className="w-4 h-4" />
+                Iniciar Curadoria
+              </button>
+            </div>
           </div>
         </div>
       </motion.div>

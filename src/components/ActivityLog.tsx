@@ -7,6 +7,7 @@ interface LogEntry {
   status: string;
   rating: number | null;
   system: string;
+  genres?: string[];
 }
 
 interface ActivityLogProps {
@@ -56,9 +57,14 @@ export function ActivityLog({ log, logRef }: ActivityLogProps) {
                   <div className="flex items-center gap-1 flex-shrink-0">
                     <Star className="w-3 h-3 text-retro-warning" />
                     <span className="text-xs font-mono text-retro-warning">
-                      {(entry.rating / 10).toFixed(1)}
+                      {entry.rating.toFixed(0)}
                     </span>
                   </div>
+                )}
+                {entry.genres && entry.genres.length > 0 && (
+                  <span className="text-xs text-zinc-500 flex-shrink-0 truncate max-w-[120px]">
+                    {entry.genres.slice(0, 2).join(', ')}
+                  </span>
                 )}
               </motion.div>
             );
