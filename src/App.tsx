@@ -23,6 +23,7 @@ import { SupportModal } from './components/SupportModal';
 import { AboutModal } from './components/AboutModal';
 import { WelcomeModal } from './components/WelcomeModal';
 import { SplashScreen } from './components/SplashScreen';
+import { SpaceSavingsCard } from './components/SpaceSavingsCard';
 import { TitleBar } from './components/TitleBar';
 import RetroGradeLogo from '../assets/images/RetroGrade.png';
 
@@ -60,6 +61,8 @@ function App() {
     currentStatus: null,
     log: [],
   });
+
+  const [bytesSaved, setBytesSaved] = useState(0);
 
   const [showSettings, setShowSettings] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
@@ -106,6 +109,7 @@ function App() {
     const folder = await window.api.selectFolder();
     if (folder) {
       setState((prev) => ({ ...prev, folder, log: [], current: 0, classics: 0, kept: 0, removed: 0, total: 0 }));
+      setBytesSaved(0);
     }
   }, []);
 
@@ -121,6 +125,7 @@ function App() {
       kept: 0,
       removed: 0,
     }));
+    setBytesSaved(0);
 
     window.api.onCurationProgress((data) => {
       if (data.type === 'init') {
@@ -143,6 +148,7 @@ function App() {
         }));
       } else if (data.type === 'complete') {
         setState((prev) => ({ ...prev, isRunning: false }));
+        setBytesSaved(data.stats?.bytes_removed || 0);
         window.api.removeCurationProgressListener();
       }
     });
@@ -294,6 +300,27 @@ function App() {
                 color="retro-danger"
               />
             </div>
+
+            {/* Space Savings Card */}
+            {bytesSaved > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mb-8"
+              >
+                <SpaceSavingsCard
+                  bytesSaved={bytesSaved}
+                  action={state.action}
+                  onDeleteRemoved={async () => {
+                    if (state.folder) {
+                      await window.api.deleteRemovedFolder(state.folder);
+                      setBytesSaved(0);
+                    }
+                  }}
+                />
+              </motion.div>
+            )}
 
             {/* Progress Section */}
             {state.isRunning && (

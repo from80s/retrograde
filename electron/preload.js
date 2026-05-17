@@ -21,4 +21,5 @@ electron_1.contextBridge.exposeInMainWorld('api', {
     removeCurationProgressListener: () => {
         electron_1.ipcRenderer.removeAllListeners('curation-progress');
     },
+    deleteRemovedFolder: (folder) => electron_1.ipcRenderer.invoke('delete-removed-folder', folder),
 });

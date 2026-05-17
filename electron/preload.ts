@@ -21,4 +21,5 @@ contextBridge.exposeInMainWorld('api', {
   removeCurationProgressListener: () => {
     ipcRenderer.removeAllListeners('curation-progress');
   },
+  deleteRemovedFolder: (folder: string) => ipcRenderer.invoke('delete-removed-folder', folder),
 });

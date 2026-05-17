@@ -14,6 +14,7 @@ export interface ApiBridge {
   startCuration: (options: { folder: string; minRating: number; action: 'move' | 'delete' }) => Promise<any>;
   onCurationProgress: (callback: (data: any) => void) => void;
   removeCurationProgressListener: () => void;
+  deleteRemovedFolder: (folder: string) => Promise<boolean>;
 }
 
 declare global {

@@ -375,6 +375,7 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
     preservados_classicos: 0,
     removidos: 0,
     mantidos_por_nota: 0,
+    bytes_removed: 0,
     data: new Date().toLocaleString('pt-BR'),
   };
 
@@ -411,6 +412,19 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
 
   await scanDirectory(folder);
   stats.total_encontrado = romFiles.length;
+
+  async function getPathSize(filePath: string): Promise<number> {
+    const stat = await fs.stat(filePath);
+    if (stat.isDirectory()) {
+      const entries = await fs.readdir(filePath);
+      let size = 0;
+      for (const entry of entries) {
+        size += await getPathSize(path.join(filePath, entry));
+      }
+      return size;
+    }
+    return stat.size;
+  }
 
   mainWindow?.webContents.send('curation-progress', {
     type: 'init',
@@ -493,6 +507,8 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
 
     // If it's a single-ROM folder and should be removed, remove/move the entire folder
     if (isSingleRomFolder && groupAction === 'remove') {
+      const dirSize = await getPathSize(parentDir);
+      stats.bytes_removed += dirSize;
       if (action === 'move') {
         const removedDir = path.join(folder, 'removidos');
         await fs.ensureDir(removedDir);
@@ -516,4 +532,13 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
   });
 
   return stats;
+});
+
+ipcMain.handle('delete-removed-folder', async (_, folder: string) => {
+  const removedDir = path.join(folder, 'removidos');
+  if (await fs.pathExists(removedDir)) {
+    await fs.remove(removedDir);
+    return true;
+  }
+  return false;
 });
