@@ -12,6 +12,7 @@ import {
   XCircle,
   LifeBuoy,
   Info,
+  Coffee,
 } from 'lucide-react';
 import { ProgressCard } from './components/ProgressCard';
 import { StatCard } from './components/StatCard';
@@ -238,6 +239,20 @@ function App() {
               <span className="font-medium">Sobre</span>
             </button>
           </nav>
+
+          <div className="p-4 border-t border-zinc-800/50">
+            <a
+              href="https://www.buymeacoffee.com/retrograde"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-left transition-all duration-200
+                       bg-yellow-500/10 text-yellow-400 border border-yellow-500/20
+                       hover:bg-yellow-500/20 hover:border-yellow-500/40"
+            >
+              <Coffee className="w-5 h-5" />
+              <span className="font-medium text-sm">Buy me a coffee</span>
+            </a>
+          </div>
 
           {state.folder && (
             <div className="p-4 border-t border-zinc-800/50">
