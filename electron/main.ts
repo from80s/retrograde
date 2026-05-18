@@ -74,7 +74,40 @@ function createWindow() {
   });
 }
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
+  // Initialize data files if they don't exist
+  try {
+    await fs.ensureDir(DATA_DIR);
+    
+    if (!fs.existsSync(CONFIG_PATH)) {
+      await fs.writeJson(CONFIG_PATH, {
+        IGDB_CLIENT_ID: '',
+        IGDB_CLIENT_SECRET: '',
+        TGDB_API_KEY: '',
+        minRating: 60,
+        action: 'move'
+      }, { spaces: 2 });
+    }
+    
+    if (!fs.existsSync(CLASSICS_PATH)) {
+      await fs.writeJson(CLASSICS_PATH, [], { spaces: 2 });
+    }
+    
+    if (!fs.existsSync(GENRE_PATH)) {
+      await fs.writeJson(GENRE_PATH, [], { spaces: 2 });
+    }
+    
+    if (!fs.existsSync(PROTECTED_GAMES_PATH)) {
+      await fs.writeJson(PROTECTED_GAMES_PATH, [], { spaces: 2 });
+    }
+    
+    if (!fs.existsSync(STATS_PATH)) {
+      await fs.writeJson(STATS_PATH, [], { spaces: 2 });
+    }
+  } catch (err) {
+    console.error('[RetroGrade] Error initializing data files:', err);
+  }
+
   createWindow();
 
   app.on('activate', () => {
