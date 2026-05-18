@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { X, Search, Check, LayoutList, Grid3X3, BookOpen } from 'lucide-react';
+import { X, Search, Check, LayoutList, Grid3X3, BookOpen, ChevronDown } from 'lucide-react';
 import type { ClassicGamesData } from '../types/global';
+import { tGenre } from '../locales';
 
 interface ClassicGamesPickerProps {
   onClose: () => void;
@@ -17,12 +18,24 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
   const [viewMode, setViewMode] = useState<ViewMode>('list');
   const [search, setSearch] = useState('');
   const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     window.api.readClassicGames().then(setData);
   }, []);
 
-  const platforms = data ? Object.keys(data.platforms) : [];
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
+  const platforms = data ? Object.keys(data.platforms).sort((a, b) => a.localeCompare(b)) : [];
   const allClassics = data
     ? Object.entries(data.platforms).flatMap(([system, info]) =>
         info.classics.map((g) => ({ ...g, system }))
@@ -58,6 +71,8 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
 
   const coverPath = (cover?: string) => (cover ? `./${cover}` : undefined);
 
+  const systemLabel = selectedSystem === 'all' ? 'Todos os Sistemas' : selectedSystem;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -92,16 +107,43 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
           </p>
 
           <div className="flex items-center gap-3 flex-wrap">
-            <select
-              value={selectedSystem}
-              onChange={(e) => setSelectedSystem(e.target.value)}
-              className="bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-retro-secondary/50 transition-colors"
-            >
-              <option value="all">Todos os Sistemas</option>
-              {platforms.map((p) => (
-                <option key={p} value={p}>{p}</option>
-              ))}
-            </select>
+            {/* Custom Dropdown */}
+            <div ref={dropdownRef} className="relative w-56">
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="w-full flex items-center justify-between gap-2 px-4 py-2.5 bg-zinc-800/50 border border-zinc-700/50 rounded-xl text-sm text-zinc-200 hover:border-zinc-600/50 transition-colors"
+              >
+                <span className="truncate">{systemLabel}</span>
+                <ChevronDown className={`w-4 h-4 text-zinc-500 shrink-0 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {dropdownOpen && (
+                <div className="absolute top-full left-0 right-0 mt-1 bg-zinc-800 border border-zinc-700/50 rounded-xl shadow-2xl shadow-black/50 overflow-hidden z-50 max-h-64 overflow-y-auto scrollbar-thin">
+                  <button
+                    onClick={() => { setSelectedSystem('all'); setDropdownOpen(false); }}
+                    className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                      selectedSystem === 'all'
+                        ? 'bg-retro-secondary/10 text-retro-secondary font-medium'
+                        : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700/30'
+                    }`}
+                  >
+                    Todos os Sistemas
+                  </button>
+                  {platforms.map((p) => (
+                    <button
+                      key={p}
+                      onClick={() => { setSelectedSystem(p); setDropdownOpen(false); }}
+                      className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                        selectedSystem === p
+                          ? 'bg-retro-secondary/10 text-retro-secondary font-medium'
+                          : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700/30'
+                      }`}
+                    >
+                      {p}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <div className="relative flex-1 max-w-xs">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
@@ -164,7 +206,7 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
                       {isSelected && <Check className="w-3 h-3 text-white" />}
                     </div>
                     <span className="flex-1 font-medium">{g.name}</span>
-                    <span className="text-xs text-zinc-500">{g.genre}</span>
+                    <span className="text-xs text-zinc-500">{tGenre(g.genre)}</span>
                     <span className="text-xs text-zinc-600">{g.system}</span>
                   </button>
                 );
@@ -200,7 +242,7 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
                     </div>
                     <div className="p-2 text-left">
                       <p className="text-xs font-medium text-zinc-200 truncate">{g.name}</p>
-                      <p className="text-[10px] text-zinc-500 truncate">{g.genre}</p>
+                      <p className="text-[10px] text-zinc-500 truncate">{tGenre(g.genre)}</p>
                     </div>
                     <div className={`absolute top-2 right-2 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
                       isSelected

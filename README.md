@@ -1,6 +1,6 @@
 <img src="assets/images/RetroGrade.png" alt="RetroGrade">
 
-![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)
 ![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-blue.svg)
 ![Electron](https://img.shields.io/badge/electron-v30+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -19,6 +19,7 @@ O **RetroGrade** é uma aplicação Desktop moderna, rápida e visualmente sofis
   - 🟡 **Clássicos:** Franquias icônicas protegidas por palavras-chave (`classics.json`)
   - 🟣 **Gêneros:** Gêneros inteiros protegidos mesmo com nota baixa (`genre.json`) — requer IGDB configurado
   - 🟢 **Jogos Individuais:** Jogos específicos escolhidos pelo usuário com validação automática (`protected_games.json`)
+- **Popular Clássicos:** Seletor visual com 675 jogos clássicos pré-curados em 28 plataformas. Escolha por sistema, visualize em lista ou grade com capas otimizadas em WebP, e popule automaticamente sua `classics.json` sem sobrescrever os existentes.
 - **Detecção de Clones/Duplicados:** Identifica ROMs duplicadas por região (USA, World, Europe, Japan, Brazil) e permite manter múltiplas regiões preferidas.
 - **Ação Configurável:** Escolha entre mover arquivos para pasta `/removidos` ou deletar permanentemente.
 - **Dry Run (Simulação):** Simule toda a curadoria antes de executar — veja exatamente o que seria movido/deletado com tamanhos e notas.
@@ -38,6 +39,8 @@ O **RetroGrade** é uma aplicação Desktop moderna, rápida e visualmente sofis
 
 ### Configuração & Dados
 - **Configuração via UI:** Modal completo para editar credenciais, nota mínima, ação, clássicos, gêneros e jogos protegidos.
+- **Popular Clássicos:** Botão na seção de clássicos das configurações que abre um seletor visual com 675 jogos em 28 plataformas, views em lista ou grade com capas em miniatura, busca por nome e filtro por sistema.
+- **Sistema de Locales:** Arquitetura preparada para multiletramento — gêneros e textos traduzidos para pt-BR com estrutura extensível para novos idiomas.
 - **Histórico de Execuções:** Registro completo com gráficos interativos (barra e rosca).
 - **Suporte Integrado:** Modal com informações de contato e suporte.
 - **Sobre:** Modal com créditos, versão, tecnologias e links para GitHub e licença.
@@ -70,6 +73,7 @@ A aplicação mantém a persistência de dados em arquivos JSON locais na pasta 
 | :----------------------- | :---------------------------------------------------------------------- |
 | `config.json`            | Credenciais de API, nota mínima (`minRating`) e ação (`action`).        |
 | `classics.json`          | Lista de palavras-chave para proteger franquias (ex: "Mario", "Zelda"). |
+| `classic_games.json`     | Curadoria de 675 jogos clássicos em 28 plataformas com capas inclusas.  |
 | `genre.json`             | Lista de gêneros protegidos (ex: "RPG", "Luta").                        |
 | `protected_games.json`   | Lista de jogos individuais protegidos pelo usuário.                     |
 | `systems.json`           | Mapeamento de extensões para IDs de plataformas IGDB/TGDB.              |
@@ -148,30 +152,39 @@ RetroGrade/
 │   └── tsconfig.json     # Config TypeScript do Electron
 ├── src/
 │   ├── components/
-│   │   ├── AboutModal.tsx        # Modal "Sobre" com créditos e tecnologias
-│   │   ├── ActivityLog.tsx       # Log de atividades com nota e gênero
-│   │   ├── ProgressCard.tsx      # Barra de progresso + arquivo atual
-│   │   ├── ScanPreviewModal.tsx  # Pré-visualização da curadoria
-│   │   ├── SettingsModal.tsx     # Configurações completas
-│   │   ├── SpaceSavingsCard.tsx  # Card de economia de espaço
-│   │   ├── SplashScreen.tsx      # Splash screen com vídeo
-│   │   ├── StatCard.tsx          # Cards de estatísticas animados
-│   │   ├── StatsHistory.tsx      # Histórico com gráficos
-│   │   ├── SupportModal.tsx      # Modal de suporte
-│   │   ├── Toast.tsx             # Notificações toast
-│   │   └── TitleBar.tsx          # Barra de título customizada
+│   │   ├── AboutModal.tsx           # Modal "Sobre" com créditos e tecnologias
+│   │   ├── ActivityLog.tsx          # Log de atividades com nota e gênero
+│   │   ├── ClassicGamesPicker.tsx   # Seletor de clássicos com capas
+│   │   ├── ProgressCard.tsx         # Barra de progresso + arquivo atual
+│   │   ├── ScanPreviewModal.tsx     # Pré-visualização da curadoria
+│   │   ├── SettingsModal.tsx        # Configurações completas
+│   │   ├── SpaceSavingsCard.tsx     # Card de economia de espaço
+│   │   ├── SplashScreen.tsx         # Splash screen com vídeo
+│   │   ├── StatCard.tsx             # Cards de estatísticas animados
+│   │   ├── StatsHistory.tsx         # Histórico com gráficos
+│   │   ├── SupportModal.tsx         # Modal de suporte
+│   │   ├── Toast.tsx                # Notificações toast
+│   │   └── TitleBar.tsx             # Barra de título customizada
+│   ├── locales/
+│   │   ├── index.ts                 # Funções de tradução (tGenre, tSystem)
+│   │   └── pt-br.ts                 # Locale pt-BR (gêneros e sistemas)
 │   ├── types/
-│   │   └── global.d.ts           # Tipagem da API bridge
-│   ├── App.tsx                    # Componente principal
-│   ├── main.tsx                   # Entry point React
-│   └── index.css                  # Tailwind + estilos customizados
+│   │   └── global.d.ts              # Tipagem da API bridge
+│   ├── App.tsx                       # Componente principal
+│   ├── main.tsx                      # Entry point React
+│   └── index.css                     # Tailwind + estilos customizados
 ├── data/
 │   ├── classics.json              # Franquias protegidas
+│   ├── classic_games.json         # 675 jogos clássicos curados (28 plataformas)
 │   ├── config.json                # Credenciais + minRating + action
 │   ├── genre.json                 # Gêneros protegidos
 │   ├── protected_games.json       # Jogos individuais protegidos
 │   ├── systems.json               # Mapeamento de sistemas
 │   └── curator_stats.json         # Histórico de execuções
+├── scripts/
+│   └── fetch-covers.mjs           # Script para baixar/otimizar capas via IGDB
+├── public/
+│   └── covers/                    # 617 capas otimizadas em WebP (160x220, ~4KB cada)
 ├── assets/
 │   ├── images/
 │   │   ├── RetroGrade.png         # Logo do app
@@ -205,6 +218,7 @@ O projeto utiliza comunicação segura entre processos via `contextBridge`:
 | `npm run electron:dev`   | Roda o app completo em modo desenvolvimento  |
 | `npm run electron:build` | Build completo para produção                 |
 | `npm run preview`        | Preview do build do frontend                 |
+| `node scripts/fetch-covers.mjs` | Baixa e otimiza capas dos jogos clássicos via IGDB |
 
 ---
 
