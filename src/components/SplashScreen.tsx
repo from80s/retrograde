@@ -15,7 +15,7 @@ export function SplashScreen({ onFinish }: SplashScreenProps) {
     if (!video) return;
 
     video.play().catch(() => {
-      setTimeout(() => setVisible(false), 6000);
+      setTimeout(() => setVisible(false), 7000);
     });
 
     const handleEnded = () => {
@@ -24,7 +24,7 @@ export function SplashScreen({ onFinish }: SplashScreenProps) {
 
     const timeout = setTimeout(() => {
       setVisible(false);
-    }, 6500);
+    }, 7500);
 
     video.addEventListener('ended', handleEnded);
 
