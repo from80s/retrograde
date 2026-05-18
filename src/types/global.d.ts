@@ -17,6 +17,8 @@ export interface ApiBridge {
     cloneGroups: any[];
     hasIGDB: boolean;
   }>;
+  onScanProgress: (callback: (data: any) => void) => void;
+  removeScanProgressListener: () => void;
   simulateCuration: (options: { folder: string; minRating: number; action: 'move' | 'delete' }) => Promise<{
     results: any[];
     totalFiles: number;

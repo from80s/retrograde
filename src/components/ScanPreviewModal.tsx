@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   X, Play, Filter, Search, Shield, Gamepad2, Calendar,
   ChevronDown, ChevronUp, Copy, Globe, Star, AlertTriangle,
-  Loader2, XCircle
+  Loader2, XCircle, CheckCircle2
 } from 'lucide-react';
 
 interface ScanPreviewModalProps {
@@ -16,7 +16,7 @@ interface ScanPreviewModalProps {
     minRating: number;
     action: 'move' | 'delete';
     removeClones: boolean;
-    preferredRegion: string;
+    preferredRegions: string[];
     protectedGames: string[];
   }) => void;
 }
@@ -53,44 +53,79 @@ function formatBytes(bytes: number): string {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 }
 
+const ALL_REGIONS = ['USA', 'World', 'Europe', 'Japan', 'Brazil'];
+
 export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCuration }: ScanPreviewModalProps) {
   const [scanData, setScanData] = useState<any>(null);
   const [scanning, setScanning] = useState(true);
+  const [scanProgress, setScanProgress] = useState(0);
+  const [scanPhase, setScanPhase] = useState('scan');
   const [expandedSystems, setExpandedSystems] = useState<Record<string, boolean>>({});
   const [filters, setFilters] = useState({ name: '', genre: '', year: '' });
   const [removeClones, setRemoveClones] = useState(false);
-  const [preferredRegion, setPreferredRegion] = useState('USA');
+  const [preferredRegions, setPreferredRegions] = useState<string[]>(['USA']);
   const [userProtectedGames, setUserProtectedGames] = useState<string[]>([]);
   const [newProtectedGame, setNewProtectedGame] = useState('');
   const [showCloneOptions, setShowCloneOptions] = useState(false);
   const [simulating, setSimulating] = useState(false);
   const [simulationResults, setSimulationResults] = useState<any>(null);
+  const [validatingGame, setValidatingGame] = useState(false);
+  const [gameValidationResult, setGameValidationResult] = useState<{ valid: boolean; message: string } | null>(null);
 
   useEffect(() => {
     window.api.scanFolder(folder).then((data) => {
       setScanData(data);
       setScanning(false);
+      setScanProgress(100);
       const systems = Object.keys(data.grouped);
       const initialExpanded: Record<string, boolean> = {};
       systems.forEach(s => initialExpanded[s] = false);
       setExpandedSystems(initialExpanded);
     });
+
+    window.api.onScanProgress((data) => {
+      setScanProgress(data.progress);
+      setScanPhase(data.phase);
+    });
+
+    return () => {
+      window.api.removeScanProgressListener();
+    };
   }, [folder]);
 
   useEffect(() => {
     window.api.readProtectedGames().then(setUserProtectedGames);
   }, []);
 
-  const handleAddProtectedGame = async () => {
+  const handleValidateProtectedGame = async () => {
     if (!newProtectedGame.trim()) return;
+    setValidatingGame(true);
+    setGameValidationResult(null);
+
+    const result = await window.api.validateGameName(newProtectedGame.trim());
+    setGameValidationResult(result);
+    setValidatingGame(false);
+  };
+
+  const handleAddProtectedGame = async () => {
+    if (!gameValidationResult?.valid) return;
     const updated = await window.api.addProtectedGame(newProtectedGame.trim());
     setUserProtectedGames(updated);
     setNewProtectedGame('');
+    setGameValidationResult(null);
   };
 
   const handleRemoveProtectedGame = async (game: string) => {
     const updated = await window.api.removeProtectedGame(game);
     setUserProtectedGames(updated);
+  };
+
+  const toggleRegion = (region: string) => {
+    setPreferredRegions(prev =>
+      prev.includes(region)
+        ? prev.filter(r => r !== region)
+        : [...prev, region]
+    );
   };
 
   const handleSimulate = async () => {
@@ -163,7 +198,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
       minRating,
       action,
       removeClones,
-      preferredRegion,
+      preferredRegions,
       protectedGames: userProtectedGames,
     });
   };
@@ -200,9 +235,23 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
         {/* Content */}
         <div className="flex-1 overflow-y-auto scrollbar-thin">
           {scanning ? (
-            <div className="flex flex-col items-center justify-center h-64 space-y-4">
-              <Loader2 className="w-8 h-8 text-retro-primary animate-spin" />
-              <p className="text-sm text-zinc-400">Escaneando pasta...</p>
+            <div className="flex flex-col items-center justify-center h-64 space-y-6">
+              <div className="relative w-16 h-16">
+                <Loader2 className="w-16 h-16 text-retro-primary animate-spin" />
+              </div>
+              <div className="text-center space-y-2">
+                <p className="text-sm text-zinc-400">
+                  {scanPhase === 'scan' ? 'Escaneando arquivos...' : 'Consultando APIs...'}
+                </p>
+                <div className="w-64 h-2 bg-zinc-800 rounded-full overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${scanProgress}%` }}
+                    className="h-full bg-gradient-to-r from-retro-primary to-retro-primary/60 rounded-full"
+                  />
+                </div>
+                <p className="text-xs text-zinc-600">{scanProgress}%</p>
+              </div>
             </div>
           ) : (
             <div className="p-6 space-y-6">
@@ -303,22 +352,26 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
 
                           {removeClones && (
                             <div className="pl-7 space-y-2">
-                              <p className="text-xs text-zinc-500">Região preferida para manter:</p>
+                              <p className="text-xs text-zinc-500">Regiões preferidas para manter (selecione uma ou mais):</p>
                               <div className="flex flex-wrap gap-2">
-                                {['USA', 'World', 'Europe', 'Japan', 'Brazil'].map(region => (
+                                {ALL_REGIONS.map(region => (
                                   <button
                                     key={region}
-                                    onClick={() => setPreferredRegion(region)}
-                                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                                      preferredRegion === region
+                                    onClick={() => toggleRegion(region)}
+                                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-2 ${
+                                      preferredRegions.includes(region)
                                         ? 'bg-retro-primary/20 text-retro-primary border border-retro-primary/30'
                                         : 'bg-zinc-700/50 text-zinc-400 border border-zinc-600/30 hover:text-zinc-200'
                                     }`}
                                   >
+                                    {preferredRegions.includes(region) && <CheckCircle2 className="w-3 h-3" />}
                                     {region}
                                   </button>
                                 ))}
                               </div>
+                              {preferredRegions.length === 0 && (
+                                <p className="text-xs text-retro-danger">Selecione ao menos uma região.</p>
+                              )}
                             </div>
                           )}
 
@@ -352,20 +405,48 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                 <div className="flex gap-2">
                   <input
                     type="text"
-                    placeholder="Adicionar jogo protegido..."
+                    placeholder="Nome do jogo (será validado)..."
                     value={newProtectedGame}
-                    onChange={(e) => setNewProtectedGame(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && handleAddProtectedGame()}
+                    onChange={(e) => { setNewProtectedGame(e.target.value); setGameValidationResult(null); }}
+                    onKeyDown={(e) => e.key === 'Enter' && handleValidateProtectedGame()}
                     className="flex-1 bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-2 text-sm text-zinc-200 focus:outline-none focus:border-teal-400/50 transition-colors placeholder:text-zinc-600"
                   />
                   <button
-                    onClick={handleAddProtectedGame}
-                    disabled={!newProtectedGame.trim()}
-                    className="px-4 py-2 rounded-xl text-xs font-medium bg-teal-500/10 text-teal-400 border border-teal-500/30 hover:bg-teal-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    onClick={handleValidateProtectedGame}
+                    disabled={validatingGame || !newProtectedGame.trim()}
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium bg-teal-500/10 text-teal-400 border border-teal-500/30 hover:bg-teal-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                   >
-                    Adicionar
+                    {validatingGame ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
+                    Validar
                   </button>
                 </div>
+
+                <AnimatePresence>
+                  {gameValidationResult && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className={`p-3 rounded-xl text-sm flex items-center gap-2 ${
+                        gameValidationResult.valid
+                          ? 'bg-retro-success/10 text-retro-success border border-retro-success/20'
+                          : 'bg-retro-danger/10 text-retro-danger border border-retro-danger/20'
+                      }`}
+                    >
+                      {gameValidationResult.valid ? <CheckCircle2 className="w-4 h-4 flex-shrink-0" /> : <XCircle className="w-4 h-4 flex-shrink-0" />}
+                      <span>{gameValidationResult.message}</span>
+                      {gameValidationResult.valid && (
+                        <button
+                          onClick={handleAddProtectedGame}
+                          className="ml-auto px-3 py-1 rounded-lg bg-retro-success/20 hover:bg-retro-success/30 text-xs font-medium transition-colors"
+                        >
+                          Adicionar
+                        </button>
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 <div className="flex flex-wrap gap-2 max-h-24 overflow-y-auto scrollbar-thin">
                   {userProtectedGames.map((game) => (
                     <span
