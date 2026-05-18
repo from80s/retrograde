@@ -2,6 +2,10 @@ import { app, BrowserWindow, ipcMain, dialog, nativeImage } from 'electron';
 import path from 'path';
 import fs from 'fs-extra';
 import axios from 'axios';
+import unzipper from 'unzipper';
+import SevenZip from '7zip-min';
+import * as tar from 'tar';
+import zlib from 'zlib';
 
 const isDev = process.env.NODE_ENV === 'development' || !!process.env.VITE_DEV_SERVER_URL;
 
@@ -1101,4 +1105,442 @@ ipcMain.handle('delete-removed-folder', async (_, folder: string) => {
     return true;
   }
   return false;
+});
+
+const COMPRESSED_EXTENSIONS = new Set(['.zip', '.7z', '.rar', '.tar', '.gz', '.tar.gz']);
+
+function isCompressedFile(fileName: string): boolean {
+  const lower = fileName.toLowerCase();
+  if (lower.endsWith('.tar.gz')) return true;
+  for (const ext of COMPRESSED_EXTENSIONS) {
+    if (lower.endsWith(ext)) return true;
+  }
+  return false;
+}
+
+function getExtension(fileName: string): string {
+  const lower = fileName.toLowerCase();
+  if (lower.endsWith('.tar.gz')) return '.tar.gz';
+  return path.extname(lower);
+}
+
+function determineConcurrency(files: { size: number }[]): number {
+  if (files.length === 0) return 1;
+  const maxSize = Math.max(...files.map((f: { size: number }) => f.size));
+  const totalSize = files.reduce((sum: number, f: { size: number }) => sum + f.size, 0);
+  if (maxSize > 2 * 1024 * 1024 * 1024) return 1;
+  if (totalSize > 10 * 1024 * 1024 * 1024) return 1;
+  if (totalSize > 5 * 1024 * 1024 * 1024) return 2;
+  if (maxSize < 100 * 1024 * 1024) return 3;
+  return 2;
+}
+
+async function extractZipFile(
+  zipPath: string,
+  outputDir: string,
+  onProgress: (data: { type: string; fileName: string; progress: number; extractedSize: number; totalSize: number }) => void
+): Promise<{ extractedSize: number; fileCount: number }> {
+  const directory = await unzipper.Open.file(zipPath);
+  const files = directory.files.filter((f: any) => f.type === 'File');
+  const totalSize = files.reduce((sum: number, f: any) => sum + (f.uncompressedSize || 0), 0);
+  let extractedSize = 0;
+  let fileCount = 0;
+
+  for (const file of files) {
+    const outputPath = path.join(outputDir, file.path);
+    await fs.mkdir(path.dirname(outputPath), { recursive: true });
+
+    await new Promise<void>((resolve, reject) => {
+      const stream = file.stream();
+      const writeStream = fs.createWriteStream(outputPath);
+      stream.pipe(writeStream);
+      writeStream.on('finish', () => {
+        extractedSize += file.uncompressedSize || 0;
+        fileCount++;
+        onProgress({
+          type: 'file-progress',
+          fileName: file.path,
+          progress: totalSize > 0 ? (extractedSize / totalSize) * 100 : 0,
+          extractedSize,
+          totalSize,
+        });
+        resolve();
+      });
+      writeStream.on('error', reject);
+      stream.on('error', reject);
+    });
+  }
+
+  return { extractedSize, fileCount };
+}
+
+async function extract7zFile(
+  archivePath: string,
+  outputDir: string,
+  onProgress: (data: { type: string; fileName: string; progress: number; extractedSize: number; totalSize: number }) => void
+): Promise<{ extractedSize: number; fileCount: number }> {
+  const entries = await new Promise<any[]>((resolve, reject) => {
+    SevenZip.list(archivePath, (err: Error | null, result: any[] | undefined) => {
+      if (err) reject(err);
+      else resolve(result || []);
+    });
+  });
+
+  const files = entries.filter((e: any) => e.method !== undefined);
+  const totalSize = files.reduce((sum, e) => sum + (e.size || 0), 0);
+
+  await new Promise<void>((resolve, reject) => {
+    SevenZip.unpack(archivePath, outputDir, (err: Error | null) => {
+      if (err) reject(err);
+      else resolve();
+    });
+  });
+
+  onProgress({
+    type: 'file-progress',
+    fileName: path.basename(archivePath),
+    progress: 100,
+    extractedSize: totalSize,
+    totalSize,
+  });
+
+  return { extractedSize: totalSize, fileCount: files.length };
+}
+
+async function extractRarFile(
+  archivePath: string,
+  outputDir: string,
+  onProgress: (data: { type: string; fileName: string; progress: number; extractedSize: number; totalSize: number }) => void
+): Promise<{ extractedSize: number; fileCount: number }> {
+  const entries = await new Promise<any[]>((resolve, reject) => {
+    SevenZip.list(archivePath, (err: Error | null, result: any[] | undefined) => {
+      if (err) reject(err);
+      else resolve(result || []);
+    });
+  });
+
+  const files = entries.filter((e: any) => e.method !== undefined);
+  const totalSize = files.reduce((sum: number, e: any) => sum + (e.size || 0), 0);
+
+  await new Promise<void>((resolve, reject) => {
+    SevenZip.unpack(archivePath, outputDir, (err: Error | null) => {
+      if (err) reject(err);
+      else resolve();
+    });
+  });
+
+  onProgress({
+    type: 'file-progress',
+    fileName: path.basename(archivePath),
+    progress: 100,
+    extractedSize: totalSize,
+    totalSize,
+  });
+
+  return { extractedSize: totalSize, fileCount: files.length };
+}
+
+async function extractTarFile(
+  tarPath: string,
+  outputDir: string,
+  onProgress: (data: { type: string; fileName: string; progress: number; extractedSize: number; totalSize: number }) => void
+): Promise<{ extractedSize: number; fileCount: number }> {
+  let fileCount = 0;
+  let extractedSize = 0;
+
+  await tar.x({
+    file: tarPath,
+    cwd: outputDir,
+    onentry: (entry: any) => {
+      if (entry.type === 'File') {
+        fileCount++;
+        extractedSize += entry.size || 0;
+        onProgress({
+          type: 'file-progress',
+          fileName: entry.path,
+          progress: 0,
+          extractedSize,
+          totalSize: 0,
+        });
+      }
+    },
+  });
+
+  onProgress({
+    type: 'file-progress',
+    fileName: path.basename(tarPath),
+    progress: 100,
+    extractedSize,
+    totalSize: extractedSize,
+  });
+
+  return { extractedSize, fileCount };
+}
+
+async function extractGzFile(
+  gzPath: string,
+  outputDir: string,
+  onProgress: (data: { type: string; fileName: string; progress: number; extractedSize: number; totalSize: number }) => void
+): Promise<{ extractedSize: number; fileCount: number }> {
+  const baseName = path.basename(gzPath, '.gz');
+  const outputPath = path.join(outputDir, baseName);
+
+  await new Promise<void>((resolve, reject) => {
+    const readStream = fs.createReadStream(gzPath);
+    const writeStream = fs.createWriteStream(outputPath);
+    const gunzip = zlib.createGunzip();
+
+    let extractedSize = 0;
+    readStream.pipe(gunzip).pipe(writeStream);
+
+    gunzip.on('data', (chunk: Buffer) => {
+      extractedSize += chunk.length;
+      onProgress({
+        type: 'file-progress',
+        fileName: baseName,
+        progress: 0,
+        extractedSize,
+        totalSize: 0,
+      });
+    });
+
+    writeStream.on('finish', () => resolve());
+    readStream.on('error', reject);
+    gunzip.on('error', reject);
+    writeStream.on('error', reject);
+  });
+
+  const stat = await fs.stat(outputPath);
+  onProgress({
+    type: 'file-progress',
+    fileName: baseName,
+    progress: 100,
+    extractedSize: stat.size,
+    totalSize: stat.size,
+  });
+
+  return { extractedSize: stat.size, fileCount: 1 };
+}
+
+async function extractTarGzFile(
+  tarGzPath: string,
+  outputDir: string,
+  onProgress: (data: { type: string; fileName: string; progress: number; extractedSize: number; totalSize: number }) => void
+): Promise<{ extractedSize: number; fileCount: number }> {
+  let fileCount = 0;
+  let extractedSize = 0;
+
+  await tar.x({
+    file: tarGzPath,
+    cwd: outputDir,
+    onentry: (entry: any) => {
+      if (entry.type === 'File') {
+        fileCount++;
+        extractedSize += entry.size || 0;
+        onProgress({
+          type: 'file-progress',
+          fileName: entry.path,
+          progress: 0,
+          extractedSize,
+          totalSize: 0,
+        });
+      }
+    },
+  });
+
+  onProgress({
+    type: 'file-progress',
+    fileName: path.basename(tarGzPath),
+    progress: 100,
+    extractedSize,
+    totalSize: extractedSize,
+  });
+
+  return { extractedSize, fileCount };
+}
+
+async function extractFile(
+  filePath: string,
+  outputDir: string,
+  onProgress: (data: { type: string; fileName: string; progress: number; extractedSize: number; totalSize: number }) => void
+): Promise<{ extractedSize: number; fileCount: number }> {
+  const ext = getExtension(filePath);
+  switch (ext) {
+    case '.zip': return extractZipFile(filePath, outputDir, onProgress);
+    case '.7z': return extract7zFile(filePath, outputDir, onProgress);
+    case '.rar': return extractRarFile(filePath, outputDir, onProgress);
+    case '.tar': return extractTarFile(filePath, outputDir, onProgress);
+    case '.gz': return extractGzFile(filePath, outputDir, onProgress);
+    case '.tar.gz': return extractTarGzFile(filePath, outputDir, onProgress);
+    default: throw new Error(`Formato não suportado: ${ext}`);
+  }
+}
+
+let extractionCancelled = false;
+
+ipcMain.handle('cancel-extraction', async () => {
+  extractionCancelled = true;
+  return true;
+});
+
+ipcMain.handle('scan-compressed', async (_, folder: string) => {
+  const files: { path: string; name: string; size: number; ext: string }[] = [];
+
+  async function scanDirectory(dir: string) {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        await scanDirectory(fullPath);
+      } else if (isCompressedFile(entry.name)) {
+        const stat = await fs.stat(fullPath);
+        files.push({
+          path: fullPath,
+          name: entry.name,
+          size: stat.size,
+          ext: getExtension(entry.name),
+        });
+      }
+    }
+  }
+
+  await scanDirectory(folder);
+  return files;
+});
+
+ipcMain.handle('start-extraction', async (_, options: {
+  files: { path: string; name: string; size: number; ext: string }[];
+  mode: 'in-place' | 'own-folder';
+  deleteAfter: boolean;
+}) => {
+  const { files, mode, deleteAfter } = options;
+  extractionCancelled = false;
+
+  const results: {
+    name: string;
+    status: 'success' | 'error' | 'cancelled';
+    compressedSize: number;
+    extractedSize: number;
+    fileCount: number;
+    error?: string;
+  }[] = [];
+
+  const concurrency = determineConcurrency(files);
+  const queue = [...files];
+  const running: Promise<void>[] = [];
+  let index = 0;
+
+  async function processFile(file: { path: string; name: string; size: number; ext: string }, idx: number) {
+    const outputDir = mode === 'own-folder'
+      ? path.join(path.dirname(file.path), file.name.replace(/\.[^.]+$/, '').replace(/\.tar$/, ''))
+      : path.dirname(file.path);
+
+    mainWindow?.webContents.send('extraction-progress', {
+      type: 'file-start',
+      fileName: file.name,
+      index: idx,
+      total: files.length,
+      compressedSize: file.size,
+    });
+
+    try {
+      const result = await extractFile(file.path, outputDir, (progress) => {
+        mainWindow?.webContents.send('extraction-progress', {
+          index: idx,
+          total: files.length,
+          compressedSize: file.size,
+          ...progress,
+        });
+      });
+
+      if (deleteAfter) {
+        await fs.remove(file.path);
+      }
+
+      results.push({
+        name: file.name,
+        status: 'success',
+        compressedSize: file.size,
+        extractedSize: result.extractedSize,
+        fileCount: result.fileCount,
+      });
+
+      mainWindow?.webContents.send('extraction-progress', {
+        type: 'file-complete',
+        fileName: file.name,
+        index: idx,
+        total: files.length,
+        extractedSize: result.extractedSize,
+        fileCount: result.fileCount,
+      });
+    } catch (error: any) {
+      results.push({
+        name: file.name,
+        status: 'error',
+        compressedSize: file.size,
+        extractedSize: 0,
+        fileCount: 0,
+        error: error.message,
+      });
+
+      mainWindow?.webContents.send('extraction-progress', {
+        type: 'file-error',
+        fileName: file.name,
+        index: idx,
+        total: files.length,
+        error: error.message,
+      });
+    }
+  }
+
+  while (queue.length > 0 || running.length > 0) {
+    while (running.length < concurrency && queue.length > 0) {
+      if (extractionCancelled) {
+        while (queue.length > 0) {
+          const file = queue.shift()!;
+          results.push({ name: file.name, status: 'cancelled', compressedSize: file.size, extractedSize: 0, fileCount: 0 });
+        }
+        break;
+      }
+      const file = queue.shift()!;
+      const idx = index++;
+      const promise = processFile(file, idx).then(() => {
+        const i = running.indexOf(promise);
+        if (i > -1) running.splice(i, 1);
+      });
+      running.push(promise);
+    }
+
+    if (running.length > 0) {
+      await Promise.race(running);
+    }
+  }
+
+  const successCount = results.filter(r => r.status === 'success').length;
+  const errorCount = results.filter(r => r.status === 'error').length;
+  const cancelledCount = results.filter(r => r.status === 'cancelled').length;
+  const totalExtracted = results.reduce((sum, r) => sum + r.extractedSize, 0);
+  const totalCompressed = results.reduce((sum, r) => sum + r.compressedSize, 0);
+  const totalFiles = results.reduce((sum, r) => sum + r.fileCount, 0);
+
+  mainWindow?.webContents.send('extraction-progress', {
+    type: 'complete',
+    results,
+    successCount,
+    errorCount,
+    cancelledCount,
+    totalExtracted,
+    totalCompressed,
+    totalFiles,
+  });
+
+  return {
+    results,
+    successCount,
+    errorCount,
+    cancelledCount,
+    totalExtracted,
+    totalCompressed,
+    totalFiles,
+  };
 });

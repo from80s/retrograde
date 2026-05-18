@@ -1,6 +1,6 @@
 <img src="assets/images/RetroGrade.png" alt="RetroGrade">
 
-![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.3.0-blue.svg)
 ![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-blue.svg)
 ![Electron](https://img.shields.io/badge/electron-v30+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -37,6 +37,14 @@ O **RetroGrade** é uma aplicação Desktop moderna, rápida e visualmente sofis
 - **Auto-save de APIs:** Ao testar conexão, credenciais válidas são salvas automaticamente.
 - **Pasta Selecionada:** Exibida diretamente no menu lateral abaixo do botão "Selecionar Pasta".
 
+### Extrator de ROMs
+- **Multi-Formato:** Suporte nativo a `.zip`, `.rar`, `.7z`, `.tar`, `.gz` e `.tar.gz` — sem depender de software externo.
+- **Modos de Extração:** Extraia no mesmo diretório ou crie uma pasta individual para cada arquivo.
+- **Concorrência Inteligente:** Ajusta automaticamente de 1 a 3 threads baseado no tamanho dos arquivos (arquivos >2GB rodam em single-thread para estabilidade).
+- **Progresso em Tempo Real:** Log animado com barras de progresso por arquivo, tamanhos compactado/extraído e contadores.
+- **Auto-Limpeza:** Opção de excluir o arquivo compactado após extração bem-sucedida.
+- **Resumo Final:** Dashboard com stats de sucesso/erro/cancelados, comparação de tamanhos e log detalhado.
+
 ### Configuração & Dados
 - **Configuração via UI:** Modal completo para editar credenciais, nota mínima, ação, clássicos, gêneros e jogos protegidos.
 - **Popular Clássicos:** Botão na seção de clássicos das configurações que abre um seletor visual com 675 jogos em 28 plataformas, views em lista ou grade com capas em miniatura, busca por nome e filtro por sistema.
@@ -62,6 +70,7 @@ O **RetroGrade** é uma aplicação Desktop moderna, rápida e visualmente sofis
 - **Animações:** [Framer Motion](https://www.framer.com/motion/)
 - **Requisições:** Axios
 - **File I/O:** fs-extra
+- **Extração:** unzipper (.zip), 7zip-min (.7z/.rar), tar (.tar/.tar.gz), zlib (.gz)
 
 ---
 
@@ -155,6 +164,7 @@ RetroGrade/
 │   │   ├── AboutModal.tsx           # Modal "Sobre" com créditos e tecnologias
 │   │   ├── ActivityLog.tsx          # Log de atividades com nota e gênero
 │   │   ├── ClassicGamesPicker.tsx   # Seletor de clássicos com capas
+│   │   ├── ExtractorModal.tsx       # Extrator de ROMs multi-formato
 │   │   ├── ProgressCard.tsx         # Barra de progresso + arquivo atual
 │   │   ├── ScanPreviewModal.tsx     # Pré-visualização da curadoria
 │   │   ├── SettingsModal.tsx        # Configurações completas
@@ -219,6 +229,7 @@ O projeto utiliza comunicação segura entre processos via `contextBridge`:
 | `npm run electron:build` | Build completo para produção                 |
 | `npm run preview`        | Preview do build do frontend                 |
 | `node scripts/fetch-covers.mjs` | Baixa e otimiza capas dos jogos clássicos via IGDB |
+| `node scripts/optimize-video.mjs` | Otimiza vídeo de intro com ffmpeg (H.264 CRF 23) |
 
 ---
 

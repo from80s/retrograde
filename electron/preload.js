@@ -39,4 +39,13 @@ electron_1.contextBridge.exposeInMainWorld('api', {
         electron_1.ipcRenderer.removeAllListeners('curation-progress');
     },
     deleteRemovedFolder: (folder) => electron_1.ipcRenderer.invoke('delete-removed-folder', folder),
+    scanCompressed: (folder) => electron_1.ipcRenderer.invoke('scan-compressed', folder),
+    startExtraction: (options) => electron_1.ipcRenderer.invoke('start-extraction', options),
+    cancelExtraction: () => electron_1.ipcRenderer.invoke('cancel-extraction'),
+    onExtractionProgress: (callback) => {
+        electron_1.ipcRenderer.on('extraction-progress', (_, data) => callback(data));
+    },
+    removeExtractionProgressListener: () => {
+        electron_1.ipcRenderer.removeAllListeners('extraction-progress');
+    },
 });

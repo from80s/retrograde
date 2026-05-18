@@ -55,6 +55,19 @@ export interface ApiBridge {
   onCurationProgress: (callback: (data: any) => void) => void;
   removeCurationProgressListener: () => void;
   deleteRemovedFolder: (folder: string) => Promise<boolean>;
+  scanCompressed: (folder: string) => Promise<{ path: string; name: string; size: number; ext: string }[]>;
+  startExtraction: (options: { files: { path: string; name: string; size: number; ext: string }[]; mode: string; deleteAfter: boolean }) => Promise<{
+    results: { name: string; status: string; compressedSize: number; extractedSize: number; fileCount: number; error?: string }[];
+    successCount: number;
+    errorCount: number;
+    cancelledCount: number;
+    totalExtracted: number;
+    totalCompressed: number;
+    totalFiles: number;
+  }>;
+  cancelExtraction: () => Promise<boolean>;
+  onExtractionProgress: (callback: (data: any) => void) => void;
+  removeExtractionProgressListener: () => void;
 }
 
 declare global {

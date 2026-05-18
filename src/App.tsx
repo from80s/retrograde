@@ -14,6 +14,7 @@ import {
   Info,
   Coffee,
   Search,
+  Archive,
 } from 'lucide-react';
 import { ProgressCard } from './components/ProgressCard';
 import { StatCard } from './components/StatCard';
@@ -26,6 +27,7 @@ import { WelcomeModal } from './components/WelcomeModal';
 import { SplashScreen } from './components/SplashScreen';
 import { SpaceSavingsCard } from './components/SpaceSavingsCard';
 import { ScanPreviewModal } from './components/ScanPreviewModal';
+import { ExtractorModal } from './components/ExtractorModal';
 import { Toast } from './components/Toast';
 import { TitleBar } from './components/TitleBar';
 import RetroGradeLogo from '../assets/images/RetroGrade.png';
@@ -74,6 +76,7 @@ function App() {
   const [showWelcome, setShowWelcome] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const [showScanPreview, setShowScanPreview] = useState(false);
+  const [showExtractor, setShowExtractor] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
   const [hasConfig, setHasConfig] = useState(false);
   const [systems, setSystems] = useState<Record<string, any>>({});
@@ -240,6 +243,16 @@ function App() {
             >
               <Search className="w-5 h-5" />
               <span className="font-medium text-sm">Simular Curadoria</span>
+            </button>
+
+            <button
+              onClick={() => setShowExtractor(true)}
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all duration-200
+                       bg-zinc-700/30 text-zinc-300 border border-zinc-600/30
+                       hover:bg-zinc-700/50"
+            >
+              <Archive className="w-5 h-5" />
+              <span className="font-medium text-sm">Extrator de ROMs</span>
             </button>
 
             <button
@@ -424,6 +437,12 @@ function App() {
             action={state.action}
             onClose={() => setShowScanPreview(false)}
             onStartCuration={handleExecuteCuration}
+          />
+        )}
+        {showExtractor && (
+          <ExtractorModal
+            onClose={() => setShowExtractor(false)}
+            onToast={showToast}
           />
         )}
         {showHistory && <StatsHistory onClose={() => setShowHistory(false)} />}
