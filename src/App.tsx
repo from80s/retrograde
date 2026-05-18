@@ -142,7 +142,7 @@ function App() {
     minRating: number;
     action: 'move' | 'delete';
     removeClones: boolean;
-    preferredRegion: string;
+    preferredRegions: string[];
     protectedGames: string[];
   }) => {
     setShowScanPreview(false);

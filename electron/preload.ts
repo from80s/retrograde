@@ -14,6 +14,12 @@ contextBridge.exposeInMainWorld('api', {
   addProtectedGame: (game: string) => ipcRenderer.invoke('add-protected-game', game),
   removeProtectedGame: (game: string) => ipcRenderer.invoke('remove-protected-game', game),
   scanFolder: (folder: string) => ipcRenderer.invoke('scan-folder', folder),
+  onScanProgress: (callback: (data: any) => void) => {
+    ipcRenderer.on('scan-progress', (_, data) => callback(data));
+  },
+  removeScanProgressListener: () => {
+    ipcRenderer.removeAllListeners('scan-progress');
+  },
   simulateCuration: (options: { folder: string; minRating: number; action: 'move' | 'delete' }) =>
     ipcRenderer.invoke('simulate-curation', options),
   validateGameName: (name: string) => ipcRenderer.invoke('validate-game-name', name),

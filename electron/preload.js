@@ -15,6 +15,12 @@ electron_1.contextBridge.exposeInMainWorld('api', {
     addProtectedGame: (game) => electron_1.ipcRenderer.invoke('add-protected-game', game),
     removeProtectedGame: (game) => electron_1.ipcRenderer.invoke('remove-protected-game', game),
     scanFolder: (folder) => electron_1.ipcRenderer.invoke('scan-folder', folder),
+    onScanProgress: (callback) => {
+        electron_1.ipcRenderer.on('scan-progress', (_, data) => callback(data));
+    },
+    removeScanProgressListener: () => {
+        electron_1.ipcRenderer.removeAllListeners('scan-progress');
+    },
     simulateCuration: (options) => electron_1.ipcRenderer.invoke('simulate-curation', options),
     validateGameName: (name) => electron_1.ipcRenderer.invoke('validate-game-name', name),
     readSystems: () => electron_1.ipcRenderer.invoke('read-systems'),

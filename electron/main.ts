@@ -519,6 +519,7 @@ ipcMain.handle('scan-folder', async (_, folder: string) => {
 
   const romFiles: ScanRomInfo[] = [];
 
+  // Phase 1: Filesystem scan (fast, no API calls)
   async function scanDirectory(dir: string) {
     const entries = await fs.readdir(dir, { withFileTypes: true });
     for (const entry of entries) {
@@ -564,9 +565,17 @@ ipcMain.handle('scan-folder', async (_, folder: string) => {
 
   await scanDirectory(folder);
 
-  // Fetch metadata for each ROM (batch by system to avoid rate limits)
+  // Send progress: filesystem scan complete
+  mainWindow?.webContents.send('scan-progress', {
+    phase: 'scan',
+    progress: 50,
+    total: romFiles.length,
+  });
+
+  // Phase 2: Metadata fetch (slower, API calls)
   const hasIGDB = config?.IGDB_CLIENT_ID && config?.IGDB_CLIENT_SECRET;
   if (hasIGDB) {
+    const totalBatches = Math.ceil(romFiles.length / 5);
     for (let i = 0; i < romFiles.length; i += 5) {
       const batch = romFiles.slice(i, i + 5);
       const promises = batch.map(async (rom) => {
@@ -580,10 +589,27 @@ ipcMain.handle('scan-folder', async (_, folder: string) => {
         }
       });
       await Promise.all(promises);
+      
+      const batchIndex = Math.floor(i / 5);
+      const progress = 50 + Math.round((batchIndex / totalBatches) * 50);
+      mainWindow?.webContents.send('scan-progress', {
+        phase: 'metadata',
+        progress,
+        current: i + batch.length,
+        total: romFiles.length,
+      });
+      
       if (i + 5 < romFiles.length) {
         await new Promise(resolve => setTimeout(resolve, 200));
       }
     }
+  } else {
+    mainWindow?.webContents.send('scan-progress', {
+      phase: 'metadata',
+      progress: 100,
+      current: romFiles.length,
+      total: romFiles.length,
+    });
   }
 
   // Group by system

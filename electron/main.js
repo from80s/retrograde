@@ -428,6 +428,7 @@ electron_1.ipcMain.handle('scan-folder', async (_, folder) => {
     const protectedGames = await fs_extra_1.default.readJson(PROTECTED_GAMES_PATH).catch(() => []);
     const systems = await fs_extra_1.default.readJson(SYSTEMS_PATH);
     const romFiles = [];
+    // Phase 1: Filesystem scan (fast, no API calls)
     async function scanDirectory(dir) {
         const entries = await fs_extra_1.default.readdir(dir, { withFileTypes: true });
         for (const entry of entries) {
@@ -465,9 +466,16 @@ electron_1.ipcMain.handle('scan-folder', async (_, folder) => {
         }
     }
     await scanDirectory(folder);
-    // Fetch metadata for each ROM (batch by system to avoid rate limits)
+    // Send progress: filesystem scan complete
+    mainWindow?.webContents.send('scan-progress', {
+        phase: 'scan',
+        progress: 50,
+        total: romFiles.length,
+    });
+    // Phase 2: Metadata fetch (slower, API calls)
     const hasIGDB = config?.IGDB_CLIENT_ID && config?.IGDB_CLIENT_SECRET;
     if (hasIGDB) {
+        const totalBatches = Math.ceil(romFiles.length / 5);
         for (let i = 0; i < romFiles.length; i += 5) {
             const batch = romFiles.slice(i, i + 5);
             const promises = batch.map(async (rom) => {
@@ -479,10 +487,26 @@ electron_1.ipcMain.handle('scan-folder', async (_, folder) => {
                 }
             });
             await Promise.all(promises);
+            const batchIndex = Math.floor(i / 5);
+            const progress = 50 + Math.round((batchIndex / totalBatches) * 50);
+            mainWindow?.webContents.send('scan-progress', {
+                phase: 'metadata',
+                progress,
+                current: i + batch.length,
+                total: romFiles.length,
+            });
             if (i + 5 < romFiles.length) {
                 await new Promise(resolve => setTimeout(resolve, 200));
             }
         }
+    }
+    else {
+        mainWindow?.webContents.send('scan-progress', {
+            phase: 'metadata',
+            progress: 100,
+            current: romFiles.length,
+            total: romFiles.length,
+        });
     }
     // Group by system
     const grouped = {};
