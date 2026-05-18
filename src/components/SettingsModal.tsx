@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Save, Shield, Trash2, MoveRight, Star, Wifi, Loader2, CheckCircle2, XCircle, Search, Plus, AlertTriangle, Gamepad2 } from 'lucide-react';
+import { X, Save, Shield, Trash2, MoveRight, Star, Wifi, Loader2, CheckCircle2, XCircle, Search, Plus, AlertTriangle, Gamepad2, BookOpen } from 'lucide-react';
+import { ClassicGamesPicker } from './ClassicGamesPicker';
 
 interface SettingsModalProps {
   onClose: () => void;
@@ -41,6 +42,7 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
   const [protectedGamesFilter, setProtectedGamesFilter] = useState('');
   const [newProtectedGame, setNewProtectedGame] = useState('');
   const [showProtectedGameDeleteConfirm, setShowProtectedGameDeleteConfirm] = useState<string | null>(null);
+  const [showClassicPicker, setShowClassicPicker] = useState(false);
 
   useEffect(() => {
     window.api.readConfig().then((loadedConfig) => {
@@ -125,6 +127,17 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
     const updated = await window.api.removeClassic(classic);
     onClassicsUpdated(updated);
     setShowDeleteConfirm(null);
+  };
+
+  const handleBatchAddClassics = async (names: string[]) => {
+    const result = await window.api.addClassics(names);
+    onClassicsUpdated(result.classics);
+    const addedCount = result.added.length;
+    if (addedCount > 0) {
+      onToast(`${addedCount} clássico(s) adicionado(s) com sucesso!`, 'success');
+    } else {
+      onToast('Todos os jogos selecionados já estavam na lista.', 'info');
+    }
   };
 
   const filteredClassics = classics.filter((c) =>
@@ -325,10 +338,21 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
 
             {/* Classics Info */}
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-                <Shield className="w-4 h-4 text-retro-secondary" />
-                Clássicos Protegidos ({classics.length})
-              </h3>
+              <div className="flex items-center justify-between">
+                <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-retro-secondary" />
+                  Clássicos Protegidos ({classics.length})
+                </h3>
+                <button
+                  onClick={() => setShowClassicPicker(true)}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium transition-all
+                           bg-retro-secondary/10 text-retro-secondary border border-retro-secondary/30
+                           hover:bg-retro-secondary/20"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  Popular Clássicos
+                </button>
+              </div>
 
               {/* Filter */}
               <div className="relative">
@@ -808,6 +832,17 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
               </div>
             </motion.div>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Classic Games Picker */}
+      <AnimatePresence>
+        {showClassicPicker && (
+          <ClassicGamesPicker
+            onClose={() => setShowClassicPicker(false)}
+            onAddClassics={handleBatchAddClassics}
+            onToast={onToast}
+          />
         )}
       </AnimatePresence>
     </>

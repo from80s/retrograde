@@ -15,6 +15,7 @@ const CONFIG_PATH = path.join(DATA_DIR, 'config.json');
 const CLASSICS_PATH = path.join(DATA_DIR, 'classics.json');
 const GENRE_PATH = path.join(DATA_DIR, 'genre.json');
 const PROTECTED_GAMES_PATH = path.join(DATA_DIR, 'protected_games.json');
+const CLASSIC_GAMES_PATH = path.join(DATA_DIR, 'classic_games.json');
 const SYSTEMS_PATH = path.join(DATA_DIR, 'systems.json');
 const STATS_PATH = path.join(DATA_DIR, 'curator_stats.json');
 const PACKAGE_PATH = path.join(app.getAppPath(), 'package.json');
@@ -241,6 +242,64 @@ ipcMain.handle('removeClassic', async (_, name: string) => {
   classics = classics.filter((c: string) => c !== name);
   await fs.writeJson(CLASSICS_PATH, classics, { spaces: 2 });
   return classics;
+});
+
+ipcMain.handle('addClassics', async (_, names: string[]) => {
+  let classics: string[] = await fs.readJson(CLASSICS_PATH).catch(() => []);
+  const added: string[] = [];
+  for (const name of names) {
+    if (!classics.includes(name)) {
+      classics.push(name);
+      added.push(name);
+    }
+  }
+  if (added.length > 0) {
+    await fs.writeJson(CLASSICS_PATH, classics, { spaces: 2 });
+  }
+  return { classics, added };
+});
+
+ipcMain.handle('read-classic-games', async () => {
+  try {
+    return await fs.readJson(CLASSIC_GAMES_PATH);
+  } catch {
+    return { platforms: {} };
+  }
+});
+
+ipcMain.handle('fetch-game-cover', async (_, gameName: string) => {
+  const config = await fs.readJson(CONFIG_PATH).catch(() => null);
+  if (!config?.IGDB_CLIENT_ID || !config?.IGDB_CLIENT_SECRET) {
+    return null;
+  }
+  try {
+    const token = await getIGDBToken(config);
+    const response = await axios.post(
+      'https://api.igdb.com/v4/games',
+      `search "${gameName}"; fields cover.url, name; limit 1;`,
+      {
+        headers: {
+          'Client-ID': config.IGDB_CLIENT_ID,
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'text/plain',
+        },
+        timeout: 10000,
+      }
+    );
+    if (response.data.length > 0 && response.data[0].cover?.url) {
+      let url = response.data[0].cover.url;
+      // IGDB returns URLs with "//images.igdb.com/..." - prepend https:
+      if (url.startsWith('//')) {
+        url = 'https:' + url;
+      }
+      // Replace t_thumb with t_cover_small for better quality thumbnails
+      url = url.replace('t_thumb', 't_cover_small');
+      return url;
+    }
+    return null;
+  } catch {
+    return null;
+  }
 });
 
 ipcMain.handle('read-genres', async () => {

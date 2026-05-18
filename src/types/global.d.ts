@@ -1,8 +1,28 @@
+export interface ClassicGameEntry {
+  name: string;
+  genre: string;
+  cover?: string;
+}
+
+export interface ClassicGamesPlatform {
+  extensions: string[];
+  igdb: number;
+  tgdb: number;
+  classics: ClassicGameEntry[];
+}
+
+export interface ClassicGamesData {
+  platforms: Record<string, ClassicGamesPlatform>;
+}
+
 export interface ApiBridge {
   selectFolder: () => Promise<string | null>;
   readConfig: () => Promise<any>;
   saveConfig: (config: any) => Promise<boolean>;
   readClassics: () => Promise<string[]>;
+  readClassicGames: () => Promise<ClassicGamesData>;
+  addClassics: (names: string[]) => Promise<{ classics: string[]; added: string[] }>;
+  fetchGameCover: (name: string) => Promise<string | null>;
   addClassic: (name: string) => Promise<string[]>;
   removeClassic: (name: string) => Promise<string[]>;
   readGenres: () => Promise<string[]>;

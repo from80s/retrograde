@@ -1,0 +1,3589 @@
+{
+  "platforms": {
+    "NES": {
+      "extensions": [
+        ".nes"
+      ],
+      "igdb": 18,
+      "tgdb": 7,
+      "classics": [
+        {
+          "name": "Super Mario Bros.",
+          "genre": "Platformer",
+          "cover": "covers/nes/nes-9389a632.webp"
+        },
+        {
+          "name": "Super Mario Bros. 3",
+          "genre": "Platformer",
+          "cover": "covers/nes/nes-4fcfeab1.webp"
+        },
+        {
+          "name": "The Legend of Zelda",
+          "genre": "Action-Adventure",
+          "cover": "covers/nes/nes-3051a198.webp"
+        },
+        {
+          "name": "Zelda II: The Adventure of Link",
+          "genre": "Action-Adventure, RPG",
+          "cover": "covers/nes/nes-44f1fd2f.webp"
+        },
+        {
+          "name": "Metroid",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/nes/nes-dd5842c4.webp"
+        },
+        {
+          "name": "Castlevania",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-e0d4bc7e.webp"
+        },
+        {
+          "name": "Castlevania II: Simon's Quest",
+          "genre": "Action-Adventure, RPG",
+          "cover": "covers/nes/nes-e1d4d0b0.webp"
+        },
+        {
+          "name": "Castlevania III: Dracula's Curse",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-5d833993.webp"
+        },
+        {
+          "name": "Mega Man 2",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-6800a92b.webp"
+        },
+        {
+          "name": "Mega Man 3",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-dd4f2fc8.webp"
+        },
+        {
+          "name": "Mega Man 6",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-c9e7e4ff.webp"
+        },
+        {
+          "name": "Contra",
+          "genre": "Run and Gun",
+          "cover": "covers/nes/nes-ad6fda84.webp"
+        },
+        {
+          "name": "Contra Force",
+          "genre": "Run and Gun",
+          "cover": "covers/nes/nes-bf41ad65.webp"
+        },
+        {
+          "name": "Super Contra",
+          "genre": "Run and Gun",
+          "cover": "covers/nes/nes-28226085.webp"
+        },
+        {
+          "name": "Duck Tales",
+          "genre": "Action, Platformer"
+        },
+        {
+          "name": "DuckTales 2",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-e8af7ac0.webp"
+        },
+        {
+          "name": "Chip 'n Dale Rescue Rangers",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-ea71abcb.webp"
+        },
+        {
+          "name": "Darkwing Duck",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-1ebc0911.webp"
+        },
+        {
+          "name": "Ninja Gaiden",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-7fde0954.webp"
+        },
+        {
+          "name": "Ninja Gaiden II",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-e51a74f6.webp"
+        },
+        {
+          "name": "Ninja Gaiden III",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-d4930410.webp"
+        },
+        {
+          "name": "Kirby's Adventure",
+          "genre": "Platformer",
+          "cover": "covers/nes/nes-e71d7da3.webp"
+        },
+        {
+          "name": "Tetris",
+          "genre": "Puzzle",
+          "cover": "covers/nes/nes-d4372281.webp"
+        },
+        {
+          "name": "Donkey Kong",
+          "genre": "Platformer, Arcade",
+          "cover": "covers/nes/nes-eddd8a26.webp"
+        },
+        {
+          "name": "Punch-Out!!",
+          "genre": "Sports, Fighting",
+          "cover": "covers/nes/nes-6bdd70ae.webp"
+        },
+        {
+          "name": "Mike Tyson's Punch-Out!!",
+          "genre": "Sports, Fighting",
+          "cover": "covers/nes/nes-6aecf1ef.webp"
+        },
+        {
+          "name": "Battletoads",
+          "genre": "Beat 'em up, Platformer",
+          "cover": "covers/nes/nes-5a872b49.webp"
+        },
+        {
+          "name": "Double Dragon",
+          "genre": "Beat 'em up",
+          "cover": "covers/nes/nes-d624eb75.webp"
+        },
+        {
+          "name": "Double Dragon II: The Revenge",
+          "genre": "Beat 'em up",
+          "cover": "covers/nes/nes-42d99a0a.webp"
+        },
+        {
+          "name": "Teenage Mutant Ninja Turtles II: The Arcade Game",
+          "genre": "Beat 'em up",
+          "cover": "covers/nes/nes-a116382d.webp"
+        },
+        {
+          "name": "Teenage Mutant Ninja Turtles III",
+          "genre": "Beat 'em up",
+          "cover": "covers/nes/nes-4caedacd.webp"
+        },
+        {
+          "name": "Final Fantasy",
+          "genre": "RPG",
+          "cover": "covers/nes/nes-1eecd719.webp"
+        },
+        {
+          "name": "Final Fantasy II",
+          "genre": "RPG",
+          "cover": "covers/nes/nes-186e1acd.webp"
+        },
+        {
+          "name": "Final Fantasy III",
+          "genre": "RPG",
+          "cover": "covers/nes/nes-cb4eecc4.webp"
+        },
+        {
+          "name": "Bionic Commando",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-8c26b7b0.webp"
+        },
+        {
+          "name": "Jackal",
+          "genre": "Run and Gun",
+          "cover": "covers/nes/nes-e6a0edf6.webp"
+        },
+        {
+          "name": "Ghosts 'n Goblins",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-f17f49e1.webp"
+        },
+        {
+          "name": "Ghouls 'n Ghosts",
+          "genre": "Action, Platformer",
+          "cover": "covers/nes/nes-670fb93b.webp"
+        },
+        {
+          "name": "Duck Hunt",
+          "genre": "Light Gun Shooter",
+          "cover": "covers/nes/nes-6372778b.webp"
+        },
+        {
+          "name": "Excitebike",
+          "genre": "Racing",
+          "cover": "covers/nes/nes-c8db6673.webp"
+        },
+        {
+          "name": "Ice Climber",
+          "genre": "Platformer"
+        },
+        {
+          "name": "Balloon Fight",
+          "genre": "Platformer, Arcade",
+          "cover": "covers/nes/nes-9f2cbd9f.webp"
+        },
+        {
+          "name": "Kid Icarus",
+          "genre": "Action, Platformer, Shoot 'em up",
+          "cover": "covers/nes/nes-8b179603.webp"
+        },
+        {
+          "name": "StarTropics",
+          "genre": "Action-Adventure, RPG",
+          "cover": "covers/nes/nes-9ae86d98.webp"
+        },
+        {
+          "name": "Battletoads & Double Dragon",
+          "genre": "Beat 'em up",
+          "cover": "covers/nes/nes-f452cbc9.webp"
+        },
+        {
+          "name": "River City Ransom",
+          "genre": "Beat 'em up, RPG",
+          "cover": "covers/nes/nes-759951ee.webp"
+        }
+      ]
+    },
+    "SNES": {
+      "extensions": [
+        ".smc",
+        ".sfc"
+      ],
+      "igdb": 19,
+      "tgdb": 6,
+      "classics": [
+        {
+          "name": "Super Mario World",
+          "genre": "Platformer",
+          "cover": "covers/snes/snes-8dc3f1db.webp"
+        },
+        {
+          "name": "Super Mario Kart",
+          "genre": "Racing",
+          "cover": "covers/snes/snes-47e97982.webp"
+        },
+        {
+          "name": "Super Mario RPG: Legend of the Seven Stars",
+          "genre": "RPG",
+          "cover": "covers/snes/snes-0b546e04.webp"
+        },
+        {
+          "name": "The Legend of Zelda: A Link to the Past",
+          "genre": "Action-Adventure",
+          "cover": "covers/snes/snes-00a53be5.webp"
+        },
+        {
+          "name": "Super Metroid",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/snes/snes-66d24664.webp"
+        },
+        {
+          "name": "Chrono Trigger",
+          "genre": "RPG",
+          "cover": "covers/snes/snes-fecf7516.webp"
+        },
+        {
+          "name": "Final Fantasy VI",
+          "genre": "RPG",
+          "cover": "covers/snes/snes-28d57580.webp"
+        },
+        {
+          "name": "Final Fantasy IV",
+          "genre": "RPG",
+          "cover": "covers/snes/snes-0f6cb3a9.webp"
+        },
+        {
+          "name": "Final Fantasy V",
+          "genre": "RPG",
+          "cover": "covers/snes/snes-bb416a18.webp"
+        },
+        {
+          "name": "Donkey Kong Country",
+          "genre": "Platformer",
+          "cover": "covers/snes/snes-d6cc1b24.webp"
+        },
+        {
+          "name": "Donkey Kong Country 2: Diddy's Kong Quest",
+          "genre": "Platformer",
+          "cover": "covers/snes/snes-b4ca4e31.webp"
+        },
+        {
+          "name": "Donkey Kong Country 3",
+          "genre": "Platformer",
+          "cover": "covers/snes/snes-3d6e62b1.webp"
+        },
+        {
+          "name": "Street Fighter II Turbo",
+          "genre": "Fighting",
+          "cover": "covers/snes/snes-fcc9385d.webp"
+        },
+        {
+          "name": "Super Street Fighter II",
+          "genre": "Fighting",
+          "cover": "covers/snes/snes-a00c9d68.webp"
+        },
+        {
+          "name": "Mega Man X",
+          "genre": "Action, Platformer",
+          "cover": "covers/snes/snes-05765a7d.webp"
+        },
+        {
+          "name": "Mega Man X2",
+          "genre": "Action, Platformer",
+          "cover": "covers/snes/snes-740efe66.webp"
+        },
+        {
+          "name": "Mega Man X3",
+          "genre": "Action, Platformer",
+          "cover": "covers/snes/snes-1a86bc4d.webp"
+        },
+        {
+          "name": "Castlevania IV",
+          "genre": "Action, Platformer",
+          "cover": "covers/snes/snes-91fd2d9d.webp"
+        },
+        {
+          "name": "Contra III: The Alien Wars",
+          "genre": "Run and Gun",
+          "cover": "covers/snes/snes-aebb3eef.webp"
+        },
+        {
+          "name": "Super Contra",
+          "genre": "Run and Gun",
+          "cover": "covers/snes/snes-60e87f7e.webp"
+        },
+        {
+          "name": "Star Fox",
+          "genre": "Rail Shooter",
+          "cover": "covers/snes/snes-4eb6315a.webp"
+        },
+        {
+          "name": "Super Star Wars",
+          "genre": "Action, Platformer",
+          "cover": "covers/snes/snes-8450cef6.webp"
+        },
+        {
+          "name": "Super Return of the Jedi",
+          "genre": "Action, Platformer",
+          "cover": "covers/snes/snes-9d094b2e.webp"
+        },
+        {
+          "name": "Earthbound",
+          "genre": "RPG",
+          "cover": "covers/snes/snes-a6ed4015.webp"
+        },
+        {
+          "name": "Kirby's Dream Land 3",
+          "genre": "Platformer",
+          "cover": "covers/snes/snes-e158f0f3.webp"
+        },
+        {
+          "name": "Kirby Super Star",
+          "genre": "Platformer",
+          "cover": "covers/snes/snes-7b6dcc12.webp"
+        },
+        {
+          "name": "F-Zero",
+          "genre": "Racing",
+          "cover": "covers/snes/snes-50ec4cba.webp"
+        },
+        {
+          "name": "Super Punch-Out!!",
+          "genre": "Sports, Fighting",
+          "cover": "covers/snes/snes-0910616f.webp"
+        },
+        {
+          "name": "Teenage Mutant Ninja Turtles IV: Turtles in Time",
+          "genre": "Beat 'em up",
+          "cover": "covers/snes/snes-025efdd3.webp"
+        },
+        {
+          "name": "Mortal Kombat",
+          "genre": "Fighting",
+          "cover": "covers/snes/snes-d8930df1.webp"
+        },
+        {
+          "name": "Mortal Kombat II",
+          "genre": "Fighting",
+          "cover": "covers/snes/snes-34d6e3ae.webp"
+        },
+        {
+          "name": "Mortal Kombat 3",
+          "genre": "Fighting",
+          "cover": "covers/snes/snes-54e0af4b.webp"
+        },
+        {
+          "name": "Yoshi's Island",
+          "genre": "Platformer",
+          "cover": "covers/snes/snes-62e126cf.webp"
+        },
+        {
+          "name": "Pilotwings",
+          "genre": "Simulation",
+          "cover": "covers/snes/snes-a0dd69a6.webp"
+        },
+        {
+          "name": "Sim City",
+          "genre": "Simulation, Strategy",
+          "cover": "covers/snes/snes-d1b736fd.webp"
+        },
+        {
+          "name": "Secret of Mana",
+          "genre": "Action RPG",
+          "cover": "covers/snes/snes-f8f9e8a6.webp"
+        },
+        {
+          "name": "Secret of Evermore",
+          "genre": "Action RPG",
+          "cover": "covers/snes/snes-9261e2cc.webp"
+        },
+        {
+          "name": "Illusion of Gaia",
+          "genre": "Action-Adventure, RPG",
+          "cover": "covers/snes/snes-e16fa0a7.webp"
+        },
+        {
+          "name": "Terranigma",
+          "genre": "Action RPG",
+          "cover": "covers/snes/snes-21305530.webp"
+        },
+        {
+          "name": "Soul Blazer",
+          "genre": "Action RPG",
+          "cover": "covers/snes/snes-b637f4a8.webp"
+        },
+        {
+          "name": "ActRaiser",
+          "genre": "Action, Simulation",
+          "cover": "covers/snes/snes-815c6634.webp"
+        },
+        {
+          "name": "Final Fight",
+          "genre": "Beat 'em up",
+          "cover": "covers/snes/snes-1acadcf0.webp"
+        },
+        {
+          "name": "Final Fight 2",
+          "genre": "Beat 'em up",
+          "cover": "covers/snes/snes-f791868b.webp"
+        },
+        {
+          "name": "Gundam Wing: Endless Duel",
+          "genre": "Fighting",
+          "cover": "covers/snes/snes-349cf6c4.webp"
+        },
+        {
+          "name": "Tales of Phantasia",
+          "genre": "Action RPG",
+          "cover": "covers/snes/snes-53318ee4.webp"
+        },
+        {
+          "name": "Tactics Ogre: Let Us Cling Together",
+          "genre": "Tactical RPG",
+          "cover": "covers/snes/snes-db5d8fc4.webp"
+        }
+      ]
+    },
+    "Game Boy": {
+      "extensions": [
+        ".gb"
+      ],
+      "igdb": 4,
+      "tgdb": 4,
+      "classics": [
+        {
+          "name": "Tetris",
+          "genre": "Puzzle",
+          "cover": "covers/game-boy/game-boy-395fff97.webp"
+        },
+        {
+          "name": "Super Mario Land",
+          "genre": "Platformer",
+          "cover": "covers/game-boy/game-boy-af721c75.webp"
+        },
+        {
+          "name": "Super Mario Land 2: 6 Golden Coins",
+          "genre": "Platformer",
+          "cover": "covers/game-boy/game-boy-f6513323.webp"
+        },
+        {
+          "name": "The Legend of Zelda: Link's Awakening",
+          "genre": "Action-Adventure",
+          "cover": "covers/game-boy/game-boy-ff12f8ba.webp"
+        },
+        {
+          "name": "Kirby's Dream Land",
+          "genre": "Platformer",
+          "cover": "covers/game-boy/game-boy-928812c4.webp"
+        },
+        {
+          "name": "Kirby's Dream Land 2",
+          "genre": "Platformer",
+          "cover": "covers/game-boy/game-boy-bf11c81e.webp"
+        },
+        {
+          "name": "Donkey Kong",
+          "genre": "Platformer, Arcade",
+          "cover": "covers/game-boy/game-boy-8f36884c.webp"
+        },
+        {
+          "name": "Metroid II: Return of Samus",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/game-boy/game-boy-d40ecc52.webp"
+        },
+        {
+          "name": "Mega Man: Dr. Wily's Revenge",
+          "genre": "Action, Platformer",
+          "cover": "covers/game-boy/game-boy-d08a4e02.webp"
+        },
+        {
+          "name": "Mega Man II",
+          "genre": "Action, Platformer",
+          "cover": "covers/game-boy/game-boy-19db069f.webp"
+        },
+        {
+          "name": "Mega Man III",
+          "genre": "Action, Platformer",
+          "cover": "covers/game-boy/game-boy-44c03d41.webp"
+        },
+        {
+          "name": "Castlevania: The Adventure",
+          "genre": "Action, Platformer",
+          "cover": "covers/game-boy/game-boy-f5aece58.webp"
+        },
+        {
+          "name": "Castlevania II: Belmont's Revenge",
+          "genre": "Action, Platformer",
+          "cover": "covers/game-boy/game-boy-31d34a5d.webp"
+        },
+        {
+          "name": "Pokemon Red",
+          "genre": "RPG",
+          "cover": "covers/game-boy/game-boy-6a4f1900.webp"
+        },
+        {
+          "name": "Pokemon Blue",
+          "genre": "RPG",
+          "cover": "covers/game-boy/game-boy-311b6242.webp"
+        },
+        {
+          "name": "Pokemon Yellow",
+          "genre": "RPG",
+          "cover": "covers/game-boy/game-boy-88020acd.webp"
+        },
+        {
+          "name": "Final Fantasy Adventure",
+          "genre": "Action RPG",
+          "cover": "covers/game-boy/game-boy-c5d5956f.webp"
+        },
+        {
+          "name": "Final Fantasy Legend",
+          "genre": "RPG",
+          "cover": "covers/game-boy/game-boy-21e58036.webp"
+        },
+        {
+          "name": "Balloon Kid",
+          "genre": "Platformer",
+          "cover": "covers/game-boy/game-boy-12d6b14a.webp"
+        },
+        {
+          "name": "Wario Land: Super Mario Land 3",
+          "genre": "Platformer",
+          "cover": "covers/game-boy/game-boy-3afcfec4.webp"
+        },
+        {
+          "name": "Kid Dracula",
+          "genre": "Action, Platformer",
+          "cover": "covers/game-boy/game-boy-88d42a6e.webp"
+        },
+        {
+          "name": "Contra: The Alien Wars",
+          "genre": "Run and Gun",
+          "cover": "covers/game-boy/game-boy-34a4a6b5.webp"
+        }
+      ]
+    },
+    "Game Boy Color": {
+      "extensions": [
+        ".gbc"
+      ],
+      "igdb": 5,
+      "tgdb": 41,
+      "classics": [
+        {
+          "name": "The Legend of Zelda: Oracle of Ages",
+          "genre": "Action-Adventure",
+          "cover": "covers/game-boy-color/game-boy-color-1bdcc69d.webp"
+        },
+        {
+          "name": "The Legend of Zelda: Oracle of Seasons",
+          "genre": "Action-Adventure",
+          "cover": "covers/game-boy-color/game-boy-color-02247ff0.webp"
+        },
+        {
+          "name": "The Legend of Zelda: Link's Awakening DX",
+          "genre": "Action-Adventure",
+          "cover": "covers/game-boy-color/game-boy-color-5fc37431.webp"
+        },
+        {
+          "name": "Pokemon Gold",
+          "genre": "RPG",
+          "cover": "covers/game-boy-color/game-boy-color-cd9d8b99.webp"
+        },
+        {
+          "name": "Pokemon Silver",
+          "genre": "RPG",
+          "cover": "covers/game-boy-color/game-boy-color-59ad84d1.webp"
+        },
+        {
+          "name": "Pokemon Crystal",
+          "genre": "RPG",
+          "cover": "covers/game-boy-color/game-boy-color-f82a3db6.webp"
+        },
+        {
+          "name": "Metal Gear Solid",
+          "genre": "Stealth, Action-Adventure",
+          "cover": "covers/game-boy-color/game-boy-color-4de9e95b.webp"
+        },
+        {
+          "name": "Shantae",
+          "genre": "Action-Adventure, Platformer",
+          "cover": "covers/game-boy-color/game-boy-color-c1750c88.webp"
+        },
+        {
+          "name": "Dragon Warrior Monsters",
+          "genre": "RPG",
+          "cover": "covers/game-boy-color/game-boy-color-b1d65c30.webp"
+        },
+        {
+          "name": "Dragon Warrior Monsters 2",
+          "genre": "RPG",
+          "cover": "covers/game-boy-color/game-boy-color-bebf7d2c.webp"
+        },
+        {
+          "name": "Wario Land 3",
+          "genre": "Platformer",
+          "cover": "covers/game-boy-color/game-boy-color-3d5f5e08.webp"
+        },
+        {
+          "name": "Kirby Tilt 'n' Tumble",
+          "genre": "Platformer, Puzzle",
+          "cover": "covers/game-boy-color/game-boy-color-0577f527.webp"
+        },
+        {
+          "name": "Mario Tennis",
+          "genre": "Sports",
+          "cover": "covers/game-boy-color/game-boy-color-da7c81f0.webp"
+        },
+        {
+          "name": "Mario Golf",
+          "genre": "Sports",
+          "cover": "covers/game-boy-color/game-boy-color-b09469c5.webp"
+        },
+        {
+          "name": "Mega Man Xtreme",
+          "genre": "Action, Platformer",
+          "cover": "covers/game-boy-color/game-boy-color-899adc04.webp"
+        },
+        {
+          "name": "Mega Man Xtreme 2",
+          "genre": "Action, Platformer",
+          "cover": "covers/game-boy-color/game-boy-color-896ce057.webp"
+        },
+        {
+          "name": "Castlevania: Circle of the Moon (GBC)",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/game-boy-color/game-boy-color-0b3ef262.webp"
+        },
+        {
+          "name": "Resident Evil Gaiden",
+          "genre": "Survival Horror",
+          "cover": "covers/game-boy-color/game-boy-color-69de4ac7.webp"
+        },
+        {
+          "name": "Conker's Pocket Tales",
+          "genre": "Action-Adventure",
+          "cover": "covers/game-boy-color/game-boy-color-55416f7d.webp"
+        },
+        {
+          "name": "Bionic Commando: Elite Forces",
+          "genre": "Action, Platformer",
+          "cover": "covers/game-boy-color/game-boy-color-fa046bf6.webp"
+        }
+      ]
+    },
+    "Game Boy Advance": {
+      "extensions": [
+        ".gba"
+      ],
+      "igdb": 24,
+      "tgdb": 5,
+      "classics": [
+        {
+          "name": "The Legend of Zelda: The Minish Cap",
+          "genre": "Action-Adventure",
+          "cover": "covers/game-boy-advance/game-boy-advance-c9195251.webp"
+        },
+        {
+          "name": "The Legend of Zelda: A Link to the Past (GBA)",
+          "genre": "Action-Adventure"
+        },
+        {
+          "name": "Metroid Fusion",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/game-boy-advance/game-boy-advance-5bb90f93.webp"
+        },
+        {
+          "name": "Metroid: Zero Mission",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/game-boy-advance/game-boy-advance-5f542e91.webp"
+        },
+        {
+          "name": "Castlevania: Aria of Sorrow",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/game-boy-advance/game-boy-advance-a081c748.webp"
+        },
+        {
+          "name": "Castlevania: Harmony of Dissonance",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/game-boy-advance/game-boy-advance-9f75fbf3.webp"
+        },
+        {
+          "name": "Castlevania: Circle of the Moon",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/game-boy-advance/game-boy-advance-5cedd910.webp"
+        },
+        {
+          "name": "Pokemon FireRed",
+          "genre": "RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-9590ff4c.webp"
+        },
+        {
+          "name": "Pokemon LeafGreen",
+          "genre": "RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-cb765a02.webp"
+        },
+        {
+          "name": "Pokemon Ruby",
+          "genre": "RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-963abf96.webp"
+        },
+        {
+          "name": "Pokemon Sapphire",
+          "genre": "RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-e3ec07db.webp"
+        },
+        {
+          "name": "Pokemon Emerald",
+          "genre": "RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-59db8235.webp"
+        },
+        {
+          "name": "Golden Sun",
+          "genre": "RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-0d2b19b3.webp"
+        },
+        {
+          "name": "Golden Sun: The Lost Age",
+          "genre": "RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-10095a51.webp"
+        },
+        {
+          "name": "Final Fantasy VI Advance",
+          "genre": "RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-1cf4cdd7.webp"
+        },
+        {
+          "name": "Final Fantasy Tactics Advance",
+          "genre": "Tactical RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-d3e3908d.webp"
+        },
+        {
+          "name": "Final Fantasy IV Advance",
+          "genre": "RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-cc8c5de9.webp"
+        },
+        {
+          "name": "Final Fantasy V Advance",
+          "genre": "RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-0a1fb309.webp"
+        },
+        {
+          "name": "Mario & Luigi: Superstar Saga",
+          "genre": "Action RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-9f85253b.webp"
+        },
+        {
+          "name": "Super Mario Advance 4: Super Mario Bros. 3",
+          "genre": "Platformer",
+          "cover": "covers/game-boy-advance/game-boy-advance-f5cf119d.webp"
+        },
+        {
+          "name": "Super Mario World: Super Mario Advance 2",
+          "genre": "Platformer",
+          "cover": "covers/game-boy-advance/game-boy-advance-cf333f0e.webp"
+        },
+        {
+          "name": "Mario Kart: Super Circuit",
+          "genre": "Racing",
+          "cover": "covers/game-boy-advance/game-boy-advance-eb5059ce.webp"
+        },
+        {
+          "name": "Advance Wars",
+          "genre": "Tactical Strategy",
+          "cover": "covers/game-boy-advance/game-boy-advance-bfd27284.webp"
+        },
+        {
+          "name": "Advance Wars 2: Black Hole Rising",
+          "genre": "Tactical Strategy",
+          "cover": "covers/game-boy-advance/game-boy-advance-a4d215dc.webp"
+        },
+        {
+          "name": "Fire Emblem",
+          "genre": "Tactical RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-65a70d0d.webp"
+        },
+        {
+          "name": "Fire Emblem: The Sacred Stones",
+          "genre": "Tactical RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-9145ee75.webp"
+        },
+        {
+          "name": "Mother 3",
+          "genre": "RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-fd434529.webp"
+        },
+        {
+          "name": "Kirby & The Amazing Mirror",
+          "genre": "Platformer, Metroidvania",
+          "cover": "covers/game-boy-advance/game-boy-advance-50beac0a.webp"
+        },
+        {
+          "name": "Kirby: Nightmare in Dream Land",
+          "genre": "Platformer",
+          "cover": "covers/game-boy-advance/game-boy-advance-1478afd7.webp"
+        },
+        {
+          "name": "WarioWare, Inc.: Mega Microgames!",
+          "genre": "Party, Minigame",
+          "cover": "covers/game-boy-advance/game-boy-advance-04c99db3.webp"
+        },
+        {
+          "name": "Wario Land 4",
+          "genre": "Platformer",
+          "cover": "covers/game-boy-advance/game-boy-advance-9d25f934.webp"
+        },
+        {
+          "name": "Mega Man Zero",
+          "genre": "Action, Platformer",
+          "cover": "covers/game-boy-advance/game-boy-advance-e19f4496.webp"
+        },
+        {
+          "name": "Mega Man Zero 2",
+          "genre": "Action, Platformer",
+          "cover": "covers/game-boy-advance/game-boy-advance-acf64088.webp"
+        },
+        {
+          "name": "Mega Man Zero 3",
+          "genre": "Action, Platformer",
+          "cover": "covers/game-boy-advance/game-boy-advance-22eb0c27.webp"
+        },
+        {
+          "name": "Mega Man Zero 4",
+          "genre": "Action, Platformer",
+          "cover": "covers/game-boy-advance/game-boy-advance-ab98d323.webp"
+        },
+        {
+          "name": "Mega Man Battle Network 3",
+          "genre": "Action RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-c25277d7.webp"
+        },
+        {
+          "name": "Mega Man Battle Network 6",
+          "genre": "Action RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-236c55de.webp"
+        },
+        {
+          "name": "Sonic Advance",
+          "genre": "Platformer",
+          "cover": "covers/game-boy-advance/game-boy-advance-16d9964b.webp"
+        },
+        {
+          "name": "Sonic Advance 2",
+          "genre": "Platformer",
+          "cover": "covers/game-boy-advance/game-boy-advance-768af879.webp"
+        },
+        {
+          "name": "Sonic Advance 3",
+          "genre": "Platformer",
+          "cover": "covers/game-boy-advance/game-boy-advance-b556fac5.webp"
+        },
+        {
+          "name": "Tactics Ogre: The Knight of Lodis",
+          "genre": "Tactical RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-21d2dd42.webp"
+        },
+        {
+          "name": "Harvest Moon: Friends of Mineral Town",
+          "genre": "Simulation, RPG",
+          "cover": "covers/game-boy-advance/game-boy-advance-fa253dc3.webp"
+        },
+        {
+          "name": "F-Zero: GP Legend",
+          "genre": "Racing",
+          "cover": "covers/game-boy-advance/game-boy-advance-eb271cfd.webp"
+        },
+        {
+          "name": "Metal Slug Advance",
+          "genre": "Run and Gun",
+          "cover": "covers/game-boy-advance/game-boy-advance-059aafd0.webp"
+        },
+        {
+          "name": "Gunstar Super Heroes",
+          "genre": "Run and Gun, Action",
+          "cover": "covers/game-boy-advance/game-boy-advance-32cde725.webp"
+        }
+      ]
+    },
+    "Nintendo DS": {
+      "extensions": [
+        ".nds"
+      ],
+      "igdb": 20,
+      "tgdb": 8,
+      "classics": [
+        {
+          "name": "Mario Kart DS",
+          "genre": "Racing",
+          "cover": "covers/nintendo-ds/nintendo-ds-ffde4cdd.webp"
+        },
+        {
+          "name": "New Super Mario Bros.",
+          "genre": "Platformer",
+          "cover": "covers/nintendo-ds/nintendo-ds-d630fb89.webp"
+        },
+        {
+          "name": "Mario & Luigi: Bowser's Inside Story",
+          "genre": "Action RPG",
+          "cover": "covers/nintendo-ds/nintendo-ds-fa73c560.webp"
+        },
+        {
+          "name": "Mario & Luigi: Partners in Time",
+          "genre": "Action RPG",
+          "cover": "covers/nintendo-ds/nintendo-ds-b4820237.webp"
+        },
+        {
+          "name": "The Legend of Zelda: Phantom Hourglass",
+          "genre": "Action-Adventure",
+          "cover": "covers/nintendo-ds/nintendo-ds-1affda62.webp"
+        },
+        {
+          "name": "The Legend of Zelda: Spirit Tracks",
+          "genre": "Action-Adventure",
+          "cover": "covers/nintendo-ds/nintendo-ds-0ea183bb.webp"
+        },
+        {
+          "name": "Chrono Trigger DS",
+          "genre": "RPG"
+        },
+        {
+          "name": "Final Fantasy III DS",
+          "genre": "RPG",
+          "cover": "covers/nintendo-ds/nintendo-ds-c19b7e1f.webp"
+        },
+        {
+          "name": "Final Fantasy IV DS",
+          "genre": "RPG",
+          "cover": "covers/nintendo-ds/nintendo-ds-29913c6e.webp"
+        },
+        {
+          "name": "Final Fantasy Tactics A2",
+          "genre": "Tactical RPG",
+          "cover": "covers/nintendo-ds/nintendo-ds-daafdd9c.webp"
+        },
+        {
+          "name": "Pokemon Diamond",
+          "genre": "RPG",
+          "cover": "covers/nintendo-ds/nintendo-ds-a5a835dc.webp"
+        },
+        {
+          "name": "Pokemon Pearl",
+          "genre": "RPG",
+          "cover": "covers/nintendo-ds/nintendo-ds-8c2c43dc.webp"
+        },
+        {
+          "name": "Pokemon Platinum",
+          "genre": "RPG",
+          "cover": "covers/nintendo-ds/nintendo-ds-0da89bbd.webp"
+        },
+        {
+          "name": "Pokemon HeartGold",
+          "genre": "RPG",
+          "cover": "covers/nintendo-ds/nintendo-ds-70553894.webp"
+        },
+        {
+          "name": "Pokemon SoulSilver",
+          "genre": "RPG",
+          "cover": "covers/nintendo-ds/nintendo-ds-58876dad.webp"
+        },
+        {
+          "name": "Pokemon Black",
+          "genre": "RPG",
+          "cover": "covers/nintendo-ds/nintendo-ds-103d10bc.webp"
+        },
+        {
+          "name": "Pokemon White",
+          "genre": "RPG",
+          "cover": "covers/nintendo-ds/nintendo-ds-bedf0959.webp"
+        },
+        {
+          "name": "Castlevania: Dawn of Sorrow",
+          "genre": "Action-Adventure, Metroidvania"
+        },
+        {
+          "name": "Castlevania: Portrait of Ruin",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/nintendo-ds/nintendo-ds-c8999b4a.webp"
+        },
+        {
+          "name": "Castlevania: Order of Ecclesia",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/nintendo-ds/nintendo-ds-63dab1c6.webp"
+        },
+        {
+          "name": "Advance Wars: Dual Strike",
+          "genre": "Tactical Strategy",
+          "cover": "covers/nintendo-ds/nintendo-ds-08a0c36e.webp"
+        },
+        {
+          "name": "Advance Wars: Days of Ruin",
+          "genre": "Tactical Strategy",
+          "cover": "covers/nintendo-ds/nintendo-ds-535c05b3.webp"
+        },
+        {
+          "name": "Animal Crossing: Wild World",
+          "genre": "Life Simulation",
+          "cover": "covers/nintendo-ds/nintendo-ds-55214117.webp"
+        },
+        {
+          "name": "Metroid Prime: Hunters",
+          "genre": "First-Person Shooter",
+          "cover": "covers/nintendo-ds/nintendo-ds-8290e84e.webp"
+        },
+        {
+          "name": "Mega Man ZX",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/nintendo-ds/nintendo-ds-ecdcf9e9.webp"
+        },
+        {
+          "name": "Mega Man ZX Advent",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/nintendo-ds/nintendo-ds-b03b1ef2.webp"
+        },
+        {
+          "name": "Phoenix Wright: Ace Attorney",
+          "genre": "Visual Novel, Adventure",
+          "cover": "covers/nintendo-ds/nintendo-ds-5905c019.webp"
+        },
+        {
+          "name": "Phoenix Wright: Justice for All",
+          "genre": "Visual Novel, Adventure",
+          "cover": "covers/nintendo-ds/nintendo-ds-8f2cf5f6.webp"
+        },
+        {
+          "name": "Phoenix Wright: Trials and Tribulations",
+          "genre": "Visual Novel, Adventure",
+          "cover": "covers/nintendo-ds/nintendo-ds-3ede4103.webp"
+        },
+        {
+          "name": "Professor Layton and the Curious Village",
+          "genre": "Puzzle, Adventure",
+          "cover": "covers/nintendo-ds/nintendo-ds-0b08744c.webp"
+        },
+        {
+          "name": "Professor Layton and the Diabolical Box",
+          "genre": "Puzzle, Adventure",
+          "cover": "covers/nintendo-ds/nintendo-ds-8eb8c0e9.webp"
+        },
+        {
+          "name": "Grand Theft Auto: Chinatown Wars",
+          "genre": "Action-Adventure",
+          "cover": "covers/nintendo-ds/nintendo-ds-0984aa6d.webp"
+        },
+        {
+          "name": "Kirby Super Star Ultra",
+          "genre": "Platformer",
+          "cover": "covers/nintendo-ds/nintendo-ds-dbcfd289.webp"
+        },
+        {
+          "name": "Elite Beat Agents",
+          "genre": "Rhythm",
+          "cover": "covers/nintendo-ds/nintendo-ds-30edc9a3.webp"
+        },
+        {
+          "name": "Etrian Odyssey",
+          "genre": "RPG, Dungeon Crawler",
+          "cover": "covers/nintendo-ds/nintendo-ds-b4f800fb.webp"
+        }
+      ]
+    },
+    "Nintendo 3DS": {
+      "extensions": [
+        ".3ds"
+      ],
+      "igdb": 37,
+      "tgdb": 38,
+      "classics": [
+        {
+          "name": "The Legend of Zelda: Ocarina of Time 3D",
+          "genre": "Action-Adventure",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-108053a4.webp"
+        },
+        {
+          "name": "The Legend of Zelda: Majora's Mask 3D",
+          "genre": "Action-Adventure",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-39b0213c.webp"
+        },
+        {
+          "name": "The Legend of Zelda: A Link Between Worlds",
+          "genre": "Action-Adventure",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-4b36a4e1.webp"
+        },
+        {
+          "name": "Super Mario 3D Land",
+          "genre": "Platformer",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-85eab2a5.webp"
+        },
+        {
+          "name": "Mario Kart 7",
+          "genre": "Racing",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-a150b9a0.webp"
+        },
+        {
+          "name": "New Super Mario Bros. 2",
+          "genre": "Platformer",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-60225157.webp"
+        },
+        {
+          "name": "Fire Emblem: Awakening",
+          "genre": "Tactical RPG",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-f207dc10.webp"
+        },
+        {
+          "name": "Fire Emblem Fates",
+          "genre": "Tactical RPG",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-bcc4daad.webp"
+        },
+        {
+          "name": "Pokemon X",
+          "genre": "RPG",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-cac27f74.webp"
+        },
+        {
+          "name": "Pokemon Y",
+          "genre": "RPG",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-d3a2c6e6.webp"
+        },
+        {
+          "name": "Pokemon Omega Ruby",
+          "genre": "RPG",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-65902fea.webp"
+        },
+        {
+          "name": "Pokemon Alpha Sapphire",
+          "genre": "RPG",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-4b2d3225.webp"
+        },
+        {
+          "name": "Pokemon Sun",
+          "genre": "RPG",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-ac6e1593.webp"
+        },
+        {
+          "name": "Pokemon Moon",
+          "genre": "RPG",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-f62770a9.webp"
+        },
+        {
+          "name": "Metroid: Samus Returns",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-f2577c5c.webp"
+        },
+        {
+          "name": "Castlevania: Lords of Shadow - Mirror of Fate",
+          "genre": "Action-Adventure",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-3ac3b17d.webp"
+        },
+        {
+          "name": "Kid Icarus: Uprising",
+          "genre": "Rail Shooter, Action",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-c28fd043.webp"
+        },
+        {
+          "name": "Kirby: Triple Deluxe",
+          "genre": "Platformer",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-2f3181e3.webp"
+        },
+        {
+          "name": "Animal Crossing: New Leaf",
+          "genre": "Life Simulation",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-d18875b5.webp"
+        },
+        {
+          "name": "Donkey Kong Country Returns 3D",
+          "genre": "Platformer",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-39c4802d.webp"
+        },
+        {
+          "name": "Shovel Knight",
+          "genre": "Action, Platformer",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-da074b06.webp"
+        },
+        {
+          "name": "Bravely Default",
+          "genre": "RPG",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-48a0000b.webp"
+        },
+        {
+          "name": "Bravely Second: End Layer",
+          "genre": "RPG",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-9f12ba6f.webp"
+        },
+        {
+          "name": "Rune Factory 4",
+          "genre": "Action RPG, Simulation",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-203647a8.webp"
+        },
+        {
+          "name": "Shin Megami Tensei IV",
+          "genre": "RPG",
+          "cover": "covers/nintendo-3ds/nintendo-3ds-2d5d961b.webp"
+        }
+      ]
+    },
+    "Nintendo 64": {
+      "extensions": [
+        ".n64",
+        ".v64",
+        ".z64"
+      ],
+      "igdb": 4,
+      "tgdb": 9,
+      "classics": [
+        {
+          "name": "Super Mario 64",
+          "genre": "Platformer",
+          "cover": "covers/nintendo-64/nintendo-64-3058b10d.webp"
+        },
+        {
+          "name": "The Legend of Zelda: Ocarina of Time",
+          "genre": "Action-Adventure",
+          "cover": "covers/nintendo-64/nintendo-64-7c85337d.webp"
+        },
+        {
+          "name": "The Legend of Zelda: Majora's Mask",
+          "genre": "Action-Adventure",
+          "cover": "covers/nintendo-64/nintendo-64-7b4ac7ed.webp"
+        },
+        {
+          "name": "GoldenEye 007",
+          "genre": "First-Person Shooter",
+          "cover": "covers/nintendo-64/nintendo-64-4bf363e6.webp"
+        },
+        {
+          "name": "Super Smash Bros.",
+          "genre": "Fighting",
+          "cover": "covers/nintendo-64/nintendo-64-414cc278.webp"
+        },
+        {
+          "name": "Mario Kart 64",
+          "genre": "Racing",
+          "cover": "covers/nintendo-64/nintendo-64-632cae53.webp"
+        },
+        {
+          "name": "Donkey Kong 64",
+          "genre": "Platformer",
+          "cover": "covers/nintendo-64/nintendo-64-1035c206.webp"
+        },
+        {
+          "name": "Banjo-Kazooie",
+          "genre": "Platformer",
+          "cover": "covers/nintendo-64/nintendo-64-542ed661.webp"
+        },
+        {
+          "name": "Banjo-Tooie",
+          "genre": "Platformer",
+          "cover": "covers/nintendo-64/nintendo-64-d05f4a73.webp"
+        },
+        {
+          "name": "Star Fox 64",
+          "genre": "Rail Shooter",
+          "cover": "covers/nintendo-64/nintendo-64-b72ab4f8.webp"
+        },
+        {
+          "name": "F-Zero X",
+          "genre": "Racing",
+          "cover": "covers/nintendo-64/nintendo-64-f90726b7.webp"
+        },
+        {
+          "name": "Wave Race 64",
+          "genre": "Racing, Sports",
+          "cover": "covers/nintendo-64/nintendo-64-8f00b449.webp"
+        },
+        {
+          "name": "1080 Snowboarding",
+          "genre": "Sports",
+          "cover": "covers/nintendo-64/nintendo-64-e43b8aa2.webp"
+        },
+        {
+          "name": "Kirby 64: The Crystal Shards",
+          "genre": "Platformer",
+          "cover": "covers/nintendo-64/nintendo-64-0a490828.webp"
+        },
+        {
+          "name": "Paper Mario",
+          "genre": "RPG",
+          "cover": "covers/nintendo-64/nintendo-64-d2edccb2.webp"
+        },
+        {
+          "name": "Yoshi's Story",
+          "genre": "Platformer",
+          "cover": "covers/nintendo-64/nintendo-64-4c572633.webp"
+        },
+        {
+          "name": "Conker's Bad Fur Day",
+          "genre": "Platformer, Action-Adventure",
+          "cover": "covers/nintendo-64/nintendo-64-04fa6411.webp"
+        },
+        {
+          "name": "Perfect Dark",
+          "genre": "First-Person Shooter",
+          "cover": "covers/nintendo-64/nintendo-64-61b5d8a9.webp"
+        },
+        {
+          "name": "Diddy Kong Racing",
+          "genre": "Racing",
+          "cover": "covers/nintendo-64/nintendo-64-88003aa2.webp"
+        },
+        {
+          "name": "Pilotwings 64",
+          "genre": "Simulation",
+          "cover": "covers/nintendo-64/nintendo-64-a8caa2af.webp"
+        },
+        {
+          "name": "Jet Force Gemini",
+          "genre": "Third-Person Shooter, Action-Adventure",
+          "cover": "covers/nintendo-64/nintendo-64-52e1d81c.webp"
+        },
+        {
+          "name": "Blast Corps",
+          "genre": "Action, Puzzle",
+          "cover": "covers/nintendo-64/nintendo-64-802a2f6f.webp"
+        },
+        {
+          "name": "Turok: Dinosaur Hunter",
+          "genre": "First-Person Shooter",
+          "cover": "covers/nintendo-64/nintendo-64-dec51afb.webp"
+        },
+        {
+          "name": "Turok 2: Seeds of Evil",
+          "genre": "First-Person Shooter",
+          "cover": "covers/nintendo-64/nintendo-64-ed2e6a65.webp"
+        },
+        {
+          "name": "Doom 64",
+          "genre": "First-Person Shooter",
+          "cover": "covers/nintendo-64/nintendo-64-36ea0eb1.webp"
+        },
+        {
+          "name": "Castlevania 64",
+          "genre": "Action-Adventure",
+          "cover": "covers/nintendo-64/nintendo-64-83db94b0.webp"
+        },
+        {
+          "name": "Mega Man 64",
+          "genre": "Action-Adventure",
+          "cover": "covers/nintendo-64/nintendo-64-8d614db2.webp"
+        },
+        {
+          "name": "Rayman 2: The Great Escape",
+          "genre": "Platformer",
+          "cover": "covers/nintendo-64/nintendo-64-8b4913b5.webp"
+        },
+        {
+          "name": "Mortal Kombat 4",
+          "genre": "Fighting",
+          "cover": "covers/nintendo-64/nintendo-64-46c03b82.webp"
+        }
+      ]
+    },
+    "GameCube": {
+      "extensions": [
+        ".gcm",
+        ".iso",
+        ".rvz"
+      ],
+      "igdb": 21,
+      "tgdb": 11,
+      "classics": [
+        {
+          "name": "Super Smash Bros. Melee",
+          "genre": "Fighting",
+          "cover": "covers/gamecube/gamecube-a7d68970.webp"
+        },
+        {
+          "name": "The Legend of Zelda: The Wind Waker",
+          "genre": "Action-Adventure",
+          "cover": "covers/gamecube/gamecube-6d5465fb.webp"
+        },
+        {
+          "name": "The Legend of Zelda: Twilight Princess",
+          "genre": "Action-Adventure",
+          "cover": "covers/gamecube/gamecube-cb2f0ac7.webp"
+        },
+        {
+          "name": "Metroid Prime",
+          "genre": "First-Person Shooter, Action-Adventure",
+          "cover": "covers/gamecube/gamecube-9097f7e1.webp"
+        },
+        {
+          "name": "Metroid Prime 2: Echoes",
+          "genre": "First-Person Shooter, Action-Adventure",
+          "cover": "covers/gamecube/gamecube-570c8593.webp"
+        },
+        {
+          "name": "Super Mario Sunshine",
+          "genre": "Platformer",
+          "cover": "covers/gamecube/gamecube-d35ed7ee.webp"
+        },
+        {
+          "name": "Resident Evil 4",
+          "genre": "Survival Horror, Third-Person Shooter",
+          "cover": "covers/gamecube/gamecube-32ba718e.webp"
+        },
+        {
+          "name": "Resident Evil (Remake)",
+          "genre": "Survival Horror",
+          "cover": "covers/gamecube/gamecube-bf5e9594.webp"
+        },
+        {
+          "name": "Resident Evil 0",
+          "genre": "Survival Horror",
+          "cover": "covers/gamecube/gamecube-8f2ba8a1.webp"
+        },
+        {
+          "name": "Luigi's Mansion",
+          "genre": "Action-Adventure",
+          "cover": "covers/gamecube/gamecube-ad894844.webp"
+        },
+        {
+          "name": "Paper Mario: The Thousand-Year Door",
+          "genre": "RPG",
+          "cover": "covers/gamecube/gamecube-5c586941.webp"
+        },
+        {
+          "name": "Mario Kart: Double Dash!!",
+          "genre": "Racing",
+          "cover": "covers/gamecube/gamecube-689cb226.webp"
+        },
+        {
+          "name": "F-Zero GX",
+          "genre": "Racing",
+          "cover": "covers/gamecube/gamecube-a7eae1cc.webp"
+        },
+        {
+          "name": "Pikmin",
+          "genre": "Real-Time Strategy"
+        },
+        {
+          "name": "Pikmin 2",
+          "genre": "Real-Time Strategy",
+          "cover": "covers/gamecube/gamecube-08a4d147.webp"
+        },
+        {
+          "name": "Star Fox Adventures",
+          "genre": "Action-Adventure",
+          "cover": "covers/gamecube/gamecube-c948e309.webp"
+        },
+        {
+          "name": "Star Fox Assault",
+          "genre": "Rail Shooter, Third-Person Shooter",
+          "cover": "covers/gamecube/gamecube-3d465b0f.webp"
+        },
+        {
+          "name": "Kirby Air Ride",
+          "genre": "Racing",
+          "cover": "covers/gamecube/gamecube-420e9e04.webp"
+        },
+        {
+          "name": "Animal Crossing",
+          "genre": "Life Simulation",
+          "cover": "covers/gamecube/gamecube-433af1af.webp"
+        },
+        {
+          "name": "Eternal Darkness: Sanity's Requiem",
+          "genre": "Survival Horror, Action-Adventure",
+          "cover": "covers/gamecube/gamecube-ba8325d2.webp"
+        },
+        {
+          "name": "Sonic Adventure 2 Battle",
+          "genre": "Platformer, Action",
+          "cover": "covers/gamecube/gamecube-d00fad94.webp"
+        },
+        {
+          "name": "Soul Calibur II",
+          "genre": "Fighting",
+          "cover": "covers/gamecube/gamecube-4a885891.webp"
+        },
+        {
+          "name": "Skies of Arcadia Legends",
+          "genre": "RPG",
+          "cover": "covers/gamecube/gamecube-1f2eff1e.webp"
+        },
+        {
+          "name": "Phantasy Star Online Episode I & II",
+          "genre": "Action RPG",
+          "cover": "covers/gamecube/gamecube-c4b90037.webp"
+        },
+        {
+          "name": "Baten Kaitos: Eternal Wings",
+          "genre": "RPG",
+          "cover": "covers/gamecube/gamecube-aa3ec92b.webp"
+        },
+        {
+          "name": "Tales of Symphonia",
+          "genre": "Action RPG",
+          "cover": "covers/gamecube/gamecube-032db00c.webp"
+        },
+        {
+          "name": "Fire Emblem: Path of Radiance",
+          "genre": "Tactical RPG",
+          "cover": "covers/gamecube/gamecube-b9354026.webp"
+        },
+        {
+          "name": "Ikaruga",
+          "genre": "Shoot 'em up",
+          "cover": "covers/gamecube/gamecube-51670c1f.webp"
+        },
+        {
+          "name": "Viewtiful Joe",
+          "genre": "Action, Platformer",
+          "cover": "covers/gamecube/gamecube-3f43ab10.webp"
+        }
+      ]
+    },
+    "Wii": {
+      "extensions": [
+        ".iso",
+        ".wbfs",
+        ".rvz"
+      ],
+      "igdb": 5,
+      "tgdb": 9,
+      "classics": [
+        {
+          "name": "The Legend of Zelda: Twilight Princess",
+          "genre": "Action-Adventure",
+          "cover": "covers/wii/wii-3b34c9da.webp"
+        },
+        {
+          "name": "The Legend of Zelda: Skyward Sword",
+          "genre": "Action-Adventure",
+          "cover": "covers/wii/wii-b0d2cd1e.webp"
+        },
+        {
+          "name": "Super Mario Galaxy",
+          "genre": "Platformer",
+          "cover": "covers/wii/wii-a3ed17d4.webp"
+        },
+        {
+          "name": "Super Mario Galaxy 2",
+          "genre": "Platformer",
+          "cover": "covers/wii/wii-3869104a.webp"
+        },
+        {
+          "name": "New Super Mario Bros. Wii",
+          "genre": "Platformer",
+          "cover": "covers/wii/wii-497f1ac0.webp"
+        },
+        {
+          "name": "Super Smash Bros. Brawl",
+          "genre": "Fighting",
+          "cover": "covers/wii/wii-9bc90f33.webp"
+        },
+        {
+          "name": "Mario Kart Wii",
+          "genre": "Racing",
+          "cover": "covers/wii/wii-79ca3a03.webp"
+        },
+        {
+          "name": "Metroid Prime 3: Corruption",
+          "genre": "First-Person Shooter, Action-Adventure",
+          "cover": "covers/wii/wii-5c996470.webp"
+        },
+        {
+          "name": "Metroid: Other M",
+          "genre": "Action-Adventure",
+          "cover": "covers/wii/wii-294078cd.webp"
+        },
+        {
+          "name": "Donkey Kong Country Returns",
+          "genre": "Platformer",
+          "cover": "covers/wii/wii-87225945.webp"
+        },
+        {
+          "name": "Kirby's Epic Yarn",
+          "genre": "Platformer",
+          "cover": "covers/wii/wii-af2486d4.webp"
+        },
+        {
+          "name": "Kirby's Return to Dream Land",
+          "genre": "Platformer",
+          "cover": "covers/wii/wii-2f261613.webp"
+        },
+        {
+          "name": "Fire Emblem: Radiant Dawn",
+          "genre": "Tactical RPG",
+          "cover": "covers/wii/wii-d790daa8.webp"
+        },
+        {
+          "name": "Xenoblade Chronicles",
+          "genre": "Action RPG",
+          "cover": "covers/wii/wii-752b70e7.webp"
+        },
+        {
+          "name": "The Last Story",
+          "genre": "Action RPG",
+          "cover": "covers/wii/wii-8b16b488.webp"
+        },
+        {
+          "name": "Sin and Punishment: Star Successor",
+          "genre": "Rail Shooter",
+          "cover": "covers/wii/wii-d2fbc811.webp"
+        },
+        {
+          "name": "Punch-Out!!",
+          "genre": "Sports, Fighting",
+          "cover": "covers/wii/wii-415df403.webp"
+        },
+        {
+          "name": "Wii Sports",
+          "genre": "Sports",
+          "cover": "covers/wii/wii-c9293f83.webp"
+        },
+        {
+          "name": "Wii Sports Resort",
+          "genre": "Sports",
+          "cover": "covers/wii/wii-235028ab.webp"
+        },
+        {
+          "name": "Resident Evil 4 Wii Edition",
+          "genre": "Survival Horror, Third-Person Shooter",
+          "cover": "covers/wii/wii-162dd99e.webp"
+        },
+        {
+          "name": "Okami",
+          "genre": "Action-Adventure",
+          "cover": "covers/wii/wii-d92f888f.webp"
+        },
+        {
+          "name": "No More Heroes",
+          "genre": "Action, Hack and Slash",
+          "cover": "covers/wii/wii-f24aad41.webp"
+        },
+        {
+          "name": "No More Heroes 2",
+          "genre": "Action, Hack and Slash"
+        },
+        {
+          "name": "Muramasa: The Demon Blade",
+          "genre": "Action, Hack and Slash",
+          "cover": "covers/wii/wii-2a5d28ce.webp"
+        },
+        {
+          "name": "Tatsunoko vs. Capcom",
+          "genre": "Fighting",
+          "cover": "covers/wii/wii-104e5d56.webp"
+        }
+      ]
+    },
+    "Wii U": {
+      "extensions": [
+        ".wux"
+      ],
+      "igdb": 41,
+      "tgdb": 38,
+      "classics": [
+        {
+          "name": "The Legend of Zelda: Breath of the Wild",
+          "genre": "Action-Adventure, Open World",
+          "cover": "covers/wii-u/wii-u-c284365b.webp"
+        },
+        {
+          "name": "The Legend of Zelda: The Wind Waker HD",
+          "genre": "Action-Adventure",
+          "cover": "covers/wii-u/wii-u-cdcaa721.webp"
+        },
+        {
+          "name": "The Legend of Zelda: Twilight Princess HD",
+          "genre": "Action-Adventure",
+          "cover": "covers/wii-u/wii-u-936d344d.webp"
+        },
+        {
+          "name": "Super Mario Maker",
+          "genre": "Platformer, Level Editor",
+          "cover": "covers/wii-u/wii-u-f737aa27.webp"
+        },
+        {
+          "name": "Super Mario 3D World",
+          "genre": "Platformer",
+          "cover": "covers/wii-u/wii-u-62a04be4.webp"
+        },
+        {
+          "name": "New Super Mario Bros. U",
+          "genre": "Platformer",
+          "cover": "covers/wii-u/wii-u-50364034.webp"
+        },
+        {
+          "name": "Super Smash Bros. for Wii U",
+          "genre": "Fighting",
+          "cover": "covers/wii-u/wii-u-a5d7ac2d.webp"
+        },
+        {
+          "name": "Mario Kart 8",
+          "genre": "Racing",
+          "cover": "covers/wii-u/wii-u-37874fe3.webp"
+        },
+        {
+          "name": "Donkey Kong Country: Tropical Freeze",
+          "genre": "Platformer",
+          "cover": "covers/wii-u/wii-u-9b566306.webp"
+        },
+        {
+          "name": "Pikmin 3",
+          "genre": "Real-Time Strategy",
+          "cover": "covers/wii-u/wii-u-6a7aee8d.webp"
+        },
+        {
+          "name": "Bayonetta 2",
+          "genre": "Action, Hack and Slash",
+          "cover": "covers/wii-u/wii-u-f10c3495.webp"
+        },
+        {
+          "name": "Splatoon",
+          "genre": "Third-Person Shooter",
+          "cover": "covers/wii-u/wii-u-257f4e69.webp"
+        },
+        {
+          "name": "Xenoblade Chronicles X",
+          "genre": "Action RPG, Open World",
+          "cover": "covers/wii-u/wii-u-ad6da29b.webp"
+        },
+        {
+          "name": "Captain Toad: Treasure Tracker",
+          "genre": "Puzzle, Adventure",
+          "cover": "covers/wii-u/wii-u-d8724a98.webp"
+        },
+        {
+          "name": "Kirby and the Rainbow Curse",
+          "genre": "Platformer",
+          "cover": "covers/wii-u/wii-u-d6d38e33.webp"
+        }
+      ]
+    },
+    "PlayStation": {
+      "extensions": [
+        ".bin",
+        ".cue",
+        ".chd"
+      ],
+      "igdb": 7,
+      "tgdb": 10,
+      "classics": [
+        {
+          "name": "Final Fantasy VII",
+          "genre": "RPG",
+          "cover": "covers/playstation/playstation-5eaf9610.webp"
+        },
+        {
+          "name": "Final Fantasy VIII",
+          "genre": "RPG",
+          "cover": "covers/playstation/playstation-683a2715.webp"
+        },
+        {
+          "name": "Final Fantasy IX",
+          "genre": "RPG",
+          "cover": "covers/playstation/playstation-6c109f39.webp"
+        },
+        {
+          "name": "Final Fantasy Tactics",
+          "genre": "Tactical RPG",
+          "cover": "covers/playstation/playstation-2ae3a059.webp"
+        },
+        {
+          "name": "Castlevania: Symphony of the Night",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/playstation/playstation-7bad71b0.webp"
+        },
+        {
+          "name": "Resident Evil",
+          "genre": "Survival Horror",
+          "cover": "covers/playstation/playstation-915e6662.webp"
+        },
+        {
+          "name": "Resident Evil 2",
+          "genre": "Survival Horror",
+          "cover": "covers/playstation/playstation-71fdfadd.webp"
+        },
+        {
+          "name": "Resident Evil 3: Nemesis",
+          "genre": "Survival Horror",
+          "cover": "covers/playstation/playstation-8db735b7.webp"
+        },
+        {
+          "name": "Metal Gear Solid",
+          "genre": "Stealth, Action-Adventure",
+          "cover": "covers/playstation/playstation-dbb5f657.webp"
+        },
+        {
+          "name": "Gran Turismo",
+          "genre": "Racing, Simulation",
+          "cover": "covers/playstation/playstation-70b72349.webp"
+        },
+        {
+          "name": "Gran Turismo 2",
+          "genre": "Racing, Simulation",
+          "cover": "covers/playstation/playstation-cd6ce228.webp"
+        },
+        {
+          "name": "Crash Bandicoot",
+          "genre": "Platformer",
+          "cover": "covers/playstation/playstation-30213ccc.webp"
+        },
+        {
+          "name": "Crash Bandicoot 2: Cortex Strikes Back",
+          "genre": "Platformer",
+          "cover": "covers/playstation/playstation-f77fe52e.webp"
+        },
+        {
+          "name": "Crash Bandicoot 3: Warped",
+          "genre": "Platformer",
+          "cover": "covers/playstation/playstation-e9918fe8.webp"
+        },
+        {
+          "name": "Crash Team Racing",
+          "genre": "Racing",
+          "cover": "covers/playstation/playstation-0333015d.webp"
+        },
+        {
+          "name": "Spyro the Dragon",
+          "genre": "Platformer",
+          "cover": "covers/playstation/playstation-5b785378.webp"
+        },
+        {
+          "name": "Spyro 2: Ripto's Rage",
+          "genre": "Platformer",
+          "cover": "covers/playstation/playstation-d57a1492.webp"
+        },
+        {
+          "name": "Spyro: Year of the Dragon",
+          "genre": "Platformer",
+          "cover": "covers/playstation/playstation-c8580f43.webp"
+        },
+        {
+          "name": "Tomb Raider",
+          "genre": "Action-Adventure",
+          "cover": "covers/playstation/playstation-1a31dc8a.webp"
+        },
+        {
+          "name": "Tomb Raider II",
+          "genre": "Action-Adventure",
+          "cover": "covers/playstation/playstation-dfdf82df.webp"
+        },
+        {
+          "name": "Tekken 2",
+          "genre": "Fighting",
+          "cover": "covers/playstation/playstation-d53b189d.webp"
+        },
+        {
+          "name": "Tekken 3",
+          "genre": "Fighting",
+          "cover": "covers/playstation/playstation-2276200d.webp"
+        },
+        {
+          "name": "Street Fighter Alpha 3",
+          "genre": "Fighting",
+          "cover": "covers/playstation/playstation-edf5f5d6.webp"
+        },
+        {
+          "name": "Marvel vs. Capcom",
+          "genre": "Fighting",
+          "cover": "covers/playstation/playstation-a30e7e11.webp"
+        },
+        {
+          "name": "Tony Hawk's Pro Skater",
+          "genre": "Sports, Skateboarding",
+          "cover": "covers/playstation/playstation-14f9e94a.webp"
+        },
+        {
+          "name": "Tony Hawk's Pro Skater 2",
+          "genre": "Sports, Skateboarding",
+          "cover": "covers/playstation/playstation-b7c81a33.webp"
+        },
+        {
+          "name": "Chrono Cross",
+          "genre": "RPG",
+          "cover": "covers/playstation/playstation-856c8fa5.webp"
+        },
+        {
+          "name": "Xenogears",
+          "genre": "RPG",
+          "cover": "covers/playstation/playstation-36291f97.webp"
+        },
+        {
+          "name": "Vagrant Story",
+          "genre": "Action RPG",
+          "cover": "covers/playstation/playstation-691a78c8.webp"
+        },
+        {
+          "name": "Parasite Eve",
+          "genre": "RPG, Survival Horror",
+          "cover": "covers/playstation/playstation-06ef6baf.webp"
+        },
+        {
+          "name": "Parasite Eve II",
+          "genre": "Survival Horror, Action RPG",
+          "cover": "covers/playstation/playstation-b944cfdd.webp"
+        },
+        {
+          "name": "Silent Hill",
+          "genre": "Survival Horror",
+          "cover": "covers/playstation/playstation-bdcb8572.webp"
+        },
+        {
+          "name": "Medievil",
+          "genre": "Action-Adventure",
+          "cover": "covers/playstation/playstation-a7d3cb83.webp"
+        },
+        {
+          "name": "Ape Escape",
+          "genre": "Platformer, Action",
+          "cover": "covers/playstation/playstation-dd4bf688.webp"
+        },
+        {
+          "name": "Wild Arms",
+          "genre": "RPG",
+          "cover": "covers/playstation/playstation-80489611.webp"
+        },
+        {
+          "name": "Wild Arms 2",
+          "genre": "RPG",
+          "cover": "covers/playstation/playstation-9b879a2a.webp"
+        },
+        {
+          "name": "Castlevania Chronicles",
+          "genre": "Action, Platformer",
+          "cover": "covers/playstation/playstation-95b775fb.webp"
+        },
+        {
+          "name": "Mega Man Legends",
+          "genre": "Action-Adventure",
+          "cover": "covers/playstation/playstation-1c8a6240.webp"
+        },
+        {
+          "name": "Mega Man X4",
+          "genre": "Action, Platformer",
+          "cover": "covers/playstation/playstation-82f5bb58.webp"
+        },
+        {
+          "name": "Mega Man X5",
+          "genre": "Action, Platformer",
+          "cover": "covers/playstation/playstation-aaa561c3.webp"
+        },
+        {
+          "name": "Mega Man X6",
+          "genre": "Action, Platformer",
+          "cover": "covers/playstation/playstation-8e2fc376.webp"
+        },
+        {
+          "name": "Breath of Fire III",
+          "genre": "RPG",
+          "cover": "covers/playstation/playstation-df57191d.webp"
+        },
+        {
+          "name": "Breath of Fire IV",
+          "genre": "RPG",
+          "cover": "covers/playstation/playstation-4980ff2b.webp"
+        }
+      ]
+    },
+    "PSP": {
+      "extensions": [
+        ".cso",
+        ".pbp"
+      ],
+      "igdb": 38,
+      "tgdb": 13,
+      "classics": [
+        {
+          "name": "God of War: Chains of Olympus",
+          "genre": "Action, Hack and Slash",
+          "cover": "covers/psp/psp-77269f41.webp"
+        },
+        {
+          "name": "God of War: Ghost of Sparta",
+          "genre": "Action, Hack and Slash",
+          "cover": "covers/psp/psp-d4772788.webp"
+        },
+        {
+          "name": "Metal Gear Solid: Peace Walker",
+          "genre": "Stealth, Action",
+          "cover": "covers/psp/psp-37995049.webp"
+        },
+        {
+          "name": "Metal Gear Solid: Portable Ops",
+          "genre": "Stealth, Action",
+          "cover": "covers/psp/psp-63151a36.webp"
+        },
+        {
+          "name": "Final Fantasy Tactics: The War of the Lions",
+          "genre": "Tactical RPG",
+          "cover": "covers/psp/psp-72702e28.webp"
+        },
+        {
+          "name": "Crisis Core: Final Fantasy VII",
+          "genre": "Action RPG",
+          "cover": "covers/psp/psp-80ed76d3.webp"
+        },
+        {
+          "name": "Dissidia: Final Fantasy",
+          "genre": "Fighting, Action RPG",
+          "cover": "covers/psp/psp-ae8e479f.webp"
+        },
+        {
+          "name": "Kingdom Hearts: Birth by Sleep",
+          "genre": "Action RPG",
+          "cover": "covers/psp/psp-ec7fc126.webp"
+        },
+        {
+          "name": "Castlevania: The Dracula X Chronicles",
+          "genre": "Action-Adventure, Metroidvania",
+          "cover": "covers/psp/psp-704be8be.webp"
+        },
+        {
+          "name": "Mega Man Powered Up",
+          "genre": "Action, Platformer",
+          "cover": "covers/psp/psp-feebc9ae.webp"
+        },
+        {
+          "name": "Mega Man Maverick Hunter X",
+          "genre": "Action, Platformer",
+          "cover": "covers/psp/psp-fbb2953f.webp"
+        },
+        {
+          "name": "Persona 3 Portable",
+          "genre": "RPG, Social Simulation",
+          "cover": "covers/psp/psp-47cef35e.webp"
+        },
+        {
+          "name": "Persona 2: Innocent Sin",
+          "genre": "RPG",
+          "cover": "covers/psp/psp-dd2157d7.webp"
+        },
+        {
+          "name": "Lumines",
+          "genre": "Puzzle, Rhythm",
+          "cover": "covers/psp/psp-99035499.webp"
+        },
+        {
+          "name": "Wipeout Pure",
+          "genre": "Racing",
+          "cover": "covers/psp/psp-b7f17996.webp"
+        },
+        {
+          "name": "Wipeout Pulse",
+          "genre": "Racing",
+          "cover": "covers/psp/psp-c4e57a54.webp"
+        },
+        {
+          "name": "Grand Theft Auto: Liberty City Stories",
+          "genre": "Action-Adventure",
+          "cover": "covers/psp/psp-17051ac8.webp"
+        },
+        {
+          "name": "Grand Theft Auto: Vice City Stories",
+          "genre": "Action-Adventure",
+          "cover": "covers/psp/psp-34d6a61b.webp"
+        },
+        {
+          "name": "Soulcalibur: Broken Destiny",
+          "genre": "Fighting",
+          "cover": "covers/psp/psp-316101ab.webp"
+        },
+        {
+          "name": "Street Fighter Alpha 3 Max",
+          "genre": "Fighting",
+          "cover": "covers/psp/psp-a0c4e459.webp"
+        },
+        {
+          "name": "Tekken: Dark Resurrection",
+          "genre": "Fighting",
+          "cover": "covers/psp/psp-242b42b5.webp"
+        },
+        {
+          "name": "Monster Hunter Freedom Unite",
+          "genre": "Action RPG",
+          "cover": "covers/psp/psp-93285255.webp"
+        },
+        {
+          "name": "Patapon",
+          "genre": "Rhythm, Strategy",
+          "cover": "covers/psp/psp-987e844c.webp"
+        },
+        {
+          "name": "Patapon 2",
+          "genre": "Rhythm, Strategy",
+          "cover": "covers/psp/psp-4a26154e.webp"
+        },
+        {
+          "name": "LocoRoco",
+          "genre": "Platformer, Puzzle",
+          "cover": "covers/psp/psp-dde4bbc7.webp"
+        },
+        {
+          "name": "LocoRoco 2",
+          "genre": "Platformer, Puzzle",
+          "cover": "covers/psp/psp-686364a6.webp"
+        },
+        {
+          "name": "Valkyria Chronicles II",
+          "genre": "Tactical RPG",
+          "cover": "covers/psp/psp-1b93e39e.webp"
+        },
+        {
+          "name": "Jeanne d'Arc",
+          "genre": "Tactical RPG",
+          "cover": "covers/psp/psp-b3bcbd55.webp"
+        },
+        {
+          "name": "Tactics Ogre: Let Us Cling Together (PSP)",
+          "genre": "Tactical RPG"
+        },
+        {
+          "name": "Half-Minute Hero",
+          "genre": "RPG, Action",
+          "cover": "covers/psp/psp-a18132d6.webp"
+        }
+      ]
+    },
+    "Sega Genesis / Mega Drive": {
+      "extensions": [
+        ".gen",
+        ".md",
+        ".smd"
+      ],
+      "igdb": 29,
+      "tgdb": 18,
+      "classics": [
+        {
+          "name": "Sonic the Hedgehog",
+          "genre": "Platformer",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-fb61a805.webp"
+        },
+        {
+          "name": "Sonic the Hedgehog 2",
+          "genre": "Platformer",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-9f1b167b.webp"
+        },
+        {
+          "name": "Sonic the Hedgehog 3",
+          "genre": "Platformer",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-f25627a3.webp"
+        },
+        {
+          "name": "Sonic & Knuckles",
+          "genre": "Platformer",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-9142f0d2.webp"
+        },
+        {
+          "name": "Streets of Rage",
+          "genre": "Beat 'em up",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-47f3dcc1.webp"
+        },
+        {
+          "name": "Streets of Rage 2",
+          "genre": "Beat 'em up",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-1c03d55c.webp"
+        },
+        {
+          "name": "Streets of Rage 3",
+          "genre": "Beat 'em up",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-21077726.webp"
+        },
+        {
+          "name": "Golden Axe",
+          "genre": "Beat 'em up",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-189ad59f.webp"
+        },
+        {
+          "name": "Golden Axe II",
+          "genre": "Beat 'em up",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-541dd6a4.webp"
+        },
+        {
+          "name": "Golden Axe III",
+          "genre": "Beat 'em up",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-5c6bf54f.webp"
+        },
+        {
+          "name": "Phantasy Star II",
+          "genre": "RPG",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-95247cb3.webp"
+        },
+        {
+          "name": "Phantasy Star III",
+          "genre": "RPG",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-9d8bf861.webp"
+        },
+        {
+          "name": "Phantasy Star IV",
+          "genre": "RPG",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-37a63348.webp"
+        },
+        {
+          "name": "Castlevania: Bloodlines",
+          "genre": "Action, Platformer",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-8709a8dd.webp"
+        },
+        {
+          "name": "Contra: Hard Corps",
+          "genre": "Run and Gun",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-36f766d9.webp"
+        },
+        {
+          "name": "Gunstar Heroes",
+          "genre": "Run and Gun, Action",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-c90ce0b0.webp"
+        },
+        {
+          "name": "Thunder Force III",
+          "genre": "Shoot 'em up",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-0157b6f8.webp"
+        },
+        {
+          "name": "Thunder Force IV",
+          "genre": "Shoot 'em up",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-f6c605b2.webp"
+        },
+        {
+          "name": "Comix Zone",
+          "genre": "Beat 'em up, Action",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-1bdbe88c.webp"
+        },
+        {
+          "name": "Earthworm Jim",
+          "genre": "Platformer, Run and Gun",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-86d8aea5.webp"
+        },
+        {
+          "name": "Earthworm Jim 2",
+          "genre": "Platformer, Run and Gun",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-5f23998f.webp"
+        },
+        {
+          "name": "Ecco the Dolphin",
+          "genre": "Action-Adventure",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-d67c5327.webp"
+        },
+        {
+          "name": "ToeJam & Earl",
+          "genre": "Roguelike, Action",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-ecc64907.webp"
+        },
+        {
+          "name": "Rocket Knight Adventures",
+          "genre": "Action, Platformer",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-6cfedd12.webp"
+        },
+        {
+          "name": "Vectorman",
+          "genre": "Run and Gun, Platformer",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-2bf43fff.webp"
+        },
+        {
+          "name": "Mortal Kombat II",
+          "genre": "Fighting",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-5dc46b48.webp"
+        },
+        {
+          "name": "Street Fighter II: Special Champion Edition",
+          "genre": "Fighting",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-db38b798.webp"
+        },
+        {
+          "name": "Mega Man: The Wily Wars",
+          "genre": "Action, Platformer",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-48f92bad.webp"
+        },
+        {
+          "name": "Aladdin",
+          "genre": "Platformer, Action",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-822f3e5b.webp"
+        },
+        {
+          "name": "The Lion King",
+          "genre": "Platformer, Action",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-3ce58d45.webp"
+        },
+        {
+          "name": "Shinobi III",
+          "genre": "Action, Platformer",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-338f7c6b.webp"
+        },
+        {
+          "name": "Altered Beast",
+          "genre": "Beat 'em up",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-33ab2c35.webp"
+        },
+        {
+          "name": "Ristar",
+          "genre": "Platformer",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-b1a10333.webp"
+        },
+        {
+          "name": "Dynamite Headdy",
+          "genre": "Platformer",
+          "cover": "covers/sega-genesis-mega-drive/sega-genesis-mega-drive-d7a728f4.webp"
+        }
+      ]
+    },
+    "Sega 32X": {
+      "extensions": [
+        ".32x"
+      ],
+      "igdb": 30,
+      "tgdb": 16,
+      "classics": [
+        {
+          "name": "Knuckles' Chaotix",
+          "genre": "Platformer",
+          "cover": "covers/sega-32x/sega-32x-ac96e250.webp"
+        },
+        {
+          "name": "Virtua Fighter",
+          "genre": "Fighting",
+          "cover": "covers/sega-32x/sega-32x-5465ce5b.webp"
+        },
+        {
+          "name": "Virtua Racing Deluxe",
+          "genre": "Racing",
+          "cover": "covers/sega-32x/sega-32x-ba5949ae.webp"
+        },
+        {
+          "name": "Star Wars Arcade",
+          "genre": "Rail Shooter",
+          "cover": "covers/sega-32x/sega-32x-6edd24d4.webp"
+        },
+        {
+          "name": "After Burner Complete",
+          "genre": "Rail Shooter"
+        },
+        {
+          "name": "Mortal Kombat II (32X)",
+          "genre": "Fighting"
+        },
+        {
+          "name": "Metal Head",
+          "genre": "Action, Mecha",
+          "cover": "covers/sega-32x/sega-32x-c4f485b2.webp"
+        },
+        {
+          "name": "Doom (32X)",
+          "genre": "First-Person Shooter",
+          "cover": "covers/sega-32x/sega-32x-02f577e1.webp"
+        },
+        {
+          "name": "NBA Jam: Tournament Edition",
+          "genre": "Sports",
+          "cover": "covers/sega-32x/sega-32x-3be9599e.webp"
+        }
+      ]
+    },
+    "Sega Master System": {
+      "extensions": [
+        ".sms"
+      ],
+      "igdb": 35,
+      "tgdb": 20,
+      "classics": [
+        {
+          "name": "Sonic the Hedgehog (SMS)",
+          "genre": "Platformer",
+          "cover": "covers/sega-master-system/sega-master-system-f9a86858.webp"
+        },
+        {
+          "name": "Sonic the Hedgehog 2 (SMS)",
+          "genre": "Platformer"
+        },
+        {
+          "name": "Phantasy Star",
+          "genre": "RPG",
+          "cover": "covers/sega-master-system/sega-master-system-59ba7db4.webp"
+        },
+        {
+          "name": "Wonder Boy",
+          "genre": "Platformer, Action",
+          "cover": "covers/sega-master-system/sega-master-system-dcba1ea9.webp"
+        },
+        {
+          "name": "Wonder Boy III: The Dragon's Trap",
+          "genre": "Action RPG, Platformer",
+          "cover": "covers/sega-master-system/sega-master-system-ade48292.webp"
+        },
+        {
+          "name": "Alex Kidd in Miracle World",
+          "genre": "Platformer",
+          "cover": "covers/sega-master-system/sega-master-system-6c4d882a.webp"
+        },
+        {
+          "name": "Alex Kidd: The Lost Stars",
+          "genre": "Platformer",
+          "cover": "covers/sega-master-system/sega-master-system-a97e359e.webp"
+        },
+        {
+          "name": "Castlevania (SMS)",
+          "genre": "Action, Platformer"
+        },
+        {
+          "name": "Double Dragon (SMS)",
+          "genre": "Beat 'em up"
+        },
+        {
+          "name": "Shinobi (SMS)",
+          "genre": "Action, Platformer"
+        },
+        {
+          "name": "After Burner (SMS)",
+          "genre": "Rail Shooter"
+        },
+        {
+          "name": "Populous",
+          "genre": "God Game, Strategy",
+          "cover": "covers/sega-master-system/sega-master-system-33ab9793.webp"
+        },
+        {
+          "name": "Mickey Mouse: Castle of Illusion",
+          "genre": "Platformer",
+          "cover": "covers/sega-master-system/sega-master-system-82698641.webp"
+        },
+        {
+          "name": "R-Type",
+          "genre": "Shoot 'em up",
+          "cover": "covers/sega-master-system/sega-master-system-7dab6ce9.webp"
+        },
+        {
+          "name": "Golvellius: Valley of Doom",
+          "genre": "Action RPG",
+          "cover": "covers/sega-master-system/sega-master-system-92edba1d.webp"
+        }
+      ]
+    },
+    "Game Gear": {
+      "extensions": [
+        ".gg"
+      ],
+      "igdb": 33,
+      "tgdb": 26,
+      "classics": [
+        {
+          "name": "Sonic the Hedgehog (GG)",
+          "genre": "Platformer"
+        },
+        {
+          "name": "Sonic the Hedgehog 2 (GG)",
+          "genre": "Platformer"
+        },
+        {
+          "name": "Sonic Triple Trouble",
+          "genre": "Platformer",
+          "cover": "covers/game-gear/game-gear-50b0d8c6.webp"
+        },
+        {
+          "name": "Sonic Drift 2",
+          "genre": "Racing",
+          "cover": "covers/game-gear/game-gear-04024063.webp"
+        },
+        {
+          "name": "Shinobi (GG)",
+          "genre": "Action, Platformer"
+        },
+        {
+          "name": "Ninja Gaiden (GG)",
+          "genre": "Action, Platformer"
+        },
+        {
+          "name": "Mortal Kombat (GG)",
+          "genre": "Fighting"
+        },
+        {
+          "name": "Mortal Kombat II (GG)",
+          "genre": "Fighting"
+        },
+        {
+          "name": "Street Fighter II (GG)",
+          "genre": "Fighting"
+        },
+        {
+          "name": "Gunstar Heroes (GG)",
+          "genre": "Run and Gun"
+        },
+        {
+          "name": "Defenders of Oasis",
+          "genre": "RPG",
+          "cover": "covers/game-gear/game-gear-78938a4b.webp"
+        },
+        {
+          "name": "Baku Baku Animal",
+          "genre": "Puzzle",
+          "cover": "covers/game-gear/game-gear-455f6e04.webp"
+        },
+        {
+          "name": "The GG Shinobi",
+          "genre": "Action, Platformer"
+        },
+        {
+          "name": "Castle of Illusion (GG)",
+          "genre": "Platformer"
+        },
+        {
+          "name": "Ristar (GG)",
+          "genre": "Platformer"
+        }
+      ]
+    },
+    "Dreamcast": {
+      "extensions": [
+        ".gdi",
+        ".chd"
+      ],
+      "igdb": 23,
+      "tgdb": 13,
+      "classics": [
+        {
+          "name": "Sonic Adventure",
+          "genre": "Platformer, Action",
+          "cover": "covers/dreamcast/dreamcast-770a0fec.webp"
+        },
+        {
+          "name": "Sonic Adventure 2",
+          "genre": "Platformer, Action",
+          "cover": "covers/dreamcast/dreamcast-ba518c3e.webp"
+        },
+        {
+          "name": "Shenmue",
+          "genre": "Action-Adventure",
+          "cover": "covers/dreamcast/dreamcast-82ace556.webp"
+        },
+        {
+          "name": "Shenmue II",
+          "genre": "Action-Adventure",
+          "cover": "covers/dreamcast/dreamcast-f58a66e0.webp"
+        },
+        {
+          "name": "Jet Set Radio",
+          "genre": "Action, Platformer",
+          "cover": "covers/dreamcast/dreamcast-afdee3e7.webp"
+        },
+        {
+          "name": "Skies of Arcadia",
+          "genre": "RPG",
+          "cover": "covers/dreamcast/dreamcast-d2609495.webp"
+        },
+        {
+          "name": "Power Stone",
+          "genre": "Fighting",
+          "cover": "covers/dreamcast/dreamcast-f2a4be53.webp"
+        },
+        {
+          "name": "Power Stone 2",
+          "genre": "Fighting",
+          "cover": "covers/dreamcast/dreamcast-552edce9.webp"
+        },
+        {
+          "name": "Marvel vs. Capcom 2",
+          "genre": "Fighting",
+          "cover": "covers/dreamcast/dreamcast-899bb68f.webp"
+        },
+        {
+          "name": "Soul Calibur",
+          "genre": "Fighting",
+          "cover": "covers/dreamcast/dreamcast-9ed87baf.webp"
+        },
+        {
+          "name": "Crazy Taxi",
+          "genre": "Racing, Action",
+          "cover": "covers/dreamcast/dreamcast-fbd56faa.webp"
+        },
+        {
+          "name": "Crazy Taxi 2",
+          "genre": "Racing, Action",
+          "cover": "covers/dreamcast/dreamcast-9886882a.webp"
+        },
+        {
+          "name": "Resident Evil: Code Veronica",
+          "genre": "Survival Horror",
+          "cover": "covers/dreamcast/dreamcast-463d879b.webp"
+        },
+        {
+          "name": "Phantasy Star Online",
+          "genre": "Action RPG, MMORPG",
+          "cover": "covers/dreamcast/dreamcast-90505fdc.webp"
+        },
+        {
+          "name": "Ikaruga",
+          "genre": "Shoot 'em up",
+          "cover": "covers/dreamcast/dreamcast-b62a58a3.webp"
+        },
+        {
+          "name": "Bangai-O",
+          "genre": "Shoot 'em up, Action",
+          "cover": "covers/dreamcast/dreamcast-9df0cd18.webp"
+        },
+        {
+          "name": "Grandia II",
+          "genre": "RPG",
+          "cover": "covers/dreamcast/dreamcast-c3f6b876.webp"
+        },
+        {
+          "name": "Rayman 2: The Great Escape",
+          "genre": "Platformer",
+          "cover": "covers/dreamcast/dreamcast-e190bbc3.webp"
+        },
+        {
+          "name": "Cannon Spike",
+          "genre": "Run and Gun",
+          "cover": "covers/dreamcast/dreamcast-d32ae6d6.webp"
+        },
+        {
+          "name": "Space Channel 5",
+          "genre": "Rhythm",
+          "cover": "covers/dreamcast/dreamcast-19758bca.webp"
+        },
+        {
+          "name": "Seaman",
+          "genre": "Simulation",
+          "cover": "covers/dreamcast/dreamcast-e269a3f1.webp"
+        },
+        {
+          "name": "Ecco the Dolphin: Defender of the Future",
+          "genre": "Action-Adventure",
+          "cover": "covers/dreamcast/dreamcast-8f3444f9.webp"
+        },
+        {
+          "name": "House of the Dead 2",
+          "genre": "Rail Shooter, Survival Horror",
+          "cover": "covers/dreamcast/dreamcast-c1026d4d.webp"
+        },
+        {
+          "name": "Virtua Fighter 3tb",
+          "genre": "Fighting",
+          "cover": "covers/dreamcast/dreamcast-65d0fc79.webp"
+        }
+      ]
+    },
+    "Atari 2600": {
+      "extensions": [
+        ".a26"
+      ],
+      "igdb": 59,
+      "tgdb": 22,
+      "classics": [
+        {
+          "name": "Pitfall!",
+          "genre": "Platformer, Action",
+          "cover": "covers/atari-2600/atari-2600-a6629ab9.webp"
+        },
+        {
+          "name": "Pitfall II: Lost Caverns",
+          "genre": "Platformer, Action",
+          "cover": "covers/atari-2600/atari-2600-0ec87e1a.webp"
+        },
+        {
+          "name": "Space Invaders",
+          "genre": "Shoot 'em up",
+          "cover": "covers/atari-2600/atari-2600-d0c4ad37.webp"
+        },
+        {
+          "name": "Asteroids",
+          "genre": "Shoot 'em up",
+          "cover": "covers/atari-2600/atari-2600-e2f8eb1f.webp"
+        },
+        {
+          "name": "Missile Command",
+          "genre": "Shoot 'em up",
+          "cover": "covers/atari-2600/atari-2600-92da5806.webp"
+        },
+        {
+          "name": "Centipede",
+          "genre": "Shoot 'em up",
+          "cover": "covers/atari-2600/atari-2600-025602a1.webp"
+        },
+        {
+          "name": "Frogger",
+          "genre": "Action",
+          "cover": "covers/atari-2600/atari-2600-279f1520.webp"
+        },
+        {
+          "name": "Berzerk",
+          "genre": "Shoot 'em up, Action",
+          "cover": "covers/atari-2600/atari-2600-a13a7ee0.webp"
+        },
+        {
+          "name": "River Raid",
+          "genre": "Shoot 'em up",
+          "cover": "covers/atari-2600/atari-2600-e78954a2.webp"
+        },
+        {
+          "name": "Yars' Revenge",
+          "genre": "Shoot 'em up",
+          "cover": "covers/atari-2600/atari-2600-bb49ce1b.webp"
+        },
+        {
+          "name": "Enduro",
+          "genre": "Racing",
+          "cover": "covers/atari-2600/atari-2600-977d2955.webp"
+        },
+        {
+          "name": "Kaboom!",
+          "genre": "Action",
+          "cover": "covers/atari-2600/atari-2600-4b93a69f.webp"
+        },
+        {
+          "name": "Combat",
+          "genre": "Shooter",
+          "cover": "covers/atari-2600/atari-2600-9e944330.webp"
+        },
+        {
+          "name": "Adventure",
+          "genre": "Action-Adventure",
+          "cover": "covers/atari-2600/atari-2600-ccc1ead6.webp"
+        },
+        {
+          "name": "Breakout",
+          "genre": "Arcade",
+          "cover": "covers/atari-2600/atari-2600-6bc4abec.webp"
+        },
+        {
+          "name": "Pong",
+          "genre": "Sports, Arcade",
+          "cover": "covers/atari-2600/atari-2600-4cce379a.webp"
+        },
+        {
+          "name": "Donkey Kong (2600)",
+          "genre": "Platformer"
+        },
+        {
+          "name": "Pac-Man (2600)",
+          "genre": "Maze, Arcade"
+        },
+        {
+          "name": "Demon Attack",
+          "genre": "Shoot 'em up",
+          "cover": "covers/atari-2600/atari-2600-0f586f4b.webp"
+        },
+        {
+          "name": "Haunted House",
+          "genre": "Adventure",
+          "cover": "covers/atari-2600/atari-2600-5019390b.webp"
+        }
+      ]
+    },
+    "Atari 5200": {
+      "extensions": [
+        ".a52"
+      ],
+      "igdb": 66,
+      "tgdb": 27,
+      "classics": [
+        {
+          "name": "Pac-Man (5200)",
+          "genre": "Maze, Arcade"
+        },
+        {
+          "name": "Space Invaders (5200)",
+          "genre": "Shoot 'em up"
+        },
+        {
+          "name": "Defender",
+          "genre": "Shoot 'em up"
+        },
+        {
+          "name": "Centipede (5200)",
+          "genre": "Shoot 'em up"
+        },
+        {
+          "name": "Asteroids (5200)",
+          "genre": "Shoot 'em up"
+        },
+        {
+          "name": "Missile Command (5200)",
+          "genre": "Shoot 'em up"
+        },
+        {
+          "name": "Joust (5200)",
+          "genre": "Platformer, Arcade"
+        },
+        {
+          "name": "Pitfall! (5200)",
+          "genre": "Platformer, Action"
+        },
+        {
+          "name": "Berzerk (5200)",
+          "genre": "Shoot 'em up"
+        },
+        {
+          "name": "Pole Position",
+          "genre": "Racing",
+          "cover": "covers/atari-5200/atari-5200-15886796.webp"
+        }
+      ]
+    },
+    "Atari 7800": {
+      "extensions": [
+        ".a78"
+      ],
+      "igdb": 60,
+      "tgdb": 28,
+      "classics": [
+        {
+          "name": "Pole Position II",
+          "genre": "Racing",
+          "cover": "covers/atari-7800/atari-7800-76725f7a.webp"
+        },
+        {
+          "name": "Ms. Pac-Man",
+          "genre": "Maze, Arcade",
+          "cover": "covers/atari-7800/atari-7800-ed4c697b.webp"
+        },
+        {
+          "name": "Centipede (7800)",
+          "genre": "Shoot 'em up"
+        },
+        {
+          "name": "Joust (7800)",
+          "genre": "Platformer, Arcade"
+        },
+        {
+          "name": "Asteroids (7800)",
+          "genre": "Shoot 'em up"
+        },
+        {
+          "name": "Galaga",
+          "genre": "Shoot 'em up",
+          "cover": "covers/atari-7800/atari-7800-3c718be9.webp"
+        },
+        {
+          "name": "Robotron: 2084",
+          "genre": "Shoot 'em up",
+          "cover": "covers/atari-7800/atari-7800-72a46314.webp"
+        },
+        {
+          "name": "Commando",
+          "genre": "Run and Gun",
+          "cover": "covers/atari-7800/atari-7800-e7d8803d.webp"
+        },
+        {
+          "name": "Dark Chambers",
+          "genre": "Action-Adventure, Dungeon Crawler",
+          "cover": "covers/atari-7800/atari-7800-88712dd6.webp"
+        },
+        {
+          "name": "Desert Falcon",
+          "genre": "Shoot 'em up",
+          "cover": "covers/atari-7800/atari-7800-7255b806.webp"
+        },
+        {
+          "name": "Food Fight",
+          "genre": "Action, Arcade",
+          "cover": "covers/atari-7800/atari-7800-b6344bfa.webp"
+        },
+        {
+          "name": "Xevious",
+          "genre": "Shoot 'em up"
+        }
+      ]
+    },
+    "Atari Lynx": {
+      "extensions": [
+        ".lnx"
+      ],
+      "igdb": 28,
+      "tgdb": 28,
+      "classics": [
+        {
+          "name": "California Games",
+          "genre": "Sports",
+          "cover": "covers/atari-lynx/atari-lynx-0b7e1f6b.webp"
+        },
+        {
+          "name": "Chip's Challenge",
+          "genre": "Puzzle",
+          "cover": "covers/atari-lynx/atari-lynx-720ff697.webp"
+        },
+        {
+          "name": "Batman Returns",
+          "genre": "Action, Platformer",
+          "cover": "covers/atari-lynx/atari-lynx-8b618338.webp"
+        },
+        {
+          "name": "Rygar",
+          "genre": "Action-Adventure",
+          "cover": "covers/atari-lynx/atari-lynx-775543ce.webp"
+        },
+        {
+          "name": "Gauntlet: The Third Encounter",
+          "genre": "Dungeon Crawler, Action",
+          "cover": "covers/atari-lynx/atari-lynx-938660ce.webp"
+        },
+        {
+          "name": "Ninja Gaiden III (Lynx)",
+          "genre": "Action, Platformer"
+        },
+        {
+          "name": "Bill & Ted's Excellent Adventure",
+          "genre": "Adventure",
+          "cover": "covers/atari-lynx/atari-lynx-5cdd7caf.webp"
+        },
+        {
+          "name": "Paperboy",
+          "genre": "Action, Sports",
+          "cover": "covers/atari-lynx/atari-lynx-6b248f84.webp"
+        },
+        {
+          "name": "Rampart",
+          "genre": "Strategy, Action",
+          "cover": "covers/atari-lynx/atari-lynx-f8e5102a.webp"
+        },
+        {
+          "name": "Xenophobe",
+          "genre": "Shoot 'em up",
+          "cover": "covers/atari-lynx/atari-lynx-4e68d22f.webp"
+        }
+      ]
+    },
+    "PC Engine / TurboGrafx-16": {
+      "extensions": [
+        ".pce"
+      ],
+      "igdb": 22,
+      "tgdb": 34,
+      "classics": [
+        {
+          "name": "Bomberman '93",
+          "genre": "Action, Maze",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-97c5addb.webp"
+        },
+        {
+          "name": "Bomberman '94",
+          "genre": "Action, Maze",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-7a437ad1.webp"
+        },
+        {
+          "name": "Air Zonk",
+          "genre": "Shoot 'em up",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-ea4bfcbd.webp"
+        },
+        {
+          "name": "Blazing Lazers",
+          "genre": "Shoot 'em up",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-ac04abd5.webp"
+        },
+        {
+          "name": "R-Type (PCE)",
+          "genre": "Shoot 'em up"
+        },
+        {
+          "name": "Dungeon Explorer",
+          "genre": "Dungeon Crawler, Action",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-b6b2f048.webp"
+        },
+        {
+          "name": "Splatterhouse",
+          "genre": "Beat 'em up, Horror",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-a9c6972b.webp"
+        },
+        {
+          "name": "Neutopia",
+          "genre": "Action-Adventure",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-f60f24f0.webp"
+        },
+        {
+          "name": "Neutopia II",
+          "genre": "Action-Adventure",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-abb9b860.webp"
+        },
+        {
+          "name": "Soldier Blade",
+          "genre": "Shoot 'em up",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-548c9ee6.webp"
+        },
+        {
+          "name": "Castlevania: Rondo of Blood",
+          "genre": "Action, Platformer",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-1625f93e.webp"
+        },
+        {
+          "name": "Lords of Thunder",
+          "genre": "Shoot 'em up",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-84fe4c6a.webp"
+        },
+        {
+          "name": "Gate of Thunder",
+          "genre": "Shoot 'em up",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-a4a2670e.webp"
+        },
+        {
+          "name": "Y's Book I & II",
+          "genre": "Action RPG"
+        },
+        {
+          "name": "Bonk's Adventure",
+          "genre": "Platformer",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-9de9cfa9.webp"
+        },
+        {
+          "name": "Bonk's Revenge",
+          "genre": "Platformer",
+          "cover": "covers/pc-engine-turbografx-16/pc-engine-turbografx-16-781fbf34.webp"
+        }
+      ]
+    },
+    "Famicom Disk System": {
+      "extensions": [
+        ".fds"
+      ],
+      "igdb": 18,
+      "tgdb": 7,
+      "classics": [
+        {
+          "name": "The Legend of Zelda (FDS)",
+          "genre": "Action-Adventure"
+        },
+        {
+          "name": "Zelda II: The Adventure of Link (FDS)",
+          "genre": "Action-Adventure, RPG"
+        },
+        {
+          "name": "Metroid (FDS)",
+          "genre": "Action-Adventure, Metroidvania"
+        },
+        {
+          "name": "Castlevania (FDS)",
+          "genre": "Action, Platformer"
+        },
+        {
+          "name": "Kid Icarus (FDS)",
+          "genre": "Action, Platformer, Shoot 'em up"
+        },
+        {
+          "name": "Doki Doki Panic",
+          "genre": "Platformer",
+          "cover": "covers/famicom-disk-system/famicom-disk-system-c1a8a8df.webp"
+        },
+        {
+          "name": "Super Mario Bros.: The Lost Levels",
+          "genre": "Platformer",
+          "cover": "covers/famicom-disk-system/famicom-disk-system-025f76b6.webp"
+        },
+        {
+          "name": "Mega Man (FDS)",
+          "genre": "Action, Platformer"
+        },
+        {
+          "name": "Balloon Fight (FDS)",
+          "genre": "Platformer, Arcade"
+        },
+        {
+          "name": "Nazo no Murasame Jo",
+          "genre": "Action-Adventure"
+        }
+      ]
+    },
+    "Neo Geo Pocket / Color": {
+      "extensions": [
+        ".ngp",
+        ".ngpc"
+      ],
+      "igdb": 27,
+      "tgdb": 32,
+      "classics": [
+        {
+          "name": "SNK vs. Capcom: The Match of the Millennium",
+          "genre": "Fighting",
+          "cover": "covers/neo-geo-pocket-color/neo-geo-pocket-color-7eb1113c.webp"
+        },
+        {
+          "name": "Samurai Shodown! 2",
+          "genre": "Fighting",
+          "cover": "covers/neo-geo-pocket-color/neo-geo-pocket-color-25e69153.webp"
+        },
+        {
+          "name": "Metal Slug: 1st Mission",
+          "genre": "Run and Gun",
+          "cover": "covers/neo-geo-pocket-color/neo-geo-pocket-color-96f76765.webp"
+        },
+        {
+          "name": "Metal Slug: 2nd Mission",
+          "genre": "Run and Gun",
+          "cover": "covers/neo-geo-pocket-color/neo-geo-pocket-color-375a4412.webp"
+        },
+        {
+          "name": "The King of Fighters R-2",
+          "genre": "Fighting",
+          "cover": "covers/neo-geo-pocket-color/neo-geo-pocket-color-abe93a1a.webp"
+        },
+        {
+          "name": "Sonic the Hedgehog Pocket Adventure",
+          "genre": "Platformer",
+          "cover": "covers/neo-geo-pocket-color/neo-geo-pocket-color-b7c8066f.webp"
+        },
+        {
+          "name": "Faselei!",
+          "genre": "Tactical RPG, Mecha",
+          "cover": "covers/neo-geo-pocket-color/neo-geo-pocket-color-8c7bc4c5.webp"
+        },
+        {
+          "name": "Puzzle Bobble Mini",
+          "genre": "Puzzle"
+        },
+        {
+          "name": "Dark Arms: Beast Buster",
+          "genre": "Action RPG",
+          "cover": "covers/neo-geo-pocket-color/neo-geo-pocket-color-ffa16df1.webp"
+        },
+        {
+          "name": "Rockman Battle & Fighters",
+          "genre": "Action, Platformer",
+          "cover": "covers/neo-geo-pocket-color/neo-geo-pocket-color-d80aa29b.webp"
+        }
+      ]
+    },
+    "WonderSwan / Color": {
+      "extensions": [
+        ".ws",
+        ".wsc"
+      ],
+      "igdb": 57,
+      "tgdb": 45,
+      "classics": [
+        {
+          "name": "Final Fantasy (WS)",
+          "genre": "RPG"
+        },
+        {
+          "name": "Final Fantasy II (WS)",
+          "genre": "RPG"
+        },
+        {
+          "name": "Final Fantasy IV (WSC)",
+          "genre": "RPG"
+        },
+        {
+          "name": "Gunpey",
+          "genre": "Puzzle",
+          "cover": "covers/wonderswan-color/wonderswan-color-5c8f743b.webp"
+        },
+        {
+          "name": "Rockman & Forte: Mirai Kara no Chousensha",
+          "genre": "Action, Platformer",
+          "cover": "covers/wonderswan-color/wonderswan-color-6638d9be.webp"
+        },
+        {
+          "name": "Klonoa: Moonlight Museum",
+          "genre": "Platformer, Puzzle",
+          "cover": "covers/wonderswan-color/wonderswan-color-63b3b518.webp"
+        },
+        {
+          "name": "Digimon Tamers: Battle Spirit",
+          "genre": "Fighting",
+          "cover": "covers/wonderswan-color/wonderswan-color-53c02cd8.webp"
+        },
+        {
+          "name": "Rhyme Rider Kerorican",
+          "genre": "Rhythm",
+          "cover": "covers/wonderswan-color/wonderswan-color-c1266731.webp"
+        },
+        {
+          "name": "One Piece: Treasure Wars",
+          "genre": "Strategy",
+          "cover": "covers/wonderswan-color/wonderswan-color-86166b5b.webp"
+        },
+        {
+          "name": "Dicing Knight Period",
+          "genre": "Action RPG, Roguelike"
+        }
+      ]
+    },
+    "Virtual Boy": {
+      "extensions": [
+        ".vb"
+      ],
+      "igdb": 26,
+      "tgdb": 25,
+      "classics": [
+        {
+          "name": "Virtual Boy Wario Land",
+          "genre": "Platformer",
+          "cover": "covers/virtual-boy/virtual-boy-c80342a4.webp"
+        },
+        {
+          "name": "Mario's Tennis",
+          "genre": "Sports",
+          "cover": "covers/virtual-boy/virtual-boy-87d4ec48.webp"
+        },
+        {
+          "name": "Teleroboxer",
+          "genre": "Sports, Fighting",
+          "cover": "covers/virtual-boy/virtual-boy-e9897192.webp"
+        },
+        {
+          "name": "Mario Clash",
+          "genre": "Platformer, Action",
+          "cover": "covers/virtual-boy/virtual-boy-83fd6329.webp"
+        },
+        {
+          "name": "Red Alarm",
+          "genre": "Rail Shooter",
+          "cover": "covers/virtual-boy/virtual-boy-1cc93b2a.webp"
+        },
+        {
+          "name": "Vertical Force",
+          "genre": "Shoot 'em up",
+          "cover": "covers/virtual-boy/virtual-boy-ec9e2d95.webp"
+        },
+        {
+          "name": "Jack Bros.",
+          "genre": "Action, Puzzle",
+          "cover": "covers/virtual-boy/virtual-boy-3b14d0d2.webp"
+        },
+        {
+          "name": "Galactic Pinball",
+          "genre": "Pinball",
+          "cover": "covers/virtual-boy/virtual-boy-77429914.webp"
+        },
+        {
+          "name": "Panic Bomber",
+          "genre": "Puzzle"
+        },
+        {
+          "name": "Waterworld",
+          "genre": "Action",
+          "cover": "covers/virtual-boy/virtual-boy-59e44ecc.webp"
+        }
+      ]
+    },
+    "Arcade / MAME": {
+      "extensions": [
+        ".7z",
+        ".zip"
+      ],
+      "igdb": 51,
+      "tgdb": 23,
+      "classics": [
+        {
+          "name": "Pac-Man",
+          "genre": "Maze, Arcade",
+          "cover": "covers/arcade-mame/arcade-mame-3dda637c.webp"
+        },
+        {
+          "name": "Ms. Pac-Man",
+          "genre": "Maze, Arcade",
+          "cover": "covers/arcade-mame/arcade-mame-a88ee87f.webp"
+        },
+        {
+          "name": "Donkey Kong",
+          "genre": "Platformer, Arcade",
+          "cover": "covers/arcade-mame/arcade-mame-039fb484.webp"
+        },
+        {
+          "name": "Donkey Kong Jr.",
+          "genre": "Platformer, Arcade",
+          "cover": "covers/arcade-mame/arcade-mame-11e4eff7.webp"
+        },
+        {
+          "name": "Galaga",
+          "genre": "Shoot 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-5c045113.webp"
+        },
+        {
+          "name": "Galaxian",
+          "genre": "Shoot 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-deebd234.webp"
+        },
+        {
+          "name": "Space Invaders",
+          "genre": "Shoot 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-57c92145.webp"
+        },
+        {
+          "name": "Asteroids",
+          "genre": "Shoot 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-d7949033.webp"
+        },
+        {
+          "name": "Street Fighter II: The World Warrior",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-33c724bd.webp"
+        },
+        {
+          "name": "Street Fighter II Turbo: Hyper Fighting",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-78caa179.webp"
+        },
+        {
+          "name": "Super Street Fighter II Turbo",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-4d48adc9.webp"
+        },
+        {
+          "name": "Mortal Kombat",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-305115fb.webp"
+        },
+        {
+          "name": "Mortal Kombat II",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-3c7494a1.webp"
+        },
+        {
+          "name": "Mortal Kombat 3",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-1d456df1.webp"
+        },
+        {
+          "name": "The King of Fighters '94",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-6db32f3d.webp"
+        },
+        {
+          "name": "The King of Fighters '96",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-633c6dbd.webp"
+        },
+        {
+          "name": "The King of Fighters '98",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-93edffd9.webp"
+        },
+        {
+          "name": "Samurai Shodown",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-66c29585.webp"
+        },
+        {
+          "name": "Samurai Shodown II",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-de65f206.webp"
+        },
+        {
+          "name": "Metal Slug",
+          "genre": "Run and Gun",
+          "cover": "covers/arcade-mame/arcade-mame-23f1064d.webp"
+        },
+        {
+          "name": "Metal Slug 2",
+          "genre": "Run and Gun",
+          "cover": "covers/arcade-mame/arcade-mame-00980ab1.webp"
+        },
+        {
+          "name": "Metal Slug 3",
+          "genre": "Run and Gun",
+          "cover": "covers/arcade-mame/arcade-mame-49a5502a.webp"
+        },
+        {
+          "name": "Marvel vs. Capcom: Clash of Super Heroes",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-0e3e22a8.webp"
+        },
+        {
+          "name": "Marvel vs. Capcom 2",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-3f1d49a2.webp"
+        },
+        {
+          "name": "X-Men vs. Street Fighter",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-0246bceb.webp"
+        },
+        {
+          "name": "Contra (Arcade)",
+          "genre": "Run and Gun",
+          "cover": "covers/arcade-mame/arcade-mame-f155d7d5.webp"
+        },
+        {
+          "name": "Gradius",
+          "genre": "Shoot 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-94858024.webp"
+        },
+        {
+          "name": "Gradius III",
+          "genre": "Shoot 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-4c0656b5.webp"
+        },
+        {
+          "name": "R-Type",
+          "genre": "Shoot 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-8ddb76c4.webp"
+        },
+        {
+          "name": "1942",
+          "genre": "Shoot 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-5d891e52.webp"
+        },
+        {
+          "name": "1943: The Battle of Midway",
+          "genre": "Shoot 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-e77224c2.webp"
+        },
+        {
+          "name": "Final Fight",
+          "genre": "Beat 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-f7472b2d.webp"
+        },
+        {
+          "name": "Final Fight 2",
+          "genre": "Beat 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-244c9512.webp"
+        },
+        {
+          "name": "Cadillacs and Dinosaurs",
+          "genre": "Beat 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-82ea6b33.webp"
+        },
+        {
+          "name": "The Punisher",
+          "genre": "Beat 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-56f6a5f0.webp"
+        },
+        {
+          "name": "Captain America and The Avengers",
+          "genre": "Beat 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-c2d95c5d.webp"
+        },
+        {
+          "name": "Teenage Mutant Ninja Turtles (Arcade)",
+          "genre": "Beat 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-0cd1e9ca.webp"
+        },
+        {
+          "name": "Teenage Mutant Ninja Turtles: Turtles in Time",
+          "genre": "Beat 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-28b19f50.webp"
+        },
+        {
+          "name": "Dungeons & Dragons: Tower of Doom",
+          "genre": "Beat 'em up, RPG",
+          "cover": "covers/arcade-mame/arcade-mame-8ce753cf.webp"
+        },
+        {
+          "name": "Dungeons & Dragons: Shadow Over Mystara",
+          "genre": "Beat 'em up, RPG",
+          "cover": "covers/arcade-mame/arcade-mame-d41bf221.webp"
+        },
+        {
+          "name": "Golden Axe",
+          "genre": "Beat 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-6badc993.webp"
+        },
+        {
+          "name": "Altered Beast",
+          "genre": "Beat 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-981b086b.webp"
+        },
+        {
+          "name": "Bubble Bobble",
+          "genre": "Platformer, Puzzle",
+          "cover": "covers/arcade-mame/arcade-mame-5fae206f.webp"
+        },
+        {
+          "name": "Tumblepop",
+          "genre": "Platformer, Action",
+          "cover": "covers/arcade-mame/arcade-mame-60b7ea49.webp"
+        },
+        {
+          "name": "Puzzle Bobble",
+          "genre": "Puzzle",
+          "cover": "covers/arcade-mame/arcade-mame-0d238bc5.webp"
+        },
+        {
+          "name": "Puzzle Bobble 2",
+          "genre": "Puzzle",
+          "cover": "covers/arcade-mame/arcade-mame-5fcb46ab.webp"
+        },
+        {
+          "name": "Joust",
+          "genre": "Platformer, Arcade",
+          "cover": "covers/arcade-mame/arcade-mame-0cf9cbef.webp"
+        },
+        {
+          "name": "Frogger",
+          "genre": "Action",
+          "cover": "covers/arcade-mame/arcade-mame-df234857.webp"
+        },
+        {
+          "name": "Dig Dug",
+          "genre": "Action, Arcade",
+          "cover": "covers/arcade-mame/arcade-mame-7123f0db.webp"
+        },
+        {
+          "name": "Centipede",
+          "genre": "Shoot 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-28d18a5b.webp"
+        },
+        {
+          "name": "Missile Command",
+          "genre": "Shoot 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-bc068d45.webp"
+        },
+        {
+          "name": "Spy Hunter",
+          "genre": "Racing, Action",
+          "cover": "covers/arcade-mame/arcade-mame-6b419bcf.webp"
+        },
+        {
+          "name": "OutRun",
+          "genre": "Racing",
+          "cover": "covers/arcade-mame/arcade-mame-f1da71a1.webp"
+        },
+        {
+          "name": "After Burner",
+          "genre": "Rail Shooter",
+          "cover": "covers/arcade-mame/arcade-mame-69730014.webp"
+        },
+        {
+          "name": "Virtua Fighter",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-b4954f08.webp"
+        },
+        {
+          "name": "Tekken",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-d0030c06.webp"
+        },
+        {
+          "name": "Soul Edge",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-d2367ef0.webp"
+        },
+        {
+          "name": "Neo Geo: Garou: Mark of the Wolves",
+          "genre": "Fighting",
+          "cover": "covers/arcade-mame/arcade-mame-6c6e873f.webp"
+        },
+        {
+          "name": "Blazing Star",
+          "genre": "Shoot 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-05d2a5c3.webp"
+        },
+        {
+          "name": "Radiant Silvergun",
+          "genre": "Shoot 'em up",
+          "cover": "covers/arcade-mame/arcade-mame-665b293d.webp"
+        }
+      ]
+    }
+  }
+}

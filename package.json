@@ -38,7 +38,8 @@
     "fs-extra": "^11.2.0",
     "lucide-react": "^0.468.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "sharp": "^0.34.5"
   },
   "build": {
     "appId": "com.retrograde.app",
@@ -55,7 +56,10 @@
       "package.json"
     ],
     "win": {
-      "target": ["nsis", "portable"],
+      "target": [
+        "nsis",
+        "portable"
+      ],
       "icon": "assets/images/RetroGrade_icon_app_256x256.png"
     },
     "nsis": {
