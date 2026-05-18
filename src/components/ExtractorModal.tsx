@@ -59,6 +59,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
     successCount: 0, errorCount: 0, cancelledCount: 0,
     totalExtracted: 0, totalCompressed: 0, totalFiles: 0,
   });
+  const [scanProgress, setScanProgress] = useState({ progress: 0, scanned: 0, total: 0, found: 0 });
   const logRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -77,9 +78,16 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
   const handleScan = useCallback(async () => {
     if (!sourceFolder) return;
     setStep('scanning');
+    setScanProgress({ progress: 0, scanned: 0, total: 0, found: 0 });
+
+    window.api.onScanCompressedProgress((data) => {
+      setScanProgress({ progress: data.progress, scanned: data.scanned, total: data.total, found: data.found });
+    });
+
     try {
       const found = await window.api.scanCompressed(sourceFolder);
       setFiles(found);
+      window.api.removeScanCompressedProgressListener();
       if (found.length === 0) {
         onToast('Nenhum arquivo comprimido encontrado.', 'info');
         setStep('config');
@@ -88,6 +96,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
       }
     } catch {
       onToast('Erro ao escanear pasta.', 'error');
+      window.api.removeScanCompressedProgressListener();
       setStep('config');
     }
   }, [sourceFolder, onToast]);
@@ -338,10 +347,29 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex flex-col items-center justify-center py-16 space-y-4"
+                className="flex flex-col items-center justify-center py-16 space-y-6"
               >
                 <Loader2 className="w-12 h-12 text-retro-primary animate-spin" />
-                <p className="text-zinc-400">Escaneando pasta em busca de arquivos comprimidos...</p>
+                <div className="w-full max-w-md space-y-3">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-zinc-400">Escaneando pasta...</span>
+                    <span className="text-zinc-300">{scanProgress.progress}%</span>
+                  </div>
+                  <div className="h-2.5 bg-zinc-800 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full bg-retro-primary rounded-full"
+                      initial={{ width: '0%' }}
+                      animate={{ width: `${scanProgress.progress}%` }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between text-xs text-zinc-600">
+                    <span>{scanProgress.scanned} arquivos verificados</span>
+                    {scanProgress.found > 0 && (
+                      <span className="text-retro-primary">{scanProgress.found} encontrado(s)</span>
+                    )}
+                  </div>
+                </div>
               </motion.div>
             )}
 

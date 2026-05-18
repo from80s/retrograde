@@ -40,6 +40,12 @@ electron_1.contextBridge.exposeInMainWorld('api', {
     },
     deleteRemovedFolder: (folder) => electron_1.ipcRenderer.invoke('delete-removed-folder', folder),
     scanCompressed: (folder) => electron_1.ipcRenderer.invoke('scan-compressed', folder),
+    onScanCompressedProgress: (callback) => {
+        electron_1.ipcRenderer.on('scan-compressed-progress', (_, data) => callback(data));
+    },
+    removeScanCompressedProgressListener: () => {
+        electron_1.ipcRenderer.removeAllListeners('scan-compressed-progress');
+    },
     startExtraction: (options) => electron_1.ipcRenderer.invoke('start-extraction', options),
     cancelExtraction: () => electron_1.ipcRenderer.invoke('cancel-extraction'),
     onExtractionProgress: (callback) => {

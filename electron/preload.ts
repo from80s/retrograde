@@ -41,6 +41,12 @@ contextBridge.exposeInMainWorld('api', {
   },
   deleteRemovedFolder: (folder: string) => ipcRenderer.invoke('delete-removed-folder', folder),
   scanCompressed: (folder: string) => ipcRenderer.invoke('scan-compressed', folder),
+  onScanCompressedProgress: (callback: (data: any) => void) => {
+    ipcRenderer.on('scan-compressed-progress', (_, data) => callback(data));
+  },
+  removeScanCompressedProgressListener: () => {
+    ipcRenderer.removeAllListeners('scan-compressed-progress');
+  },
   startExtraction: (options: { files: any[]; mode: string; deleteAfter: boolean }) =>
     ipcRenderer.invoke('start-extraction', options),
   cancelExtraction: () => ipcRenderer.invoke('cancel-extraction'),

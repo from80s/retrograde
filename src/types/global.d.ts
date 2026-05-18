@@ -56,6 +56,8 @@ export interface ApiBridge {
   removeCurationProgressListener: () => void;
   deleteRemovedFolder: (folder: string) => Promise<boolean>;
   scanCompressed: (folder: string) => Promise<{ path: string; name: string; size: number; ext: string }[]>;
+  onScanCompressedProgress: (callback: (data: { progress: number; scanned: number; total: number; found: number }) => void) => void;
+  removeScanCompressedProgressListener: () => void;
   startExtraction: (options: { files: { path: string; name: string; size: number; ext: string }[]; mode: string; deleteAfter: boolean }) => Promise<{
     results: { name: string; status: string; compressedSize: number; extractedSize: number; fileCount: number; error?: string }[];
     successCount: number;

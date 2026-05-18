@@ -1166,12 +1166,29 @@ electron_1.ipcMain.handle('cancel-extraction', async () => {
     extractionCancelled = true;
     return true;
 });
+async function countEntries(dir) {
+    let count = 0;
+    const entries = await fs_extra_1.default.readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+        const fullPath = path_1.default.join(dir, entry.name);
+        if (entry.isDirectory()) {
+            count += await countEntries(fullPath);
+        }
+        else {
+            count++;
+        }
+    }
+    return count;
+}
 electron_1.ipcMain.handle('scan-compressed', async (_, folder) => {
     const files = [];
+    const totalEntries = await countEntries(folder);
+    let scannedEntries = 0;
     async function scanDirectory(dir) {
         const entries = await fs_extra_1.default.readdir(dir, { withFileTypes: true });
         for (const entry of entries) {
             const fullPath = path_1.default.join(dir, entry.name);
+            scannedEntries++;
             if (entry.isDirectory()) {
                 await scanDirectory(fullPath);
             }
@@ -1184,6 +1201,14 @@ electron_1.ipcMain.handle('scan-compressed', async (_, folder) => {
                     ext: getExtension(entry.name),
                 });
             }
+            const progress = totalEntries > 0 ? Math.round((scannedEntries / totalEntries) * 100) : 0;
+            mainWindow?.webContents.send('scan-compressed-progress', {
+                type: 'scan',
+                progress,
+                scanned: scannedEntries,
+                total: totalEntries,
+                found: files.length,
+            });
         }
     }
     await scanDirectory(folder);

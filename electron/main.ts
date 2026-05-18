@@ -1383,13 +1383,30 @@ ipcMain.handle('cancel-extraction', async () => {
   return true;
 });
 
+async function countEntries(dir: string): Promise<number> {
+  let count = 0;
+  const entries = await fs.readdir(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      count += await countEntries(fullPath);
+    } else {
+      count++;
+    }
+  }
+  return count;
+}
+
 ipcMain.handle('scan-compressed', async (_, folder: string) => {
   const files: { path: string; name: string; size: number; ext: string }[] = [];
+  const totalEntries = await countEntries(folder);
+  let scannedEntries = 0;
 
   async function scanDirectory(dir: string) {
     const entries = await fs.readdir(dir, { withFileTypes: true });
     for (const entry of entries) {
       const fullPath = path.join(dir, entry.name);
+      scannedEntries++;
       if (entry.isDirectory()) {
         await scanDirectory(fullPath);
       } else if (isCompressedFile(entry.name)) {
@@ -1401,6 +1418,14 @@ ipcMain.handle('scan-compressed', async (_, folder: string) => {
           ext: getExtension(entry.name),
         });
       }
+      const progress = totalEntries > 0 ? Math.round((scannedEntries / totalEntries) * 100) : 0;
+      mainWindow?.webContents.send('scan-compressed-progress', {
+        type: 'scan',
+        progress,
+        scanned: scannedEntries,
+        total: totalEntries,
+        found: files.length,
+      });
     }
   }
 
