@@ -157,6 +157,19 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
     return filtered;
   }, [scanData, filters]);
 
+  const availableYears = useMemo(() => {
+    if (!scanData) return [];
+    const years = new Set<number>();
+    for (const roms of Object.values(scanData.grouped)) {
+      for (const rom of roms as RomInfo[]) {
+        if (rom.metadata?.year) {
+          years.add(rom.metadata.year);
+        }
+      }
+    }
+    return Array.from(years).sort((a, b) => b - a);
+  }, [scanData]);
+
   const totalRoms = Object.values(filteredRoms).reduce((sum, roms) => sum + roms.length, 0);
   const totalSize = Object.values(filteredRoms).reduce((sum, roms) => sum + roms.reduce((s, r) => s + r.size, 0), 0);
 
@@ -300,14 +313,92 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                   </div>
                   <div className="relative">
                     <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
-                    <input
-                      type="text"
-                      placeholder="Filtrar por ano..."
+                    <select
                       value={filters.year}
                       onChange={(e) => setFilters(prev => ({ ...prev, year: e.target.value }))}
-                      className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl pl-10 pr-4 py-2 text-sm text-zinc-200 focus:outline-none focus:border-retro-primary/50 transition-colors placeholder:text-zinc-600"
-                    />
+                      className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl pl-10 pr-4 py-2 text-sm text-zinc-200 focus:outline-none focus:border-retro-primary/50 transition-colors appearance-none cursor-pointer"
+                    >
+                      <option value="">Todos os anos</option>
+                      {availableYears.map(year => (
+                        <option key={year} value={year}>{year}</option>
+                      ))}
+                    </select>
                   </div>
+                </div>
+              </div>
+
+              {/* ROM List by System */}
+              <div className="space-y-3">
+                <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">
+                  ROMs por Sistema
+                </h3>
+                <div className="space-y-2">
+                  {Object.entries(filteredRoms).map(([system, roms]) => (
+                    <div key={system} className="bg-zinc-800/20 rounded-xl overflow-hidden">
+                      <button
+                        onClick={() => toggleSystem(system)}
+                        className="w-full flex items-center justify-between p-4 hover:bg-zinc-800/30 transition-colors"
+                      >
+                        <div className="flex items-center gap-3">
+                          {expandedSystems[system] ? (
+                            <ChevronUp className="w-5 h-5 text-zinc-400" />
+                          ) : (
+                            <ChevronDown className="w-5 h-5 text-zinc-400" />
+                          )}
+                          <span className="text-sm font-medium text-zinc-200">{system}</span>
+                          <span className="text-xs text-zinc-500">({(roms as RomInfo[]).length})</span>
+                        </div>
+                        <span className="text-xs text-zinc-500">
+                          {formatBytes((roms as RomInfo[]).reduce((s, r) => s + r.size, 0))}
+                        </span>
+                      </button>
+
+                      <AnimatePresence>
+                        {expandedSystems[system] && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="border-t border-zinc-800/50 divide-y divide-zinc-800/30 max-h-64 overflow-y-auto scrollbar-thin">
+                              {(roms as RomInfo[]).map((rom, idx) => (
+                                <div key={idx} className="flex items-center gap-3 p-3 hover:bg-zinc-800/20 transition-colors">
+                                  <div className="flex-1 min-w-0">
+                                    <p className="text-sm text-zinc-200 truncate">{rom.fileName}</p>
+                                    <div className="flex items-center gap-2 mt-1">
+                                      {rom.metadata?.year && (
+                                        <span className="text-xs text-zinc-500 flex items-center gap-1">
+                                          <Calendar className="w-3 h-3" />
+                                          {rom.metadata.year}
+                                        </span>
+                                      )}
+                                      {rom.metadata?.rating && (
+                                        <span className="text-xs text-zinc-500 flex items-center gap-1">
+                                          <Star className="w-3 h-3" />
+                                          {rom.metadata.rating.toFixed(0)}
+                                        </span>
+                                      )}
+                                      {rom.regionTags.length > 0 && (
+                                        <span className="text-xs text-zinc-500 flex items-center gap-1">
+                                          <Globe className="w-3 h-3" />
+                                          {rom.regionTags.join(', ')}
+                                        </span>
+                                      )}
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    {getProtectionBadge(rom)}
+                                    <span className="text-xs text-zinc-600">{formatBytes(rom.size)}</span>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -383,8 +474,8 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                                   <p className="text-xs text-zinc-300 truncate">{group.baseName}</p>
                                   <p className="text-xs text-zinc-500">{group.roms.length} variantes</p>
                                 </div>
-                                {group.preferredRegion && (
-                                  <span className="text-xs text-retro-success flex-shrink-0">Manter: {group.preferredRegion}</span>
+                                {preferredRegions.length > 0 && (
+                                  <span className="text-xs text-retro-success flex-shrink-0">Manter: {preferredRegions.join(', ')}</span>
                                 )}
                               </div>
                             ))}
@@ -461,81 +552,6 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                         <X className="w-3 h-3" />
                       </button>
                     </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* ROM List by System */}
-              <div className="space-y-3">
-                <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">
-                  ROMs por Sistema
-                </h3>
-                <div className="space-y-2">
-                  {Object.entries(filteredRoms).map(([system, roms]) => (
-                    <div key={system} className="bg-zinc-800/20 rounded-xl overflow-hidden">
-                      <button
-                        onClick={() => toggleSystem(system)}
-                        className="w-full flex items-center justify-between p-4 hover:bg-zinc-800/30 transition-colors"
-                      >
-                        <div className="flex items-center gap-3">
-                          {expandedSystems[system] ? (
-                            <ChevronUp className="w-5 h-5 text-zinc-400" />
-                          ) : (
-                            <ChevronDown className="w-5 h-5 text-zinc-400" />
-                          )}
-                          <span className="text-sm font-medium text-zinc-200">{system}</span>
-                          <span className="text-xs text-zinc-500">({(roms as RomInfo[]).length})</span>
-                        </div>
-                        <span className="text-xs text-zinc-500">
-                          {formatBytes((roms as RomInfo[]).reduce((s, r) => s + r.size, 0))}
-                        </span>
-                      </button>
-
-                      <AnimatePresence>
-                        {expandedSystems[system] && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden"
-                          >
-                            <div className="border-t border-zinc-800/50 divide-y divide-zinc-800/30 max-h-64 overflow-y-auto scrollbar-thin">
-                              {(roms as RomInfo[]).map((rom, idx) => (
-                                <div key={idx} className="flex items-center gap-3 p-3 hover:bg-zinc-800/20 transition-colors">
-                                  <div className="flex-1 min-w-0">
-                                    <p className="text-sm text-zinc-200 truncate">{rom.fileName}</p>
-                                    <div className="flex items-center gap-2 mt-1">
-                                      {rom.metadata?.year && (
-                                        <span className="text-xs text-zinc-500 flex items-center gap-1">
-                                          <Calendar className="w-3 h-3" />
-                                          {rom.metadata.year}
-                                        </span>
-                                      )}
-                                      {rom.metadata?.rating && (
-                                        <span className="text-xs text-zinc-500 flex items-center gap-1">
-                                          <Star className="w-3 h-3" />
-                                          {rom.metadata.rating.toFixed(0)}
-                                        </span>
-                                      )}
-                                      {rom.regionTags.length > 0 && (
-                                        <span className="text-xs text-zinc-500 flex items-center gap-1">
-                                          <Globe className="w-3 h-3" />
-                                          {rom.regionTags.join(', ')}
-                                        </span>
-                                      )}
-                                    </div>
-                                  </div>
-                                  <div className="flex items-center gap-2">
-                                    {getProtectionBadge(rom)}
-                                    <span className="text-xs text-zinc-600">{formatBytes(rom.size)}</span>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
                   ))}
                 </div>
               </div>
