@@ -92,7 +92,7 @@ function App() {
   const [showSupport, setShowSupport] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
-  const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(!import.meta.env.DEV);
   const [showScanPreview, setShowScanPreview] = useState(false);
   const [showExtractor, setShowExtractor] = useState(false);
   const [showOrphanFiles, setShowOrphanFiles] = useState(false);
