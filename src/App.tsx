@@ -21,9 +21,7 @@ import {
   ChevronRight,
   AlertTriangle,
 } from 'lucide-react';
-import { ProgressCard } from './components/ProgressCard';
 import { StatCard } from './components/StatCard';
-import { ActivityLog } from './components/ActivityLog';
 import { SettingsModal } from './components/SettingsModal';
 import { StatsHistory } from './components/StatsHistory';
 import { SupportModal } from './components/SupportModal';
@@ -31,6 +29,7 @@ import { AboutModal } from './components/AboutModal';
 import { WelcomeModal } from './components/WelcomeModal';
 import { SplashScreen } from './components/SplashScreen';
 import { SpaceSavingsCard } from './components/SpaceSavingsCard';
+import { CurationModal } from './components/CurationModal';
 import { ScanPreviewModal } from './components/ScanPreviewModal';
 import { ExtractorModal } from './components/ExtractorModal';
 import { OrphanFilesModal } from './components/OrphanFilesModal';
@@ -458,22 +457,6 @@ function App() {
                 </motion.div>
               )}
 
-              {/* Progress Section */}
-              {state.isRunning && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  <ProgressCard
-                    progress={progress}
-                    currentFile={state.currentFile}
-                    currentSystem={state.currentSystem}
-                    currentRating={state.currentRating}
-                    currentStatus={state.currentStatus}
-                  />
-                </motion.div>
-              )}
-
               {/* Supported Systems */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -483,11 +466,6 @@ function App() {
                 <SupportedSystems />
               </motion.div>
             </div>
-          </div>
-
-          {/* Activity Log - fixed height at bottom */}
-          <div className="flex-shrink-0 px-8 pb-6 max-w-6xl mx-auto w-full" style={{ height: '220px' }}>
-            <ActivityLog log={state.log} logRef={logRef} />
           </div>
         </main>
       </div>
@@ -523,6 +501,22 @@ function App() {
             action={state.action}
             onClose={() => setShowScanPreview(false)}
             onStartCuration={handleExecuteCuration}
+          />
+        )}
+        {state.isRunning && (
+          <CurationModal
+            onClose={() => {}}
+            progress={progress}
+            currentFile={state.currentFile}
+            currentSystem={state.currentSystem}
+            currentRating={state.currentRating}
+            currentStatus={state.currentStatus}
+            classics={state.classics}
+            kept={state.kept}
+            removed={state.removed}
+            total={state.total}
+            current={state.current}
+            log={state.log}
           />
         )}
         {showExtractor && (

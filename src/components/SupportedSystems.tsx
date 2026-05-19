@@ -91,12 +91,13 @@ interface SystemCard {
 
 export function SupportedSystems() {
   const [filter, setFilter] = useState('');
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, scrollLeft: 0 });
-  const [velocity, setVelocity] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number>(0);
+  const isDraggingRef = useRef(false);
+  const dragStartRef = useRef({ x: 0, scrollLeft: 0 });
+  const velocityRef = useRef(0);
   const lastPosRef = useRef({ x: 0, time: 0 });
+  const inertiaTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const inertiaFrameRef = useRef<number>(0);
 
   const filteredSystems: SystemCard[] = (() => {
     const sorted = [...SUPPORTED_SYSTEMS].sort((a, b) => a.name.localeCompare(b.name));
@@ -108,79 +109,87 @@ export function SupportedSystems() {
     });
   })();
 
-  const stopInertia = useCallback(() => {
-    if (animationRef.current) {
-      cancelAnimationFrame(animationRef.current);
-      animationRef.current = 0;
+  const cancelInertia = useCallback(() => {
+    if (inertiaTimerRef.current) {
+      clearTimeout(inertiaTimerRef.current);
+      inertiaTimerRef.current = null;
     }
-    setVelocity(0);
+    if (inertiaFrameRef.current) {
+      cancelAnimationFrame(inertiaFrameRef.current);
+      inertiaFrameRef.current = 0;
+    }
+    velocityRef.current = 0;
   }, []);
 
-  const applyInertia = useCallback(() => {
+  const runInertia = useCallback(() => {
     if (!containerRef.current) return;
     const container = containerRef.current;
-    const friction = 0.95;
-    const minVelocity = 0.5;
+    const friction = 0.92;
+    const minVelocity = 0.3;
 
-    if (Math.abs(velocity) > minVelocity) {
-      container.scrollLeft += velocity;
-      setVelocity(v => v * friction);
-      animationRef.current = requestAnimationFrame(applyInertia);
+    if (Math.abs(velocityRef.current) > minVelocity) {
+      container.scrollLeft += velocityRef.current;
+      velocityRef.current *= friction;
+      inertiaFrameRef.current = requestAnimationFrame(runInertia);
     } else {
-      setVelocity(0);
-      animationRef.current = 0;
+      velocityRef.current = 0;
+      inertiaFrameRef.current = 0;
     }
-  }, [velocity]);
+  }, []);
 
   useEffect(() => {
-    return () => stopInertia();
-  }, [stopInertia]);
+    return () => cancelInertia();
+  }, [cancelInertia]);
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if (!containerRef.current) return;
-    stopInertia();
-    setIsDragging(true);
-    setDragStart({ x: e.clientX, scrollLeft: containerRef.current.scrollLeft });
+    cancelInertia();
+    isDraggingRef.current = true;
+    dragStartRef.current = { x: e.clientX, scrollLeft: containerRef.current.scrollLeft };
     lastPosRef.current = { x: e.clientX, time: Date.now() };
+    velocityRef.current = 0;
     containerRef.current.style.cursor = 'grabbing';
-    containerRef.current.style.userSelect = 'none';
-  }, [stopInertia]);
+    containerRef.current.style.scrollBehavior = 'auto';
+  }, [cancelInertia]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!isDragging || !containerRef.current) return;
-    const dx = dragStart.x - e.clientX;
-    containerRef.current.scrollLeft = dragStart.scrollLeft + dx;
+    if (!isDraggingRef.current || !containerRef.current) return;
+    const dx = dragStartRef.current.x - e.clientX;
+    containerRef.current.scrollLeft = dragStartRef.current.scrollLeft + dx;
 
     const now = Date.now();
     const dt = now - lastPosRef.current.time;
-    if (dt > 0) {
-      const currentVelocity = (lastPosRef.current.x - e.clientX) / dt * 16;
-      setVelocity(currentVelocity);
+    if (dt > 0 && dt < 100) {
+      velocityRef.current = (lastPosRef.current.x - e.clientX) / dt * 16;
     }
     lastPosRef.current = { x: e.clientX, time: now };
-  }, [isDragging, dragStart]);
+  }, []);
 
   const handleMouseUp = useCallback(() => {
     if (!containerRef.current) return;
-    setIsDragging(false);
+    isDraggingRef.current = false;
     containerRef.current.style.cursor = '';
-    containerRef.current.style.userSelect = '';
-    if (Math.abs(velocity) > 0.5) {
-      animationRef.current = requestAnimationFrame(applyInertia);
+    containerRef.current.style.scrollBehavior = '';
+
+    if (Math.abs(velocityRef.current) > 1) {
+      inertiaFrameRef.current = requestAnimationFrame(runInertia);
+      inertiaTimerRef.current = setTimeout(() => {
+        cancelInertia();
+      }, 2000);
     }
-  }, [velocity, applyInertia]);
+  }, [runInertia, cancelInertia]);
 
   const handleMouseLeave = useCallback(() => {
-    if (isDragging) {
+    if (isDraggingRef.current) {
       handleMouseUp();
     }
-  }, [isDragging, handleMouseUp]);
+  }, [handleMouseUp]);
 
   const scrollByAmount = useCallback((amount: number) => {
     if (!containerRef.current) return;
-    stopInertia();
+    cancelInertia();
     containerRef.current.scrollBy({ left: amount, behavior: 'smooth' });
-  }, [stopInertia]);
+  }, [cancelInertia]);
 
   return (
     <div className="glass rounded-2xl overflow-hidden">
@@ -214,7 +223,7 @@ export function SupportedSystems() {
         {/* Scrollable container */}
         <div
           ref={containerRef}
-          className="flex gap-4 overflow-x-auto scrollbar-none px-12 py-4 cursor-grab active:cursor-grabbing"
+          className="flex gap-4 overflow-x-auto px-12 py-4 cursor-grab active:cursor-grabbing"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
@@ -225,12 +234,12 @@ export function SupportedSystems() {
             filteredSystems.map((sys) => (
               <div
                 key={sys.name}
-                className="flex-shrink-0 w-44 bg-zinc-800/40 rounded-xl p-4 flex flex-col items-center text-center gap-2 border border-zinc-700/20 hover:border-zinc-600/40 transition-colors"
+                className="flex-shrink-0 w-48 bg-zinc-800/40 rounded-xl p-4 flex flex-col items-center text-center gap-2 border border-zinc-700/20 hover:border-zinc-600/40 transition-colors"
               >
                 <img
                   src={`system logos/${sys.logo}`}
                   alt={sys.name}
-                  className="w-16 h-16 object-contain"
+                  className="w-20 h-20 object-contain"
                   onError={(e) => {
                     (e.currentTarget as HTMLImageElement).style.display = 'none';
                   }}
