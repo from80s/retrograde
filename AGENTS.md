@@ -52,3 +52,8 @@
 
 ### Build
 - NSIS installer + Portable executable
+
+### Workflow de Finalização
+**SEMPRE** ao finalizar uma execução/tarefa:
+1. Executar `npm run build` para verificar se o projeto compila sem erros
+2. Fornecer ao usuário uma sugestão de commit message em Português Brasileiro com o contexto completo do que foi realizado

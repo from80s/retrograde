@@ -93,7 +93,6 @@ function App() {
   const [showTgdbAssets, setShowTgdbAssets] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
   const [hasConfig, setHasConfig] = useState(false);
-  const [systems, setSystems] = useState<Record<string, any>>({});
   const [classics, setClassics] = useState<string[]>([]);
   const [genres, setGenres] = useState<string[]>([]);
   const [protectedGames, setProtectedGames] = useState<string[]>([]);
@@ -103,7 +102,6 @@ function App() {
   const logRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.api.readSystems().then(setSystems);
     window.api.readClassics().then(setClassics);
     window.api.readGenres().then(setGenres);
     window.api.readProtectedGames().then(setProtectedGames);
@@ -495,7 +493,6 @@ function App() {
             onClose={() => setShowSettings(false)}
             minRating={state.minRating}
             action={state.action}
-            systems={systems}
             classics={classics}
             genres={genres}
             protectedGames={protectedGames}

@@ -65,36 +65,94 @@ const iconPath = path_1.default.join(electron_1.app.getAppPath(), 'assets', 'ima
 const appIcon = fs_extra_1.default.existsSync(iconPath) ? electron_1.nativeImage.createFromPath(iconPath) : undefined;
 let mainWindow = null;
 let igdbToken = null;
-const GENERIC_EXTENSIONS = new Set(['.iso', '.bin', '.chd', '.gdi', '.cue', '.pbp', '.cso', '.rvz', '.gcm', '.wbfs', '.wux', '.7z', '.zip']);
+const GENERIC_EXTENSIONS = new Set(['.iso', '.bin', '.chd', '.gdi', '.cue', '.pbp', '.cso', '.rvz', '.gcm', '.wbfs', '.wux', '.7z', '.zip', '.xiso', '.img', '.ccd', '.mdf', '.gz']);
 const SYSTEM_HINTS = [
     { keywords: ['ps2', 'playstation 2', 'playstation2', 'ps two'], system: '.ps2' },
     { keywords: ['psx', 'playstation', 'ps1', 'ps one'], system: '.bin' },
+    { keywords: ['ps3', 'playstation 3'], system: '.iso' },
+    { keywords: ['psp', 'playstation portable'], system: '.cso' },
+    { keywords: ['psvita', 'playstation vita', 'vita'], system: '.vpk' },
     { keywords: ['saturn', 'sega saturn'], system: '.sat' },
     { keywords: ['dreamcast', 'dc', 'katana'], system: '.gdi' },
-    { keywords: ['gamecube', 'gc', 'cube'], system: '.gcm' },
+    { keywords: ['gamecube', 'gc', 'cube', 'dolphin'], system: '.gcm' },
     { keywords: ['wii'], system: '.wbfs' },
-    { keywords: ['wiiu', 'wii u'], system: '.wux' },
-    { keywords: ['psp'], system: '.cso' },
-    { keywords: ['ps3'], system: '.iso' },
+    { keywords: ['wiiu', 'wii u', 'wii u'], system: '.wux' },
+    { keywords: ['switch', 'nintendo switch'], system: '.nsp' },
+    { keywords: ['3ds', 'nintendo 3ds'], system: '.3ds' },
+    { keywords: ['nds', 'nintendo ds', 'ds'], system: '.nds' },
+    { keywords: ['n64', 'nintendo 64'], system: '.n64' },
     { keywords: ['nes', 'famicom'], system: '.nes' },
     { keywords: ['snes', 'super nintendo', 'super famicom'], system: '.sfc' },
-    { keywords: ['n64', 'nintendo 64'], system: '.n64' },
     { keywords: ['gb', 'game boy'], system: '.gb' },
     { keywords: ['gba', 'game boy advance'], system: '.gba' },
     { keywords: ['gbc', 'game boy color'], system: '.gbc' },
-    { keywords: ['nds', 'nintendo ds'], system: '.nds' },
-    { keywords: ['3ds', 'nintendo 3ds'], system: '.3ds' },
     { keywords: ['genesis', 'mega drive', 'megadrive'], system: '.gen' },
     { keywords: ['mastersystem', 'master system', 'sms'], system: '.sms' },
     { keywords: ['gamegear', 'game gear'], system: '.gg' },
     { keywords: ['32x', 'sega 32x'], system: '.32x' },
     { keywords: ['segacd', 'mega cd', 'sega cd'], system: '.bin' },
+    { keywords: ['megacd', 'mega-cd'], system: '.bin' },
     { keywords: ['neogeo', 'neo geo'], system: '.neo' },
-    { keywords: ['atari2600', 'atari 2600'], system: '.a26' },
+    { keywords: ['ngp', 'neo geo pocket'], system: '.ngp' },
+    { keywords: ['ngpc', 'neo geo pocket color'], system: '.ngpc' },
+    { keywords: ['sg1000', 'sg-1000'], system: '.sg' },
+    { keywords: ['atari2600', 'atari 2600', 'vcs'], system: '.a26' },
     { keywords: ['atari5200', 'atari 5200'], system: '.a52' },
     { keywords: ['atari7800', 'atari 7800'], system: '.a78' },
     { keywords: ['jaguar', 'atari jaguar'], system: '.jag' },
     { keywords: ['lynx', 'atari lynx'], system: '.lnx' },
+    { keywords: ['atarist', 'atari st'], system: '.st' },
+    { keywords: ['atari800', 'atari 800'], system: '.atr' },
+    { keywords: ['xbox360', 'xbox 360', 'x360', 'xenia'], system: '.xex' },
+    { keywords: ['xbox', 'original xbox', 'xemu', 'cxbx'], system: '.xiso' },
+    { keywords: ['amiga'], system: '.adf' },
+    { keywords: ['cd32', 'amiga cd32'], system: '.iso' },
+    { keywords: ['c64', 'commodore 64'], system: '.d64' },
+    { keywords: ['vic20', 'vic-20'], system: '.crt' },
+    { keywords: ['apple2', 'apple ii'], system: '.do' },
+    { keywords: ['apple2gs', 'apple iigs', 'iigs'], system: '.2mg' },
+    { keywords: ['dos', 'pc', 'ms-dos'], system: '.exe' },
+    { keywords: ['scummvm', 'scumm'], system: '.svm' },
+    { keywords: ['doom'], system: '.wad' },
+    { keywords: ['pico8', 'pico-8'], system: '.p8' },
+    { keywords: ['tic80', 'tic-80'], system: '.tic' },
+    { keywords: ['wasm4', 'wasm-4'], system: '.wasm' },
+    { keywords: ['zxspectrum', 'zx spectrum', 'spectrum'], system: '.z80' },
+    { keywords: ['zx81'], system: '.p' },
+    { keywords: ['msx'], system: '.mx1' },
+    { keywords: ['pcengine', 'pc engine', 'turbografx', 'tg16'], system: '.pce' },
+    { keywords: ['pcenginecd', 'pc engine cd', 'turbografx-cd', 'tgcd'], system: '.pce' },
+    { keywords: ['supergrafx', 'super grafx'], system: '.sgx' },
+    { keywords: ['pcfx', 'pc-fx'], system: '.iso' },
+    { keywords: ['pc88', 'pc-88'], system: '.d88' },
+    { keywords: ['pc98', 'pc-98'], system: '.d88' },
+    { keywords: ['x1', 'sharp x1'], system: '.2d' },
+    { keywords: ['x68000', 'sharp x68000'], system: '.d88' },
+    { keywords: ['fmtowns', 'fm towns'], system: '.iso' },
+    { keywords: ['amstrad', 'cpc'], system: '.dsk' },
+    { keywords: ['bbcmicro', 'bbc micro'], system: '.ssd' },
+    { keywords: ['colecovision', 'coleco'], system: '.col' },
+    { keywords: ['intellivision', 'intv'], system: '.int' },
+    { keywords: ['vectrex'], system: '.vec' },
+    { keywords: ['virtualboy', 'virtual boy'], system: '.vb' },
+    { keywords: ['wonderswan', 'wonder swan'], system: '.ws' },
+    { keywords: ['wonderswancolor', 'wonder swan color'], system: '.wsc' },
+    { keywords: ['pokemini', 'pokemon mini'], system: '.min' },
+    { keywords: ['naomi'], system: '.bin' },
+    { keywords: ['atomiswave'], system: '.bin' },
+    { keywords: ['mame'], system: '.zip' },
+    { keywords: ['arcade'], system: '.zip' },
+    { keywords: ['3do'], system: '.bin' },
+    { keywords: ['cdimono1', 'cdi', 'philips cd'], system: '.iso' },
+    { keywords: ['channelf', 'channel f'], system: '.chf' },
+    { keywords: ['gameandwatch', 'game watch'], system: '.mgw' },
+    { keywords: ['lowresnx', 'lowres nx'], system: '.nx' },
+    { keywords: ['supervision', 'watara'], system: '.sv' },
+    { keywords: ['megaduck', 'mega duck'], system: '.bin' },
+    { keywords: ['odyssey2', 'odyssey 2'], system: '.bin' },
+    { keywords: ['videopac'], system: '.bin' },
+    { keywords: ['arcadia'], system: '.bin' },
+    { keywords: ['astrocade', 'bally'], system: '.bin' },
 ];
 function inferSystemFromFolder(folderPath) {
     const folderName = path_1.default.basename(folderPath).toLowerCase();
@@ -154,6 +212,8 @@ async function identifySystemFromFile(filePath, ext) {
                 return '.gbc';
             if (headerStr.includes('Game Boy'))
                 return '.gb';
+            if (headerStr.includes('Switch'))
+                return '.nsp';
         }
         // PlayStation detection
         if (headerStr.includes('PS-X EXE') || headerStr.includes('Sony Computer Entertainment'))
@@ -162,6 +222,10 @@ async function identifySystemFromFile(filePath, ext) {
             return '.ps2';
         if (headerStr.includes('PSP') || headerStr.includes('PlayStation Portable'))
             return '.cso';
+        if (headerStr.includes('PlayStation 3') || headerStr.includes('PS3'))
+            return '.iso';
+        if (headerStr.includes('PlayStation Vita') || headerStr.includes('PS Vita'))
+            return '.vpk';
         // Atari detection
         if (headerStr.includes('ATARI')) {
             if (headerStr.includes('JAGUAR'))
@@ -216,18 +280,69 @@ async function identifySystemFromFile(filePath, ext) {
         // CSO - PSP
         if (ext === '.cso' && header.toString('ascii', 0, 4) === 'CISO')
             return '.cso';
+        // XISO - Xbox original
+        if (ext === '.xiso') {
+            const stat = await fs_extra_1.default.stat(filePath);
+            const sizeMB = stat.size / (1024 * 1024);
+            if (sizeMB > 500)
+                return '.xiso';
+            return inferSystemFromFolder(path_1.default.dirname(filePath));
+        }
         // Análise por tamanho do arquivo como fallback
         const stat = await fs_extra_1.default.stat(filePath);
         const sizeMB = stat.size / (1024 * 1024);
-        if (ext === '.iso' || ext === '.bin') {
+        if (ext === '.iso' || ext === '.bin' || ext === '.img' || ext === '.ccd' || ext === '.mdf' || ext === '.gz') {
+            // Xbox 360 ISOs são tipicamente 4-8GB
+            if (sizeMB > 4000)
+                return '.xex';
+            // PS2 ISOs são tipicamente 1-4GB
             if (sizeMB > 1000)
                 return '.ps2';
+            // PS3 ISOs são tipicamente 5-40GB
+            if (sizeMB > 5000)
+                return '.iso';
+            // GameCube ISOs são tipicamente 1-1.5GB
+            if (sizeMB > 1000)
+                return '.gcm';
+            // Wii ISOs são tipicamente 1-4GB
+            if (sizeMB > 1000)
+                return '.wbfs';
+            // Saturn CDs são tipicamente 200-600MB
+            if (sizeMB > 200)
+                return '.sat';
+            // PS1 CDs são tipicamente 200-700MB
             if (sizeMB > 200)
                 return '.bin';
-            if (sizeMB > 50)
-                return '.sat';
-            if (sizeMB > 10)
+            // Mega-CD/Sega CD são tipicamente 200-900MB
+            if (sizeMB > 200)
                 return '.bin';
+            // 3DO são tipicamente 200-650MB
+            if (sizeMB > 200)
+                return '.bin';
+            // PC Engine CD são tipicamente 200-700MB
+            if (sizeMB > 200)
+                return '.pce';
+            // PC-FX são tipicamente 200-700MB
+            if (sizeMB > 200)
+                return '.iso';
+            // FM Towns são tipicamente 200-700MB
+            if (sizeMB > 200)
+                return '.iso';
+            // Philips CD-i são tipicamente 200-700MB
+            if (sizeMB > 200)
+                return '.iso';
+            // Atari Jaguar CD são tipicamente 200-650MB
+            if (sizeMB > 200)
+                return '.jcd';
+            // Neo Geo CD são tipicamente 200-700MB
+            if (sizeMB > 200)
+                return '.iso';
+            // TurboGrafx-CD são tipicamente 200-700MB
+            if (sizeMB > 200)
+                return '.pce';
+            // Amiga CD32 são tipicamente 200-700MB
+            if (sizeMB > 200)
+                return '.iso';
             return '.bin';
         }
         // Fallback para pasta como última opção
