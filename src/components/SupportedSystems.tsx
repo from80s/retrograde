@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react';
-import { Search } from 'lucide-react';
+import { useState, useRef, useCallback, useEffect } from 'react';
+import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const SUPPORTED_SYSTEMS = [
   { name: '3DO Interactive Multiplayer', shortName: '3DO', logo: '3do.svg', extensions: ['.bin', '.cue', '.iso', '.chd'] },
@@ -82,10 +82,23 @@ const SUPPORTED_SYSTEMS = [
   { name: 'Sinclair ZX81', shortName: 'ZX81', logo: 'zx81.svg', extensions: ['.p', '.t81'] },
 ];
 
+interface SystemCard {
+  name: string;
+  shortName: string;
+  logo: string;
+  extensions: string[];
+}
+
 export function SupportedSystems() {
   const [filter, setFilter] = useState('');
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, scrollLeft: 0 });
+  const [velocity, setVelocity] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number>(0);
+  const lastPosRef = useRef({ x: 0, time: 0 });
 
-  const filteredSystems = useMemo(() => {
+  const filteredSystems: SystemCard[] = (() => {
     const sorted = [...SUPPORTED_SYSTEMS].sort((a, b) => a.name.localeCompare(b.name));
     if (!filter.trim()) return sorted;
     const terms = filter.toLowerCase().split(/\s+/).filter(Boolean);
@@ -93,10 +106,85 @@ export function SupportedSystems() {
       const searchBase = `${sys.name} ${sys.shortName} ${sys.extensions.join(' ')}`.toLowerCase();
       return terms.every(term => searchBase.includes(term));
     });
-  }, [filter]);
+  })();
+
+  const stopInertia = useCallback(() => {
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = 0;
+    }
+    setVelocity(0);
+  }, []);
+
+  const applyInertia = useCallback(() => {
+    if (!containerRef.current) return;
+    const container = containerRef.current;
+    const friction = 0.95;
+    const minVelocity = 0.5;
+
+    if (Math.abs(velocity) > minVelocity) {
+      container.scrollLeft += velocity;
+      setVelocity(v => v * friction);
+      animationRef.current = requestAnimationFrame(applyInertia);
+    } else {
+      setVelocity(0);
+      animationRef.current = 0;
+    }
+  }, [velocity]);
+
+  useEffect(() => {
+    return () => stopInertia();
+  }, [stopInertia]);
+
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if (!containerRef.current) return;
+    stopInertia();
+    setIsDragging(true);
+    setDragStart({ x: e.clientX, scrollLeft: containerRef.current.scrollLeft });
+    lastPosRef.current = { x: e.clientX, time: Date.now() };
+    containerRef.current.style.cursor = 'grabbing';
+    containerRef.current.style.userSelect = 'none';
+  }, [stopInertia]);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging || !containerRef.current) return;
+    const dx = dragStart.x - e.clientX;
+    containerRef.current.scrollLeft = dragStart.scrollLeft + dx;
+
+    const now = Date.now();
+    const dt = now - lastPosRef.current.time;
+    if (dt > 0) {
+      const currentVelocity = (lastPosRef.current.x - e.clientX) / dt * 16;
+      setVelocity(currentVelocity);
+    }
+    lastPosRef.current = { x: e.clientX, time: now };
+  }, [isDragging, dragStart]);
+
+  const handleMouseUp = useCallback(() => {
+    if (!containerRef.current) return;
+    setIsDragging(false);
+    containerRef.current.style.cursor = '';
+    containerRef.current.style.userSelect = '';
+    if (Math.abs(velocity) > 0.5) {
+      animationRef.current = requestAnimationFrame(applyInertia);
+    }
+  }, [velocity, applyInertia]);
+
+  const handleMouseLeave = useCallback(() => {
+    if (isDragging) {
+      handleMouseUp();
+    }
+  }, [isDragging, handleMouseUp]);
+
+  const scrollByAmount = useCallback((amount: number) => {
+    if (!containerRef.current) return;
+    stopInertia();
+    containerRef.current.scrollBy({ left: amount, behavior: 'smooth' });
+  }, [stopInertia]);
 
   return (
     <div className="glass rounded-2xl overflow-hidden">
+      {/* Header */}
       <div className="p-4 border-b border-zinc-800/50 flex items-center justify-between gap-4">
         <h3 className="font-semibold text-zinc-200 whitespace-nowrap">
           Sistemas Suportados ({SUPPORTED_SYSTEMS.length})
@@ -113,39 +201,81 @@ export function SupportedSystems() {
         </div>
       </div>
 
-      {filteredSystems.length > 0 ? (
-        <>
-          <div className="grid grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3 p-4 max-h-64 overflow-y-auto scrollbar-thin">
-            {filteredSystems.map((sys) => (
-              <div key={sys.name} className="bg-zinc-800/30 rounded-xl p-3 flex flex-col items-center text-center gap-2">
+      {/* Horizontal scroll area */}
+      <div className="relative">
+        {/* Left arrow */}
+        <button
+          onClick={() => scrollByAmount(-300)}
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-zinc-900/80 border border-zinc-700/50 flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+
+        {/* Scrollable container */}
+        <div
+          ref={containerRef}
+          className="flex gap-4 overflow-x-auto scrollbar-none px-12 py-4 cursor-grab active:cursor-grabbing"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
+        >
+          {filteredSystems.length > 0 ? (
+            filteredSystems.map((sys) => (
+              <div
+                key={sys.name}
+                className="flex-shrink-0 w-44 bg-zinc-800/40 rounded-xl p-4 flex flex-col items-center text-center gap-2 border border-zinc-700/20 hover:border-zinc-600/40 transition-colors"
+              >
                 <img
                   src={`system logos/${sys.logo}`}
                   alt={sys.name}
-                  className="w-10 h-10 object-contain"
-                  onError={(e) => (e.currentTarget.style.display = 'none')}
+                  className="w-16 h-16 object-contain"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.display = 'none';
+                  }}
                 />
                 <div className="min-w-0 w-full">
                   <p className="text-xs font-semibold text-zinc-200 truncate">{sys.name}</p>
                   <p className="text-[10px] text-zinc-500">{sys.shortName}</p>
                 </div>
                 <div className="flex flex-wrap gap-1 justify-center">
-                  {sys.extensions.map((ext) => (
+                  {sys.extensions.slice(0, 4).map((ext) => (
                     <span key={ext} className="text-[9px] font-mono px-1 py-0.5 bg-zinc-700/50 rounded text-retro-primary">
                       {ext}
                     </span>
                   ))}
+                  {sys.extensions.length > 4 && (
+                    <span className="text-[9px] font-mono px-1 py-0.5 bg-zinc-700/30 rounded text-zinc-500">
+                      +{sys.extensions.length - 4}
+                    </span>
+                  )}
                 </div>
               </div>
-            ))}
-          </div>
-          {filter && (
-            <p className="text-xs text-zinc-500 text-center pb-3">
-              {filteredSystems.length} de {SUPPORTED_SYSTEMS.length} sistemas
-            </p>
+            ))
+          ) : (
+            <div className="flex-shrink-0 w-full text-center py-8 text-zinc-500 text-sm">
+              Nenhum sistema encontrado
+            </div>
           )}
-        </>
-      ) : (
-        <p className="text-xs text-zinc-500 text-center py-8">Nenhum sistema encontrado</p>
+        </div>
+
+        {/* Right arrow */}
+        <button
+          onClick={() => scrollByAmount(300)}
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-zinc-900/80 border border-zinc-700/50 flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
+      </div>
+
+      {/* Filter result count */}
+      {filter && (
+        <div className="px-4 pb-3">
+          <p className="text-xs text-zinc-500 text-center">
+            {filteredSystems.length} de {SUPPORTED_SYSTEMS.length} sistemas
+          </p>
+        </div>
       )}
     </div>
   );

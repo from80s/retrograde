@@ -407,12 +407,11 @@ function App() {
         </motion.aside>
 
         {/* Main Content */}
-        <main className="flex-1 flex flex-col overflow-hidden">
-          {/* Scrollable top content */}
+        <main className="flex-1 overflow-hidden flex flex-col">
           <div className="flex-1 overflow-y-auto scrollbar-thin">
-            <div className="p-8 max-w-6xl mx-auto">
+            <div className="p-8 max-w-6xl mx-auto space-y-6">
               {/* Stats Grid */}
-              <div className="grid grid-cols-4 gap-4 mb-8">
+              <div className="grid grid-cols-4 gap-4">
                 <StatCard
                   label="Total Encontrado"
                   value={state.total}
@@ -445,7 +444,6 @@ function App() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="mb-8"
                 >
                   <SpaceSavingsCard
                     bytesSaved={bytesSaved}
@@ -465,7 +463,6 @@ function App() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-8"
                 >
                   <ProgressCard
                     progress={progress}
@@ -482,15 +479,14 @@ function App() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.05 }}
-                className="mb-8"
               >
                 <SupportedSystems />
               </motion.div>
             </div>
           </div>
 
-          {/* Activity Log - fills remaining vertical space */}
-          <div className="flex-shrink-0 px-8 pb-8 max-w-6xl mx-auto w-full" style={{ height: '35vh', minHeight: '200px' }}>
+          {/* Activity Log - fixed height at bottom */}
+          <div className="flex-shrink-0 px-8 pb-6 max-w-6xl mx-auto w-full" style={{ height: '220px' }}>
             <ActivityLog log={state.log} logRef={logRef} />
           </div>
         </main>
