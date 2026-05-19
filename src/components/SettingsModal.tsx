@@ -1,88 +1,7 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Save, Shield, Trash2, MoveRight, Star, Wifi, Loader2, CheckCircle2, XCircle, Search, Plus, AlertTriangle, Gamepad2, BookOpen } from 'lucide-react';
 import { ClassicGamesPicker } from './ClassicGamesPicker';
-
-const SUPPORTED_SYSTEMS = [
-  { name: '3DO Interactive Multiplayer', shortName: '3DO', logo: '3do.svg', extensions: ['.bin', '.cue', '.iso', '.chd'] },
-  { name: 'Amstrad CPC', shortName: 'CPC', logo: 'amstradcpc.svg', extensions: ['.dsk', '.sna', '.cpr', '.tap', '.kcr'] },
-  { name: 'Apple II', shortName: 'Apple II', logo: 'apple2.svg', extensions: ['.do', '.po', '.nib', '.dsk'] },
-  { name: 'Apple IIGS', shortName: 'IIGS', logo: 'apple2gs.svg', extensions: ['.2mg', '.dsk'] },
-  { name: 'Arcade', shortName: 'Arcade', logo: 'arcade.svg', extensions: ['.zip', '.7z', '.chd'] },
-  { name: 'Atari 2600', shortName: '2600', logo: 'atari2600.svg', extensions: ['.a26', '.bin'] },
-  { name: 'Atari 5200', shortName: '5200', logo: 'atari5200.svg', extensions: ['.a52', '.bin', '.car', '.rom'] },
-  { name: 'Atari 7800', shortName: '7800', logo: 'atari7800.svg', extensions: ['.a78', '.bin'] },
-  { name: 'Atari 800', shortName: '800', logo: 'atari800.svg', extensions: ['.atr', '.xex', '.com', '.dsk'] },
-  { name: 'Atari Jaguar / CD', shortName: 'Jaguar', logo: 'atarijaguar.svg', extensions: ['.jag', '.abs', '.cof', '.rom', '.jcd', '.iso', '.chd', '.cue'] },
-  { name: 'Atari Lynx', shortName: 'Lynx', logo: 'atarilynx.svg', extensions: ['.lnx', '.o'] },
-  { name: 'Atari ST', shortName: 'ST', logo: 'atarist.svg', extensions: ['.st', '.msa', '.stx', '.ipf'] },
-  { name: 'BBC Micro', shortName: 'BBC', logo: 'bbcmicro.svg', extensions: ['.ssd', '.dsk'] },
-  { name: 'Coleco Adam', shortName: 'Adam', logo: 'adam.svg', extensions: ['.col', '.dsk', '.rom', '.ddp'] },
-  { name: 'ColecoVision', shortName: 'Coleco', logo: 'colecovision.svg', extensions: ['.col', '.bin', '.rom'] },
-  { name: 'Commodore 64', shortName: 'C64', logo: 'c64.svg', extensions: ['.d64', '.t64', '.g64', '.crt', '.prg'] },
-  { name: 'Commodore Amiga', shortName: 'Amiga', logo: 'amiga.svg', extensions: ['.adf', '.dms', '.ipf', '.lha', '.uae'] },
-  { name: 'Commodore Amiga CD32', shortName: 'CD32', logo: 'amigacd32.svg', extensions: ['.iso', '.bin', '.cue', '.chd'] },
-  { name: 'Commodore VIC-20', shortName: 'VIC-20', logo: 'vic20.svg', extensions: ['.crt', '.prg', '.tap'] },
-  { name: 'Daphne', shortName: 'Daphne', logo: 'daphne.svg', extensions: ['.daphne', '.m2v', '.ogg'] },
-  { name: 'DOS', shortName: 'DOS', logo: 'dos.svg', extensions: ['.exe', '.com', '.bat', '.conf', '.iso'] },
-  { name: 'Fairchild Channel F', shortName: 'Ch F', logo: 'astrocade.svg', extensions: ['.chf', '.bin', '.rom'] },
-  { name: 'Game & Watch', shortName: 'G&W', logo: 'gameandwatch.svg', extensions: ['.mgw'] },
-  { name: 'Game Boy', shortName: 'GB', logo: 'gb.svg', extensions: ['.gb', '.gbs'] },
-  { name: 'Game Boy Advance', shortName: 'GBA', logo: 'gba.svg', extensions: ['.gba', '.gbs'] },
-  { name: 'Game Boy Color', shortName: 'GBC', logo: 'gbc.svg', extensions: ['.gbc', '.gbs'] },
-  { name: 'GameCube', shortName: 'GC', logo: 'gc.svg', extensions: ['.gcm', '.iso', '.rvz', '.ciso', '.gcz'] },
-  { name: 'Intellivision', shortName: 'Intv', logo: 'intellivision.svg', extensions: ['.int', '.bin', '.rom'] },
-  { name: 'LowRes NX', shortName: 'NX', logo: 'lowresnx.svg', extensions: ['.nx'] },
-  { name: 'MAME', shortName: 'MAME', logo: 'mame.svg', extensions: ['.zip', '.7z', '.chd'] },
-  { name: 'MSX / MSX2', shortName: 'MSX', logo: 'msx.svg', extensions: ['.mx1', '.mx2', '.rom', '.dsk', '.cas'] },
-  { name: 'Neo Geo', shortName: 'NeoGeo', logo: 'neogeo.svg', extensions: ['.neo', '.zip'] },
-  { name: 'Neo Geo CD', shortName: 'NGCD', logo: 'neogeocd.svg', extensions: ['.iso', '.chd', '.cue'] },
-  { name: 'Neo Geo Pocket / Color', shortName: 'NGP/NGPC', logo: 'ngpc.svg', extensions: ['.ngp', '.ngc'] },
-  { name: 'NES', shortName: 'NES', logo: 'nes.svg', extensions: ['.nes', '.unf', '.unif'] },
-  { name: 'Nintendo 3DS', shortName: '3DS', logo: 'n3ds.svg', extensions: ['.3ds', '.3dsx', '.cia', '.cci', '.cxi'] },
-  { name: 'Nintendo 64 / 64DD', shortName: 'N64', logo: 'n64.svg', extensions: ['.n64', '.z64', '.v64', '.u1', '.ndd', '.d64'] },
-  { name: 'Nintendo DS', shortName: 'NDS', logo: 'nds.svg', extensions: ['.nds', '.dsi'] },
-  { name: 'Nintendo Switch', shortName: 'Switch', logo: 'switch.svg', extensions: ['.nsp', '.xci', '.nro', '.nso'] },
-  { name: 'PC Engine / TurboGrafx-16', shortName: 'PCE/TG16', logo: 'pcengine.svg', extensions: ['.pce', '.sgx'] },
-  { name: 'PC Engine CD / TurboGrafx-CD', shortName: 'PCE-CD/TG-CD', logo: 'pcenginecd.svg', extensions: ['.pce', '.chd', '.cue', '.iso'] },
-  { name: 'PC-88', shortName: 'PC-88', logo: 'pc88.svg', extensions: ['.d88', '.m3u'] },
-  { name: 'PC-98', shortName: 'PC-98', logo: 'pc98.svg', extensions: ['.d88', '.d98', '.hdi', '.nhd'] },
-  { name: 'PC-FX', shortName: 'PC-FX', logo: 'pcfx.svg', extensions: ['.iso', '.chd', '.cue', '.toc'] },
-  { name: 'PICO-8', shortName: 'PICO-8', logo: 'pico8.svg', extensions: ['.p8', '.png'] },
-  { name: 'PlayStation', shortName: 'PS1', logo: 'psx.svg', extensions: ['.bin', '.cue', '.img', '.pbp', '.ecm', '.cbn'] },
-  { name: 'PlayStation 2', shortName: 'PS2', logo: 'ps2.svg', extensions: ['.iso', '.bin', '.cso', '.chd', '.gz', '.mdf'] },
-  { name: 'PlayStation 3', shortName: 'PS3', logo: 'ps3.svg', extensions: ['.iso', '.pkg', '.rap'] },
-  { name: 'PlayStation Portable', shortName: 'PSP', logo: 'psp.svg', extensions: ['.cso', '.iso', '.pbp'] },
-  { name: 'PlayStation Vita', shortName: 'Vita', logo: 'psvita.svg', extensions: ['.vpk'] },
-  { name: 'Pokémon Mini', shortName: 'Pokémini', logo: 'pokemini.svg', extensions: ['.min'] },
-  { name: 'ScummVM', shortName: 'Scumm', logo: 'scummvm.svg', extensions: ['.svm'] },
-  { name: 'Sega 32X', shortName: '32X', logo: 'sega32x.svg', extensions: ['.32x', '.bin', '.md', '.smd'] },
-  { name: 'Sega CD / Mega-CD', shortName: 'Sega CD', logo: 'segacd.svg', extensions: ['.bin', '.cue', '.iso', '.chd'] },
-  { name: 'Sega Dreamcast', shortName: 'Dreamcast', logo: 'dreamcast.svg', extensions: ['.gdi', '.cdi', '.bin', '.cue', '.chd'] },
-  { name: 'Sega Game Gear', shortName: 'GG', logo: 'gamegear.svg', extensions: ['.gg', '.bin', '.sms'] },
-  { name: 'Sega Genesis / Mega Drive', shortName: 'Genesis/MD', logo: 'megadrive.svg', extensions: ['.gen', '.md', '.smd', '.bin'] },
-  { name: 'Sega Master System', shortName: 'SMS', logo: 'mastersystem.svg', extensions: ['.sms', '.bin'] },
-  { name: 'Sega NAOMI', shortName: 'NAOMI', logo: 'naomi.svg', extensions: ['.bin', '.dat', '.lst'] },
-  { name: 'Sega Saturn', shortName: 'Saturn', logo: 'saturn.svg', extensions: ['.bin', '.cue', '.iso', '.chd'] },
-  { name: 'Sega SG-1000', shortName: 'SG-1000', logo: 'sg-1000.svg', extensions: ['.sg', '.bin', '.rom'] },
-  { name: 'Sharp X1', shortName: 'X1', logo: 'x1.svg', extensions: ['.2d', '.2hd', '.dx1'] },
-  { name: 'Sharp X68000', shortName: 'X68k', logo: 'x68000.svg', extensions: ['.d88', '.hdf', '.m3u'] },
-  { name: 'SNES / Super Famicom', shortName: 'SNES/SFC', logo: 'snes.svg', extensions: ['.sfc', '.smc', '.fig', '.bs', '.swc'] },
-  { name: 'SuperGrafx', shortName: 'SGX', logo: 'supergrafx.svg', extensions: ['.sgx', '.pce'] },
-  { name: 'SuFami Turbo', shortName: 'Sufami', logo: 'sufami.svg', extensions: ['.bs', '.sfc', '.smc'] },
-  { name: 'TIC-80', shortName: 'TIC-80', logo: 'tic80.svg', extensions: ['.tic'] },
-  { name: 'Vectrex', shortName: 'Vectrex', logo: 'vectrex.svg', extensions: ['.vec', '.gam', '.bin', '.rom'] },
-  { name: 'Virtual Boy', shortName: 'VB', logo: 'virtualboy.svg', extensions: ['.vb', '.vboy'] },
-  { name: 'WASM-4', shortName: 'WASM-4', logo: 'wasm4.svg', extensions: ['.wasm'] },
-  { name: 'Watara Supervision', shortName: 'SV', logo: 'supervision.svg', extensions: ['.sv', '.bin'] },
-  { name: 'Wii', shortName: 'Wii', logo: 'wii.svg', extensions: ['.wbfs', '.iso', '.rvz', '.gcz', '.ciso'] },
-  { name: 'Wii U', shortName: 'Wii U', logo: 'wiiu.svg', extensions: ['.wux', '.wud', '.rpx', '.app'] },
-  { name: 'WonderSwan / Color', shortName: 'WS/WSC', logo: 'wonderswan.svg', extensions: ['.ws', '.wsc'] },
-  { name: 'Xbox', shortName: 'Xbox', logo: 'xbox.svg', extensions: ['.iso', '.xiso'] },
-  { name: 'Xbox 360', shortName: 'X360', logo: 'xbox360.svg', extensions: ['.iso', '.xex'] },
-  { name: 'ZX Spectrum', shortName: 'ZX', logo: 'zxspectrum.svg', extensions: ['.z80', '.sna', '.tap', '.trd', '.scl', '.tzx'] },
-  { name: 'Sinclair ZX81', shortName: 'ZX81', logo: 'zx81.svg', extensions: ['.p', '.t81'] },
-];
 
 interface SettingsModalProps {
   onClose: () => void;
@@ -123,7 +42,6 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
   const [newProtectedGame, setNewProtectedGame] = useState('');
   const [showProtectedGameDeleteConfirm, setShowProtectedGameDeleteConfirm] = useState<string | null>(null);
   const [showClassicPicker, setShowClassicPicker] = useState(false);
-  const [systemsFilter, setSystemsFilter] = useState('');
 
   useEffect(() => {
     window.api.readConfig().then((loadedConfig) => {
@@ -234,16 +152,6 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
   const filteredGenres = genres.filter((g) =>
     g.toLowerCase().includes(genresFilter.toLowerCase())
   );
-
-  const filteredSystems = useMemo(() => {
-    const sorted = [...SUPPORTED_SYSTEMS].sort((a, b) => a.name.localeCompare(b.name));
-    if (!systemsFilter.trim()) return sorted;
-    const terms = systemsFilter.toLowerCase().split(/\s+/).filter(Boolean);
-    return sorted.filter((sys) => {
-      const searchBase = `${sys.name} ${sys.shortName} ${sys.extensions.join(' ')}`.toLowerCase();
-      return terms.every(term => searchBase.includes(term));
-    });
-  }, [systemsFilter]);
 
   const handleAddGenre = async () => {
     if (!newGenre.trim()) return;
@@ -671,60 +579,6 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                   <p className="text-xs text-zinc-600">Nenhum jogo encontrado</p>
                 )}
               </div>
-            </div>
-
-            {/* Systems Info - Última seção */}
-            <div className="space-y-4">
-              <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">
-                Sistemas Suportados ({SUPPORTED_SYSTEMS.length})
-              </h3>
-
-              {/* Search bar */}
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
-                <input
-                  type="text"
-                  placeholder="Buscar por sistema, fabricante ou extensão..."
-                  value={systemsFilter}
-                  onChange={(e) => setSystemsFilter(e.target.value)}
-                  className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl pl-10 pr-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-retro-primary/50 transition-colors placeholder:text-zinc-600"
-                />
-              </div>
-
-              {filteredSystems.length > 0 ? (
-                <>
-                  <div className="grid grid-cols-2 gap-3 max-h-80 overflow-y-auto scrollbar-thin">
-                    {filteredSystems.map((sys) => (
-                      <div key={sys.name} className="bg-zinc-800/30 rounded-xl p-4 flex flex-col items-center text-center gap-3">
-                        <img
-                          src={`system logos/${sys.logo}`}
-                          alt={sys.name}
-                          className="w-16 h-16 object-contain"
-                          onError={(e) => (e.currentTarget.style.display = 'none')}
-                        />
-                        <div className="min-w-0 w-full">
-                          <p className="text-sm font-semibold text-zinc-200 truncate">{sys.name}</p>
-                          <p className="text-[10px] text-zinc-500">{sys.shortName}</p>
-                        </div>
-                        <div className="flex flex-wrap gap-1 justify-center">
-                          {sys.extensions.map((ext) => (
-                            <span key={ext} className="text-[10px] font-mono px-1.5 py-0.5 bg-zinc-700/50 rounded text-retro-primary">
-                              {ext}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  {systemsFilter && (
-                    <p className="text-xs text-zinc-500 text-center">
-                      {filteredSystems.length} de {SUPPORTED_SYSTEMS.length} sistemas
-                    </p>
-                  )}
-                </>
-              ) : (
-                <p className="text-xs text-zinc-500 text-center py-4">Nenhum sistema encontrado</p>
-              )}
             </div>
           </div>
 

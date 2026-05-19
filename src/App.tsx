@@ -34,6 +34,7 @@ import { SpaceSavingsCard } from './components/SpaceSavingsCard';
 import { ScanPreviewModal } from './components/ScanPreviewModal';
 import { ExtractorModal } from './components/ExtractorModal';
 import { OrphanFilesModal } from './components/OrphanFilesModal';
+import { SupportedSystems } from './components/SupportedSystems';
 import { TgdbAssetsModal } from './components/TgdbAssetsModal';
 import { Toast } from './components/Toast';
 import { TitleBar } from './components/TitleBar';
@@ -406,82 +407,91 @@ function App() {
         </motion.aside>
 
         {/* Main Content */}
-        <main className="flex-1 overflow-y-auto scrollbar-thin">
-          <div className="p-8 max-w-6xl mx-auto">
-            {/* Stats Grid */}
-            <div className="grid grid-cols-4 gap-4 mb-8">
-              <StatCard
-                label="Total Encontrado"
-                value={state.total}
-                icon={Gamepad2}
-                color="retro-primary"
-              />
-              <StatCard
-                label="Clássicos Preservados"
-                value={state.classics}
-                icon={ShieldCheck}
-                color="retro-secondary"
-              />
-              <StatCard
-                label="Mantidos por Nota"
-                value={state.kept}
-                icon={CheckCircle2}
-                color="retro-success"
-              />
-              <StatCard
-                label="Removidos"
-                value={state.removed}
-                icon={XCircle}
-                color="retro-danger"
-              />
+        <main className="flex-1 flex flex-col overflow-hidden">
+          {/* Scrollable top content */}
+          <div className="flex-1 overflow-y-auto scrollbar-thin">
+            <div className="p-8 max-w-6xl mx-auto">
+              {/* Stats Grid */}
+              <div className="grid grid-cols-4 gap-4 mb-8">
+                <StatCard
+                  label="Total Encontrado"
+                  value={state.total}
+                  icon={Gamepad2}
+                  color="retro-primary"
+                />
+                <StatCard
+                  label="Clássicos Preservados"
+                  value={state.classics}
+                  icon={ShieldCheck}
+                  color="retro-secondary"
+                />
+                <StatCard
+                  label="Mantidos por Nota"
+                  value={state.kept}
+                  icon={CheckCircle2}
+                  color="retro-success"
+                />
+                <StatCard
+                  label="Removidos"
+                  value={state.removed}
+                  icon={XCircle}
+                  color="retro-danger"
+                />
+              </div>
+
+              {/* Space Savings Card */}
+              {bytesSaved > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="mb-8"
+                >
+                  <SpaceSavingsCard
+                    bytesSaved={bytesSaved}
+                    action={state.action}
+                    onDeleteRemoved={async () => {
+                      if (state.folder) {
+                        await window.api.deleteRemovedFolder(state.folder);
+                        setBytesSaved(0);
+                      }
+                    }}
+                  />
+                </motion.div>
+              )}
+
+              {/* Progress Section */}
+              {state.isRunning && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-8"
+                >
+                  <ProgressCard
+                    progress={progress}
+                    currentFile={state.currentFile}
+                    currentSystem={state.currentSystem}
+                    currentRating={state.currentRating}
+                    currentStatus={state.currentStatus}
+                  />
+                </motion.div>
+              )}
+
+              {/* Supported Systems */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.05 }}
+                className="mb-8"
+              >
+                <SupportedSystems />
+              </motion.div>
             </div>
+          </div>
 
-            {/* Space Savings Card */}
-            {bytesSaved > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="mb-8"
-              >
-                <SpaceSavingsCard
-                  bytesSaved={bytesSaved}
-                  action={state.action}
-                  onDeleteRemoved={async () => {
-                    if (state.folder) {
-                      await window.api.deleteRemovedFolder(state.folder);
-                      setBytesSaved(0);
-                    }
-                  }}
-                />
-              </motion.div>
-            )}
-
-            {/* Progress Section */}
-            {state.isRunning && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mb-8"
-              >
-                <ProgressCard
-                  progress={progress}
-                  currentFile={state.currentFile}
-                  currentSystem={state.currentSystem}
-                  currentRating={state.currentRating}
-                  currentStatus={state.currentStatus}
-                />
-              </motion.div>
-            )}
-
-            {/* Activity Log */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-            >
-              <ActivityLog log={state.log} logRef={logRef} />
-            </motion.div>
+          {/* Activity Log - fills remaining vertical space */}
+          <div className="flex-shrink-0 px-8 pb-8 max-w-6xl mx-auto w-full" style={{ height: '35vh', minHeight: '200px' }}>
+            <ActivityLog log={state.log} logRef={logRef} />
           </div>
         </main>
       </div>

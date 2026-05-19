@@ -1,0 +1,1306 @@
+{
+  "systems": [
+    {
+      "id": "sega_32x",
+      "tgdb_id": 33,
+      "igdb_id": 30,
+      "name": "Sega 32X",
+      "manufacturer": "Sega",
+      "release_year": 1994,
+      "origin_country": "Japão",
+      "description": "32X é um acessório para o console da Sega, Mega Drive, conhecido como Genesis na América do Norte. No Japão, foi distribuído com o nome Sega Super 32X. Na América do Norte, Sega Genesis 32X.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.32x' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".32x"
+      ]
+    },
+    {
+      "id": "nintendo_3ds",
+      "tgdb_id": 4912,
+      "igdb_id": 37,
+      "name": "Nintendo 3DS",
+      "manufacturer": "Nintendo",
+      "release_year": 2011,
+      "origin_country": "Japão",
+      "description": "O Nintendo 3DS (ニンテンドー3DS, Nintendō Surī Dī Esu; abreviado como 3DS) é um console portátil de oitava geração produzido pela Nintendo e lançado em 2011, sucessor do Nintendo DS. Seus principais recursos são a capacidade de produzir imagens em três dimensões sem óculos especiais e a retrocompatibilidade com títulos dos portáteis antecessores Nintendo DS e DSi. Seu principal concorrente foi o PlayStation Vita da Sony, através da Sony Interactive Entertainment.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.3ds' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".3ds",
+        ".3dsx",
+        ".app",
+        ".axis",
+        ".cia",
+        ".cxi"
+      ]
+    },
+    {
+      "id": "arcade",
+      "tgdb_id": 23,
+      "igdb_id": 51,
+      "name": "Arcade",
+      "manufacturer": "Vários",
+      "release_year": 1970,
+      "origin_country": "Vários",
+      "description": "Arcade, arcada, ou fliperama (como é tradicionalmente conhecido no Brasil) é um aparelho integrado de jogo eletrônico instalado em estabelecimentos de entretenimento, composto por gabinete (caixa de madeira ou plástico), monitor de vídeo ou tubo de imagem (CRT), fonte de alimentação, controles de jogo e, sistema de jogo. Este último varia de acordo com o fabricante do jogo, sendo alguns compostos por uma única placa (PCB), ou conjuntos como placa-mãe e cartuchos de jogos (ex: SNK Neo-Geo e as Capcom CPS-2 e 3). É possível intercambiar somente o sistema de jogo do gabinete, sem precisar substituir todo o gabinete, com monitor e controles.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.7z' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".7z",
+        ".zip"
+      ]
+    },
+    {
+      "id": "atari_2600",
+      "tgdb_id": 22,
+      "igdb_id": 59,
+      "name": "Atari 2600",
+      "manufacturer": "Atari",
+      "release_year": 1977,
+      "origin_country": "Estados Unidos",
+      "description": "Atari 2600, originalmente vendido como Atari Video Computer System ou Atari VCS até novembro de 1982, é um videogame projetado por Jay Miner e lançado em 11 de setembro de 1977 nos Estados Unidos e em 1983 no Brasil, sendo descontinuado oficialmente em 1992. Em março de 2017 a Tectoy lançou o Atari Flashback 7, baseado no Atari 2600. O console traz 101 jogos na memória e não aceita cartuchos.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.a26' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".a26"
+      ]
+    },
+    {
+      "id": "atari_5200",
+      "tgdb_id": 26,
+      "igdb_id": 66,
+      "name": "Atari 5200",
+      "manufacturer": "Atari",
+      "release_year": 1982,
+      "origin_country": "Estados Unidos",
+      "description": "O Atari 5200 foi um console de videojogos lançado pela Atari em 1982 para substituir o Atari 2600, que teve como principais competidores o Intellivision (fabricado pela Mattel) e o Colecovision (fabricado pela COLECO). Devido a pequenos problemas com seu controle e a crise que a indústria dos games passou, o produto teve um sucesso comercial moderado. A arquitetura do sistema é quase idêntica à dos computadores de 8 bits da Atari, embora o software não seja diretamente compatível entre eles.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.a52' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".a52",
+        ".car",
+        ".dcm"
+      ]
+    },
+    {
+      "id": "atari_7800",
+      "tgdb_id": 27,
+      "igdb_id": 60,
+      "name": "Atari 7800",
+      "manufacturer": "Atari",
+      "release_year": 1986,
+      "origin_country": "Estados Unidos",
+      "description": "Atari 7800 foi um console de videogames da terceira geração lançado pela empresa Atari em junho de 1986, com um teste de mercado ocorrendo dois anos antes. Foi desenvolvido para substituir o Atari 5200, que teve um sucesso de mercado razoável, e concorrer com os consoles Intellivision e Colecovision. O Atari 7800, foi projetado para fazer frente aos recentes rivais do Atari 5200, O Nintendo Entertainment System (NES) e o Sega Master System.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.a78' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".a78"
+      ]
+    },
+    {
+      "id": "atari_jaguar",
+      "tgdb_id": 28,
+      "igdb_id": 31,
+      "name": "Atari Jaguar",
+      "manufacturer": "Atari",
+      "release_year": 1993,
+      "origin_country": "Estados Unidos",
+      "description": "Atari Jaguar é um console de videogame da quinta geração com 64 bits, lançado pela empresa Flare II (Atari Corporation) em 1993, para concorrer com os consoles Mega Drive e Super Nintendo em poder de processamento. Disputou mercado com o console 3DO e posteriormente com os videogames da 5ª geração. O Jaguar foi lançado inicialmente em algumas cidades selecionadas dos Estados Unidos em novembro de 1993 e, posteriormente no resto do país em 1994.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.abs' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".abs",
+        ".cof",
+        ".j64",
+        ".jag"
+      ]
+    },
+    {
+      "id": "amiga",
+      "tgdb_id": 4911,
+      "igdb_id": 3,
+      "name": "Amiga",
+      "manufacturer": "Commodore",
+      "release_year": 1985,
+      "origin_country": "Estados Unidos",
+      "description": "Amiga é uma família de computadores pessoais produzida pela Commodore de 1985 até a falência da empresa em 1994, com produção posterior por outras empresas. O modelo original aprimorou significativamente os recursos gráficos e de áudio em comparação com os sistemas de 8 bits e é um dos vários computadores de meados da década de 1980 com processadores de 16 bits ou 16/32 bits, 256 KB ou mais de RAM e interfaces gráficas baseadas em mouse. Esses computadores incluem o Atari ST, o Macintosh, o Archimedes e, posteriormente, o Apple IIGS.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.adf' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".adf",
+        ".adz",
+        ".dms",
+        ".fdi",
+        ".hdf",
+        ".hdz",
+        ".ipf",
+        ".lha",
+        ".m3u",
+        ".mds",
+        ".rp9",
+        ".uae"
+      ]
+    },
+    {
+      "id": "atari_800",
+      "tgdb_id": 4943,
+      "igdb_id": 58,
+      "name": "Atari 800",
+      "manufacturer": "Atari",
+      "release_year": 1979,
+      "origin_country": "Estados Unidos",
+      "description": "O Atari 800 é um computador doméstico baseado no microprocessador 6502, da empresa estadunidense Atari, Inc. Foi lançado juntamente com sua versão básica, o Atari 400.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.atr' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".atr",
+        ".atx"
+      ]
+    },
+    {
+      "id": "sony_playstation",
+      "tgdb_id": 10,
+      "igdb_id": 7,
+      "name": "Sony PlayStation",
+      "manufacturer": "Sony",
+      "release_year": 1994,
+      "origin_country": "Japão",
+      "description": "PlayStation (プレイステーション, Pureisutēshon; oficialmente abreviado PS) é uma marca internacional de consoles de videogame criada e desenvolvida pela Sony Interactive Entertainment (uma divisão da Sony), com 7 consoles (PlayStation, PlayStation 2, PSP, PlayStation 3, PlayStation Vita, PlayStation 4, PlayStation 5), abrangendo a quinta, sexta, sétima, oitava e nona gerações de videogames. A marca foi lançada pela primeira vez em 3 de dezembro de 1994 no Japão. Fora os serviços PlayStation Network, PlayStation Store e PlayStation Plus, além das empresas hoje conhecidas como PlayStation Studios.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.bin' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".bin",
+        ".cbn",
+        ".ccd",
+        ".chd",
+        ".cue",
+        ".ecm",
+        ".img",
+        ".psf"
+      ]
+    },
+    {
+      "id": "snes",
+      "tgdb_id": 6,
+      "igdb_id": 19,
+      "name": "SNES",
+      "manufacturer": "Nintendo",
+      "release_year": 1990,
+      "origin_country": "Japão",
+      "description": "O SNES é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.bs' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".bs",
+        ".fig",
+        ".sfc",
+        ".smc",
+        ".swc"
+      ]
+    },
+    {
+      "id": "amstrad_cpc",
+      "tgdb_id": 4914,
+      "igdb_id": 49,
+      "name": "Amstrad CPC",
+      "manufacturer": "Amstrad",
+      "release_year": 1984,
+      "origin_country": "Reino Unido",
+      "description": "O Amstrad CPC é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.cas' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".cas",
+        ".cdt",
+        ".cpr",
+        ".dsk",
+        ".kcr",
+        ".sna",
+        ".tap",
+        ".voc"
+      ]
+    },
+    {
+      "id": "dreamcast",
+      "tgdb_id": 16,
+      "igdb_id": 23,
+      "name": "Dreamcast",
+      "manufacturer": "Sega",
+      "release_year": 1998,
+      "origin_country": "Japão",
+      "description": "O Dreamcast é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.cdi' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".cdi",
+        ".gdi"
+      ]
+    },
+    {
+      "id": "fairchild_channel_f",
+      "tgdb_id": 4952,
+      "igdb_id": 48,
+      "name": "Fairchild Channel F",
+      "manufacturer": "Fairchild",
+      "release_year": 1976,
+      "origin_country": "Estados Unidos",
+      "description": "O Fairchild Channel F é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.chf' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".chf"
+      ]
+    },
+    {
+      "id": "gamecube",
+      "tgdb_id": 2,
+      "igdb_id": 21,
+      "name": "GameCube",
+      "manufacturer": "Nintendo",
+      "release_year": 2001,
+      "origin_country": "Japão",
+      "description": "O GameCube é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.ciso' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".ciso",
+        ".gcm",
+        ".gcz",
+        ".iso",
+        ".rvz"
+      ]
+    },
+    {
+      "id": "colecovision",
+      "tgdb_id": 31,
+      "igdb_id": 44,
+      "name": "ColecoVision",
+      "manufacturer": "Coleco",
+      "release_year": 1982,
+      "origin_country": "Estados Unidos",
+      "description": "O ColecoVision é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.col' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".col",
+        ".cqi",
+        ".cqm",
+        ".d77",
+        ".ddp",
+        ".dfi",
+        ".hfe",
+        ".imd",
+        ".mfi",
+        ".mfm",
+        ".rom",
+        ".td0",
+        ".wav"
+      ]
+    },
+    {
+      "id": "dos",
+      "tgdb_id": 1,
+      "igdb_id": 1,
+      "name": "DOS",
+      "manufacturer": "Microsoft",
+      "release_year": 1981,
+      "origin_country": "Estados Unidos",
+      "description": "O DOS é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.com' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".com",
+        ".conf",
+        ".dos",
+        ".exe",
+        ".ins",
+        ".raw",
+        ".vhd"
+      ]
+    },
+    {
+      "id": "commodore_64",
+      "tgdb_id": 40,
+      "igdb_id": 8,
+      "name": "Commodore 64",
+      "manufacturer": "Commodore",
+      "release_year": 1982,
+      "origin_country": "Estados Unidos",
+      "description": "O Commodore 64 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.crt' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".crt",
+        ".d64",
+        ".d71",
+        ".d80",
+        ".d81",
+        ".d82",
+        ".gcr",
+        ".g64",
+        ".prg",
+        ".t64",
+        ".x64"
+      ]
+    },
+    {
+      "id": "sony_psp",
+      "tgdb_id": 13,
+      "igdb_id": 38,
+      "name": "Sony PSP",
+      "manufacturer": "Sony",
+      "release_year": 2004,
+      "origin_country": "Japão",
+      "description": "O Sony PSP é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.cso' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".cso",
+        ".pbp"
+      ]
+    },
+    {
+      "id": "pc_88",
+      "tgdb_id": 4960,
+      "igdb_id": 54,
+      "name": "PC-88",
+      "manufacturer": "NEC",
+      "release_year": 1981,
+      "origin_country": "Japão",
+      "description": "O PC-88 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.d88' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".d88",
+        ".tfd"
+      ]
+    },
+    {
+      "id": "pc_98",
+      "tgdb_id": 4960,
+      "igdb_id": 54,
+      "name": "PC-98",
+      "manufacturer": "NEC",
+      "release_year": 1982,
+      "origin_country": "Japão",
+      "description": "O PC-98 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.d98' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".d98",
+        ".hdd",
+        ".hdi",
+        ".nhd"
+      ]
+    },
+    {
+      "id": "daphne",
+      "tgdb_id": 23,
+      "igdb_id": 51,
+      "name": "Daphne",
+      "manufacturer": "Vários",
+      "release_year": 1983,
+      "origin_country": "Estados Unidos",
+      "description": "O Daphne é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.daphne' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".daphne",
+        ".m2v",
+        ".ogg"
+      ]
+    },
+    {
+      "id": "apple_ii",
+      "tgdb_id": 4942,
+      "igdb_id": 10,
+      "name": "Apple II",
+      "manufacturer": "Apple",
+      "release_year": 1977,
+      "origin_country": "Estados Unidos",
+      "description": "O Apple II é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.do' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".do",
+        ".nib",
+        ".po"
+      ]
+    },
+    {
+      "id": "doom",
+      "tgdb_id": 1,
+      "igdb_id": 1,
+      "name": "Doom",
+      "manufacturer": "id Software",
+      "release_year": 1993,
+      "origin_country": "Estados Unidos",
+      "description": "O Doom é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.doom' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".doom",
+        ".iwad",
+        ".wad"
+      ]
+    },
+    {
+      "id": "nintendo_ds",
+      "tgdb_id": 8,
+      "igdb_id": 20,
+      "name": "Nintendo DS",
+      "manufacturer": "Nintendo",
+      "release_year": 2004,
+      "origin_country": "Japão",
+      "description": "O Nintendo DS é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.dsi' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".dsi",
+        ".nds"
+      ]
+    },
+    {
+      "id": "sharp_x1",
+      "tgdb_id": 4960,
+      "igdb_id": 54,
+      "name": "Sharp X1",
+      "manufacturer": "Sharp Corporation",
+      "release_year": 1982,
+      "origin_country": "Japão",
+      "description": "O Sharp X1 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.dx1' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".dx1",
+        ".2d",
+        ".2hd"
+      ]
+    },
+    {
+      "id": "famicom_disk_system",
+      "tgdb_id": 4936,
+      "igdb_id": 18,
+      "name": "Famicom Disk System",
+      "manufacturer": "Nintendo",
+      "release_year": 1986,
+      "origin_country": "Japão",
+      "description": "O Famicom Disk System é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.fds' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".fds"
+      ]
+    },
+    {
+      "id": "vectrex",
+      "tgdb_id": 4939,
+      "igdb_id": 46,
+      "name": "Vectrex",
+      "manufacturer": "General Consumer Electronics",
+      "release_year": 1982,
+      "origin_country": "Estados Unidos",
+      "description": "O Vectrex é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.gam' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".gam",
+        ".vec"
+      ]
+    },
+    {
+      "id": "game_boy",
+      "tgdb_id": 4,
+      "igdb_id": 4,
+      "name": "Game Boy",
+      "manufacturer": "Nintendo",
+      "release_year": 1989,
+      "origin_country": "Japão",
+      "description": "O Game Boy é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.gb' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".gb",
+        ".gbs"
+      ]
+    },
+    {
+      "id": "game_boy_advance",
+      "tgdb_id": 5,
+      "igdb_id": 24,
+      "name": "Game Boy Advance",
+      "manufacturer": "Nintendo",
+      "release_year": 2001,
+      "origin_country": "Japão",
+      "description": "O Game Boy Advance é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.gba' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".gba"
+      ]
+    },
+    {
+      "id": "game_boy_color",
+      "tgdb_id": 41,
+      "igdb_id": 5,
+      "name": "Game Boy Color",
+      "manufacturer": "Nintendo",
+      "release_year": 1998,
+      "origin_country": "Japão",
+      "description": "O Game Boy Color é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.gbc' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".gbc"
+      ]
+    },
+    {
+      "id": "sega_genesis",
+      "tgdb_id": 18,
+      "igdb_id": 29,
+      "name": "Sega Genesis",
+      "manufacturer": "Sega",
+      "release_year": 1988,
+      "origin_country": "Japão",
+      "description": "O Sega Genesis é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.gen' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".gen",
+        ".md",
+        ".smd"
+      ]
+    },
+    {
+      "id": "game_gear",
+      "tgdb_id": 20,
+      "igdb_id": 33,
+      "name": "Game Gear",
+      "manufacturer": "Sega",
+      "release_year": 1990,
+      "origin_country": "Japão",
+      "description": "O Game Gear é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.gg' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".gg"
+      ]
+    },
+    {
+      "id": "playstation_2",
+      "tgdb_id": 11,
+      "igdb_id": 7,
+      "name": "PlayStation 2",
+      "manufacturer": "Sony",
+      "release_year": 2000,
+      "origin_country": "Japão",
+      "description": "O PlayStation 2 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.gz' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".gz",
+        ".mdf"
+      ]
+    },
+    {
+      "id": "intellivision",
+      "tgdb_id": 32,
+      "igdb_id": 45,
+      "name": "Intellivision",
+      "manufacturer": "Desconhecido",
+      "release_year": 0,
+      "origin_country": "Desconhecido",
+      "description": "O Intellivision é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.int' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".int"
+      ]
+    },
+    {
+      "id": "atari_jaguar_cd",
+      "tgdb_id": 28,
+      "igdb_id": 31,
+      "name": "Atari Jaguar CD",
+      "manufacturer": "Desconhecido",
+      "release_year": 0,
+      "origin_country": "Desconhecido",
+      "description": "O Atari Jaguar CD é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.jcd' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".jcd"
+      ]
+    },
+    {
+      "id": "atari_lynx",
+      "tgdb_id": 4924,
+      "igdb_id": 28,
+      "name": "Atari Lynx",
+      "manufacturer": "Atari",
+      "release_year": 1989,
+      "origin_country": "Estados Unidos",
+      "description": "O Atari Lynx é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.lnx' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".lnx",
+        ".o"
+      ]
+    },
+    {
+      "id": "sega_naomi",
+      "tgdb_id": 23,
+      "igdb_id": 51,
+      "name": "Sega NAOMI",
+      "manufacturer": "Sega",
+      "release_year": 1998,
+      "origin_country": "Japão",
+      "description": "O Sega NAOMI é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.lst' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".lst"
+      ]
+    },
+    {
+      "id": "game_&_watch",
+      "tgdb_id": 4952,
+      "igdb_id": 48,
+      "name": "Game & Watch",
+      "manufacturer": "Nintendo",
+      "release_year": 1980,
+      "origin_country": "Japão",
+      "description": "O Game & Watch é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.mgw' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".mgw"
+      ]
+    },
+    {
+      "id": "pokémon_mini",
+      "tgdb_id": 4957,
+      "igdb_id": 18,
+      "name": "Pokémon Mini",
+      "manufacturer": "Nintendo",
+      "release_year": 2001,
+      "origin_country": "Japão",
+      "description": "O Pokémon Mini é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.min' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".min",
+        ".pokemini"
+      ]
+    },
+    {
+      "id": "atari_st",
+      "tgdb_id": 4937,
+      "igdb_id": 5,
+      "name": "Atari ST",
+      "manufacturer": "Atari",
+      "release_year": 1985,
+      "origin_country": "Estados Unidos",
+      "description": "O Atari ST é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.msa' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".msa",
+        ".st",
+        ".stx"
+      ]
+    },
+    {
+      "id": "msx",
+      "tgdb_id": 4929,
+      "igdb_id": 25,
+      "name": "MSX",
+      "manufacturer": "Microsoft / ASCII",
+      "release_year": 1983,
+      "origin_country": "Japão",
+      "description": "O MSX é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.mx1' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".mx1"
+      ]
+    },
+    {
+      "id": "msx2",
+      "tgdb_id": 4929,
+      "igdb_id": 25,
+      "name": "MSX2",
+      "manufacturer": "MSX Licensing Corporation",
+      "release_year": 1985,
+      "origin_country": "Japão",
+      "description": "O MSX2 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.mx2' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".mx2"
+      ]
+    },
+    {
+      "id": "nintendo_64",
+      "tgdb_id": 3,
+      "igdb_id": 4,
+      "name": "Nintendo 64",
+      "manufacturer": "Nintendo",
+      "release_year": 1996,
+      "origin_country": "Japão",
+      "description": "O Nintendo 64 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.n64' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".n64",
+        ".ndd",
+        ".u1",
+        ".v64",
+        ".z64"
+      ]
+    },
+    {
+      "id": "nintendo_switch",
+      "tgdb_id": 4971,
+      "igdb_id": 43,
+      "name": "Nintendo Switch",
+      "manufacturer": "Nintendo",
+      "release_year": 2017,
+      "origin_country": "Japão",
+      "description": "O Nintendo Switch é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.nca' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".nca",
+        ".nro",
+        ".nso",
+        ".nsp",
+        ".xci"
+      ]
+    },
+    {
+      "id": "neo_geo",
+      "tgdb_id": 24,
+      "igdb_id": 32,
+      "name": "Neo Geo",
+      "manufacturer": "SNK",
+      "release_year": 1990,
+      "origin_country": "Japão",
+      "description": "O Neo Geo é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.neo' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".neo"
+      ]
+    },
+    {
+      "id": "nes",
+      "tgdb_id": 7,
+      "igdb_id": 18,
+      "name": "NES",
+      "manufacturer": "Nintendo",
+      "release_year": 1983,
+      "origin_country": "Japão",
+      "description": "O NES é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.nes' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".nes",
+        ".unf",
+        ".unif"
+      ]
+    },
+    {
+      "id": "neo_geo_pocket_color",
+      "tgdb_id": 4923,
+      "igdb_id": 27,
+      "name": "Neo Geo Pocket Color",
+      "manufacturer": "SNK",
+      "release_year": 1999,
+      "origin_country": "Japão",
+      "description": "O Neo Geo Pocket Color é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.ngc' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".ngc"
+      ]
+    },
+    {
+      "id": "neo_geo_pocket",
+      "tgdb_id": 4922,
+      "igdb_id": 27,
+      "name": "Neo Geo Pocket",
+      "manufacturer": "SNK",
+      "release_year": 1998,
+      "origin_country": "Japão",
+      "description": "O Neo Geo Pocket é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.ngp' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".ngp"
+      ]
+    },
+    {
+      "id": "lowres_nx",
+      "tgdb_id": 4952,
+      "igdb_id": 48,
+      "name": "LowRes NX",
+      "manufacturer": "Inconcreto (Retro-style)",
+      "release_year": 2017,
+      "origin_country": "Vários",
+      "description": "O LowRes NX é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.nx' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".nx"
+      ]
+    },
+    {
+      "id": "sinclair_zx81",
+      "tgdb_id": 4913,
+      "igdb_id": 9,
+      "name": "Sinclair ZX81",
+      "manufacturer": "Sinclair Research",
+      "release_year": 1981,
+      "origin_country": "Reino Unido",
+      "description": "O Sinclair ZX81 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.p' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".p",
+        ".t81"
+      ]
+    },
+    {
+      "id": "pico_8",
+      "tgdb_id": 4952,
+      "igdb_id": 48,
+      "name": "PICO-8",
+      "manufacturer": "Lexaloffle Games",
+      "release_year": 2015,
+      "origin_country": "Nova Zelândia",
+      "description": "O PICO-8 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.p8' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".p8",
+        ".png"
+      ]
+    },
+    {
+      "id": "pc_engine",
+      "tgdb_id": 34,
+      "igdb_id": 22,
+      "name": "PC Engine",
+      "manufacturer": "NEC / Hudson Soft",
+      "release_year": 1987,
+      "origin_country": "Japão",
+      "description": "O PC Engine é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.pce' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".pce",
+        ".sgx"
+      ]
+    },
+    {
+      "id": "playstation_3",
+      "tgdb_id": 12,
+      "igdb_id": 9,
+      "name": "PlayStation 3",
+      "manufacturer": "Sony",
+      "release_year": 2006,
+      "origin_country": "Japão",
+      "description": "O PlayStation 3 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.pkg' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".pkg",
+        ".ps3",
+        ".rap"
+      ]
+    },
+    {
+      "id": "sony_playstation_2",
+      "tgdb_id": 11,
+      "igdb_id": 7,
+      "name": "Sony PlayStation 2",
+      "manufacturer": "Sony",
+      "release_year": 2000,
+      "origin_country": "Japão",
+      "description": "O Sony PlayStation 2 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.ps2' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".ps2"
+      ]
+    },
+    {
+      "id": "wii_u",
+      "tgdb_id": 38,
+      "igdb_id": 41,
+      "name": "Wii U",
+      "manufacturer": "Nintendo",
+      "release_year": 2012,
+      "origin_country": "Japão",
+      "description": "O Wii U é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.rpx' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".rpx",
+        ".wud",
+        ".wux"
+      ]
+    },
+    {
+      "id": "sega_saturn",
+      "tgdb_id": 17,
+      "igdb_id": 6,
+      "name": "Sega Saturn",
+      "manufacturer": "Sega",
+      "release_year": 1994,
+      "origin_country": "Japão",
+      "description": "O Sega Saturn é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.sat' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".sat"
+      ]
+    },
+    {
+      "id": "sinclair_zx_spectrum",
+      "tgdb_id": 4913,
+      "igdb_id": 9,
+      "name": "Sinclair ZX Spectrum",
+      "manufacturer": "Sinclair Research",
+      "release_year": 1982,
+      "origin_country": "Reino Unido",
+      "description": "O Sinclair ZX Spectrum é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.scl' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".scl",
+        ".trd",
+        ".tzx",
+        ".z80"
+      ]
+    },
+    {
+      "id": "sega_sg_1000",
+      "tgdb_id": 4949,
+      "igdb_id": 47,
+      "name": "Sega SG-1000",
+      "manufacturer": "Sega",
+      "release_year": 1983,
+      "origin_country": "Japão",
+      "description": "O Sega SG-1000 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.sg' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".sg"
+      ]
+    },
+    {
+      "id": "master_system",
+      "tgdb_id": 35,
+      "igdb_id": 35,
+      "name": "Master System",
+      "manufacturer": "Sega",
+      "release_year": 1985,
+      "origin_country": "Japão",
+      "description": "O Master System é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.sms' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".sms"
+      ]
+    },
+    {
+      "id": "bbc_micro",
+      "tgdb_id": 4914,
+      "igdb_id": 49,
+      "name": "BBC Micro",
+      "manufacturer": "Acorn Computers",
+      "release_year": 1981,
+      "origin_country": "Reino Unido",
+      "description": "O BBC Micro é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.ssd' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".ssd"
+      ]
+    },
+    {
+      "id": "scummvm",
+      "tgdb_id": 1,
+      "igdb_id": 1,
+      "name": "ScummVM",
+      "manufacturer": "Vários",
+      "release_year": 2001,
+      "origin_country": "Digital",
+      "description": "O ScummVM é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.svm' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".svm"
+      ]
+    },
+    {
+      "id": "watara_supervision",
+      "tgdb_id": 4952,
+      "igdb_id": 48,
+      "name": "Watara Supervision",
+      "manufacturer": "Watara",
+      "release_year": 1992,
+      "origin_country": "Hong Kong",
+      "description": "O Watara Supervision é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.sv' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".sv"
+      ]
+    },
+    {
+      "id": "tic_80",
+      "tgdb_id": 4952,
+      "igdb_id": 48,
+      "name": "TIC-80",
+      "manufacturer": "Nesbox",
+      "release_year": 2017,
+      "origin_country": "Digital",
+      "description": "O TIC-80 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.tic' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".tic"
+      ]
+    },
+    {
+      "id": "pc_fx",
+      "tgdb_id": 4960,
+      "igdb_id": 54,
+      "name": "PC-FX",
+      "manufacturer": "NEC",
+      "release_year": 1994,
+      "origin_country": "Japão",
+      "description": "O PC-FX é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.toc' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".toc"
+      ]
+    },
+    {
+      "id": "virtual_boy",
+      "tgdb_id": 4918,
+      "igdb_id": 26,
+      "name": "Virtual Boy",
+      "manufacturer": "Nintendo",
+      "release_year": 1995,
+      "origin_country": "Japão",
+      "description": "O Virtual Boy é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.vb' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".vb",
+        ".vboy"
+      ]
+    },
+    {
+      "id": "playstation_vita",
+      "tgdb_id": 39,
+      "igdb_id": 42,
+      "name": "PlayStation Vita",
+      "manufacturer": "Sony",
+      "release_year": 2011,
+      "origin_country": "Japão",
+      "description": "O PlayStation Vita é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.vpk' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".vpk"
+      ]
+    },
+    {
+      "id": "wasm_4",
+      "tgdb_id": 4952,
+      "igdb_id": 48,
+      "name": "WASM-4",
+      "manufacturer": "Bruno Garcia",
+      "release_year": 2021,
+      "origin_country": "Digital",
+      "description": "O WASM-4 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.wasm' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".wasm"
+      ]
+    },
+    {
+      "id": "wii",
+      "tgdb_id": 9,
+      "igdb_id": 5,
+      "name": "Wii",
+      "manufacturer": "Nintendo",
+      "release_year": 2006,
+      "origin_country": "Japão",
+      "description": "O Wii é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.wbfs' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".wbfs"
+      ]
+    },
+    {
+      "id": "wonderswan",
+      "tgdb_id": 4925,
+      "igdb_id": 57,
+      "name": "WonderSwan",
+      "manufacturer": "Bandai",
+      "release_year": 1999,
+      "origin_country": "Japão",
+      "description": "O WonderSwan é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.ws' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".ws"
+      ]
+    },
+    {
+      "id": "wonderswan_color",
+      "tgdb_id": 4926,
+      "igdb_id": 57,
+      "name": "WonderSwan Color",
+      "manufacturer": "Bandai",
+      "release_year": 2000,
+      "origin_country": "Japão",
+      "description": "O WonderSwan Color é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.wsc' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".wsc"
+      ]
+    },
+    {
+      "id": "xbox_360",
+      "tgdb_id": 15,
+      "igdb_id": 15,
+      "name": "Xbox 360",
+      "manufacturer": "Microsoft",
+      "release_year": 2005,
+      "origin_country": "Estados Unidos",
+      "description": "O Xbox 360 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.xex' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".xex"
+      ]
+    },
+    {
+      "id": "xbox",
+      "tgdb_id": 14,
+      "igdb_id": 14,
+      "name": "Xbox",
+      "manufacturer": "Microsoft",
+      "release_year": 2001,
+      "origin_country": "Estados Unidos",
+      "description": "O Xbox é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.xiso' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".xiso"
+      ]
+    },
+    {
+      "id": "apple_iigs",
+      "tgdb_id": 4942,
+      "igdb_id": 10,
+      "name": "Apple IIGS",
+      "manufacturer": "Apple",
+      "release_year": 1986,
+      "origin_country": "Estados Unidos",
+      "description": "O Apple IIGS é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "curiosities": [
+        "Suporta nativamente a execução de arquivos com a extensão '.2mg' na arquitetura de emulação."
+      ],
+      "supported_extensions": [
+        ".2mg"
+      ]
+    }
+  ]
+}

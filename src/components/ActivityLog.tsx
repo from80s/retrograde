@@ -30,14 +30,14 @@ const statusColors = {
 
 export function ActivityLog({ log, logRef }: ActivityLogProps) {
   return (
-    <div className="glass rounded-2xl overflow-hidden">
-      <div className="p-4 border-b border-zinc-800/50 flex items-center justify-between">
+    <div className="glass rounded-2xl overflow-hidden flex flex-col h-full">
+      <div className="p-4 border-b border-zinc-800/50 flex items-center justify-between flex-shrink-0">
         <h3 className="font-semibold text-zinc-200">Log de Atividades</h3>
         <span className="text-xs text-zinc-500 font-mono">{log.length} entradas</span>
       </div>
       <div
         ref={logRef}
-        className="h-96 overflow-y-auto scrollbar-thin p-2 space-y-1"
+        className="flex-1 overflow-y-auto scrollbar-thin p-2 space-y-1 min-h-0"
       >
         <AnimatePresence initial={false}>
           {log.map((entry, index) => {
