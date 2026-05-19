@@ -239,7 +239,8 @@ export function SupportedSystems() {
                 <img
                   src={`system logos/${sys.logo}`}
                   alt={sys.name}
-                  className="w-20 h-20 object-contain"
+                  className="w-20 h-20 object-contain pointer-events-none select-none"
+                  draggable={false}
                   onError={(e) => {
                     (e.currentTarget as HTMLImageElement).style.display = 'none';
                   }}
