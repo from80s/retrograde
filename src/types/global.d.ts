@@ -70,6 +70,47 @@ export interface ApiBridge {
   cancelExtraction: () => Promise<boolean>;
   onExtractionProgress: (callback: (data: any) => void) => void;
   removeExtractionProgressListener: () => void;
+  scanOrphanFiles: (folder: string) => Promise<{ path: string; name: string; size: number; ext: string; category: string }[]>;
+  deleteOrphanFiles: (files: { path: string }[]) => Promise<{ deleted: number; freedBytes: number }>;
+  fetchTgdbAssets: (gameName: string, platformId: number) => Promise<{
+    boxart: string | null;
+    screenshots: string[];
+    fanart: string[];
+    banner: string | null;
+    logo: string | null;
+    videos: { url: string; title: string }[];
+    gameTitle: string | null;
+    overview: string | null;
+    releaseDate: string | null;
+    developer: string | null;
+    publisher: string | null;
+  }>;
+  fetchTgdbDetails: (gameName: string, platformId: number) => Promise<any>;
+  searchTgdbById: (gameId: number, include?: string[]) => Promise<any>;
+  detectInstallations: () => Promise<{
+    retroarch: { found: boolean; path: string | null; method?: string };
+    esde: { found: boolean; path: string | null; method?: string };
+  }>;
+  exportAssetsRetroarch: (options: {
+    targetDir: string;
+    playlistName: string;
+    gameName: string;
+    assets: { boxart: string | null; screenshots: string[]; fanart: string[] };
+  }) => Promise<{ successCount: number; total: number; results: { type: string; status: string; path?: string; error?: string }[] }>;
+  exportAssetsEsde: (options: {
+    targetDir: string;
+    systemId: number;
+    gameName: string;
+    assets: { boxart: string | null; screenshots: string[]; fanart: string[]; banner: string | null; logo: string | null; overview: string | null; releaseDate: string | null; developer: string | null; publisher: string | null };
+  }) => Promise<{ successCount: number; total: number; results: { type: string; status: string; path?: string; error?: string }[]; systemName: string }>;
+  exportAssetsManual: (options: {
+    targetDir: string;
+    gameName: string;
+    assets: { boxart: string | null; screenshots: string[]; fanart: string[]; banner: string | null; logo: string | null };
+  }) => Promise<{ successCount: number; total: number; results: { type: string; status: string; path?: string; error?: string }[]; gameDir: string }>;
+  windowMinimize: () => Promise<void>;
+  windowMaximize: () => Promise<void>;
+  windowClose: () => Promise<void>;
 }
 
 declare global {

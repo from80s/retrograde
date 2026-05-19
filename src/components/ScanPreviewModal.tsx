@@ -5,6 +5,7 @@ import {
   ChevronDown, ChevronUp, Copy, Globe, Star, AlertTriangle,
   Loader2, XCircle, CheckCircle2
 } from 'lucide-react';
+import { getSystemLogo } from '../lib/system-logos';
 
 interface ScanPreviewModalProps {
   folder: string;
@@ -333,25 +334,35 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                   ROMs por Sistema
                 </h3>
                 <div className="space-y-2">
-                  {Object.entries(filteredRoms).map(([system, roms]) => (
-                    <div key={system} className="bg-zinc-800/20 rounded-xl overflow-hidden">
-                      <button
-                        onClick={() => toggleSystem(system)}
-                        className="w-full flex items-center justify-between p-4 hover:bg-zinc-800/30 transition-colors"
-                      >
-                        <div className="flex items-center gap-3">
-                          {expandedSystems[system] ? (
-                            <ChevronUp className="w-5 h-5 text-zinc-400" />
-                          ) : (
-                            <ChevronDown className="w-5 h-5 text-zinc-400" />
-                          )}
-                          <span className="text-sm font-medium text-zinc-200">{system}</span>
-                          <span className="text-xs text-zinc-500">({(roms as RomInfo[]).length})</span>
-                        </div>
-                        <span className="text-xs text-zinc-500">
-                          {formatBytes((roms as RomInfo[]).reduce((s, r) => s + r.size, 0))}
-                        </span>
-                      </button>
+                  {Object.entries(filteredRoms).map(([system, roms]) => {
+                    const logo = getSystemLogo(undefined, system);
+                    return (
+                      <div key={system} className="bg-zinc-800/20 rounded-xl overflow-hidden">
+                        <button
+                          onClick={() => toggleSystem(system)}
+                          className="w-full flex items-center justify-between p-4 hover:bg-zinc-800/30 transition-colors"
+                        >
+                          <div className="flex items-center gap-3">
+                            {expandedSystems[system] ? (
+                              <ChevronUp className="w-5 h-5 text-zinc-400" />
+                            ) : (
+                              <ChevronDown className="w-5 h-5 text-zinc-400" />
+                            )}
+                            {logo && (
+                              <img
+                                src={`system logos/${logo}`}
+                                alt={system}
+                                className="w-6 h-6 object-contain"
+                                onError={(e) => (e.currentTarget.style.display = 'none')}
+                              />
+                            )}
+                            <span className="text-sm font-medium text-zinc-200">{system}</span>
+                            <span className="text-xs text-zinc-500">({(roms as RomInfo[]).length})</span>
+                          </div>
+                          <span className="text-xs text-zinc-500">
+                            {formatBytes((roms as RomInfo[]).reduce((s, r) => s + r.size, 0))}
+                          </span>
+                        </button>
 
                       <AnimatePresence>
                         {expandedSystems[system] && (
@@ -398,7 +409,8 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                         )}
                       </AnimatePresence>
                     </div>
-                  ))}
+                  );
+                  })}
                 </div>
               </div>
 
@@ -600,17 +612,28 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                   </div>
 
                   <div className="max-h-40 overflow-y-auto space-y-1 scrollbar-thin">
-                    {simulationResults.results.filter((r: any) => r.status === 'removed').map((rom: any, idx: number) => (
-                      <div key={idx} className="flex items-center gap-2 p-2 bg-zinc-800/30 rounded-lg">
-                        <XCircle className="w-4 h-4 text-retro-danger flex-shrink-0" />
-                        <span className="text-xs text-zinc-300 truncate flex-1">{rom.fileName}</span>
-                        <span className="text-xs text-zinc-500">{rom.system}</span>
-                        {rom.rating !== null && (
-                          <span className="text-xs text-retro-warning">{rom.rating.toFixed(0)}</span>
-                        )}
-                        <span className="text-xs text-zinc-500">{formatBytes(rom.size)}</span>
-                      </div>
-                    ))}
+                    {simulationResults.results.filter((r: any) => r.status === 'removed').map((rom: any, idx: number) => {
+                      const logo = getSystemLogo(rom.ext, rom.system);
+                      return (
+                        <div key={idx} className="flex items-center gap-2 p-2 bg-zinc-800/30 rounded-lg">
+                          <XCircle className="w-4 h-4 text-retro-danger flex-shrink-0" />
+                          <span className="text-xs text-zinc-300 truncate flex-1">{rom.fileName}</span>
+                              {logo && (
+                                <img
+                                  src={`system logos/${logo}`}
+                                  alt={rom.system}
+                                  className="w-4 h-4 object-contain"
+                                  onError={(e) => (e.currentTarget.style.display = 'none')}
+                                />
+                              )}
+                          <span className="text-xs text-zinc-500">{rom.system}</span>
+                          {rom.rating !== null && (
+                            <span className="text-xs text-retro-warning">{rom.rating.toFixed(0)}</span>
+                          )}
+                          <span className="text-xs text-zinc-500">{formatBytes(rom.size)}</span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </motion.div>

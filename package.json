@@ -1,6 +1,6 @@
 {
   "name": "retrograde",
-  "version": "1.3.0",
+  "version": "1.5.0",
   "description": "Curadoria inteligente de coleções de jogos baseada em avaliações da IGDB e TheGamesDB",
   "main": "electron/main.js",
   "scripts": {

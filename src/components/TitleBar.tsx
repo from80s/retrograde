@@ -8,13 +8,22 @@ export function TitleBar() {
         <span className="text-xs text-zinc-500 font-medium">RetroGrade</span>
       </div>
       <div className="flex items-center gap-1" style={{ WebkitAppRegion: 'no-drag' } as any}>
-        <button className="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800 rounded transition-colors">
+        <button
+          onClick={() => window.api.windowMinimize()}
+          className="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800 rounded transition-colors"
+        >
           <Minus className="w-4 h-4" />
         </button>
-        <button className="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800 rounded transition-colors">
+        <button
+          onClick={() => window.api.windowMaximize()}
+          className="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800 rounded transition-colors"
+        >
           <Square className="w-3.5 h-3.5" />
         </button>
-        <button className="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-retro-danger hover:bg-zinc-800 rounded transition-colors">
+        <button
+          onClick={() => window.api.windowClose()}
+          className="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-retro-danger hover:bg-zinc-800 rounded transition-colors"
+        >
           <X className="w-4 h-4" />
         </button>
       </div>

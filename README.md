@@ -1,6 +1,6 @@
 <img src="assets/images/RetroGrade.png" alt="RetroGrade">
 
-![Version](https://img.shields.io/badge/version-1.3.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.5.0-blue.svg)
 ![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-blue.svg)
 ![Electron](https://img.shields.io/badge/electron-v30+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -44,6 +44,24 @@ O **RetroGrade** é uma aplicação Desktop moderna, rápida e visualmente sofis
 - **Progresso em Tempo Real:** Log animado com barras de progresso por arquivo, tamanhos compactado/extraído e contadores.
 - **Auto-Limpeza:** Opção de excluir o arquivo compactado após extração bem-sucedida.
 - **Resumo Final:** Dashboard com stats de sucesso/erro/cancelados, comparação de tamanhos e log detalhado.
+
+### Scanner de Arquivos Órfãos
+- **Detecção Inteligente:** Identifica imagens, manuais, textos, metadados e configs sem ROM correspondente na pasta.
+- **Similaridade de Nomes:** Usa algoritmo de Levenshtein (>85%) para evitar falsos positivos — arquivos com nome similar a uma ROM são preservados.
+- **Categorização Visual:** Arquivos órfãos são classificados por tipo (imagem, manual, texto, metadado, config) com ícones e cores distintas.
+- **Seleção Granular:** Selecione/deselecione individualmente ou em lote, com contagem de espaço liberado em tempo real.
+- **Deleção Segura:** Deleta apenas os selecionados com feedback visual de quantos arquivos foram removidos e quanto espaço foi liberado.
+
+### Mídias & Asset Downloader
+- **Busca de Mídias:** Boxart, screenshots, fanart e banners diretamente da API da TheGamesDB.
+- **Detalhes do Jogo:** Título oficial, data de lançamento, desenvolvedor, publicadora e sinopse.
+- **Preview em Tela Cheia:** Clique em qualquer imagem para visualizar em tamanho real com overlay escuro.
+- **Dropdown de Plataformas:** Seletor com busca rápida entre 40+ plataformas suportadas (NES, SNES, Genesis, PlayStation, etc).
+- **Exportação Automática — RetroArch:** Detecta instalação do RetroArch automaticamente, exporta boxarts como PNG no formato `Named_Boxarts`, `Named_Snaps` e `Named_Titles` com nomes compatíveis com playlists.
+- **Exportação Automática — ES-DE:** Detecta instalação do ES-DE, exporta mídias para `media/[sistema]/` e atualiza automaticamente o `gamelist.xml` com metadados.
+- **Exportação Manual:** Salva todas as mídias em uma pasta organizada com nomes descritivos, com instruções passo-a-passo para integração manual em qualquer frontend.
+- **Instruções Integradas:** Cada modo de exportação inclui instruções detalhadas com botão de copiar para a área de transferência.
+- **Fallback de Curadoria:** TheGamesDB já é usada automaticamente como fallback para notas e gêneros quando a IGDB está indisponível.
 
 ### Configuração & Dados
 - **Configuração via UI:** Modal completo para editar credenciais, nota mínima, ação, clássicos, gêneros e jogos protegidos.

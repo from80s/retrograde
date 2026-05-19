@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { X, History, Gamepad2, ShieldCheck, CheckCircle2, XCircle, TrendingUp } from 'lucide-react';
+import { getSystemLogo } from '../lib/system-logos';
 
 interface StatsHistoryProps {
   onClose: () => void;
@@ -259,53 +260,81 @@ export function StatsHistory({ onClose }: StatsHistoryProps) {
             </div>
           ) : (
             <div className="space-y-4">
-              {reversedStats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  className="glass rounded-xl p-5 space-y-3"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Gamepad2 className="w-5 h-5 text-retro-primary" />
-                      <span className="text-sm font-mono text-zinc-300 truncate max-w-md">{stat.pasta}</span>
+              {reversedStats.map((stat, index) => {
+                const sistemas = stat.sistemas as Record<string, number> || {};
+                const sistemaEntries = Object.entries(sistemas).sort((a, b) => a[0].localeCompare(b[0]));
+
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="glass rounded-xl p-5 space-y-3"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Gamepad2 className="w-5 h-5 text-retro-primary" />
+                        <span className="text-sm font-mono text-zinc-300 truncate max-w-md">{stat.pasta}</span>
+                      </div>
+                      <span className="text-xs text-zinc-500 font-mono">{stat.data}</span>
                     </div>
-                    <span className="text-xs text-zinc-500 font-mono">{stat.data}</span>
-                  </div>
-                  <div className="grid grid-cols-4 gap-4">
-                    <div className="flex items-center gap-2">
-                      <Gamepad2 className="w-4 h-4 text-retro-primary" />
-                      <div>
-                        <p className="text-xs text-zinc-500">Total</p>
-                        <p className="text-sm font-mono text-retro-primary">{stat.total_encontrado}</p>
+                    <div className="grid grid-cols-4 gap-4">
+                      <div className="flex items-center gap-2">
+                        <Gamepad2 className="w-4 h-4 text-retro-primary" />
+                        <div>
+                          <p className="text-xs text-zinc-500">Total</p>
+                          <p className="text-sm font-mono text-retro-primary">{stat.total_encontrado}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-retro-secondary" />
+                        <div>
+                          <p className="text-xs text-zinc-500">Clássicos</p>
+                          <p className="text-sm font-mono text-retro-secondary">{stat.preservados_classicos}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-retro-success" />
+                        <div>
+                          <p className="text-xs text-zinc-500">Mantidos</p>
+                          <p className="text-sm font-mono text-retro-success">{stat.mantidos_por_nota}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <XCircle className="w-4 h-4 text-retro-danger" />
+                        <div>
+                          <p className="text-xs text-zinc-500">Removidos</p>
+                          <p className="text-sm font-mono text-retro-danger">{stat.removidos}</p>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-retro-secondary" />
-                      <div>
-                        <p className="text-xs text-zinc-500">Clássicos</p>
-                        <p className="text-sm font-mono text-retro-secondary">{stat.preservados_classicos}</p>
+                    {sistemaEntries.length > 0 && (
+                      <div className="pt-3 border-t border-zinc-800/50">
+                        <p className="text-xs text-zinc-500 mb-2">Sistemas encontrados:</p>
+                        <div className="flex flex-wrap gap-2">
+                          {sistemaEntries.map(([ext, count]) => {
+                            const logo = getSystemLogo(ext);
+                            return (
+                              <div key={ext} className="flex items-center gap-1.5 bg-zinc-800/50 rounded-lg px-2 py-1">
+                                {logo && (
+                                  <img
+                                    src={`system logos/${logo}`}
+                                    alt={ext}
+                                    className="w-4 h-4"
+                                  />
+                                )}
+                                <span className="text-xs text-zinc-300 font-mono">{ext}</span>
+                                <span className="text-xs text-zinc-500">({count})</span>
+                              </div>
+                            );
+                          })}
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-retro-success" />
-                      <div>
-                        <p className="text-xs text-zinc-500">Mantidos</p>
-                        <p className="text-sm font-mono text-retro-success">{stat.mantidos_por_nota}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <XCircle className="w-4 h-4 text-retro-danger" />
-                      <div>
-                        <p className="text-xs text-zinc-500">Removidos</p>
-                        <p className="text-sm font-mono text-retro-danger">{stat.removidos}</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
           )}
         </div>

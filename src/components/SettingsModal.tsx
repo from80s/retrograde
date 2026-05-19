@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Save, Shield, Trash2, MoveRight, Star, Wifi, Loader2, CheckCircle2, XCircle, Search, Plus, AlertTriangle, Gamepad2, BookOpen } from 'lucide-react';
 import { ClassicGamesPicker } from './ClassicGamesPicker';
+import { getSystemLogo } from '../lib/system-logos';
 
 interface SettingsModalProps {
   onClose: () => void;
@@ -76,7 +77,7 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
 
   const handleTestConnection = async () => {
     if (config) {
-      await window.api.saveConfig(config);
+      await window.api.saveConfig({ ...config, api_tested: false });
     }
     setTesting(true);
     setShowTestModal(true);
@@ -98,8 +99,14 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
       if (igdbSuccess) savedApis.push('IGDB');
       if (tgdbSuccess) savedApis.push('TheGamesDB');
       onToast(`Conexão estabelecida! ${savedApis.join(' e ')} salva(s) automaticamente.`, 'success');
+      if (config) {
+        await window.api.saveConfig({ ...config, api_tested: true });
+      }
     } else {
       onToast('Nenhuma API conectada. Verifique as credenciais.', 'error');
+      if (config) {
+        await window.api.saveConfig({ ...config, api_tested: false });
+      }
     }
 
     onApiTested(hasConnection);
@@ -326,13 +333,28 @@ export function SettingsModal({ onClose, minRating, action, systems, classics, g
               <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">
                 Sistemas Suportados ({Object.keys(systems).length})
               </h3>
-              <div className="grid grid-cols-2 gap-2 max-h-40 overflow-y-auto scrollbar-thin">
-                {Object.entries(systems).map(([ext, info]: [string, any]) => (
-                  <div key={ext} className="flex items-center gap-2 px-3 py-2 bg-zinc-800/30 rounded-lg">
-                    <span className="text-xs font-mono text-retro-primary">{ext}</span>
-                    <span className="text-xs text-zinc-500 truncate">{info.name}</span>
-                  </div>
-                ))}
+              <div className="grid grid-cols-2 gap-3 max-h-60 overflow-y-auto scrollbar-thin">
+                {Object.entries(systems)
+                  .sort(([, a], [, b]) => (a.name || '').localeCompare(b.name || ''))
+                  .map(([ext, info]: [string, any]) => {
+                    const logo = getSystemLogo(ext, info.name);
+                    return (
+                      <div key={ext} className="flex items-center gap-3 px-4 py-3 bg-zinc-800/30 rounded-xl">
+                        {logo && (
+                          <img
+                            src={`system logos/${logo}`}
+                            alt={info.name}
+                            className="w-10 h-10 object-contain flex-shrink-0"
+                            onError={(e) => (e.currentTarget.style.display = 'none')}
+                          />
+                        )}
+                        <div className="flex flex-col min-w-0">
+                          <span className="text-sm font-mono text-retro-primary">{ext}</span>
+                          <span className="text-xs text-zinc-400 truncate">{info.name}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
               </div>
             </div>
 

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { X, Search, Check, LayoutList, Grid3X3, BookOpen, ChevronDown } from 'lucide-react';
 import type { ClassicGamesData } from '../types/global';
 import { tGenre } from '../locales';
+import { getSystemLogo } from '../lib/system-logos';
 
 interface ClassicGamesPickerProps {
   onClose: () => void;
@@ -128,19 +129,30 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
                   >
                     Todos os Sistemas
                   </button>
-                  {platforms.map((p) => (
-                    <button
-                      key={p}
-                      onClick={() => { setSelectedSystem(p); setDropdownOpen(false); }}
-                      className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
-                        selectedSystem === p
-                          ? 'bg-retro-secondary/10 text-retro-secondary font-medium'
-                          : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700/30'
-                      }`}
-                    >
-                      {p}
-                    </button>
-                  ))}
+                  {platforms.map((p) => {
+                    const logo = getSystemLogo(undefined, p);
+                    return (
+                      <button
+                        key={p}
+                        onClick={() => { setSelectedSystem(p); setDropdownOpen(false); }}
+                        className={`w-full flex items-center gap-2 text-left px-4 py-2.5 text-sm transition-colors ${
+                          selectedSystem === p
+                            ? 'bg-retro-secondary/10 text-retro-secondary font-medium'
+                            : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700/30'
+                        }`}
+                      >
+                        {logo && (
+                          <img
+                            src={`system logos/${logo}`}
+                            alt={p}
+                            className="w-5 h-5 object-contain"
+                            onError={(e) => (e.currentTarget.style.display = 'none')}
+                          />
+                        )}
+                        {p}
+                      </button>
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -190,6 +202,7 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
             <div className="space-y-1 max-h-96 overflow-y-auto scrollbar-thin">
               {filtered.map((g) => {
                 const isSelected = selected.has(g.name);
+                const logo = getSystemLogo(undefined, g.system);
                 return (
                   <button
                     key={g.name}
@@ -207,7 +220,15 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
                     </div>
                     <span className="flex-1 font-medium">{g.name}</span>
                     <span className="text-xs text-zinc-500">{tGenre(g.genre)}</span>
-                    <span className="text-xs text-zinc-600">{g.system}</span>
+                    {logo && (
+                      <img
+                        src={`system logos/${logo}`}
+                        alt={g.system}
+                        className="w-5 h-5 object-contain"
+                        onError={(e) => (e.currentTarget.style.display = 'none')}
+                      />
+                    )}
+                    {!logo && <span className="text-xs text-zinc-600">{g.system}</span>}
                   </button>
                 );
               })}
@@ -242,7 +263,20 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
                     </div>
                     <div className="p-2 text-left">
                       <p className="text-xs font-medium text-zinc-200 truncate">{g.name}</p>
-                      <p className="text-[10px] text-zinc-500 truncate">{tGenre(g.genre)}</p>
+                      <div className="flex items-center gap-1.5">
+                        <p className="text-[10px] text-zinc-500 truncate">{tGenre(g.genre)}</p>
+                        {(() => {
+                          const logo = getSystemLogo(undefined, g.system);
+                          return logo ? (
+                            <img
+                              src={`system logos/${logo}`}
+                              alt={g.system}
+                              className="w-3.5 h-3.5 object-contain"
+                              onError={(e) => (e.currentTarget.style.display = 'none')}
+                            />
+                          ) : null;
+                        })()}
+                      </div>
                     </div>
                     <div className={`absolute top-2 right-2 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
                       isSelected

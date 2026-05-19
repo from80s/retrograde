@@ -54,4 +54,16 @@ electron_1.contextBridge.exposeInMainWorld('api', {
     removeExtractionProgressListener: () => {
         electron_1.ipcRenderer.removeAllListeners('extraction-progress');
     },
+    scanOrphanFiles: (folder) => electron_1.ipcRenderer.invoke('scan-orphan-files', folder),
+    deleteOrphanFiles: (files) => electron_1.ipcRenderer.invoke('delete-orphan-files', files),
+    fetchTgdbAssets: (gameName, platformId) => electron_1.ipcRenderer.invoke('fetch-tgdb-assets', gameName, platformId),
+    fetchTgdbDetails: (gameName, platformId) => electron_1.ipcRenderer.invoke('fetch-tgdb-details', gameName, platformId),
+    searchTgdbById: (gameId, include) => electron_1.ipcRenderer.invoke('search-tgdb-by-id', gameId, include),
+    detectInstallations: () => electron_1.ipcRenderer.invoke('detect-installations'),
+    exportAssetsRetroarch: (options) => electron_1.ipcRenderer.invoke('export-assets-retroarch', options),
+    exportAssetsEsde: (options) => electron_1.ipcRenderer.invoke('export-assets-esde', options),
+    exportAssetsManual: (options) => electron_1.ipcRenderer.invoke('export-assets-manual', options),
+    windowMinimize: () => electron_1.ipcRenderer.invoke('window-minimize'),
+    windowMaximize: () => electron_1.ipcRenderer.invoke('window-maximize'),
+    windowClose: () => electron_1.ipcRenderer.invoke('window-close'),
 });

@@ -56,4 +56,19 @@ contextBridge.exposeInMainWorld('api', {
   removeExtractionProgressListener: () => {
     ipcRenderer.removeAllListeners('extraction-progress');
   },
+  scanOrphanFiles: (folder: string) => ipcRenderer.invoke('scan-orphan-files', folder),
+  deleteOrphanFiles: (files: { path: string }[]) => ipcRenderer.invoke('delete-orphan-files', files),
+  fetchTgdbAssets: (gameName: string, platformId: number) => ipcRenderer.invoke('fetch-tgdb-assets', gameName, platformId),
+  fetchTgdbDetails: (gameName: string, platformId: number) => ipcRenderer.invoke('fetch-tgdb-details', gameName, platformId),
+  searchTgdbById: (gameId: number, include?: string[]) => ipcRenderer.invoke('search-tgdb-by-id', gameId, include),
+  detectInstallations: () => ipcRenderer.invoke('detect-installations'),
+  exportAssetsRetroarch: (options: { targetDir: string; playlistName: string; gameName: string; assets: { boxart: string | null; screenshots: string[]; fanart: string[] } }) =>
+    ipcRenderer.invoke('export-assets-retroarch', options),
+  exportAssetsEsde: (options: { targetDir: string; systemId: number; gameName: string; assets: { boxart: string | null; screenshots: string[]; fanart: string[]; banner: string | null; logo: string | null; overview: string | null; releaseDate: string | null; developer: string | null; publisher: string | null } }) =>
+    ipcRenderer.invoke('export-assets-esde', options),
+  exportAssetsManual: (options: { targetDir: string; gameName: string; assets: { boxart: string | null; screenshots: string[]; fanart: string[]; banner: string | null; logo: string | null } }) =>
+    ipcRenderer.invoke('export-assets-manual', options),
+  windowMinimize: () => ipcRenderer.invoke('window-minimize'),
+  windowMaximize: () => ipcRenderer.invoke('window-maximize'),
+  windowClose: () => ipcRenderer.invoke('window-close'),
 });

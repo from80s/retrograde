@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Gamepad2, Star, ShieldCheck, CheckCircle2, XCircle } from 'lucide-react';
+import { getSystemLogo } from '../lib/system-logos';
 
 interface ProgressCardProps {
   progress: number;
@@ -50,7 +51,20 @@ export function ProgressCard({ progress, currentFile, currentSystem, currentRati
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-mono text-zinc-200 truncate">{currentFile}</p>
-            <p className="text-xs text-zinc-500">{currentSystem}</p>
+            <div className="flex items-center gap-1.5">
+              {(() => {
+                const logo = getSystemLogo(undefined, currentSystem);
+                return logo ? (
+                  <img
+                    src={`system logos/${logo}`}
+                    alt={currentSystem}
+                    className="w-4 h-4 object-contain"
+                    onError={(e) => (e.currentTarget.style.display = 'none')}
+                  />
+                ) : null;
+              })()}
+              <p className="text-xs text-zinc-500">{currentSystem}</p>
+            </div>
           </div>
           {currentRating !== null && (
             <div className="flex items-center gap-2">

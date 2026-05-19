@@ -10,5 +10,6 @@ export default defineConfig({
     },
   },
   base: './',
-  assetsInclude: ['**/*.mp4'],
+  assetsInclude: ['**/*.mp4', '**/*.svg'],
+  publicDir: 'assets',
 });

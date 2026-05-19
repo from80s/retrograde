@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, CheckCircle2, XCircle, Star } from 'lucide-react';
 import * as React from 'react';
+import { getSystemLogo } from '../lib/system-logos';
 
 interface LogEntry {
   fileName: string;
@@ -52,7 +53,19 @@ export function ActivityLog({ log, logRef }: ActivityLogProps) {
               >
                 <Icon className={`w-4 h-4 ${color} flex-shrink-0`} />
                 <span className="text-sm font-mono text-zinc-300 truncate flex-1">{entry.fileName}</span>
-                <span className="text-xs text-zinc-500 flex-shrink-0">{entry.system}</span>
+                {(() => {
+                  const logo = getSystemLogo(undefined, entry.system);
+                  return logo ? (
+                    <img
+                      src={`system logos/${logo}`}
+                      alt={entry.system}
+                      className="w-4 h-4 object-contain flex-shrink-0"
+                      onError={(e) => (e.currentTarget.style.display = 'none')}
+                    />
+                  ) : (
+                    <span className="text-xs text-zinc-500 flex-shrink-0">{entry.system}</span>
+                  );
+                })()}
                 {entry.rating !== null && (
                   <div className="flex items-center gap-1 flex-shrink-0">
                     <Star className="w-3 h-3 text-retro-warning" />
