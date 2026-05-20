@@ -56,7 +56,7 @@ export function ProgressCard({ progress, currentFile, currentSystem, currentRati
                 const logo = getSystemLogo(undefined, currentSystem);
                 return logo ? (
                   <img
-                    src={`system logos/${logo}`}
+                    src={`system/logos/${logo}`}
                     alt={currentSystem}
                     className="w-4 h-4 object-contain"
                     onError={(e) => (e.currentTarget.style.display = 'none')}

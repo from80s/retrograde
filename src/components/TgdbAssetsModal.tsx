@@ -720,7 +720,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                                   <div className="flex items-center gap-2 px-2 py-1.5 bg-zinc-800/40 rounded-lg">
                                     {logo && (
                                       <img
-                                        src={`system logos/${logo}`}
+                                        src={`system/logos/${logo}`}
                                         alt={system}
                                         className="w-5 h-5 object-contain"
                                         onError={(e) => (e.currentTarget.style.display = 'none')}

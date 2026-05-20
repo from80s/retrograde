@@ -174,7 +174,7 @@ export function CurationModal({
                     const logo = getSystemLogo(undefined, entry.system);
                     return logo ? (
                       <img
-                        src={`system logos/${logo}`}
+                        src={`system/logos/${logo}`}
                         alt={entry.system}
                         className="w-4 h-4 object-contain flex-shrink-0"
                         onError={(e) => (e.currentTarget.style.display = 'none')}

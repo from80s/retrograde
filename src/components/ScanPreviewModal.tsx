@@ -350,7 +350,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                             )}
                             {logo && (
                               <img
-                                src={`system logos/${logo}`}
+                                src={`system/logos/${logo}`}
                                 alt={system}
                                 className="w-6 h-6 object-contain"
                                 onError={(e) => (e.currentTarget.style.display = 'none')}
@@ -620,7 +620,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                           <span className="text-xs text-zinc-300 truncate flex-1">{rom.fileName}</span>
                               {logo && (
                                 <img
-                                  src={`system logos/${logo}`}
+                                  src={`system/logos/${logo}`}
                                   alt={rom.system}
                                   className="w-4 h-4 object-contain"
                                   onError={(e) => (e.currentTarget.style.display = 'none')}

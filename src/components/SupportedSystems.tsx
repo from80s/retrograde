@@ -237,7 +237,7 @@ export function SupportedSystems() {
                 className="flex-shrink-0 w-48 bg-zinc-800/40 rounded-xl p-4 flex flex-col items-center text-center gap-2 border border-zinc-700/20 hover:border-zinc-600/40 transition-colors"
               >
                 <img
-                  src={`system logos/${sys.logo}`}
+                  src={`system/logos/${sys.logo}`}
                   alt={sys.name}
                   className="w-20 h-20 object-contain pointer-events-none select-none"
                   draggable={false}

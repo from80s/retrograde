@@ -319,7 +319,7 @@ export function StatsHistory({ onClose }: StatsHistoryProps) {
                               <div key={ext} className="flex items-center gap-1.5 bg-zinc-800/50 rounded-lg px-2 py-1">
                                 {logo && (
                                   <img
-                                    src={`system logos/${logo}`}
+                                    src={`system/logos/${logo}`}
                                     alt={ext}
                                     className="w-4 h-4"
                                   />

@@ -143,7 +143,7 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
                       >
                         {logo && (
                           <img
-                            src={`system logos/${logo}`}
+                            src={`system/logos/${logo}`}
                             alt={p}
                             className="w-5 h-5 object-contain"
                             onError={(e) => (e.currentTarget.style.display = 'none')}
@@ -222,7 +222,7 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
                     <span className="text-xs text-zinc-500">{tGenre(g.genre)}</span>
                     {logo && (
                       <img
-                        src={`system logos/${logo}`}
+                        src={`system/logos/${logo}`}
                         alt={g.system}
                         className="w-5 h-5 object-contain"
                         onError={(e) => (e.currentTarget.style.display = 'none')}
@@ -269,7 +269,7 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
                           const logo = getSystemLogo(undefined, g.system);
                           return logo ? (
                             <img
-                              src={`system logos/${logo}`}
+                              src={`system/logos/${logo}`}
                               alt={g.system}
                               className="w-3.5 h-3.5 object-contain"
                               onError={(e) => (e.currentTarget.style.display = 'none')}

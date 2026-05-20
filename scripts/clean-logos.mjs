@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const LOGOS_DIR = path.join(__dirname, '..', 'assets', 'system logos');
+const LOGOS_DIR = path.join(__dirname, '..', 'assets', 'system', 'logos');
 
 const SUPPORTED_LOGOS = new Set([
   'nes.svg', 'snes.svg', 'sfc.svg', 'gb.svg', 'gbc.svg', 'gba.svg',
