@@ -1,6 +1,8 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('api', {
+  romDetect: (filePath: string) => ipcRenderer.invoke('rom:detect', filePath),
+  romDetectBatch: (filePaths: string[]) => ipcRenderer.invoke('rom:detectBatch', filePaths),
   selectFolder: () => ipcRenderer.invoke('select-folder'),
   readConfig: () => ipcRenderer.invoke('read-config'),
   saveConfig: (config: any) => ipcRenderer.invoke('save-config', config),
@@ -23,15 +25,17 @@ contextBridge.exposeInMainWorld('api', {
   removeScanProgressListener: () => {
     ipcRenderer.removeAllListeners('scan-progress');
   },
-  simulateCuration: (options: { folder: string; minRating: number; action: 'move' | 'delete' }) =>
+  simulateCuration: (options: { folder: string; minRating: number; action: 'move' | 'delete'; resume?: boolean }) =>
     ipcRenderer.invoke('simulate-curation', options),
+  cancelCuration: () => ipcRenderer.invoke('cancel-curation'),
+  cancelSimulation: () => ipcRenderer.invoke('cancel-simulation'),
   validateGameName: (name: string) => ipcRenderer.invoke('validate-game-name', name),
   readSystems: () => ipcRenderer.invoke('read-systems'),
   readStats: () => ipcRenderer.invoke('read-stats'),
   saveStats: (stats: any) => ipcRenderer.invoke('save-stats', stats),
   readVersion: () => ipcRenderer.invoke('read-version'),
   testApiConnections: () => ipcRenderer.invoke('test-api-connections'),
-  startCuration: (options: { folder: string; minRating: number; action: 'move' | 'delete' }) =>
+  startCuration: (options: { folder: string; minRating: number; action: 'move' | 'delete'; resume?: boolean }) =>
     ipcRenderer.invoke('start-curation', options),
   onCurationProgress: (callback: (data: any) => void) => {
     ipcRenderer.on('curation-progress', (_, data) => callback(data));
@@ -47,7 +51,7 @@ contextBridge.exposeInMainWorld('api', {
   removeScanCompressedProgressListener: () => {
     ipcRenderer.removeAllListeners('scan-compressed-progress');
   },
-  startExtraction: (options: { files: any[]; mode: string; deleteAfter: boolean }) =>
+  startExtraction: (options: { files: any[]; mode: string; deleteAfter: boolean; resume?: boolean }) =>
     ipcRenderer.invoke('start-extraction', options),
   cancelExtraction: () => ipcRenderer.invoke('cancel-extraction'),
   onExtractionProgress: (callback: (data: any) => void) => {
@@ -62,6 +66,8 @@ contextBridge.exposeInMainWorld('api', {
   fetchTgdbDetails: (gameName: string, platformId: number) => ipcRenderer.invoke('fetch-tgdb-details', gameName, platformId),
   searchTgdbById: (gameId: number, include?: string[]) => ipcRenderer.invoke('search-tgdb-by-id', gameId, include),
   detectInstallations: () => ipcRenderer.invoke('detect-installations'),
+  readProgressLog: (folder: string) => ipcRenderer.invoke('read-progress-log', folder),
+  deleteProgressLog: (folder: string) => ipcRenderer.invoke('delete-progress-log', folder),
   exportAssetsRetroarch: (options: { targetDir: string; playlistName: string; gameName: string; assets: { boxart: string | null; screenshots: string[]; fanart: string[] } }) =>
     ipcRenderer.invoke('export-assets-retroarch', options),
   exportAssetsEsde: (options: { targetDir: string; systemId: number; gameName: string; assets: { boxart: string | null; screenshots: string[]; fanart: string[]; banner: string | null; logo: string | null; overview: string | null; releaseDate: string | null; developer: string | null; publisher: string | null } }) =>

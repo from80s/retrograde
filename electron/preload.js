@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const electron_1 = require("electron");
 electron_1.contextBridge.exposeInMainWorld('api', {
+    romDetect: (filePath) => electron_1.ipcRenderer.invoke('rom:detect', filePath),
+    romDetectBatch: (filePaths) => electron_1.ipcRenderer.invoke('rom:detectBatch', filePaths),
     selectFolder: () => electron_1.ipcRenderer.invoke('select-folder'),
     readConfig: () => electron_1.ipcRenderer.invoke('read-config'),
     saveConfig: (config) => electron_1.ipcRenderer.invoke('save-config', config),
@@ -25,6 +27,8 @@ electron_1.contextBridge.exposeInMainWorld('api', {
         electron_1.ipcRenderer.removeAllListeners('scan-progress');
     },
     simulateCuration: (options) => electron_1.ipcRenderer.invoke('simulate-curation', options),
+    cancelCuration: () => electron_1.ipcRenderer.invoke('cancel-curation'),
+    cancelSimulation: () => electron_1.ipcRenderer.invoke('cancel-simulation'),
     validateGameName: (name) => electron_1.ipcRenderer.invoke('validate-game-name', name),
     readSystems: () => electron_1.ipcRenderer.invoke('read-systems'),
     readStats: () => electron_1.ipcRenderer.invoke('read-stats'),
@@ -60,6 +64,8 @@ electron_1.contextBridge.exposeInMainWorld('api', {
     fetchTgdbDetails: (gameName, platformId) => electron_1.ipcRenderer.invoke('fetch-tgdb-details', gameName, platformId),
     searchTgdbById: (gameId, include) => electron_1.ipcRenderer.invoke('search-tgdb-by-id', gameId, include),
     detectInstallations: () => electron_1.ipcRenderer.invoke('detect-installations'),
+    readProgressLog: (folder) => electron_1.ipcRenderer.invoke('read-progress-log', folder),
+    deleteProgressLog: (folder) => electron_1.ipcRenderer.invoke('delete-progress-log', folder),
     exportAssetsRetroarch: (options) => electron_1.ipcRenderer.invoke('export-assets-retroarch', options),
     exportAssetsEsde: (options) => electron_1.ipcRenderer.invoke('export-assets-esde', options),
     exportAssetsManual: (options) => electron_1.ipcRenderer.invoke('export-assets-manual', options),

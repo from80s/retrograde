@@ -1,6 +1,6 @@
 <img src="assets/images/RetroGrade.png" alt="RetroGrade">
 
-![Version](https://img.shields.io/badge/version-1.5.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.6.0-blue.svg)
 ![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-blue.svg)
 ![Electron](https://img.shields.io/badge/electron-v30+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -24,6 +24,13 @@ O **RetroGrade** é uma aplicação Desktop moderna, rápida e visualmente sofis
 - **Ação Configurável:** Escolha entre mover arquivos para pasta `/removidos` ou deletar permanentemente.
 - **Dry Run (Simulação):** Simule toda a curadoria antes de executar — veja exatamente o que seria movido/deletado com tamanhos e notas.
 
+### Detecção de ROMs (3 Camadas)
+- **Hash Lookup (ALTA confiança):** CRC32, SHA1 e MD5 computados e comparados contra banco SQLite de ~1.27M ROMs de 90 sistemas (No-Intro/Redump).
+- **Magic Bytes (MÉDIA confiança):** Assinaturas binárias conhecidas (NES `4E45531A`, GBA `24FFAE51`, MegaDrive `53454741`, etc.).
+- **Extensão (BAIXA confiança):** Fallback pelo mapeamento de extensão `.sfc` → SNES, `.gen` → MegaDrive, etc.
+- **Arquivos compactados:** Extrai automaticamente `.zip` e `.gz` para detectar a ROM interna.
+- **Cancelamento + Retomada:** Curadoria, simulação e extração podem ser canceladas com botão dedicado e retomadas de onde pararam via log de progresso (`.retrograde_progress.json`).
+
 ### Interface & UX
 - **Splash Screen:** Vídeo de intro animado no lançamento do app.
 - **Pré-visualização da Curadoria:** Modal completo antes de executar, com:
@@ -43,6 +50,7 @@ O **RetroGrade** é uma aplicação Desktop moderna, rápida e visualmente sofis
 - **Concorrência Inteligente:** Ajusta automaticamente de 1 a 3 threads baseado no tamanho dos arquivos (arquivos >2GB rodam em single-thread para estabilidade).
 - **Progresso em Tempo Real:** Log animado com barras de progresso por arquivo, tamanhos compactado/extraído e contadores.
 - **Auto-Limpeza:** Opção de excluir o arquivo compactado após extração bem-sucedida.
+- **Cancelamento + Retomada:** Extração pode ser cancelada a qualquer momento e retomada posteriormente via log de progresso.
 - **Resumo Final:** Dashboard com stats de sucesso/erro/cancelados, comparação de tamanhos e log detalhado.
 
 ### Scanner de Arquivos Órfãos
@@ -88,7 +96,9 @@ O **RetroGrade** é uma aplicação Desktop moderna, rápida e visualmente sofis
 - **Animações:** [Framer Motion](https://www.framer.com/motion/)
 - **Requisições:** Axios
 - **File I/O:** fs-extra
-- **Extração:** unzipper (.zip), 7zip-min (.7z/.rar), tar (.tar/.tar.gz), zlib (.gz)
+- **Extração:** unzipper (.zip), 7zip-min (.7z/.rar), tar (.tar/.tar.gz), zlib (.gz), adm-zip (.zip alternativo)
+- **Banco de Dados:** better-sqlite3 (SQLite para detecção de ROMs por hash)
+- **Hash:** crc-32, crypto (SHA1/MD5)
 
 ---
 
@@ -105,6 +115,9 @@ A aplicação mantém a persistência de dados em arquivos JSON locais na pasta 
 | `protected_games.json`   | Lista de jogos individuais protegidos pelo usuário.                     |
 | `systems.json`           | Mapeamento de extensões para IDs de plataformas IGDB/TGDB.              |
 | `curator_stats.json`     | Histórico completo de execuções com totais e resultados.                |
+| `.retrograde_progress.json` | Log de progresso gerado automaticamente na pasta processada (curadoria/simulação/extração). Permite retomada de operações interrompidas. |
+
+> Nota: O arquivo `.retrograde_progress.json` não fica em `data/` — ele é salvo na pasta onde a curadoria, simulação ou extração está sendo executada, e pode ser removido manualmente para descartar o progresso salvo.
 
 ---
 
@@ -114,6 +127,7 @@ A aplicação mantém a persistência de dados em arquivos JSON locais na pasta 
 
 - Node.js >= 18.0.0
 - Windows 11 (nativo)
+- Python 2/3 + Build Tools (para compilar módulos nativos, ver dependências abaixo)
 
 ### Desenvolvimento
 
@@ -127,6 +141,7 @@ A aplicação mantém a persistência de dados em arquivos JSON locais na pasta 
    ```bash
    npm install
    ```
+   O `npm install` executa automaticamente o script `postinstall`, que compila os módulos nativos (`better-sqlite3`) para a versão do Electron em uso via `electron-rebuild`.
 
 3. **Configure as credenciais de API** em `data/config.json`:
    ```json
@@ -139,10 +154,36 @@ A aplicação mantém a persistência de dados em arquivos JSON locais na pasta 
    }
    ```
 
-4. **Rode em modo desenvolvimento:**
+4. **(Opcional) Banco de Dados para Detecção por Hash:**
+   Coloque o arquivo do banco No-Intro/Redump original em `temp/rom_database.sqlite` e execute:
+   ```bash
+   node scripts/optimize_db.mjs
+   ```
+   Isso gera `assets/rom_database_optimized.sqlite` (~440MB, ~1.27M ROMs de 90 sistemas).
+   Sem esse banco a detecção funciona apenas pelas camadas 2 e 3 (magic bytes + extensão), com confiança média/baixa.
+
+5. **Rode em modo desenvolvimento:**
    ```bash
    npm run electron:dev
    ```
+
+### Recompilação de Módulos Nativos
+
+O `better-sqlite3` é um módulo nativo C++ que precisa ser compilado especificamente para a versão do Electron em uso. Execute apenas quando necessário:
+
+- Após o primeiro `npm install` (já executado automaticamente via `postinstall`)
+- Após deletar `node_modules` e rodar `npm install` novamente
+- Após atualizar a versão do Electron ou do `better-sqlite3`
+
+```bash
+# Recompilar manualmente (se necessário)
+npx electron-rebuild -f -w better-sqlite3
+
+# ou via npm script (equivalente)
+npm run postinstall
+```
+
+> **Importante:** Você **não** precisa executar `electron-rebuild` toda vez que compilar o código (`npm run build`). A recompilação de módulos nativos só é necessária quando as dependências ou o runtime do Electron mudam.
 
 ### Build para Produção
 
@@ -174,33 +215,38 @@ O build gera **dois formatos** na pasta `release/`:
 ```
 RetroGrade/
 ├── electron/
-│   ├── main.ts           # Processo principal (IPC, APIs, file I/O, scan, simulation)
-│   ├── preload.ts        # Ponte segura contextBridge
-│   └── tsconfig.json     # Config TypeScript do Electron
+│   ├── main.ts               # Processo principal (IPC, APIs, file I/O, scan, simulation)
+│   ├── preload.ts            # Ponte segura contextBridge
+│   ├── romDetector.ts        # Detecção de ROMs em 3 camadas (hash, magic bytes, extensão)
+│   ├── types.d.ts            # Declarações de tipos para módulos nativos
+│   └── tsconfig.json         # Config TypeScript do Electron
 ├── src/
 │   ├── components/
-│   │   ├── AboutModal.tsx           # Modal "Sobre" com créditos e tecnologias
-│   │   ├── ActivityLog.tsx          # Log de atividades com nota e gênero
-│   │   ├── ClassicGamesPicker.tsx   # Seletor de clássicos com capas
-│   │   ├── ExtractorModal.tsx       # Extrator de ROMs multi-formato
-│   │   ├── ProgressCard.tsx         # Barra de progresso + arquivo atual
-│   │   ├── ScanPreviewModal.tsx     # Pré-visualização da curadoria
-│   │   ├── SettingsModal.tsx        # Configurações completas
-│   │   ├── SpaceSavingsCard.tsx     # Card de economia de espaço
-│   │   ├── SplashScreen.tsx         # Splash screen com vídeo
-│   │   ├── StatCard.tsx             # Cards de estatísticas animados
-│   │   ├── StatsHistory.tsx         # Histórico com gráficos
-│   │   ├── SupportModal.tsx         # Modal de suporte
-│   │   ├── Toast.tsx                # Notificações toast
-│   │   └── TitleBar.tsx             # Barra de título customizada
+│   │   ├── AboutModal.tsx             # Modal "Sobre" com créditos e tecnologias
+│   │   ├── ActivityLog.tsx            # Log de atividades com nota e gênero
+│   │   ├── ClassicGamesPicker.tsx     # Seletor de clássicos com capas
+│   │   ├── CurationModal.tsx          # Modal de progresso da curadoria (com cancelar)
+│   │   ├── ExtractorModal.tsx         # Extrator de ROMs multi-formato
+│   │   ├── ProgressCard.tsx           # Barra de progresso + arquivo atual
+│   │   ├── ScanPreviewModal.tsx       # Pré-visualização da curadoria
+│   │   ├── SettingsModal.tsx          # Configurações completas
+│   │   ├── SpaceSavingsCard.tsx       # Card de economia de espaço
+│   │   ├── SplashScreen.tsx           # Splash screen com vídeo
+│   │   ├── StatCard.tsx               # Cards de estatísticas animados
+│   │   ├── StatsHistory.tsx           # Histórico com gráficos
+│   │   ├── SupportModal.tsx           # Modal de suporte
+│   │   ├── Toast.tsx                  # Notificações toast
+│   │   └── TitleBar.tsx               # Barra de título customizada
+│   ├── lib/
+│   │   └── system-logos.ts            # Utilitário de logos por sistema
 │   ├── locales/
-│   │   ├── index.ts                 # Funções de tradução (tGenre, tSystem)
-│   │   └── pt-br.ts                 # Locale pt-BR (gêneros e sistemas)
+│   │   ├── index.ts                   # Funções de tradução (tGenre, tSystem)
+│   │   └── pt-br.ts                   # Locale pt-BR (gêneros e sistemas)
 │   ├── types/
-│   │   └── global.d.ts              # Tipagem da API bridge
-│   ├── App.tsx                       # Componente principal
-│   ├── main.tsx                      # Entry point React
-│   └── index.css                     # Tailwind + estilos customizados
+│   │   └── global.d.ts                # Tipagem da API bridge
+│   ├── App.tsx                        # Componente principal
+│   ├── main.tsx                       # Entry point React
+│   └── index.css                      # Tailwind + estilos customizados
 ├── data/
 │   ├── classics.json              # Franquias protegidas
 │   ├── classic_games.json         # 675 jogos clássicos curados (28 plataformas)
@@ -210,15 +256,22 @@ RetroGrade/
 │   ├── systems.json               # Mapeamento de sistemas
 │   └── curator_stats.json         # Histórico de execuções
 ├── scripts/
-│   └── fetch-covers.mjs           # Script para baixar/otimizar capas via IGDB
+│   ├── fetch-covers.mjs           # Script para baixar/otimizar capas via IGDB
+│   └── optimize_db.mjs            # Filtra SQLite original para 90 sistemas suportados
 ├── public/
 │   └── covers/                    # 617 capas otimizadas em WebP (160x220, ~4KB cada)
 ├── assets/
 │   ├── images/
 │   │   ├── RetroGrade.png         # Logo do app
 │   │   └── RetroGrade_icon_app_256x256.png  # Ícone do executável
-│   └── videos/
-│       └── RetroGrade_intro.mp4   # Vídeo da splash screen
+│   ├── system/
+│   │   ├── logos/                 # Logos dos sistemas (NES.svg, SNES.svg, etc.)
+│   │   └── banners/               # Banners dos sistemas
+│   ├── videos/
+│   │   └── RetroGrade_intro.mp4   # Vídeo da splash screen
+│   └── rom_database_optimized.sqlite  # Banco SQLite otimizado (~440MB, ~1.27M ROMs) — gerado pelo script optimize_db.mjs
+├── temp/
+│   └── rom_database.sqlite        # Banco original No-Intro/Redump (não versionado, .gitignore)
 ├── package.json
 ├── vite.config.ts
 ├── tailwind.config.js
@@ -231,22 +284,42 @@ RetroGrade/
 
 O projeto utiliza comunicação segura entre processos via `contextBridge`:
 
-- **Main Process:** Lida com `fs`, `path`, chamadas de API (IGDB/TGDB), escaneamento recursivo, detecção de clones, simulação de curadoria e operações de arquivo
+- **Main Process:** Lida com `fs`, `path`, chamadas de API (IGDB/TGDB), escaneamento recursivo, detecção de ROMs em 3 camadas (SQLite hash → magic bytes → extensão), detecção de clones, simulação de curadoria, extração de arquivos e operações de arquivo
 - **Renderer Process:** Responsável exclusivamente pela UI e estados React
-- **Preload Script:** Expõe a ponte `window.api` com métodos seguros para o renderer
+- **Preload Script:** Expõe a ponte `window.api` com métodos seguros para o renderer, incluindo `rom:detect`, `rom:detectBatch`, `cancel-curation`, `cancel-simulation`, `cancel-extraction`, `read-progress-log` e `delete-progress-log`
+
+### Fluxo de Detecção de ROMs
+
+```
+arquivo (pode ser .zip ou .gz)
+  │
+  ├─► descomprime se necessário
+  │
+  ├─► Camada 1: lookup no SQLite por CRC32/SHA1/MD5 ──► ALTA confiança
+  │
+  ├─► Camada 2: magic bytes (assinatura binária) ──► MÉDIA
+  │
+  └─► Camada 3: extensão interna do arquivo ──► BAIXA
+```
+
+### Sistema de Progress Log
+
+Curadoria, simulação e extração salvam um arquivo `.retrograde_progress.json` na pasta alvo contendo a lista de arquivos já processados. Ao reiniciar uma operação, o usuário pode optar por retomar de onde parou — os arquivos já processados são pulados automaticamente.
 
 ---
 
 ## 📋 Scripts Disponíveis
 
-| Comando                  | Descrição                                    |
-| :----------------------- | :------------------------------------------- |
-| `npm run dev`            | Inicia o servidor Vite (apenas frontend)     |
-| `npm run build`          | Build do frontend com Vite                   |
-| `npm run electron:dev`   | Roda o app completo em modo desenvolvimento  |
-| `npm run electron:build` | Build completo para produção                 |
-| `npm run preview`        | Preview do build do frontend                 |
-| `node scripts/fetch-covers.mjs` | Baixa e otimiza capas dos jogos clássicos via IGDB |
+| Comando                          | Descrição                                    |
+| :------------------------------- | :------------------------------------------- |
+| `npm run dev`                    | Inicia o servidor Vite (apenas frontend)     |
+| `npm run build`                  | Compila TypeScript + build do frontend       |
+| `npm run electron:dev`           | Roda o app completo em modo desenvolvimento  |
+| `npm run electron:build`         | Build completo para produção                 |
+| `npm run postinstall`            | Recompila módulos nativos para Electron      |
+| `npm run preview`                | Preview do build do frontend                 |
+| `node scripts/fetch-covers.mjs`  | Baixa e otimiza capas dos jogos clássicos via IGDB |
+| `node scripts/optimize_db.mjs`   | Filtra banco No-Intro/Redump para 90 sistemas suportados |
 | `node scripts/optimize-video.mjs` | Otimiza vídeo de intro com ffmpeg (H.264 CRF 23) |
 
 ---
@@ -259,7 +332,7 @@ O projeto segue o [Semantic Versioning](https://semver.org/lang/pt-BR/):
 - **MINOR** (0.X.0): Novas funcionalidades compatíveis com versões anteriores
 - **PATCH** (0.0.X): Correções de bugs compatíveis com versões anteriores
 
-A versão atual é refletida na UI do app (sidebar e modal "Sobre") e sincronizada com o `package.json`.
+A versão atual é refletida na UI do app (sidebar e modal "Sobre") e sincronizada com o `package.json`. Atualmente na **v1.6.0**.
 
 ---
 

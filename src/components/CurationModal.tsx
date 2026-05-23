@@ -13,6 +13,7 @@ interface LogEntry {
 
 interface CurationModalProps {
   onClose: () => void;
+  onCancel?: () => void;
   progress: number;
   currentFile: string;
   currentSystem: string;
@@ -24,6 +25,7 @@ interface CurationModalProps {
   total: number;
   current: number;
   log: LogEntry[];
+  cancelled?: boolean;
 }
 
 const statusIcons = {
@@ -40,6 +42,7 @@ const statusColors = {
 
 export function CurationModal({
   onClose,
+  onCancel,
   progress,
   currentFile,
   currentSystem,
@@ -51,6 +54,7 @@ export function CurationModal({
   total,
   current,
   log,
+  cancelled,
 }: CurationModalProps) {
   const logRef = useRef<HTMLDivElement>(null);
 
@@ -78,18 +82,35 @@ export function CurationModal({
         {/* Header */}
         <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Loader2 className="w-5 h-5 text-retro-primary animate-spin" />
+            {cancelled ? (
+              <XCircle className="w-5 h-5 text-retro-danger" />
+            ) : (
+              <Loader2 className="w-5 h-5 text-retro-primary animate-spin" />
+            )}
             <div>
-              <h3 className="text-lg font-bold text-zinc-100">Curadoria em Andamento</h3>
-              <p className="text-xs text-zinc-500">Processando {current} de {total} ROMs</p>
+              <h3 className="text-lg font-bold text-zinc-100">{cancelled ? 'Curadoria Cancelada' : 'Curadoria em Andamento'}</h3>
+              <p className="text-xs text-zinc-500">
+                {cancelled ? 'Processamento interrompido' : `Processando ${current} de ${total} ROMs`}
+              </p>
             </div>
           </div>
-          <button
-            onClick={onClose}
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
+          <div className="flex items-center gap-2">
+            {!cancelled && onCancel && (
+              <button
+                onClick={onCancel}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-retro-danger/10 text-retro-danger border border-retro-danger/30 text-sm font-medium hover:bg-retro-danger/20 transition-all active:scale-95"
+              >
+                <XCircle className="w-4 h-4" />
+                Cancelar
+              </button>
+            )}
+            <button
+              onClick={onClose}
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         {/* Progress */}

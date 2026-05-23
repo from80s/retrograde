@@ -53,6 +53,7 @@ interface CurationState {
   currentSystem: string;
   currentRating: number | null;
   currentStatus: "classic" | "kept" | "removed" | null;
+  cancelled: boolean;
   log: {
     fileName: string;
     status: string;
@@ -77,6 +78,7 @@ function App() {
     currentSystem: "",
     currentRating: null,
     currentStatus: null,
+    cancelled: false,
     log: [],
   });
 
@@ -182,11 +184,13 @@ function App() {
       removeClones: boolean;
       preferredRegions: string[];
       protectedGames: string[];
+      resume?: boolean;
     }) => {
       setShowScanPreview(false);
       setState((prev) => ({
         ...prev,
         isRunning: true,
+        cancelled: false,
         log: [],
         current: 0,
         classics: 0,
@@ -222,6 +226,9 @@ function App() {
               },
             ],
           }));
+        } else if (data.type === "cancelled") {
+          setState((prev) => ({ ...prev, cancelled: true, isRunning: false }));
+          window.api.removeCurationProgressListener();
         } else if (data.type === "complete") {
           setState((prev) => ({ ...prev, isRunning: false }));
           setBytesSaved(data.stats?.bytes_removed || 0);
@@ -233,6 +240,7 @@ function App() {
         folder: options.folder,
         minRating: options.minRating,
         action: options.action,
+        resume: options.resume,
       });
     },
     [],
@@ -614,7 +622,11 @@ function App() {
         )}
         {state.isRunning && (
           <CurationModal
-            onClose={() => {}}
+            onClose={() => setState(prev => ({ ...prev, isRunning: false, cancelled: false }))}
+            onCancel={async () => {
+              await window.api.cancelCuration();
+            }}
+            cancelled={state.cancelled}
             progress={progress}
             currentFile={state.currentFile}
             currentSystem={state.currentSystem}

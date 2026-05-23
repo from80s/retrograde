@@ -8,6 +8,7 @@ import * as tar from 'tar';
 import zlib from 'zlib';
 import { exec } from 'child_process';
 import { promisify } from 'util';
+import { initRomDatabase, closeRomDatabase, detectRom, detectRoms } from './romDetector';
 
 const execAsync = promisify(exec);
 
@@ -34,259 +35,7 @@ const appIcon = fs.existsSync(iconPath) ? nativeImage.createFromPath(iconPath) :
 let mainWindow: BrowserWindow | null = null;
 let igdbToken: { access_token: string; expires_at: number } | null = null;
 
-const GENERIC_EXTENSIONS = new Set(['.iso', '.bin', '.chd', '.gdi', '.cue', '.pbp', '.cso', '.rvz', '.gcm', '.wbfs', '.wux', '.7z', '.zip', '.xiso', '.img', '.ccd', '.mdf', '.gz']);
-
-interface SystemHint {
-  keywords: string[];
-  system: string;
-}
-
-const SYSTEM_HINTS: SystemHint[] = [
-  { keywords: ['ps2', 'playstation 2', 'playstation2', 'ps two'], system: '.ps2' },
-  { keywords: ['psx', 'playstation', 'ps1', 'ps one'], system: '.bin' },
-  { keywords: ['ps3', 'playstation 3'], system: '.iso' },
-  { keywords: ['psp', 'playstation portable'], system: '.cso' },
-  { keywords: ['psvita', 'playstation vita', 'vita'], system: '.vpk' },
-  { keywords: ['saturn', 'sega saturn'], system: '.sat' },
-  { keywords: ['dreamcast', 'dc', 'katana'], system: '.gdi' },
-  { keywords: ['gamecube', 'gc', 'cube', 'dolphin'], system: '.gcm' },
-  { keywords: ['wii'], system: '.wbfs' },
-  { keywords: ['wiiu', 'wii u', 'wii u'], system: '.wux' },
-  { keywords: ['switch', 'nintendo switch'], system: '.nsp' },
-  { keywords: ['3ds', 'nintendo 3ds'], system: '.3ds' },
-  { keywords: ['nds', 'nintendo ds', 'ds'], system: '.nds' },
-  { keywords: ['n64', 'nintendo 64'], system: '.n64' },
-  { keywords: ['nes', 'famicom'], system: '.nes' },
-  { keywords: ['snes', 'super nintendo', 'super famicom'], system: '.sfc' },
-  { keywords: ['gb', 'game boy'], system: '.gb' },
-  { keywords: ['gba', 'game boy advance'], system: '.gba' },
-  { keywords: ['gbc', 'game boy color'], system: '.gbc' },
-  { keywords: ['genesis', 'mega drive', 'megadrive'], system: '.gen' },
-  { keywords: ['mastersystem', 'master system', 'sms'], system: '.sms' },
-  { keywords: ['gamegear', 'game gear'], system: '.gg' },
-  { keywords: ['32x', 'sega 32x'], system: '.32x' },
-  { keywords: ['segacd', 'mega cd', 'sega cd'], system: '.bin' },
-  { keywords: ['megacd', 'mega-cd'], system: '.bin' },
-  { keywords: ['neogeo', 'neo geo'], system: '.neo' },
-  { keywords: ['ngp', 'neo geo pocket'], system: '.ngp' },
-  { keywords: ['ngpc', 'neo geo pocket color'], system: '.ngpc' },
-  { keywords: ['sg1000', 'sg-1000'], system: '.sg' },
-  { keywords: ['atari2600', 'atari 2600', 'vcs'], system: '.a26' },
-  { keywords: ['atari5200', 'atari 5200'], system: '.a52' },
-  { keywords: ['atari7800', 'atari 7800'], system: '.a78' },
-  { keywords: ['jaguar', 'atari jaguar'], system: '.jag' },
-  { keywords: ['lynx', 'atari lynx'], system: '.lnx' },
-  { keywords: ['atarist', 'atari st'], system: '.st' },
-  { keywords: ['atari800', 'atari 800'], system: '.atr' },
-  { keywords: ['xbox360', 'xbox 360', 'x360', 'xenia'], system: '.xex' },
-  { keywords: ['xbox', 'original xbox', 'xemu', 'cxbx'], system: '.xiso' },
-  { keywords: ['amiga'], system: '.adf' },
-  { keywords: ['cd32', 'amiga cd32'], system: '.iso' },
-  { keywords: ['c64', 'commodore 64'], system: '.d64' },
-  { keywords: ['vic20', 'vic-20'], system: '.crt' },
-  { keywords: ['apple2', 'apple ii'], system: '.do' },
-  { keywords: ['apple2gs', 'apple iigs', 'iigs'], system: '.2mg' },
-  { keywords: ['dos', 'pc', 'ms-dos'], system: '.exe' },
-  { keywords: ['scummvm', 'scumm'], system: '.svm' },
-  { keywords: ['doom'], system: '.wad' },
-  { keywords: ['pico8', 'pico-8'], system: '.p8' },
-  { keywords: ['tic80', 'tic-80'], system: '.tic' },
-  { keywords: ['wasm4', 'wasm-4'], system: '.wasm' },
-  { keywords: ['zxspectrum', 'zx spectrum', 'spectrum'], system: '.z80' },
-  { keywords: ['zx81'], system: '.p' },
-  { keywords: ['msx'], system: '.mx1' },
-  { keywords: ['pcengine', 'pc engine', 'turbografx', 'tg16'], system: '.pce' },
-  { keywords: ['pcenginecd', 'pc engine cd', 'turbografx-cd', 'tgcd'], system: '.pce' },
-  { keywords: ['supergrafx', 'super grafx'], system: '.sgx' },
-  { keywords: ['pcfx', 'pc-fx'], system: '.iso' },
-  { keywords: ['pc88', 'pc-88'], system: '.d88' },
-  { keywords: ['pc98', 'pc-98'], system: '.d88' },
-  { keywords: ['x1', 'sharp x1'], system: '.2d' },
-  { keywords: ['x68000', 'sharp x68000'], system: '.d88' },
-  { keywords: ['fmtowns', 'fm towns'], system: '.iso' },
-  { keywords: ['amstrad', 'cpc'], system: '.dsk' },
-  { keywords: ['bbcmicro', 'bbc micro'], system: '.ssd' },
-  { keywords: ['colecovision', 'coleco'], system: '.col' },
-  { keywords: ['intellivision', 'intv'], system: '.int' },
-  { keywords: ['vectrex'], system: '.vec' },
-  { keywords: ['virtualboy', 'virtual boy'], system: '.vb' },
-  { keywords: ['wonderswan', 'wonder swan'], system: '.ws' },
-  { keywords: ['wonderswancolor', 'wonder swan color'], system: '.wsc' },
-  { keywords: ['pokemini', 'pokemon mini'], system: '.min' },
-  { keywords: ['naomi'], system: '.bin' },
-  { keywords: ['atomiswave'], system: '.bin' },
-  { keywords: ['mame'], system: '.zip' },
-  { keywords: ['arcade'], system: '.zip' },
-  { keywords: ['3do'], system: '.bin' },
-  { keywords: ['cdimono1', 'cdi', 'philips cd'], system: '.iso' },
-  { keywords: ['channelf', 'channel f'], system: '.chf' },
-  { keywords: ['gameandwatch', 'game watch'], system: '.mgw' },
-  { keywords: ['lowresnx', 'lowres nx'], system: '.nx' },
-  { keywords: ['supervision', 'watara'], system: '.sv' },
-  { keywords: ['megaduck', 'mega duck'], system: '.bin' },
-  { keywords: ['odyssey2', 'odyssey 2'], system: '.bin' },
-  { keywords: ['videopac'], system: '.bin' },
-  { keywords: ['arcadia'], system: '.bin' },
-  { keywords: ['astrocade', 'bally'], system: '.bin' },
-];
-
-function inferSystemFromFolder(folderPath: string): string | null {
-  const folderName = path.basename(folderPath).toLowerCase();
-  const parentName = path.basename(path.dirname(folderPath)).toLowerCase();
-  const context = `${parentName} ${folderName}`;
-
-  for (const hint of SYSTEM_HINTS) {
-    if (hint.keywords.some((kw) => context.includes(kw))) {
-      return hint.system;
-    }
-  }
-
-  return null;
-}
-
-async function identifySystemFromFile(filePath: string, ext: string): Promise<string | null> {
-  try {
-    const fd = await fs.open(filePath, 'r');
-    const header = Buffer.alloc(512);
-    await fs.read(fd, header, 0, 512, 0);
-    await fs.close(fd);
-
-    const headerStr = header.toString('ascii', 0, 64).replace(/\0/g, '');
-
-    // Magic numbers e assinaturas conhecidas
-    if (headerStr.includes('SEGA SEGASATURN')) return '.sat';
-    if (headerStr.includes('SEGA SEGAKATANA') || headerStr.includes('SEGA ENTERPRISES')) return '.gdi';
-    if (headerStr.includes('SEGA MEGA DRIVE') || headerStr.includes('SEGA GENESIS')) return '.gen';
-    if (headerStr.includes('SEGA MASTER SYSTEM')) return '.sms';
-    if (headerStr.includes('SEGA GAME GEAR')) return '.gg';
-    if (headerStr.includes('SEGA 32X')) return '.32x';
-    if (headerStr.includes('SEGA CD')) return '.bin';
-    if (headerStr.includes('SEGA SG-1000')) return '.sg';
-
-    if (headerStr.includes('Nintendo') || headerStr.includes('NINTENDO')) {
-      if (headerStr.includes('GameCube') || headerStr.includes('GAMECUBE')) return '.gcm';
-      if (headerStr.includes('Wii')) return '.wbfs';
-      if (headerStr.includes('Wii U')) return '.wux';
-      if (headerStr.includes('3DS')) return '.3ds';
-      if (headerStr.includes('DS')) return '.nds';
-      if (headerStr.includes('64') || headerStr.includes('N64')) return '.n64';
-      if (headerStr.includes('SNES') || headerStr.includes('Super Famicom')) return '.sfc';
-      if (headerStr.includes('NES') || headerStr.includes('Famicom')) return '.nes';
-      if (headerStr.includes('Game Boy Advance')) return '.gba';
-      if (headerStr.includes('Game Boy Color')) return '.gbc';
-      if (headerStr.includes('Game Boy')) return '.gb';
-      if (headerStr.includes('Switch')) return '.nsp';
-    }
-
-    // PlayStation detection
-    if (headerStr.includes('PS-X EXE') || headerStr.includes('Sony Computer Entertainment')) return '.bin';
-    if (headerStr.includes('PlayStation 2') || headerStr.includes('PS2')) return '.ps2';
-    if (headerStr.includes('PSP') || headerStr.includes('PlayStation Portable')) return '.cso';
-    if (headerStr.includes('PlayStation 3') || headerStr.includes('PS3')) return '.iso';
-    if (headerStr.includes('PlayStation Vita') || headerStr.includes('PS Vita')) return '.vpk';
-
-    // Atari detection
-    if (headerStr.includes('ATARI')) {
-      if (headerStr.includes('JAGUAR')) return '.jag';
-      if (headerStr.includes('LYNX')) return '.lnx';
-      if (headerStr.includes('ST')) return '.st';
-      if (headerStr.includes('2600')) return '.a26';
-      if (headerStr.includes('5200')) return '.a52';
-      if (headerStr.includes('7800')) return '.a78';
-    }
-
-    // Neo Geo
-    if (headerStr.includes('NEOGEO') || headerStr.includes('SNK')) return '.neo';
-
-    // CHD files - usar tamanho como heurística
-    if (ext === '.chd' && headerStr.startsWith('MCompr')) {
-      const stat = await fs.stat(filePath);
-      const sizeMB = stat.size / (1024 * 1024);
-      if (sizeMB > 100) return '.ps2';
-      if (sizeMB > 20) return '.psx';
-      if (sizeMB > 5) return '.sat';
-      return '.psx';
-    }
-
-    // GCM/GameCube - verificar magic number no offset 0x1C
-    if (ext === '.gcm' || ext === '.iso') {
-      if (header.length > 0x20) {
-        const magic = header.toString('ascii', 0x1C, 0x20);
-        if (magic.startsWith('G1') || magic.startsWith('G2') || magic.startsWith('G3')) return '.gcm';
-        if (magic.startsWith('R3') || magic.startsWith('S3') || magic.startsWith('L3')) return '.wbfs';
-      }
-    }
-
-    // WBFS - Wii
-    if (ext === '.wbfs' || headerStr.startsWith('WBFS')) return '.wbfs';
-
-    // RVZ - Dolphin (GameCube/Wii)
-    if (ext === '.rvz') {
-      if (header.toString('ascii', 0, 4) === 'RVZ') return '.gcm';
-    }
-
-    // PBP - PSP
-    if (ext === '.pbp' && header.toString('ascii', 0, 4) === '\0PBP') return '.cso';
-
-    // CSO - PSP
-    if (ext === '.cso' && header.toString('ascii', 0, 4) === 'CISO') return '.cso';
-
-    // XISO - Xbox original
-    if (ext === '.xiso') {
-      const stat = await fs.stat(filePath);
-      const sizeMB = stat.size / (1024 * 1024);
-      if (sizeMB > 500) return '.xiso';
-      return inferSystemFromFolder(path.dirname(filePath));
-    }
-
-    // Análise por tamanho do arquivo como fallback
-    const stat = await fs.stat(filePath);
-    const sizeMB = stat.size / (1024 * 1024);
-
-    if (ext === '.iso' || ext === '.bin' || ext === '.img' || ext === '.ccd' || ext === '.mdf' || ext === '.gz') {
-      // Xbox 360 ISOs são tipicamente 4-8GB
-      if (sizeMB > 4000) return '.xex';
-      // PS2 ISOs são tipicamente 1-4GB
-      if (sizeMB > 1000) return '.ps2';
-      // PS3 ISOs são tipicamente 5-40GB
-      if (sizeMB > 5000) return '.iso';
-      // GameCube ISOs são tipicamente 1-1.5GB
-      if (sizeMB > 1000) return '.gcm';
-      // Wii ISOs são tipicamente 1-4GB
-      if (sizeMB > 1000) return '.wbfs';
-      // Saturn CDs são tipicamente 200-600MB
-      if (sizeMB > 200) return '.sat';
-      // PS1 CDs são tipicamente 200-700MB
-      if (sizeMB > 200) return '.bin';
-      // Mega-CD/Sega CD são tipicamente 200-900MB
-      if (sizeMB > 200) return '.bin';
-      // 3DO são tipicamente 200-650MB
-      if (sizeMB > 200) return '.bin';
-      // PC Engine CD são tipicamente 200-700MB
-      if (sizeMB > 200) return '.pce';
-      // PC-FX são tipicamente 200-700MB
-      if (sizeMB > 200) return '.iso';
-      // FM Towns são tipicamente 200-700MB
-      if (sizeMB > 200) return '.iso';
-      // Philips CD-i são tipicamente 200-700MB
-      if (sizeMB > 200) return '.iso';
-      // Atari Jaguar CD são tipicamente 200-650MB
-      if (sizeMB > 200) return '.jcd';
-      // Neo Geo CD são tipicamente 200-700MB
-      if (sizeMB > 200) return '.iso';
-      // TurboGrafx-CD são tipicamente 200-700MB
-      if (sizeMB > 200) return '.pce';
-      // Amiga CD32 são tipicamente 200-700MB
-      if (sizeMB > 200) return '.iso';
-      return '.bin';
-    }
-
-    // Fallback para pasta como última opção
-    return inferSystemFromFolder(path.dirname(filePath));
-  } catch {
-    return inferSystemFromFolder(path.dirname(filePath));
-  }
-}
+const ROM_EXTENSIONS = new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(app.getAppPath(), 'data', 'systems.json'), 'utf-8'))));
 
 function createWindow() {
   const preloadPath = path.join(__dirname, 'preload.js');
@@ -367,6 +116,19 @@ app.whenReady().then(async () => {
     console.error('[RetroGrade] Error initializing data files:', err);
   }
 
+  // Initialize ROM detection database
+  try {
+    const dbPath = path.join(app.getAppPath(), 'assets', 'rom_database_optimized.sqlite');
+    if (fs.existsSync(dbPath)) {
+      initRomDatabase(dbPath);
+      console.log('[ROM DB] Database initialized successfully');
+    } else {
+      console.warn('[ROM DB] Database not found at:', dbPath);
+    }
+  } catch (err) {
+    console.error('[ROM DB] Failed to initialize database:', err);
+  }
+
   createWindow();
 
   app.on('activate', () => {
@@ -374,6 +136,10 @@ app.whenReady().then(async () => {
       createWindow();
     }
   });
+});
+
+app.on('will-quit', () => {
+  closeRomDatabase();
 });
 
 app.on('window-all-closed', () => {
@@ -405,6 +171,14 @@ ipcMain.handle('window-maximize', () => {
 
 ipcMain.handle('window-close', () => {
   mainWindow?.close();
+});
+
+ipcMain.handle('rom:detect', async (_event, filePath: string) => {
+  return await detectRom(filePath);
+});
+
+ipcMain.handle('rom:detectBatch', async (_event, filePaths: string[]) => {
+  return await detectRoms(filePaths, 4);
 });
 
 ipcMain.handle('test-api-connections', async () => {
@@ -457,13 +231,16 @@ ipcMain.handle('test-api-connections', async () => {
             apikey: config.TGDB_API_KEY,
             name: 'Nintendo Entertainment System',
           },
+          headers: {
+            'X-API-KEY': config.TGDB_API_KEY,
+          },
           timeout: 10000,
         }
       );
-      if (response.data.data) {
+      if (response.data?.data?.platforms) {
         results.tgdb = { status: 'success', message: 'Conexão estabelecida' };
       } else {
-        results.tgdb = { status: 'error', message: 'Resposta inesperada' };
+        results.tgdb = { status: 'error', message: 'Resposta inesperada da API' };
       }
     }
   } catch (error: any) {
@@ -1436,57 +1213,42 @@ ipcMain.handle('scan-folder', async (_, folder: string) => {
         await scanDirectory(fullPath);
       } else {
         const ext = path.extname(entry.name).toLowerCase();
-        let systemExt = ext;
-        let systemInfo = systems[ext];
 
-        // Para extensões genéricas, analisar o header do arquivo PRIMEIRO
-        // A detecção por conteúdo tem prioridade sobre o mapeamento por extensão
-        if (GENERIC_EXTENSIONS.has(ext)) {
-          const identified = await identifySystemFromFile(fullPath, ext);
-          if (identified && systems[identified]) {
-            systemExt = identified;
-            systemInfo = systems[identified];
-          } else if (!systemInfo) {
-            // Se não identificou pelo conteúdo e não tem na lista, tenta inferir pela pasta
-            const folderSystem = inferSystemFromFolder(dir);
-            if (folderSystem && systems[folderSystem]) {
-              systemExt = folderSystem;
-              systemInfo = systems[folderSystem];
-            }
-          }
-        }
+        if (!ROM_EXTENSIONS.has(ext)) continue;
 
-        if (systemInfo) {
-          const fileName = path.basename(entry.name, ext);
-          const baseName = getBaseRomName(fileName);
-          const regionTags = extractRegionTags(fileName);
-          const stat = await fs.stat(fullPath);
+        const detected = await detectRom(fullPath);
+        if (!detected.system || !systems[detected.system]) continue;
 
-          const isClassic = classics.some((classic: string) =>
-            fileName.toLowerCase().includes(classic.toLowerCase())
-          );
+        const systemInfo = systems[detected.system];
+        const fileName = path.basename(entry.name, ext);
+        const baseName = getBaseRomName(fileName);
+        const regionTags = extractRegionTags(fileName);
+        const stat = await fs.stat(fullPath);
 
-          const isUserProtected = protectedGames.some((game: string) =>
-            fileName.toLowerCase().includes(game.toLowerCase())
-          );
+        const isClassic = classics.some((classic: string) =>
+          fileName.toLowerCase().includes(classic.toLowerCase())
+        );
 
-          romFiles.push({
-            path: fullPath,
-            fileName: entry.name,
-            baseName,
-            ext: systemExt,
-            system: systemExt,
-            systemName: systemInfo.name,
-            size: stat.size,
-            parentDir: dir,
-            regionTags,
-            protectionStatus: {
-              isClassic,
-              isGenreProtected: false,
-              isUserProtected,
-            },
-          });
-        }
+        const isUserProtected = protectedGames.some((game: string) =>
+          fileName.toLowerCase().includes(game.toLowerCase())
+        );
+
+        romFiles.push({
+          path: fullPath,
+          fileName: entry.name,
+          baseName,
+          ext: detected.system,
+          system: detected.system,
+          systemName: systemInfo.name,
+          size: stat.size,
+          parentDir: dir,
+          regionTags,
+          protectionStatus: {
+            isClassic,
+            isGenreProtected: false,
+            isUserProtected,
+          },
+        });
       }
     }
   }
@@ -1577,15 +1339,28 @@ ipcMain.handle('scan-folder', async (_, folder: string) => {
   };
 });
 
-ipcMain.handle('start-curation', async (_, options: { folder: string; minRating: number; action: 'move' | 'delete' }) => {
-  const { folder, minRating, action } = options;
+ipcMain.handle('start-curation', async (_, options: { folder: string; minRating: number; action: 'move' | 'delete'; resume?: boolean }) => {
+  const { folder, minRating, action, resume } = options;
+  curationCancelled = false;
+
+  // Carrega progresso anterior se for retomada
+  let progressLog: ProgressLog | null = null;
+  if (resume) {
+    progressLog = await readProgressLog(folder);
+    if (progressLog?.type !== 'curation' || progressLog.complete) {
+      progressLog = null;
+    }
+  }
+
+  const completedPaths = new Set(progressLog?.completedFiles.map(f => f.path) || []);
+
   const config = await fs.readJson(CONFIG_PATH);
   const classics = await fs.readJson(CLASSICS_PATH);
   const protectedGenres = await fs.readJson(GENRE_PATH).catch(() => []);
   const protectedGames = await fs.readJson(PROTECTED_GAMES_PATH).catch(() => []);
   const systems = await fs.readJson(SYSTEMS_PATH);
 
-  const stats = {
+  const stats = progressLog?.stats || {
     pasta: folder,
     total_encontrado: 0,
     preservados_classicos: 0,
@@ -1613,45 +1388,46 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
       if (entry.isDirectory()) {
         await scanDirectory(fullPath);
       } else {
+        if (completedPaths.has(fullPath)) continue;
         const ext = path.extname(entry.name).toLowerCase();
-        let systemExt = ext;
-        let systemInfo = systems[ext];
+        if (!ROM_EXTENSIONS.has(ext)) continue;
 
-        // Para extensões genéricas, analisar o header do arquivo PRIMEIRO
-        if (GENERIC_EXTENSIONS.has(ext)) {
-          const identified = await identifySystemFromFile(fullPath, ext);
-          if (identified && systems[identified]) {
-            systemExt = identified;
-            systemInfo = systems[identified];
-          } else if (!systemInfo) {
-            const folderSystem = inferSystemFromFolder(dir);
-            if (folderSystem && systems[folderSystem]) {
-              systemExt = folderSystem;
-              systemInfo = systems[folderSystem];
-            }
-          }
-        }
+        const detected = await detectRom(fullPath);
+        if (!detected.system || !systems[detected.system]) continue;
 
-        if (systemInfo) {
-          romFiles.push({
-            path: fullPath,
-            name: entry.name,
-            ext: systemExt,
-            system: systemInfo,
-            parentDir: dir,
-          });
-        }
+        const systemInfo = systems[detected.system];
+        romFiles.push({
+          path: fullPath,
+          name: entry.name,
+          ext: detected.system,
+          system: systemInfo,
+          parentDir: dir,
+        });
       }
     }
   }
 
-  await scanDirectory(folder);
-  stats.total_encontrado = romFiles.length;
+await scanDirectory(folder);
+stats.total_encontrado = (progressLog?.completedFiles.length || 0) + romFiles.length;
 
   mainWindow?.webContents.send('curation-progress', {
     type: 'init',
-    total: romFiles.length,
+    total: stats.total_encontrado,
   });
+
+  // Inicializa log de progresso
+  if (!progressLog) {
+    progressLog = {
+      folder,
+      type: 'curation',
+      startedAt: new Date().toISOString(),
+      completedFiles: [],
+      stats,
+      cancelled: false,
+      complete: false,
+    };
+    await writeProgressLog(folder, progressLog);
+  }
 
   // Group ROMs by parent directory
   const dirGroups = new Map<string, RomFile[]>();
@@ -1664,9 +1440,10 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
 
   // Process each directory group
   const processedDirs = new Set<string>();
-  let fileIndex = 0;
+  let fileIndex = progressLog?.completedFiles.length || 0;
 
   for (const [parentDir, files] of dirGroups) {
+    if (curationCancelled) break;
     if (processedDirs.has(parentDir)) continue;
 
     // Check if this is a single-ROM folder (folder name matches ROM name)
@@ -1677,6 +1454,7 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
     let groupAction: 'keep' | 'remove' = 'keep';
 
     for (const file of files) {
+      if (curationCancelled) break;
       const fileName = path.basename(file.name, path.extname(file.name)).toLowerCase();
       const sysExt = file.ext;
       stats.sistemas[sysExt] = (stats.sistemas[sysExt] || 0) + 1;
@@ -1688,6 +1466,8 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
       if (isClassic) {
         groupAction = 'keep';
         stats.preservados_classicos++;
+        progressLog.completedFiles.push({ path: file.path, name: file.name, status: 'classic' });
+        await writeProgressLog(folder, progressLog);
         mainWindow?.webContents.send('curation-progress', {
           type: 'file',
           index: fileIndex++,
@@ -1707,6 +1487,8 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
       if (isUserProtected) {
         groupAction = 'keep';
         stats.preservados_classicos++;
+        progressLog.completedFiles.push({ path: file.path, name: file.name, status: 'classic' });
+        await writeProgressLog(folder, progressLog);
         mainWindow?.webContents.send('curation-progress', {
           type: 'file',
           index: fileIndex++,
@@ -1725,24 +1507,31 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
         config
       );
 
+      if (curationCancelled) break;
+
       const isProtectedGenre = protectedGenres.some((genre: string) =>
         result.genres.some((g: string) => g.toLowerCase().includes(genre.toLowerCase()))
       );
 
       if (result.rating === null || result.rating >= minRating || isProtectedGenre) {
         stats.mantidos_por_nota++;
+        const fStatus = isProtectedGenre ? 'classic' : 'kept';
+        progressLog.completedFiles.push({ path: file.path, name: file.name, status: fStatus });
+        await writeProgressLog(folder, progressLog);
         mainWindow?.webContents.send('curation-progress', {
           type: 'file',
           index: fileIndex++,
           fileName: file.name,
           system: file.system.name,
-          status: isProtectedGenre ? 'classic' : 'kept',
+          status: fStatus,
           rating: result.rating,
           genres: result.genres,
         });
       } else {
         stats.removidos++;
         groupAction = 'remove';
+        progressLog.completedFiles.push({ path: file.path, name: file.name, status: 'removed' });
+        await writeProgressLog(folder, progressLog);
         mainWindow?.webContents.send('curation-progress', {
           type: 'file',
           index: fileIndex++,
@@ -1754,6 +1543,8 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
         });
       }
     }
+
+    if (curationCancelled) break;
 
     // If it's a single-ROM folder and should be removed, remove/move the entire folder
     if (isSingleRomFolder && groupAction === 'remove') {
@@ -1772,6 +1563,19 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
     processedDirs.add(parentDir);
   }
 
+  if (curationCancelled) {
+    progressLog.cancelled = true;
+    await writeProgressLog(folder, progressLog);
+    mainWindow?.webContents.send('curation-progress', {
+      type: 'cancelled',
+      stats,
+    });
+    return stats;
+  }
+
+  progressLog.complete = true;
+  await writeProgressLog(folder, progressLog);
+
   const allStats = await fs.readJson(STATS_PATH).catch(() => []);
   allStats.push(stats);
   await fs.writeJson(STATS_PATH, allStats, { spaces: 2 });
@@ -1784,8 +1588,20 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
   return stats;
 });
 
-ipcMain.handle('simulate-curation', async (_, options: { folder: string; minRating: number; action: 'move' | 'delete' }) => {
-  const { folder, minRating, action } = options;
+ipcMain.handle('simulate-curation', async (_, options: { folder: string; minRating: number; action: 'move' | 'delete'; resume?: boolean }) => {
+  const { folder, minRating, action, resume } = options;
+  simulationCancelled = false;
+
+  let progressLog: ProgressLog | null = null;
+  if (resume) {
+    progressLog = await readProgressLog(folder);
+    if (progressLog?.type !== 'simulation' || progressLog.complete) {
+      progressLog = null;
+    }
+  }
+
+  const completedPaths = new Set(progressLog?.completedFiles.map(f => f.path) || []);
+
   const config = await fs.readJson(CONFIG_PATH);
   const classics = await fs.readJson(CLASSICS_PATH);
   const protectedGenres = await fs.readJson(GENRE_PATH).catch(() => []);
@@ -1810,43 +1626,44 @@ ipcMain.handle('simulate-curation', async (_, options: { folder: string; minRati
       if (entry.isDirectory()) {
         await scanDirectory(fullPath);
       } else {
+        if (completedPaths.has(fullPath)) continue;
         const ext = path.extname(entry.name).toLowerCase();
-        let systemExt = ext;
-        let systemInfo = systems[ext];
+        if (!ROM_EXTENSIONS.has(ext)) continue;
 
-        // Para extensões genéricas, analisar o header do arquivo PRIMEIRO
-        if (GENERIC_EXTENSIONS.has(ext)) {
-          const identified = await identifySystemFromFile(fullPath, ext);
-          if (identified && systems[identified]) {
-            systemExt = identified;
-            systemInfo = systems[identified];
-          } else if (!systemInfo) {
-            const folderSystem = inferSystemFromFolder(dir);
-            if (folderSystem && systems[folderSystem]) {
-              systemExt = folderSystem;
-              systemInfo = systems[folderSystem];
-            }
-          }
-        }
+        const detected = await detectRom(fullPath);
+        if (!detected.system || !systems[detected.system]) continue;
 
-        if (systemInfo) {
-          const stat = await fs.stat(fullPath);
-          romFiles.push({
-            path: fullPath,
-            name: entry.name,
-            ext: systemExt,
-            system: systemInfo,
-            parentDir: dir,
-            size: stat.size,
-          });
-        }
+        const stat = await fs.stat(fullPath);
+        romFiles.push({
+          path: fullPath,
+          name: entry.name,
+          ext: detected.system,
+          system: systems[detected.system],
+          parentDir: dir,
+          size: stat.size,
+        });
       }
     }
   }
 
-  await scanDirectory(folder);
+await scanDirectory(folder);
 
-  // Group ROMs by parent directory
+  const totalFiles = (progressLog?.completedFiles.length || 0) + romFiles.length;
+
+  if (!progressLog) {
+    progressLog = {
+      folder,
+      type: 'simulation',
+      startedAt: new Date().toISOString(),
+      completedFiles: [],
+      stats: { totalFiles },
+      cancelled: false,
+      complete: false,
+    };
+    await writeProgressLog(folder, progressLog);
+  }
+
+// Group ROMs by parent directory
   const dirGroups = new Map<string, SimRomFile[]>();
   for (const file of romFiles) {
     if (!dirGroups.has(file.parentDir)) {
@@ -1870,6 +1687,7 @@ ipcMain.handle('simulate-curation', async (_, options: { folder: string; minRati
   let totalSizeAffected = 0;
 
   for (const [parentDir, files] of dirGroups) {
+    if (simulationCancelled) break;
     if (processedDirs.has(parentDir)) continue;
 
     const folderName = path.basename(parentDir).toLowerCase();
@@ -1878,6 +1696,7 @@ ipcMain.handle('simulate-curation', async (_, options: { folder: string; minRati
     let groupAction: 'keep' | 'remove' = 'keep';
 
     for (const file of files) {
+      if (simulationCancelled) break;
       const fileName = path.basename(file.name, path.extname(file.name)).toLowerCase();
 
       const isClassic = classics.some((classic: string) =>
@@ -1886,6 +1705,7 @@ ipcMain.handle('simulate-curation', async (_, options: { folder: string; minRati
 
       if (isClassic) {
         groupAction = 'keep';
+        progressLog.completedFiles.push({ path: file.path, name: file.name, status: 'classic' });
         simulationResults.push({
           fileName: file.name,
           system: file.system.name,
@@ -1904,6 +1724,7 @@ ipcMain.handle('simulate-curation', async (_, options: { folder: string; minRati
 
       if (isUserProtected) {
         groupAction = 'keep';
+        progressLog.completedFiles.push({ path: file.path, name: file.name, status: 'classic' });
         simulationResults.push({
           fileName: file.name,
           system: file.system.name,
@@ -1922,15 +1743,19 @@ ipcMain.handle('simulate-curation', async (_, options: { folder: string; minRati
         config
       );
 
+      if (simulationCancelled) break;
+
       const isProtectedGenre = protectedGenres.some((genre: string) =>
         result.genres.some((g: string) => g.toLowerCase().includes(genre.toLowerCase()))
       );
 
       if (result.rating === null || result.rating >= minRating || isProtectedGenre) {
+        const fStatus = isProtectedGenre ? 'classic' : 'kept';
+        progressLog.completedFiles.push({ path: file.path, name: file.name, status: fStatus });
         simulationResults.push({
           fileName: file.name,
           system: file.system.name,
-          status: isProtectedGenre ? 'classic' : 'kept',
+          status: fStatus,
           rating: result.rating,
           genres: result.genres,
           size: file.size,
@@ -1938,6 +1763,7 @@ ipcMain.handle('simulate-curation', async (_, options: { folder: string; minRati
         });
       } else {
         groupAction = 'remove';
+        progressLog.completedFiles.push({ path: file.path, name: file.name, status: 'removed' });
         simulationResults.push({
           fileName: file.name,
           system: file.system.name,
@@ -1950,7 +1776,12 @@ ipcMain.handle('simulate-curation', async (_, options: { folder: string; minRati
         });
         totalSizeAffected += file.size;
       }
+
+      await writeProgressLog(folder, progressLog);
     }
+
+    if (simulationCancelled) break;
+    await writeProgressLog(folder, progressLog);
 
     if (isSingleRomFolder && groupAction === 'remove') {
       const dirSize = await getPathSize(parentDir);
@@ -1961,9 +1792,24 @@ ipcMain.handle('simulate-curation', async (_, options: { folder: string; minRati
     processedDirs.add(parentDir);
   }
 
+  if (simulationCancelled) {
+    progressLog.cancelled = true;
+    await writeProgressLog(folder, progressLog);
+    return {
+      results: simulationResults,
+      totalFiles,
+      totalSizeAffected,
+      action,
+      cancelled: true,
+    };
+  }
+
+  progressLog.complete = true;
+  await writeProgressLog(folder, progressLog);
+
   return {
     results: simulationResults,
-    totalFiles: romFiles.length,
+    totalFiles,
     totalSizeAffected,
     action,
   };
@@ -2254,6 +2100,64 @@ ipcMain.handle('cancel-extraction', async () => {
   return true;
 });
 
+let curationCancelled = false;
+let simulationCancelled = false;
+
+ipcMain.handle('cancel-curation', async () => {
+  curationCancelled = true;
+  return true;
+});
+
+ipcMain.handle('cancel-simulation', async () => {
+  simulationCancelled = true;
+  return true;
+});
+
+const PROGRESS_LOG_FILENAME = '.retrograde_progress.json';
+
+interface CompletedFileEntry {
+  path: string;
+  name: string;
+  status: string;
+}
+
+interface ProgressLog {
+  folder: string;
+  type: 'curation' | 'simulation' | 'extraction';
+  startedAt: string;
+  completedFiles: CompletedFileEntry[];
+  stats: Record<string, any>;
+  cancelled: boolean;
+  complete: boolean;
+}
+
+async function readProgressLog(folder: string): Promise<ProgressLog | null> {
+  const logPath = path.join(folder, PROGRESS_LOG_FILENAME);
+  try {
+    if (await fs.pathExists(logPath)) {
+      return await fs.readJson(logPath);
+    }
+  } catch {}
+  return null;
+}
+
+async function writeProgressLog(folder: string, log: ProgressLog): Promise<void> {
+  await fs.writeJson(path.join(folder, PROGRESS_LOG_FILENAME), log, { spaces: 2 });
+}
+
+ipcMain.handle('read-progress-log', async (_, folder: string) => {
+  return readProgressLog(folder);
+});
+
+ipcMain.handle('delete-progress-log', async (_, folder: string) => {
+  const logPath = path.join(folder, PROGRESS_LOG_FILENAME);
+  if (await fs.pathExists(logPath)) {
+    await fs.remove(logPath);
+    return true;
+  }
+  return false;
+});
+
 async function countEntries(dir: string): Promise<number> {
   let count = 0;
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -2308,9 +2212,36 @@ ipcMain.handle('start-extraction', async (_, options: {
   files: { path: string; name: string; size: number; ext: string }[];
   mode: 'in-place' | 'own-folder';
   deleteAfter: boolean;
+  resume?: boolean;
 }) => {
-  const { files, mode, deleteAfter } = options;
+  const { files: rawFiles, mode, deleteAfter, resume } = options;
   extractionCancelled = false;
+
+  let progressLog: ProgressLog | null = null;
+  if (resume && rawFiles.length > 0) {
+    const folder = path.dirname(rawFiles[0].path);
+    progressLog = await readProgressLog(folder);
+    if (progressLog?.type !== 'extraction' || progressLog.complete) {
+      progressLog = null;
+    }
+  }
+
+  const completedPaths = new Set(progressLog?.completedFiles.map(f => f.path) || []);
+  const files = rawFiles.filter(f => !completedPaths.has(f.path));
+
+  if (!progressLog) {
+    const folder = files.length > 0 ? path.dirname(files[0].path) : '';
+    progressLog = {
+      folder,
+      type: 'extraction',
+      startedAt: new Date().toISOString(),
+      completedFiles: [],
+      stats: { total: rawFiles.length },
+      cancelled: false,
+      complete: false,
+    };
+    if (folder) await writeProgressLog(folder, progressLog);
+  }
 
   const results: {
     name: string;
@@ -2321,10 +2252,23 @@ ipcMain.handle('start-extraction', async (_, options: {
     error?: string;
   }[] = [];
 
+  // Re-adiciona resultados de arquivos já processados se resumindo
+  if (resume && progressLog?.completedFiles.length > 0) {
+    for (const cf of progressLog.completedFiles) {
+      results.push({
+        name: cf.name,
+        status: 'success',
+        compressedSize: 0,
+        extractedSize: 0,
+        fileCount: 0,
+      });
+    }
+  }
+
   const concurrency = determineConcurrency(files);
   const queue = [...files];
   const running: Promise<void>[] = [];
-  let index = 0;
+  let index = results.length;
 
   async function processFile(file: { path: string; name: string; size: number; ext: string }, idx: number) {
     const outputDir = mode === 'own-folder'
@@ -2335,7 +2279,7 @@ ipcMain.handle('start-extraction', async (_, options: {
       type: 'file-start',
       fileName: file.name,
       index: idx,
-      total: files.length,
+      total: rawFiles.length,
       compressedSize: file.size,
     });
 
@@ -2343,7 +2287,7 @@ ipcMain.handle('start-extraction', async (_, options: {
       const result = await extractFile(file.path, outputDir, (progress) => {
         mainWindow?.webContents.send('extraction-progress', {
           index: idx,
-          total: files.length,
+          total: rawFiles.length,
           compressedSize: file.size,
           ...progress,
         });
@@ -2361,11 +2305,14 @@ ipcMain.handle('start-extraction', async (_, options: {
         fileCount: result.fileCount,
       });
 
+      progressLog!.completedFiles.push({ path: file.path, name: file.name, status: 'success' });
+      await writeProgressLog(progressLog!.folder, progressLog!);
+
       mainWindow?.webContents.send('extraction-progress', {
         type: 'file-complete',
         fileName: file.name,
         index: idx,
-        total: files.length,
+        total: rawFiles.length,
         extractedSize: result.extractedSize,
         fileCount: result.fileCount,
       });
@@ -2379,11 +2326,14 @@ ipcMain.handle('start-extraction', async (_, options: {
         error: error.message,
       });
 
+      progressLog!.completedFiles.push({ path: file.path, name: file.name, status: 'error' });
+      await writeProgressLog(progressLog!.folder, progressLog!);
+
       mainWindow?.webContents.send('extraction-progress', {
         type: 'file-error',
         fileName: file.name,
         index: idx,
-        total: files.length,
+        total: rawFiles.length,
         error: error.message,
       });
     }
@@ -2410,6 +2360,14 @@ ipcMain.handle('start-extraction', async (_, options: {
     if (running.length > 0) {
       await Promise.race(running);
     }
+  }
+
+  if (extractionCancelled && progressLog) {
+    progressLog.cancelled = true;
+    await writeProgressLog(progressLog.folder, progressLog);
+  } else if (progressLog) {
+    progressLog.complete = true;
+    await writeProgressLog(progressLog.folder, progressLog);
   }
 
   const successCount = results.filter(r => r.status === 'success').length;
@@ -2446,8 +2404,6 @@ const ORPHAN_EXTENSIONS = new Set([
   '.pdf', '.txt', '.nfo', '.md', '.sfv', '.m3u', '.dat',
   '.log', '.cfg', '.ini',
 ]);
-
-const ROM_EXTENSIONS = new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(app.getAppPath(), 'data', 'systems.json'), 'utf-8'))));
 
 function getBaseNameWithoutExt(fileName: string): string {
   return fileName

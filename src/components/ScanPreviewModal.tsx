@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   X, Play, Filter, Search, Shield, Gamepad2, Calendar,
   ChevronDown, ChevronUp, Copy, Globe, Star, AlertTriangle,
-  Loader2, XCircle, CheckCircle2
+  Loader2, XCircle, CheckCircle2, Square
 } from 'lucide-react';
 import { getSystemLogo } from '../lib/system-logos';
 
@@ -19,6 +19,7 @@ interface ScanPreviewModalProps {
     removeClones: boolean;
     preferredRegions: string[];
     protectedGames: string[];
+    resume?: boolean;
   }) => void;
 }
 
@@ -69,7 +70,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
   const [newProtectedGame, setNewProtectedGame] = useState('');
   const [showCloneOptions, setShowCloneOptions] = useState(false);
   const [simulating, setSimulating] = useState(false);
-  const [simulationResults, setSimulationResults] = useState<any>(null);
+  const [showResumeDialog, setShowResumeDialog] = useState<'simulation' | 'curation' | null>(null);
   const [validatingGame, setValidatingGame] = useState(false);
   const [gameValidationResult, setGameValidationResult] = useState<{ valid: boolean; message: string } | null>(null);
 
@@ -130,15 +131,35 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
   };
 
   const handleSimulate = async () => {
+    const existingLog = await window.api.readProgressLog(folder);
+    if (existingLog?.type === 'simulation' && !existingLog.complete && !existingLog.cancelled) {
+      setShowResumeDialog('simulation');
+      return;
+    }
+
     setSimulating(true);
-    setSimulationResults(null);
-    const results = await window.api.simulateCuration({
+    await window.api.simulateCuration({
       folder,
       minRating,
       action,
     });
-    setSimulationResults(results);
     setSimulating(false);
+  };
+
+  const handleResumeSimulation = async () => {
+    setShowResumeDialog(null);
+    setSimulating(true);
+    await window.api.simulateCuration({
+      folder,
+      minRating,
+      action,
+      resume: true,
+    });
+    setSimulating(false);
+  };
+
+  const handleCancelSimulation = async () => {
+    await window.api.cancelSimulation();
   };
 
   const filteredRoms = useMemo(() => {
@@ -206,7 +227,12 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
     return null;
   };
 
-  const handleStart = () => {
+  const handleStart = async () => {
+    const existingLog = await window.api.readProgressLog(folder);
+    if (existingLog?.type === 'curation' && !existingLog.complete && !existingLog.cancelled) {
+      setShowResumeDialog('curation');
+      return;
+    }
     onStartCuration({
       folder,
       minRating,
@@ -214,6 +240,19 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
       removeClones,
       preferredRegions,
       protectedGames: userProtectedGames,
+    });
+  };
+
+  const handleResumeCuration = () => {
+    setShowResumeDialog(null);
+    onStartCuration({
+      folder,
+      minRating,
+      action,
+      removeClones,
+      preferredRegions,
+      protectedGames: userProtectedGames,
+      resume: true,
     });
   };
 
@@ -248,6 +287,49 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
 
         {/* Content */}
         <div className="flex-1 overflow-y-auto scrollbar-thin">
+          {/* Resume Dialog */}
+          <AnimatePresence>
+            {showResumeDialog && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
+                style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+              >
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.9, opacity: 0 }}
+                  className="glass rounded-2xl p-8 max-w-md mx-4 text-center space-y-4"
+                >
+                  <AlertTriangle className="w-12 h-12 text-retro-warning mx-auto" />
+                  <h3 className="text-lg font-bold text-zinc-100">Processamento Anterior Encontrado</h3>
+                  <p className="text-sm text-zinc-400">
+                    {showResumeDialog === 'simulation'
+                      ? 'Há uma simulação de curadoria incompleta. Deseja retomar de onde parou?'
+                      : 'Há uma curadoria incompleta. Deseja retomar de onde parou?'}
+                  </p>
+                  <div className="flex gap-3 justify-center pt-2">
+                    <button
+                      onClick={() => setShowResumeDialog(null)}
+                      className="px-6 py-2.5 rounded-xl text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 transition-colors text-sm font-medium"
+                    >
+                      Começar do Início
+                    </button>
+                    <button
+                      onClick={showResumeDialog === 'simulation' ? handleResumeSimulation : handleResumeCuration}
+                      className="flex items-center gap-2 px-6 py-2.5 bg-retro-primary/10 text-retro-primary border border-retro-primary/30 rounded-xl font-medium hover:bg-retro-primary/20 transition-all active:scale-95"
+                    >
+                      <Play className="w-4 h-4" />
+                      Retomar
+                    </button>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {scanning ? (
             <div className="flex flex-col items-center justify-center h-64 space-y-6">
               <div className="relative w-16 h-16">
@@ -573,72 +655,6 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
 
         {/* Footer */}
         <div className="p-6 border-t border-zinc-800/50 space-y-4">
-          {/* Simulation Results */}
-          <AnimatePresence>
-            {simulationResults && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                className="overflow-hidden"
-              >
-                <div className="bg-zinc-800/30 rounded-xl p-4 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-semibold text-zinc-200">Resultado da Simulação</h3>
-                    <span className="text-xs text-zinc-500">{simulationResults.results.length} arquivos analisados</span>
-                  </div>
-                  
-                  <div className="grid grid-cols-3 gap-3">
-                    <div className="bg-zinc-800/50 rounded-lg p-3 text-center">
-                      <p className="text-lg font-bold text-retro-success">
-                        {simulationResults.results.filter((r: any) => r.status !== 'removed').length}
-                      </p>
-                      <p className="text-xs text-zinc-500">Mantidos</p>
-                    </div>
-                    <div className="bg-zinc-800/50 rounded-lg p-3 text-center">
-                      <p className="text-lg font-bold text-retro-danger">
-                        {simulationResults.results.filter((r: any) => r.status === 'removed').length}
-                      </p>
-                      <p className="text-xs text-zinc-500">Removidos</p>
-                    </div>
-                    <div className="bg-zinc-800/50 rounded-lg p-3 text-center">
-                      <p className="text-lg font-bold text-retro-warning">
-                        {formatBytes(simulationResults.totalSizeAffected)}
-                      </p>
-                      <p className="text-xs text-zinc-500">
-                        {action === 'move' ? 'Movidos' : 'Deletados'}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="max-h-40 overflow-y-auto space-y-1 scrollbar-thin">
-                    {simulationResults.results.filter((r: any) => r.status === 'removed').map((rom: any, idx: number) => {
-                      const logo = getSystemLogo(rom.ext, rom.system);
-                      return (
-                        <div key={idx} className="flex items-center gap-2 p-2 bg-zinc-800/30 rounded-lg">
-                          <XCircle className="w-4 h-4 text-retro-danger flex-shrink-0" />
-                          <span className="text-xs text-zinc-300 truncate flex-1">{rom.fileName}</span>
-                              {logo && (
-                                <img
-                                  src={`system/logos/${logo}`}
-                                  alt={rom.system}
-                                  className="w-4 h-4 object-contain"
-                                  onError={(e) => (e.currentTarget.style.display = 'none')}
-                                />
-                              )}
-                          <span className="text-xs text-zinc-500">{rom.system}</span>
-                          {rom.rating !== null && (
-                            <span className="text-xs text-retro-warning">{rom.rating.toFixed(0)}</span>
-                          )}
-                          <span className="text-xs text-zinc-500">{formatBytes(rom.size)}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4 text-xs text-zinc-500">
@@ -662,22 +678,34 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
               >
                 Cancelar
               </button>
-              <button
-                onClick={handleSimulate}
-                disabled={simulating || scanning}
-                className="flex items-center gap-2 px-6 py-2.5 bg-zinc-700/50 text-zinc-300 border border-zinc-600/30 rounded-xl font-medium hover:bg-zinc-700 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {simulating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
-                Simular Curadoria
-              </button>
-              <button
-                onClick={handleStart}
-                disabled={scanning}
-                className="flex items-center gap-2 px-6 py-2.5 bg-retro-success/10 text-retro-success border border-retro-success/30 rounded-xl font-medium hover:bg-retro-success/20 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <Play className="w-4 h-4" />
-                Iniciar Curadoria
-              </button>
+              {simulating ? (
+                <button
+                  onClick={handleCancelSimulation}
+                  className="flex items-center gap-2 px-6 py-2.5 bg-retro-danger/10 text-retro-danger border border-retro-danger/30 rounded-xl font-medium hover:bg-retro-danger/20 transition-all active:scale-95"
+                >
+                  <Square className="w-4 h-4" />
+                  Cancelar Simulação
+                </button>
+              ) : (
+                <>
+                  <button
+                    onClick={handleSimulate}
+                    disabled={simulating || scanning}
+                    className="flex items-center gap-2 px-6 py-2.5 bg-zinc-700/50 text-zinc-300 border border-zinc-600/30 rounded-xl font-medium hover:bg-zinc-700 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {simulating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
+                    Simular Curadoria
+                  </button>
+                  <button
+                    onClick={handleStart}
+                    disabled={scanning}
+                    className="flex items-center gap-2 px-6 py-2.5 bg-retro-success/10 text-retro-success border border-retro-success/30 rounded-xl font-medium hover:bg-retro-success/20 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <Play className="w-4 h-4" />
+                    Iniciar Curadoria
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>

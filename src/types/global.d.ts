@@ -39,26 +39,31 @@ export interface ApiBridge {
   }>;
   onScanProgress: (callback: (data: any) => void) => void;
   removeScanProgressListener: () => void;
-  simulateCuration: (options: { folder: string; minRating: number; action: 'move' | 'delete' }) => Promise<{
+  simulateCuration: (options: { folder: string; minRating: number; action: 'move' | 'delete'; resume?: boolean }) => Promise<{
     results: any[];
     totalFiles: number;
     totalSizeAffected: number;
     action: 'move' | 'delete';
+    cancelled?: boolean;
   }>;
+  cancelCuration: () => Promise<boolean>;
+  cancelSimulation: () => Promise<boolean>;
+  readProgressLog: (folder: string) => Promise<any>;
+  deleteProgressLog: (folder: string) => Promise<boolean>;
   validateGameName: (name: string) => Promise<{ valid: boolean; message: string }>;
   readSystems: () => Promise<Record<string, any>>;
   readStats: () => Promise<any[]>;
   saveStats: (stats: any) => Promise<boolean>;
   readVersion: () => Promise<string>;
   testApiConnections: () => Promise<{ igdb: { status: string; message: string }; tgdb: { status: string; message: string } }>;
-  startCuration: (options: { folder: string; minRating: number; action: 'move' | 'delete' }) => Promise<any>;
+  startCuration: (options: { folder: string; minRating: number; action: 'move' | 'delete'; resume?: boolean }) => Promise<any>;
   onCurationProgress: (callback: (data: any) => void) => void;
   removeCurationProgressListener: () => void;
   deleteRemovedFolder: (folder: string) => Promise<boolean>;
   scanCompressed: (folder: string) => Promise<{ path: string; name: string; size: number; ext: string }[]>;
   onScanCompressedProgress: (callback: (data: { progress: number; scanned: number; total: number; found: number }) => void) => void;
   removeScanCompressedProgressListener: () => void;
-  startExtraction: (options: { files: { path: string; name: string; size: number; ext: string }[]; mode: string; deleteAfter: boolean }) => Promise<{
+  startExtraction: (options: { files: { path: string; name: string; size: number; ext: string }[]; mode: string; deleteAfter: boolean; resume?: boolean }) => Promise<{
     results: { name: string; status: string; compressedSize: number; extractedSize: number; fileCount: number; error?: string }[];
     successCount: number;
     errorCount: number;

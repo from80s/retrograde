@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X, FolderOpen, Archive, FolderPlus, Trash2, Square, CheckCircle2,
-  XCircle, AlertTriangle, FileText, ChevronRight, Loader2, Download,
+  XCircle, AlertTriangle, FileText, ChevronRight, Loader2, Download, Play,
 } from 'lucide-react';
 
 interface ExtractorModalProps {
@@ -60,6 +60,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
     totalExtracted: 0, totalCompressed: 0, totalFiles: 0,
   });
   const [scanProgress, setScanProgress] = useState({ progress: 0, scanned: 0, total: 0, found: 0 });
+  const [showResumeDialog, setShowResumeDialog] = useState(false);
   const logRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -72,6 +73,10 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
     const folder = await window.api.selectFolder();
     if (folder) {
       setSourceFolder(folder);
+      const existingLog = await window.api.readProgressLog(folder);
+      if (existingLog?.type === 'extraction' && !existingLog.complete && !existingLog.cancelled) {
+        setShowResumeDialog(true);
+      }
     }
   }, []);
 
@@ -101,7 +106,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
     }
   }, [sourceFolder, onToast]);
 
-  const handleStartExtraction = useCallback(() => {
+  const handleStartExtraction = useCallback(async (resume?: boolean) => {
     setStep('extracting');
     setLog([]);
     setResults([]);
@@ -183,7 +188,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
       }
     });
 
-    window.api.startExtraction({ files, mode, deleteAfter });
+    window.api.startExtraction({ files, mode, deleteAfter, resume });
   }, [files, mode, deleteAfter]);
 
   const handleCancel = useCallback(async () => {
@@ -270,6 +275,71 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                     <FolderOpen className="w-5 h-5" />
                     <span className="flex-1 text-left truncate">{sourceFolder || 'Clique para selecionar a pasta...'}</span>
                   </button>
+
+                  {/* Resume Dialog */}
+                  <AnimatePresence>
+                    {showResumeDialog && sourceFolder && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="p-4 bg-retro-warning/10 border border-retro-warning/20 rounded-xl space-y-3">
+                          <div className="flex items-center gap-3">
+                            <AlertTriangle className="w-5 h-5 text-retro-warning flex-shrink-0" />
+                            <div>
+                              <p className="text-sm font-medium text-zinc-200">Extrações Anteriores Encontradas</p>
+                              <p className="text-xs text-zinc-400">Há extrações incompletas nesta pasta. Deseja retomar?</p>
+                            </div>
+                          </div>
+                          <div className="flex gap-2 justify-end">
+                            <button
+                              onClick={async () => {
+                                await window.api.deleteProgressLog(sourceFolder);
+                                setShowResumeDialog(false);
+                              }}
+                              className="px-4 py-2 rounded-xl text-xs text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 transition-colors"
+                            >
+                              Começar do Início
+                            </button>
+                            <button
+                              onClick={async () => {
+                                setShowResumeDialog(false);
+                                setStep('scanning');
+                                setScanProgress({ progress: 0, scanned: 0, total: 0, found: 0 });
+
+                                window.api.onScanCompressedProgress((data) => {
+                                  setScanProgress({ progress: data.progress, scanned: data.scanned, total: data.total, found: data.found });
+                                });
+
+                                try {
+                                  const found = await window.api.scanCompressed(sourceFolder);
+                                  setFiles(found);
+                                  window.api.removeScanCompressedProgressListener();
+                                  if (found.length === 0) {
+                                    onToast('Nenhum arquivo comprimido encontrado.', 'info');
+                                    setStep('config');
+                                  } else {
+                                    setStep('files');
+                                    handleStartExtraction(true);
+                                  }
+                                } catch {
+                                  onToast('Erro ao escanear pasta.', 'error');
+                                  window.api.removeScanCompressedProgressListener();
+                                  setStep('config');
+                                }
+                              }}
+                              className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium bg-retro-primary/10 text-retro-primary border border-retro-primary/30 hover:bg-retro-primary/20 transition-all"
+                            >
+                              <Play className="w-4 h-4" />
+                              Retomar
+                            </button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 {/* Extract mode */}
@@ -613,7 +683,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 Voltar
               </button>
               <button
-                onClick={handleStartExtraction}
+                onClick={() => handleStartExtraction()}
                 className="flex items-center gap-2 px-6 py-2.5 bg-retro-success/10 text-retro-success border border-retro-success/30 rounded-xl font-medium hover:bg-retro-success/20 transition-all active:scale-95"
               >
                 <Download className="w-4 h-4" />
