@@ -11,11 +11,12 @@ import path from 'path';
 let _db: Database.Database | null = null;
 
 export function initRomDatabase(dbPath: string) {
-  _db = new Database(dbPath, { readonly: true });
-  _db.pragma('journal_mode = WAL');
-  (_db as any)._byCrc32 = _db.prepare('SELECT * FROM roms WHERE crc32 = ? LIMIT 1');
-  (_db as any)._bySha1  = _db.prepare('SELECT * FROM roms WHERE sha1  = ? LIMIT 1');
-  (_db as any)._byMd5   = _db.prepare('SELECT * FROM roms WHERE md5   = ? LIMIT 1');
+  const db = new Database(dbPath, { readonly: true });
+  db.pragma('journal_mode = WAL');
+  (db as any)._byCrc32 = db.prepare('SELECT * FROM roms WHERE crc32 = ? LIMIT 1');
+  (db as any)._bySha1  = db.prepare('SELECT * FROM roms WHERE sha1  = ? LIMIT 1');
+  (db as any)._byMd5   = db.prepare('SELECT * FROM roms WHERE md5   = ? LIMIT 1');
+  _db = db;
 }
 
 export function closeRomDatabase() {
@@ -283,12 +284,16 @@ function detectByMagicBytes(buffer: Buffer): string | null {
 function lookupByHash(hashes: { crc32: string; sha1: string; md5: string }): any | null {
   if (!_db) return null;
   const db = _db as any;
-  return (
-    db._byCrc32.get(hashes.crc32) ||
-    db._bySha1.get(hashes.sha1)   ||
-    db._byMd5.get(hashes.md5)     ||
-    null
-  );
+  try {
+    return (
+      (db._byCrc32?.get(hashes.crc32)) ||
+      (db._bySha1?.get(hashes.sha1))   ||
+      (db._byMd5?.get(hashes.md5))     ||
+      null
+    );
+  } catch {
+    return null;
+  }
 }
 
 // ─── Extension → Extension key ──────────────────────────────────────────────

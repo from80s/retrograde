@@ -18,11 +18,12 @@ const path_1 = __importDefault(require("path"));
 // ─── Inicialização ────────────────────────────────────────────────────────────
 let _db = null;
 function initRomDatabase(dbPath) {
-    _db = new better_sqlite3_1.default(dbPath, { readonly: true });
-    _db.pragma('journal_mode = WAL');
-    _db._byCrc32 = _db.prepare('SELECT * FROM roms WHERE crc32 = ? LIMIT 1');
-    _db._bySha1 = _db.prepare('SELECT * FROM roms WHERE sha1  = ? LIMIT 1');
-    _db._byMd5 = _db.prepare('SELECT * FROM roms WHERE md5   = ? LIMIT 1');
+    const db = new better_sqlite3_1.default(dbPath, { readonly: true });
+    db.pragma('journal_mode = WAL');
+    db._byCrc32 = db.prepare('SELECT * FROM roms WHERE crc32 = ? LIMIT 1');
+    db._bySha1 = db.prepare('SELECT * FROM roms WHERE sha1  = ? LIMIT 1');
+    db._byMd5 = db.prepare('SELECT * FROM roms WHERE md5   = ? LIMIT 1');
+    _db = db;
 }
 function closeRomDatabase() {
     _db?.close();
@@ -255,10 +256,15 @@ function lookupByHash(hashes) {
     if (!_db)
         return null;
     const db = _db;
-    return (db._byCrc32.get(hashes.crc32) ||
-        db._bySha1.get(hashes.sha1) ||
-        db._byMd5.get(hashes.md5) ||
-        null);
+    try {
+        return ((db._byCrc32?.get(hashes.crc32)) ||
+            (db._bySha1?.get(hashes.sha1)) ||
+            (db._byMd5?.get(hashes.md5)) ||
+            null);
+    }
+    catch {
+        return null;
+    }
 }
 // ─── Extension → Extension key ──────────────────────────────────────────────
 function extToSystemKey(ext) {

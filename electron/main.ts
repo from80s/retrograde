@@ -1203,6 +1203,7 @@ ipcMain.handle('scan-folder', async (_, folder: string) => {
   const systems = await fs.readJson(SYSTEMS_PATH);
 
   const romFiles: ScanRomInfo[] = [];
+  let scannedCount = 0;
 
   // Phase 1: Filesystem scan (fast, no API calls)
   async function scanDirectory(dir: string) {
@@ -1216,39 +1217,53 @@ ipcMain.handle('scan-folder', async (_, folder: string) => {
 
         if (!ROM_EXTENSIONS.has(ext)) continue;
 
-        const detected = await detectRom(fullPath);
-        if (!detected.system || !systems[detected.system]) continue;
+        scannedCount++;
+        if (scannedCount % 10 === 0 || scannedCount === 1) {
+          mainWindow?.webContents.send('scan-progress', {
+            phase: 'scan',
+            progress: 0,
+            scanned: scannedCount,
+            found: romFiles.length,
+          });
+        }
 
-        const systemInfo = systems[detected.system];
-        const fileName = path.basename(entry.name, ext);
-        const baseName = getBaseRomName(fileName);
-        const regionTags = extractRegionTags(fileName);
-        const stat = await fs.stat(fullPath);
+        try {
+          const detected = await detectRom(fullPath);
+          if (!detected.system || !systems[detected.system]) continue;
 
-        const isClassic = classics.some((classic: string) =>
-          fileName.toLowerCase().includes(classic.toLowerCase())
-        );
+          const systemInfo = systems[detected.system];
+          const fileName = path.basename(entry.name, ext);
+          const baseName = getBaseRomName(fileName);
+          const regionTags = extractRegionTags(fileName);
+          const stat = await fs.stat(fullPath);
 
-        const isUserProtected = protectedGames.some((game: string) =>
-          fileName.toLowerCase().includes(game.toLowerCase())
-        );
+          const isClassic = classics.some((classic: string) =>
+            fileName.toLowerCase().includes(classic.toLowerCase())
+          );
 
-        romFiles.push({
-          path: fullPath,
-          fileName: entry.name,
-          baseName,
-          ext: detected.system,
-          system: detected.system,
-          systemName: systemInfo.name,
-          size: stat.size,
-          parentDir: dir,
-          regionTags,
-          protectionStatus: {
-            isClassic,
-            isGenreProtected: false,
-            isUserProtected,
-          },
-        });
+          const isUserProtected = protectedGames.some((game: string) =>
+            fileName.toLowerCase().includes(game.toLowerCase())
+          );
+
+          romFiles.push({
+            path: fullPath,
+            fileName: entry.name,
+            baseName,
+            ext: detected.system,
+            system: detected.system,
+            systemName: systemInfo.name,
+            size: stat.size,
+            parentDir: dir,
+            regionTags,
+            protectionStatus: {
+              isClassic,
+              isGenreProtected: false,
+              isUserProtected,
+            },
+          });
+        } catch (err) {
+          console.error(`[scan] Erro ao detectar ${entry.name}:`, err);
+        }
       }
     }
   }
@@ -1392,17 +1407,21 @@ ipcMain.handle('start-curation', async (_, options: { folder: string; minRating:
         const ext = path.extname(entry.name).toLowerCase();
         if (!ROM_EXTENSIONS.has(ext)) continue;
 
-        const detected = await detectRom(fullPath);
-        if (!detected.system || !systems[detected.system]) continue;
+        try {
+          const detected = await detectRom(fullPath);
+          if (!detected.system || !systems[detected.system]) continue;
 
-        const systemInfo = systems[detected.system];
-        romFiles.push({
-          path: fullPath,
-          name: entry.name,
-          ext: detected.system,
-          system: systemInfo,
-          parentDir: dir,
-        });
+          const systemInfo = systems[detected.system];
+          romFiles.push({
+            path: fullPath,
+            name: entry.name,
+            ext: detected.system,
+            system: systemInfo,
+            parentDir: dir,
+          });
+        } catch (err) {
+          console.error(`[curation] Erro ao detectar ${entry.name}:`, err);
+        }
       }
     }
   }
@@ -1630,18 +1649,22 @@ ipcMain.handle('simulate-curation', async (_, options: { folder: string; minRati
         const ext = path.extname(entry.name).toLowerCase();
         if (!ROM_EXTENSIONS.has(ext)) continue;
 
-        const detected = await detectRom(fullPath);
-        if (!detected.system || !systems[detected.system]) continue;
+        try {
+          const detected = await detectRom(fullPath);
+          if (!detected.system || !systems[detected.system]) continue;
 
-        const stat = await fs.stat(fullPath);
-        romFiles.push({
-          path: fullPath,
-          name: entry.name,
-          ext: detected.system,
-          system: systems[detected.system],
-          parentDir: dir,
-          size: stat.size,
-        });
+          const stat = await fs.stat(fullPath);
+          romFiles.push({
+            path: fullPath,
+            name: entry.name,
+            ext: detected.system,
+            system: systems[detected.system],
+            parentDir: dir,
+            size: stat.size,
+          });
+        } catch (err) {
+          console.error(`[simulation] Erro ao detectar ${entry.name}:`, err);
+        }
       }
     }
   }

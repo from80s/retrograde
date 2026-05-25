@@ -60,7 +60,7 @@ const ALL_REGIONS = ['USA', 'World', 'Europe', 'Japan', 'Brazil'];
 export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCuration }: ScanPreviewModalProps) {
   const [scanData, setScanData] = useState<any>(null);
   const [scanning, setScanning] = useState(true);
-  const [scanProgress, setScanProgress] = useState(0);
+  const [scanProgress, setScanProgress] = useState({ progress: 0, scanned: 0, total: 0, found: 0 });
   const [scanPhase, setScanPhase] = useState('scan');
   const [expandedSystems, setExpandedSystems] = useState<Record<string, boolean>>({});
   const [filters, setFilters] = useState({ name: '', genre: '', year: '' });
@@ -78,7 +78,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
     window.api.scanFolder(folder).then((data) => {
       setScanData(data);
       setScanning(false);
-      setScanProgress(100);
+      setScanProgress({ progress: 100, scanned: 0, total: 0, found: 0 });
       const systems = Object.keys(data.grouped);
       const initialExpanded: Record<string, boolean> = {};
       systems.forEach(s => initialExpanded[s] = false);
@@ -86,7 +86,12 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
     });
 
     window.api.onScanProgress((data) => {
-      setScanProgress(data.progress);
+      setScanProgress(prev => ({
+        ...prev,
+        progress: data.progress ?? prev.progress,
+        scanned: data.scanned ?? prev.scanned,
+        found: data.found ?? prev.found,
+      }));
       setScanPhase(data.phase);
     });
 
@@ -342,11 +347,11 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                 <div className="w-64 h-2 bg-zinc-800 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
-                    animate={{ width: `${scanProgress}%` }}
+                    animate={{ width: `${scanProgress.progress}%` }}
                     className="h-full bg-gradient-to-r from-retro-primary to-retro-primary/60 rounded-full"
                   />
                 </div>
-                <p className="text-xs text-zinc-600">{scanProgress}%</p>
+                <p className="text-xs text-zinc-600">{scanProgress.scanned} arquivos verificados · {scanProgress.found} ROMs encontradas</p>
               </div>
             </div>
           ) : (

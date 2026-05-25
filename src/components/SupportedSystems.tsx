@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { getFanartUrl } from '@/utils/fanart';
 
 const SUPPORTED_SYSTEMS = [
   { name: '3DO Interactive Multiplayer', shortName: '3DO', logo: '3do.svg', extensions: ['.bin', '.cue', '.iso', '.chd'] },
@@ -231,38 +232,52 @@ export function SupportedSystems() {
           onMouseLeave={handleMouseLeave}
         >
           {filteredSystems.length > 0 ? (
-            filteredSystems.map((sys) => (
-              <div
-                key={sys.name}
-                className="flex-shrink-0 w-48 bg-zinc-800/40 rounded-xl p-4 flex flex-col items-center text-center gap-2 border border-zinc-700/20 hover:border-zinc-600/40 transition-colors"
-              >
-                <img
-                  src={`system/logos/${sys.logo}`}
-                  alt={sys.name}
-                  className="w-20 h-20 object-contain pointer-events-none select-none"
-                  draggable={false}
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display = 'none';
-                  }}
-                />
-                <div className="min-w-0 w-full">
-                  <p className="text-xs font-semibold text-zinc-200 truncate">{sys.name}</p>
-                  <p className="text-[10px] text-zinc-500">{sys.shortName}</p>
-                </div>
-                <div className="flex flex-wrap gap-1 justify-center">
-                  {sys.extensions.slice(0, 4).map((ext) => (
-                    <span key={ext} className="text-[9px] font-mono px-1 py-0.5 bg-zinc-700/50 rounded text-retro-primary">
-                      {ext}
-                    </span>
-                  ))}
-                  {sys.extensions.length > 4 && (
-                    <span className="text-[9px] font-mono px-1 py-0.5 bg-zinc-700/30 rounded text-zinc-500">
-                      +{sys.extensions.length - 4}
-                    </span>
+            filteredSystems.map((sys) => {
+              const fanartUrl = getFanartUrl(sys.name);
+              return (
+                <div
+                  key={sys.name}
+                  className="flex-shrink-0 w-48 bg-zinc-800/40 rounded-xl p-4 flex flex-col items-center text-center gap-2 border border-zinc-700/20 hover:border-zinc-600/40 transition-colors relative overflow-hidden group"
+                >
+                  {fanartUrl && (
+                    <div
+                      className="absolute inset-0 bg-cover bg-center pointer-events-none transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: `url(${fanartUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                    />
                   )}
+                  {fanartUrl && (
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-zinc-950/20 pointer-events-none" />
+                  )}
+                  <div className="relative z-10 flex flex-col items-center text-center gap-2 w-full">
+                    <img
+                      src={`system/logos/${sys.logo}`}
+                      alt={sys.name}
+                      className="w-28 h-28 object-contain pointer-events-none select-none"
+                      draggable={false}
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).style.display = 'none';
+                      }}
+                    />
+                    <div className="min-w-0 w-full">
+                      <p className="text-xs font-semibold text-zinc-200 truncate">{sys.name}</p>
+                      <p className="text-[10px] text-zinc-500">{sys.shortName}</p>
+                    </div>
+                    <div className="flex flex-wrap gap-1 justify-center">
+                      {sys.extensions.slice(0, 4).map((ext) => (
+                        <span key={ext} className="text-[9px] font-mono px-1 py-0.5 bg-zinc-700/50 rounded text-retro-primary">
+                          {ext}
+                        </span>
+                      ))}
+                      {sys.extensions.length > 4 && (
+                        <span className="text-[9px] font-mono px-1 py-0.5 bg-zinc-700/30 rounded text-zinc-500">
+                          +{sys.extensions.length - 4}
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))
+              );
+            })
           ) : (
             <div className="flex-shrink-0 w-full text-center py-8 text-zinc-500 text-sm">
               Nenhum sistema encontrado

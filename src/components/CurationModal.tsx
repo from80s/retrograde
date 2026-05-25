@@ -127,6 +127,10 @@ export function CurationModal({
                 style={{ width: `${progress}%` }}
               />
             </div>
+            <div className="flex justify-between text-xs text-zinc-600">
+              <span>{current} processados</span>
+              <span>{total - current} restantes</span>
+            </div>
           </div>
 
           {/* Current file */}
