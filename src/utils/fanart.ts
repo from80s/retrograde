@@ -1,6 +1,7 @@
-export const FANART_MAP: Record<string, string> = {
-  '3DO Interactive Multiplayer': '',
-  'Amiga': 'Amiga',
+const PLACEHOLDER = 'placeholder';
+
+const FANART_MAP: Record<string, string> = {
+  '3DO Interactive Multiplayer': '3DO',
   'Amstrad CPC': 'Amstrad CPC',
   'Apple II': 'Apple II',
   'Apple IIGS': 'Apple IIGS',
@@ -13,34 +14,34 @@ export const FANART_MAP: Record<string, string> = {
   'Atari Lynx': 'Atari Lynx',
   'Atari ST': 'Atari ST',
   'BBC Micro': 'BBC Micro',
-  'Coleco Adam': 'ColecoVision',
+  'Coleco Adam': 'Coleco Adam',
   'ColecoVision': 'ColecoVision',
   'Commodore 64': 'Commodore 64',
-  'Commodore Amiga': 'Amiga',
-  'Commodore Amiga CD32': 'Amiga',
-  'Commodore VIC-20': 'Commodore 64',
+  'Commodore Amiga': 'Commodore Amiga',
+  'Commodore Amiga CD32': 'Amiga CD32',
+  'Commodore VIC-20': 'Commodore VIC-20',
   'Daphne': 'Daphne',
   'DOS': 'DOS',
   'Fairchild Channel F': 'Fairchild Channel F',
-  'Game & Watch': 'Game & Watch',
+  'Game & Watch': 'game-and-watch',
   'Game Boy': 'Game Boy',
   'Game Boy Advance': 'Game Boy Advance',
   'Game Boy Color': 'Game Boy Color',
   'GameCube': 'Nintendo GameCube',
   'Intellivision': 'Intellivision',
   'LowRes NX': 'LowRes NX',
-  'MAME': 'ArcadeMAME',
+  'MAME': 'MAME',
   'MSX / MSX2': 'MSX',
   'Neo Geo': 'Neo Geo',
-  'Neo Geo CD': 'Neo Geo',
+  'Neo Geo CD': 'Neo Geo CD',
   'Neo Geo Pocket / Color': 'Neo Geo Pocket',
   'NES': 'Nintendo Entertainment System',
   'Nintendo 3DS': 'Nintendo 3DS',
   'Nintendo 64 / 64DD': 'Nintendo 64',
   'Nintendo DS': 'Nintendo DS',
-  'Nintendo Switch': '',
+  'Nintendo Switch': 'Nintendo Switch',
   'PC Engine / TurboGrafx-16': 'PC Engine',
-  'PC Engine CD / TurboGrafx-CD': 'PC Engine',
+  'PC Engine CD / TurboGrafx-CD': 'PC Engine CD TurboGrafx-CD',
   'PC-88': 'PC-88',
   'PC-98': 'PC-98',
   'PC-FX': 'PC-FX',
@@ -53,8 +54,8 @@ export const FANART_MAP: Record<string, string> = {
   'Pokémon Mini': 'Pokémon Mini',
   'ScummVM': 'ScummVM',
   'Sega 32X': 'Sega 32X',
-  'Sega CD / Mega-CD': 'Sega Genesis',
-  'Sega Dreamcast': 'Sega Saturn',
+  'Sega CD / Mega-CD': 'Sega CD Mega-CD',
+  'Sega Dreamcast': 'Sega Dreamcast',
   'Sega Game Gear': 'Game Gear',
   'Sega Genesis / Mega Drive': 'Sega Genesis',
   'Sega Master System': 'Master System',
@@ -62,9 +63,9 @@ export const FANART_MAP: Record<string, string> = {
   'Sega Saturn': 'Sega Saturn',
   'Sega SG-1000': 'SG-1000',
   'Sharp X1': 'Sharp X1',
-  'Sharp X68000': 'Sharp X1',
+  'Sharp X68000': 'Sharp X68000',
   'SNES / Super Famicom': 'Super Nintendo',
-  'SuperGrafx': 'PC Engine',
+  'SuperGrafx': 'SuperGrafx',
   'SuFami Turbo': 'Super Nintendo',
   'TIC-80': 'TIC-80',
   'Vectrex': 'Vectrex',
@@ -81,7 +82,6 @@ export const FANART_MAP: Record<string, string> = {
 };
 
 export function getFanartUrl(systemName: string): string | null {
-  const key = FANART_MAP[systemName];
-  if (!key) return null;
+  const key = FANART_MAP[systemName] ?? PLACEHOLDER;
   return `system/fanart/${encodeURIComponent(key)}.jpg`;
 }

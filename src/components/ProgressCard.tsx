@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Gamepad2, Star, ShieldCheck, CheckCircle2, XCircle } from 'lucide-react';
-import { getSystemLogo } from '../lib/system-logos';
+import { ProgressBar } from './ProgressBar';
+import { SystemLogo } from './SystemLogo';
 
 interface ProgressCardProps {
   progress: number;
@@ -22,23 +23,12 @@ export function ProgressCard({ progress, currentFile, currentSystem, currentRati
 
   return (
     <div className="glass rounded-2xl p-6 space-y-4">
-      {/* Progress Bar */}
-      <div className="space-y-2">
-        <div className="flex justify-between items-center">
-          <span className="text-sm text-zinc-400">Progresso da Curadoria</span>
-          <span className="text-sm font-mono text-retro-primary">{progress.toFixed(1)}%</span>
-        </div>
-        <div className="h-3 bg-zinc-800 rounded-full overflow-hidden">
-          <motion.div
-            className="h-full bg-gradient-to-r from-retro-primary to-retro-secondary rounded-full"
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-          />
-        </div>
-      </div>
+      <ProgressBar
+        percent={progress}
+        label="Progresso da Curadoria"
+        color="from-retro-primary to-retro-secondary"
+      />
 
-      {/* Current File Info */}
       {currentFile && (
         <motion.div
           key={currentFile}
@@ -52,17 +42,7 @@ export function ProgressCard({ progress, currentFile, currentSystem, currentRati
           <div className="flex-1 min-w-0">
             <p className="text-sm font-mono text-zinc-200 truncate">{currentFile}</p>
             <div className="flex items-center gap-1.5">
-              {(() => {
-                const logo = getSystemLogo(undefined, currentSystem);
-                return logo ? (
-                  <img
-                    src={`system/logos/${logo}`}
-                    alt={currentSystem}
-                    className="w-4 h-4 object-contain"
-                    onError={(e) => (e.currentTarget.style.display = 'none')}
-                  />
-                ) : null;
-              })()}
+              <SystemLogo system={currentSystem} />
               <p className="text-xs text-zinc-500">{currentSystem}</p>
             </div>
           </div>

@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Save, Shield, Trash2, MoveRight, Star, Wifi, Loader2, CheckCircle2, XCircle, Search, Plus, AlertTriangle, Gamepad2, BookOpen } from 'lucide-react';
+import { Save, Shield, Trash2, MoveRight, Star, Wifi, Loader2, CheckCircle2, XCircle, Plus, AlertTriangle, BookOpen, X, Gamepad2 } from 'lucide-react';
 import { ClassicGamesPicker } from './ClassicGamesPicker';
+import { ModalBase } from './ModalBase';
+import { Button } from './Button';
+import { SearchInput } from './SearchInput';
 
 interface SettingsModalProps {
   onClose: () => void;
@@ -197,47 +200,15 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
 
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50"
-        onClick={onClose}
-      >
-        <motion.div
-          initial={{ scale: 0.95, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.95, opacity: 0 }}
-          className="glass rounded-2xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col"
-          onClick={(e) => e.stopPropagation()}
-        >
-          {/* Header */}
-          <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
-            <h2 className="text-xl font-bold text-zinc-100">Configurações</h2>
-            <button
-              onClick={onClose}
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 overflow-y-auto scrollbar-thin p-6 space-y-6">
+    <ModalBase onClose={onClose} title="Configurações" maxWidth="max-w-2xl">
+      <div className="flex-1 overflow-y-auto scrollbar-thin p-6 space-y-6">
             {/* API Config */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">Credenciais de API</h3>
-                <button
-                  onClick={handleTestConnection}
-                  disabled={testing}
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium transition-all
-                           bg-retro-primary/10 text-retro-primary border border-retro-primary/30
-                           hover:bg-retro-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {testing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Wifi className="w-4 h-4" />}
+                <Button variant="primary" size="sm" icon={testing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Wifi className="w-4 h-4" />} onClick={handleTestConnection} disabled={testing}>
                   Testar Conexão
-                </button>
+                </Button>
               </div>
               <p className="text-xs text-zinc-500 -mt-2">
                 Após preencher as credenciais, clique em <span className="text-retro-primary font-medium">"Testar Conexão"</span> para validar.
@@ -333,28 +304,12 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                   <Shield className="w-4 h-4 text-retro-secondary" />
                   Clássicos Protegidos ({classics.length})
                 </h3>
-                <button
-                  onClick={() => setShowClassicPicker(true)}
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium transition-all
-                           bg-retro-secondary/10 text-retro-secondary border border-retro-secondary/30
-                           hover:bg-retro-secondary/20"
-                >
-                  <BookOpen className="w-4 h-4" />
+                <Button variant="secondary" size="sm" icon={<BookOpen className="w-4 h-4" />} onClick={() => setShowClassicPicker(true)}>
                   Popular Clássicos
-                </button>
+                </Button>
               </div>
 
-              {/* Filter */}
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
-                <input
-                  type="text"
-                  placeholder="Filtrar clássicos..."
-                  value={classicsFilter}
-                  onChange={(e) => setClassicsFilter(e.target.value)}
-                  className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl pl-10 pr-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-retro-secondary/50 transition-colors placeholder:text-zinc-600"
-                />
-              </div>
+              <SearchInput value={classicsFilter} onChange={setClassicsFilter} placeholder="Filtrar clássicos..." />
 
               {/* Add new classic */}
               <div className="flex gap-2">
@@ -366,16 +321,9 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                   onKeyDown={(e) => e.key === 'Enter' && handleValidateClassic()}
                   className="flex-1 bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-retro-secondary/50 transition-colors placeholder:text-zinc-600"
                 />
-                <button
-                  onClick={handleValidateClassic}
-                  disabled={validating || !newClassic.trim()}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium transition-all
-                           bg-retro-secondary/10 text-retro-secondary border border-retro-secondary/30
-                           hover:bg-retro-secondary/20 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {validating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
+                <Button variant="secondary" icon={validating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />} onClick={handleValidateClassic} disabled={validating || !newClassic.trim()}>
                   Validar
-                </button>
+                </Button>
               </div>
 
               {/* Validation result */}
@@ -394,12 +342,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                     {validationResult.valid ? <CheckCircle2 className="w-4 h-4 flex-shrink-0" /> : <XCircle className="w-4 h-4 flex-shrink-0" />}
                     <span>{validationResult.message}</span>
                     {validationResult.valid && (
-                      <button
-                        onClick={handleAddClassic}
-                        className="ml-auto px-3 py-1 rounded-lg bg-retro-success/20 hover:bg-retro-success/30 text-xs font-medium transition-colors"
-                      >
-                        Adicionar
-                      </button>
+                      <Button variant="success" size="sm" onClick={handleAddClassic}>Adicionar</Button>
                     )}
                   </motion.div>
                 )}
@@ -440,17 +383,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                     Jogos destes gêneros serão mantidos mesmo com nota baixa.
                   </p>
 
-                  {/* Filter */}
-                  <div className="relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
-                    <input
-                      type="text"
-                      placeholder="Filtrar gêneros..."
-                      value={genresFilter}
-                      onChange={(e) => setGenresFilter(e.target.value)}
-                      className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl pl-10 pr-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-retro-warning/50 transition-colors placeholder:text-zinc-600"
-                    />
-                  </div>
+                  <SearchInput value={genresFilter} onChange={setGenresFilter} placeholder="Filtrar gêneros..." />
 
                   {/* Add new genre */}
                   <div className="flex gap-2">
@@ -525,17 +458,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                 Jogos específicos que serão sempre mantidos, independente da nota ou gênero.
               </p>
 
-              {/* Filter */}
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
-                <input
-                  type="text"
-                  placeholder="Filtrar jogos protegidos..."
-                  value={protectedGamesFilter}
-                  onChange={(e) => setProtectedGamesFilter(e.target.value)}
-                  className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl pl-10 pr-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-teal-400/50 transition-colors placeholder:text-zinc-600"
-                />
-              </div>
+              <SearchInput value={protectedGamesFilter} onChange={setProtectedGamesFilter} placeholder="Filtrar jogos protegidos..." />
 
               {/* Add new protected game */}
               <div className="flex gap-2">
@@ -584,22 +507,14 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
 
           {/* Footer */}
           <div className="p-6 border-t border-zinc-800/50 flex justify-end gap-3">
-            <button
-              onClick={onClose}
-              className="px-6 py-2.5 rounded-xl text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 transition-colors text-sm font-medium"
-            >
+            <Button variant="ghost" onClick={onClose}>
               Cancelar
-            </button>
-            <button
-              onClick={handleSave}
-              className="flex items-center gap-2 px-6 py-2.5 bg-retro-primary/10 text-retro-primary border border-retro-primary/30 rounded-xl font-medium hover:bg-retro-primary/20 transition-all active:scale-95"
-            >
-              <Save className="w-4 h-4" />
+            </Button>
+            <Button variant="primary" icon={<Save className="w-4 h-4" />} onClick={handleSave}>
               Salvar
-            </button>
+            </Button>
           </div>
-        </motion.div>
-      </motion.div>
+    </ModalBase>
 
       {/* Test Results Modal */}
       <AnimatePresence>

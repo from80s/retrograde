@@ -1,6 +1,8 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
-import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useRef, useCallback, useEffect, useMemo } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { getFanartUrl } from '@/utils/fanart';
+import { EdgeGlow } from './EdgeGlow';
+import { SearchInput } from './SearchInput';
 
 const SUPPORTED_SYSTEMS = [
   { name: '3DO Interactive Multiplayer', shortName: '3DO', logo: '3do.svg', extensions: ['.bin', '.cue', '.iso', '.chd'] },
@@ -83,11 +85,80 @@ const SUPPORTED_SYSTEMS = [
   { name: 'Sinclair ZX81', shortName: 'ZX81', logo: 'zx81.svg', extensions: ['.p', '.t81'] },
 ];
 
-interface SystemCard {
+interface SystemEntry {
   name: string;
   shortName: string;
   logo: string;
   extensions: string[];
+}
+
+function SystemCard({ sys }: { sys: SystemEntry }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const fanartUrl = getFanartUrl(sys.name);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    ref.current.style.setProperty('--eg-x', `${x}%`);
+    ref.current.style.setProperty('--eg-y', `${y}%`);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (!ref.current) return;
+    ref.current.style.setProperty('--eg-x', '50%');
+    ref.current.style.setProperty('--eg-y', '50%');
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="flex-shrink-0 w-48 bg-zinc-800/40 rounded-xl p-4 flex flex-col items-center text-center gap-2 border border-zinc-700/20 hover:border-zinc-600/40 transition-colors relative overflow-hidden group"
+    >
+      {fanartUrl && (
+        <div
+          className="absolute inset-0 bg-cover bg-center pointer-events-none transition-transform duration-500 group-hover:scale-110"
+          style={{ backgroundImage: `url(${fanartUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        />
+      )}
+      {fanartUrl && (
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-zinc-950/20 pointer-events-none" />
+      )}
+
+      <EdgeGlow />
+
+      <div className="relative z-10 flex flex-col items-center text-center gap-2 w-full">
+        <img
+          src={`system/logos/${sys.logo}`}
+          alt={sys.name}
+          className="w-28 h-28 object-contain pointer-events-none select-none"
+          draggable={false}
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).style.display = 'none';
+          }}
+        />
+        <div className="min-w-0 w-full">
+          <p className="text-xs font-semibold text-zinc-200 truncate">{sys.name}</p>
+          <p className="text-[10px] text-zinc-500">{sys.shortName}</p>
+        </div>
+        <div className="flex flex-wrap gap-1 justify-center">
+          {sys.extensions.slice(0, 4).map((ext) => (
+            <span key={ext} className="text-[9px] font-mono px-1 py-0.5 bg-zinc-700/50 rounded text-retro-primary">
+              {ext}
+            </span>
+          ))}
+          {sys.extensions.length > 4 && (
+            <span className="text-[9px] font-mono px-1 py-0.5 bg-zinc-700/30 rounded text-zinc-500">
+              +{sys.extensions.length - 4}
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function SupportedSystems() {
@@ -100,7 +171,7 @@ export function SupportedSystems() {
   const inertiaTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const inertiaFrameRef = useRef<number>(0);
 
-  const filteredSystems: SystemCard[] = (() => {
+  const filteredSystems = useMemo(() => {
     const sorted = [...SUPPORTED_SYSTEMS].sort((a, b) => a.name.localeCompare(b.name));
     if (!filter.trim()) return sorted;
     const terms = filter.toLowerCase().split(/\s+/).filter(Boolean);
@@ -108,7 +179,7 @@ export function SupportedSystems() {
       const searchBase = `${sys.name} ${sys.shortName} ${sys.extensions.join(' ')}`.toLowerCase();
       return terms.every(term => searchBase.includes(term));
     });
-  })();
+  }, [filter]);
 
   const cancelInertia = useCallback(() => {
     if (inertiaTimerRef.current) {
@@ -194,26 +265,20 @@ export function SupportedSystems() {
 
   return (
     <div className="glass rounded-2xl overflow-hidden">
-      {/* Header */}
       <div className="p-4 border-b border-zinc-800/50 flex items-center justify-between gap-4">
         <h3 className="font-semibold text-zinc-200 whitespace-nowrap">
           Sistemas Suportados ({SUPPORTED_SYSTEMS.length})
         </h3>
-        <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
-          <input
-            type="text"
-            placeholder="Buscar por sistema, fabricante ou extensão..."
+        <div className="flex-1 max-w-sm">
+          <SearchInput
             value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl pl-10 pr-4 py-2 text-sm text-zinc-200 focus:outline-none focus:border-retro-primary/50 transition-colors placeholder:text-zinc-600"
+            onChange={setFilter}
+            placeholder="Buscar por sistema, fabricante ou extensão..."
           />
         </div>
       </div>
 
-      {/* Horizontal scroll area */}
       <div className="relative">
-        {/* Left arrow */}
         <button
           onClick={() => scrollByAmount(-300)}
           className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-zinc-900/80 border border-zinc-700/50 flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
@@ -221,10 +286,9 @@ export function SupportedSystems() {
           <ChevronLeft className="w-4 h-4" />
         </button>
 
-        {/* Scrollable container */}
         <div
           ref={containerRef}
-          className="flex gap-4 overflow-x-auto px-12 py-4 cursor-grab active:cursor-grabbing"
+          className="flex gap-4 overflow-x-auto px-12 py-4 cursor-grab active:cursor-grabbing select-none"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
@@ -232,52 +296,9 @@ export function SupportedSystems() {
           onMouseLeave={handleMouseLeave}
         >
           {filteredSystems.length > 0 ? (
-            filteredSystems.map((sys) => {
-              const fanartUrl = getFanartUrl(sys.name);
-              return (
-                <div
-                  key={sys.name}
-                  className="flex-shrink-0 w-48 bg-zinc-800/40 rounded-xl p-4 flex flex-col items-center text-center gap-2 border border-zinc-700/20 hover:border-zinc-600/40 transition-colors relative overflow-hidden group"
-                >
-                  {fanartUrl && (
-                    <div
-                      className="absolute inset-0 bg-cover bg-center pointer-events-none transition-transform duration-500 group-hover:scale-110"
-                      style={{ backgroundImage: `url(${fanartUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-                    />
-                  )}
-                  {fanartUrl && (
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-zinc-950/20 pointer-events-none" />
-                  )}
-                  <div className="relative z-10 flex flex-col items-center text-center gap-2 w-full">
-                    <img
-                      src={`system/logos/${sys.logo}`}
-                      alt={sys.name}
-                      className="w-28 h-28 object-contain pointer-events-none select-none"
-                      draggable={false}
-                      onError={(e) => {
-                        (e.currentTarget as HTMLImageElement).style.display = 'none';
-                      }}
-                    />
-                    <div className="min-w-0 w-full">
-                      <p className="text-xs font-semibold text-zinc-200 truncate">{sys.name}</p>
-                      <p className="text-[10px] text-zinc-500">{sys.shortName}</p>
-                    </div>
-                    <div className="flex flex-wrap gap-1 justify-center">
-                      {sys.extensions.slice(0, 4).map((ext) => (
-                        <span key={ext} className="text-[9px] font-mono px-1 py-0.5 bg-zinc-700/50 rounded text-retro-primary">
-                          {ext}
-                        </span>
-                      ))}
-                      {sys.extensions.length > 4 && (
-                        <span className="text-[9px] font-mono px-1 py-0.5 bg-zinc-700/30 rounded text-zinc-500">
-                          +{sys.extensions.length - 4}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              );
-            })
+            filteredSystems.map((sys) => (
+              <SystemCard key={sys.name} sys={sys} />
+            ))
           ) : (
             <div className="flex-shrink-0 w-full text-center py-8 text-zinc-500 text-sm">
               Nenhum sistema encontrado
@@ -285,7 +306,6 @@ export function SupportedSystems() {
           )}
         </div>
 
-        {/* Right arrow */}
         <button
           onClick={() => scrollByAmount(300)}
           className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-zinc-900/80 border border-zinc-700/50 flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
@@ -294,7 +314,6 @@ export function SupportedSystems() {
         </button>
       </div>
 
-      {/* Filter result count */}
       {filter && (
         <div className="px-4 pb-3">
           <p className="text-xs text-zinc-500 text-center">

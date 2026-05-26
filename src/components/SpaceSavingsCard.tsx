@@ -1,19 +1,13 @@
 import { motion } from 'framer-motion';
 import { HardDrive, Trash2, AlertTriangle } from 'lucide-react';
 import { useState } from 'react';
+import { Button } from './Button';
+import { formatBytes } from '../utils/format';
 
 interface SpaceSavingsCardProps {
   bytesSaved: number;
   action: 'move' | 'delete';
   onDeleteRemoved?: () => void;
-}
-
-function formatBytes(bytes: number): string {
-  if (bytes === 0) return '0 B';
-  const k = 1024;
-  const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 }
 
 export function SpaceSavingsCard({ bytesSaved, action, onDeleteRemoved }: SpaceSavingsCardProps) {
@@ -77,19 +71,21 @@ export function SpaceSavingsCard({ bytesSaved, action, onDeleteRemoved }: SpaceS
       </div>
 
       {action === 'move' && bytesSaved > 0 && (
-        <motion.button
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          onClick={() => setShowDeleteConfirm(true)}
-          disabled={deleting}
-          className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all
-                   bg-retro-danger/10 text-retro-danger border border-retro-danger/20
-                   hover:bg-retro-danger/20 hover:border-retro-danger/40 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <Trash2 className="w-4 h-4" />
-          Deletar pasta /removidos
-        </motion.button>
+          <Button
+            variant="danger"
+            icon={<Trash2 className="w-4 h-4" />}
+            onClick={() => setShowDeleteConfirm(true)}
+            disabled={deleting}
+            className="w-full"
+          >
+            Deletar pasta /removidos
+          </Button>
+        </motion.div>
       )}
 
       {showDeleteConfirm && (
@@ -107,19 +103,12 @@ export function SpaceSavingsCard({ bytesSaved, action, onDeleteRemoved }: SpaceS
             </p>
           </div>
           <div className="flex gap-2">
-            <button
-              onClick={() => setShowDeleteConfirm(false)}
-              className="flex-1 px-3 py-2 rounded-lg text-xs font-medium text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 transition-colors"
-            >
+            <Button variant="ghost" onClick={() => setShowDeleteConfirm(false)}>
               Cancelar
-            </button>
-            <button
-              onClick={handleDelete}
-              disabled={deleting}
-              className="flex-1 px-3 py-2 rounded-lg text-xs font-medium bg-retro-danger/20 text-retro-danger border border-retro-danger/30 hover:bg-retro-danger/30 transition-colors disabled:opacity-50"
-            >
+            </Button>
+            <Button variant="danger" loading={deleting} onClick={handleDelete}>
               {deleting ? 'Deletando...' : 'Confirmar Deleção'}
-            </button>
+            </Button>
           </div>
         </motion.div>
       )}
