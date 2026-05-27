@@ -83,7 +83,7 @@ function createWindow() {
 }
 
 app.whenReady().then(async () => {
-  // Initialize data files if they don't exist
+  // Inicializa arquivos de dados se não existirem
   try {
     await fs.ensureDir(DATA_DIR);
     
@@ -116,7 +116,7 @@ app.whenReady().then(async () => {
     console.error('[RetroGrade] Error initializing data files:', err);
   }
 
-  // Initialize ROM detection database
+  // Inicializa banco de detecção de ROMs
   try {
     const dbPath = path.join(app.getAppPath(), 'assets', 'rom_database_optimized.sqlite');
     if (fs.existsSync(dbPath)) {
@@ -192,7 +192,7 @@ ipcMain.handle('test-api-connections', async () => {
     tgdb: { status: 'pending', message: 'Testando...' },
   };
 
-  // Test IGDB
+  // Teste IGDB
   try {
     if (!config.IGDB_CLIENT_ID || !config.IGDB_CLIENT_SECRET) {
       results.igdb = { status: 'error', message: 'Credenciais não configuradas' };
@@ -219,7 +219,7 @@ ipcMain.handle('test-api-connections', async () => {
     results.igdb = { status: 'error', message: error.response?.status === 401 ? 'Credenciais inválidas' : 'Erro de conexão' };
   }
 
-  // Test TGDB
+  // Teste TGDB
   try {
     if (!config.TGDB_API_KEY) {
       results.tgdb = { status: 'error', message: 'API Key não configurada' };
@@ -340,11 +340,11 @@ ipcMain.handle('fetch-game-cover', async (_, gameName: string) => {
     );
     if (response.data.length > 0 && response.data[0].cover?.url) {
       let url = response.data[0].cover.url;
-      // IGDB returns URLs with "//images.igdb.com/..." - prepend https:
+      // IGDB retorna URLs com "//images.igdb.com/..." - adiciona https:
       if (url.startsWith('//')) {
         url = 'https:' + url;
       }
-      // Replace t_thumb with t_cover_small for better quality thumbnails
+      // Substitui t_thumb por t_cover_small para thumbnails de melhor qualidade
       url = url.replace('t_thumb', 't_cover_small');
       return url;
     }
@@ -410,7 +410,7 @@ ipcMain.handle('validate-game-name', async (_, gameName: string) => {
     return { valid: false, message: 'Configure as credenciais de API primeiro' };
   }
 
-  // Try IGDB first
+  // Tenta IGDB primeiro
   try {
     const token = await getIGDBToken(config);
     const response = await axios.post(
@@ -429,10 +429,10 @@ ipcMain.handle('validate-game-name', async (_, gameName: string) => {
       return { valid: true, message: `Jogo encontrado: "${response.data[0].name}"` };
     }
   } catch {
-    // Ignore IGDB errors, try TGDB
+    // Ignora erros do IGDB, tenta TGDB
   }
 
-  // Try TGDB
+  // Tenta TGDB
   try {
     const response = await axios.get(
       'https://api.thegamesdb.net/v1/Games/ByGameName',
@@ -448,7 +448,7 @@ ipcMain.handle('validate-game-name', async (_, gameName: string) => {
       return { valid: true, message: `Jogo encontrado: "${response.data.data[0].game_title}"` };
     }
   } catch {
-    // Ignore TGDB errors
+    // Ignora erros do TGDB
   }
 
   return { valid: false, message: 'Jogo não encontrado nas APIs' };
@@ -809,7 +809,7 @@ async function queryRegistry(regPath: string): Promise<string | null> {
       if (await fs.pathExists(installPath)) return installPath;
     }
   } catch {
-    // Registry query failed, ignore
+    // Consulta ao registro falhou, ignorar
   }
   return null;
 }
@@ -1205,7 +1205,7 @@ ipcMain.handle('scan-folder', async (_, folder: string) => {
   const romFiles: ScanRomInfo[] = [];
   let scannedCount = 0;
 
-  // Phase 1: Filesystem scan (fast, no API calls)
+  // Fase 1: Varredura do sistema de arquivos (rápida, sem chamadas de API)
   async function scanDirectory(dir: string) {
     const entries = await fs.readdir(dir, { withFileTypes: true });
     for (const entry of entries) {
@@ -1270,14 +1270,14 @@ ipcMain.handle('scan-folder', async (_, folder: string) => {
 
   await scanDirectory(folder);
 
-  // Send progress: filesystem scan complete
+  // Envia progresso: varredura do sistema de arquivos concluída
   mainWindow?.webContents.send('scan-progress', {
     phase: 'scan',
     progress: 50,
     total: romFiles.length,
   });
 
-  // Phase 2: Metadata fetch (slower, API calls)
+  // Fase 2: Busca de metadados (mais lenta, chamadas de API)
   const hasIGDB = config?.IGDB_CLIENT_ID && config?.IGDB_CLIENT_SECRET;
   if (hasIGDB) {
     const totalBatches = Math.ceil(romFiles.length / 5);
@@ -1317,7 +1317,7 @@ ipcMain.handle('scan-folder', async (_, folder: string) => {
     });
   }
 
-  // Group by system
+  // Agrupa por sistema
   const grouped: Record<string, ScanRomInfo[]> = {};
   for (const rom of romFiles) {
     if (!grouped[rom.systemName]) {
@@ -1326,7 +1326,7 @@ ipcMain.handle('scan-folder', async (_, folder: string) => {
     grouped[rom.systemName].push(rom);
   }
 
-  // Detect clones/duplicates
+  // Detecta clones/duplicatas
   const cloneGroups: { baseName: string; roms: ScanRomInfo[]; preferredRegion: string | null }[] = [];
   const processedBases = new Set<string>();
 
@@ -1448,7 +1448,7 @@ stats.total_encontrado = (progressLog?.completedFiles.length || 0) + romFiles.le
     await writeProgressLog(folder, progressLog);
   }
 
-  // Group ROMs by parent directory
+  // Agrupa ROMs por diretório pai
   const dirGroups = new Map<string, RomFile[]>();
   for (const file of romFiles) {
     if (!dirGroups.has(file.parentDir)) {
@@ -1457,7 +1457,7 @@ stats.total_encontrado = (progressLog?.completedFiles.length || 0) + romFiles.le
     dirGroups.get(file.parentDir)!.push(file);
   }
 
-  // Process each directory group
+  // Processa cada grupo de diretório
   const processedDirs = new Set<string>();
   let fileIndex = progressLog?.completedFiles.length || 0;
 
@@ -1465,11 +1465,11 @@ stats.total_encontrado = (progressLog?.completedFiles.length || 0) + romFiles.le
     if (curationCancelled) break;
     if (processedDirs.has(parentDir)) continue;
 
-    // Check if this is a single-ROM folder (folder name matches ROM name)
+    // Verifica se é uma pasta de ROM única (nome da pasta corresponde ao nome da ROM)
     const folderName = path.basename(parentDir).toLowerCase();
     const isSingleRomFolder = files.length === 1 && folderName === path.basename(files[0].name, files[0].ext).toLowerCase();
 
-    // Determine action for this group
+    // Determina ação para este grupo
     let groupAction: 'keep' | 'remove' = 'keep';
 
     for (const file of files) {
@@ -1565,7 +1565,7 @@ stats.total_encontrado = (progressLog?.completedFiles.length || 0) + romFiles.le
 
     if (curationCancelled) break;
 
-    // If it's a single-ROM folder and should be removed, remove/move the entire folder
+    // Se é uma pasta de ROM única e deve ser removida, remove/move a pasta inteira
     if (isSingleRomFolder && groupAction === 'remove') {
       const dirSize = await getPathSize(parentDir);
       stats.bytes_removed += dirSize;
@@ -1686,7 +1686,7 @@ await scanDirectory(folder);
     await writeProgressLog(folder, progressLog);
   }
 
-// Group ROMs by parent directory
+  // Agrupa ROMs por diretório pai
   const dirGroups = new Map<string, SimRomFile[]>();
   for (const file of romFiles) {
     if (!dirGroups.has(file.parentDir)) {

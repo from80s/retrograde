@@ -23,7 +23,7 @@ export function WelcomeModal({ onClose, onOpenSettings, hasConfig }: WelcomeModa
         className="glass rounded-2xl w-full max-w-lg overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
+        {/* Cabeçalho */}
         <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-retro-primary/10 flex items-center justify-center">
@@ -39,7 +39,7 @@ export function WelcomeModal({ onClose, onOpenSettings, hasConfig }: WelcomeModa
           </button>
         </div>
 
-        {/* Content */}
+        {/* Conteúdo */}
         <div className="p-6 space-y-6">
           {/* Status */}
           <div className={`p-4 rounded-xl flex items-center gap-3 ${
@@ -59,7 +59,7 @@ export function WelcomeModal({ onClose, onOpenSettings, hasConfig }: WelcomeModa
             </p>
           </div>
 
-          {/* Steps */}
+          {/* Etapas */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">Como configurar</h3>
             
@@ -126,7 +126,7 @@ export function WelcomeModal({ onClose, onOpenSettings, hasConfig }: WelcomeModa
             </div>
           </div>
 
-          {/* Info */}
+          {/* Informações */}
           <div className="p-3 bg-zinc-800/30 rounded-xl border border-zinc-700/30">
             <div className="flex items-start gap-2">
               <CheckCircle2 className="w-4 h-4 text-retro-success flex-shrink-0 mt-0.5" />
@@ -137,7 +137,7 @@ export function WelcomeModal({ onClose, onOpenSettings, hasConfig }: WelcomeModa
           </div>
         </div>
 
-        {/* Footer */}
+        {/* Rodapé */}
         <div className="p-6 border-t border-zinc-800/50 flex gap-3">
           <button
             onClick={onClose}

@@ -8,7 +8,7 @@
       "manufacturer": "Sega",
       "release_year": 1994,
       "origin_country": "Japão",
-      "description": "32X é um acessório para o console da Sega, Mega Drive, conhecido como Genesis na América do Norte. No Japão, foi distribuído com o nome Sega Super 32X. Na América do Norte, Sega Genesis 32X.",
+      "description": "32X é um acessório para o console da Sega, Mega Drive, conhecido como Genesis na América do Norte. No Japão, foi distribuído com o nome Sega Super 32X. Na América do Norte, Sega Genesis 32X. Na Europa e Austrália era chamado Mega Drive 32X. No Brasil, era chamado Mega 32X.",
       "curiosities": [
         "O 32X era tão poderoso que a Sega chegou a chamá-lo de \"console de 32 bits\" antes do Saturn, causando confusão no mercado.",
         "Apenas 40 títulos foram lançados oficialmente para o 32X nos Estados Unidos.",
@@ -20,7 +20,18 @@
       "emulators": [
         "Kega Fusion",
         "Picodrive (RetroArch)"
-      ]
+      ],
+      "wikidata_id": "29028",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/32X",
+      "type": "Video game console add-on",
+      "generation": "5ª Geração",
+      "release_dates": "NA: November 21, 1994EU: November 1994JP: December 3, 1994BR: March 1995",
+      "launch_price": null,
+      "discontinued": "1996",
+      "media": "ROM cartridge,, CD-ROM (with Sega CD)",
+      "cpu": "2× SH-2 32-bit RISC @ 23 MHz",
+      "memory": "256 KB RAM, 256 KB VRAM",
+      "display": "320 × 240 resolution, 32,768 on-screen colors"
     },
     {
       "id": "nintendo_3ds",
@@ -30,7 +41,7 @@
       "manufacturer": "Nintendo",
       "release_year": 2011,
       "origin_country": "Japão",
-      "description": "O Nintendo 3DS (ニンテンドー3DS, Nintendō Surī Dī Esu; abreviado como 3DS) é um console portátil de oitava geração produzido pela Nintendo e lançado em 2011, sucessor do Nintendo DS. Seus principais recursos são a capacidade de produzir imagens em três dimensões sem óculos especiais e a retrocompatibilidade com títulos dos portáteis antecessores Nintendo DS e DSi. Seu principal concorrente foi o PlayStation Vita da Sony, através da Sony Interactive Entertainment.",
+      "description": "O Nintendo 3DS é um console portátil de oitava geração produzido pela Nintendo e lançado em 2011, sucessor do Nintendo DS. Seus principais recursos são a capacidade de produzir imagens em três dimensões sem óculos especiais e a retrocompatibilidade com títulos dos portáteis antecessores Nintendo DS e DSi. Seu principal concorrente foi o PlayStation Vita da Sony, através da Sony Interactive Entertainment.",
       "curiosities": [
         "O 3DS vendeu mais de 75 milhões de unidades mundialmente, tornando-se um dos portáteis mais vendidos da história.",
         "O recurso de realidade aumentada vinha incluído com cartões AR que interagiam com jogos como o cartão de arremesso de Pokémon.",
@@ -47,7 +58,27 @@
       "emulators": [
         "Citra",
         "Ryujinx (parcial)"
-      ]
+      ],
+      "type": "handheld",
+      "generation": "8ª Geração",
+      "launch_price": null,
+      "discontinued": "WW: September 16, 2020",
+      "media": "Nintendo 3DS Game CardNintendo DSi Game CardNintendo DS Game CardDigital distributionSD/SDHC card",
+      "os": "Nintendo 3DS system software",
+      "cpu": "Dual-core ARM11 MPCore @ 268 MHzSingle-core ARM9",
+      "memory": "128 MB FCRAM, 6 MB VRAM",
+      "storage": "2 GB eMMC",
+      "display": "2 LCD screens Nintendo 3DS: Upper: 3.53\" autostereoscopic (3D) LCD @ 800 × 240 px (400 × 240 WQVGA per eye) Lower: 3.00\" resistive touchscreen LCD @ 320 × 240 (QVGA) Nintendo 3DS XL / Nintendo 3DS LL: Upper: 4.88\" autostereoscopic (3D) LCD @ 800 × 240 px (400 × 240 WQVGA per eye) Lower: 4.18\" resistive touchscreen LCD @ 320 × 240 (QVGA)",
+      "graphics": "DMP PICA200 @ 268 MHz",
+      "sound": "Stereo speakers (pseudo-surround), microphone",
+      "connectivity": "2.4 GHz 802.11b/g Wi-Fi, infrared",
+      "online_services": "Nintendo Network (discontinued) Nintendo eShop (discontinued) Miiverse (discontinued) SpotPass (discontinued) Nintendo Zone (discontinued)",
+      "best_selling_game": "Mario Kart 7, 18.99 million units(as of March 31, 2024[update]) (list)",
+      "predecessor": "Nintendo DS/DSi",
+      "successor": "Nintendo Switch",
+      "wikidata_id": "26666629",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Nintendo_3DS",
+      "release_dates": "JP: February 26, 2011EU: March 25, 2011NA: March 27, 2011AU: March 31, 2011 Nintendo 3DS XL:, JP/EU: July 28, 2012[a]NA: August 19, 2012AU: August 23, 2012"
     },
     {
       "id": "arcade",
@@ -81,11 +112,10 @@
       "manufacturer": "Atari",
       "release_year": 1977,
       "origin_country": "Estados Unidos",
-      "description": "Atari 2600, originalmente vendido como Atari Video Computer System ou Atari VCS até novembro de 1982, é um videogame projetado por Jay Miner e lançado em 11 de setembro de 1977 nos Estados Unidos e em 1983 no Brasil, sendo descontinuado oficialmente em 1992. Em março de 2017 a Tectoy lançou o Atari Flashback 7, baseado no Atari 2600. O console traz 101 jogos na memória e não aceita cartuchos.",
+      "description": "Atari 2600, originalmente vendido como Atari Video Computer System ou Atari VCS até novembro de 1982, é um videogame projetado por Jay Miner e lançado em 11 de setembro de 1977 nos Estados Unidos e em 1983 no Brasil, sendo descontinuado oficialmente em 1992.",
       "curiosities": [
         "O Atari 2600 foi originalmente chamado de \"Atari Video Computer System\" (VCS) até 1982.",
-        "O infame jogo \"E.T. the Extra-Terrestrial\" (1982) é creditado como um dos principais fatores da crise dos videogames de 1983.",
-        "Seu processador MOS 6507 rodava a apenas 1.19 MHz, menos potente que calculadoras modernas."
+        "O infame jogo \"E.T. the Extra-Terrestrial\" (1982) é creditado como um dos principais fatores da crise dos videogames de 1983."
       ],
       "supported_extensions": [
         ".a26"
@@ -93,7 +123,22 @@
       "emulators": [
         "Stella",
         "Z26"
-      ]
+      ],
+      "type": "console",
+      "generation": "2ª Geração",
+      "lifespan": "1977–1992",
+      "launch_price": null,
+      "discontinued": "1992 (1992)",
+      "media": "ROM cartridge",
+      "cpu": "8-bit MOS Technology 6507 @ 1.19 MHz",
+      "memory": "128 bytes RAM",
+      "graphics": "Television Interface Adaptor",
+      "best_selling_game": "Pac-Man, 8 million (as of 1990)[b]",
+      "predecessor": "Atari Home PongAtari Video Pinball",
+      "successor": "Atari 5200",
+      "wikidata_id": "2779",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_2600",
+      "release_dates": "1977–1992"
     },
     {
       "id": "atari_5200",
@@ -103,11 +148,11 @@
       "manufacturer": "Atari",
       "release_year": 1982,
       "origin_country": "Estados Unidos",
-      "description": "O Atari 5200 foi um console de videojogos lançado pela Atari em 1982 para substituir o Atari 2600, que teve como principais competidores o Intellivision (fabricado pela Mattel) e o Colecovision (fabricado pela COLECO). Devido a pequenos problemas com seu controle e a crise que a indústria dos games passou, o produto teve um sucesso comercial moderado. A arquitetura do sistema é quase idêntica à dos computadores de 8 bits da Atari, embora o software não seja diretamente compatível entre eles.",
+      "description": "O Atari 5200 foi um console de videojogos lançado pela Atari em 1982 para substituir o Atari 2600, que teve como principais competidores o Intellivision e o Colecovision. Devido a pequenos problemas com seu controle e a crise que a indústria dos games passou, o produto teve um sucesso comercial moderado.",
       "curiosities": [
         "O Atari 5200 tinha controle com teclado numérico e joystick analógico (sem autocentragem), algo avançado para 1982.",
         "Era backward-compatible com jogos do Atari 2600 através de um adaptador vendido separadamente.",
-        "Seu design foi inspirado no computador Atari 400, compartilhando a mesma arquitetura interna."
+        "as a higher-end complement for the popular Atari Video Computer System."
       ],
       "supported_extensions": [
         ".a52",
@@ -118,7 +163,19 @@
         "Atari800",
         "Altirra",
         "MAME"
-      ]
+      ],
+      "type": "console",
+      "generation": "2ª Geração",
+      "launch_price": null,
+      "discontinued": "May 21, 1984 (1984-05-21)",
+      "media": "ROM cartridge",
+      "cpu": "MOS 6502C @ 1.79 MHz",
+      "memory": "16 KB RAM",
+      "predecessor": "Atari 2600",
+      "successor": "Atari 7800",
+      "wikidata_id": "2780",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_5200",
+      "release_dates": "NA: October 1982"
     },
     {
       "id": "atari_7800",
@@ -128,7 +185,7 @@
       "manufacturer": "Atari",
       "release_year": 1986,
       "origin_country": "Estados Unidos",
-      "description": "Atari 7800 foi um console de videogames da terceira geração lançado pela empresa Atari em junho de 1986, com um teste de mercado ocorrendo dois anos antes. Foi desenvolvido para substituir o Atari 5200, que teve um sucesso de mercado razoável, e concorrer com os consoles Intellivision e Colecovision. O Atari 7800, foi projetado para fazer frente aos recentes rivais do Atari 5200, O Nintendo Entertainment System (NES) e o Sega Master System.",
+      "description": "Atari 7800 foi um console de videogames da terceira geração lançado pela empresa Atari em junho de 1986, com um teste de mercado ocorrendo dois anos antes. Foi desenvolvido para substituir o Atari 5200, que teve um sucesso de mercado razoável, e concorrer com os consoles Intellivision e Colecovision.",
       "curiosities": [
         "O Atari 7800 foi o primeiro console da Atari com total compatibilidade com o Atari 2600 nativamente (sem adaptador).",
         "Foi anunciado em 1984 mas só lançado em 1986 devido à venda da Atari para a Jack Tramiel.",
@@ -140,7 +197,22 @@
       "emulators": [
         "ProSystem",
         "MAME"
-      ]
+      ],
+      "type": "console",
+      "generation": "3ª Geração",
+      "launch_price": null,
+      "discontinued": "January 1, 1992",
+      "media": "ROM cartridge",
+      "cpu": "Atari SALLY @ 1.19-1.79 MHz",
+      "memory": "4 KB RAM on board4 KB BIOS ROM (NTSC), 16 KB BIOS + Game ROM (PAL)48 KB General Purpose Space (ROM, RAM, etc.) accessible at once",
+      "display": "160×240, 320×240 (288 vertical for PAL)7, 9, or 25 colors out of 256 (Depending on the mode)",
+      "graphics": "MARIA custom chip @ 7.16 MHz",
+      "best_selling_game": "Pole Position II (pack-in)",
+      "predecessor": "Atari 5200",
+      "successor": "Atari Panther (canceled)Atari XEGS",
+      "wikidata_id": "2781",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_7800",
+      "release_dates": "NA: May 1986PAL: 1987"
     },
     {
       "id": "atari_jaguar",
@@ -150,7 +222,7 @@
       "manufacturer": "Atari",
       "release_year": 1993,
       "origin_country": "Estados Unidos",
-      "description": "Atari Jaguar é um console de videogame da quinta geração com 64 bits, lançado pela empresa Flare II (Atari Corporation) em 1993, para concorrer com os consoles Mega Drive e Super Nintendo em poder de processamento. Disputou mercado com o console 3DO e posteriormente com os videogames da 5ª geração. O Jaguar foi lançado inicialmente em algumas cidades selecionadas dos Estados Unidos em novembro de 1993 e, posteriormente no resto do país em 1994.",
+      "description": "Atari Jaguar é um console de videogame da quinta geração com 64 bits, lançado pela empresa Flare II em 1993, para concorrer com os consoles Mega Drive e Super Nintendo em poder de processamento.",
       "curiosities": [
         "O Atari Jaguar foi anunciado como o primeiro console \"64-bit\" do mundo, embora apenas duas de suas unidades de processamento fossem realmente de 64 bits.",
         "Seu controle tinha um teclado numérico completo de 12 teclas, algo bizarro para um console de videogame.",
@@ -166,7 +238,22 @@
         "Virtual Jaguar",
         "Phoenix",
         "MAME"
-      ]
+      ],
+      "type": "console",
+      "generation": "5ª Geração",
+      "discontinued": "1996",
+      "media": "ROM cartridge",
+      "cpu": "Motorola 68000 @ 13.295 MHz, 2 custom RISC processors @ 26.591 MHz each",
+      "memory": "2 MB RAM",
+      "storage": "Internal RAM, cartridge",
+      "display": "Composite, S-Video, RGB, or RF TV out",
+      "graphics": "Tom chip @ 26.591 MHz (32-bit RISC architecture, 4 KB internal RAM)",
+      "sound": "Jerry chip @ 26.591 MHz (16-bit CD-quality stereo sound, two DACs, wavetable and AM synthesis)",
+      "best_selling_game": "Alien vs Predator (52,223)",
+      "predecessor": "7800XEGSPanther (canceled)",
+      "wikidata_id": "2782",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_Jaguar",
+      "release_dates": "NA: November 23, 1993EU: June 27, 1994DE: September 1994JP: December 8, 1994ESP: April 1995"
     },
     {
       "id": "amiga",
@@ -176,7 +263,7 @@
       "manufacturer": "Commodore",
       "release_year": 1985,
       "origin_country": "Estados Unidos",
-      "description": "Amiga é uma família de computadores pessoais produzida pela Commodore de 1985 até a falência da empresa em 1994, com produção posterior por outras empresas. O modelo original aprimorou significativamente os recursos gráficos e de áudio em comparação com os sistemas de 8 bits e é um dos vários computadores de meados da década de 1980 com processadores de 16 bits ou 16/32 bits, 256 KB ou mais de RAM e interfaces gráficas baseadas em mouse. Esses computadores incluem o Atari ST, o Macintosh, o Archimedes e, posteriormente, o Apple IIGS.",
+      "description": "Amiga é uma família de computadores pessoais produzida pela Commodore de 1985 até a falência da empresa em 1994, com produção posterior por outras empresas. O modelo original aprimorou significativamente os recursos gráficos e de áudio em comparação com os sistemas de 8 bits e é um dos vários computadores de meados da década de 1980 com processadores de 16 bits ou 16/32 bits, 256 KB ou mais de RAM e interfaces gráficas baseadas em mouse. Esses computadores incluem o Atari ST, o Macintosh, o Archimedes e, posteriormente, o Apple IIGS. O Amiga difere de seus contemporâneos por meio de hardware personalizado para acelerar gráficos e som, incluindo sprites, um blitter e quatro canais de áudio baseados em amostras. Ele executa um sistema operacional multitarefa preemptivo chamado AmigaOS, com um ambiente de desktop chamado Workbench.",
       "curiosities": [
         "O Amiga 1000 foi lançado em 1985 com capacidades multimídia very superiores a qualquer outro computador pessoal da época.",
         "O sistema operacional AmigaOS foi um dos primeiros com true preemptive multitasking para computadores domésticos.",
@@ -200,7 +287,14 @@
         "WinUAE",
         "FS-UAE",
         "PUAE (RetroArch)"
-      ]
+      ],
+      "type": "Personal computerHome video game console (CD32)",
+      "discontinued": "1994 (1996[a])",
+      "os": "AmigaOS on Kickstart",
+      "predecessor": "Commodore 128Commodore 64",
+      "wikidata_id": "1980",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Amiga",
+      "release_dates": "July 23, 1985 40 years ago (1985-07-23)"
     },
     {
       "id": "atari_800",
@@ -223,7 +317,19 @@
       "emulators": [
         "Atari800",
         "Altirra"
-      ]
+      ],
+      "wikidata_id": "63429",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_8-bit_computers",
+      "type": "Home computer",
+      "release_dates": "November 1979 46 years ago (1979-11)",
+      "launch_price": null,
+      "discontinued": "January 1, 1992; 34 years ago (1992-01-01)",
+      "os": "Custom, Atari DOS (optional)",
+      "cpu": "MOS Technology 6502B or, MOS Technology 6502 SALLY @ 1.79 MHz (NTSC) @ 1.77 MHz (PAL)",
+      "graphics": "384 pixels per TV line, 256 colors, 8 × sprites, raster interrupts",
+      "sound": "4 × oscillators with noise mixing, or 2 × AM digital",
+      "connectivity": "2 or 4 × Atari joystick port 1 × Atari SIO 0–1 × PBI 0–1 × Composite monitor 1–2 × ROM cartridge",
+      "successor": "Atari ST"
     },
     {
       "id": "sony_playstation",
@@ -233,7 +339,7 @@
       "manufacturer": "Sony",
       "release_year": 1994,
       "origin_country": "Japão",
-      "description": "PlayStation (プレイステーション, Pureisutēshon; oficialmente abreviado PS) é uma marca internacional de consoles de videogame criada e desenvolvida pela Sony Interactive Entertainment (uma divisão da Sony), com 7 consoles (PlayStation, PlayStation 2, PSP, PlayStation 3, PlayStation Vita, PlayStation 4, PlayStation 5), abrangendo a quinta, sexta, sétima, oitava e nona gerações de videogames. A marca foi lançada pela primeira vez em 3 de dezembro de 1994 no Japão. Fora os serviços PlayStation Network, PlayStation Store e PlayStation Plus, além das empresas hoje conhecidas como PlayStation Studios.",
+      "description": "PlayStation é uma marca internacional de consoles de videogame criada e desenvolvida pela Sony Interactive Entertainment, com 7 consoles, abrangendo a quinta, sexta, sétima, oitava e nona gerações de videogames. A marca foi lançada pela primeira vez em 3 de dezembro de 1994 no Japão. Fora os serviços PlayStation Network, PlayStation Store e PlayStation Plus, além das empresas hoje conhecidas como PlayStation Studios.",
       "curiosities": [
         "O PlayStation nasceu de uma parceria fracassada entre Sony e Nintendo para criar um CD-ROM para o SNES.",
         "Foi o primeiro console a vender mais de 100 milhões de unidades, estabelecendo a Sony como gigante dos games.",
@@ -255,7 +361,24 @@
         "PCSX-Redux",
         "Mednafen",
         "Beetle PSX (RetroArch)"
-      ]
+      ],
+      "type": "console",
+      "generation": "5ª Geração",
+      "launch_price": null,
+      "discontinued": "EU: 19 October 2001(PS one only)WW: 23 March 2006",
+      "media": "CD",
+      "cpu": "R3000 @ 33.87 MHz",
+      "memory": "2 MB RAM, 1 MB Video RAM (2MB in SCPH-7501 and later)",
+      "storage": "Memory card",
+      "display": "240p, 480i (NTSC)288p, 576i (PAL)",
+      "sound": "* Analog stereo * PCM stereo (requires third-party Parallel I/O adapter) (SCPH-100x to 7000 only) * Dolby Pro Logic surround (select games)",
+      "connectivity": "List Audio/video output AV Multi port (with stereo audio) Composite S-Video RGBS/SCART RF modulator Other PlayStation Link Cable via Serial I/O Parallel I/O",
+      "online_services": "i-mode Mobile Phone Connection Cable (Japan only)Lightspan Online Connection CD (third-party)",
+      "best_selling_game": "Gran Turismo (10.85 million) (list)",
+      "successor": "PlayStation 2",
+      "wikidata_id": "23964",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_(console)",
+      "release_dates": "3 December 1994 PlayStationJP: 3 December 1994 (1994-12-03)NA: 9 September 1995 (1995-09-09)EU: 29 September 1995 (1995-09-29)AU: 15 November 1995 (1995-11-15)ZA: November 1996 (1996-11)HK/SG/TH/MY: December 1996 (1996-12)TW: December 1997 (1997-12)PS OneJP: 7 July 2000 (2000-07-07)NA: 19 September 2000 (2000-09-19)EU: 29 September 2000 (2000-09-29)HK/SG/TH/MY/TW: November 2000 (2000-11)IND: 24 January 2002 (2002-01-24)KR: 22 February 2002"
     },
     {
       "id": "snes",
@@ -265,7 +388,7 @@
       "manufacturer": "Nintendo",
       "release_year": 1990,
       "origin_country": "Japão",
-      "description": "O SNES é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Super Nintendo Entertainment System é um console de videogame de 16-bits desenvolvido e comercializado pela Nintendo, lançado em 1990 no Japão, 1991 na América do Norte, 1992 na Europa e Oceania e 1993 na América do Sul. No Japão foi adotando o nome abreviado do seu antecessor, o Famicom, sendo chamado Super Famicom. Na Coreia do Sul, é conhecido como Super Comboy e foi distribuído pela Hyundai Electronics. Embora cada versão seja essencialmente as mesmas, várias formas de bloqueio regional impedem que as diferentes versões sejam compatíveis entre si.",
       "curiosities": [
         "O SNES vendeu 49 milhões de unidades mundialmente, dominando a geração 16-bit ao lado do Mega Drive.",
         "Usava a técnica de \"Mode 7\" para criar efeitos de rotação e scaling em 2D, como visto em Super Mario Kart e F-Zero.",
@@ -284,7 +407,24 @@
         "bsnes",
         "Mesen 2",
         "Snes9x (RetroArch)"
-      ]
+      ],
+      "type": "console",
+      "generation": "4ª Geração",
+      "launch_price": null,
+      "discontinued": "EU: 1998NA: 1999BR: 2003KOR: April 1, 2003JP: September 25, 2003",
+      "media": "Super NES Game Pak",
+      "cpu": "Ricoh 5A22 @ 3.58 MHz",
+      "memory": "128 KB \"work\" RAM64 KB SRAM64 KB PSRAM",
+      "display": "256 × 224, 512 × 224, 512 × 448",
+      "graphics": "S-PPU1 and S-PPU2",
+      "sound": "Nintendo S-SMP",
+      "online_services": "JP: SatellaviewJP/NA: XBANDGB: BT Interactive TV (Trial)",
+      "best_selling_game": "Pack-in: Super Mario World (20.6 million) Standalone: Street Fighter II: The World Warrior (6.3 million) (list)",
+      "predecessor": "Nintendo Entertainment System",
+      "successor": "Nintendo 64",
+      "wikidata_id": "28314",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Super_Nintendo_Entertainment_System",
+      "release_dates": "November 21, 1990 JP: November 21, 1990NA: August 23, 1991[a]FR/GB/IE: April 11, 1992EU: June 1992CHL: June 8, 1992AU: July 3, 1992DE: August 15, 1992BR: August 30, 1993RU: November 15, 1994"
     },
     {
       "id": "amstrad_cpc",
@@ -294,7 +434,7 @@
       "manufacturer": "Amstrad",
       "release_year": 1984,
       "origin_country": "Reino Unido",
-      "description": "O Amstrad CPC é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "Amstrad CPC foi uma série computadores pessoais de 8 bits produzidos pela Amstrad durante a década de 1980 e início de 1990. CPC significa Colour Personal Computer, embora fosse possível comprar um CPC com monitor de fósforo verde (GT65/66), ou com o monitor colorido padrão (CTM640).",
       "curiosities": [
         "O Amstrad CPC foi projetado como um sistema completo (monitor + CPU + gravador cassete) \"tudo-em-um\", rivalizando com o ZX Spectrum e Commodore 64.",
         "O nome CPC vinha de \"Colour Personal Computer\" mas também era vendido em versões monocromáticas (CPC664).",
@@ -315,7 +455,21 @@
         "Caprice32",
         "Arnold",
         "CrocoDS"
-      ]
+      ],
+      "type": "computer",
+      "generation": "3ª Geração",
+      "launch_price": null,
+      "discontinued": "1990 36 years ago (1990)",
+      "media": "Compact Cassette, 3-inch floppy disks",
+      "os": "AMSDOS with Locomotive BASIC 1.0 or 1.1; CP/M 2.2 or 3.0",
+      "cpu": "Zilog Z80A @ 4 MHz",
+      "memory": "64 or 128 KB, expandable to 576 KB",
+      "display": "160×200 pixels with 16 colours, 320×200 pixels with 4 colours, 640×200 pixels with 2 colours",
+      "graphics": "Motorola 6845 or compatible, custom gate array",
+      "sound": "AY-3-8912, 3-voices, 8-octaves",
+      "wikidata_id": "2197",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Amstrad_CPC",
+      "release_dates": "1984 42 years ago (1984)"
     },
     {
       "id": "dreamcast",
@@ -325,11 +479,10 @@
       "manufacturer": "Sega",
       "release_year": 1998,
       "origin_country": "Japão",
-      "description": "O Dreamcast é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Dreamcast é um console de jogos eletrônicos, desenvolvido e fabricado pela empresa Sega, lançado em 27 de novembro de 1998 no Japão, 9 de setembro de 1999 na América do Norte e 14 de outubro de 1999 na Europa. Foi o primeiro da sexta geração de consoles, precedendo, e ao mesmo tempo, concorrendo com o PlayStation 2 da Sony, o GameCube da Nintendo e o Xbox da Microsoft.",
       "curiosities": [
         "O Dreamcast foi o primeiro console da sexta geração e o último da Sega, lançado em 1998 no Japão.",
-        "Inovava com modem de 56k embutido para jogos online e navegação na internet, algo pioneiro em consoles.",
-        "Apesar de seu fim precoce em 2001, possui uma biblioteca cult com jogos como Shenmue, SoulCalibur e Jet Set Radio."
+        "Inovava com modem de 56k embutido para jogos online e navegação na internet, algo pioneiro em consoles."
       ],
       "supported_extensions": [
         ".cdi",
@@ -340,7 +493,24 @@
         "Redream",
         "Demul",
         "Reicast (RetroArch)"
-      ]
+      ],
+      "type": "console",
+      "generation": "6ª Geração",
+      "launch_price": null,
+      "discontinued": "WW: March 31, 2001",
+      "media": "GD&#x2011;ROM, CD&#x2011;ROM",
+      "cpu": "Hitachi SH-4 @ 200 MHz",
+      "memory": "16 MB RAM8 MB video RAM2 MB audio RAM",
+      "display": "CompositeRF modulatorSCARTS-videoVGA (via adaptor)",
+      "graphics": "NEC PowerVR2 @ 100 MHz",
+      "sound": "Yamaha AICA @ 67 MHz with ARM7 CPU, 64 channels",
+      "connectivity": "Modem, broadband adapter (separate)",
+      "online_services": "DricasSegaNetDreamarena",
+      "best_selling_game": "Sonic Adventure (2.5 million) (list)",
+      "predecessor": "Sega Saturn",
+      "wikidata_id": "29036",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Dreamcast",
+      "release_dates": "JP: November 27, 1998NA: September 9, 1999EU: October 14, 1999AU: November 30, 1999"
     },
     {
       "id": "fairchild_channel_f",
@@ -350,7 +520,7 @@
       "manufacturer": "Fairchild",
       "release_year": 1976,
       "origin_country": "Estados Unidos",
-      "description": "O Fairchild Channel F é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "Lançado em agosto de 1976 pela Fairchild Semiconductor, o Fairchild Channel F foi o primeiro videogame da segunda geração de consoles(as) de jogos, além de ser também o primeiro realmente programável, ou seja, os jogos podiam ser vendidos separadamente do videogame, pois, com o novo sistema de cartuchos era possível lê-los no próprio videogame.",
       "curiosities": [
         "O Fairchild Channel F foi o primeiro console da história a usar cartuchos programáveis (ROM), revolucionando a indústria.",
         "Seu controle incorporava um joystick que também funcionava como \"paddle\", e o console tinha capacidade gráfica de 4 bits.",
@@ -362,7 +532,20 @@
       "emulators": [
         "MAME",
         "MESS"
-      ]
+      ],
+      "type": "console",
+      "generation": "2ª Geração",
+      "lifespan": "1976–1983",
+      "launch_price": null,
+      "discontinued": "1983",
+      "media": "ROM cartridge",
+      "cpu": "Fairchild F8",
+      "memory": "64 bytes RAM2 KB video buffer",
+      "display": "c. 104 × 60 pixels(of 128 x 64 VRAM)",
+      "best_selling_game": "Videocart-17: Pinball Challenge",
+      "wikidata_id": "7487",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Fairchild_Channel_F",
+      "release_dates": "1976–1983"
     },
     {
       "id": "gamecube",
@@ -372,10 +555,9 @@
       "manufacturer": "Nintendo",
       "release_year": 2001,
       "origin_country": "Japão",
-      "description": "O GameCube é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Nintendo GameCube é um console de videogame doméstico lançado pela Nintendo no Japão e na América do Norte em 2001 e Europa e Austrália em 2002. Como parte da sexta geração de consoles, é o sucessor do Nintendo 64. Ele competiu com o PlayStation 2 da Sony, o Xbox da Microsoft e com o Dreamcast da Sega como parte da sexta geração de consoles.",
       "curiosities": [
         "O GameCube foi o primeiro console da Nintendo a usar mídia óptica (discos mini-DVD de 8 cm).",
-        "Usava um processador PowerPC 750CXe (Gekko) a 485 MHz, fruto da parceria IBM-Nintendo que culminaria no Wii e Wii U.",
         "O controle do GameCube, com seu design ergonômico único, é até hoje usado em torneios de Super Smash Bros. Melee."
       ],
       "supported_extensions": [
@@ -387,7 +569,26 @@
       ],
       "emulators": [
         "Dolphin"
-      ]
+      ],
+      "type": "console",
+      "generation": "6ª Geração",
+      "launch_price": null,
+      "discontinued": "February 2007",
+      "media": "GameCube Game Disc Game Boy Game Pak[a] Game Boy Color Game Pak[a] Game Boy Advance Game Pak[a]",
+      "os": "Proprietary",
+      "cpu": "IBM Gekko @ 486 MHz",
+      "memory": "24 MB 1T-SRAM as system RAM 3 MB 1T-SRAM as video RAM 16 MB DRAM as I/O buffer RAM",
+      "display": "480i, 480p",
+      "graphics": "ATI Flipper @ 162 MHz",
+      "sound": "* Analog stereo * I²S digital stereo (early models)[c] * Dolby Pro Logic II with MusyX",
+      "connectivity": "List Audio/video output AV Multi port Composite S-Video[d] SCART[e] Component (early models)[f] D-terminal (early models)[g] Optical audio (early models)[h] Other Ethernet and dialup (requires broadband or modem adapter)",
+      "online_services": "LAN Phantasy Star Online Homeland GameCube online functionality",
+      "best_selling_game": "Super Smash Bros. Melee (7.09 million)[i] (list)",
+      "predecessor": "Nintendo 64",
+      "successor": "Wii",
+      "wikidata_id": "53525",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/GameCube",
+      "release_dates": "JP: September 14, 2001NA: November 18, 2001EU: May 3, 2002AU: May 17, 2002"
     },
     {
       "id": "colecovision",
@@ -397,7 +598,7 @@
       "manufacturer": "Coleco",
       "release_year": 1982,
       "origin_country": "Estados Unidos",
-      "description": "O ColecoVision é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "ColecoVision é um console de videogame doméstico de segunda geração, desenvolvido pela Coleco e lançado em 1982. Ficou conhecido por oferecer portes fiéis de jogos de arcade para o ambiente doméstico, como Donkey Kong e Zaxxon.",
       "curiosities": [
         "O ColecoVision oferecia a experiência de arcade mais fiel de sua época, com ports quase idênticos aos fliperamas.",
         "Vinha com o clássico \"Donkey Kong\" incluído na memória, cortesia da licença com a Nintendo.",
@@ -422,7 +623,21 @@
         "MAME",
         "ColEm",
         "blueMSX"
-      ]
+      ],
+      "wikidata_id": "7306",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/ColecoVision",
+      "type": "console",
+      "generation": "2ª Geração",
+      "discontinued": "August 1985 40 years ago (1985-08)",
+      "media": "ROM cartridge",
+      "cpu": "Zilog Z80A @ 3.58 MHz",
+      "memory": "1 KB scratchpad RAM16 KB video RAM8 KB ROM",
+      "storage": "8/16/24/32 KB",
+      "graphics": "TMS9928A (NTSC)TMS9929A (PAL)",
+      "sound": "SN76489",
+      "best_selling_game": "Donkey Kong (pack-in)",
+      "predecessor": "Coleco Telstar series (1978)",
+      "release_dates": "NA: August 1982 43 years ago (1982-08)EU: July 1983 42 years ago (1983-07)"
     },
     {
       "id": "dos",
@@ -461,7 +676,7 @@
       "manufacturer": "Commodore",
       "release_year": 1982,
       "origin_country": "Estados Unidos",
-      "description": "O Commodore 64 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Commodore 64, também designado por C64 ou CBM 64, foi um computador doméstico exibido pela primeira vez em janeiro de 1982 e lançado pela Commodore International em agosto do mesmo ano. Foi listado pelo Guinness World Records como o modelo de computador mais vendido de todos os tempos, com estimativas independentes indicando cerca de 17 milhões de unidades vendidas. Seu preço comercial inicial foi de 595 dólares.",
       "curiosities": [
         "O Commodore 64 é o computador doméstico mais vendido da história, com mais de 12 milhões de unidades.",
         "Seu chip de som SID (Sound Interface Device) era tão avançado que possui uma cena musical ativa até hoje (SID music).",
@@ -484,7 +699,21 @@
         "VICE",
         "CCS64",
         "Frodo"
-      ]
+      ],
+      "type": "computer",
+      "launch_price": null,
+      "discontinued": "April 1994; 32 years ago (1994-04)",
+      "os": "Commodore KERNAL/BASIC 2.0GEOS (optionally)",
+      "cpu": "MOS Technology 6510/8500@ 1.023 MHz (NTSC version)@ 0.985 MHz (PAL version)",
+      "memory": "64 KB RAM + 20 KB ROM",
+      "graphics": "VIC-II (320×200, 16 colors, sprites, raster interrupt)",
+      "sound": "SID 6581/8580 (3× osc, 4× wave, filter, ADSR, ring)",
+      "connectivity": "2× CIA 6526 (joystick, GPIO/RS-232/keyboard) Power (+5V DC & 9V AC) ROM cartridge Video/audio (RF/A/V) Serial IEEE 488 bus (floppy disk/printer) Digital tape",
+      "predecessor": "VIC-20MAX Machine",
+      "successor": "Commodore 128Amiga",
+      "wikidata_id": "7293",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Commodore_64",
+      "release_dates": "August 1982 43 years ago (1982-08)"
     },
     {
       "id": "sony_psp",
@@ -494,7 +723,7 @@
       "manufacturer": "Sony",
       "release_year": 2004,
       "origin_country": "Japão",
-      "description": "O Sony PSP é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "PlayStation Portable (PSP) é um console portátil de jogos eletrônicos desenvolvido e comercializado pela Sony Computer Entertainment. Foi lançado inicialmente no Japão em 12 de dezembro de 2004, na América do Norte em 24 de março de 2005 e nas regiões PAL em 1º de setembro de 2005, sendo o primeiro console portátil da linha PlayStation. Como um console de sétima geração, o PSP competiu com o DS da Nintendo.",
       "curiosities": [
         "O PSP foi o primeiro portátil a usar UMD (Universal Media Disc), uma mídia óptica proprietária de 1.8 GB.",
         "Sua tela widescreen de 4.3 polegadas era considerada enorme para um portátil em 2004.",
@@ -506,7 +735,27 @@
       ],
       "emulators": [
         "PPSSPP"
-      ]
+      ],
+      "wikidata_id": "619009",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_Portable",
+      "type": "Handheld game console",
+      "generation": "7ª Geração",
+      "release_dates": "2004–2014",
+      "launch_price": null,
+      "discontinued": "NA: January 2014JP: June 2014PAL: December 2014",
+      "media": "UMD (except PSP Go), digital distribution",
+      "os": "PlayStation Portable system software",
+      "cpu": "222–333 MHz MIPS32 R4000-based",
+      "memory": "32 MB (PSP-1000); 64 MB (2000, 3000, Go, E1000) (system RAM) 2 MB (video RAM)",
+      "storage": "Memory Stick Duo, Memory Stick PRO Duo, PSP Go: Memory Stick Micro (M2) and 16 GB flash memory",
+      "display": "4.3-inch (110 mm), 480 × 272 pixels with 24-bit color, 30:17 widescreen TFT LCD, PSP Go: 3.8 in (97 mm), other models: 4.3 in (110 mm)",
+      "graphics": "Custom Rendering Engine + Surface Engine GPU, 2.6 GFLOPS",
+      "sound": "Stereo speakers, mono speaker (PSP-E1000), 3.5 mm headphone jack",
+      "connectivity": "Wi-Fi (802.11b) (except PSP-E1000), IrDA (PSP-1000), USB, Bluetooth (PSP Go)",
+      "online_services": "PlayStation Network",
+      "best_selling_game": "Grand Theft Auto: Liberty City Stories (8 million) (list)",
+      "predecessor": "PocketStation",
+      "successor": "PlayStation Vita"
     },
     {
       "id": "pc_88",
@@ -516,7 +765,7 @@
       "manufacturer": "NEC",
       "release_year": 1981,
       "origin_country": "Japão",
-      "description": "O PC-88 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O NEC PC-8801 foi um computador pessoal, fabricado pela Nippon Electric Company e lançado em 1981, era baseado em no processador 8 bits Zilog Z80.",
       "curiosities": [
         "O PC-88 foi um dos primeiros computadores japoneses a suportar gráficos coloridos, tornando-se referência para jogos eroge e visual novels.",
         "A série PC-8801 foi fabricada pela NEC e dominou o mercado japonês nos anos 80, rivalizando com o MSX.",
@@ -530,7 +779,19 @@
         "MAME",
         "Neko Project II",
         "XM8"
-      ]
+      ],
+      "wikidata_id": "948317",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/PC-8800_series",
+      "type": "Home computer",
+      "release_dates": "November 1981 44 years ago (1981-11)",
+      "os": "N-88 BASIC",
+      "cpu": "NEC μPD780C-1 @ 4 MHz and higher",
+      "memory": "64 kilobytes and higher",
+      "display": "Text 80 × 25, graphics 160 × 100, 8 colors (and higher)",
+      "graphics": "SGP",
+      "sound": "Internal beeper (and higher)",
+      "predecessor": "PC-8000 series",
+      "successor": "PC-9800 series"
     },
     {
       "id": "pc_98",
@@ -540,7 +801,7 @@
       "manufacturer": "NEC",
       "release_year": 1982,
       "origin_country": "Japão",
-      "description": "O PC-98 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "PC-98 (PC98) é um acrônimo referente à série de computadores NEC PC-9800, um modelo de computador pessoal de origem japonesa. Foi fabricado em 1982, o primeiro da série de computadores pessoais PC-98 de 16 e 32 bit. A plataforma estabelecida pela NEC dominou o mercado de computadores pessoais japoneses, e em 1999, mais de 18 milhões de unidades do PC-98 haviam sido vendidas.",
       "curiosities": [
         "O PC-98 da NEC foi o computador pessoal dominante no Japão durante as décadas de 80 e 90, com uma biblioteca massiva de jogos exclusivos.",
         "Muitos jogos clássicos da franquia Touhou Project foram originalmente lançados para PC-98.",
@@ -556,7 +817,15 @@
         "Neko Project II",
         "T98-Next",
         "MAME"
-      ]
+      ],
+      "wikidata_id": "1917508",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/PC-98",
+      "type": "Personal computers",
+      "release_dates": "October 1982 43 years ago (1982-10)",
+      "discontinued": "September 30, 2003; 22 years ago (2003-09-30)",
+      "os": "N88-BASIC(86), CP/M-86, MS-DOS, Windows, OS/2, PC-UX",
+      "cpu": "Intel 8086, 80286, i386, i486, NEC V30, i586",
+      "predecessor": "PC-8800 series"
     },
     {
       "id": "daphne",
@@ -590,11 +859,10 @@
       "manufacturer": "Apple",
       "release_year": 1977,
       "origin_country": "Estados Unidos",
-      "description": "O Apple II é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Apple II foi um modelo de computador pessoal fabricado pela empresa Apple Inc no final da década de 1970, sendo vendido a partir de Junho de 1977, equipado com interface para fitas cassetes de áudio e controlador de vídeo com NTSC e um modulador RF para televisão.",
       "curiosities": [
         "O Apple II foi um dos primeiros computadores pessoais com suporte a gráficos coloridos e som integrado.",
-        "A planilha eletrônica VisiCalc, criada originalmente para Apple II, foi o \"aplicativo matador\" que justificou a compra do computador para empresas.",
-        "Steve Wozniak projetou o Apple II quase sozinho, escrevendo o sistema operacional e o interpretador BASIC integrado."
+        "A planilha eletrônica VisiCalc, criada originalmente para Apple II, foi o \"aplicativo matador\" que justificou a compra do computador para empresas."
       ],
       "supported_extensions": [
         ".do",
@@ -605,7 +873,18 @@
         "AppleWin",
         "MAME",
         "LinApple"
-      ]
+      ],
+      "discontinued": "October 1993; 32 years ago (1993-10)",
+      "os": "Integer BASICApple DOSProDOSGS/OSGNO/ME",
+      "cpu": "6502 @ 1.023 MHz (II, II Plus, IIe)65C02 @ 1.023 MHz (Enhanced IIe, IIc)65C02 @ 1.023–4 MHz (IIc Plus)65C816 @ 2.8 MHz (IIGS)",
+      "storage": "Audio cassette5.25 inch floppy disk3.5 inch floppy disk",
+      "display": "NTSC video out (built-in RCA connector)",
+      "sound": "Internal beeper",
+      "predecessor": "Apple I",
+      "successor": "Apple III (intended)",
+      "wikidata_id": "2116",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Apple_II",
+      "release_dates": "June 1977 48 years ago (1977-06) (original Apple II)"
     },
     {
       "id": "doom",
@@ -641,7 +920,7 @@
       "manufacturer": "Nintendo",
       "release_year": 2004,
       "origin_country": "Japão",
-      "description": "O Nintendo DS é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Nintendo DS é um console de videogame portátil desenvolvido e produzido pela empresa de videogame Nintendo, lançado em 2004. Ele é visualmente distinto por seu design abre e fecha, e a presença de duas telas, sendo a inferior sensível ao toque. O sistema também possui um microfone embutido, e tem suporte a conexão sem-fio via Wireless Local, permitindo uma interação entre os jogadores dentro de uma pequena área, ou pelo Nintendo Wi-Fi Connection, que permite multiplayer online com jogadores de todo o mundo. Competiu com a PlayStation Portable da Sony.",
       "curiosities": [
         "O Nintendo DS vendeu impressionantes 154 milhões de unidades, tornando-se o console mais vendido da Nintendo (até o Switch).",
         "Sua tela dupla (sendo uma touchscreen) permitiu inovações como em \"The World Ends With You\" e \"Phoenix Wright\".",
@@ -656,7 +935,24 @@
         "MelonDS",
         "Drastic (Android)",
         "MelonDS (RetroArch)"
-      ]
+      ],
+      "type": "handheld",
+      "generation": "7ª Geração",
+      "launch_price": null,
+      "discontinued": "Yes; date undisclosed",
+      "media": "Nintendo DS Game CardGame Boy Advance Game Pak",
+      "cpu": "67 MHz ARM946E-S33 MHz ARM7TDMI",
+      "memory": "4 MB RAM",
+      "storage": "Cartridge save256 MB flash memory",
+      "display": "Two 3\" TFT LCDs, 256 × 192 pixels",
+      "connectivity": "Wi-Fi (802.11b)",
+      "online_services": "Nintendo Wi-Fi Connection",
+      "best_selling_game": "New Super Mario Bros. (30.80 million) (list)",
+      "predecessor": "Game Boy Advance",
+      "successor": "Nintendo 3DS",
+      "wikidata_id": "438022",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Nintendo_DS",
+      "release_dates": "November 21, 2004 DS: NA: November 21, 2004JP: December 2, 2004AU: February 24, 2005EU: March 11, 2005DS Lite: JP: March 2, 2006AU: June 1, 2006NA: June 11, 2006EU: June 23, 2006"
     },
     {
       "id": "sharp_x1",
@@ -666,7 +962,7 @@
       "manufacturer": "Sharp Corporation",
       "release_year": 1982,
       "origin_country": "Japão",
-      "description": "O Sharp X1 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O computador doméstico X1 foi o primeiro de uma bem-sucedida série de máquinas multimídia precoces vendidas no Japão entre 1982 e 1988 pela Sharp. Embora possua algumas características em comum com o Sharp MZ-2000, não é compatível com ele. Uma destas características era a inexistência de uma linguagem de programação residente em ROM, conceito que a Sharp denominava \"Clean Computer\": o BASIC tinham de ser carregados através de fita magnética.",
       "curiosities": [
         "O Sharp X1 foi um computador japonês dos anos 80 conhecido por sua arquitetura única e jogos exclusivos.",
         "Utilizava um sistema de cores peculiar com paletas separadas para texto e gráficos.",
@@ -681,7 +977,22 @@
         "MAME",
         "X1 Millennium",
         "XM8"
-      ]
+      ],
+      "type": "computer",
+      "launch_price": null,
+      "discontinued": "1987",
+      "media": "Compact Cassette or floppy disk",
+      "os": "Hu-BASIC, CP/M",
+      "cpu": "Sharp Z80 A @ 4 MHz",
+      "memory": "6 KB ROM, 64 KB RAM, 4–48 KB Video RAM",
+      "display": "Text: 40 or 80 × 25 characters; Graphics: 320 or 640 × 200; 8 colors",
+      "sound": "AY-3-8910 or Yamaha YM2149 (YM2151 in later revisions)",
+      "connectivity": "Printer port, joystick port, audio out",
+      "predecessor": "Sharp MZ series",
+      "successor": "X68000",
+      "wikidata_id": "2325792",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Sharp_X1",
+      "release_dates": "1982 (1982)"
     },
     {
       "id": "famicom_disk_system",
@@ -691,7 +1002,7 @@
       "manufacturer": "Nintendo",
       "release_year": 1986,
       "origin_country": "Japão",
-      "description": "O Famicom Disk System é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Family Computer Disk System , comumente encurtado para Famicom Disk System , e abreviado como FDS ou FCD é um dos sistemas utilizados pela Nintendo. Consiste no uso de disquetes como mídia para armazenamento de jogos. Este acessório era utilizado no Family Computer. A sua distribuição ocorreu somente no Japão, mas não foi bem sucedida devido aos problemas a que esse tipo de mídia está sujeita. Ele era colocado no slot do cartucho do Famicom, e rodava jogos de disquete, além de ser utilizado como computador.",
       "curiosities": [
         "O Famicom Disk System usava diskettes Quick Disk de 2.8 polegadas com capacidade de 128 KB por lado.",
         "Os diskettes permitiam saves nativos, algo revolucionário para a época, já que os cartuchos do NES não tinham bateria interna.",
@@ -704,7 +1015,17 @@
         "Mesen",
         "FCEUX",
         "Nestopia"
-      ]
+      ],
+      "type": "Video game console peripheral",
+      "generation": "3ª Geração",
+      "discontinued": "JP: 1993 (device)JP: September 30, 2003 (software)JP: October 31, 2007 (technical support)",
+      "media": "112 KB Disk Card",
+      "memory": "32 KB disk cache8 KB game RAM",
+      "sound": "1 extra channel of wavetable synth facilitated by Ricoh 2C33",
+      "successor": "SatellaviewNintendo 64DD",
+      "wikidata_id": "163805",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Famicom_Disk_System",
+      "release_dates": "JP: February 21, 1986 (1986-02-21)"
     },
     {
       "id": "vectrex",
@@ -714,7 +1035,7 @@
       "manufacturer": "General Consumer Electronics",
       "release_year": 1982,
       "origin_country": "Estados Unidos",
-      "description": "O Vectrex é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Vectrex foi um console de videogame de 8 bits, de 2ª geração, lançado em 1982 pela General Consumer Electronics (GCE) que, posteriormente, foi adquirido pela Milton Bradley Company.",
       "curiosities": [
         "O Vectrex é o único console doméstico que usava um monitor vetorial (como osciloscópio) em vez de raster.",
         "Vinha com um jogo integrado (Mine Storm) e seu display era monocromático, mas usava overlays de plástico colorido para simular cores.",
@@ -728,7 +1049,20 @@
         "ParaJVE",
         "DVE",
         "MAME"
-      ]
+      ],
+      "type": "console",
+      "generation": "2ª Geração",
+      "launch_price": null,
+      "discontinued": "February 1984",
+      "media": "ROM cartridge",
+      "cpu": "Motorola MC68A09 @ 1.5 MHz",
+      "memory": "1 KB",
+      "display": "9-inch cathode-ray tube (CRT)",
+      "graphics": "Vector-based",
+      "sound": "AY-3-8912",
+      "wikidata_id": "32729",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Vectrex",
+      "release_dates": "NA: October 1982EU: 1983JP: 1983"
     },
     {
       "id": "game_boy",
@@ -738,7 +1072,7 @@
       "manufacturer": "Nintendo",
       "release_year": 1989,
       "origin_country": "Japão",
-      "description": "O Game Boy é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Game Boy é um console portátil desenvolvido pela Nintendo, lançado em 21 de abril de 1989 no Japão, em 31 de julho de 1989 na América do Norte e em 28 de setembro de 1990 na Europa. É o primeiro console da linha Game Boy, foi criado por Gunpei Yokoi e pela Nintendo Research & Development 1, versões redesenhadas do console foram lançadas em 1996 e em 1998, o Game Boy Pocket e o Game Boy Light",
       "curiosities": [
         "O Game Boy vendeu mais de 118 milhões de unidades (somando todas as variantes), incluindo o Pocket e Color.",
         "Seu processador Z80-like rodava a apenas 4.19 MHz e a tela era um LCD reflexivo sem backlight monocromático de 4 tons de cinza.",
@@ -754,7 +1088,21 @@
         "VisualBoyAdvance",
         "mGBA",
         "Gambatte (RetroArch)"
-      ]
+      ],
+      "type": "handheld",
+      "generation": "4ª Geração",
+      "launch_price": null,
+      "discontinued": "March 31, 2003",
+      "media": "Game Boy Game Pak",
+      "cpu": "Sharp SM83 @ 4.2 MHz",
+      "memory": "8 KB RAM, 8 KB Video RAM",
+      "display": "Original: STN LCDPocket/Light: FSTN LCD160 × 144 px",
+      "best_selling_game": "Pokémon Red, Blue, and Yellow (46 million) (list)",
+      "predecessor": "Game & WatchComputer Mah-jong Yakuman",
+      "successor": "Game Boy Color",
+      "wikidata_id": "5591552",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Game_Boy",
+      "release_dates": "April 21, 1989 Game Boy:, JP: April 21, 1989NA: July 31, 1989EU: September 28, 1990Game Boy Pocket:, JP: July 20, 1996NA: September 2, 1996Game Boy Light:, JP: April 14, 1998"
     },
     {
       "id": "game_boy_advance",
@@ -764,11 +1112,10 @@
       "manufacturer": "Nintendo",
       "release_year": 2001,
       "origin_country": "Japão",
-      "description": "O Game Boy Advance é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Game Boy Advance é um console portátil desenvolvido e fabricado pela Nintendo. Lançado em 2001, é o sucessor do Game Boy Color e um dos últimos produtos da linha Game Boy. Seu codinome durante o processo de desenvolvimento foi Advance Game Boy. Ele continuou recebendo jogos até 2008.",
       "curiosities": [
         "O GBA era retrocompatível com jogos de Game Boy e Game Boy Color, formando a maior biblioteca de jogos de qualquer portátil até então.",
-        "O modelo SP (2003) introduziu tela iluminada frontalmente e bateria recarregável de íon-lítio, corrigindo a maior crítica ao modelo original.",
-        "Seu processador ARM7TDMI de 32 bits a 16.78 MHz permitia ports impressionantes de jogos de SNES e PlayStation."
+        "O modelo SP (2003) introduziu tela iluminada frontalmente e bateria recarregável de íon-lítio, corrigindo a maior crítica ao modelo original."
       ],
       "supported_extensions": [
         ".gba"
@@ -777,7 +1124,22 @@
         "mGBA",
         "VisualBoyAdvance-M",
         "Medusa (RetroArch)"
-      ]
+      ],
+      "type": "handheld",
+      "generation": "6ª Geração",
+      "launch_price": null,
+      "discontinued": "2010",
+      "media": "Game Boy Game PakGame Boy Color Game PakGame Boy Advance Game Pak",
+      "cpu": "ARM7TDMI @ 16.8 MHzSharp SM83 @ 4.2 / 8.4 MHz",
+      "memory": "288 KB RAM, 98 KB Video RAM",
+      "display": "Reflective TFT LCD, 240 × 160 px, 61.2 × 40.8 mm (2.41 × 1.61 in)",
+      "online_services": "JP: Mobile System GB",
+      "best_selling_game": "Pokémon Ruby and Sapphire (16 million) (list)",
+      "predecessor": "Game Boy Color",
+      "successor": "Nintendo DS",
+      "wikidata_id": "12430",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Game_Boy_Advance",
+      "release_dates": "March 21, 2001 JP: March 21, 2001NA: June 11, 2001PAL: June 22, 2001"
     },
     {
       "id": "game_boy_color",
@@ -787,7 +1149,7 @@
       "manufacturer": "Nintendo",
       "release_year": 1998,
       "origin_country": "Japão",
-      "description": "O Game Boy Color é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Game Boy Color é um console portátil de 8-bits, desenvolvido pela Nintendo e lançado em 21 de outubro de 1998 no Japão e em novembro em outros mercados. É o sucessor do Game Boy.",
       "curiosities": [
         "O Game Boy Color foi o primeiro portátil da Nintendo com tela colorida (LCD TFT de 56×256 pixels).",
         "Oferecia retrocompatibilidade total com a biblioteca do Game Boy original, com opção de aplicar paletas de 10 cores.",
@@ -801,7 +1163,23 @@
         "BGB",
         "SameBoy",
         "TGB Dual"
-      ]
+      ],
+      "type": "handheld",
+      "generation": "5ª Geração",
+      "launch_price": null,
+      "discontinued": "March 31, 2003 (2003-03-31)",
+      "media": "Game Boy Color Game PakGame Boy Game Pak",
+      "cpu": "Sharp SM83 @ 4.2 / 8.4 MHz",
+      "memory": "32 KB RAM, 16 KB Video RAM",
+      "display": "Reflective TFT LCD 160 × 144 px, 44 × 40 mm (1.7 × 1.6 in)",
+      "connectivity": "Infrared",
+      "online_services": "JP: Mobile System GB",
+      "best_selling_game": "Pokémon Gold and Silver (23 million) (list)",
+      "predecessor": "Game Boy",
+      "successor": "Game Boy Advance",
+      "wikidata_id": "13097",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Game_Boy_Color",
+      "release_dates": "JP: October 21, 1998NA: November 18, 1998EU: November 23, 1998AU: November 27, 1998"
     },
     {
       "id": "sega_genesis",
@@ -811,7 +1189,7 @@
       "manufacturer": "Sega",
       "release_year": 1988,
       "origin_country": "Japão",
-      "description": "O Sega Genesis é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Sega Genesis, conhecido como Mega Drive fora da América do Norte, é um console de videogame de 16 bits desenvolvido e comercializado pela Sega, sendo um sucessor do Master System. O console foi lançado em 1988 no Japão como Mega Drive e em 1989 na América do Norte como Genesis. No ano de 1990, foi distribuído na Europa pela Virgin Mastertronic, na Nova Zelândia e Austrália pela Ozisoft e pela Tec Toy no Brasil. Em Portugal, a consola foi distribuída pela Ecofilmes no último trimestre de 1991. Na Coreia do Sul, foi distribuído pela Samsung com o nome Super Gam*Boy e posteriormente como Super Aladdin Boy. Na Rússia, foi distribuído pela Forrus.",
       "curiosities": [
         "O Sega Genesis (Mega Drive) foi o primeiro console verdadeiramente 16-bit, lançado em 1988 no Japão, um ano antes do SNES.",
         "Seu processador Motorola 68000 a 7.67 MHz era significativamente mais rápido que o Z80 do Master System.",
@@ -828,7 +1206,24 @@
         "Gens",
         "Picodrive (RetroArch)",
         "Genesis Plus GX (RetroArch)"
-      ]
+      ],
+      "type": "console",
+      "generation": "4ª Geração",
+      "lifespan": "1988–1997 (Sega) 1998–1999 (Majesco) 1990–present (Tectoy)",
+      "launch_price": null,
+      "discontinued": "WW: 1997 (Sega)NA: 1999 (Majesco Entertainment)",
+      "media": "ROM cartridge",
+      "cpu": "Motorola 68000 @ 7.6 MHz Zilog Z80 @ 3.58 MHz",
+      "memory": "64 KB RAM, 64 KB VRAM, 8 KB audio RAM",
+      "display": "Progressive: 320×224, 256×224 (NTSC) or 320×240, 256×240 (PAL) pixels, 512 color palette, 61 colors on-screen Interlaced: 320×448, 256×448 (NTSC) or 320×480, 256×480 (PAL)",
+      "sound": "Yamaha YM2612 Texas Instruments SN76489",
+      "online_services": "Sega Meganet Sega Channel XBAND",
+      "best_selling_game": "Sonic the Hedgehog (15 million, pack-in) Sonic the Hedgehog 2 (6 million) (list)",
+      "predecessor": "Master System",
+      "successor": "Sega Saturn",
+      "wikidata_id": "2639573",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Sega_Genesis",
+      "release_dates": "1988–1997 (Sega) 1998–1999 (Majesco) 1990–present (Tectoy)"
     },
     {
       "id": "game_gear",
@@ -838,7 +1233,7 @@
       "manufacturer": "Sega",
       "release_year": 1990,
       "origin_country": "Japão",
-      "description": "O Game Gear é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "Game Gear é um console de videogame portátil, de 8 bits, desenvolvido e produzido pela Sega. Fazia parte da denominada \"4ª geração de consoles\" e surgiu em resposta ao portátil da Nintendo, o Game Boy. O portátil da Sega também tinha como concorrentes o Atari Lynx e o TurboExpress. O console foi descontinuado no Brasil e na Coreia do Sul em 1995.",
       "curiosities": [
         "O Game Gear consumia 6 pilhas AA que duravam apenas 3-4 horas, tornando seu uso portátil bastante limitado.",
         "Era essencialmente um Master System portátil com tela colorida, podendo jogar a mesma biblioteca via adaptador.",
@@ -851,7 +1246,22 @@
         "Kega Fusion",
         "SMS Plus",
         "Genesis Plus GX (RetroArch)"
-      ]
+      ],
+      "type": "Handheld video game console",
+      "generation": "4ª Geração",
+      "launch_price": null,
+      "discontinued": "WW: April 30, 1997 (Sega)NA: 2002 (Majesco Entertainment)",
+      "media": "ROM cartridge",
+      "cpu": "Zilog Z80 @ 3.5 MHz",
+      "memory": "8 KB RAM, 16 KB VRAM",
+      "display": "3.2 in (81 mm) backlit LCD, 160 × 144 px",
+      "graphics": "4,096-color palette, 32 colors on-screen",
+      "sound": "SN76489Mono speakerHeadphone jack",
+      "best_selling_game": "Sonic the Hedgehog 2 (400,000)",
+      "successor": "Genesis Nomad",
+      "wikidata_id": "29027",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Game_Gear",
+      "release_dates": "JP: October 6, 1990NA/EU: April 1991AU: 1992"
     },
     {
       "id": "playstation_2",
@@ -861,7 +1271,7 @@
       "manufacturer": "Sony",
       "release_year": 2000,
       "origin_country": "Japão",
-      "description": "O PlayStation 2 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O PlayStation 2 (PS2) é um console de jogos eletrônicos produzido e comercializado pela Sony Computer Entertainment. Sucessor do primeiro PlayStation, foi inicialmente lançado no Japão em 4 de março de 2000, na América do Norte em 26 de outubro, na Europa em 24 de novembro, na Austrália em 30 de novembro, e posteriormente nas demais regiões. No Brasil, foi lançado em meados de 2002, com seu lançamento oficial ocorrendo apenas em 15 de outubro de 2009. Como um console de sexta geração, competiu com o GameCube da Nintendo, Dreamcast da Sega e o Xbox da Microsoft. É o console de jogos eletrônicos mais vendido de todos os tempos, com mais de 160 milhões de unidades vendidas mundialmente, quase o triplo das vendas combinadas dos consoles concorrentes de sexta geração.",
       "curiosities": [
         "O PlayStation 2 é o console mais vendido da história com mais de 155 milhões de unidades.",
         "Seu Emotion Engine foi tão poderoso que governos compraram unidades para simulações científicas e militares.",
@@ -873,7 +1283,26 @@
       ],
       "emulators": [
         "PCSX2"
-      ]
+      ],
+      "wikidata_id": "15822958",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_2",
+      "type": "Home video game console",
+      "generation": "6ª Geração",
+      "release_dates": "4 March 2000 PlayStation 2JP: 4 March 2000NA: 26 October 2000EU: 24 November 2000AU/ZA: 30 November 2000HK: 13 December 2001TW: 24 January 2002KR: 22 February 2002RUS: 7 November 2002IND: 13 August 2003CHN: 1 January 2004PlayStation 2 SlimlineEU: 29 October 2004JP: 3 November 2004NA: 25 November 2004AU: 2 December 2004IND: 10 September 2008BRA: 15 October 2009",
+      "launch_price": null,
+      "discontinued": "JP: 28 December 2012 WW: 4 January 2013",
+      "media": "DVD, CD",
+      "cpu": "Emotion Engine @ ~294.912 MHz",
+      "memory": "32 MB RAM, 4 MB Video RAM",
+      "storage": "40 GB hard drive (optional)",
+      "display": "240p, 480i, 480p, 1080i",
+      "graphics": "Graphics Synthesizer @ 150 MHz",
+      "sound": "Audio output formats AV Multi: (2ch), (4ch), (5.1ch) Analog stereo Dolby Pro Logic / Pro Logic II (Analog) Optical audio: (2ch), (4ch), (5.1ch) Dolby Digital (video only) Dolby Pro Logic / Pro Logic II (Digital) DTS (video only) DTS Interactive Linear PCM (44.1 kHz, 48 kHz)",
+      "connectivity": "List Audio/video output AV Multi port (with stereo audio) Component Composite D&#x2011;Terminal SCART/JP21 S&#x2011;Video VGA[b] Optical audio Other Ethernet/modem (early models require adaptor) 2 × USB 1.1 USB 2.0 i.LINK (early models) IR receiver (Slim model)",
+      "online_services": "Developer-run servers",
+      "best_selling_game": "Grand Theft Auto: San Andreas (17.33 million) (list)",
+      "predecessor": "PlayStation",
+      "successor": "PlayStation 3"
     },
     {
       "id": "intellivision",
@@ -883,7 +1312,7 @@
       "manufacturer": "Desconhecido",
       "release_year": 0,
       "origin_country": "Desconhecido",
-      "description": "O Intellivision é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "Intellivision I foi o primeiro console criado pela Mattel em 1980. Na época do seu lançamento, ele custava US$300. Ao todo, foram lançados 125 jogos para o console entre os anos de 1979 e 1989.",
       "curiosities": [
         "O Intellivision foi o primeiro console a competir diretamente com o Atari 2600, com gráficos superiores e som mais rico.",
         "Seu controle circular com discos numerados de 0-9 e teclas laterais era único e considerado complexo para a época.",
@@ -896,7 +1325,22 @@
         "Nostalgia",
         "MAME",
         "jzIntv"
-      ]
+      ],
+      "wikidata_id": "15309",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Intellivision",
+      "type": "Home video game console",
+      "generation": "2ª Geração",
+      "release_dates": "1979 (1979)—1990 (1990)",
+      "launch_price": null,
+      "discontinued": "1990 (1990)",
+      "media": "ROM cartridge",
+      "cpu": "GI CP1610",
+      "memory": "1K RAM, 6K ROM",
+      "display": "Standard TV, 159×96 resolution, 16 color palette",
+      "graphics": "Standard Television Interface Chip (STIC)",
+      "sound": "GI AY-3-8914 (three-channels, one noise generator)",
+      "online_services": "PlayCable",
+      "best_selling_game": "Las Vegas Poker & Blackjack 1.939 millionMajor League Baseball 1.085 million (as of June 1983)"
     },
     {
       "id": "atari_jaguar_cd",
@@ -906,7 +1350,7 @@
       "manufacturer": "Desconhecido",
       "release_year": 0,
       "origin_country": "Desconhecido",
-      "description": "O Atari Jaguar CD é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "Jaguar CD foi um periférico que permitia ao console de videogame de video Atari Jaguar utilizar CD-ROM como mídia de armazenamento de jogos, lançado em 1995.",
       "curiosities": [
         "O Jaguar CD foi um periférico lançado em 1995 que adicionava leitor de CD-ROM ao Atari Jaguar.",
         "Apenas 13 jogos foram lançados no formato CD para o Jaguar, tornando-o uma das bibliotecas mais raras da história.",
@@ -917,7 +1361,15 @@
       ],
       "emulators": [
         "Virtual Jaguar"
-      ]
+      ],
+      "wikidata_id": "34847924",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_Jaguar_CD",
+      "type": "Video game console peripheral",
+      "generation": "5ª Geração",
+      "release_dates": "September 21, 1995",
+      "launch_price": null,
+      "discontinued": "1996",
+      "media": "CD-ROM"
     },
     {
       "id": "atari_lynx",
@@ -941,7 +1393,19 @@
         "Handy",
         "Mednafen",
         "Felix"
-      ]
+      ],
+      "type": "Handheld game console",
+      "generation": "4ª Geração",
+      "release_dates": "1989–1995",
+      "launch_price": null,
+      "discontinued": "1995",
+      "media": "ROM cartridge",
+      "cpu": "\"Mikey\" (VLSI VL65NC02 8-bit CPU + Sound processor + LCD driver)",
+      "memory": "64 KB RAM",
+      "display": "Backlit 3.5\" color LCD; 160 × 102 standard resolution (16,320 addressable pixels)",
+      "graphics": "\"Suzy\" (16-bit custom CMOS)",
+      "sound": "4 channels, 8-bit DAC or PSG sound",
+      "best_selling_game": "RoadBlasters"
     },
     {
       "id": "sega_naomi",
@@ -985,7 +1449,18 @@
       "emulators": [
         "MAME",
         "Handheld Electronic (RetroArch)"
-      ]
+      ],
+      "type": "Handheld electronic games",
+      "generation": "2ª Geração",
+      "release_dates": "28 April 1980 (1980-04-28)",
+      "launch_price": null,
+      "discontinued": "1991",
+      "cpu": "Sharp SM5xx",
+      "memory": "260 B RAM",
+      "storage": "1,792 B ROM",
+      "display": "Segmented liquid-crystal display",
+      "best_selling_game": "Donkey Kong (8 million)",
+      "successor": "Game Boy"
     },
     {
       "id": "pokémon_mini",
@@ -1008,7 +1483,17 @@
       "emulators": [
         "PokeMini",
         "MAME"
-      ]
+      ],
+      "type": "Handheld game console",
+      "generation": "6ª Geração",
+      "release_dates": "NA: November 16, 2001JP: December 14, 2001EU: March 15, 2002",
+      "launch_price": null,
+      "discontinued": "2002",
+      "media": "ROM cartridge",
+      "cpu": "S1C88 @ 4 MHz",
+      "memory": "4 KB SRAM",
+      "storage": "4 KB BIOS ROM, 8 KB EEPROM (6 save \"files\")",
+      "display": "Monochrome LCD, 96 × 64 px"
     },
     {
       "id": "atari_st",
@@ -1033,7 +1518,17 @@
         "Hatari",
         "Steem SSE",
         "Aranym"
-      ]
+      ],
+      "type": "Personal computer",
+      "release_dates": "June 1985 40 years ago (1985-06)",
+      "launch_price": "US$799.99 / US$999.99",
+      "discontinued": "1993; 33 years ago (1993)",
+      "os": "Digital Research's GEM on Atari TOS",
+      "cpu": "68000 @ 8+ MHz",
+      "memory": "512 KB to 4 MB",
+      "graphics": "320 × 200 (16 colors), 640 × 200 (4 colors), 640 × 400 (monochrome)",
+      "sound": "YM2149F",
+      "predecessor": "Atari 8-bit computers"
     },
     {
       "id": "msx",
@@ -1043,7 +1538,7 @@
       "manufacturer": "Microsoft / ASCII",
       "release_year": 1983,
       "origin_country": "Japão",
-      "description": "O MSX é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "MSX é uma arquitetura padronizada de microcomputadores pessoais, anunciada pela ASCII Corporation em 16 de junho de 1983. Foi inicialmente concebido pela Microsoft como um produto para o mercado japonês, e comercializado em conjunto por Kazuhiko Nishi, à época diretor da ASCII Corporation.",
       "curiosities": [
         "O MSX foi um padrão de computador doméstico criado pela Microsoft (Kazuhiko Nishi) e ASCII Corporation, com vários fabricantes.",
         "Metal Gear (1987) foi lançado originalmente para MSX2, antes de suas versões para NES e outros sistemas.",
@@ -1057,7 +1552,16 @@
         "openMSX",
         "C-BIOS",
         "MSX.emu"
-      ]
+      ],
+      "wikidata_id": "156210",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/MSX",
+      "type": "Home computer",
+      "release_dates": "October 21, 1983 (MSX)",
+      "discontinued": "1993 (MSX turboR)",
+      "os": "MSX BASIC, MSX-DOS",
+      "cpu": "Zilog Z80 or equivalent (MSX1, MSX2, MSX2+)R800 (Turbo R)",
+      "memory": "8–64 KB maximum (MSX1)64-512 KB, expandable to up to 4 MB via memory mapper cartridge (MSX2 and higher)",
+      "graphics": "TMS9918 or equivalent (MSX1)Yamaha V9938 (MSX2)Yamaha V9958 (MSX2+ and Turbo R)"
     },
     {
       "id": "msx2",
@@ -1067,7 +1571,7 @@
       "manufacturer": "MSX Licensing Corporation",
       "release_year": 1985,
       "origin_country": "Japão",
-      "description": "O MSX2 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "MSX é uma arquitetura padronizada de microcomputadores pessoais, anunciada pela ASCII Corporation em 16 de junho de 1983. Foi inicialmente concebido pela Microsoft como um produto para o mercado japonês, e comercializado em conjunto por Kazuhiko Nishi, à época diretor da ASCII Corporation.",
       "curiosities": [
         "O MSX2 melhorou significativamente o MSX original com resolução de vídeo de 512×212 e paleta de 512 cores.",
         "Sua biblioteca inclui clássicos como Snatcher (Hideo Kojima) e Aleste, com gráficos comparáveis ao PC Engine.",
@@ -1080,7 +1584,16 @@
         "blueMSX",
         "openMSX",
         "C-BIOS"
-      ]
+      ],
+      "wikidata_id": "156210",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/MSX",
+      "type": "Home computer",
+      "release_dates": "October 21, 1983 (MSX)",
+      "discontinued": "1993 (MSX turboR)",
+      "os": "MSX BASIC, MSX-DOS",
+      "cpu": "Zilog Z80 or equivalent (MSX1, MSX2, MSX2+)R800 (Turbo R)",
+      "memory": "8–64 KB maximum (MSX1)64-512 KB, expandable to up to 4 MB via memory mapper cartridge (MSX2 and higher)",
+      "graphics": "TMS9918 or equivalent (MSX1)Yamaha V9938 (MSX2)Yamaha V9958 (MSX2+ and Turbo R)"
     },
     {
       "id": "nintendo_64",
@@ -1093,7 +1606,6 @@
       "description": "O Nintendo 64 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
       "curiosities": [
         "O Nintendo 64 foi o primeiro console com controle analógico (tridimensional) integrado ao gamepad.",
-        "Manteve o uso de cartuchos (em vez de CD), o que limitava armazenamento mas eliminava loading times.",
         "Super Mario 64 estabeleceu o padrão de design para jogos 3D que influencia desenvolvedores até hoje."
       ],
       "supported_extensions": [
@@ -1108,7 +1620,21 @@
         "Mupen64Plus",
         "RMG",
         "Parallel RDP (RetroArch)"
-      ]
+      ],
+      "type": "Home video game console",
+      "generation": "5ª Geração",
+      "release_dates": "June 21, 1996 JP: June 21, 1996NA: September 27, 1996EU/AU: December 20, 1996CHL/BR: December 10, 1997",
+      "launch_price": null,
+      "discontinued": "2002",
+      "media": "Nintendo 64 Game Pak64DD magnetic disc",
+      "cpu": "NEC VR4300 @ 93.75 MHz",
+      "memory": "4 MB RDRAM (8 MB with Expansion Pak)",
+      "graphics": "SGI RCP @ 62.5 MHz",
+      "sound": "16-bit, 44.1 kHz stereoDolby Pro Logic surround (select games)",
+      "online_services": "JP: RandnetUS: SharkWire Online (third-party)",
+      "best_selling_game": "Super Mario 64 (11.62 million) (list)",
+      "predecessor": "Super Nintendo Entertainment System",
+      "successor": "GameCube"
     },
     {
       "id": "nintendo_switch",
@@ -1135,7 +1661,24 @@
         "Ryujinx",
         "Yuzu",
         "SuYU"
-      ]
+      ],
+      "type": "Video game console",
+      "generation": "Eighth / Ninth[a]",
+      "release_dates": "Original: March 3, 2017Lite: September 20, 2019OLED: October 10, 2021",
+      "launch_price": "US$299.99 / US$199.99 / US$349.99",
+      "media": "Game carddigital distribution",
+      "os": "Nintendo Switch system software",
+      "cpu": "Quad-core ARM Cortex-A57[d] @ 1.02 GHz[e]",
+      "memory": "4 GB LPDDR4",
+      "storage": "Original/Lite: 32 GB eMMCOLED: 64 GB eMMC",
+      "display": "Original: 6.2-in, IPS (237 ppi), 720pLite: 5.5-in, IPS (267 ppi), 720pOLED: 7-in, OLED (210 ppi), 720pDocked: 480p/720p/1080p via HDMI",
+      "graphics": "256 Maxwell-based CUDA coresDocked: 768 MHz, 393 GFLOPSUndocked: 384 MHz, 197 GFLOPS[f]",
+      "sound": "Undocked: Linear PCM 2.0 ch stereo speakers (with pseudo-surround)Docked: Linear PCM 5.1 ch",
+      "connectivity": "Wi-Fi 5 @ 2.4/5 GHzBluetooth 4.11 × USB-CHeadphone jack Dock Nintendo Switch 3 × USB 2.0 Nintendo Switch – OLED Model 2 × USB 2.0 1 x Ethernet",
+      "online_services": "Nintendo eShopNintendo Switch Online",
+      "best_selling_game": "Mario Kart 8 Deluxe (70.59 million, as of December 31, 2025[update]) (list)",
+      "predecessor": "Nintendo 3DSWii U",
+      "successor": "Nintendo Switch 2"
     },
     {
       "id": "neo_geo",
@@ -1159,7 +1702,20 @@
         "MAME",
         "NeoCD",
         "NeoGeo EMU"
-      ]
+      ],
+      "type": "Arcade system board, Home video game console",
+      "generation": "4ª Geração",
+      "release_dates": "April 16, 1990 JP: April 16, 1990 (MVS)JP: April 26, 1990 (AES)NA: August 22, 1990 (MVS)AU: August 1990 (MVS)NA: July 1, 1991 (AES)EU: 1991",
+      "launch_price": "US$649.99",
+      "discontinued": "1997",
+      "media": "ROM cartridge",
+      "cpu": "Motorola 68000 @ 12 MHz, Zilog Z80A @ 4 MHz",
+      "memory": "64 KB RAM, 84 KB VRAM, 2 KB sound memory",
+      "storage": "Memory card",
+      "display": "320×224 resolution, 3840 on-screen colors out of a palette of 65536",
+      "sound": "Yamaha YM2610",
+      "best_selling_game": "Samurai Shodown",
+      "successor": "Neo Star (cancelled), Hyper Neo Geo 64"
     },
     {
       "id": "nes",
@@ -1186,7 +1742,21 @@
         "Nestopia",
         "Mesen 2",
         "FCEUmm (RetroArch)"
-      ]
+      ],
+      "type": "Home video game console",
+      "generation": "3ª Geração",
+      "release_dates": "July 15, 1983 JP: July 15, 1983NA: October 18, 1985[a]EU: September 1, 1986[b]UK/IRE/ITA/AU: 1987[c]IND/TW: 1987KOR: 1989CHL: 1991ZA: 1993BRA: March 1993[d]",
+      "launch_price": null,
+      "discontinued": "NA/EU/AU: August 14, 1995 (1995-08-14)BRA/KOR/TW: Early/Mid 2003JP: September 25, 2003 (2003-09-25)",
+      "media": "Nintendo Entertainment System Game Pak",
+      "cpu": "Ricoh 2A03 @ 1.79 MHzRicoh 2A07 @ 1.66 MHz[e]",
+      "memory": "2 KB work RAM, 2 KB video RAM, 256 bytes sprite RAM",
+      "display": "256 × 240 px",
+      "graphics": "PPU (Ricoh 2C02)",
+      "sound": "APU, 5 channels: 2 pulse wave, triangle wave, white noise, DPCM",
+      "best_selling_game": "Pack-in: Super Mario Bros. (40 million) Standalone: Super Mario Bros. 3 (18 million) (list)",
+      "predecessor": "Color TV-Game",
+      "successor": "Super Nintendo Entertainment System"
     },
     {
       "id": "neo_geo_pocket_color",
@@ -1209,7 +1779,17 @@
         "NeoPop",
         "Mednafen",
         "Beetle NGPC (RetroArch)"
-      ]
+      ],
+      "type": "Handheld game console",
+      "generation": "5ª Geração",
+      "release_dates": "Neo Geo Pocket: JP: October 28, 1998Neo Geo Pocket Color: JP: March 19, 1999NA: August 6, 1999EU: October 1, 1999New Neo Geo Pocket Color: JP: October 21, 1999",
+      "launch_price": "US$69.95",
+      "discontinued": "NA/EU: June 13, 2000JP: October 30, 2001",
+      "media": "ROM cartridge",
+      "cpu": "Toshiba TLCS900H core (16-bit) @ 6.144 MHz, Zilog Z80 @ 3.072 MHz for sound",
+      "memory": "12 KB RAM for 900/H, 4 KB RAM for Z80, 64 KB ROM",
+      "display": "2.7\", 160×152 resolution, 146 colors on screen out of a palette of 4,096",
+      "sound": "T6W28 (enhanced SN76489), 6-bit DACs"
     },
     {
       "id": "neo_geo_pocket",
@@ -1231,7 +1811,17 @@
       "emulators": [
         "NeoPop",
         "Mednafen"
-      ]
+      ],
+      "type": "Handheld game console",
+      "generation": "5ª Geração",
+      "release_dates": "Neo Geo Pocket: JP: October 28, 1998Neo Geo Pocket Color: JP: March 19, 1999NA: August 6, 1999EU: October 1, 1999New Neo Geo Pocket Color: JP: October 21, 1999",
+      "launch_price": "US$69.95",
+      "discontinued": "NA/EU: June 13, 2000JP: October 30, 2001",
+      "media": "ROM cartridge",
+      "cpu": "Toshiba TLCS900H core (16-bit) @ 6.144 MHz, Zilog Z80 @ 3.072 MHz for sound",
+      "memory": "12 KB RAM for 900/H, 4 KB RAM for Z80, 64 KB ROM",
+      "display": "2.7\", 160×152 resolution, 146 colors on screen out of a palette of 4,096",
+      "sound": "T6W28 (enhanced SN76489), 6-bit DACs"
     },
     {
       "id": "lowres_nx",
@@ -1265,7 +1855,6 @@
       "description": "O Sinclair ZX81 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
       "curiosities": [
         "O ZX81 sucedeu o ZX80 e foi um dos computadores mais baratos de seu tempo, vendido como kit para montar por £49.95.",
-        "Usava o processador Z80A a 3.25 MHz, o mesmo que alimentava o Game Boy e muitos outros sistemas.",
         "Seu teclado de membrana era notoriamente desconfortável, mas o preço acessível tornou-o um sucesso de vendas no Reino Unido."
       ],
       "supported_extensions": [
@@ -1276,7 +1865,19 @@
         "EightyOne",
         "ZX81 (RetroArch)",
         "VB81"
-      ]
+      ],
+      "type": "Home computer",
+      "release_dates": "5 March 1981 45 years ago (1981-03-05)",
+      "launch_price": null,
+      "discontinued": "1984",
+      "os": "Sinclair BASIC",
+      "cpu": "Z80 @ 3.25 MHz",
+      "memory": "1 KB (64 KB max. 56 KB usable)",
+      "storage": "External Compact Cassette recorder at a claimed 250 bit/s or an average 300 bit/s",
+      "display": "Monochrome display on UHF television",
+      "graphics": "24 lines × 32 characters or, 64 × 48 pixels graphics mode",
+      "predecessor": "ZX80",
+      "successor": "ZX Spectrum"
     },
     {
       "id": "pico_8",
@@ -1289,8 +1890,7 @@
       "description": "O PICO-8 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
       "curiosities": [
         "O PICO-8 é uma \"fantasy console\" criada por Joseph White (Lexaloffle) com resolução de 128×128 pixels e paleta de 16 cores.",
-        "As limitações propositais (32 KB de código, 4 canais de som, 64 sprites) estimulam a criatividade de desenvolvedores.",
-        "Jogos como Celeste foram originalmente criados para PICO-8 em game jams antes de se tornarem sucessos comerciais."
+        "As limitações propositais (32 KB de código, 4 canais de som, 64 sprites) estimulam a criatividade de desenvolvedores."
       ],
       "supported_extensions": [
         ".p8",
@@ -1325,7 +1925,19 @@
         "BizHawk",
         "Ootake",
         "Beetle PCE (RetroArch)"
-      ]
+      ],
+      "type": "Home video game console",
+      "generation": "4ª Geração",
+      "release_dates": "1987–1994",
+      "discontinued": "FR: December 25, 1993NA: May 11, 1994JP: December 16, 1994",
+      "media": "HuCard",
+      "cpu": "HuC6280 @ 7.16 MHz",
+      "memory": "8 KB RAM64 KB Video RAM",
+      "display": "Composite or RF TV out; 565×242 or 256×239, 512 color palette, 482 colors on-screen",
+      "graphics": "HuC6270 VDCHuC6260 VCE",
+      "sound": "PSG, 5 to 10-bit stereo PCM",
+      "best_selling_game": "Bonk's Adventure",
+      "successor": "PC Engine SuperGrafxPC-FX"
     },
     {
       "id": "playstation_3",
@@ -1335,7 +1947,7 @@
       "manufacturer": "Sony",
       "release_year": 2006,
       "origin_country": "Japão",
-      "description": "O PlayStation 3 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O PlayStation 3 (PS3) é um console de jogos eletrônicos desenvolvido pela Sony Computer Entertainment (SCE). É o sucessor do PlayStation 2 e faz parte da marca PlayStation de consoles. O PS3 foi lançado inicialmente em 11 de novembro de 2006 no Japão, seguido por 17 de novembro na América do Norte e 23 de março de 2007 na Europa e Austrália. Competiu principalmente com o Xbox 360 da Microsoft e o Wii da Nintendo, como parte da sétima geração de consoles.",
       "curiosities": [
         "O PlayStation 3 usava o processador Cell (PowerPC-based) de 8 núcleos, tão complexo que muitos desenvolvedores tinham dificuldade de programar para ele.",
         "A Sony vendeu o PS3 com prejuízo inicial de $250 por unidade, apostando no retorno via royalties de jogos.",
@@ -1348,7 +1960,27 @@
       ],
       "emulators": [
         "RPCS3"
-      ]
+      ],
+      "type": "console",
+      "generation": "7ª Geração",
+      "launch_price": "US$499.99 / US$599.99",
+      "discontinued": "PAL: March 2016NA: October 2016JP: May 29, 2017 (2017-05-29)",
+      "media": "Blu-ray DVD CD Super Audio CD (some models) Digital distribution",
+      "os": "PlayStation 3 system software",
+      "cpu": "Cell Broadband Engine @ 3.2 GHz",
+      "memory": "256 MB XDR DRAM (system)256 MB GDDR3 SDRAM (graphics)",
+      "storage": "20500 GB hard disk or 16 GB eMMC",
+      "display": "480i, 480p, 576i, 576p, 720p, 1080i, 1080p",
+      "graphics": "RSX Reality Synthesizer @ 500 MHz",
+      "sound": "Audio output formats AV Multi: (2ch) Analog stereo Optical audio: (2ch, 5.1ch) AAC Dolby Digital DTS Linear PCM (44.1 kHz, 48 kHz, 88 kHz, 176.4 kHz) HDMI: (2ch, 5.1ch, 7.1ch) AAC Dolby Digital Dolby Digital Plus Dolby TrueHD* DTS DTS-HD High Resolution Audio DTS-HD Master Audio* Linear PCM (44.1 kHz, 48 kHz, 88 kHz, 96 kHz, 176.4 kHz, 192 kHz) *All models can decode Dolby TrueHD and DTS-HD Master Audio to be output as Linear PCM. Only \"Slim\" models can output the raw stream.",
+      "connectivity": "(details) Audio/video output AV Multi port (with stereo audio) Component Composite D-Terminal SCART S-Video HDMI 1.4[a] Optical audio Networking Gigabit Ethernet (10BASE-T, 100BASE-TX, 1000BASE-T) × 1 Wi-Fi (802.11b/g)*** Bluetooth 2.0 Inputs/outputs USB 2.0 × 2 (4 on original model) Flash card readers** Memory Stick SD/MMC CompactFlash ** Some original models *** Except 20 GB model",
+      "online_services": "PlayStation Network",
+      "best_selling_game": "Grand Theft Auto V (29.52 million) (list)",
+      "predecessor": "PlayStation 2",
+      "successor": "PlayStation 4",
+      "wikidata_id": "24951",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_3",
+      "release_dates": "JP: November 11, 2006 (2006-11-11)NA: November 17, 2006PAL: March 23, 2007"
     },
     {
       "id": "sony_playstation_2",
@@ -1358,7 +1990,7 @@
       "manufacturer": "Sony",
       "release_year": 2000,
       "origin_country": "Japão",
-      "description": "O Sony PlayStation 2 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O PlayStation 2 (PS2) é um console de jogos eletrônicos produzido e comercializado pela Sony Computer Entertainment. Sucessor do primeiro PlayStation, foi inicialmente lançado no Japão em 4 de março de 2000, na América do Norte em 26 de outubro, na Europa em 24 de novembro, na Austrália em 30 de novembro, e posteriormente nas demais regiões. No Brasil, foi lançado em meados de 2002, com seu lançamento oficial ocorrendo apenas em 15 de outubro de 2009. Como um console de sexta geração, competiu com o GameCube da Nintendo, Dreamcast da Sega e o Xbox da Microsoft. É o console de jogos eletrônicos mais vendido de todos os tempos, com mais de 160 milhões de unidades vendidas mundialmente, quase o triplo das vendas combinadas dos consoles concorrentes de sexta geração.",
       "curiosities": [
         "O PS2 foi lançado em 2000 com suporte a DVD, tornando-se um dos players de DVD mais baratos do mercado e impulsionando suas vendas.",
         "Seu Emotion Engine era tão flexível que foi usado no desenvolvimento do Supercomputer Cell do PS3.",
@@ -1369,7 +2001,25 @@
       ],
       "emulators": [
         "PCSX2"
-      ]
+      ],
+      "wikidata_id": "15822958",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_2",
+      "type": "console",
+      "generation": "6ª Geração",
+      "launch_price": null,
+      "discontinued": "JP: 28 December 2012 WW: 4 January 2013",
+      "media": "DVD, CD",
+      "cpu": "Emotion Engine @ ~294.912 MHz",
+      "memory": "32 MB RAM, 4 MB Video RAM",
+      "storage": "40 GB hard drive (optional)",
+      "display": "240p, 480i, 480p, 1080i",
+      "graphics": "Graphics Synthesizer @ 150 MHz",
+      "sound": "Audio output formats AV Multi: (2ch), (4ch), (5.1ch) Analog stereo Dolby Pro Logic / Pro Logic II (Analog) Optical audio: (2ch), (4ch), (5.1ch) Dolby Digital (video only) Dolby Pro Logic / Pro Logic II (Digital) DTS (video only) DTS Interactive Linear PCM (44.1 kHz, 48 kHz)",
+      "connectivity": "List Audio/video output AV Multi port (with stereo audio) Component Composite D&#x2011;Terminal SCART/JP21 S&#x2011;Video VGA[b] Optical audio Other Ethernet/modem (early models require adaptor) 2 × USB 1.1 USB 2.0 i.LINK (early models) IR receiver (Slim model)",
+      "online_services": "Developer-run servers",
+      "best_selling_game": "Grand Theft Auto: San Andreas (17.33 million) (list)",
+      "predecessor": "PlayStation",
+      "successor": "PlayStation 3"
     },
     {
       "id": "wii_u",
@@ -1379,7 +2029,7 @@
       "manufacturer": "Nintendo",
       "release_year": 2012,
       "origin_country": "Japão",
-      "description": "O Wii U é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "Wii U, conhecido oficialmente como Nintendo Wii U, é um console de videogames doméstico desenvolvido pela Nintendo como sucessor do Wii. Lançado no final de 2012, é o primeiro console de videogames da oitava geração e competiu com o Xbox One da Microsoft e o PlayStation 4 da Sony.",
       "curiosities": [
         "O Wii U vendeu apenas 13 milhões de unidades, sendo o console mais fracassado da Nintendo (até então).",
         "Seu GamePad com tela de 6.2 polegadas permitia jogo assimétrico entre o tablet e a TV.",
@@ -1392,7 +2042,27 @@
       ],
       "emulators": [
         "Cemu"
-      ]
+      ],
+      "type": "console",
+      "generation": "8ª Geração",
+      "launch_price": "US$299 / US$349",
+      "discontinued": "WW: January 31, 2017",
+      "media": "Physical and digital Wii U Optical Disc (25 GB) Wii Optical Disc (4.7 GB/8.54 GB) Digital distribution (Nintendo eShop)",
+      "os": "Wii U system software",
+      "cpu": "1.24 GHz tri-core IBM PowerPC \"Espresso\"",
+      "memory": "2 GB DDR3",
+      "storage": "Internal flash memory:8 GB (Basic Set) / 32 GB (Deluxe Set)",
+      "display": "Video output formats Composite video S-Video (480i) RGB SCART (480i, 576i) Component video YPBPR D-Terminal (480i, 480p, 720p, 1080i, 1080p) HDMI (480p, 720p, 1080i, 1080p) Wii U GamePad (FWVGA)",
+      "graphics": "550 MHz AMD Radeon-based \"Latte\"",
+      "sound": "5.1 linear PCM, analog stereo",
+      "connectivity": "Wi-Fi IEEE 802.11 b/g/nBluetooth 4.04 × USB 2.0",
+      "online_services": "Nintendo Network Nintendo eShop (discontinued) Miiverse (discontinued) Nintendo TVii (discontinued) Wii U Chat (discontinued)",
+      "best_selling_game": "Mario Kart 8, 8.46 million (list)",
+      "predecessor": "Wii",
+      "successor": "Nintendo Switch",
+      "wikidata_id": "31512491",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Wii_U",
+      "release_dates": "NA: November 18, 2012PAL: November 30, 2012JP: December 8, 2012"
     },
     {
       "id": "sega_saturn",
@@ -1402,7 +2072,7 @@
       "manufacturer": "Sega",
       "release_year": 1994,
       "origin_country": "Japão",
-      "description": "O Sega Saturn é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "Sega Saturn é um console de jogos eletrônicos de quinta geração, lançado pela empresa Sega em 22 de novembro de 1994 no Japão, 11 de maio de 1995 na América do Norte, 30 de agosto de 1995 no Brasil e 8 de julho na Europa. Foi o sucessor do bem sucedido Mega Drive. O Saturn tem uma arquitetura de CPU dupla e oito processadores. Seus jogos utilizam a mídia CD-ROM e sua biblioteca de jogos contou com várias portes de jogos de arcade e também jogos originais desenvolvidos para o console.",
       "curiosities": [
         "O Sega Saturn tinha uma arquitetura complexa com dois CPUs Hitachi SH-2 e 6 outros processadores dedicados.",
         "Foi um fracasso comercial no ocidente (9 milhões vendidos) mas fez sucesso no Japão, especialmente com jogos de luta e bullet hell.",
@@ -1417,7 +2087,25 @@
         "Yabause",
         "Kronos",
         "Beetle Saturn (RetroArch)"
-      ]
+      ],
+      "type": "console",
+      "generation": "5ª Geração",
+      "lifespan": "1994–2000",
+      "launch_price": null,
+      "discontinued": "EU: 1998NA: March 1998JP: 2000",
+      "media": "CD-ROM, CD+G, CD+EG, Video CD, Mini CD, Photo CD, e-book",
+      "cpu": "2× Hitachi SH-2 @ 28.6 MHz",
+      "memory": "2 MB RAM, 1.5 MB VRAM, 512 KB sound RAM, expandable with Extended RAM Cartridge",
+      "storage": "Internal RAM, cartridge",
+      "graphics": "VDP1 & VDP2 video display processors each running @ 28.63636 MHz",
+      "sound": "Yamaha YMF292",
+      "online_services": "Sega NetLink",
+      "best_selling_game": "Virtua Fighter 2, 1.7 million (list)",
+      "predecessor": "Sega Genesis",
+      "successor": "Dreamcast",
+      "wikidata_id": "29035",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Sega_Saturn",
+      "release_dates": "1994–2000"
     },
     {
       "id": "sinclair_zx_spectrum",
@@ -1427,10 +2115,9 @@
       "manufacturer": "Sinclair Research",
       "release_year": 1982,
       "origin_country": "Reino Unido",
-      "description": "O Sinclair ZX Spectrum é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Sinclair ZX Spectrum foi um dos mais influentes microcomputadores europeus de 8 bits durante a década de 1980. Foi lançado na Inglaterra em 1982 pela companhia Sinclair Research. Em Portugal a sua distribuição começou a ser feita pela Triudus e logo a seguir pela Landry. No Brasil, a empresa Microdigital produziu o TK-90X, um clone do modelo inglês, e o TK 95, um modelo cuja principal diferença era ser equipado com um teclado semiprofissional.",
       "curiosities": [
         "O ZX Spectrum foi o computador mais vendido no Reino Unido nos anos 80 e sua biblioteca de jogos é considerada uma das mais criativas.",
-        "Seu display de 256×192 pixels com atributos de cor por bloco de 8×8 causava o famoso \"color clash\", onde sprites mudavam de cor em contato com fundos.",
         "Sir Clive Sinclair, seu criador, também desenvolveu o C5, um veículo elétrico pessoal que foi um fracasso comercial."
       ],
       "supported_extensions": [
@@ -1444,7 +2131,23 @@
         "ZEsarUX",
         "Spectaculator",
         "Fuse (RetroArch)"
-      ]
+      ],
+      "type": "computer",
+      "generation": "8-bit",
+      "launch_price": "$200",
+      "discontinued": "1985/1992",
+      "media": "Compact Cassette, ZX Microdrive, 3-inch floppy disk on Spectrum +3",
+      "os": "Sinclair BASIC",
+      "cpu": "Z80A (or equivalent) @ 3.5 MHz",
+      "memory": "16 KB /48 KB /128 KB(IEC: KiB)",
+      "display": "PAL RF modulator out256 × 192, 15 colours",
+      "graphics": "ULA",
+      "sound": "Beeper, AY-3-8912 (128K models)",
+      "predecessor": "ZX81",
+      "successor": "QL, Sinclair PC200",
+      "wikidata_id": "34467",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/ZX_Spectrum",
+      "release_dates": "UK: 23 April 1982DE: 1983US: November 1983EU: 1984"
     },
     {
       "id": "sega_sg_1000",
@@ -1454,10 +2157,9 @@
       "manufacturer": "Sega",
       "release_year": 1983,
       "origin_country": "Japão",
-      "description": "O Sega SG-1000 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O SG-1000 foi um console de videogame da terceira geração, lançado em uma versão de testes pela Sega em 1981, e oficialmente para o mercado japonês em 1983.",
       "curiosities": [
         "O SG-1000 foi o primeiro console da Sega, lançado em 1983 no Japão, no mesmo dia que o Famicom da Nintendo.",
-        "Era essencialmente um SC-3000 (computador) sem teclado, usando o processador Z80A.",
         "Seus controles usavam conectores de 9 pinos que se tornariam padrão para toda a linha Sega (Master System, Genesis)."
       ],
       "supported_extensions": [
@@ -1467,7 +2169,20 @@
         "MAME",
         "blueMSX",
         "Genesis Plus GX (RetroArch)"
-      ]
+      ],
+      "type": "console",
+      "generation": "3ª Geração",
+      "discontinued": "SG-1000JP: July 1984SG-1000 IIJP: October 1985",
+      "media": "ROM cartridge, compact cassette, Sega My Card",
+      "cpu": "Zilog Z80A @ 3.58 MHz",
+      "memory": "1 KB RAM (SG-1000)2 KB RAM (SC-3000)16 KB VRAM",
+      "display": "256 × 192, 16 colors, 32 sprites",
+      "graphics": "Texas Instruments TMS9918A",
+      "sound": "Texas Instruments SN76489AN",
+      "successor": "Master System",
+      "wikidata_id": "290843",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/SG-1000",
+      "release_dates": "SG-1000/SC-3000JP: July 15, 1983AU: November 1983SG-1000 IIJP: July 31, 1984TW: 1986"
     },
     {
       "id": "master_system",
@@ -1477,7 +2192,7 @@
       "manufacturer": "Sega",
       "release_year": 1985,
       "origin_country": "Japão",
-      "description": "O Master System é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "Master System é um console de videogame de 8-bits produzido pela Sega, para concorrer com o Nintendo Entertainment System.",
       "curiosities": [
         "O Master System vendeu muito bem no Brasil (quase 8 milhões), onde a Tectoy o produziu localmente até os anos 2000.",
         "Era tecnicamente superior ao NES em vários aspectos (mais RAM, mais cores), mas perdeu a guerra de vendas para o console da Nintendo.",
@@ -1491,7 +2206,22 @@
         "Meka",
         "SMS Plus",
         "Genesis Plus GX (RetroArch)"
-      ]
+      ],
+      "type": "console",
+      "generation": "3ª Geração",
+      "lifespan": "JP: 1985–1991NA: 1986–1992EU: 1987–1996KO: 1988–1994BR: 1989–present[9]",
+      "launch_price": null,
+      "discontinued": "JP: 1991NA: 1992KO: 1994EU: 1996",
+      "media": "ROM cartridge, Sega Card",
+      "cpu": "Zilog Z80A @ 3.58 MHz",
+      "memory": "8 KB RAM16 KB VRAM",
+      "display": "256 × 192 resolution, 32 colors on-screen",
+      "sound": "Texas Instruments SN76489 PSG via VDP Yamaha YM2413[b]",
+      "predecessor": "SG-1000[b]",
+      "successor": "Sega Genesis",
+      "wikidata_id": "104168",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Master_System",
+      "release_dates": "JP: 1985–1991NA: 1986–1992EU: 1987–1996KO: 1988–1994BR: 1989–present"
     },
     {
       "id": "bbc_micro",
@@ -1501,10 +2231,9 @@
       "manufacturer": "Acorn Computers",
       "release_year": 1981,
       "origin_country": "Reino Unido",
-      "description": "O BBC Micro é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "BBC Microcomputer System é uma série de microcomputadores e periféricos associados desenhados e construídos pela Acorn Computers Ltd para o BBC Computer Literacy Project operado pela British Broadcasting Corporation.",
       "curiosities": [
         "O BBC Micro foi encomendado pela BBC para o projeto \"BBC Computer Literacy Project\", educando uma geração de programadores ingleses.",
-        "Foi o computador onde a palavra \"micro\" no nome referia-se ao processador 6502, o mesmo do Apple II.",
         "A lendária desenvolvedora Acorn usou o BBC Micro para prototipar a arquitetura ARM, que hoje domina o mercado mobile."
       ],
       "supported_extensions": [
@@ -1514,7 +2243,25 @@
         "BeebEm",
         "B-Em",
         "Model B (RetroArch)"
-      ]
+      ],
+      "type": "8-bit home computer",
+      "lifespan": "1981–1994",
+      "launch_price": null,
+      "discontinued": "1994; 32 years ago (1994)",
+      "media": "Cassette tape, floppy disk (optional) – 5+14-inch or (later) 3+12-inch, hard disk also known as 'Winchester' (rare), Laserdisc (BBC Domesday Project)",
+      "os": "Acorn MOS",
+      "cpu": "2 MHz MOS Technology 6502/6512",
+      "memory": "16–32 KiB (Model A/B)64–128 KiB (Model B+)128 KiB (Master)Plus 32–128 KB ROM, expandable to 272 KiB",
+      "storage": "100–800 KB (DFS)160–1280 KB (ADFS floppy disks)20 MB (ADFS hard disk)",
+      "display": "PAL/NTSC, UHF/composite/TTL RGB",
+      "graphics": "640×256, max. 8 colours (Motorola 6845, various framebuffer modes)78×75, 8 colours (Mullard SAA5050 Teletext chip)",
+      "sound": "Texas Instruments SN76489, 4 channels, monoTMS5220 speech synthesiser with phrase ROM (optional)",
+      "connectivity": "Printer parallel, RS-423 serial, user parallel, Econet (optional), 1 MHz bus, Tube second processor interface",
+      "predecessor": "Acorn Atom",
+      "successor": "Acorn Archimedes",
+      "wikidata_id": "18950885",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/BBC_Micro",
+      "release_dates": "1981–1994"
     },
     {
       "id": "scummvm",
@@ -1527,7 +2274,6 @@
       "description": "O ScummVM é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
       "curiosities": [
         "ScummVM não é um sistema, mas um motor de reimplementação que permite rodar aventuras gráficas clássicas em sistemas modernos.",
-        "Originalmente criado para rodar jogos SCUMM da LucasArts (Monkey Island, Day of the Tentacle), hoje suporta centenas de engines.",
         "O nome vem de \"Script Creation Utility for Maniac Mansion Virtual Machine\", o engine usado por Maniac Mansion."
       ],
       "supported_extensions": [
@@ -1545,7 +2291,7 @@
       "manufacturer": "Watara",
       "release_year": 1992,
       "origin_country": "Hong Kong",
-      "description": "O Watara Supervision é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Watara Supervision é um console portátil monocromático, original de Hong Kong, e foi introduzido em 1992 como concorrente do Game Boy.",
       "curiosities": [
         "O Watara Supervision foi um portátil chinês lançado em 1992 para competir com o Game Boy.",
         "Seu display LCD de 160×160 pixels era monocromático, com 4 tons de cinza, similar ao Game Boy.",
@@ -1557,7 +2303,17 @@
       "emulators": [
         "MAME",
         "Potator"
-      ]
+      ],
+      "type": "handheld",
+      "generation": "4ª Geração",
+      "launch_price": null,
+      "media": "ROM cartridge",
+      "cpu": "8-bit 65SC02 @ 4 MHz",
+      "display": "160×160 pixel resolution, 4 shades of grey",
+      "sound": "Mono speakerHeadphone jack",
+      "wikidata_id": "803181",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Watara_Supervision",
+      "release_dates": "1992"
     },
     {
       "id": "tic_80",
@@ -1570,8 +2326,7 @@
       "description": "O TIC-80 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
       "curiosities": [
         "O TIC-80 é uma \"fantasy computer\" gratuita e de código aberto com resolução de 240×136 pixels e 16 cores.",
-        "Suporta múltiplas linguagens de programação: Lua, Javascript, MoonScript, Fennel, Wren, Squirrel e Python.",
-        "Jogos criados no TIC-80 podem ser exportados como HTML para jogar no navegador."
+        "Suporta múltiplas linguagens de programação: Lua, Javascript, MoonScript, Fennel, Wren, Squirrel e Python."
       ],
       "supported_extensions": [
         ".tic"
@@ -1588,7 +2343,7 @@
       "manufacturer": "NEC",
       "release_year": 1994,
       "origin_country": "Japão",
-      "description": "O PC-FX é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O PC-FX é um console doméstico de 32 bits feito pela NEC.Foi lançado no Japão em 23 de dezembro de 1994,apenas algumas semanas após o PlayStation da Sony e um mês após o Sega Saturn.É o sucessor do PC Engine,conhecido como TurboGrafx-16 na América do Norte. Ao contrário de seu antecessor,o PC-FX só foi lançado no Japão.O console tem a forma de um PC em torre e foi projetado para ser atualizado de maneira semelhante.No entanto o PC-FX não possuía um chip gráfico baseado em polígonos 3D que tornava o sistema sem potência em comparação com seus concorrentes. Também era caro e carecia de suporte ao desenvolvedor e,como resultado, era incapaz de competir efetivamente com seus pares da quinta geração.O PC-FX foi o último console de videogame doméstico da NEC.",
       "curiosities": [
         "O PC-FX foi o último console da NEC, lançado em 1994 como sucessor do PC Engine.",
         "Usava exclusivamente CD-ROM como mídia e tinha foco em jogos com animações FMV (full motion video).",
@@ -1601,7 +2356,20 @@
         "Mednafen",
         "BizHawk",
         "MAME"
-      ]
+      ],
+      "type": "console",
+      "generation": "5ª Geração",
+      "discontinued": "JP: February 14, 1998",
+      "media": "CD-ROM",
+      "cpu": "NEC V810 @ 21.475 MHz",
+      "memory": "2 MB",
+      "display": "256x240 to 341x240, 16.77 million colors",
+      "graphics": "HuC6270, HuC6271",
+      "sound": "16-Bit stereo, two ADPCM Channels, six 5-Bit sample Channels",
+      "predecessor": "TurboDuo",
+      "wikidata_id": "24929",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/PC-FX",
+      "release_dates": "JP: December 23, 1994"
     },
     {
       "id": "virtual_boy",
@@ -1611,7 +2379,7 @@
       "manufacturer": "Nintendo",
       "release_year": 1995,
       "origin_country": "Japão",
-      "description": "O Virtual Boy é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Virtual Boy é um console de videogame portátil desenvolvido e lançado pela Nintendo em 1995. Promovido como o primeiro console capaz de renderizar gráficos 3D estereoscópicos, ele apresentava uma tela monocromática vermelha visualizada através de uma luneta binocular, com jogos que empregavam um efeito paralaxe para simular profundidade. O console teve dificuldades comerciais e seu desempenho limitado no mercado levou a Nintendo a descontinuar a produção e o desenvolvimento de jogos em 1996, após o lançamento de apenas 22 títulos.",
       "curiosities": [
         "O Virtual Boy foi o console mais fracassado da Nintendo, vendendo apenas 770 mil unidades em 1995-1996.",
         "Usava um display estereoscópico LED monocromático (vermelho) que projetava imagens 3D em cada olho.",
@@ -1625,7 +2393,19 @@
         "Mednafen",
         "VBjin",
         "Beetle VB (RetroArch)"
-      ]
+      ],
+      "wikidata_id": "21970",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Virtual_Boy",
+      "type": "Video game console",
+      "generation": "5ª Geração",
+      "release_dates": "1995–1996",
+      "launch_price": null,
+      "discontinued": "JP: December 22, 1995NA: August 1996BR: 1996",
+      "media": "ROM cartridge",
+      "cpu": "NEC V810 @ 20 MHz",
+      "memory": "64 KB work PSRAM, 128 KB graphics DRAM, 128 KB Video RAM",
+      "display": "384×224",
+      "best_selling_game": "Mario's Tennis (US pack-in game)"
     },
     {
       "id": "playstation_vita",
@@ -1647,7 +2427,23 @@
       "emulators": [
         "Vita3k",
         "Ryujinx (parcial)"
-      ]
+      ],
+      "type": "Handheld game console",
+      "generation": "8ª Geração",
+      "release_dates": "JP: December 17, 2011NA: February 15, 2012[a]EU: February 22, 2012Other regions: see[note 1]",
+      "launch_price": null,
+      "discontinued": "March 1, 2019",
+      "media": "PS Vita Card, digital distribution through PlayStation Network",
+      "os": "PlayStation Vita system software",
+      "cpu": "Quad-core ARM Cortex-A9 MPCore",
+      "memory": "512 MB RAM, 128 MB Video RAM",
+      "storage": "1 GB flash memory (PCH-2000 only)",
+      "display": "5-inch (16:9) OLED (PCH-1000)/LCD (PCH-2000) multi-touch capacitive touchscreen, approximately 17 million colors, 960 × 544 qHD @ 220 ppi",
+      "graphics": "Quad-core PowerVR SGX543MP4+",
+      "sound": "Stereo speakers, microphone, 3.5 mm headphone jack, Bluetooth",
+      "connectivity": "Wi-Fi (b/g/n), 3G, Bluetooth 2.1+EDR",
+      "online_services": "PlayStation Network",
+      "predecessor": "PlayStation Portable"
     },
     {
       "id": "wasm_4",
@@ -1679,7 +2475,7 @@
       "manufacturer": "Nintendo",
       "release_year": 2006,
       "origin_country": "Japão",
-      "description": "O Wii é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Nintendo Wii é um console de jogos eletrônicos doméstico de sétima geração desenvolvido e comercializado pela japonesa Nintendo. Foi lançado em 19 de novembro de 2006 como sucessor do console GameCube para competir com os consoles Xbox 360 da Microsoft e o PlayStation 3 da Sony, para assim atingir um público-alvo mais amplo que a concorrência. Desde sua estreia, o console superou seus concorrentes em vendas, e em dezembro de 2009, bateu o recorde de console mais vendido em um único mês nos Estados Unidos.",
       "curiosities": [
         "O Wii vendeu mais de 101 milhões de unidades, tornando-se o console mais vendido da Nintendo em sua época.",
         "Seu controle remoto (Wii Remote) com sensor de movimento popularizou os controles motion entre o público casual.",
@@ -1690,7 +2486,26 @@
       ],
       "emulators": [
         "Dolphin"
-      ]
+      ],
+      "type": "console",
+      "generation": "7ª Geração",
+      "launch_price": null,
+      "discontinued": "AU: November 2011JP: October 20, 2013EU: October 24, 2013 Revisions RVL-101 EU: October 24, 2013NA: May 2014",
+      "media": "Wii optical discGameCube game disc[a]Digital distribution[b]",
+      "os": "Wii system software",
+      "cpu": "IBM Broadway @ 729 MHz",
+      "memory": "24 MB 1T-SRAM + 64 MB GDDR3 SDRAM",
+      "storage": "512 MB flash memory",
+      "display": "Video output formats Composite video (480i, 576i (PAL)) S-Video (480i (NTSC consoles only)) RGB SCART (576i (PAL consoles only)) Component video (YPBPR) (480i, 576i (PAL), 480p)",
+      "graphics": "ATI Hollywood @ 243 MHz",
+      "connectivity": "Wi-Fi (802.11b/g)Bluetooth 2.02 × USB 2.0",
+      "online_services": "Nintendo Wi-Fi Connection[c]WiiConnect24[d]Wii Shop Channel[e]",
+      "best_selling_game": "Pack-in:[f] Wii Sports (82.9 million) Stand-alone: Mario Kart Wii (37.3 million) (list)",
+      "predecessor": "GameCube",
+      "successor": "Wii U",
+      "wikidata_id": "421853",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Wii",
+      "release_dates": "NA: November 19, 2006JP: December 2, 2006AU: December 7, 2006EU: December 8, 2006ZA: September 30, 2007KR: April 26, 2008TW: July 12, 2008IND: September 30, 2008HK: December 12, 2009 Revisions RVL-101NA: October 23, 2011EU: November 4, 2011AU: November 11, 2011 Wii Mini CAN: December 7, 2012EU: March 22, 2013USA: November 17, 2013"
     },
     {
       "id": "wonderswan",
@@ -1700,7 +2515,7 @@
       "manufacturer": "Bandai",
       "release_year": 1999,
       "origin_country": "Japão",
-      "description": "O WonderSwan é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "WonderSwan é um console portátil lançado pela Bandai em 1999 apenas no Japão, recebeu mais duas versões com melhorias, o WonderSwan Color e o Swan Crystal, juntos todos eles venderam 3,5 milhões de unidades. Era concorrente do Game Boy Color e Neo Geo Pocket Color.",
       "curiosities": [
         "O WonderSwan foi o último console projetado por Gunpei Yokoi antes de sua morte em 1997.",
         "Foi lançado pela Bandai e tinha tela LCD monocromática de 224×144 pixels com 4 tons de cinza.",
@@ -1714,7 +2529,21 @@
         "BizHawk",
         "Cygne",
         "Beetle WS (RetroArch)"
-      ]
+      ],
+      "type": "handheld",
+      "generation": "6ª Geração",
+      "lifespan": "1999–2003",
+      "launch_price": null,
+      "discontinued": "2003",
+      "media": "ROM cartridge",
+      "cpu": "NEC V30 MZ @ 3.072 MHz",
+      "memory": "64 KB RAM",
+      "display": "FSTN (WonderSwan, WonderSwan Color)TFT LCD (SwanCrystal)224 × 144",
+      "sound": "4 PCM channels",
+      "predecessor": "Design Master Senshi Mangajukuu",
+      "wikidata_id": "177472",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/WonderSwan",
+      "release_dates": "1999–2003"
     },
     {
       "id": "wonderswan_color",
@@ -1724,7 +2553,7 @@
       "manufacturer": "Bandai",
       "release_year": 2000,
       "origin_country": "Japão",
-      "description": "O WonderSwan Color é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "WonderSwan é um console portátil lançado pela Bandai em 1999 apenas no Japão, recebeu mais duas versões com melhorias, o WonderSwan Color e o Swan Crystal, juntos todos eles venderam 3,5 milhões de unidades. Era concorrente do Game Boy Color e Neo Geo Pocket Color.",
       "curiosities": [
         "O WonderSwan Color foi lançado em 2000 com tela colorida e retrocompatibilidade com todos os jogos do WonderSwan original.",
         "A Bandai conseguiu uma parceria com a Square para lançar ports de Final Fantasy I, II, IV e uma versão exclusiva de Final Fantasy X.",
@@ -1738,7 +2567,20 @@
         "BizHawk",
         "Cygne",
         "Beetle WS (RetroArch)"
-      ]
+      ],
+      "wikidata_id": "177472",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/WonderSwan",
+      "type": "Handheld game console",
+      "generation": "6ª Geração",
+      "release_dates": "1999–2003",
+      "launch_price": null,
+      "discontinued": "2003",
+      "media": "ROM cartridge",
+      "cpu": "NEC V30 MZ @ 3.072 MHz",
+      "memory": "64 KB RAM",
+      "display": "FSTN (WonderSwan, WonderSwan Color), TFT LCD (SwanCrystal), 224 × 144",
+      "sound": "4 PCM channels",
+      "predecessor": "Design Master Senshi Mangajukuu"
     },
     {
       "id": "xbox_360",
@@ -1748,7 +2590,7 @@
       "manufacturer": "Microsoft",
       "release_year": 2005,
       "origin_country": "Estados Unidos",
-      "description": "O Xbox 360 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Xbox 360 é um console de video games desenvolvido pela Microsoft. Como sucessor do Xbox original, é o segundo console da série Xbox. Ele competiu com o PlayStation 3 da Sony e o Wii da Nintendo como parte da sétima geração de consoles. Foi oficialmente anunciado na MTV em 12 de maio de 2005, com lançamento detalhado e informações dos jogos anunciadas mais tarde na edição de 2005 da E3.",
       "curiosities": [
         "O Xbox 360 sofreu com o problema do \"Red Ring of Death\", uma falha de hardware que afetou milhões de unidades e custou $1 bilhão à Microsoft.",
         "O Kinect, lançado em 2010 para o Xbox 360, foi o periférico mais vendido da história (24 milhões em 60 dias).",
@@ -1759,7 +2601,27 @@
       ],
       "emulators": [
         "Xenia"
-      ]
+      ],
+      "type": "console",
+      "generation": "7ª Geração",
+      "launch_price": null,
+      "discontinued": "WW: April 20, 2016",
+      "media": "DVD, CD, digital distribution Add-on: HD DVD (discontinued)",
+      "os": "Xbox 360 system software",
+      "cpu": "3.2 GHz PowerPC Tri-Core Xenon",
+      "memory": "512 MB of unified GDDR3 RAM clocked at 700 MHz 10 MB of eDRAM cache on Xenos GPU",
+      "storage": "Storage media Detachable hard drives 20, 60, 120 or 250 GB (older models); 250, 320, or 500 GB (Xbox 360 S models) Flash memory (later models)256 MB, 512 MBBudget level \"Xbox 360 S\" consoles:4 GB External USB storage device (requires system software update)1 GB to 2 TB Cloud storage (requires Xbox account)2 GB",
+      "display": "Video output formats Composite video480i, 576i (PAL) S-Video480i, 576i (PAL) RGB SCART480i, 576i (PAL) Component (YPBPR)480i, 576i, 480p, 720p, 1080i D-Terminal (YPBPR)480i (D1), 480p (D2), 720p (D4), 1080i (D3), 1080p (D5) VGA640×480, 848×480, 1024×768, 1280×720 (720p), 1280×768, 1280×1024, 1360×768, 1440×900, 1680×1050, 1920×1080 (1080p) HDMI (later models)480p, 720p, 1080i, 1080p",
+      "graphics": "500 MHz ATI/AMD Xenos, 240 GFLOPS",
+      "sound": "Analog stereo Stereo LPCM (TOSLINK and HDMI) Dolby Digital 5.1 (TOSLINK and HDMI) Dolby Digital with WMA pro (TOSLINK and HDMI)",
+      "connectivity": "Original models: 2.4 GHz wireless, 3 × USB 2.0, IR receiver, 100 Mbit/s EthernetAdd-on: Wifi 802.11 a/b/g, Wifi 802.11a/b/g/nRevised \"S\" models: 2.4 GHz wireless, 5 × USB 2.0, Digital Optical audio out, IR receiver, 100 Mbit/s Ethernet, Wifi 802.11b/g/n, AUX port, HDMI portRevised \"E\" models: 2.4 GHz wireless, 4 × USB 2.0, IR receiver, 100 Mbit/s Ethernet, Wifi 802.11b/g/n, AUX port, HDMI port",
+      "online_services": "Xbox Live",
+      "best_selling_game": "Kinect Adventures!, 24 million(bundled with Kinect) Grand Theft Auto V, 22.95 million (non-Kinect game) (list)",
+      "predecessor": "Xbox",
+      "successor": "Xbox One",
+      "wikidata_id": "7514833",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Xbox_360",
+      "release_dates": "November 22, 2005 Original Xbox 360US/CA: November 22, 2005EZ/NO/SE/UK/CH: December 2, 2005JP: December 10, 2005CO/MX: February 2, 2006KR: February 24, 2006HK/SG/TW: March 16, 2006AU: March 23, 2006CL: July 7, 2006IN: September 25, 2006ZA: September 29, 2006CZ/PL: November 3, 2006BR: December 1, 2006RU: February 11, 2007PE: February 25, 2008UAE: October 28, 2008NG/TR: 2009SC: Spring 2010 Xbox 360 SNA: June 18, 2010AU: July 1, 2010NZ: July 8, 2010EU: July 16, 2010 Xbox 360 ENA: June 10, 2013EU: June 20, 2013"
     },
     {
       "id": "xbox",
@@ -1769,7 +2631,7 @@
       "manufacturer": "Microsoft",
       "release_year": 2001,
       "origin_country": "Estados Unidos",
-      "description": "O Xbox é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "XBOX é uma marca de console doméstico de jogos eletrônicos que consiste em quatro principais linhas de consoles, além de aplicativos, o serviço de streaming Xbox Cloud Gaming e serviços online como o Xbox network e o Xbox Game Pass. A marca pertence à divisão Xbox, uma divisão da Microsoft.",
       "curiosities": [
         "O Xbox original foi o primeiro console da Microsoft, lançado em 2001 para competir com PS2 e GameCube.",
         "Seu processador Intel Pentium III de 733 MHz e GPU GeForce 3 derivada o tornavam o console mais potente de sua geração.",
@@ -1781,7 +2643,25 @@
       "emulators": [
         "Cxbx-Reloaded",
         "XQEMU"
-      ]
+      ],
+      "type": "console",
+      "generation": "6ª Geração",
+      "launch_price": null,
+      "discontinued": "JP: 2005WW: 2006",
+      "media": "DVD, CD, digital distribution",
+      "os": "Windows NT-based Xbox system software",
+      "cpu": "Intel Pentium III @ 733 MHz",
+      "memory": "64 MB DDR SDRAM",
+      "storage": "8 GB internal hard drive",
+      "display": "480i, 480p, 576i, 576p, 720p, 1080i",
+      "graphics": "Nvidia NV2A @ 233 MHz",
+      "connectivity": "100 Mbit/s Ethernet",
+      "online_services": "Xbox Live",
+      "best_selling_game": "Halo 2 (8.46 million) (list)",
+      "successor": "Xbox 360",
+      "wikidata_id": "17416342",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Xbox_(console)",
+      "release_dates": "NA: November 15, 2001JP: February 22, 2002PAL: March 14, 2002"
     },
     {
       "id": "apple_iigs",
@@ -1791,7 +2671,7 @@
       "manufacturer": "Apple",
       "release_year": 1986,
       "origin_country": "Estados Unidos",
-      "description": "O Apple IIGS é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
+      "description": "O Apple IIGS, quinto modelo dos microcomputadores Apple II, foi o membro mais poderoso desta série produzida pela Apple Computer. Na época do seu lançamento, apresentava gráficos coloridos surpreendentes e som estéreo em 16 vozes, numa resposta voltada aos concorrentes diretos, Amiga 1000 e Atari 520ST. O \"GS\" refere-se justamente às suas capacidades avançadas de gráficos e som, que ultrapassaram tudo o que já havia sido feito anteriormente na série Apple II.",
       "curiosities": [
         "O Apple IIGS foi o último modelo da linha Apple II, lançado em 1986 com som e gráficos significativamente melhorados.",
         "O \"GS\" no nome significava \"Graphics & Sound\", destacando as capacidades multimídia do computador.",
@@ -1804,7 +2684,17 @@
         "GSport",
         "KEGS",
         "MAME"
-      ]
+      ],
+      "launch_price": null,
+      "discontinued": "December 4, 1992; 33 years ago (1992-12-04)",
+      "os": "ProDOSGS/OSGNO/ME",
+      "cpu": "65C816 @ 2.8 MHz",
+      "memory": "256 KB, 512 KB, 1 MB (expandable to 8 MB)",
+      "graphics": "320×200 (4 bit) 640×200 (2 bpp)Palette of 12 bits per color",
+      "sound": "Ensoniq ES5503 8-bit wavetable synthesis chip,32 channels",
+      "wikidata_id": "248101",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Apple_IIGS",
+      "release_dates": "September 15, 1986 39 years ago (1986-09-15)"
     },
     {
       "id": "3do",
@@ -1814,11 +2704,12 @@
       "manufacturer": "Panasonic",
       "release_year": 1993,
       "origin_country": "Estados Unidos",
-      "description": "O 3DO Interactive Multiplayer (conhecido simplesmente como 3DO) é um console de videogame da quinta geração lançado pela Panasonic em 1993. Foi o primeiro console baseado na arquitetura de CD-ROM, projetado pela The 3DO Company, fundada por Trip Hawkins, criador da Electronic Arts. Apesar do poder gráfico superior, seu alto preço e a concorrência do Sony PlayStation e Sega Saturn limitaram seu sucesso comercial.",
+      "description": "3DO is a video gaming hardware format developed by The 3DO Company and conceived by Electronic Arts founder Trip Hawkins. The specifications were originally designed by Dave Needle and RJ Mical of New Technology Group, and were licensed by third parties; most hardware were packaged as home video game consoles under the name Interactive Multiplayer, and Panasonic produced the first models in 1993 with further renditions released afterwards by manufacturers GoldStar, Sanyo, Creative Labs, and Samsung Electronics.",
       "curiosities": [
         "O 3DO Interactive Multiplayer foi criado por Dave Needle e RJ Mical (ex-engenheiros da Atari) e licenciado para vários fabricantes.",
         "Seu processador ARM60 RISC de 32 bits a 12.5 MHz era potente para 1993, mas o preço de $699 assustava consumidores.",
-        "A 3DO Company faliu em 2003, mas seu nome vive no padrão de discos \"3DO\" usado em alguns jogos de PC."
+        "A 3DO Company faliu em 2003, mas seu nome vive no padrão de discos \"3DO\" usado em alguns jogos de PC.",
+        "3DO is a video gaming hardware format developed by The 3DO Company and conceived by Electronic Arts founder Trip Hawkins."
       ],
       "supported_extensions": [
         ".iso",
@@ -1831,7 +2722,24 @@
         "Opera",
         "4DO",
         "FreeDO"
-      ]
+      ],
+      "wikidata_id": "36168",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/3DO",
+      "type": "Home video game console",
+      "generation": "5ª Geração",
+      "release_dates": "NA: October 4, 1993JP: March 20, 1994EU: June 10, 1994KOR: December 3, 1994",
+      "launch_price": null,
+      "discontinued": "WW: 1996",
+      "media": "CD-ROM",
+      "cpu": "32-bit custom RISC CPU (ARM60) @ 12.5 MHz",
+      "memory": "2 MB RAM, 32 KB SRAM, 1 MB VRAM",
+      "storage": "32 KB SRAM",
+      "display": "320×240 @ 60 Hz, 384×288 @ 50 Hz; 16-bit palettized color (from 24-bit) or 24-bit true color.",
+      "graphics": "Panasonic FZ-1 \"Madam\" graphics accelerator",
+      "sound": "Panasonic FZ-1 \"Clio\" DSP: 16-bit stereo @ 44.1 kHz, 4-Channel Dolby Surround;",
+      "online_services": "Planned but canceled",
+      "best_selling_game": "Gex (1+ million)[note 1]",
+      "successor": "Panasonic M2 (canceled)"
     },
     {
       "id": "coleco_adam",
@@ -1841,7 +2749,7 @@
       "manufacturer": "Coleco",
       "release_year": 1983,
       "origin_country": "Estados Unidos",
-      "description": "O Coleco Adam é um computador doméstico lançado pela Coleco em 1983, compatível com o console ColecoVision. O sistema foi projetado como um computador completo com teclado, drive de disquete e gravador de cassetes, capaz de rodar todos os jogos do ColecoVision. Apesar do conceito inovador, problemas de confiabilidade e a crise dos videogames de 1983 limitaram seu sucesso.",
+      "description": "O Coleco Adam foi um computador doméstico, uma tentativa da Coleco, fabricante de brinquedos estadunidense, de aproveitar o sucesso do vídeo-game ColecoVision. O Adam não foi bem-sucedido, em parte devido a problemas no início de sua produção.",
       "curiosities": [
         "O Coleco Adam foi um computador doméstico lançado em 1983 que também rodava cartuchos de ColecoVision e Atari 2600.",
         "Usava um gravador de cassete digital (Digital Data Drive) como armazenamento, proprietário e notoriamente lento.",
@@ -1856,7 +2764,19 @@
         "MAME",
         "ColEm",
         "ADAMem"
-      ]
+      ],
+      "launch_price": null,
+      "discontinued": "January 1985 (1985-01)",
+      "os": "EOS, OS-7 (ColecoVision), CP/M, TDOS",
+      "cpu": "Zilog Z80A @ 3.58 MHz",
+      "memory": "64 KB RAM16 KB VRAM",
+      "storage": "Digital Data PackFloppy disk (5.25-inch, 160 KB)",
+      "display": "256 × 192 resolution",
+      "graphics": "Texas Instruments TMS9928A",
+      "sound": "Texas Instruments SN76489AN",
+      "wikidata_id": "287134",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Coleco_Adam",
+      "release_dates": "October 1983 42 years ago (1983-10)"
     },
     {
       "id": "commodore_amiga_cd32",
@@ -1866,10 +2786,9 @@
       "manufacturer": "Commodore",
       "release_year": 1993,
       "origin_country": "Canadá",
-      "description": "O Commodore Amiga CD32 é um console de videogame baseado em CD-ROM lançado pela Commodore em 1993. Foi o primeiro console de 32 bits do mundo, utilizando a mesma arquitetura dos computadores Amiga 1200. Apesar do hardware avançado, o lançamento tardio e a falência da Commodore em 1994 limitaram severamente seu sucesso comercial.",
+      "description": "Amiga CD32 foi um console de videogame, sendo o primeiro baseado CD-ROM de 32-bits vendido na Europa Ocidental e na América do Norte. Sua primeira aparição foi no Museu da Ciência de Londres em 16 de julho de 1993, e começou a ser vendido em setembro do mesmo ano. Ele tem configuração similar ao computador Amiga 1200. Usando os dispositivos 3rd-party, é possível promover o CD32 com teclado e mouse, tornando a em um computador pessoal. O CD32 controlou fixar-se sobre 50% do mercado do CD-ROM no Reino Unido em 1993 e 1994, ultrapassando o Sega CD, o Philips CDi e até mesmo as vendas do CD-ROM de PC. Tinha 2 MB de memória interna e 14 MHz de clock.",
       "curiosities": [
         "O Amiga CD32 foi o primeiro console de 32 bits da Europa e o sucessor espiritual do Amiga 1200 como console.",
-        "Era essencialmente um Amiga 1200 sem teclado, usando o processador Motorola 68EC020 a 14 MHz.",
         "A Commodore faliu logo após seu lançamento em 1993, limitando severamente sua distribuição e biblioteca de jogos."
       ],
       "supported_extensions": [
@@ -1882,7 +2801,23 @@
       "emulators": [
         "WinUAE",
         "FS-UAE"
-      ]
+      ],
+      "type": "Home video game consoleGaming computer",
+      "generation": "Fifth generation era",
+      "lifespan": "1993–1994",
+      "discontinued": "April 29, 1994 (1994-04-29)",
+      "media": "CD-ROM",
+      "os": "AmigaOS 3.1",
+      "cpu": "Motorola 68EC020 @ 14.18 MHz (PAL), 14.32 MHz (NTSC)",
+      "memory": "2 MB Chip RAM",
+      "storage": "1 KB EEPROM",
+      "display": "RF modulator (RCA)Composite video (RCA)S-Video 320×200 to 1280×400 (NTSC), 320×256 to 1280×512 (PAL);256 colors in indexed mode, 262,144 colors in HAM-8 mode",
+      "graphics": "AGA, Akiko",
+      "sound": "4 × 8-bit PCM channelsStereo audio (RCA)28 kHz sampling rate",
+      "predecessor": "Commodore CDTV",
+      "wikidata_id": "26584375",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Amiga_CD32",
+      "release_dates": "1993–1994"
     },
     {
       "id": "commodore_vic_20",
@@ -1892,7 +2827,7 @@
       "manufacturer": "Commodore",
       "release_year": 1980,
       "origin_country": "Estados Unidos",
-      "description": "O Commodore VIC-20 é um computador doméstico lançado pela Commodore em 1980. Foi o primeiro computador a vender mais de um milhão de unidades, tornando-se um marco na história da computação doméstica. Com apenas 5 KB de RAM e um processador MOS 6502, o VIC-20 introduziu uma geração inteira à programação e aos jogos eletrônicos.",
+      "description": "O VIC-20 é um computador doméstico de 8 bits. Ele foi construído pela Commodore Business Machines, com 5 KB de RAM e uma UCP MOS Technology 6502. O design exterior da máquina foi posteriormente aproveitado no Commodore 64 e C16. O VIC-20 foi lançado no Japão em 1980 e nos Estados Unidos e Europa em 1981, cerca de três anos após o lançamento do primeiro computador pessoal da Commodore, o PET.",
       "curiosities": [
         "O Commodore VIC-20 foi o primeiro computador da história a vender mais de 1 milhão de unidades.",
         "Seu processador MOS 6502 rodava a apenas 1.02 MHz e vinha com apenas 5 KB de RAM (3.5 KB utilizáveis).",
@@ -1906,7 +2841,21 @@
       "emulators": [
         "VICE",
         "MAME"
-      ]
+      ],
+      "wikidata_id": "72155",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/VIC-20",
+      "type": "Home computer",
+      "release_dates": "5 years",
+      "launch_price": null,
+      "discontinued": "January 1985; 41 years ago (1985-01)",
+      "os": "Commodore KERNAL, Commodore BASIC 2.0",
+      "cpu": "MOS Technology 6502 @ 1.108 MHz (PAL) @ 1.02 MHz (NTSC)",
+      "memory": "20 KB ROM + 5 KB (3.5 KB free) RAM (expandable to 32 KB), 3.5 KB for BASIC (expandable to 27.5 KB)[a]",
+      "storage": "Compact Cassette, floppy disk",
+      "display": "Commodore 1701; 176 × 184, 16-color composite palette",
+      "graphics": "MOS Technology VIC",
+      "sound": "MOS Technology VIC; 1 noise and 3 square channels",
+      "successor": "Commodore 64, MAX Machine"
     },
     {
       "id": "mame",
@@ -1956,7 +2905,15 @@
         "NeoCD",
         "FinalBurn Neo",
         "MAME"
-      ]
+      ],
+      "type": "Home video game console",
+      "generation": "4ª Geração",
+      "release_dates": "JP: September 9, 1994EU: December 3, 1994AU: December 23, 1994NA: January 15, 1996",
+      "launch_price": "US$399",
+      "discontinued": "1997",
+      "media": "CD-ROM",
+      "cpu": "Motorola 68000 @ 12 MHz",
+      "predecessor": "Neo Geo AES"
     },
     {
       "id": "pc_engine_cd",
@@ -1984,7 +2941,19 @@
         "Mednafen",
         "BizHawk",
         "Beetle PCE (RetroArch)"
-      ]
+      ],
+      "type": "Home video game console",
+      "generation": "4ª Geração",
+      "release_dates": "1987–1994",
+      "discontinued": "FR: December 25, 1993NA: May 11, 1994JP: December 16, 1994",
+      "media": "HuCard",
+      "cpu": "HuC6280 @ 7.16 MHz",
+      "memory": "8 KB RAM64 KB Video RAM",
+      "display": "Composite or RF TV out; 565×242 or 256×239, 512 color palette, 482 colors on-screen",
+      "graphics": "HuC6270 VDCHuC6260 VCE",
+      "sound": "PSG, 5 to 10-bit stereo PCM",
+      "best_selling_game": "Bonk's Adventure",
+      "successor": "PC Engine SuperGrafxPC-FX"
     },
     {
       "id": "sega_cd",
@@ -1997,7 +2966,6 @@
       "description": "O Sega CD (Mega-CD no Japão e Brasil) é um periférico para o Sega Genesis/Mega Drive que adicionava um drive de CD-ROM ao console. Lançado em 1991 no Japão e 1992 nos Estados Unidos, o Sega CD oferecia jogos com áudio digital CD-quality, cutscenes em FMV e maior capacidade de armazenamento, mas seu alto preço e biblioteca limitada restringiram seu sucesso.",
       "curiosities": [
         "O Sega CD (Mega-CD) foi um periférico para o Genesis/Mega Drive que adicionava um leitor de CD-ROM de 1x.",
-        "Usava um processador Motorola 68000 adicional a 12.5 MHz como coprocessador, tornando-o mais potente que o Genesis sozinho.",
         "Apesar de jogos como Sonic CD e Snatcher, a biblioteca era repleta de títulos FMV de baixa qualidade."
       ],
       "supported_extensions": [
@@ -2010,7 +2978,18 @@
         "Kega Fusion",
         "Picodrive (RetroArch)",
         "Genesis Plus GX (RetroArch)"
-      ]
+      ],
+      "type": "Video game console add-on",
+      "generation": "4ª Geração",
+      "release_dates": "1991–1996",
+      "launch_price": "US$299",
+      "discontinued": "January 1, 1996",
+      "media": "CD-ROM, CD+G",
+      "cpu": "Motorola 68000 @ 12.5 MHz",
+      "storage": "6.5 Mbit RAM (programs, pictures, and sounds), 128 kbit RAM (CD-ROM cache), 64 kbit RAM (backup memory)",
+      "graphics": "custom ASIC",
+      "sound": "Ricoh RF5C164",
+      "best_selling_game": "Sonic CD, 1.5 million"
     },
     {
       "id": "sharp_x68000",
@@ -2037,7 +3016,18 @@
         "XM6",
         "MAME",
         "PX68K (RetroArch)"
-      ]
+      ],
+      "type": "Home computer",
+      "release_dates": "1987–1999",
+      "discontinued": "1999",
+      "media": "Floppy disk",
+      "os": "Human68k, NetBSD, OS-9",
+      "cpu": "Motorola 68000 family",
+      "memory": "1 to 12 MB of RAM",
+      "display": "14-inch CRT, 256×256 to 1024×1024 pixels, 16 bits",
+      "graphics": "VINAS 1 + 2, VSOP, CYNTHIA / Jr, RESERVE",
+      "sound": "Yamaha YM2151, OKI MSM6258",
+      "predecessor": "X1"
     },
     {
       "id": "supergrafx",
@@ -2061,7 +3051,19 @@
         "Mednafen",
         "BizHawk",
         "Beetle PCE (RetroArch)"
-      ]
+      ],
+      "type": "Home video game console",
+      "generation": "4ª Geração",
+      "release_dates": "JP: 8 December 1989",
+      "media": "HuCard, CD-ROM²",
+      "cpu": "Hudson Soft HuC6280A @ 1.79 or 7.16 MHz",
+      "memory": "32 KB + 128 KB",
+      "display": "512 colors; 282 x 242, 377 x 242, 565 x 242",
+      "graphics": "2x HuC6270 VDC, HuC6202 VPC, HuC6260A VCE",
+      "sound": "HuC6280A; 6 PSG channels, 5-bit depth; 6.99 kHz sample rate",
+      "best_selling_game": "Daimakaimura",
+      "predecessor": "PC Engine (main system)",
+      "successor": "PC Engine Duo (updated system)"
     },
     {
       "id": "sufami_turbo",
@@ -2086,7 +3088,10 @@
         "Snes9x",
         "bsnes",
         "Mesen 2"
-      ]
+      ],
+      "type": "Video game console peripheral",
+      "generation": "4ª Geração",
+      "release_dates": "JP: 1996"
     }
   ]
 }

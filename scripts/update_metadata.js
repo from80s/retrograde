@@ -1,8 +1,227 @@
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
 
 const dataPath = path.join(__dirname, '..', 'data', 'systems_metadata.json');
 const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+
+// --- Scraper via Wikipedia API ---
+
+const WIKI_API = 'https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&format=json&redirects=1&titles=';
+
+function fetchWikipediaExtract(title) {
+  return new Promise((resolve) => {
+    const url = WIKI_API + encodeURIComponent(title);
+    https.get(url, (res) => {
+      let body = '';
+      res.on('data', chunk => body += chunk);
+      res.on('end', () => {
+        try {
+          const json = JSON.parse(body);
+          const pages = json.query && json.query.pages;
+          if (pages) {
+            const pageId = Object.keys(pages)[0];
+            if (pageId !== '-1') {
+              resolve(pages[pageId].extract || '');
+            }
+          }
+        } catch (_) {}
+        resolve('');
+      });
+    }).on('error', () => resolve(''));
+  });
+}
+
+// Mapeamento de IDs para termos de busca na Wikipedia
+const WIKI_TITLES = {
+  'sega_32x': 'Sega 32X',
+  'nintendo_3ds': 'Nintendo 3DS',
+  'arcade': 'Arcade game',
+  'atari_2600': 'Atari 2600',
+  'atari_5200': 'Atari 5200',
+  'atari_7800': 'Atari 7800',
+  'atari_jaguar': 'Atari Jaguar',
+  'commodore_amiga': 'Amiga',
+  'atari_800': 'Atari 8-bit computers',
+  'sony_playstation': 'PlayStation (console)',
+  'snes': 'Super Nintendo Entertainment System',
+  'amstrad_cpc': 'Amstrad CPC',
+  'dreamcast': 'Dreamcast',
+  'fairchild_channel_f': 'Fairchild Channel F',
+  'gamecube': 'GameCube',
+  'colecovision': 'ColecoVision',
+  'dos': 'MS-DOS',
+  'commodore_64': 'Commodore 64',
+  'sony_psp': 'PlayStation Portable',
+  'pc88': 'PC-8800 series',
+  'pc98': 'PC-9800 series',
+  'daphne': 'Daphne (emulator)',
+  'apple_ii': 'Apple II',
+  'doom': 'Doom (1993 video game)',
+  'nintendo_ds': 'Nintendo DS',
+  'sharp_x1': 'Sharp X1',
+  'fds': 'Famicom Disk System',
+  'vectrex': 'Vectrex',
+  'game_boy': 'Game Boy',
+  'game_boy_advance': 'Game Boy Advance',
+  'game_boy_color': 'Game Boy Color',
+  'sega_genesis': 'Sega Genesis',
+  'game_gear': 'Game Gear',
+  'playstation_2': 'PlayStation 2',
+  'intellivision': 'Intellivision',
+  'atari_jaguar_cd': 'Atari Jaguar CD',
+  'atari_lynx': 'Atari Lynx',
+  'sega_naomi': 'Sega NAOMI',
+  'game_and_watch': 'Game & Watch',
+  'pokemon_mini': 'Pokémon Mini',
+  'atari_st': 'Atari ST',
+  'msx': 'MSX',
+  'msx2': 'MSX2',
+  'nintendo_64': 'Nintendo 64',
+  'nintendo_switch': 'Nintendo Switch',
+  'neo_geo': 'Neo Geo (system)',
+  'nes': 'Nintendo Entertainment System',
+  'neo_geo_pocket_color': 'Neo Geo Pocket Color',
+  'neo_geo_pocket': 'Neo Geo Pocket',
+  'lowres_nx': 'LowRes NX',
+  'sinclair_zx81': 'ZX81',
+  'pico8': 'PICO-8',
+  'pc_engine': 'TurboGrafx-16',
+  'playstation_3': 'PlayStation 3',
+  'sony_playstation_2': 'PlayStation 2',
+  'wii_u': 'Wii U',
+  'sega_saturn': 'Sega Saturn',
+  'zx_spectrum': 'ZX Spectrum',
+  'sega_sg1000': 'SG-1000',
+  'master_system': 'Master System',
+  'bbc_micro': 'BBC Micro',
+  'scummvm': 'ScummVM',
+  'watara_supervision': 'Watara Supervision',
+  'tic80': 'TIC-80',
+  'pcfx': 'PC-FX',
+  'virtual_boy': 'Virtual Boy',
+  'playstation_vita': 'PlayStation Vita',
+  'wasm4': 'WASM-4',
+  'wii': 'Wii',
+  'wonderswan': 'WonderSwan',
+  'wonderswan_color': 'WonderSwan Color',
+  'xbox_360': 'Xbox 360',
+  'xbox': 'Xbox (console)',
+  'apple_iigs': 'Apple IIGS',
+  '3do': '3DO Interactive Multiplayer',
+  'coleco_adam': 'Coleco Adam',
+  'amiga_cd32': 'Amiga CD32',
+  'vic20': 'Commodore VIC-20',
+  'mame': 'MAME',
+  'neo_geo_cd': 'Neo Geo CD',
+  'pc_engine_cd': 'TurboGrafx-CD',
+  'sega_cd': 'Sega CD',
+  'sharp_x68000': 'X68000',
+  'supergrafx': 'SuperGrafx',
+  'sufami_turbo': 'SuFami Turbo',
+};
+
+async function scrapeGeneration(key) {
+  const title = WIKI_TITLES[key];
+  if (!title) return null;
+
+  const extract = await fetchWikipediaExtract(title);
+  if (!extract) return null;
+
+  // Tenta extrair menção à geração do texto do resumo
+  const genMatch = extract.match(/(\w+)\s*generation/i);
+  if (genMatch) return genMatch[1] + ' Generation';
+  return null;
+}
+
+// Geração curada manualmente (fallback e fonte principal para sistemas sem Wikipedia clara)
+const generations = {
+  'sega_32x': '5th Generation',
+  'nintendo_3ds': '8th Generation',
+  'arcade': 'Arcade',
+  'atari_2600': '2nd Generation',
+  'atari_5200': '2nd Generation',
+  'atari_7800': '3rd Generation',
+  'atari_jaguar': '5th Generation',
+  'commodore_amiga': '16/32-bit Computer',
+  'atari_800': '8-bit Computer',
+  'sony_playstation': '5th Generation',
+  'snes': '4th Generation',
+  'amstrad_cpc': '8-bit Computer',
+  'dreamcast': '6th Generation',
+  'fairchild_channel_f': '2nd Generation',
+  'gamecube': '6th Generation',
+  'colecovision': '2nd Generation',
+  'dos': 'Personal Computer',
+  'commodore_64': '8-bit Computer',
+  'sony_psp': '7th Generation',
+  'pc88': '8-bit Computer',
+  'pc98': '16-bit Computer',
+  'daphne': 'Software Platform',
+  'apple_ii': '8-bit Computer',
+  'doom': 'Software Platform',
+  'nintendo_ds': '7th Generation',
+  'sharp_x1': '8-bit Computer',
+  'fds': '3rd Generation',
+  'vectrex': '2nd Generation',
+  'game_boy': '3rd Generation',
+  'game_boy_advance': '6th Generation',
+  'game_boy_color': '5th Generation',
+  'sega_genesis': '4th Generation',
+  'game_gear': '4th Generation',
+  'playstation_2': '6th Generation',
+  'intellivision': '2nd Generation',
+  'atari_jaguar_cd': '5th Generation',
+  'atari_lynx': '3rd Generation',
+  'sega_naomi': 'Arcade',
+  'game_and_watch': '2nd Generation',
+  'pokemon_mini': '5th Generation',
+  'atari_st': '16-bit Computer',
+  'msx': '8-bit Computer',
+  'msx2': '8-bit Computer',
+  'nintendo_64': '5th Generation',
+  'nintendo_switch': '8th Generation',
+  'neo_geo': '4th Generation',
+  'nes': '3rd Generation',
+  'neo_geo_pocket_color': '5th Generation',
+  'neo_geo_pocket': '5th Generation',
+  'lowres_nx': 'Fantasy Console',
+  'sinclair_zx81': '8-bit Computer',
+  'pico8': 'Fantasy Console',
+  'pc_engine': '4th Generation',
+  'playstation_3': '7th Generation',
+  'sony_playstation_2': '6th Generation',
+  'wii_u': '8th Generation',
+  'sega_saturn': '5th Generation',
+  'zx_spectrum': '8-bit Computer',
+  'sega_sg1000': '2nd Generation',
+  'master_system': '3rd Generation',
+  'bbc_micro': '8-bit Computer',
+  'scummvm': 'Software Platform',
+  'watara_supervision': '4th Generation',
+  'tic80': 'Fantasy Console',
+  'pcfx': '5th Generation',
+  'virtual_boy': '5th Generation',
+  'playstation_vita': '8th Generation',
+  'wasm4': 'Fantasy Console',
+  'wii': '7th Generation',
+  'wonderswan': '5th Generation',
+  'wonderswan_color': '5th Generation',
+  'xbox_360': '7th Generation',
+  'xbox': '6th Generation',
+  'apple_iigs': '16-bit Computer',
+  '3do': '5th Generation',
+  'coleco_adam': '8-bit Computer',
+  'amiga_cd32': '5th Generation',
+  'vic20': '8-bit Computer',
+  'mame': 'Software Platform',
+  'neo_geo_cd': '4th Generation',
+  'pc_engine_cd': '4th Generation',
+  'sega_cd': '4th Generation',
+  'sharp_x68000': '16-bit Computer',
+  'supergrafx': '4th Generation',
+  'sufami_turbo': '4th Generation',
+};
 
 const curated = {
   'sega_32x': {
@@ -687,7 +906,7 @@ const curated = {
   }
 };
 
-// ID aliases for systems whose JSON ids differ from the curated keys
+// Aliases de ID para sistemas cujos ids no JSON diferem das chaves curadas
 const ID_ALIAS = {
   'amiga': 'commodore_amiga',
   'pc_88': 'pc88',
@@ -705,20 +924,40 @@ const ID_ALIAS = {
   'commodore_vic_20': 'vic20',
 };
 
-// Process all systems
-data.systems = data.systems.map(system => {
-  const key = ID_ALIAS[system.id] || system.id;
-  const c = curated[key];
-  if (c) {
-    system.curiosities = c.curiosities;
-    system.emulators = c.emulators;
-  } else {
-    system.curiosities = [];
-    system.emulators = [];
-  }
-  return system;
-});
+// Processa todos os sistemas
+async function processSystems() {
+  const total = data.systems.length;
+  for (let i = 0; i < total; i++) {
+    const system = data.systems[i];
+    const key = ID_ALIAS[system.id] || system.id;
+    const c = curated[key];
+    if (c) {
+      system.curiosities = c.curiosities;
+      system.emulators = c.emulators;
+    } else {
+      system.curiosities = [];
+      system.emulators = [];
+    }
 
-fs.writeFileSync(dataPath, JSON.stringify(data, null, 2) + '\n', 'utf-8');
-console.log(`Updated ${data.systems.length} systems.`);
-console.log(`Systems with curated data: ${Object.keys(curated).length}`);
+    // Aplica geração (curada como fallback)
+    if (generations[key]) {
+      system.generation = generations[key];
+    } else {
+      // Tenta scrape via Wikipedia se não houver dado curado
+      const scraped = await scrapeGeneration(key);
+      if (scraped) {
+        system.generation = scraped;
+        console.log(`  [scrape] ${system.id} -> ${scraped}`);
+      } else {
+        system.generation = 'Unknown';
+        console.warn(`  [warn] Geração não encontrada para: ${system.id}`);
+      }
+    }
+  }
+}
+
+processSystems().then(() => {
+  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2) + '\n', 'utf-8');
+  console.log(`Updated ${data.systems.length} systems.`);
+  console.log(`Systems with curated data: ${Object.keys(curated).length}`);
+});

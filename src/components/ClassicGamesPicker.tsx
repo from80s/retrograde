@@ -108,7 +108,7 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
           </p>
 
           <div className="flex items-center gap-3 flex-wrap">
-            {/* Custom Dropdown */}
+            {/* Dropdown Personalizado */}
             <div ref={dropdownRef} className="relative w-56">
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}

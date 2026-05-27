@@ -202,7 +202,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
     <>
     <ModalBase onClose={onClose} title="Configurações" maxWidth="max-w-2xl">
       <div className="flex-1 overflow-y-auto scrollbar-thin p-6 space-y-6">
-            {/* API Config */}
+            {/* Config de API */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">Credenciais de API</h3>
@@ -244,7 +244,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
               </div>
             </div>
 
-            {/* Curation Settings */}
+            {/* Config de Curadoria */}
             <div className="space-y-4">
               <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">Configurações de Curadoria</h3>
               
@@ -297,7 +297,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
               </div>
             </div>
 
-            {/* Classics Info */}
+            {/* Info de Clássicos */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
@@ -311,7 +311,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
 
               <SearchInput value={classicsFilter} onChange={setClassicsFilter} placeholder="Filtrar clássicos..." />
 
-              {/* Add new classic */}
+              {/* Adicionar novo clássico */}
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -326,7 +326,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                 </Button>
               </div>
 
-              {/* Validation result */}
+              {/* Resultado da validação */}
               <AnimatePresence>
                 {validationResult && (
                   <motion.div
@@ -348,7 +348,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                 )}
               </AnimatePresence>
 
-              {/* Classics list */}
+              {/* Lista de clássicos */}
               <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto scrollbar-thin">
                 {filteredClassics.map((classic) => (
                   <span
@@ -370,7 +370,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
               </div>
             </div>
 
-            {/* Protected Genres */}
+            {/* Gêneros Protegidos */}
             <div className="space-y-4">
               <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
                 <Gamepad2 className="w-4 h-4 text-retro-warning" />
@@ -385,7 +385,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
 
                   <SearchInput value={genresFilter} onChange={setGenresFilter} placeholder="Filtrar gêneros..." />
 
-                  {/* Add new genre */}
+                  {/* Adicionar novo gênero */}
                   <div className="flex gap-2">
                     <input
                       type="text"
@@ -407,7 +407,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                     </button>
                   </div>
 
-                  {/* Genres list */}
+                  {/* Lista de gêneros */}
                   <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto scrollbar-thin">
                     {filteredGenres.map((genre) => (
                       <span
@@ -448,7 +448,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
               )}
             </div>
 
-            {/* User Protected Games */}
+            {/* Jogos Protegidos pelo Usuário */}
             <div className="space-y-4">
               <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
                 <Shield className="w-4 h-4 text-teal-400" />
@@ -460,7 +460,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
 
               <SearchInput value={protectedGamesFilter} onChange={setProtectedGamesFilter} placeholder="Filtrar jogos protegidos..." />
 
-              {/* Add new protected game */}
+              {/* Adicionar novo jogo protegido */}
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -482,7 +482,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                 </button>
               </div>
 
-              {/* Protected games list */}
+              {/* Lista de jogos protegidos */}
               <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto scrollbar-thin">
                 {filteredProtectedGames.map((game) => (
                   <span
@@ -505,7 +505,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
             </div>
           </div>
 
-          {/* Footer */}
+          {/* Rodapé */}
           <div className="p-6 border-t border-zinc-800/50 flex justify-end gap-3">
             <Button variant="ghost" onClick={onClose}>
               Cancelar
@@ -516,7 +516,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
           </div>
     </ModalBase>
 
-      {/* Test Results Modal */}
+      {/* Modal de Resultado de Teste */}
       <AnimatePresence>
         {showTestModal && testResults && (
           <motion.div
@@ -599,7 +599,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
         )}
       </AnimatePresence>
 
-      {/* Delete Classic Confirmation Modal */}
+      {/* Modal de Confirmação de Exclusão de Clássico */}
       <AnimatePresence>
         {showDeleteConfirm && (
           <motion.div
@@ -646,7 +646,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
         )}
       </AnimatePresence>
 
-      {/* Delete Genre Confirmation Modal */}
+      {/* Modal de Confirmação de Exclusão de Gênero */}
       <AnimatePresence>
         {showGenreDeleteConfirm && (
           <motion.div
@@ -693,7 +693,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
         )}
       </AnimatePresence>
 
-      {/* Delete Protected Game Confirmation Modal */}
+      {/* Modal de Confirmação de Exclusão de Jogo Protegido */}
       <AnimatePresence>
         {showProtectedGameDeleteConfirm && (
           <motion.div
@@ -740,7 +740,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
         )}
       </AnimatePresence>
 
-      {/* Classic Games Picker */}
+      {/* Seletor de Jogos Clássicos */}
       <AnimatePresence>
         {showClassicPicker && (
           <ClassicGamesPicker

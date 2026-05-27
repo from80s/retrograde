@@ -215,7 +215,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
         className="glass rounded-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
+        {/* Cabeçalho */}
         <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Archive className="w-5 h-5 text-retro-primary" />
@@ -229,7 +229,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
           </button>
         </div>
 
-        {/* Steps indicator */}
+        {/* Indicador de etapas */}
         <div className="px-6 pt-4">
           <div className="flex items-center gap-2 text-xs">
                     {['config', 'files', 'extracting', 'summary'].map((s, idx) => {
@@ -253,10 +253,10 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
           </div>
         </div>
 
-        {/* Content */}
+        {/* Conteúdo */}
         <div className="flex-1 overflow-y-auto scrollbar-thin p-6">
           <AnimatePresence mode="wait">
-            {/* Step 1: Config */}
+            {/* Etapa 1: Config */}
             {step === 'config' && (
               <motion.div
                 key="config"
@@ -265,7 +265,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 exit={{ opacity: 0, x: 20 }}
                 className="space-y-6"
               >
-                {/* Folder picker */}
+                {/* Seletor de pasta */}
                 <div className="space-y-3">
                   <label className="text-sm font-medium text-zinc-300">Pasta com ROMs comprimidas</label>
                   <button
@@ -276,7 +276,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                     <span className="flex-1 text-left truncate">{sourceFolder || 'Clique para selecionar a pasta...'}</span>
                   </button>
 
-                  {/* Resume Dialog */}
+                  {/* Diálogo de Retomada */}
                   <AnimatePresence>
                     {showResumeDialog && sourceFolder && (
                       <motion.div
@@ -342,7 +342,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                   </AnimatePresence>
                 </div>
 
-                {/* Extract mode */}
+                {/* Modo de extração */}
                 <div className="space-y-3">
                   <label className="text-sm font-medium text-zinc-300">Modo de extração</label>
                   <div className="grid grid-cols-2 gap-3">
@@ -377,7 +377,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                   </div>
                 </div>
 
-                {/* Delete after */}
+                {/* Deletar após */}
                 <div className="flex items-center justify-between p-4 bg-zinc-800/30 rounded-xl border border-zinc-700/30">
                   <div className="flex items-center gap-3">
                     <Trash2 className="w-4 h-4 text-zinc-500" />
@@ -398,7 +398,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                   </button>
                 </div>
 
-                {/* Supported formats info */}
+                {/* Info de formatos suportados */}
                 <div className="p-4 bg-zinc-800/20 rounded-xl border border-zinc-700/20">
                   <div className="flex items-start gap-3">
                     <FileText className="w-4 h-4 text-zinc-500 mt-0.5" />
@@ -410,7 +410,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
               </motion.div>
             )}
 
-            {/* Step 1.5: Scanning */}
+            {/* Etapa 1.5: Varredura */}
             {step === 'scanning' && (
               <motion.div
                 key="scanning"
@@ -443,7 +443,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
               </motion.div>
             )}
 
-            {/* Step 2: Files */}
+            {/* Etapa 2: Arquivos */}
             {step === 'files' && (
               <motion.div
                 key="files"
@@ -460,7 +460,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                   <p className="text-xs text-zinc-600">{formatSize(totalCompressedSize)} total</p>
                 </div>
 
-                {/* Supported files */}
+                {/* Arquivos suportados */}
                 <div className="space-y-1 max-h-64 overflow-y-auto scrollbar-thin">
                   {supportedFiles.map((f) => (
                     <div key={f.path} className="flex items-center gap-3 px-4 py-2.5 bg-zinc-800/20 rounded-lg">
@@ -472,7 +472,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                   ))}
                 </div>
 
-                {/* Unsupported files */}
+                {/* Arquivos não suportados */}
                 {unsupportedFiles.length > 0 && (
                   <div className="space-y-1">
                     <p className="text-xs text-zinc-600">Arquivos não suportados (serão ignorados):</p>
@@ -488,7 +488,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
               </motion.div>
             )}
 
-            {/* Step 3: Extracting */}
+            {/* Etapa 3: Extraindo */}
             {step === 'extracting' && (
               <motion.div
                 key="extracting"
@@ -497,7 +497,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 exit={{ opacity: 0 }}
                 className="space-y-4"
               >
-                {/* Overall progress */}
+                {/* Progresso geral */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-zinc-400">Progresso geral</span>
@@ -513,7 +513,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                   </div>
                 </div>
 
-                {/* Log */}
+                {/* Registro */}
                 <div ref={logRef} className="space-y-2 max-h-80 overflow-y-auto scrollbar-thin">
                   <AnimatePresence>
                     {log.map((entry) => (
@@ -560,7 +560,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
               </motion.div>
             )}
 
-            {/* Step 4: Summary */}
+            {/* Etapa 4: Resumo */}
             {step === 'summary' && (
               <motion.div
                 key="summary"
@@ -569,7 +569,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 exit={{ opacity: 0, y: -20 }}
                 className="space-y-6"
               >
-                {/* Stats cards */}
+                {/* Cartões de estatísticas */}
                 <div className="grid grid-cols-3 gap-4">
                   <div className="p-4 bg-retro-success/10 border border-retro-success/20 rounded-xl text-center">
                     <CheckCircle2 className="w-6 h-6 text-retro-success mx-auto mb-2" />
@@ -592,7 +592,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                   )}
                 </div>
 
-                {/* Size comparison */}
+                {/* Comparação de tamanho */}
                 <div className="p-4 bg-zinc-800/30 rounded-xl border border-zinc-700/30">
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-sm text-zinc-400">Resumo de tamanho</span>
@@ -613,7 +613,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                   </div>
                 </div>
 
-                {/* Error log */}
+                {/* Registro de erros */}
                 {results.filter(r => r.status === 'error').length > 0 && (
                   <div className="space-y-2">
                     <p className="text-sm text-zinc-400 flex items-center gap-2">
@@ -629,7 +629,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                   </div>
                 )}
 
-                {/* Full log */}
+                {/* Registro completo */}
                 <div className="space-y-2">
                   <p className="text-sm text-zinc-400">Log completo</p>
                   <div className="max-h-48 overflow-y-auto scrollbar-thin space-y-1">
@@ -653,7 +653,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
           </AnimatePresence>
         </div>
 
-        {/* Footer */}
+        {/* Rodapé */}
         <div className="p-6 border-t border-zinc-800/50 flex justify-between items-center">
           {step === 'config' && (
             <>

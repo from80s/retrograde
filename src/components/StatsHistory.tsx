@@ -40,7 +40,7 @@ export function StatsHistory({ onClose }: StatsHistoryProps) {
         className="glass rounded-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
+        {/* Cabeçalho */}
         <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <History className="w-5 h-5 text-retro-primary" />
@@ -54,7 +54,7 @@ export function StatsHistory({ onClose }: StatsHistoryProps) {
           </button>
         </div>
 
-        {/* Tabs */}
+        {/* Abas */}
         <div className="px-6 pt-4 flex gap-2">
           <button
             onClick={() => setActiveTab('chart')}
@@ -80,7 +80,7 @@ export function StatsHistory({ onClose }: StatsHistoryProps) {
           </button>
         </div>
 
-        {/* Content */}
+        {/* Conteúdo */}
         <div className="flex-1 overflow-y-auto scrollbar-thin p-6">
           {stats.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-12 text-zinc-600">
@@ -89,7 +89,7 @@ export function StatsHistory({ onClose }: StatsHistoryProps) {
             </div>
           ) : activeTab === 'chart' ? (
             <div className="space-y-8">
-              {/* Summary Cards */}
+              {/* Cartões de Resumo */}
               <div className="grid grid-cols-4 gap-4">
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
@@ -132,7 +132,7 @@ export function StatsHistory({ onClose }: StatsHistoryProps) {
                 </motion.div>
               </div>
 
-              {/* Bar Chart */}
+              {/* Gráfico de Barras */}
               <div className="glass rounded-xl p-6">
                 <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-6">Execuções por Pasta</h3>
                 <div className="space-y-4">
@@ -149,7 +149,7 @@ export function StatsHistory({ onClose }: StatsHistoryProps) {
                         <span className="text-zinc-500">{stat.data}</span>
                       </div>
                       <div className="flex gap-1 h-8">
-                        {/* Classics bar */}
+                        {/* Barra de Clássicos */}
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: `${(stat.preservados_classicos / maxTotal) * 100}%` }}
@@ -161,7 +161,7 @@ export function StatsHistory({ onClose }: StatsHistoryProps) {
                             Clássicos: {stat.preservados_classicos}
                           </div>
                         </motion.div>
-                        {/* Kept bar */}
+                        {/* Barra de Mantidos */}
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: `${(stat.mantidos_por_nota / maxTotal) * 100}%` }}
@@ -173,7 +173,7 @@ export function StatsHistory({ onClose }: StatsHistoryProps) {
                             Mantidos: {stat.mantidos_por_nota}
                           </div>
                         </motion.div>
-                        {/* Removed bar */}
+                        {/* Barra de Removidos */}
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: `${(stat.removidos / maxTotal) * 100}%` }}
@@ -190,7 +190,7 @@ export function StatsHistory({ onClose }: StatsHistoryProps) {
                   ))}
                 </div>
 
-                {/* Legend */}
+                {/* Legenda */}
                 <div className="flex gap-6 mt-6 pt-4 border-t border-zinc-800/50">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-sm bg-retro-secondary/60" />
@@ -207,7 +207,7 @@ export function StatsHistory({ onClose }: StatsHistoryProps) {
                 </div>
               </div>
 
-              {/* Pie-like distribution */}
+              {/* Distribuição tipo pizza */}
               <div className="glass rounded-xl p-6">
                 <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-6">Distribuição Geral</h3>
                 <div className="flex items-center justify-center gap-8">

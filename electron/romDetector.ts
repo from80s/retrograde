@@ -67,7 +67,7 @@ const MAGIC_SIGNATURES: { system: string; offset: number; bytes: number[] }[] = 
   { system: 'Sega Saturn', offset: 0x000, bytes: [0x53, 0x45, 0x47, 0x41, 0x20, 0x53, 0x45, 0x47, 0x41, 0x53, 0x41, 0x54, 0x55, 0x52, 0x4E] },
 ];
 
-// ─── Extension → System Name (fallback) ──────────────────────────────────────
+// ─── Extensão → Nome do Sistema (fallback) ────────────────────────────────────
 
 const EXTENSION_MAP: Record<string, string> = {
   '.nes': 'NES',  '.fds': 'FDS',
@@ -133,7 +133,7 @@ const EXTENSION_MAP: Record<string, string> = {
   '.sg': 'Sega - SG-1000',
 };
 
-// ─── DB System Name → Extension Key (for systems.json lookup) ────────────────
+// ─── Nome do Sistema no DB → Chave de Extensão (para consulta em systems.json) ─
 
 const DB_SYSTEM_TO_EXT: Record<string, string> = {
   'NES': '.nes',
@@ -265,7 +265,7 @@ async function extractEntries(filePath: string): Promise<RomEntry[]> {
   }];
 }
 
-// ─── Magic bytes ──────────────────────────────────────────────────────────────
+// ─── Bytes mágicos ────────────────────────────────────────────────────────────
 
 function detectByMagicBytes(buffer: Buffer): string | null {
   for (const sig of MAGIC_SIGNATURES) {
@@ -279,7 +279,7 @@ function detectByMagicBytes(buffer: Buffer): string | null {
   return null;
 }
 
-// ─── Lookup SQLite ────────────────────────────────────────────────────────────
+// ─── Consulta SQLite ──────────────────────────────────────────────────────────
 
 function lookupByHash(hashes: { crc32: string; sha1: string; md5: string }): any | null {
   if (!_db) return null;
@@ -296,15 +296,15 @@ function lookupByHash(hashes: { crc32: string; sha1: string; md5: string }): any
   }
 }
 
-// ─── Extension → Extension key ──────────────────────────────────────────────
+// ─── Extensão → Chave de extensão ─────────────────────────────────────────────
 
 function extToSystemKey(ext: string): string | null {
   const dbSystem = EXTENSION_MAP[ext];
   if (!dbSystem) return null;
-  // If EXTENSION_MAP directly gives us a key
+  // Se EXTENSION_MAP der uma chave diretamente
   const mapped = DB_SYSTEM_TO_EXT[dbSystem];
   if (mapped) return mapped;
-  // Check if dbSystem itself is already a key
+  // Verifica se dbSystem já é uma chave
   return dbSystem !== '' ? dbSystem : null;
 }
 

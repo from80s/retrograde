@@ -1,16 +1,5 @@
 import { useRef, useEffect, useCallback, useMemo, useState } from "react";
-import {
-  X,
-  Monitor,
-  Calendar,
-  Flag,
-  Gamepad2,
-  HardDrive,
-  Sparkles,
-  BookOpen,
-  Globe,
-  Cpu,
-} from "lucide-react";
+import { X, Monitor, Calendar, Gamepad2, Cpu, BookOpen } from "lucide-react";
 function ScrollDownIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -29,7 +18,11 @@ function ScrollDownIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-import { getSystemMetadata, getLogoUrl } from "@/utils/metadata";
+import {
+  getSystemMetadata,
+  getLogoUrl,
+  getHardwareUrl,
+} from "@/utils/metadata";
 import { getFanartUrl } from "@/utils/fanart";
 
 function easeInOutCubic(t: number): number {
@@ -42,12 +35,12 @@ const LOGO_SWITCH = 95;
 const LOGO_FINAL = 320;
 const MASK_REMOVE_THRESHOLD = 280;
 
-// Progressive blur parameters (simulates iOS-style diagonal blur)
-// BLUR_ANGLE: gradient direction in degrees. 0=top→bottom, 90=left→right, 135=↘, 160≈↙
-// BLUR_FADE: soft transition width between layers (percentage points)
-// BLUR_LAYERS: each entry is one stacked layer. `blur`=gaussian px, `start/end`=visibility range along the gradient axis.
-//   Layer 0 (blur=0) is the sharp base. Last layer is the strongest blur.
-//   Each layer fades in/out across BLUR_FADE% to create smooth blending.
+// Parâmetros do blur progressivo (simula blur diagonal estilo iOS)
+// BLUR_ANGLE: direção do gradiente em graus. 0=topo→base, 90=esquerda→direita, 135=↘, 160≈↙
+// BLUR_FADE: largura da transição suave entre camadas (pontos percentuais)
+// BLUR_LAYERS: cada entrada é uma camada empilhada. `blur`=px gaussiano, `start/end`=faixa de visibilidade ao longo do eixo do gradiente.
+//   Camada 0 (blur=0) é a base nítida. A última camada é o blur mais forte.
+//   Cada camada faz fade in/out através de BLUR_FADE% para criar mesclagem suave.
 const BLUR_ANGLE = 160;
 const BLUR_FADE = 10;
 const BLUR_LAYERS = [
@@ -68,36 +61,27 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
   const logoRef = useRef<HTMLImageElement>(null);
   const maskRef = useRef<HTMLDivElement>(null);
   const scrollIconRef = useRef<HTMLDivElement>(null);
-  const contentRevealedRef = useRef(false);
-
   const contentRef = useRef<HTMLDivElement>(null);
-
+  const contentVisibleRef = useRef(false);
   const [contentVisible, setContentVisible] = useState(false);
 
   const meta = getSystemMetadata(systemName);
   const logoUrl = getLogoUrl(systemName);
   const fanartUrl = getFanartUrl(systemName);
+  const hardwareUrl = getHardwareUrl(systemName);
 
   const maskImageValue = useMemo(() => {
     if (!logoUrl) return undefined;
     return `url(${logoUrl})`;
   }, [logoUrl]);
 
-  const revealContent = useCallback(() => {
-    if (contentRevealedRef.current) return;
-    contentRevealedRef.current = true;
-    setContentVisible(true);
-    const content = contentRef.current;
-    if (content) {
-      content.style.opacity = "1";
-      content.style.transform = "translateY(0)";
-    }
-  }, []);
+  const CONTENT_THRESHOLD = 0.85;
 
-  useEffect(() => {
-    const timer = setTimeout(revealContent, 4000);
-    return () => clearTimeout(timer);
-  }, [revealContent]);
+  const setContentVisibility = useCallback((visible: boolean) => {
+    if (visible === contentVisibleRef.current) return;
+    contentVisibleRef.current = visible;
+    setContentVisible(visible);
+  }, []);
 
   const updateAnimation = useCallback(() => {
     const el = containerRef.current;
@@ -114,8 +98,9 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
 
     const logoEl = logoRef.current;
     const maskEl = maskRef.current;
+
     if (!logoEl || !maskEl || !maskImageValue) {
-      if (scrollTop > 50) revealContent();
+      setContentVisibility(progress >= CONTENT_THRESHOLD);
       return;
     }
 
@@ -134,6 +119,8 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
       maskEl.style.maskImage = maskImageValue;
       maskEl.style.webkitMaskSize = `${logoSize}vw`;
       maskEl.style.maskSize = `${logoSize}vw`;
+
+      setContentVisibility(false);
     } else {
       const t = easeInOutCubic((progress - PHASE1_END) / (1 - PHASE1_END));
       logoSize = LOGO_SWITCH + (LOGO_FINAL - LOGO_SWITCH) * t;
@@ -143,15 +130,16 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
       if (logoSize >= MASK_REMOVE_THRESHOLD) {
         maskEl.style.webkitMaskImage = "none";
         maskEl.style.maskImage = "none";
-        revealContent();
+        setContentVisibility(true);
       } else {
         maskEl.style.webkitMaskImage = maskImageValue;
         maskEl.style.maskImage = maskImageValue;
         maskEl.style.webkitMaskSize = `${logoSize}vw`;
         maskEl.style.maskSize = `${logoSize}vw`;
+        setContentVisibility(false);
       }
     }
-  }, [maskImageValue, revealContent]);
+  }, [maskImageValue, setContentVisibility]);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -202,8 +190,7 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
                 willChange: "mask-size, -webkit-mask-size",
               }}
             >
-              {/* fanart background */}
-              <div className="absolute inset-0">
+              <div className="absolute inset-0 pointer-events-none">
                 {fanartUrl &&
                   BLUR_LAYERS.map((layer) => (
                     <div
@@ -218,6 +205,225 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
                     />
                   ))}
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-zinc-950/20" />
+              </div>
+
+              <div
+                ref={contentRef}
+                className="absolute inset-0 z-10 bg-zinc-950/95 backdrop-blur-sm"
+                style={{
+                  opacity: contentVisible ? 1 : 0,
+                  transform: contentVisible
+                    ? "translateY(0)"
+                    : "translateY(40px)",
+                  transition:
+                    "opacity 0.4s ease-in-out, transform 0.4s ease-in-out",
+                  overflowY: contentVisible ? "auto" : "hidden",
+                  pointerEvents: contentVisible ? "auto" : "none",
+                }}
+              >
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 min-h-full">
+                  {meta && (
+                    <>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-auto">
+                        {/* 1. Título + Subtítulo */}
+                        <div className="col-span-2 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+                          <div className="flex items-center gap-2 mb-4">
+                            {/* {logoUrl && (
+                              <img
+                                src={logoUrl}
+                                alt=""
+                                className="w-6 h-6 object-contain brightness-0 invert"
+                              />
+                            )} */}
+                            <h1 className="text-xl sm:text-2xl font-bold text-zinc-100">
+                              {meta.name}
+                            </h1>
+                          </div>
+                          {/* <p className="text-[10px] uppercase tracking-wider text-zinc-600 font-mono mb-3">
+                            {meta.id.replace(/_/g, " ")}
+                          </p> */}
+                          <p className="text-sm text-zinc-300 leading-relaxed">
+                            {meta.description}
+                          </p>
+                        </div>
+
+                        {/* 2. Imagem principal do hardware */}
+                        <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800/50 flex items-center justify-center overflow-hidden">
+                          {hardwareUrl ? (
+                            <img
+                              src={hardwareUrl}
+                              alt={meta.name}
+                              className="w-full h-full object-contain"
+                            />
+                          ) : (
+                            <div className="flex flex-col items-center gap-2 text-zinc-600 py-4 px-3">
+                              <Monitor className="w-8 h-8" />
+                              <span className="text-[10px] uppercase tracking-wider">
+                                Sem imagem
+                              </span>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* 3. Especificações técnicas */}
+                        <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+                          <div className="flex items-center gap-2 mb-3 text-zinc-400">
+                            <Cpu className="w-4 h-4" />
+                            <span className="text-xs font-medium uppercase tracking-wider">
+                              Especificações
+                            </span>
+                          </div>
+                          <div className="scrollbar-auto max-h-[220px] space-y-2.5 pr-1">
+                            {[
+                              ['Fabricante', meta.manufacturer],
+                              ['Origem', meta.origin_country],
+                              ['Tipo', meta.type],
+                              ['Geração', meta.generation],
+                              ['CPU', meta.cpu],
+                              ['Memória', meta.memory],
+                              ['Armazenamento', meta.storage],
+                              ['Mídia', meta.media],
+                              ['SO', meta.os],
+                              ['Display', meta.display],
+                              ['Gráficos', meta.graphics],
+                              ['Som', meta.sound],
+                              ['Conectividade', meta.connectivity],
+                            ].filter(([, v]) => v).map(([label, value]) => (
+                              <div key={label as string}>
+                                <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
+                                  {label as string}
+                                </span>
+                                <p className="text-sm font-semibold text-zinc-200">
+                                  {value as string}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* 4. Ano de Lançamento */}
+                        <div className="col-span-2 sm:col-span-1 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+                          <div className="flex items-center gap-2 mb-3 text-zinc-400">
+                            <Calendar className="w-4 h-4" />
+                            <span className="text-xs font-medium uppercase tracking-wider">
+                              Ano de Lançamento
+                            </span>
+                          </div>
+                          {meta.release_year > 0 ? (
+                            <p className="text-2xl font-bold font-mono text-zinc-200">
+                              {meta.release_year}
+                            </p>
+                          ) : (
+                            <p className="text-sm text-zinc-500 italic">
+                              Desconhecido
+                            </p>
+                          )}
+                        </div>
+
+                        {/* 5. Sistema e periféricos */}
+                        <div className="col-span-2 lg:col-span-3 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+                          <div className="flex items-center gap-2 mb-3 text-zinc-400">
+                            <Monitor className="w-4 h-4" />
+                            <span className="text-xs font-medium uppercase tracking-wider">
+                              Sistema & Periféricos
+                            </span>
+                          </div>
+
+                          {meta.emulators.length > 0 && (
+                            <div className="mb-3">
+                              <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
+                                Emuladores
+                              </span>
+                              <div className="flex flex-wrap gap-1.5 mt-1">
+                                {meta.emulators.map((emu) => (
+                                  <span
+                                    key={emu}
+                                    className="px-2 py-0.5 rounded-md bg-retro-secondary/10 border border-retro-secondary/20 text-xs text-retro-secondary/80"
+                                  >
+                                    {emu}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {meta.supported_extensions.length > 0 && (
+                            <div className="mb-3">
+                              <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
+                                Mídia Suportada
+                              </span>
+                              <div className="flex flex-wrap gap-1.5 mt-1">
+                                {meta.supported_extensions.map((ext) => (
+                                  <span
+                                    key={ext}
+                                    className="px-2 py-0.5 rounded-md bg-zinc-800/50 border border-zinc-700/30 text-xs font-mono text-zinc-400"
+                                  >
+                                    {ext}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {[
+                            ['Preço de Lançamento', meta.launch_price],
+                            ['Unidades Vendidas', meta.units_sold],
+                            ['Predecessor', meta.predecessor],
+                            ['Sucessor', meta.successor],
+                          ].filter(([, v]) => v).map(([label, value]) => (
+                            <div key={label as string} className="mb-2">
+                              <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
+                                {label as string}
+                              </span>
+                              <p className="text-sm font-semibold text-zinc-200">
+                                {value as string}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* 6. Curiosidades */}
+                        <div className="col-span-2 lg:col-span-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+                          <div className="flex items-center gap-2 mb-3 text-zinc-400">
+                            <BookOpen className="w-4 h-4" />
+                            <span className="text-xs font-medium uppercase tracking-wider">
+                              Curiosidades
+                            </span>
+                          </div>
+                          {meta.curiosities.length > 0 ? (
+                            <ul className="space-y-3">
+                              {meta.curiosities.map((curiosity, i) => (
+                                <li
+                                  key={i}
+                                  className="flex items-start gap-2 text-sm text-zinc-300 leading-relaxed"
+                                >
+                                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-retro-primary shrink-0" />
+                                  {curiosity}
+                                </li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <p className="text-sm text-zinc-500 italic">
+                              Nenhuma curiosidade registrada.
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {!meta && (
+                    <div className="flex flex-col items-center justify-center py-20 text-zinc-500">
+                      <Gamepad2 className="w-12 h-12 mb-4" />
+                      <p className="text-lg font-medium mb-1">
+                        Sistema não encontrado
+                      </p>
+                      <p className="text-sm">
+                        Nenhum metadado disponível para {systemName}.
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -247,188 +453,7 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
             </div>
           </section>
 
-          {/* Conteúdo relativo ao sistema - bento grid */}
-          <div
-            ref={contentRef}
-            className="relative z-50 bg-zinc-950/95 backdrop-blur-sm min-h-screen mt-[40vh]"
-            style={{
-              opacity: contentVisible ? 1 : 0,
-              transform: contentVisible ? "translateY(0)" : "translateY(40px)",
-              transition: "opacity 0.7s ease-out, transform 0.7s ease-out",
-            }}
-          >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-              {meta && (
-                <>
-                  <div className="mb-8 sm:mb-12">
-                    <div className="flex items-center gap-3 mb-2">
-                      {logoUrl && (
-                        <img
-                          src={logoUrl}
-                          alt=""
-                          className="w-8 h-8 object-contain brightness-0 invert"
-                        />
-                      )}
-                      <h1 className="text-xl sm:text-2xl font-bold text-zinc-100">
-                        {meta.name}
-                      </h1>
-                    </div>
-                    <p className="text-xs sm:text-sm text-zinc-500 font-mono">
-                      {meta.id.replace(/_/g, " ")} —{" "}
-                      {meta.supported_extensions.length} extensões suportadas
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-auto">
-                    <div className="col-span-2 sm:col-span-3 lg:col-span-4 row-span-1 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                      <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                        <BookOpen className="w-4 h-4" />
-                        <span className="text-xs font-medium uppercase tracking-wider">
-                          Sobre
-                        </span>
-                      </div>
-                      <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                        {meta.description}
-                      </p>
-                    </div>
-
-                    <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                      <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                        <Monitor className="w-4 h-4" />
-                        <span className="text-xs font-medium uppercase tracking-wider">
-                          Fabricante
-                        </span>
-                      </div>
-                      <p className="text-base sm:text-lg font-semibold text-zinc-200">
-                        {meta.manufacturer}
-                      </p>
-                    </div>
-
-                    <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                      <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                        <Calendar className="w-4 h-4" />
-                        <span className="text-xs font-medium uppercase tracking-wider">
-                          Lançamento
-                        </span>
-                      </div>
-                      <p className="text-base sm:text-lg font-semibold text-zinc-200">
-                        {meta.release_year > 0 ? meta.release_year : "—"}
-                      </p>
-                    </div>
-
-                    <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                      <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                        <Flag className="w-4 h-4" />
-                        <span className="text-xs font-medium uppercase tracking-wider">
-                          Origem
-                        </span>
-                      </div>
-                      <p className="text-base sm:text-lg font-semibold text-zinc-200">
-                        {meta.origin_country}
-                      </p>
-                    </div>
-
-                    <div className="col-span-2 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                      <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                        <Sparkles className="w-4 h-4" />
-                        <span className="text-xs font-medium uppercase tracking-wider">
-                          Curiosidades
-                        </span>
-                      </div>
-                      {meta.curiosities.length > 0 ? (
-                        <ul className="space-y-2">
-                          {meta.curiosities.map((curiosity, i) => (
-                            <li
-                              key={i}
-                              className="flex items-start gap-2 text-sm text-zinc-300"
-                            >
-                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0" />
-                              {curiosity}
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <p className="text-sm text-zinc-500 italic">
-                          Nenhuma curiosidade registrada.
-                        </p>
-                      )}
-                    </div>
-
-                    <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                      <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                        <Cpu className="w-4 h-4" />
-                        <span className="text-xs font-medium uppercase tracking-wider">
-                          ID do Sistema
-                        </span>
-                      </div>
-                      <p className="text-xs sm:text-sm font-mono text-zinc-300 break-all">
-                        {meta.id}
-                      </p>
-                    </div>
-
-                    <div className="col-span-2 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                      <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                        <HardDrive className="w-4 h-4" />
-                        <span className="text-xs font-medium uppercase tracking-wider">
-                          Extensões Suportadas
-                        </span>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {meta.supported_extensions.map((ext) => (
-                          <span
-                            key={ext}
-                            className="px-2.5 py-1 rounded-lg bg-purple-500/10 border border-purple-500/20 text-xs font-mono text-purple-300"
-                          >
-                            {ext}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="col-span-2 sm:col-span-3 lg:col-span-4 rounded-2xl bg-gradient-to-br from-zinc-900/60 to-zinc-900/30 border border-zinc-800/50 p-5 sm:p-6">
-                      <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                        <Globe className="w-4 h-4" />
-                        <span className="text-xs font-medium uppercase tracking-wider">
-                          Links
-                        </span>
-                      </div>
-                      <div className="flex flex-wrap gap-3">
-                        <a
-                          href={`https://www.thegamesdb.net/platforms/`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs sm:text-sm text-purple-400 hover:text-purple-300 underline underline-offset-2 transition-colors"
-                        >
-                          TheGamesDB (TGDB: {meta.tgdb_id})
-                        </a>
-                        <a
-                          href={`https://www.igdb.com/platforms/${meta.id}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs sm:text-sm text-purple-400 hover:text-purple-300 underline underline-offset-2 transition-colors"
-                        >
-                          IGDB (ID: {meta.igdb_id})
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              )}
-
-              {!meta && (
-                <div className="flex flex-col items-center justify-center py-20 text-zinc-500">
-                  <Gamepad2 className="w-12 h-12 mb-4" />
-                  <p className="text-lg font-medium mb-1">
-                    Sistema não encontrado
-                  </p>
-                  <p className="text-sm">
-                    Nenhum metadado disponível para {systemName}.
-                  </p>
-                </div>
-              )}
-            </div>
-            <div className="h-[50vh]" />
-          </div>
+          <div className="h-[200vh]" />
         </div>
       </div>
     </div>

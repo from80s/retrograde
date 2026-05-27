@@ -11,6 +11,26 @@ type MetadataSystem = {
   description: string;
   curiosities: string[];
   supported_extensions: string[];
+  emulators: string[];
+  generation: string;
+  type?: string;
+  cpu?: string;
+  memory?: string;
+  storage?: string;
+  media?: string;
+  os?: string;
+  display?: string;
+  graphics?: string;
+  sound?: string;
+  connectivity?: string;
+  launch_price?: string;
+  units_sold?: string;
+  predecessor?: string;
+  successor?: string;
+  online_services?: string;
+  best_selling_game?: string;
+  release_dates?: string;
+  discontinued?: string;
 };
 
 const NAME_ALIAS: Record<string, string> = {
@@ -47,6 +67,22 @@ export function getSystemMetadata(name: string): MetadataSystem | undefined {
 export function getSupportedExtensions(name: string): string[] {
   const meta = getSystemMetadata(name);
   return meta?.supported_extensions ?? [];
+}
+
+const HARDWARE_IMAGE_NAMES = new Set([
+  'Amiga', 'Amstrad CPC', 'Apple II', 'Apple IIGS', 'Arcade',
+  'Atari 2600', 'Atari 5200', 'Atari 7800', 'Atari 800',
+  'Atari Jaguar CD', 'Atari Jaguar', 'Atari Lynx', 'Atari ST',
+  'BBC Micro', 'ColecoVision', 'Commodore 64', 'Daphne', 'Doom',
+  'DOS', 'Dreamcast', 'Fairchild Channel F', 'Famicom Disk System',
+  'Game & Watch', 'Game Boy Advance', 'Game Boy Color', 'Game Boy',
+  'GameCube',
+]);
+
+export function getHardwareUrl(name: string): string | null {
+  const meta = getSystemMetadata(name);
+  if (!meta || !HARDWARE_IMAGE_NAMES.has(meta.name)) return null;
+  return `system/hardwares/${encodeURIComponent(meta.name)}.png`;
 }
 
 export function getLogoUrl(name: string): string | null {

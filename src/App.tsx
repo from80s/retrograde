@@ -268,7 +268,7 @@ function App() {
             sidebarCollapsed && setSidebarHoverExpanded(false)
           }
         >
-          {/* Logo Header */}
+          {/* Cabeçalho do Logo */}
           <div
             className={`border-b border-zinc-800/50 flex flex-col items-center ${isSidebarExpanded ? "p-5 gap-2" : "p-2 gap-0.5"}`}
           >
@@ -282,7 +282,7 @@ function App() {
             )}
           </div>
 
-          {/* Toggle Button */}
+          {/* Botão de Alternância */}
           <button
             onClick={() => {
               setSidebarCollapsed(!sidebarCollapsed);
@@ -309,7 +309,7 @@ function App() {
               </div>
             )}
 
-            {/* Main Action Buttons */}
+            {/* Botões de Ação Principal */}
             <button
               onClick={handleSelectFolder}
               disabled={state.isRunning}
@@ -437,7 +437,7 @@ function App() {
               )}
             </button>
 
-            {/* Secondary Actions */}
+            {/* Ações Secundárias */}
             <div
               className={`pt-2 border-t border-zinc-800/30 space-y-1 ${!isSidebarExpanded ? "flex flex-col items-center gap-1" : ""}`}
             >
@@ -499,7 +499,7 @@ function App() {
             </div>
           </nav>
 
-          {/* Buy me a coffee - Bottom of sidebar */}
+          {/* Buy me a coffee - Fundo da sidebar */}
           <div
             className={`border-t border-zinc-800/30 ${isSidebarExpanded ? "p-3" : "p-2 flex justify-center"}`}
           >
@@ -522,11 +522,11 @@ function App() {
           </div>
         </motion.aside>
 
-        {/* Main Content */}
+        {/* Conteúdo Principal */}
         <main className="flex-1 overflow-hidden flex flex-col">
           <div className="flex-1 overflow-y-auto scrollbar-thin">
             <div className="p-8 max-w-6xl mx-auto space-y-6">
-              {/* Stats Grid */}
+              {/* Grade de Estatísticas */}
               <div className="grid grid-cols-4 gap-4">
                 <StatCard
                   label="Total Encontrado"
@@ -554,7 +554,7 @@ function App() {
                 />
               </div>
 
-              {/* Space Savings Card */}
+              {/* Cartão de Economia de Espaço */}
               {bytesSaved > 0 && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -574,7 +574,7 @@ function App() {
                 </motion.div>
               )}
 
-              {/* Supported Systems */}
+              {/* Sistemas Suportados */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -587,7 +587,7 @@ function App() {
         </main>
       </div>
 
-      {/* Modals */}
+      {/* Modais */}
       <AnimatePresence>
         {showSettings && (
           <SettingsModal

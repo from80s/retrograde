@@ -169,7 +169,7 @@ export function OrphanFilesModal({ onClose, folder, onToast }: OrphanFilesModalP
                 </div>
               ) : (
                 <>
-                  {/* Summary Cards */}
+                  {/* Cartões de Resumo */}
                   <div className="grid grid-cols-3 gap-4 mb-4">
                     <div className="glass rounded-xl p-4 text-center">
                       <AlertTriangle className="w-5 h-5 text-retro-warning mx-auto mb-2" />

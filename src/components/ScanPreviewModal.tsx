@@ -276,7 +276,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
         className="glass rounded-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
+        {/* Cabeçalho */}
         <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
           <div>
             <h2 className="text-xl font-bold text-zinc-100">Pré-visualização da Curadoria</h2>
@@ -290,9 +290,9 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
           </button>
         </div>
 
-        {/* Content */}
+        {/* Conteúdo */}
         <div className="flex-1 overflow-y-auto scrollbar-thin">
-          {/* Resume Dialog */}
+          {/* Diálogo de Retomada */}
           <AnimatePresence>
             {showResumeDialog && (
               <motion.div
@@ -356,7 +356,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
             </div>
           ) : (
             <div className="p-6 space-y-6">
-              {/* Stats Summary */}
+              {/* Resumo de Estatísticas */}
               <div className="grid grid-cols-3 gap-4">
                 <div className="bg-zinc-800/30 rounded-xl p-4 text-center">
                   <p className="text-2xl font-bold text-retro-primary">{totalRoms}</p>
@@ -372,7 +372,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                 </div>
               </div>
 
-              {/* Filters */}
+              {/* Filtros */}
               <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
                   <Filter className="w-4 h-4" />
@@ -415,7 +415,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                 </div>
               </div>
 
-              {/* ROM List by System */}
+              {/* Lista de ROMs por Sistema */}
               <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">
                   ROMs por Sistema
@@ -501,7 +501,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                 </div>
               </div>
 
-              {/* Clone Detection */}
+              {/* Detecção de Clones */}
               {scanData?.cloneGroups?.length > 0 && (
                 <div className="space-y-3">
                   <button
@@ -586,7 +586,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                 </div>
               )}
 
-              {/* User Protected Games */}
+              {/* Jogos Protegidos pelo Usuário */}
               <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
                   <Shield className="w-4 h-4 text-teal-400" />
@@ -658,7 +658,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
           )}
         </div>
 
-        {/* Footer */}
+        {/* Rodapé */}
         <div className="p-6 border-t border-zinc-800/50 space-y-4">
 
           <div className="flex items-center justify-between">

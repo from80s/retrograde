@@ -79,7 +79,7 @@ export function CurationModal({
         className="glass rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
+        {/* Cabeçalho */}
         <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
           <div className="flex items-center gap-3">
             {cancelled ? (
@@ -113,9 +113,9 @@ export function CurationModal({
           </div>
         </div>
 
-        {/* Progress */}
+        {/* Progresso */}
         <div className="p-6 border-b border-zinc-800/50 space-y-4">
-          {/* Progress bar */}
+          {/* Barra de progresso */}
           <div className="space-y-2">
             <div className="flex justify-between text-xs text-zinc-500">
               <span>Progresso</span>
@@ -133,7 +133,7 @@ export function CurationModal({
             </div>
           </div>
 
-          {/* Current file */}
+          {/* Arquivo atual */}
           {currentFile && (
             <div className="flex items-center gap-3 p-3 bg-zinc-800/30 rounded-xl">
               {currentStatus && (() => {
@@ -154,7 +154,7 @@ export function CurationModal({
             </div>
           )}
 
-          {/* Stats */}
+          {/* Estatísticas */}
           <div className="grid grid-cols-3 gap-3">
             <div className="p-3 bg-retro-secondary/10 border border-retro-secondary/20 rounded-xl text-center">
               <p className="text-lg font-bold text-retro-secondary">{classics}</p>
@@ -171,7 +171,7 @@ export function CurationModal({
           </div>
         </div>
 
-        {/* Activity Log */}
+        {/* Registro de Atividades */}
         <div className="flex-1 overflow-hidden flex flex-col min-h-0">
           <div className="p-4 border-b border-zinc-800/50 flex items-center justify-between flex-shrink-0">
             <h4 className="text-sm font-semibold text-zinc-300">Log de Atividades</h4>

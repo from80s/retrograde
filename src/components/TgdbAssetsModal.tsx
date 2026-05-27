@@ -158,20 +158,20 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
   const [copiedInstruction, setCopiedInstruction] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
 
-  // Folder scan state
+  // Estado da varredura de pastas
   const [romFolders, setRomFolders] = useState<string[]>([]);
   const [scanning, setScanning] = useState(false);
   const [scanProgress, setScanProgress] = useState(0);
   const [romEntries, setRomEntries] = useState<RomEntry[]>([]);
   const [selectedRoms, setSelectedRoms] = useState<Set<string>>(new Set());
 
-  // Manual entry state
+  // Estado de entrada manual
   const [manualEntries, setManualEntries] = useState<ManualEntry[]>([]);
   const [newEntryName, setNewEntryName] = useState('');
   const [newEntryPlatforms, setNewEntryPlatforms] = useState<number[]>([]);
   const [showMultiPlatformDropdown, setShowMultiPlatformDropdown] = useState(false);
 
-  // Media type selection
+  // Seleção de tipo de mídia
   const [mediaTypes, setMediaTypes] = useState({
     boxart: true,
     screenshots: true,
@@ -181,7 +181,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
     videos: false,
   });
 
-  // Download progress
+  // Progresso do download
   const [downloading, setDownloading] = useState(false);
   const [downloadProgress, setDownloadProgress] = useState({ current: 0, total: 0, currentGame: '' });
   const [downloadResults, setDownloadResults] = useState<any[]>([]);
@@ -469,7 +469,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
               animate={{ opacity: 1, y: 0 }}
               className="p-6"
             >
-              {/* Search Mode Tabs */}
+              {/* Abas do Modo de Busca */}
               <div className="flex gap-2 mb-6">
                 <button
                   onClick={() => setSearchMode('manual')}
@@ -603,7 +603,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
 
               {searchMode === 'folder' && (
                 <div className="space-y-6 max-w-2xl mx-auto">
-                  {/* Folder Selection */}
+                  {/* Seleção de Pasta */}
                   <div className="space-y-3">
                     <label className="text-sm font-medium text-zinc-300">Pastas de ROMs</label>
                     <div className="flex gap-2">
@@ -633,7 +633,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                     )}
                   </div>
 
-                  {/* Scan Button */}
+                  {/* Botão de Varredura */}
                   <button
                     onClick={handleScanFolders}
                     disabled={scanning || romFolders.length === 0}
@@ -652,7 +652,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                     )}
                   </button>
 
-                  {/* Scan Progress */}
+                  {/* Progresso da Varredura */}
                   {scanning && (
                     <div className="w-full bg-zinc-800/50 rounded-full h-2">
                       <div
@@ -662,10 +662,10 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                     </div>
                   )}
 
-                  {/* ROM List grouped by system */}
+                  {/* Lista de ROMs agrupada por sistema */}
                   {romEntries.length > 0 && !scanning && (
                     <div className="space-y-4">
-                      {/* Media Type Selection */}
+{/* Seleção de Tipo de Mídia */}
                       <div className="space-y-2">
                         <label className="text-sm font-medium text-zinc-300">Tipos de Mídia</label>
                         <div className="grid grid-cols-3 gap-2">
@@ -693,7 +693,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                         </div>
                       </div>
 
-                      {/* ROMs grouped by system */}
+                      {/* ROMs agrupadas por sistema */}
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
                           <span className="text-sm text-zinc-400">{romEntries.length} ROMs em {new Set(romEntries.map(e => e.platformName)).size} sistema(s)</span>
@@ -810,7 +810,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                     </div>
                   )}
 
-                  {/* Manual Entry for Folder Mode */}
+                  {/* Entrada Manual para Modo Pasta */}
                   <div className="pt-4 border-t border-zinc-800/30 space-y-3">
                     <p className="text-sm font-medium text-zinc-300">Ou adicione jogos manualmente</p>
                     <div className="flex gap-2">
@@ -916,7 +916,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
 
           {step === 'results' && assets && (
             <div className="p-6">
-              {/* When export is active, hide other tabs */}
+              {/* Quando a exportação está ativa, oculta outras abas */}
               {!activeExport && validTabs.length > 0 && (
                 <div className="flex gap-1 mb-6 border-b border-zinc-800/30">
                   {validTabs.map((tab) => {
