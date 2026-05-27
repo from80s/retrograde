@@ -202,6 +202,7 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
                 willChange: "mask-size, -webkit-mask-size",
               }}
             >
+              {/* fanart background */}
               <div className="absolute inset-0">
                 {fanartUrl &&
                   BLUR_LAYERS.map((layer) => (
@@ -246,9 +247,10 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
             </div>
           </section>
 
+          {/* Conteúdo relativo ao sistema - bento grid */}
           <div
             ref={contentRef}
-            className="relative bg-zinc-950/95 backdrop-blur-sm min-h-screen"
+            className="relative z-50 bg-zinc-950/95 backdrop-blur-sm min-h-screen mt-[40vh]"
             style={{
               opacity: contentVisible ? 1 : 0,
               transform: contentVisible ? "translateY(0)" : "translateY(40px)",
