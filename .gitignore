@@ -14,6 +14,3 @@ data/curator_stats.json
 # OS files
 .DS_Store
 Thumbs.db
-
-# Git
-.commit.txt

@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { getFanartUrl } from '@/utils/fanart';
 import { EdgeGlow } from './EdgeGlow';
 import { SearchInput } from './SearchInput';
+import { SystemDetail } from './SystemDetail';
 
 const SUPPORTED_SYSTEMS = [
   { name: '3DO Interactive Multiplayer', shortName: '3DO', logo: '3do.svg', extensions: ['.bin', '.cue', '.iso', '.chd'] },
@@ -92,9 +93,10 @@ interface SystemEntry {
   extensions: string[];
 }
 
-function SystemCard({ sys }: { sys: SystemEntry }) {
+function SystemCard({ sys, onClick }: { sys: SystemEntry; onClick?: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
   const fanartUrl = getFanartUrl(sys.name);
+  const clickDetectRef = useRef({ downX: 0, downY: 0, downTime: 0 });
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!ref.current) return;
@@ -111,12 +113,32 @@ function SystemCard({ sys }: { sys: SystemEntry }) {
     ref.current.style.setProperty('--eg-y', '50%');
   }, []);
 
+  const handleClick = useCallback(() => {
+    onClick?.();
+  }, [onClick]);
+
+  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    clickDetectRef.current = { downX: e.clientX, downY: e.clientY, downTime: Date.now() };
+  }, []);
+
+  const handlePointerUp = useCallback((e: React.PointerEvent) => {
+    const { downX, downY, downTime } = clickDetectRef.current;
+    const dx = Math.abs(e.clientX - downX);
+    const dy = Math.abs(e.clientY - downY);
+    const dt = Date.now() - downTime;
+    if (dx < 8 && dy < 8 && dt < 300) {
+      handleClick();
+    }
+  }, [handleClick]);
+
   return (
     <div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="flex-shrink-0 w-48 bg-zinc-800/40 rounded-xl p-4 flex flex-col items-center text-center gap-2 border border-zinc-700/20 hover:border-zinc-600/40 transition-colors relative overflow-hidden group"
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      className="flex-shrink-0 w-48 bg-zinc-800/40 rounded-xl p-4 flex flex-col items-center text-center gap-2 border border-zinc-700/20 hover:border-zinc-600/40 transition-colors relative overflow-hidden group cursor-pointer"
     >
       {fanartUrl && (
         <div
@@ -163,6 +185,7 @@ function SystemCard({ sys }: { sys: SystemEntry }) {
 
 export function SupportedSystems() {
   const [filter, setFilter] = useState('');
+  const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDraggingRef = useRef(false);
   const dragStartRef = useRef({ x: 0, scrollLeft: 0 });
@@ -264,6 +287,7 @@ export function SupportedSystems() {
   }, [cancelInertia]);
 
   return (
+    <>
     <div className="glass rounded-2xl overflow-hidden">
       <div className="p-4 border-b border-zinc-800/50 flex items-center justify-between gap-4">
         <h3 className="font-semibold text-zinc-200 whitespace-nowrap">
@@ -297,7 +321,7 @@ export function SupportedSystems() {
         >
           {filteredSystems.length > 0 ? (
             filteredSystems.map((sys) => (
-              <SystemCard key={sys.name} sys={sys} />
+              <SystemCard key={sys.name} sys={sys} onClick={() => setSelectedSystem(sys.name)} />
             ))
           ) : (
             <div className="flex-shrink-0 w-full text-center py-8 text-zinc-500 text-sm">
@@ -322,5 +346,13 @@ export function SupportedSystems() {
         </div>
       )}
     </div>
+
+    {selectedSystem && (
+      <SystemDetail
+        systemName={selectedSystem}
+        onClose={() => setSelectedSystem(null)}
+      />
+    )}
+    </>
   );
 }

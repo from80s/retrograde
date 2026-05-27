@@ -348,3 +348,9 @@ MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
 - GitHub: [@from80s](https://github.com/from80s)
 - ☕ [Buy me a coffee](https://www.buymeacoffee.com/retrograde)
+
+---
+
+## 🙏 Agradecimentos
+
+- **Icone "scroll down"** por **Oleksandr Panasovskyi** do <a href="https://thenounproject.com/browse/icons/term/scroll-down/" target="_blank" title="scroll down Icons">Noun Project</a> (CC BY 3.0)
