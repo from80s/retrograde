@@ -31,6 +31,13 @@ type MetadataSystem = {
   best_selling_game?: string;
   release_dates?: string;
   discontinued?: string;
+  lifespan?: string;
+  top_games?: {
+    name: string;
+    slug: string;
+    rating: number | null;
+    cover_path: string | null;
+  }[];
 };
 
 const NAME_ALIAS: Record<string, string> = {

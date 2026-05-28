@@ -1,9 +1,20 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+const axios = require('axios');
 
 const dataPath = path.join(__dirname, '..', 'data', 'systems_metadata.json');
-const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+const configPath = path.join(__dirname, '..', 'data', 'config.json');
+const coversDir = path.join(__dirname, '..', 'assets', 'system', 'game_covers');
+
+let igdbConfig = null;
+try {
+  igdbConfig = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+} catch (_) {}
+
+let raw = fs.readFileSync(dataPath, 'utf-8');
+if (raw.charCodeAt(0) === 0xFEFF) raw = raw.slice(1);
+const data = JSON.parse(raw);
 
 // --- Scraper via Wikipedia API ---
 
@@ -956,8 +967,192 @@ async function processSystems() {
   }
 }
 
-processSystems().then(() => {
+const IGDB_TOKEN_PATH = path.join(__dirname, '..', 'data', '.igdb_token.json');
+
+let igdbTokenCache = null;
+
+async function getIGDBToken() {
+  if (!igdbConfig?.IGDB_CLIENT_ID || !igdbConfig?.IGDB_CLIENT_SECRET) {
+    throw new Error('IGDB credentials not configured in data/config.json');
+  }
+
+  if (igdbTokenCache && Date.now() < igdbTokenCache.expires_at) {
+    return igdbTokenCache.access_token;
+  }
+
+  try {
+    const cached = JSON.parse(fs.readFileSync(IGDB_TOKEN_PATH, 'utf-8'));
+    if (cached && Date.now() < cached.expires_at) {
+      igdbTokenCache = cached;
+      return cached.access_token;
+    }
+  } catch (_) {}
+
+  const response = await axios.post(
+    'https://id.twitch.tv/oauth2/token',
+    null,
+    {
+      params: {
+        client_id: igdbConfig.IGDB_CLIENT_ID,
+        client_secret: igdbConfig.IGDB_CLIENT_SECRET,
+        grant_type: 'client_credentials',
+      },
+    }
+  );
+
+  igdbTokenCache = {
+    access_token: response.data.access_token,
+    expires_at: Date.now() + (response.data.expires_in - 60) * 1000,
+  };
+
+  fs.writeFileSync(IGDB_TOKEN_PATH, JSON.stringify(igdbTokenCache), 'utf-8');
+  return igdbTokenCache.access_token;
+}
+
+async function fetchTopGamesForPlatform(platformId) {
+  try {
+    const token = await getIGDBToken();
+    const query = `fields name,rating,total_rating_count,follows,cover.url,slug; where platforms = [${platformId}] & total_rating_count > 0; sort total_rating_count desc; limit 5;`;
+    const response = await axios.post('https://api.igdb.com/v4/games', query, {
+      headers: {
+        'Client-ID': igdbConfig.IGDB_CLIENT_ID,
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'text/plain',
+      },
+      timeout: 15000,
+    });
+
+    if (!response.data || !Array.isArray(response.data)) return [];
+
+    return response.data.map((game) => {
+      let coverUrl = null;
+      if (game.cover?.url) {
+        coverUrl = game.cover.url.startsWith('//') ? 'https:' + game.cover.url : game.cover.url;
+        coverUrl = coverUrl.replace('t_thumb', 't_cover_big_2x');
+      }
+      return {
+        name: game.name || 'Unknown',
+        slug: game.slug || '',
+        rating: game.rating || null,
+        total_ratings: game.total_rating_count || 0,
+        cover_url: coverUrl,
+      };
+    });
+  } catch (err) {
+    console.warn(`  [igdb] Erro ao buscar jogos para plataforma ${platformId}: ${err.message}`);
+    return [];
+  }
+}
+
+async function downloadCover(url, filePath) {
+  if (!url) return false;
+  try {
+    const dir = path.dirname(filePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    const response = await axios({ url, method: 'GET', responseType: 'stream', timeout: 15000 });
+    const writer = fs.createWriteStream(filePath);
+    response.data.pipe(writer);
+    return new Promise((resolve, reject) => {
+      writer.on('finish', () => resolve(true));
+      writer.on('error', reject);
+    });
+  } catch (_) {
+    return false;
+  }
+}
+
+function slugToFilename(slug, ext) {
+  return slug.replace(/[^a-zA-Z0-9_-]/g, '_') + ext;
+}
+
+async function scrapeTopGames() {
+  if (!igdbConfig?.IGDB_CLIENT_ID || !igdbConfig?.IGDB_CLIENT_SECRET) {
+    console.warn('[igdb] IGDB credentials not found in data/config.json. Skipping top-games scrape.');
+    return;
+  }
+
+  console.log(`[igdb] Scraping top 5 games for ${data.systems.length} systems...\n`);
+
+  let processed = 0;
+  let totalWithTopGames = 0;
+
+  for (let i = 0; i < data.systems.length; i++) {
+    const system = data.systems[i];
+    const platformId = system.igdb_id;
+
+    if (!platformId) {
+      console.warn(`  [${i + 1}/${data.systems.length}] ${system.id}: no igdb_id, skipping`);
+      processed++;
+      continue;
+    }
+
+    if (system.top_games && system.top_games.length > 0) {
+      processed++;
+      totalWithTopGames++;
+      continue;
+    }
+
+    process.stdout.write(`  [${i + 1}/${data.systems.length}] ${system.id} (IGDB: ${platformId})... `);
+    const games = await fetchTopGamesForPlatform(platformId);
+
+    if (games.length === 0) {
+      console.log('no games found');
+      processed++;
+      continue;
+    }
+
+    const topGames = [];
+    for (const game of games) {
+      const ext = '.jpg';
+      const filename = slugToFilename(game.slug, ext);
+      const coverPath = path.join(coversDir, system.id, filename);
+      const localPath = `assets/system/game_covers/${system.id}/${filename}`;
+
+      let downloadedUrl = null;
+      if (game.cover_url) {
+        const success = await downloadCover(game.cover_url, coverPath);
+        if (success) {
+          downloadedUrl = localPath;
+        }
+      }
+
+      topGames.push({
+        name: game.name,
+        slug: game.slug,
+        rating: game.rating,
+        cover_path: downloadedUrl,
+      });
+    }
+
+    system.top_games = topGames;
+    totalWithTopGames++;
+    processed++;
+    console.log(`${topGames.length} games saved`);
+
+    if (i < data.systems.length - 1) {
+      await new Promise((r) => setTimeout(r, 350));
+    }
+  }
+
+  console.log(`\n[igdb] Done. ${totalWithTopGames}/${data.systems.length} systems have top_games.`);
+}
+
+async function main() {
+  await processSystems();
+
+  await scrapeTopGames();
+
   fs.writeFileSync(dataPath, JSON.stringify(data, null, 2) + '\n', 'utf-8');
-  console.log(`Updated ${data.systems.length} systems.`);
+  console.log(`\nUpdated ${data.systems.length} systems.`);
   console.log(`Systems with curated data: ${Object.keys(curated).length}`);
+  if (igdbConfig?.IGDB_CLIENT_ID) {
+    console.log(`Systems with top_games: ${data.systems.filter(s => s.top_games?.length > 0).length}`);
+  }
+}
+
+main().catch((err) => {
+  console.error('Fatal error:', err);
+  process.exit(1);
 });

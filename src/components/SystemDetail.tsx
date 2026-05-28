@@ -1,5 +1,5 @@
 import { useRef, useEffect, useCallback, useMemo, useState } from "react";
-import { X, Monitor, Calendar, Gamepad2, Cpu, BookOpen } from "lucide-react";
+import { X, Monitor, Calendar, Gamepad2, Cpu, BookOpen, Star } from "lucide-react";
 function ScrollDownIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -408,6 +408,77 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
                             </p>
                           )}
                         </div>
+
+                        {/* 7. Jogos em Destaque (top_games) */}
+                        {meta.top_games && meta.top_games.length > 0 && (
+                          <div className="col-span-2 lg:col-span-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+                            <div className="flex items-center gap-2 mb-4 text-zinc-400">
+                              <Star className="w-4 h-4" />
+                              <span className="text-xs font-medium uppercase tracking-wider">
+                                Principais Títulos
+                              </span>
+                            </div>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                              {meta.top_games.map((game) => {
+                                const coverUrl = game.cover_path
+                                  ? game.cover_path.replace(/^assets\//, '')
+                                  : null;
+                                return (
+                                  <div
+                                    key={game.slug}
+                                    className="group rounded-xl bg-zinc-800/40 border border-zinc-700/30 overflow-hidden transition-all duration-200 hover:bg-zinc-800/60 hover:border-zinc-600/50 hover:scale-[1.02]"
+                                  >
+                                    <div className="aspect-[3/4] bg-zinc-800/60 overflow-hidden">
+                                      {coverUrl ? (
+                                        <img
+                                          src={coverUrl}
+                                          alt={game.name}
+                                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                          loading="lazy"
+                                        />
+                                      ) : (
+                                        <div className="w-full h-full flex items-center justify-center text-zinc-600">
+                                          <Gamepad2 className="w-8 h-8" />
+                                        </div>
+                                      )}
+                                    </div>
+                                    <div className="p-2.5">
+                                      <p className="text-xs font-medium text-zinc-300 leading-tight line-clamp-2 group-hover:text-zinc-100 transition-colors">
+                                        {game.name}
+                                      </p>
+                                      {(() => {
+                                        const r = game.rating;
+                                        if (!r) return null;
+                                        return (
+                                          <div className="flex gap-0.5 mt-1">
+                                            {[1,2,3,4,5].map((star) => {
+                                              const filled = r >= star * 20 - 10;
+                                              return (
+                                                <svg
+                                                  key={star}
+                                                  viewBox="0 0 24 24"
+                                                  className="w-3 h-3"
+                                                  fill={filled ? '#fbbf24' : 'none'}
+                                                  stroke={filled ? '#f59e0b' : '#52525b'}
+                                                  strokeWidth="1.5"
+                                                  style={filled ? {
+                                                    filter: 'drop-shadow(0 0 3px rgba(251,191,36,0.5))',
+                                                  } : undefined}
+                                                >
+                                                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                                </svg>
+                                              );
+                                            })}
+                                          </div>
+                                        );
+                                      })()}
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </>
                   )}

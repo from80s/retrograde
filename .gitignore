@@ -10,6 +10,7 @@ release/
 # ARQUIVOS SENSÍVEIS (SEGURANÇA)
 data/config.json
 data/curator_stats.json
+data/.igdb_token.json
 
 # OS files
 .DS_Store

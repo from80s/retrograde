@@ -24,14 +24,46 @@
       "wikidata_id": "29028",
       "wikipedia_url": "https://en.wikipedia.org/wiki/32X",
       "type": "Video game console add-on",
-      "generation": "5ª Geração",
+      "generation": "5th Generation",
       "release_dates": "NA: November 21, 1994EU: November 1994JP: December 3, 1994BR: March 1995",
       "launch_price": null,
       "discontinued": "1996",
       "media": "ROM cartridge,, CD-ROM (with Sega CD)",
       "cpu": "2× SH-2 32-bit RISC @ 23 MHz",
       "memory": "256 KB RAM, 256 KB VRAM",
-      "display": "320 × 240 resolution, 32,768 on-screen colors"
+      "display": "320 × 240 resolution, 32,768 on-screen colors",
+      "top_games": [
+        {
+          "name": "Mortal Kombat II",
+          "slug": "mortal-kombat-ii",
+          "rating": 76.4115109309212,
+          "cover_path": "assets/system/game_covers/sega_32x/mortal-kombat-ii.jpg"
+        },
+        {
+          "name": "Blackthorne",
+          "slug": "blackthorne",
+          "rating": 70.40770202638988,
+          "cover_path": "assets/system/game_covers/sega_32x/blackthorne.jpg"
+        },
+        {
+          "name": "Primal Rage",
+          "slug": "primal-rage",
+          "rating": 61.02468325594474,
+          "cover_path": "assets/system/game_covers/sega_32x/primal-rage.jpg"
+        },
+        {
+          "name": "Alien Trilogy",
+          "slug": "alien-trilogy",
+          "rating": 68.29571422590749,
+          "cover_path": "assets/system/game_covers/sega_32x/alien-trilogy.jpg"
+        },
+        {
+          "name": "Virtua Fighter",
+          "slug": "virtua-fighter--1",
+          "rating": 56.4862146010631,
+          "cover_path": "assets/system/game_covers/sega_32x/virtua-fighter--1.jpg"
+        }
+      ]
     },
     {
       "id": "nintendo_3ds",
@@ -60,7 +92,7 @@
         "Ryujinx (parcial)"
       ],
       "type": "handheld",
-      "generation": "8ª Geração",
+      "generation": "8th Generation",
       "launch_price": null,
       "discontinued": "WW: September 16, 2020",
       "media": "Nintendo 3DS Game CardNintendo DSi Game CardNintendo DS Game CardDigital distributionSD/SDHC card",
@@ -78,7 +110,39 @@
       "successor": "Nintendo Switch",
       "wikidata_id": "26666629",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Nintendo_3DS",
-      "release_dates": "JP: February 26, 2011EU: March 25, 2011NA: March 27, 2011AU: March 31, 2011 Nintendo 3DS XL:, JP/EU: July 28, 2012[a]NA: August 19, 2012AU: August 23, 2012"
+      "release_dates": "JP: February 26, 2011EU: March 25, 2011NA: March 27, 2011AU: March 31, 2011 Nintendo 3DS XL:, JP/EU: July 28, 2012[a]NA: August 19, 2012AU: August 23, 2012",
+      "top_games": [
+        {
+          "name": "Super Mario Bros. 3",
+          "slug": "super-mario-bros-3",
+          "rating": 89.37415788766094,
+          "cover_path": "assets/system/game_covers/nintendo_3ds/super-mario-bros-3.jpg"
+        },
+        {
+          "name": "Super Mario Bros.",
+          "slug": "super-mario-bros",
+          "rating": 83.68811675605257,
+          "cover_path": "assets/system/game_covers/nintendo_3ds/super-mario-bros.jpg"
+        },
+        {
+          "name": "Terraria",
+          "slug": "terraria",
+          "rating": 82.37101566334263,
+          "cover_path": "assets/system/game_covers/nintendo_3ds/terraria.jpg"
+        },
+        {
+          "name": "The Legend of Zelda",
+          "slug": "the-legend-of-zelda",
+          "rating": 80.52648907646105,
+          "cover_path": "assets/system/game_covers/nintendo_3ds/the-legend-of-zelda.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: A Link Between Worlds",
+          "slug": "the-legend-of-zelda-a-link-between-worlds",
+          "rating": 87.2320409815535,
+          "cover_path": "assets/system/game_covers/nintendo_3ds/the-legend-of-zelda-a-link-between-worlds.jpg"
+        }
+      ]
     },
     {
       "id": "arcade",
@@ -102,6 +166,39 @@
         "MAME",
         "FinalBurn Neo",
         "FB Alpha"
+      ],
+      "generation": "Arcade",
+      "top_games": [
+        {
+          "name": "Super Mario Bros.",
+          "slug": "super-mario-bros",
+          "rating": 83.68811675605257,
+          "cover_path": "assets/system/game_covers/arcade/super-mario-bros.jpg"
+        },
+        {
+          "name": "The Legend of Zelda",
+          "slug": "the-legend-of-zelda",
+          "rating": 80.52648907646105,
+          "cover_path": "assets/system/game_covers/arcade/the-legend-of-zelda.jpg"
+        },
+        {
+          "name": "Castlevania",
+          "slug": "castlevania",
+          "rating": 78.89439934429028,
+          "cover_path": "assets/system/game_covers/arcade/castlevania.jpg"
+        },
+        {
+          "name": "Zelda II: The Adventure of Link",
+          "slug": "zelda-ii-the-adventure-of-link",
+          "rating": 65.49483512179387,
+          "cover_path": "assets/system/game_covers/arcade/zelda-ii-the-adventure-of-link.jpg"
+        },
+        {
+          "name": "Castlevania II: Simon's Quest",
+          "slug": "castlevania-ii-simon-s-quest",
+          "rating": 61.76185260819832,
+          "cover_path": "assets/system/game_covers/arcade/castlevania-ii-simon-s-quest.jpg"
+        }
       ]
     },
     {
@@ -115,7 +212,8 @@
       "description": "Atari 2600, originalmente vendido como Atari Video Computer System ou Atari VCS até novembro de 1982, é um videogame projetado por Jay Miner e lançado em 11 de setembro de 1977 nos Estados Unidos e em 1983 no Brasil, sendo descontinuado oficialmente em 1992.",
       "curiosities": [
         "O Atari 2600 foi originalmente chamado de \"Atari Video Computer System\" (VCS) até 1982.",
-        "O infame jogo \"E.T. the Extra-Terrestrial\" (1982) é creditado como um dos principais fatores da crise dos videogames de 1983."
+        "O infame jogo \"E.T. the Extra-Terrestrial\" (1982) é creditado como um dos principais fatores da crise dos videogames de 1983.",
+        "Seu processador MOS 6507 rodava a apenas 1.19 MHz, menos potente que calculadoras modernas."
       ],
       "supported_extensions": [
         ".a26"
@@ -125,7 +223,7 @@
         "Z26"
       ],
       "type": "console",
-      "generation": "2ª Geração",
+      "generation": "2nd Generation",
       "lifespan": "1977–1992",
       "launch_price": null,
       "discontinued": "1992 (1992)",
@@ -138,7 +236,39 @@
       "successor": "Atari 5200",
       "wikidata_id": "2779",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_2600",
-      "release_dates": "1977–1992"
+      "release_dates": "1977–1992",
+      "top_games": [
+        {
+          "name": "Myst",
+          "slug": "myst",
+          "rating": 75.7261760041352,
+          "cover_path": "assets/system/game_covers/atari_2600/myst.jpg"
+        },
+        {
+          "name": "Pitfall!",
+          "slug": "pitfall",
+          "rating": 71.8637201346169,
+          "cover_path": "assets/system/game_covers/atari_2600/pitfall.jpg"
+        },
+        {
+          "name": "Breakout",
+          "slug": "breakout",
+          "rating": 72.79133590423564,
+          "cover_path": "assets/system/game_covers/atari_2600/breakout.jpg"
+        },
+        {
+          "name": "Elevator Action",
+          "slug": "elevator-action",
+          "rating": 67.09581106330864,
+          "cover_path": "assets/system/game_covers/atari_2600/elevator-action.jpg"
+        },
+        {
+          "name": "E.T. the Extra-Terrestrial",
+          "slug": "e-t-the-extra-terrestrial",
+          "rating": 48.10090533775946,
+          "cover_path": "assets/system/game_covers/atari_2600/e-t-the-extra-terrestrial.jpg"
+        }
+      ]
     },
     {
       "id": "atari_5200",
@@ -152,7 +282,7 @@
       "curiosities": [
         "O Atari 5200 tinha controle com teclado numérico e joystick analógico (sem autocentragem), algo avançado para 1982.",
         "Era backward-compatible com jogos do Atari 2600 através de um adaptador vendido separadamente.",
-        "as a higher-end complement for the popular Atari Video Computer System."
+        "Seu design foi inspirado no computador Atari 400, compartilhando a mesma arquitetura interna."
       ],
       "supported_extensions": [
         ".a52",
@@ -165,7 +295,7 @@
         "MAME"
       ],
       "type": "console",
-      "generation": "2ª Geração",
+      "generation": "2nd Generation",
       "launch_price": null,
       "discontinued": "May 21, 1984 (1984-05-21)",
       "media": "ROM cartridge",
@@ -175,7 +305,39 @@
       "successor": "Atari 7800",
       "wikidata_id": "2780",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_5200",
-      "release_dates": "NA: October 1982"
+      "release_dates": "NA: October 1982",
+      "top_games": [
+        {
+          "name": "Pitfall!",
+          "slug": "pitfall",
+          "rating": 71.8637201346169,
+          "cover_path": "assets/system/game_covers/atari_5200/pitfall.jpg"
+        },
+        {
+          "name": "Pole Position",
+          "slug": "pole-position",
+          "rating": 70.32111813576758,
+          "cover_path": "assets/system/game_covers/atari_5200/pole-position.jpg"
+        },
+        {
+          "name": "River Raid",
+          "slug": "river-raid",
+          "rating": 81.61226930174477,
+          "cover_path": "assets/system/game_covers/atari_5200/river-raid.jpg"
+        },
+        {
+          "name": "Xevious",
+          "slug": "xevious",
+          "rating": 59.97097538012753,
+          "cover_path": "assets/system/game_covers/atari_5200/xevious.jpg"
+        },
+        {
+          "name": "Star Wars",
+          "slug": "star-wars",
+          "rating": 70.40866145390558,
+          "cover_path": "assets/system/game_covers/atari_5200/star-wars.jpg"
+        }
+      ]
     },
     {
       "id": "atari_7800",
@@ -199,7 +361,7 @@
         "MAME"
       ],
       "type": "console",
-      "generation": "3ª Geração",
+      "generation": "3rd Generation",
       "launch_price": null,
       "discontinued": "January 1, 1992",
       "media": "ROM cartridge",
@@ -212,7 +374,39 @@
       "successor": "Atari Panther (canceled)Atari XEGS",
       "wikidata_id": "2781",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_7800",
-      "release_dates": "NA: May 1986PAL: 1987"
+      "release_dates": "NA: May 1986PAL: 1987",
+      "top_games": [
+        {
+          "name": "Commando",
+          "slug": "commando",
+          "rating": 71.28040058348245,
+          "cover_path": "assets/system/game_covers/atari_7800/commando.jpg"
+        },
+        {
+          "name": "Karateka",
+          "slug": "karateka",
+          "rating": 66.05539876638112,
+          "cover_path": "assets/system/game_covers/atari_7800/karateka.jpg"
+        },
+        {
+          "name": "Xevious",
+          "slug": "xevious",
+          "rating": 59.97097538012753,
+          "cover_path": "assets/system/game_covers/atari_7800/xevious.jpg"
+        },
+        {
+          "name": "Impossible Mission",
+          "slug": "impossible-mission",
+          "rating": 69.11663899132988,
+          "cover_path": "assets/system/game_covers/atari_7800/impossible-mission.jpg"
+        },
+        {
+          "name": "Robotron: 2084",
+          "slug": "robotron-2084",
+          "rating": 70.73532805140064,
+          "cover_path": "assets/system/game_covers/atari_7800/robotron-2084.jpg"
+        }
+      ]
     },
     {
       "id": "atari_jaguar",
@@ -240,7 +434,7 @@
         "MAME"
       ],
       "type": "console",
-      "generation": "5ª Geração",
+      "generation": "5th Generation",
       "discontinued": "1996",
       "media": "ROM cartridge",
       "cpu": "Motorola 68000 @ 13.295 MHz, 2 custom RISC processors @ 26.591 MHz each",
@@ -294,7 +488,40 @@
       "predecessor": "Commodore 128Commodore 64",
       "wikidata_id": "1980",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Amiga",
-      "release_dates": "July 23, 1985 40 years ago (1985-07-23)"
+      "release_dates": "July 23, 1985 40 years ago (1985-07-23)",
+      "generation": "16/32-bit Computer",
+      "top_games": [
+        {
+          "name": "Portal 2",
+          "slug": "portal-2",
+          "rating": 91.29932409808389,
+          "cover_path": "assets/system/game_covers/amiga/portal-2.jpg"
+        },
+        {
+          "name": "Portal",
+          "slug": "portal",
+          "rating": 86.40228938907896,
+          "cover_path": "assets/system/game_covers/amiga/portal.jpg"
+        },
+        {
+          "name": "Half-Life 2",
+          "slug": "half-life-2",
+          "rating": 90.35860614857343,
+          "cover_path": "assets/system/game_covers/amiga/half-life-2.jpg"
+        },
+        {
+          "name": "Half-Life",
+          "slug": "half-life",
+          "rating": 88.39630802144329,
+          "cover_path": "assets/system/game_covers/amiga/half-life.jpg"
+        },
+        {
+          "name": "BioShock Infinite",
+          "slug": "bioshock-infinite",
+          "rating": 85.62760069458895,
+          "cover_path": "assets/system/game_covers/amiga/bioshock-infinite.jpg"
+        }
+      ]
     },
     {
       "id": "atari_800",
@@ -329,7 +556,40 @@
       "graphics": "384 pixels per TV line, 256 colors, 8 × sprites, raster interrupts",
       "sound": "4 × oscillators with noise mixing, or 2 × AM digital",
       "connectivity": "2 or 4 × Atari joystick port 1 × Atari SIO 0–1 × PBI 0–1 × Composite monitor 1–2 × ROM cartridge",
-      "successor": "Atari ST"
+      "successor": "Atari ST",
+      "generation": "8-bit Computer",
+      "top_games": [
+        {
+          "name": "Super Mario World",
+          "slug": "super-mario-world",
+          "rating": 91.70191481860208,
+          "cover_path": "assets/system/game_covers/atari_800/super-mario-world.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: A Link to the Past",
+          "slug": "the-legend-of-zelda-a-link-to-the-past",
+          "rating": 91.93906391924232,
+          "cover_path": "assets/system/game_covers/atari_800/the-legend-of-zelda-a-link-to-the-past.jpg"
+        },
+        {
+          "name": "Chrono Trigger",
+          "slug": "chrono-trigger",
+          "rating": 93.18087777732693,
+          "cover_path": "assets/system/game_covers/atari_800/chrono-trigger.jpg"
+        },
+        {
+          "name": "Super Metroid",
+          "slug": "super-metroid",
+          "rating": 92.20577065266465,
+          "cover_path": "assets/system/game_covers/atari_800/super-metroid.jpg"
+        },
+        {
+          "name": "Final Fantasy III",
+          "slug": "final-fantasy-iii--7",
+          "rating": 89.2616804436058,
+          "cover_path": "assets/system/game_covers/atari_800/final-fantasy-iii--7.jpg"
+        }
+      ]
     },
     {
       "id": "sony_playstation",
@@ -363,7 +623,7 @@
         "Beetle PSX (RetroArch)"
       ],
       "type": "console",
-      "generation": "5ª Geração",
+      "generation": "5th Generation",
       "launch_price": null,
       "discontinued": "EU: 19 October 2001(PS one only)WW: 23 March 2006",
       "media": "CD",
@@ -378,7 +638,39 @@
       "successor": "PlayStation 2",
       "wikidata_id": "23964",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_(console)",
-      "release_dates": "3 December 1994 PlayStationJP: 3 December 1994 (1994-12-03)NA: 9 September 1995 (1995-09-09)EU: 29 September 1995 (1995-09-29)AU: 15 November 1995 (1995-11-15)ZA: November 1996 (1996-11)HK/SG/TH/MY: December 1996 (1996-12)TW: December 1997 (1997-12)PS OneJP: 7 July 2000 (2000-07-07)NA: 19 September 2000 (2000-09-19)EU: 29 September 2000 (2000-09-29)HK/SG/TH/MY/TW: November 2000 (2000-11)IND: 24 January 2002 (2002-01-24)KR: 22 February 2002"
+      "release_dates": "3 December 1994 PlayStationJP: 3 December 1994 (1994-12-03)NA: 9 September 1995 (1995-09-09)EU: 29 September 1995 (1995-09-29)AU: 15 November 1995 (1995-11-15)ZA: November 1996 (1996-11)HK/SG/TH/MY: December 1996 (1996-12)TW: December 1997 (1997-12)PS OneJP: 7 July 2000 (2000-07-07)NA: 19 September 2000 (2000-09-19)EU: 29 September 2000 (2000-09-29)HK/SG/TH/MY/TW: November 2000 (2000-11)IND: 24 January 2002 (2002-01-24)KR: 22 February 2002",
+      "top_games": [
+        {
+          "name": "Metal Gear Solid",
+          "slug": "metal-gear-solid",
+          "rating": 90.48504009442881,
+          "cover_path": "assets/system/game_covers/sony_playstation/metal-gear-solid.jpg"
+        },
+        {
+          "name": "Final Fantasy VII",
+          "slug": "final-fantasy-vii",
+          "rating": 90.46717145408533,
+          "cover_path": "assets/system/game_covers/sony_playstation/final-fantasy-vii.jpg"
+        },
+        {
+          "name": "Final Fantasy IX",
+          "slug": "final-fantasy-ix",
+          "rating": 88.07081187392251,
+          "cover_path": "assets/system/game_covers/sony_playstation/final-fantasy-ix.jpg"
+        },
+        {
+          "name": "Castlevania: Symphony of the Night",
+          "slug": "castlevania-symphony-of-the-night",
+          "rating": 92.09234088399384,
+          "cover_path": "assets/system/game_covers/sony_playstation/castlevania-symphony-of-the-night.jpg"
+        },
+        {
+          "name": "Crash Bandicoot",
+          "slug": "crash-bandicoot",
+          "rating": 80.49111160450875,
+          "cover_path": "assets/system/game_covers/sony_playstation/crash-bandicoot.jpg"
+        }
+      ]
     },
     {
       "id": "snes",
@@ -409,7 +701,7 @@
         "Snes9x (RetroArch)"
       ],
       "type": "console",
-      "generation": "4ª Geração",
+      "generation": "4th Generation",
       "launch_price": null,
       "discontinued": "EU: 1998NA: 1999BR: 2003KOR: April 1, 2003JP: September 25, 2003",
       "media": "Super NES Game Pak",
@@ -424,7 +716,39 @@
       "successor": "Nintendo 64",
       "wikidata_id": "28314",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Super_Nintendo_Entertainment_System",
-      "release_dates": "November 21, 1990 JP: November 21, 1990NA: August 23, 1991[a]FR/GB/IE: April 11, 1992EU: June 1992CHL: June 8, 1992AU: July 3, 1992DE: August 15, 1992BR: August 30, 1993RU: November 15, 1994"
+      "release_dates": "November 21, 1990 JP: November 21, 1990NA: August 23, 1991[a]FR/GB/IE: April 11, 1992EU: June 1992CHL: June 8, 1992AU: July 3, 1992DE: August 15, 1992BR: August 30, 1993RU: November 15, 1994",
+      "top_games": [
+        {
+          "name": "Super Mario World",
+          "slug": "super-mario-world",
+          "rating": 91.70191481860208,
+          "cover_path": "assets/system/game_covers/snes/super-mario-world.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: A Link to the Past",
+          "slug": "the-legend-of-zelda-a-link-to-the-past",
+          "rating": 91.93906391924232,
+          "cover_path": "assets/system/game_covers/snes/the-legend-of-zelda-a-link-to-the-past.jpg"
+        },
+        {
+          "name": "Chrono Trigger",
+          "slug": "chrono-trigger",
+          "rating": 93.18087777732693,
+          "cover_path": "assets/system/game_covers/snes/chrono-trigger.jpg"
+        },
+        {
+          "name": "Super Metroid",
+          "slug": "super-metroid",
+          "rating": 92.20577065266465,
+          "cover_path": "assets/system/game_covers/snes/super-metroid.jpg"
+        },
+        {
+          "name": "Final Fantasy III",
+          "slug": "final-fantasy-iii--7",
+          "rating": 89.2616804436058,
+          "cover_path": "assets/system/game_covers/snes/final-fantasy-iii--7.jpg"
+        }
+      ]
     },
     {
       "id": "amstrad_cpc",
@@ -457,7 +781,7 @@
         "CrocoDS"
       ],
       "type": "computer",
-      "generation": "3ª Geração",
+      "generation": "8-bit Computer",
       "launch_price": null,
       "discontinued": "1990 36 years ago (1990)",
       "media": "Compact Cassette, 3-inch floppy disks",
@@ -469,7 +793,39 @@
       "sound": "AY-3-8912, 3-voices, 8-octaves",
       "wikidata_id": "2197",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Amstrad_CPC",
-      "release_dates": "1984 42 years ago (1984)"
+      "release_dates": "1984 42 years ago (1984)",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.6486486511894,
+          "cover_path": "assets/system/game_covers/amstrad_cpc/grand-theft-auto-v.jpg"
+        },
+        {
+          "name": "The Witcher 3: Wild Hunt",
+          "slug": "the-witcher-3-wild-hunt",
+          "rating": 93.7785534399753,
+          "cover_path": "assets/system/game_covers/amstrad_cpc/the-witcher-3-wild-hunt.jpg"
+        },
+        {
+          "name": "Red Dead Redemption 2",
+          "slug": "red-dead-redemption-2",
+          "rating": 93.1788518853741,
+          "cover_path": "assets/system/game_covers/amstrad_cpc/red-dead-redemption-2.jpg"
+        },
+        {
+          "name": "Elden Ring",
+          "slug": "elden-ring",
+          "rating": 93.5350869699613,
+          "cover_path": "assets/system/game_covers/amstrad_cpc/elden-ring.jpg"
+        },
+        {
+          "name": "Hollow Knight",
+          "slug": "hollow-knight",
+          "rating": 91.89756681214497,
+          "cover_path": "assets/system/game_covers/amstrad_cpc/hollow-knight.jpg"
+        }
+      ]
     },
     {
       "id": "dreamcast",
@@ -482,7 +838,8 @@
       "description": "O Dreamcast é um console de jogos eletrônicos, desenvolvido e fabricado pela empresa Sega, lançado em 27 de novembro de 1998 no Japão, 9 de setembro de 1999 na América do Norte e 14 de outubro de 1999 na Europa. Foi o primeiro da sexta geração de consoles, precedendo, e ao mesmo tempo, concorrendo com o PlayStation 2 da Sony, o GameCube da Nintendo e o Xbox da Microsoft.",
       "curiosities": [
         "O Dreamcast foi o primeiro console da sexta geração e o último da Sega, lançado em 1998 no Japão.",
-        "Inovava com modem de 56k embutido para jogos online e navegação na internet, algo pioneiro em consoles."
+        "Inovava com modem de 56k embutido para jogos online e navegação na internet, algo pioneiro em consoles.",
+        "Apesar de seu fim precoce em 2001, possui uma biblioteca cult com jogos como Shenmue, SoulCalibur e Jet Set Radio."
       ],
       "supported_extensions": [
         ".cdi",
@@ -495,7 +852,7 @@
         "Reicast (RetroArch)"
       ],
       "type": "console",
-      "generation": "6ª Geração",
+      "generation": "6th Generation",
       "launch_price": null,
       "discontinued": "WW: March 31, 2001",
       "media": "GD&#x2011;ROM, CD&#x2011;ROM",
@@ -510,7 +867,39 @@
       "predecessor": "Sega Saturn",
       "wikidata_id": "29036",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Dreamcast",
-      "release_dates": "JP: November 27, 1998NA: September 9, 1999EU: October 14, 1999AU: November 30, 1999"
+      "release_dates": "JP: November 27, 1998NA: September 9, 1999EU: October 14, 1999AU: November 30, 1999",
+      "top_games": [
+        {
+          "name": "Age of Empires II: The Age of Kings",
+          "slug": "age-of-empires-ii-the-age-of-kings",
+          "rating": 86.14055690028279,
+          "cover_path": "assets/system/game_covers/dreamcast/age-of-empires-ii-the-age-of-kings.jpg"
+        },
+        {
+          "name": "Resident Evil 2",
+          "slug": "resident-evil-2",
+          "rating": 83.73674172800433,
+          "cover_path": "assets/system/game_covers/dreamcast/resident-evil-2.jpg"
+        },
+        {
+          "name": "Grand Theft Auto 2",
+          "slug": "grand-theft-auto-2",
+          "rating": 78.62226053833963,
+          "cover_path": "assets/system/game_covers/dreamcast/grand-theft-auto-2.jpg"
+        },
+        {
+          "name": "Resident Evil 3: Nemesis",
+          "slug": "resident-evil-3-nemesis",
+          "rating": 80.66031672840539,
+          "cover_path": "assets/system/game_covers/dreamcast/resident-evil-3-nemesis.jpg"
+        },
+        {
+          "name": "Quake III Arena",
+          "slug": "quake-iii-arena",
+          "rating": 82.51618402795751,
+          "cover_path": "assets/system/game_covers/dreamcast/quake-iii-arena.jpg"
+        }
+      ]
     },
     {
       "id": "fairchild_channel_f",
@@ -534,7 +923,7 @@
         "MESS"
       ],
       "type": "console",
-      "generation": "2ª Geração",
+      "generation": "2nd Generation",
       "lifespan": "1976–1983",
       "launch_price": null,
       "discontinued": "1983",
@@ -545,7 +934,39 @@
       "best_selling_game": "Videocart-17: Pinball Challenge",
       "wikidata_id": "7487",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Fairchild_Channel_F",
-      "release_dates": "1976–1983"
+      "release_dates": "1976–1983",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.6486486511894,
+          "cover_path": "assets/system/game_covers/fairchild_channel_f/grand-theft-auto-v.jpg"
+        },
+        {
+          "name": "The Witcher 3: Wild Hunt",
+          "slug": "the-witcher-3-wild-hunt",
+          "rating": 93.7785534399753,
+          "cover_path": "assets/system/game_covers/fairchild_channel_f/the-witcher-3-wild-hunt.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/fairchild_channel_f/grand-theft-auto-san-andreas.jpg"
+        },
+        {
+          "name": "Red Dead Redemption 2",
+          "slug": "red-dead-redemption-2",
+          "rating": 93.1788518853741,
+          "cover_path": "assets/system/game_covers/fairchild_channel_f/red-dead-redemption-2.jpg"
+        },
+        {
+          "name": "God of War",
+          "slug": "god-of-war--1",
+          "rating": 92.07544639251734,
+          "cover_path": "assets/system/game_covers/fairchild_channel_f/god-of-war--1.jpg"
+        }
+      ]
     },
     {
       "id": "gamecube",
@@ -558,6 +979,7 @@
       "description": "O Nintendo GameCube é um console de videogame doméstico lançado pela Nintendo no Japão e na América do Norte em 2001 e Europa e Austrália em 2002. Como parte da sexta geração de consoles, é o sucessor do Nintendo 64. Ele competiu com o PlayStation 2 da Sony, o Xbox da Microsoft e com o Dreamcast da Sega como parte da sexta geração de consoles.",
       "curiosities": [
         "O GameCube foi o primeiro console da Nintendo a usar mídia óptica (discos mini-DVD de 8 cm).",
+        "Usava um processador PowerPC 750CXe (Gekko) a 485 MHz, fruto da parceria IBM-Nintendo que culminaria no Wii e Wii U.",
         "O controle do GameCube, com seu design ergonômico único, é até hoje usado em torneios de Super Smash Bros. Melee."
       ],
       "supported_extensions": [
@@ -571,7 +993,7 @@
         "Dolphin"
       ],
       "type": "console",
-      "generation": "6ª Geração",
+      "generation": "6th Generation",
       "launch_price": null,
       "discontinued": "February 2007",
       "media": "GameCube Game Disc Game Boy Game Pak[a] Game Boy Color Game Pak[a] Game Boy Advance Game Pak[a]",
@@ -588,7 +1010,39 @@
       "successor": "Wii",
       "wikidata_id": "53525",
       "wikipedia_url": "https://en.wikipedia.org/wiki/GameCube",
-      "release_dates": "JP: September 14, 2001NA: November 18, 2001EU: May 3, 2002AU: May 17, 2002"
+      "release_dates": "JP: September 14, 2001NA: November 18, 2001EU: May 3, 2002AU: May 17, 2002",
+      "top_games": [
+        {
+          "name": "Resident Evil 4",
+          "slug": "resident-evil-4",
+          "rating": 87.40091418101315,
+          "cover_path": "assets/system/game_covers/gamecube/resident-evil-4.jpg"
+        },
+        {
+          "name": "Super Smash Bros. Melee",
+          "slug": "super-smash-bros-melee",
+          "rating": 88.7462100197601,
+          "cover_path": "assets/system/game_covers/gamecube/super-smash-bros-melee.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: The Wind Waker",
+          "slug": "the-legend-of-zelda-the-wind-waker",
+          "rating": 87.1925007191617,
+          "cover_path": "assets/system/game_covers/gamecube/the-legend-of-zelda-the-wind-waker.jpg"
+        },
+        {
+          "name": "Metroid Prime",
+          "slug": "metroid-prime",
+          "rating": 91.68765000143827,
+          "cover_path": "assets/system/game_covers/gamecube/metroid-prime.jpg"
+        },
+        {
+          "name": "Need for Speed: Underground 2",
+          "slug": "need-for-speed-underground-2",
+          "rating": 83.23658589854064,
+          "cover_path": "assets/system/game_covers/gamecube/need-for-speed-underground-2.jpg"
+        }
+      ]
     },
     {
       "id": "colecovision",
@@ -627,7 +1081,7 @@
       "wikidata_id": "7306",
       "wikipedia_url": "https://en.wikipedia.org/wiki/ColecoVision",
       "type": "console",
-      "generation": "2ª Geração",
+      "generation": "2nd Generation",
       "discontinued": "August 1985 40 years ago (1985-08)",
       "media": "ROM cartridge",
       "cpu": "Zilog Z80A @ 3.58 MHz",
@@ -637,7 +1091,39 @@
       "sound": "SN76489",
       "best_selling_game": "Donkey Kong (pack-in)",
       "predecessor": "Coleco Telstar series (1978)",
-      "release_dates": "NA: August 1982 43 years ago (1982-08)EU: July 1983 42 years ago (1983-07)"
+      "release_dates": "NA: August 1982 43 years ago (1982-08)EU: July 1983 42 years ago (1983-07)",
+      "top_games": [
+        {
+          "name": "Doom II: Hell on Earth",
+          "slug": "doom-ii-hell-on-earth",
+          "rating": 85.2481081273006,
+          "cover_path": "assets/system/game_covers/colecovision/doom-ii-hell-on-earth.jpg"
+        },
+        {
+          "name": "Altered Beast",
+          "slug": "altered-beast--2",
+          "rating": 34.6547327496109,
+          "cover_path": "assets/system/game_covers/colecovision/altered-beast--2.jpg"
+        },
+        {
+          "name": "Fish Tycoon",
+          "slug": "fish-tycoon",
+          "rating": 70,
+          "cover_path": "assets/system/game_covers/colecovision/fish-tycoon.jpg"
+        },
+        {
+          "name": "MTX Mototrax",
+          "slug": "mtx-mototrax",
+          "rating": null,
+          "cover_path": "assets/system/game_covers/colecovision/mtx-mototrax.jpg"
+        },
+        {
+          "name": "Warfare Incorporated",
+          "slug": "warfare-incorporated",
+          "rating": null,
+          "cover_path": "assets/system/game_covers/colecovision/warfare-incorporated.jpg"
+        }
+      ]
     },
     {
       "id": "dos",
@@ -666,7 +1152,8 @@
         "DOSBox",
         "DOSBox Staging",
         "DOSBox-X"
-      ]
+      ],
+      "generation": "Personal Computer"
     },
     {
       "id": "commodore_64",
@@ -713,7 +1200,40 @@
       "successor": "Commodore 128Amiga",
       "wikidata_id": "7293",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Commodore_64",
-      "release_dates": "August 1982 43 years ago (1982-08)"
+      "release_dates": "August 1982 43 years ago (1982-08)",
+      "generation": "8-bit Computer",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/commodore_64/grand-theft-auto-san-andreas.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: Vice City",
+          "slug": "grand-theft-auto-vice-city",
+          "rating": 87.3832342834808,
+          "cover_path": "assets/system/game_covers/commodore_64/grand-theft-auto-vice-city.jpg"
+        },
+        {
+          "name": "Max Payne",
+          "slug": "max-payne",
+          "rating": 85.80905778745775,
+          "cover_path": "assets/system/game_covers/commodore_64/max-payne.jpg"
+        },
+        {
+          "name": "Grand Theft Auto III",
+          "slug": "grand-theft-auto-iii",
+          "rating": 84.57156551373137,
+          "cover_path": "assets/system/game_covers/commodore_64/grand-theft-auto-iii.jpg"
+        },
+        {
+          "name": "Mafia",
+          "slug": "mafia",
+          "rating": 86.40377495555259,
+          "cover_path": "assets/system/game_covers/commodore_64/mafia.jpg"
+        }
+      ]
     },
     {
       "id": "sony_psp",
@@ -739,7 +1259,7 @@
       "wikidata_id": "619009",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_Portable",
       "type": "Handheld game console",
-      "generation": "7ª Geração",
+      "generation": "7th Generation",
       "release_dates": "2004–2014",
       "launch_price": null,
       "discontinued": "NA: January 2014JP: June 2014PAL: December 2014",
@@ -755,7 +1275,39 @@
       "online_services": "PlayStation Network",
       "best_selling_game": "Grand Theft Auto: Liberty City Stories (8 million) (list)",
       "predecessor": "PocketStation",
-      "successor": "PlayStation Vita"
+      "successor": "PlayStation Vita",
+      "top_games": [
+        {
+          "name": "Metal Gear Solid",
+          "slug": "metal-gear-solid",
+          "rating": 90.48504009442881,
+          "cover_path": "assets/system/game_covers/sony_psp/metal-gear-solid.jpg"
+        },
+        {
+          "name": "Final Fantasy VII",
+          "slug": "final-fantasy-vii",
+          "rating": 90.46717145408533,
+          "cover_path": "assets/system/game_covers/sony_psp/final-fantasy-vii.jpg"
+        },
+        {
+          "name": "Final Fantasy IX",
+          "slug": "final-fantasy-ix",
+          "rating": 88.07081187392251,
+          "cover_path": "assets/system/game_covers/sony_psp/final-fantasy-ix.jpg"
+        },
+        {
+          "name": "Castlevania: Symphony of the Night",
+          "slug": "castlevania-symphony-of-the-night",
+          "rating": 92.09234088399384,
+          "cover_path": "assets/system/game_covers/sony_psp/castlevania-symphony-of-the-night.jpg"
+        },
+        {
+          "name": "Star Wars: Battlefront II",
+          "slug": "star-wars-battlefront-ii",
+          "rating": 85.13744880061545,
+          "cover_path": "assets/system/game_covers/sony_psp/star-wars-battlefront-ii.jpg"
+        }
+      ]
     },
     {
       "id": "pc_88",
@@ -791,7 +1343,8 @@
       "graphics": "SGP",
       "sound": "Internal beeper (and higher)",
       "predecessor": "PC-8000 series",
-      "successor": "PC-9800 series"
+      "successor": "PC-9800 series",
+      "generation": "8-bit Computer"
     },
     {
       "id": "pc_98",
@@ -825,7 +1378,8 @@
       "discontinued": "September 30, 2003; 22 years ago (2003-09-30)",
       "os": "N88-BASIC(86), CP/M-86, MS-DOS, Windows, OS/2, PC-UX",
       "cpu": "Intel 8086, 80286, i386, i486, NEC V30, i586",
-      "predecessor": "PC-8800 series"
+      "predecessor": "PC-8800 series",
+      "generation": "16-bit Computer"
     },
     {
       "id": "daphne",
@@ -849,6 +1403,39 @@
       "emulators": [
         "Daphne",
         "Singe (Daphne)"
+      ],
+      "generation": "Software Platform",
+      "top_games": [
+        {
+          "name": "Super Mario Bros.",
+          "slug": "super-mario-bros",
+          "rating": 83.68811675605257,
+          "cover_path": "assets/system/game_covers/daphne/super-mario-bros.jpg"
+        },
+        {
+          "name": "The Legend of Zelda",
+          "slug": "the-legend-of-zelda",
+          "rating": 80.52648907646105,
+          "cover_path": "assets/system/game_covers/daphne/the-legend-of-zelda.jpg"
+        },
+        {
+          "name": "Castlevania",
+          "slug": "castlevania",
+          "rating": 78.89439934429028,
+          "cover_path": "assets/system/game_covers/daphne/castlevania.jpg"
+        },
+        {
+          "name": "Zelda II: The Adventure of Link",
+          "slug": "zelda-ii-the-adventure-of-link",
+          "rating": 65.49483512179387,
+          "cover_path": "assets/system/game_covers/daphne/zelda-ii-the-adventure-of-link.jpg"
+        },
+        {
+          "name": "Castlevania II: Simon's Quest",
+          "slug": "castlevania-ii-simon-s-quest",
+          "rating": 61.76185260819832,
+          "cover_path": "assets/system/game_covers/daphne/castlevania-ii-simon-s-quest.jpg"
+        }
       ]
     },
     {
@@ -862,7 +1449,8 @@
       "description": "O Apple II foi um modelo de computador pessoal fabricado pela empresa Apple Inc no final da década de 1970, sendo vendido a partir de Junho de 1977, equipado com interface para fitas cassetes de áudio e controlador de vídeo com NTSC e um modulador RF para televisão.",
       "curiosities": [
         "O Apple II foi um dos primeiros computadores pessoais com suporte a gráficos coloridos e som integrado.",
-        "A planilha eletrônica VisiCalc, criada originalmente para Apple II, foi o \"aplicativo matador\" que justificou a compra do computador para empresas."
+        "A planilha eletrônica VisiCalc, criada originalmente para Apple II, foi o \"aplicativo matador\" que justificou a compra do computador para empresas.",
+        "Steve Wozniak projetou o Apple II quase sozinho, escrevendo o sistema operacional e o interpretador BASIC integrado."
       ],
       "supported_extensions": [
         ".do",
@@ -884,7 +1472,8 @@
       "successor": "Apple III (intended)",
       "wikidata_id": "2116",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Apple_II",
-      "release_dates": "June 1977 48 years ago (1977-06) (original Apple II)"
+      "release_dates": "June 1977 48 years ago (1977-06) (original Apple II)",
+      "generation": "8-bit Computer"
     },
     {
       "id": "doom",
@@ -910,7 +1499,8 @@
         "PrBoom+",
         "Chocolate Doom",
         "Crispy Doom"
-      ]
+      ],
+      "generation": "Software Platform"
     },
     {
       "id": "nintendo_ds",
@@ -937,7 +1527,7 @@
         "MelonDS (RetroArch)"
       ],
       "type": "handheld",
-      "generation": "7ª Geração",
+      "generation": "7th Generation",
       "launch_price": null,
       "discontinued": "Yes; date undisclosed",
       "media": "Nintendo DS Game CardGame Boy Advance Game Pak",
@@ -952,7 +1542,39 @@
       "successor": "Nintendo 3DS",
       "wikidata_id": "438022",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Nintendo_DS",
-      "release_dates": "November 21, 2004 DS: NA: November 21, 2004JP: December 2, 2004AU: February 24, 2005EU: March 11, 2005DS Lite: JP: March 2, 2006AU: June 1, 2006NA: June 11, 2006EU: June 23, 2006"
+      "release_dates": "November 21, 2004 DS: NA: November 21, 2004JP: December 2, 2004AU: February 24, 2005EU: March 11, 2005DS Lite: JP: March 2, 2006AU: June 1, 2006NA: June 11, 2006EU: June 23, 2006",
+      "top_games": [
+        {
+          "name": "Pokémon Platinum Version",
+          "slug": "pokemon-platinum-version",
+          "rating": 82.75753315413384,
+          "cover_path": "assets/system/game_covers/nintendo_ds/pokemon-platinum-version.jpg"
+        },
+        {
+          "name": "Mario Kart DS",
+          "slug": "mario-kart-ds",
+          "rating": 81.94561691564631,
+          "cover_path": "assets/system/game_covers/nintendo_ds/mario-kart-ds.jpg"
+        },
+        {
+          "name": "New Super Mario Bros.",
+          "slug": "new-super-mario-bros",
+          "rating": 80.67454791162028,
+          "cover_path": "assets/system/game_covers/nintendo_ds/new-super-mario-bros.jpg"
+        },
+        {
+          "name": "Pokémon SoulSilver Version",
+          "slug": "pokemon-soulsilver-version",
+          "rating": 89.9425195096486,
+          "cover_path": "assets/system/game_covers/nintendo_ds/pokemon-soulsilver-version.jpg"
+        },
+        {
+          "name": "Pokémon Black Version",
+          "slug": "pokemon-black-version",
+          "rating": 81.12457160143703,
+          "cover_path": "assets/system/game_covers/nintendo_ds/pokemon-black-version.jpg"
+        }
+      ]
     },
     {
       "id": "sharp_x1",
@@ -992,7 +1614,8 @@
       "successor": "X68000",
       "wikidata_id": "2325792",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Sharp_X1",
-      "release_dates": "1982 (1982)"
+      "release_dates": "1982 (1982)",
+      "generation": "8-bit Computer"
     },
     {
       "id": "famicom_disk_system",
@@ -1017,7 +1640,7 @@
         "Nestopia"
       ],
       "type": "Video game console peripheral",
-      "generation": "3ª Geração",
+      "generation": "3rd Generation",
       "discontinued": "JP: 1993 (device)JP: September 30, 2003 (software)JP: October 31, 2007 (technical support)",
       "media": "112 KB Disk Card",
       "memory": "32 KB disk cache8 KB game RAM",
@@ -1025,7 +1648,39 @@
       "successor": "SatellaviewNintendo 64DD",
       "wikidata_id": "163805",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Famicom_Disk_System",
-      "release_dates": "JP: February 21, 1986 (1986-02-21)"
+      "release_dates": "JP: February 21, 1986 (1986-02-21)",
+      "top_games": [
+        {
+          "name": "Super Mario Bros. 3",
+          "slug": "super-mario-bros-3",
+          "rating": 89.37415788766094,
+          "cover_path": "assets/system/game_covers/famicom_disk_system/super-mario-bros-3.jpg"
+        },
+        {
+          "name": "Super Mario Bros.",
+          "slug": "super-mario-bros",
+          "rating": 83.68811675605257,
+          "cover_path": "assets/system/game_covers/famicom_disk_system/super-mario-bros.jpg"
+        },
+        {
+          "name": "Tetris",
+          "slug": "tetris",
+          "rating": 86.28272589226856,
+          "cover_path": "assets/system/game_covers/famicom_disk_system/tetris.jpg"
+        },
+        {
+          "name": "The Legend of Zelda",
+          "slug": "the-legend-of-zelda",
+          "rating": 80.52648907646105,
+          "cover_path": "assets/system/game_covers/famicom_disk_system/the-legend-of-zelda.jpg"
+        },
+        {
+          "name": "Super Mario Bros. 2",
+          "slug": "super-mario-bros-2",
+          "rating": 76.53820214088867,
+          "cover_path": "assets/system/game_covers/famicom_disk_system/super-mario-bros-2.jpg"
+        }
+      ]
     },
     {
       "id": "vectrex",
@@ -1051,7 +1706,7 @@
         "MAME"
       ],
       "type": "console",
-      "generation": "2ª Geração",
+      "generation": "2nd Generation",
       "launch_price": null,
       "discontinued": "February 1984",
       "media": "ROM cartridge",
@@ -1062,7 +1717,39 @@
       "sound": "AY-3-8912",
       "wikidata_id": "32729",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Vectrex",
-      "release_dates": "NA: October 1982EU: 1983JP: 1983"
+      "release_dates": "NA: October 1982EU: 1983JP: 1983",
+      "top_games": [
+        {
+          "name": "Undertale",
+          "slug": "undertale",
+          "rating": 85.9710874646361,
+          "cover_path": "assets/system/game_covers/vectrex/undertale.jpg"
+        },
+        {
+          "name": "Borderlands 2",
+          "slug": "borderlands-2",
+          "rating": 83.62412830687421,
+          "cover_path": "assets/system/game_covers/vectrex/borderlands-2.jpg"
+        },
+        {
+          "name": "Stardew Valley",
+          "slug": "stardew-valley",
+          "rating": 86.16210361158443,
+          "cover_path": "assets/system/game_covers/vectrex/stardew-valley.jpg"
+        },
+        {
+          "name": "The Walking Dead",
+          "slug": "the-walking-dead",
+          "rating": 85.82903464481535,
+          "cover_path": "assets/system/game_covers/vectrex/the-walking-dead.jpg"
+        },
+        {
+          "name": "Limbo",
+          "slug": "limbo",
+          "rating": 80.98891008683509,
+          "cover_path": "assets/system/game_covers/vectrex/limbo.jpg"
+        }
+      ]
     },
     {
       "id": "game_boy",
@@ -1090,7 +1777,7 @@
         "Gambatte (RetroArch)"
       ],
       "type": "handheld",
-      "generation": "4ª Geração",
+      "generation": "3rd Generation",
       "launch_price": null,
       "discontinued": "March 31, 2003",
       "media": "Game Boy Game Pak",
@@ -1102,7 +1789,39 @@
       "successor": "Game Boy Color",
       "wikidata_id": "5591552",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Game_Boy",
-      "release_dates": "April 21, 1989 Game Boy:, JP: April 21, 1989NA: July 31, 1989EU: September 28, 1990Game Boy Pocket:, JP: July 20, 1996NA: September 2, 1996Game Boy Light:, JP: April 14, 1998"
+      "release_dates": "April 21, 1989 Game Boy:, JP: April 21, 1989NA: July 31, 1989EU: September 28, 1990Game Boy Pocket:, JP: July 20, 1996NA: September 2, 1996Game Boy Light:, JP: April 14, 1998",
+      "top_games": [
+        {
+          "name": "The Legend of Zelda: Ocarina of Time",
+          "slug": "the-legend-of-zelda-ocarina-of-time",
+          "rating": 91.54932253393936,
+          "cover_path": "assets/system/game_covers/game_boy/the-legend-of-zelda-ocarina-of-time.jpg"
+        },
+        {
+          "name": "Super Mario 64",
+          "slug": "super-mario-64",
+          "rating": 88.7595914703998,
+          "cover_path": "assets/system/game_covers/game_boy/super-mario-64.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: Majora's Mask",
+          "slug": "the-legend-of-zelda-majora-s-mask",
+          "rating": 86.50658620129278,
+          "cover_path": "assets/system/game_covers/game_boy/the-legend-of-zelda-majora-s-mask.jpg"
+        },
+        {
+          "name": "Mario Kart 64",
+          "slug": "mario-kart-64",
+          "rating": 82.29137587065662,
+          "cover_path": "assets/system/game_covers/game_boy/mario-kart-64.jpg"
+        },
+        {
+          "name": "Grand Theft Auto",
+          "slug": "grand-theft-auto",
+          "rating": 75.06933387831451,
+          "cover_path": "assets/system/game_covers/game_boy/grand-theft-auto.jpg"
+        }
+      ]
     },
     {
       "id": "game_boy_advance",
@@ -1115,7 +1834,8 @@
       "description": "O Game Boy Advance é um console portátil desenvolvido e fabricado pela Nintendo. Lançado em 2001, é o sucessor do Game Boy Color e um dos últimos produtos da linha Game Boy. Seu codinome durante o processo de desenvolvimento foi Advance Game Boy. Ele continuou recebendo jogos até 2008.",
       "curiosities": [
         "O GBA era retrocompatível com jogos de Game Boy e Game Boy Color, formando a maior biblioteca de jogos de qualquer portátil até então.",
-        "O modelo SP (2003) introduziu tela iluminada frontalmente e bateria recarregável de íon-lítio, corrigindo a maior crítica ao modelo original."
+        "O modelo SP (2003) introduziu tela iluminada frontalmente e bateria recarregável de íon-lítio, corrigindo a maior crítica ao modelo original.",
+        "Seu processador ARM7TDMI de 32 bits a 16.78 MHz permitia ports impressionantes de jogos de SNES e PlayStation."
       ],
       "supported_extensions": [
         ".gba"
@@ -1126,7 +1846,7 @@
         "Medusa (RetroArch)"
       ],
       "type": "handheld",
-      "generation": "6ª Geração",
+      "generation": "6th Generation",
       "launch_price": null,
       "discontinued": "2010",
       "media": "Game Boy Game PakGame Boy Color Game PakGame Boy Advance Game Pak",
@@ -1139,7 +1859,39 @@
       "successor": "Nintendo DS",
       "wikidata_id": "12430",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Game_Boy_Advance",
-      "release_dates": "March 21, 2001 JP: March 21, 2001NA: June 11, 2001PAL: June 22, 2001"
+      "release_dates": "March 21, 2001 JP: March 21, 2001NA: June 11, 2001PAL: June 22, 2001",
+      "top_games": [
+        {
+          "name": "Pokémon Emerald Version",
+          "slug": "pokemon-emerald-version",
+          "rating": 86.07220257591104,
+          "cover_path": "assets/system/game_covers/game_boy_advance/pokemon-emerald-version.jpg"
+        },
+        {
+          "name": "EarthBound",
+          "slug": "earthbound",
+          "rating": 89.29093944471872,
+          "cover_path": "assets/system/game_covers/game_boy_advance/earthbound.jpg"
+        },
+        {
+          "name": "Pokémon FireRed Version",
+          "slug": "pokemon-firered-version",
+          "rating": 83.10646177132371,
+          "cover_path": "assets/system/game_covers/game_boy_advance/pokemon-firered-version.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: The Minish Cap",
+          "slug": "the-legend-of-zelda-the-minish-cap",
+          "rating": 84.48195717898359,
+          "cover_path": "assets/system/game_covers/game_boy_advance/the-legend-of-zelda-the-minish-cap.jpg"
+        },
+        {
+          "name": "Pokémon Ruby Version",
+          "slug": "pokemon-ruby-version",
+          "rating": 81.34872512042647,
+          "cover_path": "assets/system/game_covers/game_boy_advance/pokemon-ruby-version.jpg"
+        }
+      ]
     },
     {
       "id": "game_boy_color",
@@ -1165,7 +1917,7 @@
         "TGB Dual"
       ],
       "type": "handheld",
-      "generation": "5ª Geração",
+      "generation": "5th Generation",
       "launch_price": null,
       "discontinued": "March 31, 2003 (2003-03-31)",
       "media": "Game Boy Color Game PakGame Boy Game Pak",
@@ -1179,7 +1931,39 @@
       "successor": "Game Boy Advance",
       "wikidata_id": "13097",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Game_Boy_Color",
-      "release_dates": "JP: October 21, 1998NA: November 18, 1998EU: November 23, 1998AU: November 27, 1998"
+      "release_dates": "JP: October 21, 1998NA: November 18, 1998EU: November 23, 1998AU: November 27, 1998",
+      "top_games": [
+        {
+          "name": "The Legend of Zelda: Ocarina of Time",
+          "slug": "the-legend-of-zelda-ocarina-of-time",
+          "rating": 91.54932253393936,
+          "cover_path": "assets/system/game_covers/game_boy_color/the-legend-of-zelda-ocarina-of-time.jpg"
+        },
+        {
+          "name": "Super Mario 64",
+          "slug": "super-mario-64",
+          "rating": 88.7595914703998,
+          "cover_path": "assets/system/game_covers/game_boy_color/super-mario-64.jpg"
+        },
+        {
+          "name": "Super Mario World",
+          "slug": "super-mario-world",
+          "rating": 91.70191481860208,
+          "cover_path": "assets/system/game_covers/game_boy_color/super-mario-world.jpg"
+        },
+        {
+          "name": "Super Mario Bros. 3",
+          "slug": "super-mario-bros-3",
+          "rating": 89.37415788766094,
+          "cover_path": "assets/system/game_covers/game_boy_color/super-mario-bros-3.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: A Link to the Past",
+          "slug": "the-legend-of-zelda-a-link-to-the-past",
+          "rating": 91.93906391924232,
+          "cover_path": "assets/system/game_covers/game_boy_color/the-legend-of-zelda-a-link-to-the-past.jpg"
+        }
+      ]
     },
     {
       "id": "sega_genesis",
@@ -1208,7 +1992,7 @@
         "Genesis Plus GX (RetroArch)"
       ],
       "type": "console",
-      "generation": "4ª Geração",
+      "generation": "4th Generation",
       "lifespan": "1988–1997 (Sega) 1998–1999 (Majesco) 1990–present (Tectoy)",
       "launch_price": null,
       "discontinued": "WW: 1997 (Sega)NA: 1999 (Majesco Entertainment)",
@@ -1223,7 +2007,39 @@
       "successor": "Sega Saturn",
       "wikidata_id": "2639573",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Sega_Genesis",
-      "release_dates": "1988–1997 (Sega) 1998–1999 (Majesco) 1990–present (Tectoy)"
+      "release_dates": "1988–1997 (Sega) 1998–1999 (Majesco) 1990–present (Tectoy)",
+      "top_games": [
+        {
+          "name": "Sonic the Hedgehog",
+          "slug": "sonic-the-hedgehog",
+          "rating": 81.63815967560947,
+          "cover_path": "assets/system/game_covers/sega_genesis/sonic-the-hedgehog.jpg"
+        },
+        {
+          "name": "Sonic the Hedgehog 2",
+          "slug": "sonic-the-hedgehog-2",
+          "rating": 86.49102837155118,
+          "cover_path": "assets/system/game_covers/sega_genesis/sonic-the-hedgehog-2.jpg"
+        },
+        {
+          "name": "Mortal Kombat II",
+          "slug": "mortal-kombat-ii",
+          "rating": 76.4115109309212,
+          "cover_path": "assets/system/game_covers/sega_genesis/mortal-kombat-ii.jpg"
+        },
+        {
+          "name": "Sonic the Hedgehog 3",
+          "slug": "sonic-the-hedgehog-3",
+          "rating": 82.5615822168294,
+          "cover_path": "assets/system/game_covers/sega_genesis/sonic-the-hedgehog-3.jpg"
+        },
+        {
+          "name": "The Lion King",
+          "slug": "the-lion-king",
+          "rating": 74.52419576249048,
+          "cover_path": "assets/system/game_covers/sega_genesis/the-lion-king.jpg"
+        }
+      ]
     },
     {
       "id": "game_gear",
@@ -1248,7 +2064,7 @@
         "Genesis Plus GX (RetroArch)"
       ],
       "type": "Handheld video game console",
-      "generation": "4ª Geração",
+      "generation": "4th Generation",
       "launch_price": null,
       "discontinued": "WW: April 30, 1997 (Sega)NA: 2002 (Majesco Entertainment)",
       "media": "ROM cartridge",
@@ -1261,7 +2077,39 @@
       "successor": "Genesis Nomad",
       "wikidata_id": "29027",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Game_Gear",
-      "release_dates": "JP: October 6, 1990NA/EU: April 1991AU: 1992"
+      "release_dates": "JP: October 6, 1990NA/EU: April 1991AU: 1992",
+      "top_games": [
+        {
+          "name": "Pokémon Red Version",
+          "slug": "pokemon-red-version",
+          "rating": 84.65198687655453,
+          "cover_path": "assets/system/game_covers/game_gear/pokemon-red-version.jpg"
+        },
+        {
+          "name": "Pokémon Yellow Version: Special Pikachu Edition",
+          "slug": "pokemon-yellow-version-special-pikachu-edition",
+          "rating": 82.63518048752671,
+          "cover_path": "assets/system/game_covers/game_gear/pokemon-yellow-version-special-pikachu-edition.jpg"
+        },
+        {
+          "name": "Pokémon Blue Version",
+          "slug": "pokemon-blue-version",
+          "rating": 86.00617965540258,
+          "cover_path": "assets/system/game_covers/game_gear/pokemon-blue-version.jpg"
+        },
+        {
+          "name": "Super Mario Land",
+          "slug": "super-mario-land",
+          "rating": 74.32306061098365,
+          "cover_path": "assets/system/game_covers/game_gear/super-mario-land.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: Link's Awakening",
+          "slug": "the-legend-of-zelda-links-awakening",
+          "rating": 86.43083443181351,
+          "cover_path": "assets/system/game_covers/game_gear/the-legend-of-zelda-links-awakening.jpg"
+        }
+      ]
     },
     {
       "id": "playstation_2",
@@ -1287,7 +2135,7 @@
       "wikidata_id": "15822958",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_2",
       "type": "Home video game console",
-      "generation": "6ª Geração",
+      "generation": "6th Generation",
       "release_dates": "4 March 2000 PlayStation 2JP: 4 March 2000NA: 26 October 2000EU: 24 November 2000AU/ZA: 30 November 2000HK: 13 December 2001TW: 24 January 2002KR: 22 February 2002RUS: 7 November 2002IND: 13 August 2003CHN: 1 January 2004PlayStation 2 SlimlineEU: 29 October 2004JP: 3 November 2004NA: 25 November 2004AU: 2 December 2004IND: 10 September 2008BRA: 15 October 2009",
       "launch_price": null,
       "discontinued": "JP: 28 December 2012 WW: 4 January 2013",
@@ -1302,7 +2150,39 @@
       "online_services": "Developer-run servers",
       "best_selling_game": "Grand Theft Auto: San Andreas (17.33 million) (list)",
       "predecessor": "PlayStation",
-      "successor": "PlayStation 3"
+      "successor": "PlayStation 3",
+      "top_games": [
+        {
+          "name": "Metal Gear Solid",
+          "slug": "metal-gear-solid",
+          "rating": 90.48504009442881,
+          "cover_path": "assets/system/game_covers/playstation_2/metal-gear-solid.jpg"
+        },
+        {
+          "name": "Final Fantasy VII",
+          "slug": "final-fantasy-vii",
+          "rating": 90.46717145408533,
+          "cover_path": "assets/system/game_covers/playstation_2/final-fantasy-vii.jpg"
+        },
+        {
+          "name": "Final Fantasy IX",
+          "slug": "final-fantasy-ix",
+          "rating": 88.07081187392251,
+          "cover_path": "assets/system/game_covers/playstation_2/final-fantasy-ix.jpg"
+        },
+        {
+          "name": "Castlevania: Symphony of the Night",
+          "slug": "castlevania-symphony-of-the-night",
+          "rating": 92.09234088399384,
+          "cover_path": "assets/system/game_covers/playstation_2/castlevania-symphony-of-the-night.jpg"
+        },
+        {
+          "name": "Crash Bandicoot",
+          "slug": "crash-bandicoot",
+          "rating": 80.49111160450875,
+          "cover_path": "assets/system/game_covers/playstation_2/crash-bandicoot.jpg"
+        }
+      ]
     },
     {
       "id": "intellivision",
@@ -1329,7 +2209,7 @@
       "wikidata_id": "15309",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Intellivision",
       "type": "Home video game console",
-      "generation": "2ª Geração",
+      "generation": "2nd Generation",
       "release_dates": "1979 (1979)—1990 (1990)",
       "launch_price": null,
       "discontinued": "1990 (1990)",
@@ -1365,7 +2245,7 @@
       "wikidata_id": "34847924",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_Jaguar_CD",
       "type": "Video game console peripheral",
-      "generation": "5ª Geração",
+      "generation": "5th Generation",
       "release_dates": "September 21, 1995",
       "launch_price": null,
       "discontinued": "1996",
@@ -1395,7 +2275,7 @@
         "Felix"
       ],
       "type": "Handheld game console",
-      "generation": "4ª Geração",
+      "generation": "3rd Generation",
       "release_dates": "1989–1995",
       "launch_price": null,
       "discontinued": "1995",
@@ -1427,6 +2307,39 @@
       "emulators": [
         "Flycast",
         "Demul"
+      ],
+      "generation": "Arcade",
+      "top_games": [
+        {
+          "name": "Super Mario Bros.",
+          "slug": "super-mario-bros",
+          "rating": 83.68811675605257,
+          "cover_path": "assets/system/game_covers/sega_naomi/super-mario-bros.jpg"
+        },
+        {
+          "name": "The Legend of Zelda",
+          "slug": "the-legend-of-zelda",
+          "rating": 80.52648907646105,
+          "cover_path": "assets/system/game_covers/sega_naomi/the-legend-of-zelda.jpg"
+        },
+        {
+          "name": "Castlevania",
+          "slug": "castlevania",
+          "rating": 78.89439934429028,
+          "cover_path": "assets/system/game_covers/sega_naomi/castlevania.jpg"
+        },
+        {
+          "name": "Zelda II: The Adventure of Link",
+          "slug": "zelda-ii-the-adventure-of-link",
+          "rating": 65.49483512179387,
+          "cover_path": "assets/system/game_covers/sega_naomi/zelda-ii-the-adventure-of-link.jpg"
+        },
+        {
+          "name": "Castlevania II: Simon's Quest",
+          "slug": "castlevania-ii-simon-s-quest",
+          "rating": 61.76185260819832,
+          "cover_path": "assets/system/game_covers/sega_naomi/castlevania-ii-simon-s-quest.jpg"
+        }
       ]
     },
     {
@@ -1451,7 +2364,7 @@
         "Handheld Electronic (RetroArch)"
       ],
       "type": "Handheld electronic games",
-      "generation": "2ª Geração",
+      "generation": "2nd Generation",
       "release_dates": "28 April 1980 (1980-04-28)",
       "launch_price": null,
       "discontinued": "1991",
@@ -1460,7 +2373,39 @@
       "storage": "1,792 B ROM",
       "display": "Segmented liquid-crystal display",
       "best_selling_game": "Donkey Kong (8 million)",
-      "successor": "Game Boy"
+      "successor": "Game Boy",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.6486486511894,
+          "cover_path": "assets/system/game_covers/game_&_watch/grand-theft-auto-v.jpg"
+        },
+        {
+          "name": "The Witcher 3: Wild Hunt",
+          "slug": "the-witcher-3-wild-hunt",
+          "rating": 93.7785534399753,
+          "cover_path": "assets/system/game_covers/game_&_watch/the-witcher-3-wild-hunt.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/game_&_watch/grand-theft-auto-san-andreas.jpg"
+        },
+        {
+          "name": "Red Dead Redemption 2",
+          "slug": "red-dead-redemption-2",
+          "rating": 93.1788518853741,
+          "cover_path": "assets/system/game_covers/game_&_watch/red-dead-redemption-2.jpg"
+        },
+        {
+          "name": "God of War",
+          "slug": "god-of-war--1",
+          "rating": 92.07544639251734,
+          "cover_path": "assets/system/game_covers/game_&_watch/god-of-war--1.jpg"
+        }
+      ]
     },
     {
       "id": "pokémon_mini",
@@ -1485,7 +2430,7 @@
         "MAME"
       ],
       "type": "Handheld game console",
-      "generation": "6ª Geração",
+      "generation": "5th Generation",
       "release_dates": "NA: November 16, 2001JP: December 14, 2001EU: March 15, 2002",
       "launch_price": null,
       "discontinued": "2002",
@@ -1493,7 +2438,39 @@
       "cpu": "S1C88 @ 4 MHz",
       "memory": "4 KB SRAM",
       "storage": "4 KB BIOS ROM, 8 KB EEPROM (6 save \"files\")",
-      "display": "Monochrome LCD, 96 × 64 px"
+      "display": "Monochrome LCD, 96 × 64 px",
+      "top_games": [
+        {
+          "name": "Super Mario Bros. 3",
+          "slug": "super-mario-bros-3",
+          "rating": 89.37415788766094,
+          "cover_path": "assets/system/game_covers/pokémon_mini/super-mario-bros-3.jpg"
+        },
+        {
+          "name": "Super Mario Bros.",
+          "slug": "super-mario-bros",
+          "rating": 83.68811675605257,
+          "cover_path": "assets/system/game_covers/pokémon_mini/super-mario-bros.jpg"
+        },
+        {
+          "name": "Tetris",
+          "slug": "tetris",
+          "rating": 86.28272589226856,
+          "cover_path": "assets/system/game_covers/pokémon_mini/tetris.jpg"
+        },
+        {
+          "name": "The Legend of Zelda",
+          "slug": "the-legend-of-zelda",
+          "rating": 80.52648907646105,
+          "cover_path": "assets/system/game_covers/pokémon_mini/the-legend-of-zelda.jpg"
+        },
+        {
+          "name": "Super Mario Bros. 2",
+          "slug": "super-mario-bros-2",
+          "rating": 76.53820214088867,
+          "cover_path": "assets/system/game_covers/pokémon_mini/super-mario-bros-2.jpg"
+        }
+      ]
     },
     {
       "id": "atari_st",
@@ -1528,7 +2505,40 @@
       "memory": "512 KB to 4 MB",
       "graphics": "320 × 200 (16 colors), 640 × 200 (4 colors), 640 × 400 (monochrome)",
       "sound": "YM2149F",
-      "predecessor": "Atari 8-bit computers"
+      "predecessor": "Atari 8-bit computers",
+      "generation": "16-bit Computer",
+      "top_games": [
+        {
+          "name": "The Legend of Zelda: Ocarina of Time",
+          "slug": "the-legend-of-zelda-ocarina-of-time",
+          "rating": 91.54932253393936,
+          "cover_path": "assets/system/game_covers/atari_st/the-legend-of-zelda-ocarina-of-time.jpg"
+        },
+        {
+          "name": "Super Mario 64",
+          "slug": "super-mario-64",
+          "rating": 88.7595914703998,
+          "cover_path": "assets/system/game_covers/atari_st/super-mario-64.jpg"
+        },
+        {
+          "name": "Super Mario World",
+          "slug": "super-mario-world",
+          "rating": 91.70191481860208,
+          "cover_path": "assets/system/game_covers/atari_st/super-mario-world.jpg"
+        },
+        {
+          "name": "Super Mario Bros. 3",
+          "slug": "super-mario-bros-3",
+          "rating": 89.37415788766094,
+          "cover_path": "assets/system/game_covers/atari_st/super-mario-bros-3.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: A Link to the Past",
+          "slug": "the-legend-of-zelda-a-link-to-the-past",
+          "rating": 91.93906391924232,
+          "cover_path": "assets/system/game_covers/atari_st/the-legend-of-zelda-a-link-to-the-past.jpg"
+        }
+      ]
     },
     {
       "id": "msx",
@@ -1561,7 +2571,40 @@
       "os": "MSX BASIC, MSX-DOS",
       "cpu": "Zilog Z80 or equivalent (MSX1, MSX2, MSX2+)R800 (Turbo R)",
       "memory": "8–64 KB maximum (MSX1)64-512 KB, expandable to up to 4 MB via memory mapper cartridge (MSX2 and higher)",
-      "graphics": "TMS9918 or equivalent (MSX1)Yamaha V9938 (MSX2)Yamaha V9958 (MSX2+ and Turbo R)"
+      "graphics": "TMS9918 or equivalent (MSX1)Yamaha V9938 (MSX2)Yamaha V9958 (MSX2+ and Turbo R)",
+      "generation": "8-bit Computer",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v--2",
+          "rating": 87.43949222524442,
+          "cover_path": "assets/system/game_covers/msx/grand-theft-auto-v--2.jpg"
+        },
+        {
+          "name": "Golden Axe",
+          "slug": "golden-axe",
+          "rating": 74.89794268914484,
+          "cover_path": "assets/system/game_covers/msx/golden-axe.jpg"
+        },
+        {
+          "name": "Final Fight",
+          "slug": "final-fight",
+          "rating": 79.1760027876448,
+          "cover_path": "assets/system/game_covers/msx/final-fight.jpg"
+        },
+        {
+          "name": "SimCity",
+          "slug": "simcity",
+          "rating": 84.67559692194607,
+          "cover_path": "assets/system/game_covers/msx/simcity.jpg"
+        },
+        {
+          "name": "Altered Beast",
+          "slug": "altered-beast",
+          "rating": 64.49111575618286,
+          "cover_path": "assets/system/game_covers/msx/altered-beast.jpg"
+        }
+      ]
     },
     {
       "id": "msx2",
@@ -1593,7 +2636,40 @@
       "os": "MSX BASIC, MSX-DOS",
       "cpu": "Zilog Z80 or equivalent (MSX1, MSX2, MSX2+)R800 (Turbo R)",
       "memory": "8–64 KB maximum (MSX1)64-512 KB, expandable to up to 4 MB via memory mapper cartridge (MSX2 and higher)",
-      "graphics": "TMS9918 or equivalent (MSX1)Yamaha V9938 (MSX2)Yamaha V9958 (MSX2+ and Turbo R)"
+      "graphics": "TMS9918 or equivalent (MSX1)Yamaha V9938 (MSX2)Yamaha V9958 (MSX2+ and Turbo R)",
+      "generation": "8-bit Computer",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v--2",
+          "rating": 87.43949222524442,
+          "cover_path": "assets/system/game_covers/msx2/grand-theft-auto-v--2.jpg"
+        },
+        {
+          "name": "Golden Axe",
+          "slug": "golden-axe",
+          "rating": 74.89794268914484,
+          "cover_path": "assets/system/game_covers/msx2/golden-axe.jpg"
+        },
+        {
+          "name": "Final Fight",
+          "slug": "final-fight",
+          "rating": 79.1760027876448,
+          "cover_path": "assets/system/game_covers/msx2/final-fight.jpg"
+        },
+        {
+          "name": "SimCity",
+          "slug": "simcity",
+          "rating": 84.67559692194607,
+          "cover_path": "assets/system/game_covers/msx2/simcity.jpg"
+        },
+        {
+          "name": "Altered Beast",
+          "slug": "altered-beast",
+          "rating": 64.49111575618286,
+          "cover_path": "assets/system/game_covers/msx2/altered-beast.jpg"
+        }
+      ]
     },
     {
       "id": "nintendo_64",
@@ -1606,6 +2682,7 @@
       "description": "O Nintendo 64 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
       "curiosities": [
         "O Nintendo 64 foi o primeiro console com controle analógico (tridimensional) integrado ao gamepad.",
+        "Manteve o uso de cartuchos (em vez de CD), o que limitava armazenamento mas eliminava loading times.",
         "Super Mario 64 estabeleceu o padrão de design para jogos 3D que influencia desenvolvedores até hoje."
       ],
       "supported_extensions": [
@@ -1622,7 +2699,7 @@
         "Parallel RDP (RetroArch)"
       ],
       "type": "Home video game console",
-      "generation": "5ª Geração",
+      "generation": "5th Generation",
       "release_dates": "June 21, 1996 JP: June 21, 1996NA: September 27, 1996EU/AU: December 20, 1996CHL/BR: December 10, 1997",
       "launch_price": null,
       "discontinued": "2002",
@@ -1634,7 +2711,39 @@
       "online_services": "JP: RandnetUS: SharkWire Online (third-party)",
       "best_selling_game": "Super Mario 64 (11.62 million) (list)",
       "predecessor": "Super Nintendo Entertainment System",
-      "successor": "GameCube"
+      "successor": "GameCube",
+      "top_games": [
+        {
+          "name": "The Legend of Zelda: Ocarina of Time",
+          "slug": "the-legend-of-zelda-ocarina-of-time",
+          "rating": 91.54932253393936,
+          "cover_path": "assets/system/game_covers/nintendo_64/the-legend-of-zelda-ocarina-of-time.jpg"
+        },
+        {
+          "name": "Super Mario 64",
+          "slug": "super-mario-64",
+          "rating": 88.7595914703998,
+          "cover_path": "assets/system/game_covers/nintendo_64/super-mario-64.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: Majora's Mask",
+          "slug": "the-legend-of-zelda-majora-s-mask",
+          "rating": 86.50658620129278,
+          "cover_path": "assets/system/game_covers/nintendo_64/the-legend-of-zelda-majora-s-mask.jpg"
+        },
+        {
+          "name": "Mario Kart 64",
+          "slug": "mario-kart-64",
+          "rating": 82.29137587065662,
+          "cover_path": "assets/system/game_covers/nintendo_64/mario-kart-64.jpg"
+        },
+        {
+          "name": "Grand Theft Auto",
+          "slug": "grand-theft-auto",
+          "rating": 75.06933387831451,
+          "cover_path": "assets/system/game_covers/nintendo_64/grand-theft-auto.jpg"
+        }
+      ]
     },
     {
       "id": "nintendo_switch",
@@ -1663,7 +2772,7 @@
         "SuYU"
       ],
       "type": "Video game console",
-      "generation": "Eighth / Ninth[a]",
+      "generation": "8th Generation",
       "release_dates": "Original: March 3, 2017Lite: September 20, 2019OLED: October 10, 2021",
       "launch_price": "US$299.99 / US$199.99 / US$349.99",
       "media": "Game carddigital distribution",
@@ -1704,7 +2813,7 @@
         "NeoGeo EMU"
       ],
       "type": "Arcade system board, Home video game console",
-      "generation": "4ª Geração",
+      "generation": "4th Generation",
       "release_dates": "April 16, 1990 JP: April 16, 1990 (MVS)JP: April 26, 1990 (AES)NA: August 22, 1990 (MVS)AU: August 1990 (MVS)NA: July 1, 1991 (AES)EU: 1991",
       "launch_price": "US$649.99",
       "discontinued": "1997",
@@ -1715,7 +2824,39 @@
       "display": "320×224 resolution, 3840 on-screen colors out of a palette of 65536",
       "sound": "Yamaha YM2610",
       "best_selling_game": "Samurai Shodown",
-      "successor": "Neo Star (cancelled), Hyper Neo Geo 64"
+      "successor": "Neo Star (cancelled), Hyper Neo Geo 64",
+      "top_games": [
+        {
+          "name": "Tomb Raider",
+          "slug": "tomb-raider",
+          "rating": 80.77522299268941,
+          "cover_path": "assets/system/game_covers/neo_geo/tomb-raider.jpg"
+        },
+        {
+          "name": "Quake",
+          "slug": "quake",
+          "rating": 82.59996763107955,
+          "cover_path": "assets/system/game_covers/neo_geo/quake.jpg"
+        },
+        {
+          "name": "Warcraft II: Tides of Darkness",
+          "slug": "warcraft-ii-tides-of-darkness",
+          "rating": 84.49170281114868,
+          "cover_path": "assets/system/game_covers/neo_geo/warcraft-ii-tides-of-darkness.jpg"
+        },
+        {
+          "name": "Command & Conquer",
+          "slug": "command-conquer",
+          "rating": 84.32359833793606,
+          "cover_path": "assets/system/game_covers/neo_geo/command-conquer.jpg"
+        },
+        {
+          "name": "Mortal Kombat II",
+          "slug": "mortal-kombat-ii",
+          "rating": 76.4115109309212,
+          "cover_path": "assets/system/game_covers/neo_geo/mortal-kombat-ii.jpg"
+        }
+      ]
     },
     {
       "id": "nes",
@@ -1744,7 +2885,7 @@
         "FCEUmm (RetroArch)"
       ],
       "type": "Home video game console",
-      "generation": "3ª Geração",
+      "generation": "3rd Generation",
       "release_dates": "July 15, 1983 JP: July 15, 1983NA: October 18, 1985[a]EU: September 1, 1986[b]UK/IRE/ITA/AU: 1987[c]IND/TW: 1987KOR: 1989CHL: 1991ZA: 1993BRA: March 1993[d]",
       "launch_price": null,
       "discontinued": "NA/EU/AU: August 14, 1995 (1995-08-14)BRA/KOR/TW: Early/Mid 2003JP: September 25, 2003 (2003-09-25)",
@@ -1756,7 +2897,39 @@
       "sound": "APU, 5 channels: 2 pulse wave, triangle wave, white noise, DPCM",
       "best_selling_game": "Pack-in: Super Mario Bros. (40 million) Standalone: Super Mario Bros. 3 (18 million) (list)",
       "predecessor": "Color TV-Game",
-      "successor": "Super Nintendo Entertainment System"
+      "successor": "Super Nintendo Entertainment System",
+      "top_games": [
+        {
+          "name": "Super Mario Bros. 3",
+          "slug": "super-mario-bros-3",
+          "rating": 89.37415788766094,
+          "cover_path": "assets/system/game_covers/nes/super-mario-bros-3.jpg"
+        },
+        {
+          "name": "Super Mario Bros.",
+          "slug": "super-mario-bros",
+          "rating": 83.68811675605257,
+          "cover_path": "assets/system/game_covers/nes/super-mario-bros.jpg"
+        },
+        {
+          "name": "Tetris",
+          "slug": "tetris",
+          "rating": 86.28272589226856,
+          "cover_path": "assets/system/game_covers/nes/tetris.jpg"
+        },
+        {
+          "name": "The Legend of Zelda",
+          "slug": "the-legend-of-zelda",
+          "rating": 80.52648907646105,
+          "cover_path": "assets/system/game_covers/nes/the-legend-of-zelda.jpg"
+        },
+        {
+          "name": "Super Mario Bros. 2",
+          "slug": "super-mario-bros-2",
+          "rating": 76.53820214088867,
+          "cover_path": "assets/system/game_covers/nes/super-mario-bros-2.jpg"
+        }
+      ]
     },
     {
       "id": "neo_geo_pocket_color",
@@ -1781,7 +2954,7 @@
         "Beetle NGPC (RetroArch)"
       ],
       "type": "Handheld game console",
-      "generation": "5ª Geração",
+      "generation": "5th Generation",
       "release_dates": "Neo Geo Pocket: JP: October 28, 1998Neo Geo Pocket Color: JP: March 19, 1999NA: August 6, 1999EU: October 1, 1999New Neo Geo Pocket Color: JP: October 21, 1999",
       "launch_price": "US$69.95",
       "discontinued": "NA/EU: June 13, 2000JP: October 30, 2001",
@@ -1789,7 +2962,39 @@
       "cpu": "Toshiba TLCS900H core (16-bit) @ 6.144 MHz, Zilog Z80 @ 3.072 MHz for sound",
       "memory": "12 KB RAM for 900/H, 4 KB RAM for Z80, 64 KB ROM",
       "display": "2.7\", 160×152 resolution, 146 colors on screen out of a palette of 4,096",
-      "sound": "T6W28 (enhanced SN76489), 6-bit DACs"
+      "sound": "T6W28 (enhanced SN76489), 6-bit DACs",
+      "top_games": [
+        {
+          "name": "Galaga",
+          "slug": "galaga",
+          "rating": 72.81997784627794,
+          "cover_path": "assets/system/game_covers/neo_geo_pocket_color/galaga.jpg"
+        },
+        {
+          "name": "Altered Beast",
+          "slug": "altered-beast",
+          "rating": 64.49111575618286,
+          "cover_path": "assets/system/game_covers/neo_geo_pocket_color/altered-beast.jpg"
+        },
+        {
+          "name": "Pitfall!",
+          "slug": "pitfall",
+          "rating": 71.8637201346169,
+          "cover_path": "assets/system/game_covers/neo_geo_pocket_color/pitfall.jpg"
+        },
+        {
+          "name": "1942",
+          "slug": "1942",
+          "rating": 67.74259210674639,
+          "cover_path": "assets/system/game_covers/neo_geo_pocket_color/1942.jpg"
+        },
+        {
+          "name": "R-Type",
+          "slug": "r-type",
+          "rating": 74.65376650855302,
+          "cover_path": "assets/system/game_covers/neo_geo_pocket_color/r-type.jpg"
+        }
+      ]
     },
     {
       "id": "neo_geo_pocket",
@@ -1813,7 +3018,7 @@
         "Mednafen"
       ],
       "type": "Handheld game console",
-      "generation": "5ª Geração",
+      "generation": "5th Generation",
       "release_dates": "Neo Geo Pocket: JP: October 28, 1998Neo Geo Pocket Color: JP: March 19, 1999NA: August 6, 1999EU: October 1, 1999New Neo Geo Pocket Color: JP: October 21, 1999",
       "launch_price": "US$69.95",
       "discontinued": "NA/EU: June 13, 2000JP: October 30, 2001",
@@ -1821,7 +3026,39 @@
       "cpu": "Toshiba TLCS900H core (16-bit) @ 6.144 MHz, Zilog Z80 @ 3.072 MHz for sound",
       "memory": "12 KB RAM for 900/H, 4 KB RAM for Z80, 64 KB ROM",
       "display": "2.7\", 160×152 resolution, 146 colors on screen out of a palette of 4,096",
-      "sound": "T6W28 (enhanced SN76489), 6-bit DACs"
+      "sound": "T6W28 (enhanced SN76489), 6-bit DACs",
+      "top_games": [
+        {
+          "name": "Galaga",
+          "slug": "galaga",
+          "rating": 72.81997784627794,
+          "cover_path": "assets/system/game_covers/neo_geo_pocket/galaga.jpg"
+        },
+        {
+          "name": "Altered Beast",
+          "slug": "altered-beast",
+          "rating": 64.49111575618286,
+          "cover_path": "assets/system/game_covers/neo_geo_pocket/altered-beast.jpg"
+        },
+        {
+          "name": "Pitfall!",
+          "slug": "pitfall",
+          "rating": 71.8637201346169,
+          "cover_path": "assets/system/game_covers/neo_geo_pocket/pitfall.jpg"
+        },
+        {
+          "name": "1942",
+          "slug": "1942",
+          "rating": 67.74259210674639,
+          "cover_path": "assets/system/game_covers/neo_geo_pocket/1942.jpg"
+        },
+        {
+          "name": "R-Type",
+          "slug": "r-type",
+          "rating": 74.65376650855302,
+          "cover_path": "assets/system/game_covers/neo_geo_pocket/r-type.jpg"
+        }
+      ]
     },
     {
       "id": "lowres_nx",
@@ -1842,6 +3079,39 @@
       ],
       "emulators": [
         "LowRes NX Emulator (oficial)"
+      ],
+      "generation": "Fantasy Console",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.6486486511894,
+          "cover_path": "assets/system/game_covers/lowres_nx/grand-theft-auto-v.jpg"
+        },
+        {
+          "name": "The Witcher 3: Wild Hunt",
+          "slug": "the-witcher-3-wild-hunt",
+          "rating": 93.7785534399753,
+          "cover_path": "assets/system/game_covers/lowres_nx/the-witcher-3-wild-hunt.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/lowres_nx/grand-theft-auto-san-andreas.jpg"
+        },
+        {
+          "name": "Red Dead Redemption 2",
+          "slug": "red-dead-redemption-2",
+          "rating": 93.1788518853741,
+          "cover_path": "assets/system/game_covers/lowres_nx/red-dead-redemption-2.jpg"
+        },
+        {
+          "name": "God of War",
+          "slug": "god-of-war--1",
+          "rating": 92.07544639251734,
+          "cover_path": "assets/system/game_covers/lowres_nx/god-of-war--1.jpg"
+        }
       ]
     },
     {
@@ -1855,6 +3125,7 @@
       "description": "O Sinclair ZX81 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
       "curiosities": [
         "O ZX81 sucedeu o ZX80 e foi um dos computadores mais baratos de seu tempo, vendido como kit para montar por £49.95.",
+        "Usava o processador Z80A a 3.25 MHz, o mesmo que alimentava o Game Boy e muitos outros sistemas.",
         "Seu teclado de membrana era notoriamente desconfortável, mas o preço acessível tornou-o um sucesso de vendas no Reino Unido."
       ],
       "supported_extensions": [
@@ -1877,7 +3148,40 @@
       "display": "Monochrome display on UHF television",
       "graphics": "24 lines × 32 characters or, 64 × 48 pixels graphics mode",
       "predecessor": "ZX80",
-      "successor": "ZX Spectrum"
+      "successor": "ZX Spectrum",
+      "generation": "8-bit Computer",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.6486486511894,
+          "cover_path": "assets/system/game_covers/sinclair_zx81/grand-theft-auto-v.jpg"
+        },
+        {
+          "name": "Portal 2",
+          "slug": "portal-2",
+          "rating": 91.29932409808389,
+          "cover_path": "assets/system/game_covers/sinclair_zx81/portal-2.jpg"
+        },
+        {
+          "name": "The Elder Scrolls V: Skyrim",
+          "slug": "the-elder-scrolls-v-skyrim",
+          "rating": 87.64466568249945,
+          "cover_path": "assets/system/game_covers/sinclair_zx81/the-elder-scrolls-v-skyrim.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/sinclair_zx81/grand-theft-auto-san-andreas.jpg"
+        },
+        {
+          "name": "Portal",
+          "slug": "portal",
+          "rating": 86.40228938907896,
+          "cover_path": "assets/system/game_covers/sinclair_zx81/portal.jpg"
+        }
+      ]
     },
     {
       "id": "pico_8",
@@ -1890,7 +3194,8 @@
       "description": "O PICO-8 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
       "curiosities": [
         "O PICO-8 é uma \"fantasy console\" criada por Joseph White (Lexaloffle) com resolução de 128×128 pixels e paleta de 16 cores.",
-        "As limitações propositais (32 KB de código, 4 canais de som, 64 sprites) estimulam a criatividade de desenvolvedores."
+        "As limitações propositais (32 KB de código, 4 canais de som, 64 sprites) estimulam a criatividade de desenvolvedores.",
+        "Jogos como Celeste foram originalmente criados para PICO-8 em game jams antes de se tornarem sucessos comerciais."
       ],
       "supported_extensions": [
         ".p8",
@@ -1900,6 +3205,39 @@
         "PICO-8 (nativo)",
         "Retro8 (RetroArch)",
         "Picolove"
+      ],
+      "generation": "Fantasy Console",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.6486486511894,
+          "cover_path": "assets/system/game_covers/pico_8/grand-theft-auto-v.jpg"
+        },
+        {
+          "name": "The Witcher 3: Wild Hunt",
+          "slug": "the-witcher-3-wild-hunt",
+          "rating": 93.7785534399753,
+          "cover_path": "assets/system/game_covers/pico_8/the-witcher-3-wild-hunt.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/pico_8/grand-theft-auto-san-andreas.jpg"
+        },
+        {
+          "name": "Red Dead Redemption 2",
+          "slug": "red-dead-redemption-2",
+          "rating": 93.1788518853741,
+          "cover_path": "assets/system/game_covers/pico_8/red-dead-redemption-2.jpg"
+        },
+        {
+          "name": "God of War",
+          "slug": "god-of-war--1",
+          "rating": 92.07544639251734,
+          "cover_path": "assets/system/game_covers/pico_8/god-of-war--1.jpg"
+        }
       ]
     },
     {
@@ -1927,7 +3265,7 @@
         "Beetle PCE (RetroArch)"
       ],
       "type": "Home video game console",
-      "generation": "4ª Geração",
+      "generation": "4th Generation",
       "release_dates": "1987–1994",
       "discontinued": "FR: December 25, 1993NA: May 11, 1994JP: December 16, 1994",
       "media": "HuCard",
@@ -1937,7 +3275,39 @@
       "graphics": "HuC6270 VDCHuC6260 VCE",
       "sound": "PSG, 5 to 10-bit stereo PCM",
       "best_selling_game": "Bonk's Adventure",
-      "successor": "PC Engine SuperGrafxPC-FX"
+      "successor": "PC Engine SuperGrafxPC-FX",
+      "top_games": [
+        {
+          "name": "Pokémon Yellow Version: Special Pikachu Edition",
+          "slug": "pokemon-yellow-version-special-pikachu-edition",
+          "rating": 82.63518048752671,
+          "cover_path": "assets/system/game_covers/pc_engine/pokemon-yellow-version-special-pikachu-edition.jpg"
+        },
+        {
+          "name": "Pokémon Crystal Version",
+          "slug": "pokemon-crystal-version",
+          "rating": 88.57342003066213,
+          "cover_path": "assets/system/game_covers/pc_engine/pokemon-crystal-version.jpg"
+        },
+        {
+          "name": "Pokémon Silver Version",
+          "slug": "pokemon-silver-version",
+          "rating": 87.85039588849102,
+          "cover_path": "assets/system/game_covers/pc_engine/pokemon-silver-version.jpg"
+        },
+        {
+          "name": "Pokémon Gold Version",
+          "slug": "pokemon-gold-version",
+          "rating": 86.68615877274019,
+          "cover_path": "assets/system/game_covers/pc_engine/pokemon-gold-version.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: Oracle of Seasons",
+          "slug": "the-legend-of-zelda-oracle-of-seasons",
+          "rating": 81.30201167549086,
+          "cover_path": "assets/system/game_covers/pc_engine/the-legend-of-zelda-oracle-of-seasons.jpg"
+        }
+      ]
     },
     {
       "id": "playstation_3",
@@ -1962,7 +3332,7 @@
         "RPCS3"
       ],
       "type": "console",
-      "generation": "7ª Geração",
+      "generation": "7th Generation",
       "launch_price": "US$499.99 / US$599.99",
       "discontinued": "PAL: March 2016NA: October 2016JP: May 29, 2017 (2017-05-29)",
       "media": "Blu-ray DVD CD Super Audio CD (some models) Digital distribution",
@@ -1980,7 +3350,39 @@
       "successor": "PlayStation 4",
       "wikidata_id": "24951",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_3",
-      "release_dates": "JP: November 11, 2006 (2006-11-11)NA: November 17, 2006PAL: March 23, 2007"
+      "release_dates": "JP: November 11, 2006 (2006-11-11)NA: November 17, 2006PAL: March 23, 2007",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.6486486511894,
+          "cover_path": "assets/system/game_covers/playstation_3/grand-theft-auto-v.jpg"
+        },
+        {
+          "name": "Portal 2",
+          "slug": "portal-2",
+          "rating": 91.29932409808389,
+          "cover_path": "assets/system/game_covers/playstation_3/portal-2.jpg"
+        },
+        {
+          "name": "The Elder Scrolls V: Skyrim",
+          "slug": "the-elder-scrolls-v-skyrim",
+          "rating": 87.64466568249945,
+          "cover_path": "assets/system/game_covers/playstation_3/the-elder-scrolls-v-skyrim.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/playstation_3/grand-theft-auto-san-andreas.jpg"
+        },
+        {
+          "name": "Portal",
+          "slug": "portal",
+          "rating": 86.40228938907896,
+          "cover_path": "assets/system/game_covers/playstation_3/portal.jpg"
+        }
+      ]
     },
     {
       "id": "sony_playstation_2",
@@ -2005,7 +3407,7 @@
       "wikidata_id": "15822958",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_2",
       "type": "console",
-      "generation": "6ª Geração",
+      "generation": "6th Generation",
       "launch_price": null,
       "discontinued": "JP: 28 December 2012 WW: 4 January 2013",
       "media": "DVD, CD",
@@ -2019,7 +3421,39 @@
       "online_services": "Developer-run servers",
       "best_selling_game": "Grand Theft Auto: San Andreas (17.33 million) (list)",
       "predecessor": "PlayStation",
-      "successor": "PlayStation 3"
+      "successor": "PlayStation 3",
+      "top_games": [
+        {
+          "name": "Metal Gear Solid",
+          "slug": "metal-gear-solid",
+          "rating": 90.48504009442881,
+          "cover_path": "assets/system/game_covers/sony_playstation_2/metal-gear-solid.jpg"
+        },
+        {
+          "name": "Final Fantasy VII",
+          "slug": "final-fantasy-vii",
+          "rating": 90.46717145408533,
+          "cover_path": "assets/system/game_covers/sony_playstation_2/final-fantasy-vii.jpg"
+        },
+        {
+          "name": "Final Fantasy IX",
+          "slug": "final-fantasy-ix",
+          "rating": 88.07081187392251,
+          "cover_path": "assets/system/game_covers/sony_playstation_2/final-fantasy-ix.jpg"
+        },
+        {
+          "name": "Castlevania: Symphony of the Night",
+          "slug": "castlevania-symphony-of-the-night",
+          "rating": 92.09234088399384,
+          "cover_path": "assets/system/game_covers/sony_playstation_2/castlevania-symphony-of-the-night.jpg"
+        },
+        {
+          "name": "Crash Bandicoot",
+          "slug": "crash-bandicoot",
+          "rating": 80.49111160450875,
+          "cover_path": "assets/system/game_covers/sony_playstation_2/crash-bandicoot.jpg"
+        }
+      ]
     },
     {
       "id": "wii_u",
@@ -2044,7 +3478,7 @@
         "Cemu"
       ],
       "type": "console",
-      "generation": "8ª Geração",
+      "generation": "8th Generation",
       "launch_price": "US$299 / US$349",
       "discontinued": "WW: January 31, 2017",
       "media": "Physical and digital Wii U Optical Disc (25 GB) Wii Optical Disc (4.7 GB/8.54 GB) Digital distribution (Nintendo eShop)",
@@ -2062,7 +3496,39 @@
       "successor": "Nintendo Switch",
       "wikidata_id": "31512491",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Wii_U",
-      "release_dates": "NA: November 18, 2012PAL: November 30, 2012JP: December 8, 2012"
+      "release_dates": "NA: November 18, 2012PAL: November 30, 2012JP: December 8, 2012",
+      "top_games": [
+        {
+          "name": "The Legend of Zelda: Breath of the Wild",
+          "slug": "the-legend-of-zelda-breath-of-the-wild",
+          "rating": 92.50265766614817,
+          "cover_path": "assets/system/game_covers/wii_u/the-legend-of-zelda-breath-of-the-wild.jpg"
+        },
+        {
+          "name": "Hollow Knight",
+          "slug": "hollow-knight",
+          "rating": 91.89756681214497,
+          "cover_path": "assets/system/game_covers/wii_u/hollow-knight.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: Ocarina of Time",
+          "slug": "the-legend-of-zelda-ocarina-of-time",
+          "rating": 91.54932253393936,
+          "cover_path": "assets/system/game_covers/wii_u/the-legend-of-zelda-ocarina-of-time.jpg"
+        },
+        {
+          "name": "Super Mario 64",
+          "slug": "super-mario-64",
+          "rating": 88.7595914703998,
+          "cover_path": "assets/system/game_covers/wii_u/super-mario-64.jpg"
+        },
+        {
+          "name": "Super Mario World",
+          "slug": "super-mario-world",
+          "rating": 91.70191481860208,
+          "cover_path": "assets/system/game_covers/wii_u/super-mario-world.jpg"
+        }
+      ]
     },
     {
       "id": "sega_saturn",
@@ -2089,7 +3555,7 @@
         "Beetle Saturn (RetroArch)"
       ],
       "type": "console",
-      "generation": "5ª Geração",
+      "generation": "5th Generation",
       "lifespan": "1994–2000",
       "launch_price": null,
       "discontinued": "EU: 1998NA: March 1998JP: 2000",
@@ -2105,7 +3571,39 @@
       "successor": "Dreamcast",
       "wikidata_id": "29035",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Sega_Saturn",
-      "release_dates": "1994–2000"
+      "release_dates": "1994–2000",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.6486486511894,
+          "cover_path": "assets/system/game_covers/sega_saturn/grand-theft-auto-v.jpg"
+        },
+        {
+          "name": "The Witcher 3: Wild Hunt",
+          "slug": "the-witcher-3-wild-hunt",
+          "rating": 93.7785534399753,
+          "cover_path": "assets/system/game_covers/sega_saturn/the-witcher-3-wild-hunt.jpg"
+        },
+        {
+          "name": "Portal 2",
+          "slug": "portal-2",
+          "rating": 91.29932409808389,
+          "cover_path": "assets/system/game_covers/sega_saturn/portal-2.jpg"
+        },
+        {
+          "name": "The Elder Scrolls V: Skyrim",
+          "slug": "the-elder-scrolls-v-skyrim",
+          "rating": 87.64466568249945,
+          "cover_path": "assets/system/game_covers/sega_saturn/the-elder-scrolls-v-skyrim.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/sega_saturn/grand-theft-auto-san-andreas.jpg"
+        }
+      ]
     },
     {
       "id": "sinclair_zx_spectrum",
@@ -2118,6 +3616,7 @@
       "description": "O Sinclair ZX Spectrum foi um dos mais influentes microcomputadores europeus de 8 bits durante a década de 1980. Foi lançado na Inglaterra em 1982 pela companhia Sinclair Research. Em Portugal a sua distribuição começou a ser feita pela Triudus e logo a seguir pela Landry. No Brasil, a empresa Microdigital produziu o TK-90X, um clone do modelo inglês, e o TK 95, um modelo cuja principal diferença era ser equipado com um teclado semiprofissional.",
       "curiosities": [
         "O ZX Spectrum foi o computador mais vendido no Reino Unido nos anos 80 e sua biblioteca de jogos é considerada uma das mais criativas.",
+        "Seu display de 256×192 pixels com atributos de cor por bloco de 8×8 causava o famoso \"color clash\", onde sprites mudavam de cor em contato com fundos.",
         "Sir Clive Sinclair, seu criador, também desenvolveu o C5, um veículo elétrico pessoal que foi um fracasso comercial."
       ],
       "supported_extensions": [
@@ -2133,7 +3632,7 @@
         "Fuse (RetroArch)"
       ],
       "type": "computer",
-      "generation": "8-bit",
+      "generation": "8-bit Computer",
       "launch_price": "$200",
       "discontinued": "1985/1992",
       "media": "Compact Cassette, ZX Microdrive, 3-inch floppy disk on Spectrum +3",
@@ -2147,7 +3646,39 @@
       "successor": "QL, Sinclair PC200",
       "wikidata_id": "34467",
       "wikipedia_url": "https://en.wikipedia.org/wiki/ZX_Spectrum",
-      "release_dates": "UK: 23 April 1982DE: 1983US: November 1983EU: 1984"
+      "release_dates": "UK: 23 April 1982DE: 1983US: November 1983EU: 1984",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.6486486511894,
+          "cover_path": "assets/system/game_covers/sinclair_zx_spectrum/grand-theft-auto-v.jpg"
+        },
+        {
+          "name": "Portal 2",
+          "slug": "portal-2",
+          "rating": 91.29932409808389,
+          "cover_path": "assets/system/game_covers/sinclair_zx_spectrum/portal-2.jpg"
+        },
+        {
+          "name": "The Elder Scrolls V: Skyrim",
+          "slug": "the-elder-scrolls-v-skyrim",
+          "rating": 87.64466568249945,
+          "cover_path": "assets/system/game_covers/sinclair_zx_spectrum/the-elder-scrolls-v-skyrim.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/sinclair_zx_spectrum/grand-theft-auto-san-andreas.jpg"
+        },
+        {
+          "name": "Portal",
+          "slug": "portal",
+          "rating": 86.40228938907896,
+          "cover_path": "assets/system/game_covers/sinclair_zx_spectrum/portal.jpg"
+        }
+      ]
     },
     {
       "id": "sega_sg_1000",
@@ -2160,6 +3691,7 @@
       "description": "O SG-1000 foi um console de videogame da terceira geração, lançado em uma versão de testes pela Sega em 1981, e oficialmente para o mercado japonês em 1983.",
       "curiosities": [
         "O SG-1000 foi o primeiro console da Sega, lançado em 1983 no Japão, no mesmo dia que o Famicom da Nintendo.",
+        "Era essencialmente um SC-3000 (computador) sem teclado, usando o processador Z80A.",
         "Seus controles usavam conectores de 9 pinos que se tornariam padrão para toda a linha Sega (Master System, Genesis)."
       ],
       "supported_extensions": [
@@ -2171,7 +3703,7 @@
         "Genesis Plus GX (RetroArch)"
       ],
       "type": "console",
-      "generation": "3ª Geração",
+      "generation": "2nd Generation",
       "discontinued": "SG-1000JP: July 1984SG-1000 IIJP: October 1985",
       "media": "ROM cartridge, compact cassette, Sega My Card",
       "cpu": "Zilog Z80A @ 3.58 MHz",
@@ -2208,7 +3740,7 @@
         "Genesis Plus GX (RetroArch)"
       ],
       "type": "console",
-      "generation": "3ª Geração",
+      "generation": "3rd Generation",
       "lifespan": "JP: 1985–1991NA: 1986–1992EU: 1987–1996KO: 1988–1994BR: 1989–present[9]",
       "launch_price": null,
       "discontinued": "JP: 1991NA: 1992KO: 1994EU: 1996",
@@ -2221,7 +3753,39 @@
       "successor": "Sega Genesis",
       "wikidata_id": "104168",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Master_System",
-      "release_dates": "JP: 1985–1991NA: 1986–1992EU: 1987–1996KO: 1988–1994BR: 1989–present"
+      "release_dates": "JP: 1985–1991NA: 1986–1992EU: 1987–1996KO: 1988–1994BR: 1989–present",
+      "top_games": [
+        {
+          "name": "Battletoads",
+          "slug": "battletoads",
+          "rating": 76.17949653866779,
+          "cover_path": "assets/system/game_covers/master_system/battletoads.jpg"
+        },
+        {
+          "name": "Ms. Pac-Man",
+          "slug": "ms-pac-man",
+          "rating": 79.69142857889247,
+          "cover_path": "assets/system/game_covers/master_system/ms-pac-man.jpg"
+        },
+        {
+          "name": "Super Star Wars: Return of the Jedi",
+          "slug": "super-star-wars-return-of-the-jedi",
+          "rating": 72.11906737391111,
+          "cover_path": "assets/system/game_covers/master_system/super-star-wars-return-of-the-jedi.jpg"
+        },
+        {
+          "name": "Sonic the Hedgehog 2",
+          "slug": "sonic-the-hedgehog-2--1",
+          "rating": 90.42571386256468,
+          "cover_path": "assets/system/game_covers/master_system/sonic-the-hedgehog-2--1.jpg"
+        },
+        {
+          "name": "Fatal Fury Special",
+          "slug": "fatal-fury-special",
+          "rating": 71.98528196013966,
+          "cover_path": "assets/system/game_covers/master_system/fatal-fury-special.jpg"
+        }
+      ]
     },
     {
       "id": "bbc_micro",
@@ -2234,6 +3798,7 @@
       "description": "BBC Microcomputer System é uma série de microcomputadores e periféricos associados desenhados e construídos pela Acorn Computers Ltd para o BBC Computer Literacy Project operado pela British Broadcasting Corporation.",
       "curiosities": [
         "O BBC Micro foi encomendado pela BBC para o projeto \"BBC Computer Literacy Project\", educando uma geração de programadores ingleses.",
+        "Foi o computador onde a palavra \"micro\" no nome referia-se ao processador 6502, o mesmo do Apple II.",
         "A lendária desenvolvedora Acorn usou o BBC Micro para prototipar a arquitetura ARM, que hoje domina o mercado mobile."
       ],
       "supported_extensions": [
@@ -2261,7 +3826,40 @@
       "successor": "Acorn Archimedes",
       "wikidata_id": "18950885",
       "wikipedia_url": "https://en.wikipedia.org/wiki/BBC_Micro",
-      "release_dates": "1981–1994"
+      "release_dates": "1981–1994",
+      "generation": "8-bit Computer",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.6486486511894,
+          "cover_path": "assets/system/game_covers/bbc_micro/grand-theft-auto-v.jpg"
+        },
+        {
+          "name": "The Witcher 3: Wild Hunt",
+          "slug": "the-witcher-3-wild-hunt",
+          "rating": 93.7785534399753,
+          "cover_path": "assets/system/game_covers/bbc_micro/the-witcher-3-wild-hunt.jpg"
+        },
+        {
+          "name": "Red Dead Redemption 2",
+          "slug": "red-dead-redemption-2",
+          "rating": 93.1788518853741,
+          "cover_path": "assets/system/game_covers/bbc_micro/red-dead-redemption-2.jpg"
+        },
+        {
+          "name": "Elden Ring",
+          "slug": "elden-ring",
+          "rating": 93.5350869699613,
+          "cover_path": "assets/system/game_covers/bbc_micro/elden-ring.jpg"
+        },
+        {
+          "name": "Hollow Knight",
+          "slug": "hollow-knight",
+          "rating": 91.89756681214497,
+          "cover_path": "assets/system/game_covers/bbc_micro/hollow-knight.jpg"
+        }
+      ]
     },
     {
       "id": "scummvm",
@@ -2274,6 +3872,7 @@
       "description": "O ScummVM é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
       "curiosities": [
         "ScummVM não é um sistema, mas um motor de reimplementação que permite rodar aventuras gráficas clássicas em sistemas modernos.",
+        "Originalmente criado para rodar jogos SCUMM da LucasArts (Monkey Island, Day of the Tentacle), hoje suporta centenas de engines.",
         "O nome vem de \"Script Creation Utility for Maniac Mansion Virtual Machine\", o engine usado por Maniac Mansion."
       ],
       "supported_extensions": [
@@ -2281,7 +3880,8 @@
       ],
       "emulators": [
         "ScummVM (aplicativo nativo)"
-      ]
+      ],
+      "generation": "Software Platform"
     },
     {
       "id": "watara_supervision",
@@ -2305,7 +3905,7 @@
         "Potator"
       ],
       "type": "handheld",
-      "generation": "4ª Geração",
+      "generation": "4th Generation",
       "launch_price": null,
       "media": "ROM cartridge",
       "cpu": "8-bit 65SC02 @ 4 MHz",
@@ -2313,7 +3913,39 @@
       "sound": "Mono speakerHeadphone jack",
       "wikidata_id": "803181",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Watara_Supervision",
-      "release_dates": "1992"
+      "release_dates": "1992",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.6486486511894,
+          "cover_path": "assets/system/game_covers/watara_supervision/grand-theft-auto-v.jpg"
+        },
+        {
+          "name": "The Witcher 3: Wild Hunt",
+          "slug": "the-witcher-3-wild-hunt",
+          "rating": 93.7785534399753,
+          "cover_path": "assets/system/game_covers/watara_supervision/the-witcher-3-wild-hunt.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/watara_supervision/grand-theft-auto-san-andreas.jpg"
+        },
+        {
+          "name": "Red Dead Redemption 2",
+          "slug": "red-dead-redemption-2",
+          "rating": 93.1788518853741,
+          "cover_path": "assets/system/game_covers/watara_supervision/red-dead-redemption-2.jpg"
+        },
+        {
+          "name": "God of War",
+          "slug": "god-of-war--1",
+          "rating": 92.07544639251734,
+          "cover_path": "assets/system/game_covers/watara_supervision/god-of-war--1.jpg"
+        }
+      ]
     },
     {
       "id": "tic_80",
@@ -2326,13 +3958,47 @@
       "description": "O TIC-80 é uma plataforma de hardware ou ecossistema de software voltado à execução de jogos eletrônicos, amplamente preservada por meio da emulação.",
       "curiosities": [
         "O TIC-80 é uma \"fantasy computer\" gratuita e de código aberto com resolução de 240×136 pixels e 16 cores.",
-        "Suporta múltiplas linguagens de programação: Lua, Javascript, MoonScript, Fennel, Wren, Squirrel e Python."
+        "Suporta múltiplas linguagens de programação: Lua, Javascript, MoonScript, Fennel, Wren, Squirrel e Python.",
+        "Jogos criados no TIC-80 podem ser exportados como HTML para jogar no navegador."
       ],
       "supported_extensions": [
         ".tic"
       ],
       "emulators": [
         "TIC-80 (nativo)"
+      ],
+      "generation": "Fantasy Console",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.6486486511894,
+          "cover_path": "assets/system/game_covers/tic_80/grand-theft-auto-v.jpg"
+        },
+        {
+          "name": "The Witcher 3: Wild Hunt",
+          "slug": "the-witcher-3-wild-hunt",
+          "rating": 93.7785534399753,
+          "cover_path": "assets/system/game_covers/tic_80/the-witcher-3-wild-hunt.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/tic_80/grand-theft-auto-san-andreas.jpg"
+        },
+        {
+          "name": "Red Dead Redemption 2",
+          "slug": "red-dead-redemption-2",
+          "rating": 93.1788518853741,
+          "cover_path": "assets/system/game_covers/tic_80/red-dead-redemption-2.jpg"
+        },
+        {
+          "name": "God of War",
+          "slug": "god-of-war--1",
+          "rating": 92.07544639251734,
+          "cover_path": "assets/system/game_covers/tic_80/god-of-war--1.jpg"
+        }
       ]
     },
     {
@@ -2358,7 +4024,7 @@
         "MAME"
       ],
       "type": "console",
-      "generation": "5ª Geração",
+      "generation": "5th Generation",
       "discontinued": "JP: February 14, 1998",
       "media": "CD-ROM",
       "cpu": "NEC V810 @ 21.475 MHz",
@@ -2397,7 +4063,7 @@
       "wikidata_id": "21970",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Virtual_Boy",
       "type": "Video game console",
-      "generation": "5ª Geração",
+      "generation": "5th Generation",
       "release_dates": "1995–1996",
       "launch_price": null,
       "discontinued": "JP: December 22, 1995NA: August 1996BR: 1996",
@@ -2405,7 +4071,39 @@
       "cpu": "NEC V810 @ 20 MHz",
       "memory": "64 KB work PSRAM, 128 KB graphics DRAM, 128 KB Video RAM",
       "display": "384×224",
-      "best_selling_game": "Mario's Tennis (US pack-in game)"
+      "best_selling_game": "Mario's Tennis (US pack-in game)",
+      "top_games": [
+        {
+          "name": "Golden Axe",
+          "slug": "golden-axe",
+          "rating": 74.89794268914484,
+          "cover_path": "assets/system/game_covers/virtual_boy/golden-axe.jpg"
+        },
+        {
+          "name": "Final Fight",
+          "slug": "final-fight",
+          "rating": 79.1760027876448,
+          "cover_path": "assets/system/game_covers/virtual_boy/final-fight.jpg"
+        },
+        {
+          "name": "SimCity",
+          "slug": "simcity",
+          "rating": 84.67559692194607,
+          "cover_path": "assets/system/game_covers/virtual_boy/simcity.jpg"
+        },
+        {
+          "name": "Altered Beast",
+          "slug": "altered-beast",
+          "rating": 64.49111575618286,
+          "cover_path": "assets/system/game_covers/virtual_boy/altered-beast.jpg"
+        },
+        {
+          "name": "Ghosts 'n Goblins",
+          "slug": "ghosts-n-goblins",
+          "rating": 73.83400801268397,
+          "cover_path": "assets/system/game_covers/virtual_boy/ghosts-n-goblins.jpg"
+        }
+      ]
     },
     {
       "id": "playstation_vita",
@@ -2429,7 +4127,7 @@
         "Ryujinx (parcial)"
       ],
       "type": "Handheld game console",
-      "generation": "8ª Geração",
+      "generation": "8th Generation",
       "release_dates": "JP: December 17, 2011NA: February 15, 2012[a]EU: February 22, 2012Other regions: see[note 1]",
       "launch_price": null,
       "discontinued": "March 1, 2019",
@@ -2443,7 +4141,39 @@
       "sound": "Stereo speakers, microphone, 3.5 mm headphone jack, Bluetooth",
       "connectivity": "Wi-Fi (b/g/n), 3G, Bluetooth 2.1+EDR",
       "online_services": "PlayStation Network",
-      "predecessor": "PlayStation Portable"
+      "predecessor": "PlayStation Portable",
+      "top_games": [
+        {
+          "name": "Star Wars: The Force Unleashed",
+          "slug": "star-wars-the-force-unleashed",
+          "rating": 73.39286246535514,
+          "cover_path": "assets/system/game_covers/playstation_vita/star-wars-the-force-unleashed.jpg"
+        },
+        {
+          "name": "Tony Hawk's Pro Skater",
+          "slug": "tony-hawk-s-pro-skater",
+          "rating": 83.05614644752183,
+          "cover_path": "assets/system/game_covers/playstation_vita/tony-hawk-s-pro-skater.jpg"
+        },
+        {
+          "name": "Worms World Party",
+          "slug": "worms-world-party",
+          "rating": 83.54213713529774,
+          "cover_path": "assets/system/game_covers/playstation_vita/worms-world-party.jpg"
+        },
+        {
+          "name": "Pandemonium!",
+          "slug": "pandemonium",
+          "rating": 70.38703188655339,
+          "cover_path": "assets/system/game_covers/playstation_vita/pandemonium.jpg"
+        },
+        {
+          "name": "Virtua Tennis",
+          "slug": "virtua-tennis",
+          "rating": 86.27977481434473,
+          "cover_path": "assets/system/game_covers/playstation_vita/virtua-tennis.jpg"
+        }
+      ]
     },
     {
       "id": "wasm_4",
@@ -2465,6 +4195,39 @@
       "emulators": [
         "WASM-4 (nativo)",
         "Navegador (WebAssembly)"
+      ],
+      "generation": "Fantasy Console",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.6486486511894,
+          "cover_path": "assets/system/game_covers/wasm_4/grand-theft-auto-v.jpg"
+        },
+        {
+          "name": "The Witcher 3: Wild Hunt",
+          "slug": "the-witcher-3-wild-hunt",
+          "rating": 93.7785534399753,
+          "cover_path": "assets/system/game_covers/wasm_4/the-witcher-3-wild-hunt.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/wasm_4/grand-theft-auto-san-andreas.jpg"
+        },
+        {
+          "name": "Red Dead Redemption 2",
+          "slug": "red-dead-redemption-2",
+          "rating": 93.1788518853741,
+          "cover_path": "assets/system/game_covers/wasm_4/red-dead-redemption-2.jpg"
+        },
+        {
+          "name": "God of War",
+          "slug": "god-of-war--1",
+          "rating": 92.07544639251734,
+          "cover_path": "assets/system/game_covers/wasm_4/god-of-war--1.jpg"
+        }
       ]
     },
     {
@@ -2488,7 +4251,7 @@
         "Dolphin"
       ],
       "type": "console",
-      "generation": "7ª Geração",
+      "generation": "7th Generation",
       "launch_price": null,
       "discontinued": "AU: November 2011JP: October 20, 2013EU: October 24, 2013 Revisions RVL-101 EU: October 24, 2013NA: May 2014",
       "media": "Wii optical discGameCube game disc[a]Digital distribution[b]",
@@ -2505,7 +4268,39 @@
       "successor": "Wii U",
       "wikidata_id": "421853",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Wii",
-      "release_dates": "NA: November 19, 2006JP: December 2, 2006AU: December 7, 2006EU: December 8, 2006ZA: September 30, 2007KR: April 26, 2008TW: July 12, 2008IND: September 30, 2008HK: December 12, 2009 Revisions RVL-101NA: October 23, 2011EU: November 4, 2011AU: November 11, 2011 Wii Mini CAN: December 7, 2012EU: March 22, 2013USA: November 17, 2013"
+      "release_dates": "NA: November 19, 2006JP: December 2, 2006AU: December 7, 2006EU: December 8, 2006ZA: September 30, 2007KR: April 26, 2008TW: July 12, 2008IND: September 30, 2008HK: December 12, 2009 Revisions RVL-101NA: October 23, 2011EU: November 4, 2011AU: November 11, 2011 Wii Mini CAN: December 7, 2012EU: March 22, 2013USA: November 17, 2013",
+      "top_games": [
+        {
+          "name": "The Legend of Zelda: Ocarina of Time",
+          "slug": "the-legend-of-zelda-ocarina-of-time",
+          "rating": 91.54932253393936,
+          "cover_path": "assets/system/game_covers/wii/the-legend-of-zelda-ocarina-of-time.jpg"
+        },
+        {
+          "name": "Super Mario 64",
+          "slug": "super-mario-64",
+          "rating": 88.7595914703998,
+          "cover_path": "assets/system/game_covers/wii/super-mario-64.jpg"
+        },
+        {
+          "name": "Super Mario World",
+          "slug": "super-mario-world",
+          "rating": 91.70191481860208,
+          "cover_path": "assets/system/game_covers/wii/super-mario-world.jpg"
+        },
+        {
+          "name": "Super Mario Bros. 3",
+          "slug": "super-mario-bros-3",
+          "rating": 89.37415788766094,
+          "cover_path": "assets/system/game_covers/wii/super-mario-bros-3.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: A Link to the Past",
+          "slug": "the-legend-of-zelda-a-link-to-the-past",
+          "rating": 91.93906391924232,
+          "cover_path": "assets/system/game_covers/wii/the-legend-of-zelda-a-link-to-the-past.jpg"
+        }
+      ]
     },
     {
       "id": "wonderswan",
@@ -2531,7 +4326,7 @@
         "Beetle WS (RetroArch)"
       ],
       "type": "handheld",
-      "generation": "6ª Geração",
+      "generation": "5th Generation",
       "lifespan": "1999–2003",
       "launch_price": null,
       "discontinued": "2003",
@@ -2543,7 +4338,39 @@
       "predecessor": "Design Master Senshi Mangajukuu",
       "wikidata_id": "177472",
       "wikipedia_url": "https://en.wikipedia.org/wiki/WonderSwan",
-      "release_dates": "1999–2003"
+      "release_dates": "1999–2003",
+      "top_games": [
+        {
+          "name": "Lode Runner",
+          "slug": "lode-runner",
+          "rating": 76.85898744305479,
+          "cover_path": "assets/system/game_covers/wonderswan/lode-runner.jpg"
+        },
+        {
+          "name": "Bust-A-Move",
+          "slug": "bust-a-move",
+          "rating": 75.83551669727302,
+          "cover_path": "assets/system/game_covers/wonderswan/bust-a-move.jpg"
+        },
+        {
+          "name": "Pocket Fighter",
+          "slug": "pocket-fighter",
+          "rating": 85.4482522568624,
+          "cover_path": "assets/system/game_covers/wonderswan/pocket-fighter.jpg"
+        },
+        {
+          "name": "Riviera: The Promised Land",
+          "slug": "riviera-the-promised-land",
+          "rating": 89.89522628642283,
+          "cover_path": "assets/system/game_covers/wonderswan/riviera-the-promised-land.jpg"
+        },
+        {
+          "name": "Gunpey",
+          "slug": "gunpey",
+          "rating": null,
+          "cover_path": "assets/system/game_covers/wonderswan/gunpey.jpg"
+        }
+      ]
     },
     {
       "id": "wonderswan_color",
@@ -2571,7 +4398,7 @@
       "wikidata_id": "177472",
       "wikipedia_url": "https://en.wikipedia.org/wiki/WonderSwan",
       "type": "Handheld game console",
-      "generation": "6ª Geração",
+      "generation": "5th Generation",
       "release_dates": "1999–2003",
       "launch_price": null,
       "discontinued": "2003",
@@ -2580,7 +4407,39 @@
       "memory": "64 KB RAM",
       "display": "FSTN (WonderSwan, WonderSwan Color), TFT LCD (SwanCrystal), 224 × 144",
       "sound": "4 PCM channels",
-      "predecessor": "Design Master Senshi Mangajukuu"
+      "predecessor": "Design Master Senshi Mangajukuu",
+      "top_games": [
+        {
+          "name": "Lode Runner",
+          "slug": "lode-runner",
+          "rating": 76.85898744305479,
+          "cover_path": "assets/system/game_covers/wonderswan_color/lode-runner.jpg"
+        },
+        {
+          "name": "Bust-A-Move",
+          "slug": "bust-a-move",
+          "rating": 75.83551669727302,
+          "cover_path": "assets/system/game_covers/wonderswan_color/bust-a-move.jpg"
+        },
+        {
+          "name": "Pocket Fighter",
+          "slug": "pocket-fighter",
+          "rating": 85.4482522568624,
+          "cover_path": "assets/system/game_covers/wonderswan_color/pocket-fighter.jpg"
+        },
+        {
+          "name": "Riviera: The Promised Land",
+          "slug": "riviera-the-promised-land",
+          "rating": 89.89522628642283,
+          "cover_path": "assets/system/game_covers/wonderswan_color/riviera-the-promised-land.jpg"
+        },
+        {
+          "name": "Gunpey",
+          "slug": "gunpey",
+          "rating": null,
+          "cover_path": "assets/system/game_covers/wonderswan_color/gunpey.jpg"
+        }
+      ]
     },
     {
       "id": "xbox_360",
@@ -2603,7 +4462,7 @@
         "Xenia"
       ],
       "type": "console",
-      "generation": "7ª Geração",
+      "generation": "7th Generation",
       "launch_price": null,
       "discontinued": "WW: April 20, 2016",
       "media": "DVD, CD, digital distribution Add-on: HD DVD (discontinued)",
@@ -2621,7 +4480,39 @@
       "successor": "Xbox One",
       "wikidata_id": "7514833",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Xbox_360",
-      "release_dates": "November 22, 2005 Original Xbox 360US/CA: November 22, 2005EZ/NO/SE/UK/CH: December 2, 2005JP: December 10, 2005CO/MX: February 2, 2006KR: February 24, 2006HK/SG/TW: March 16, 2006AU: March 23, 2006CL: July 7, 2006IN: September 25, 2006ZA: September 29, 2006CZ/PL: November 3, 2006BR: December 1, 2006RU: February 11, 2007PE: February 25, 2008UAE: October 28, 2008NG/TR: 2009SC: Spring 2010 Xbox 360 SNA: June 18, 2010AU: July 1, 2010NZ: July 8, 2010EU: July 16, 2010 Xbox 360 ENA: June 10, 2013EU: June 20, 2013"
+      "release_dates": "November 22, 2005 Original Xbox 360US/CA: November 22, 2005EZ/NO/SE/UK/CH: December 2, 2005JP: December 10, 2005CO/MX: February 2, 2006KR: February 24, 2006HK/SG/TW: March 16, 2006AU: March 23, 2006CL: July 7, 2006IN: September 25, 2006ZA: September 29, 2006CZ/PL: November 3, 2006BR: December 1, 2006RU: February 11, 2007PE: February 25, 2008UAE: October 28, 2008NG/TR: 2009SC: Spring 2010 Xbox 360 SNA: June 18, 2010AU: July 1, 2010NZ: July 8, 2010EU: July 16, 2010 Xbox 360 ENA: June 10, 2013EU: June 20, 2013",
+      "top_games": [
+        {
+          "name": "Golden Axe",
+          "slug": "golden-axe",
+          "rating": 74.89794268914484,
+          "cover_path": "assets/system/game_covers/xbox_360/golden-axe.jpg"
+        },
+        {
+          "name": "Final Fight",
+          "slug": "final-fight",
+          "rating": 79.1760027876448,
+          "cover_path": "assets/system/game_covers/xbox_360/final-fight.jpg"
+        },
+        {
+          "name": "SimCity",
+          "slug": "simcity",
+          "rating": 84.67559692194607,
+          "cover_path": "assets/system/game_covers/xbox_360/simcity.jpg"
+        },
+        {
+          "name": "Maniac Mansion",
+          "slug": "maniac-mansion",
+          "rating": 84.26098633720771,
+          "cover_path": "assets/system/game_covers/xbox_360/maniac-mansion.jpg"
+        },
+        {
+          "name": "Altered Beast",
+          "slug": "altered-beast",
+          "rating": 64.49111575618286,
+          "cover_path": "assets/system/game_covers/xbox_360/altered-beast.jpg"
+        }
+      ]
     },
     {
       "id": "xbox",
@@ -2645,7 +4536,7 @@
         "XQEMU"
       ],
       "type": "console",
-      "generation": "6ª Geração",
+      "generation": "6th Generation",
       "launch_price": null,
       "discontinued": "JP: 2005WW: 2006",
       "media": "DVD, CD, digital distribution",
@@ -2661,7 +4552,39 @@
       "successor": "Xbox 360",
       "wikidata_id": "17416342",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Xbox_(console)",
-      "release_dates": "NA: November 15, 2001JP: February 22, 2002PAL: March 14, 2002"
+      "release_dates": "NA: November 15, 2001JP: February 22, 2002PAL: March 14, 2002",
+      "top_games": [
+        {
+          "name": "Portal 2",
+          "slug": "portal-2",
+          "rating": 91.29932409808389,
+          "cover_path": "assets/system/game_covers/xbox/portal-2.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/xbox/grand-theft-auto-san-andreas.jpg"
+        },
+        {
+          "name": "Portal",
+          "slug": "portal",
+          "rating": 86.40228938907896,
+          "cover_path": "assets/system/game_covers/xbox/portal.jpg"
+        },
+        {
+          "name": "Half-Life 2",
+          "slug": "half-life-2",
+          "rating": 90.35860614857343,
+          "cover_path": "assets/system/game_covers/xbox/half-life-2.jpg"
+        },
+        {
+          "name": "BioShock",
+          "slug": "bioshock",
+          "rating": 86.61659691859961,
+          "cover_path": "assets/system/game_covers/xbox/bioshock.jpg"
+        }
+      ]
     },
     {
       "id": "apple_iigs",
@@ -2694,7 +4617,8 @@
       "sound": "Ensoniq ES5503 8-bit wavetable synthesis chip,32 channels",
       "wikidata_id": "248101",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Apple_IIGS",
-      "release_dates": "September 15, 1986 39 years ago (1986-09-15)"
+      "release_dates": "September 15, 1986 39 years ago (1986-09-15)",
+      "generation": "16-bit Computer"
     },
     {
       "id": "3do",
@@ -2708,8 +4632,7 @@
       "curiosities": [
         "O 3DO Interactive Multiplayer foi criado por Dave Needle e RJ Mical (ex-engenheiros da Atari) e licenciado para vários fabricantes.",
         "Seu processador ARM60 RISC de 32 bits a 12.5 MHz era potente para 1993, mas o preço de $699 assustava consumidores.",
-        "A 3DO Company faliu em 2003, mas seu nome vive no padrão de discos \"3DO\" usado em alguns jogos de PC.",
-        "3DO is a video gaming hardware format developed by The 3DO Company and conceived by Electronic Arts founder Trip Hawkins."
+        "A 3DO Company faliu em 2003, mas seu nome vive no padrão de discos \"3DO\" usado em alguns jogos de PC."
       ],
       "supported_extensions": [
         ".iso",
@@ -2726,7 +4649,7 @@
       "wikidata_id": "36168",
       "wikipedia_url": "https://en.wikipedia.org/wiki/3DO",
       "type": "Home video game console",
-      "generation": "5ª Geração",
+      "generation": "5th Generation",
       "release_dates": "NA: October 4, 1993JP: March 20, 1994EU: June 10, 1994KOR: December 3, 1994",
       "launch_price": null,
       "discontinued": "WW: 1996",
@@ -2739,7 +4662,39 @@
       "sound": "Panasonic FZ-1 \"Clio\" DSP: 16-bit stereo @ 44.1 kHz, 4-Channel Dolby Surround;",
       "online_services": "Planned but canceled",
       "best_selling_game": "Gex (1+ million)[note 1]",
-      "successor": "Panasonic M2 (canceled)"
+      "successor": "Panasonic M2 (canceled)",
+      "top_games": [
+        {
+          "name": "Monkey Island 2: LeChuck's Revenge",
+          "slug": "monkey-island-2-lechuck-s-revenge",
+          "rating": 88.30068011844384,
+          "cover_path": "assets/system/game_covers/3do/monkey-island-2-lechuck-s-revenge.jpg"
+        },
+        {
+          "name": "The Secret of Monkey Island",
+          "slug": "the-secret-of-monkey-island",
+          "rating": 86.65435863863428,
+          "cover_path": "assets/system/game_covers/3do/the-secret-of-monkey-island.jpg"
+        },
+        {
+          "name": "Day of the Tentacle",
+          "slug": "day-of-the-tentacle",
+          "rating": 89.25666924420707,
+          "cover_path": "assets/system/game_covers/3do/day-of-the-tentacle.jpg"
+        },
+        {
+          "name": "Indiana Jones and the Fate of Atlantis",
+          "slug": "indiana-jones-and-the-fate-of-atlantis--1",
+          "rating": 89.5376885973151,
+          "cover_path": "assets/system/game_covers/3do/indiana-jones-and-the-fate-of-atlantis--1.jpg"
+        },
+        {
+          "name": "Quake",
+          "slug": "quake",
+          "rating": 82.59996763107955,
+          "cover_path": "assets/system/game_covers/3do/quake.jpg"
+        }
+      ]
     },
     {
       "id": "coleco_adam",
@@ -2776,7 +4731,40 @@
       "sound": "Texas Instruments SN76489AN",
       "wikidata_id": "287134",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Coleco_Adam",
-      "release_dates": "October 1983 42 years ago (1983-10)"
+      "release_dates": "October 1983 42 years ago (1983-10)",
+      "generation": "8-bit Computer",
+      "top_games": [
+        {
+          "name": "Doom II: Hell on Earth",
+          "slug": "doom-ii-hell-on-earth",
+          "rating": 85.2481081273006,
+          "cover_path": "assets/system/game_covers/coleco_adam/doom-ii-hell-on-earth.jpg"
+        },
+        {
+          "name": "Altered Beast",
+          "slug": "altered-beast--2",
+          "rating": 34.6547327496109,
+          "cover_path": "assets/system/game_covers/coleco_adam/altered-beast--2.jpg"
+        },
+        {
+          "name": "Fish Tycoon",
+          "slug": "fish-tycoon",
+          "rating": 70,
+          "cover_path": "assets/system/game_covers/coleco_adam/fish-tycoon.jpg"
+        },
+        {
+          "name": "MTX Mototrax",
+          "slug": "mtx-mototrax",
+          "rating": null,
+          "cover_path": "assets/system/game_covers/coleco_adam/mtx-mototrax.jpg"
+        },
+        {
+          "name": "Warfare Incorporated",
+          "slug": "warfare-incorporated",
+          "rating": null,
+          "cover_path": "assets/system/game_covers/coleco_adam/warfare-incorporated.jpg"
+        }
+      ]
     },
     {
       "id": "commodore_amiga_cd32",
@@ -2789,6 +4777,7 @@
       "description": "Amiga CD32 foi um console de videogame, sendo o primeiro baseado CD-ROM de 32-bits vendido na Europa Ocidental e na América do Norte. Sua primeira aparição foi no Museu da Ciência de Londres em 16 de julho de 1993, e começou a ser vendido em setembro do mesmo ano. Ele tem configuração similar ao computador Amiga 1200. Usando os dispositivos 3rd-party, é possível promover o CD32 com teclado e mouse, tornando a em um computador pessoal. O CD32 controlou fixar-se sobre 50% do mercado do CD-ROM no Reino Unido em 1993 e 1994, ultrapassando o Sega CD, o Philips CDi e até mesmo as vendas do CD-ROM de PC. Tinha 2 MB de memória interna e 14 MHz de clock.",
       "curiosities": [
         "O Amiga CD32 foi o primeiro console de 32 bits da Europa e o sucessor espiritual do Amiga 1200 como console.",
+        "Era essencialmente um Amiga 1200 sem teclado, usando o processador Motorola 68EC020 a 14 MHz.",
         "A Commodore faliu logo após seu lançamento em 1993, limitando severamente sua distribuição e biblioteca de jogos."
       ],
       "supported_extensions": [
@@ -2803,7 +4792,7 @@
         "FS-UAE"
       ],
       "type": "Home video game consoleGaming computer",
-      "generation": "Fifth generation era",
+      "generation": "5th Generation",
       "lifespan": "1993–1994",
       "discontinued": "April 29, 1994 (1994-04-29)",
       "media": "CD-ROM",
@@ -2817,7 +4806,39 @@
       "predecessor": "Commodore CDTV",
       "wikidata_id": "26584375",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Amiga_CD32",
-      "release_dates": "1993–1994"
+      "release_dates": "1993–1994",
+      "top_games": [
+        {
+          "name": "Portal 2",
+          "slug": "portal-2",
+          "rating": 91.29932409808389,
+          "cover_path": "assets/system/game_covers/commodore_amiga_cd32/portal-2.jpg"
+        },
+        {
+          "name": "Portal",
+          "slug": "portal",
+          "rating": 86.40228938907896,
+          "cover_path": "assets/system/game_covers/commodore_amiga_cd32/portal.jpg"
+        },
+        {
+          "name": "Half-Life 2",
+          "slug": "half-life-2",
+          "rating": 90.35860614857343,
+          "cover_path": "assets/system/game_covers/commodore_amiga_cd32/half-life-2.jpg"
+        },
+        {
+          "name": "Half-Life",
+          "slug": "half-life",
+          "rating": 88.39630802144329,
+          "cover_path": "assets/system/game_covers/commodore_amiga_cd32/half-life.jpg"
+        },
+        {
+          "name": "BioShock Infinite",
+          "slug": "bioshock-infinite",
+          "rating": 85.62760069458895,
+          "cover_path": "assets/system/game_covers/commodore_amiga_cd32/bioshock-infinite.jpg"
+        }
+      ]
     },
     {
       "id": "commodore_vic_20",
@@ -2855,7 +4876,40 @@
       "display": "Commodore 1701; 176 × 184, 16-color composite palette",
       "graphics": "MOS Technology VIC",
       "sound": "MOS Technology VIC; 1 noise and 3 square channels",
-      "successor": "Commodore 64, MAX Machine"
+      "successor": "Commodore 64, MAX Machine",
+      "generation": "8-bit Computer",
+      "top_games": [
+        {
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.02769814500793,
+          "cover_path": "assets/system/game_covers/commodore_vic_20/grand-theft-auto-san-andreas.jpg"
+        },
+        {
+          "name": "Grand Theft Auto: Vice City",
+          "slug": "grand-theft-auto-vice-city",
+          "rating": 87.3832342834808,
+          "cover_path": "assets/system/game_covers/commodore_vic_20/grand-theft-auto-vice-city.jpg"
+        },
+        {
+          "name": "Max Payne",
+          "slug": "max-payne",
+          "rating": 85.80905778745775,
+          "cover_path": "assets/system/game_covers/commodore_vic_20/max-payne.jpg"
+        },
+        {
+          "name": "Grand Theft Auto III",
+          "slug": "grand-theft-auto-iii",
+          "rating": 84.57156551373137,
+          "cover_path": "assets/system/game_covers/commodore_vic_20/grand-theft-auto-iii.jpg"
+        },
+        {
+          "name": "Mafia",
+          "slug": "mafia",
+          "rating": 86.40377495555259,
+          "cover_path": "assets/system/game_covers/commodore_vic_20/mafia.jpg"
+        }
+      ]
     },
     {
       "id": "mame",
@@ -2879,6 +4933,39 @@
         "MAME",
         "MAMEUI",
         "RetroArch (MAME Core)"
+      ],
+      "generation": "Software Platform",
+      "top_games": [
+        {
+          "name": "Super Mario Bros.",
+          "slug": "super-mario-bros",
+          "rating": 83.68811675605257,
+          "cover_path": "assets/system/game_covers/mame/super-mario-bros.jpg"
+        },
+        {
+          "name": "The Legend of Zelda",
+          "slug": "the-legend-of-zelda",
+          "rating": 80.52648907646105,
+          "cover_path": "assets/system/game_covers/mame/the-legend-of-zelda.jpg"
+        },
+        {
+          "name": "Castlevania",
+          "slug": "castlevania",
+          "rating": 78.89439934429028,
+          "cover_path": "assets/system/game_covers/mame/castlevania.jpg"
+        },
+        {
+          "name": "Zelda II: The Adventure of Link",
+          "slug": "zelda-ii-the-adventure-of-link",
+          "rating": 65.49483512179387,
+          "cover_path": "assets/system/game_covers/mame/zelda-ii-the-adventure-of-link.jpg"
+        },
+        {
+          "name": "Castlevania II: Simon's Quest",
+          "slug": "castlevania-ii-simon-s-quest",
+          "rating": 61.76185260819832,
+          "cover_path": "assets/system/game_covers/mame/castlevania-ii-simon-s-quest.jpg"
+        }
       ]
     },
     {
@@ -2907,13 +4994,45 @@
         "MAME"
       ],
       "type": "Home video game console",
-      "generation": "4ª Geração",
+      "generation": "4th Generation",
       "release_dates": "JP: September 9, 1994EU: December 3, 1994AU: December 23, 1994NA: January 15, 1996",
       "launch_price": "US$399",
       "discontinued": "1997",
       "media": "CD-ROM",
       "cpu": "Motorola 68000 @ 12 MHz",
-      "predecessor": "Neo Geo AES"
+      "predecessor": "Neo Geo AES",
+      "top_games": [
+        {
+          "name": "Tomb Raider",
+          "slug": "tomb-raider",
+          "rating": 80.77522299268941,
+          "cover_path": "assets/system/game_covers/neo_geo_cd/tomb-raider.jpg"
+        },
+        {
+          "name": "Quake",
+          "slug": "quake",
+          "rating": 82.59996763107955,
+          "cover_path": "assets/system/game_covers/neo_geo_cd/quake.jpg"
+        },
+        {
+          "name": "Warcraft II: Tides of Darkness",
+          "slug": "warcraft-ii-tides-of-darkness",
+          "rating": 84.49170281114868,
+          "cover_path": "assets/system/game_covers/neo_geo_cd/warcraft-ii-tides-of-darkness.jpg"
+        },
+        {
+          "name": "Command & Conquer",
+          "slug": "command-conquer",
+          "rating": 84.32359833793606,
+          "cover_path": "assets/system/game_covers/neo_geo_cd/command-conquer.jpg"
+        },
+        {
+          "name": "Mortal Kombat II",
+          "slug": "mortal-kombat-ii",
+          "rating": 76.4115109309212,
+          "cover_path": "assets/system/game_covers/neo_geo_cd/mortal-kombat-ii.jpg"
+        }
+      ]
     },
     {
       "id": "pc_engine_cd",
@@ -2943,7 +5062,7 @@
         "Beetle PCE (RetroArch)"
       ],
       "type": "Home video game console",
-      "generation": "4ª Geração",
+      "generation": "4th Generation",
       "release_dates": "1987–1994",
       "discontinued": "FR: December 25, 1993NA: May 11, 1994JP: December 16, 1994",
       "media": "HuCard",
@@ -2953,7 +5072,39 @@
       "graphics": "HuC6270 VDCHuC6260 VCE",
       "sound": "PSG, 5 to 10-bit stereo PCM",
       "best_selling_game": "Bonk's Adventure",
-      "successor": "PC Engine SuperGrafxPC-FX"
+      "successor": "PC Engine SuperGrafxPC-FX",
+      "top_games": [
+        {
+          "name": "Pokémon Yellow Version: Special Pikachu Edition",
+          "slug": "pokemon-yellow-version-special-pikachu-edition",
+          "rating": 82.63518048752671,
+          "cover_path": "assets/system/game_covers/pc_engine_cd/pokemon-yellow-version-special-pikachu-edition.jpg"
+        },
+        {
+          "name": "Pokémon Crystal Version",
+          "slug": "pokemon-crystal-version",
+          "rating": 88.57342003066213,
+          "cover_path": "assets/system/game_covers/pc_engine_cd/pokemon-crystal-version.jpg"
+        },
+        {
+          "name": "Pokémon Silver Version",
+          "slug": "pokemon-silver-version",
+          "rating": 87.85039588849102,
+          "cover_path": "assets/system/game_covers/pc_engine_cd/pokemon-silver-version.jpg"
+        },
+        {
+          "name": "Pokémon Gold Version",
+          "slug": "pokemon-gold-version",
+          "rating": 86.68615877274019,
+          "cover_path": "assets/system/game_covers/pc_engine_cd/pokemon-gold-version.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: Oracle of Seasons",
+          "slug": "the-legend-of-zelda-oracle-of-seasons",
+          "rating": 81.30201167549086,
+          "cover_path": "assets/system/game_covers/pc_engine_cd/the-legend-of-zelda-oracle-of-seasons.jpg"
+        }
+      ]
     },
     {
       "id": "sega_cd",
@@ -2966,6 +5117,7 @@
       "description": "O Sega CD (Mega-CD no Japão e Brasil) é um periférico para o Sega Genesis/Mega Drive que adicionava um drive de CD-ROM ao console. Lançado em 1991 no Japão e 1992 nos Estados Unidos, o Sega CD oferecia jogos com áudio digital CD-quality, cutscenes em FMV e maior capacidade de armazenamento, mas seu alto preço e biblioteca limitada restringiram seu sucesso.",
       "curiosities": [
         "O Sega CD (Mega-CD) foi um periférico para o Genesis/Mega Drive que adicionava um leitor de CD-ROM de 1x.",
+        "Usava um processador Motorola 68000 adicional a 12.5 MHz como coprocessador, tornando-o mais potente que o Genesis sozinho.",
         "Apesar de jogos como Sonic CD e Snatcher, a biblioteca era repleta de títulos FMV de baixa qualidade."
       ],
       "supported_extensions": [
@@ -2980,7 +5132,7 @@
         "Genesis Plus GX (RetroArch)"
       ],
       "type": "Video game console add-on",
-      "generation": "4ª Geração",
+      "generation": "4th Generation",
       "release_dates": "1991–1996",
       "launch_price": "US$299",
       "discontinued": "January 1, 1996",
@@ -2989,7 +5141,39 @@
       "storage": "6.5 Mbit RAM (programs, pictures, and sounds), 128 kbit RAM (CD-ROM cache), 64 kbit RAM (backup memory)",
       "graphics": "custom ASIC",
       "sound": "Ricoh RF5C164",
-      "best_selling_game": "Sonic CD, 1.5 million"
+      "best_selling_game": "Sonic CD, 1.5 million",
+      "top_games": [
+        {
+          "name": "Sonic the Hedgehog",
+          "slug": "sonic-the-hedgehog",
+          "rating": 81.63815967560947,
+          "cover_path": "assets/system/game_covers/sega_cd/sonic-the-hedgehog.jpg"
+        },
+        {
+          "name": "Sonic the Hedgehog 2",
+          "slug": "sonic-the-hedgehog-2",
+          "rating": 86.49102837155118,
+          "cover_path": "assets/system/game_covers/sega_cd/sonic-the-hedgehog-2.jpg"
+        },
+        {
+          "name": "Mortal Kombat II",
+          "slug": "mortal-kombat-ii",
+          "rating": 76.4115109309212,
+          "cover_path": "assets/system/game_covers/sega_cd/mortal-kombat-ii.jpg"
+        },
+        {
+          "name": "Sonic the Hedgehog 3",
+          "slug": "sonic-the-hedgehog-3",
+          "rating": 82.5615822168294,
+          "cover_path": "assets/system/game_covers/sega_cd/sonic-the-hedgehog-3.jpg"
+        },
+        {
+          "name": "The Lion King",
+          "slug": "the-lion-king",
+          "rating": 74.52419576249048,
+          "cover_path": "assets/system/game_covers/sega_cd/the-lion-king.jpg"
+        }
+      ]
     },
     {
       "id": "sharp_x68000",
@@ -3027,7 +5211,8 @@
       "display": "14-inch CRT, 256×256 to 1024×1024 pixels, 16 bits",
       "graphics": "VINAS 1 + 2, VSOP, CYNTHIA / Jr, RESERVE",
       "sound": "Yamaha YM2151, OKI MSM6258",
-      "predecessor": "X1"
+      "predecessor": "X1",
+      "generation": "16-bit Computer"
     },
     {
       "id": "supergrafx",
@@ -3053,7 +5238,7 @@
         "Beetle PCE (RetroArch)"
       ],
       "type": "Home video game console",
-      "generation": "4ª Geração",
+      "generation": "4th Generation",
       "release_dates": "JP: 8 December 1989",
       "media": "HuCard, CD-ROM²",
       "cpu": "Hudson Soft HuC6280A @ 1.79 or 7.16 MHz",
@@ -3063,7 +5248,39 @@
       "sound": "HuC6280A; 6 PSG channels, 5-bit depth; 6.99 kHz sample rate",
       "best_selling_game": "Daimakaimura",
       "predecessor": "PC Engine (main system)",
-      "successor": "PC Engine Duo (updated system)"
+      "successor": "PC Engine Duo (updated system)",
+      "top_games": [
+        {
+          "name": "Pokémon Yellow Version: Special Pikachu Edition",
+          "slug": "pokemon-yellow-version-special-pikachu-edition",
+          "rating": 82.63518048752671,
+          "cover_path": "assets/system/game_covers/supergrafx/pokemon-yellow-version-special-pikachu-edition.jpg"
+        },
+        {
+          "name": "Pokémon Crystal Version",
+          "slug": "pokemon-crystal-version",
+          "rating": 88.57342003066213,
+          "cover_path": "assets/system/game_covers/supergrafx/pokemon-crystal-version.jpg"
+        },
+        {
+          "name": "Pokémon Silver Version",
+          "slug": "pokemon-silver-version",
+          "rating": 87.85039588849102,
+          "cover_path": "assets/system/game_covers/supergrafx/pokemon-silver-version.jpg"
+        },
+        {
+          "name": "Pokémon Gold Version",
+          "slug": "pokemon-gold-version",
+          "rating": 86.68615877274019,
+          "cover_path": "assets/system/game_covers/supergrafx/pokemon-gold-version.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: Oracle of Seasons",
+          "slug": "the-legend-of-zelda-oracle-of-seasons",
+          "rating": 81.30201167549086,
+          "cover_path": "assets/system/game_covers/supergrafx/the-legend-of-zelda-oracle-of-seasons.jpg"
+        }
+      ]
     },
     {
       "id": "sufami_turbo",
@@ -3090,8 +5307,40 @@
         "Mesen 2"
       ],
       "type": "Video game console peripheral",
-      "generation": "4ª Geração",
-      "release_dates": "JP: 1996"
+      "generation": "4th Generation",
+      "release_dates": "JP: 1996",
+      "top_games": [
+        {
+          "name": "Super Mario World",
+          "slug": "super-mario-world",
+          "rating": 91.70191481860208,
+          "cover_path": "assets/system/game_covers/sufami_turbo/super-mario-world.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: A Link to the Past",
+          "slug": "the-legend-of-zelda-a-link-to-the-past",
+          "rating": 91.93906391924232,
+          "cover_path": "assets/system/game_covers/sufami_turbo/the-legend-of-zelda-a-link-to-the-past.jpg"
+        },
+        {
+          "name": "Chrono Trigger",
+          "slug": "chrono-trigger",
+          "rating": 93.18087777732693,
+          "cover_path": "assets/system/game_covers/sufami_turbo/chrono-trigger.jpg"
+        },
+        {
+          "name": "Super Metroid",
+          "slug": "super-metroid",
+          "rating": 92.20577065266465,
+          "cover_path": "assets/system/game_covers/sufami_turbo/super-metroid.jpg"
+        },
+        {
+          "name": "Final Fantasy III",
+          "slug": "final-fantasy-iii--7",
+          "rating": 89.2616804436058,
+          "cover_path": "assets/system/game_covers/sufami_turbo/final-fantasy-iii--7.jpg"
+        }
+      ]
     }
   ]
 }
