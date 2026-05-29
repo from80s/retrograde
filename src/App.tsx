@@ -270,16 +270,16 @@ function App() {
         >
           {/* Cabeçalho do Logo */}
           <div
-            className={`border-b border-zinc-800/50 flex flex-col items-center ${isSidebarExpanded ? "p-5 gap-2" : "p-2 gap-0.5"}`}
+            className={`border-b border-zinc-800/50 flex flex-col items-center ${isSidebarExpanded ? "p-2 gap-2" : "p-2 gap-0.5"}`}
           >
             <img
               src={RetroGradeLogo}
               alt="RetroGrade"
-              className={`${isSidebarExpanded ? "h-20" : "h-8"} w-auto`}
+              className={`${isSidebarExpanded ? "h-32" : "h-8"} w-auto`}
             />
-            {isSidebarExpanded && (
+            {/* {isSidebarExpanded && (
               <p className="text-[10px] text-zinc-500 font-mono">v{version}</p>
-            )}
+            )} */}
           </div>
 
           {/* Botão de Alternância */}
@@ -290,7 +290,11 @@ function App() {
             }}
             className="absolute top-0 right-0 w-6 h-10 bg-zinc-800 border border-zinc-700/50 rounded-l-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700 transition-colors z-20"
           >
-            {sidebarCollapsed ? <ChevronRight className="w-3 h-3" /> : <ChevronLeft className="w-3 h-3" />}
+            {sidebarCollapsed ? (
+              <ChevronRight className="w-3 h-3" />
+            ) : (
+              <ChevronLeft className="w-3 h-3" />
+            )}
           </button>
 
           <nav className="flex-1 p-2 space-y-1 overflow-y-auto scrollbar-thin">
@@ -622,7 +626,13 @@ function App() {
         )}
         {state.isRunning && (
           <CurationModal
-            onClose={() => setState(prev => ({ ...prev, isRunning: false, cancelled: false }))}
+            onClose={() =>
+              setState((prev) => ({
+                ...prev,
+                isRunning: false,
+                cancelled: false,
+              }))
+            }
             onCancel={async () => {
               await window.api.cancelCuration();
             }}
