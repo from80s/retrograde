@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Save, Shield, Trash2, MoveRight, Star, Wifi, Loader2, CheckCircle2, XCircle, Plus, AlertTriangle, BookOpen, X, Gamepad2 } from 'lucide-react';
+import { LuSave, LuShield, LuTrash2, LuMoveRight, LuStar, LuWifi, LuLoader, LuCircleCheckBig, LuCircleX, LuPlus, LuTriangleAlert, LuBookOpen, LuX, LuGamepad2 } from "react-icons/lu";
 import { ClassicGamesPicker } from './ClassicGamesPicker';
 import { ModalBase } from './ModalBase';
 import { Button } from './Button';
@@ -187,9 +187,9 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
   };
 
   const statusIcon = (status: string) => {
-    if (status === 'pending') return <Loader2 className="w-5 h-5 text-zinc-400 animate-spin" />;
-    if (status === 'success') return <CheckCircle2 className="w-5 h-5 text-retro-success" />;
-    return <XCircle className="w-5 h-5 text-retro-danger" />;
+    if (status === 'pending') return <LuLoader className="w-5 h-5 text-zinc-400 animate-spin" />;
+    if (status === 'success') return <LuCircleCheckBig className="w-5 h-5 text-retro-success" />;
+    return <LuCircleX className="w-5 h-5 text-retro-danger" />;
   };
 
   const statusColor = (status: string) => {
@@ -206,7 +206,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">Credenciais de API</h3>
-                <Button variant="primary" size="sm" icon={testing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Wifi className="w-4 h-4" />} onClick={handleTestConnection} disabled={testing}>
+                <Button variant="primary" size="sm" icon={testing ? <LuLoader className="w-4 h-4 animate-spin" /> : <LuWifi className="w-4 h-4" />} onClick={handleTestConnection} disabled={testing}>
                   Testar Conexão
                 </Button>
               </div>
@@ -250,7 +250,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
               
               <div>
                 <label className="text-xs text-zinc-500 mb-2 block flex items-center gap-2">
-                  <Star className="w-4 h-4 text-retro-warning" />
+                  <LuStar className="w-4 h-4 text-retro-warning" />
                   Nota Mínima para Manter: {localMinRating}
                 </label>
                 <input
@@ -279,7 +279,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                         : 'bg-zinc-800/30 border-zinc-700/30 text-zinc-500 hover:text-zinc-300'
                     }`}
                   >
-                    <MoveRight className="w-4 h-4" />
+                    <LuMoveRight className="w-4 h-4" />
                     <span className="text-sm font-medium">Mover para /removidos</span>
                   </button>
                   <button
@@ -290,21 +290,21 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                         : 'bg-zinc-800/30 border-zinc-700/30 text-zinc-500 hover:text-zinc-300'
                     }`}
                   >
-                    <Trash2 className="w-4 h-4" />
+                    <LuTrash2 className="w-4 h-4" />
                     <span className="text-sm font-medium">Deletar Permanentemente</span>
                   </button>
                 </div>
               </div>
             </div>
 
-            {/* Info de Clássicos */}
+            {/* LuInfo de Clássicos */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-retro-secondary" />
+                  <LuShield className="w-4 h-4 text-retro-secondary" />
                   Clássicos Protegidos ({classics.length})
                 </h3>
-                <Button variant="secondary" size="sm" icon={<BookOpen className="w-4 h-4" />} onClick={() => setShowClassicPicker(true)}>
+                <Button variant="secondary" size="sm" icon={<LuBookOpen className="w-4 h-4" />} onClick={() => setShowClassicPicker(true)}>
                   Popular Clássicos
                 </Button>
               </div>
@@ -321,7 +321,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                   onKeyDown={(e) => e.key === 'Enter' && handleValidateClassic()}
                   className="flex-1 bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-retro-secondary/50 transition-colors placeholder:text-zinc-600"
                 />
-                <Button variant="secondary" icon={validating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />} onClick={handleValidateClassic} disabled={validating || !newClassic.trim()}>
+                <Button variant="secondary" icon={validating ? <LuLoader className="w-4 h-4 animate-spin" /> : <LuPlus className="w-4 h-4" />} onClick={handleValidateClassic} disabled={validating || !newClassic.trim()}>
                   Validar
                 </Button>
               </div>
@@ -339,7 +339,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                         : 'bg-retro-danger/10 text-retro-danger border border-retro-danger/20'
                     }`}
                   >
-                    {validationResult.valid ? <CheckCircle2 className="w-4 h-4 flex-shrink-0" /> : <XCircle className="w-4 h-4 flex-shrink-0" />}
+                    {validationResult.valid ? <LuCircleCheckBig className="w-4 h-4 flex-shrink-0" /> : <LuCircleX className="w-4 h-4 flex-shrink-0" />}
                     <span>{validationResult.message}</span>
                     {validationResult.valid && (
                       <Button variant="success" size="sm" onClick={handleAddClassic}>Adicionar</Button>
@@ -360,7 +360,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                       onClick={() => setShowDeleteConfirm(classic)}
                       className="ml-1 w-4 h-4 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-retro-danger/20 hover:text-retro-danger transition-all"
                     >
-                      <X className="w-3 h-3" />
+                      <LuX className="w-3 h-3" />
                     </button>
                   </span>
                 ))}
@@ -373,7 +373,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
             {/* Gêneros Protegidos */}
             <div className="space-y-4">
               <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-                <Gamepad2 className="w-4 h-4 text-retro-warning" />
+                <LuGamepad2 className="w-4 h-4 text-retro-warning" />
                 Gêneros Protegidos ({genres.length})
               </h3>
 
@@ -402,7 +402,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                                bg-retro-warning/10 text-retro-warning border border-retro-warning/30
                                hover:bg-retro-warning/20 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <Plus className="w-4 h-4" />
+                      <LuPlus className="w-4 h-4" />
                       Adicionar
                     </button>
                   </div>
@@ -419,7 +419,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                           onClick={() => setShowGenreDeleteConfirm(genre)}
                           className="ml-1 w-4 h-4 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-retro-danger/20 hover:text-retro-danger transition-all"
                         >
-                          <X className="w-3 h-3" />
+                          <LuX className="w-3 h-3" />
                         </button>
                       </span>
                     ))}
@@ -432,7 +432,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                 <div className="bg-zinc-800/30 border border-zinc-700/30 rounded-xl p-4 space-y-3">
                   <div className="flex items-start gap-3">
                     <div className="w-8 h-8 rounded-lg bg-zinc-700/50 flex items-center justify-center flex-shrink-0">
-                      <Gamepad2 className="w-4 h-4 text-zinc-500" />
+                      <LuGamepad2 className="w-4 h-4 text-zinc-500" />
                     </div>
                     <div className="space-y-1">
                       <p className="text-sm text-zinc-300 font-medium">Feature bloqueada</p>
@@ -451,7 +451,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
             {/* Jogos Protegidos pelo Usuário */}
             <div className="space-y-4">
               <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-                <Shield className="w-4 h-4 text-teal-400" />
+                <LuShield className="w-4 h-4 text-teal-400" />
                 Jogos Protegidos ({protectedGames.length})
               </h3>
               <p className="text-xs text-zinc-500 -mt-2">
@@ -477,7 +477,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                            bg-teal-500/10 text-teal-400 border border-teal-500/30
                            hover:bg-teal-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <Plus className="w-4 h-4" />
+                  <LuPlus className="w-4 h-4" />
                   Adicionar
                 </button>
               </div>
@@ -494,7 +494,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
                       onClick={() => setShowProtectedGameDeleteConfirm(game)}
                       className="ml-1 w-4 h-4 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-retro-danger/20 hover:text-retro-danger transition-all"
                     >
-                      <X className="w-3 h-3" />
+                      <LuX className="w-3 h-3" />
                     </button>
                   </span>
                 ))}
@@ -510,7 +510,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
             <Button variant="ghost" onClick={onClose}>
               Cancelar
             </Button>
-            <Button variant="primary" icon={<Save className="w-4 h-4" />} onClick={handleSave}>
+            <Button variant="primary" icon={<LuSave className="w-4 h-4" />} onClick={handleSave}>
               Salvar
             </Button>
           </div>
@@ -535,14 +535,14 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
             >
               <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <Wifi className="w-5 h-5 text-retro-primary" />
+                  <LuWifi className="w-5 h-5 text-retro-primary" />
                   <h3 className="text-lg font-bold text-zinc-100">Teste de Conexão</h3>
                 </div>
                 <button
                   onClick={() => setShowTestModal(false)}
                   className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
                 >
-                  <X className="w-5 h-5" />
+                  <LuX className="w-5 h-5" />
                 </button>
               </div>
 
@@ -618,7 +618,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
             >
               <div className="p-6 flex flex-col items-center text-center space-y-4">
                 <div className="w-12 h-12 rounded-full bg-retro-danger/10 flex items-center justify-center">
-                  <AlertTriangle className="w-6 h-6 text-retro-danger" />
+                  <LuTriangleAlert className="w-6 h-6 text-retro-danger" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-zinc-100">Remover Clássico</h3>
@@ -665,7 +665,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
             >
               <div className="p-6 flex flex-col items-center text-center space-y-4">
                 <div className="w-12 h-12 rounded-full bg-retro-danger/10 flex items-center justify-center">
-                  <AlertTriangle className="w-6 h-6 text-retro-danger" />
+                  <LuTriangleAlert className="w-6 h-6 text-retro-danger" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-zinc-100">Remover Gênero</h3>
@@ -712,7 +712,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
             >
               <div className="p-6 flex flex-col items-center text-center space-y-4">
                 <div className="w-12 h-12 rounded-full bg-retro-danger/10 flex items-center justify-center">
-                  <AlertTriangle className="w-6 h-6 text-retro-danger" />
+                  <LuTriangleAlert className="w-6 h-6 text-retro-danger" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-zinc-100">Remover Jogo Protegido</h3>

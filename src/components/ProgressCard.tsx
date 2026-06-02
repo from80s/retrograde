@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Gamepad2, Star, ShieldCheck, CheckCircle2, XCircle } from 'lucide-react';
+import { LuGamepad2, LuStar, LuShieldCheck, LuCircleCheckBig, LuCircleX } from "react-icons/lu";
 import { ProgressBar } from './ProgressBar';
 import { SystemLogo } from './SystemLogo';
 
@@ -12,14 +12,14 @@ interface ProgressCardProps {
 }
 
 const statusConfig = {
-  classic: { icon: ShieldCheck, color: 'text-retro-secondary', bg: 'bg-retro-secondary/10', label: 'Clássico Preservado' },
-  kept: { icon: CheckCircle2, color: 'text-retro-success', bg: 'bg-retro-success/10', label: 'Mantido por Nota' },
-  removed: { icon: XCircle, color: 'text-retro-danger', bg: 'bg-retro-danger/10', label: 'Removido' },
+  classic: { icon: LuShieldCheck, color: 'text-retro-secondary', bg: 'bg-retro-secondary/10', label: 'Clássico Preservado' },
+  kept: { icon: LuCircleCheckBig, color: 'text-retro-success', bg: 'bg-retro-success/10', label: 'Mantido por Nota' },
+  removed: { icon: LuCircleX, color: 'text-retro-danger', bg: 'bg-retro-danger/10', label: 'Removido' },
 };
 
 export function ProgressCard({ progress, currentFile, currentSystem, currentRating, currentStatus }: ProgressCardProps) {
   const status = currentStatus ? statusConfig[currentStatus] : null;
-  const StatusIcon = status?.icon || Gamepad2;
+  const StatusIcon = status?.icon || LuGamepad2;
 
   return (
     <div className="glass rounded-2xl p-6 space-y-4">
@@ -48,7 +48,7 @@ export function ProgressCard({ progress, currentFile, currentSystem, currentRati
           </div>
           {currentRating !== null && (
             <div className="flex items-center gap-2">
-              <Star className="w-4 h-4 text-retro-warning fill-retro-warning" />
+              <LuStar className="w-4 h-4 text-retro-warning fill-retro-warning" />
               <span className="text-sm font-mono text-retro-warning">{(currentRating / 10).toFixed(1)}</span>
             </div>
           )}

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { X, Loader2, ShieldCheck, CheckCircle2, XCircle, Star } from 'lucide-react';
+import { LuX, LuLoader, LuShieldCheck, LuCircleCheckBig, LuCircleX, LuStar } from "react-icons/lu";
 import { getSystemLogo } from '../lib/system-logos';
 
 interface LogEntry {
@@ -29,9 +29,9 @@ interface CurationModalProps {
 }
 
 const statusIcons = {
-  classic: ShieldCheck,
-  kept: CheckCircle2,
-  removed: XCircle,
+  classic: LuShieldCheck,
+  kept: LuCircleCheckBig,
+  removed: LuCircleX,
 };
 
 const statusColors = {
@@ -83,9 +83,9 @@ export function CurationModal({
         <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
           <div className="flex items-center gap-3">
             {cancelled ? (
-              <XCircle className="w-5 h-5 text-retro-danger" />
+              <LuCircleX className="w-5 h-5 text-retro-danger" />
             ) : (
-              <Loader2 className="w-5 h-5 text-retro-primary animate-spin" />
+              <LuLoader className="w-5 h-5 text-retro-primary animate-spin" />
             )}
             <div>
               <h3 className="text-lg font-bold text-zinc-100">{cancelled ? 'Curadoria Cancelada' : 'Curadoria em Andamento'}</h3>
@@ -100,7 +100,7 @@ export function CurationModal({
                 onClick={onCancel}
                 className="flex items-center gap-2 px-4 py-2 rounded-xl bg-retro-danger/10 text-retro-danger border border-retro-danger/30 text-sm font-medium hover:bg-retro-danger/20 transition-all active:scale-95"
               >
-                <XCircle className="w-4 h-4" />
+                <LuCircleX className="w-4 h-4" />
                 Cancelar
               </button>
             )}
@@ -108,7 +108,7 @@ export function CurationModal({
               onClick={onClose}
               className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
             >
-              <X className="w-5 h-5" />
+              <LuX className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -147,7 +147,7 @@ export function CurationModal({
               </div>
               {currentRating !== null && (
                 <div className="flex items-center gap-1 flex-shrink-0">
-                  <Star className="w-3 h-3 text-retro-warning" />
+                  <LuStar className="w-3 h-3 text-retro-warning" />
                   <span className="text-xs font-mono text-retro-warning">{currentRating.toFixed(0)}</span>
                 </div>
               )}
@@ -183,7 +183,7 @@ export function CurationModal({
             style={{ maxHeight: '300px' }}
           >
             {log.map((entry, index) => {
-              const Icon = statusIcons[entry.status as keyof typeof statusIcons] || CheckCircle2;
+              const Icon = statusIcons[entry.status as keyof typeof statusIcons] || LuCircleCheckBig;
               const color = statusColors[entry.status as keyof typeof statusColors] || 'text-zinc-400';
 
               return (
@@ -210,7 +210,7 @@ export function CurationModal({
                   })()}
                   {entry.rating !== null && (
                     <div className="flex items-center gap-1 flex-shrink-0">
-                      <Star className="w-3 h-3 text-retro-warning" />
+                      <LuStar className="w-3 h-3 text-retro-warning" />
                       <span className="text-xs font-mono text-retro-warning">
                         {entry.rating.toFixed(0)}
                       </span>

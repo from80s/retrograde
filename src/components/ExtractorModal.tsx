@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  X, FolderOpen, Archive, FolderPlus, Trash2, Square, CheckCircle2,
-  XCircle, AlertTriangle, FileText, ChevronRight, Loader2, Download, Play,
-} from 'lucide-react';
+  LuX, LuFolderOpen, LuArchive, LuFolderPlus, LuTrash2, LuSquare, LuCircleCheckBig,
+  LuCircleX, LuTriangleAlert, LuFileText, LuChevronRight, LuLoader, LuDownload, LuPlay,
+} from "react-icons/lu";
 
 interface ExtractorModalProps {
   onClose: () => void;
@@ -218,14 +218,14 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
         {/* Cabeçalho */}
         <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Archive className="w-5 h-5 text-retro-primary" />
+            <LuArchive className="w-5 h-5 text-retro-primary" />
             <h3 className="text-lg font-bold text-zinc-100">Extrator de ROMs</h3>
           </div>
           <button
             onClick={onClose}
             className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
           >
-            <X className="w-5 h-5" />
+            <LuX className="w-5 h-5" />
           </button>
         </div>
 
@@ -243,10 +243,10 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                             isActive ? 'bg-retro-primary/10 text-retro-primary' :
                             'bg-zinc-800/30 text-zinc-600'
                           }`}>
-                            {isDone ? <CheckCircle2 className="w-3 h-3" /> : <span className="w-3 h-3 rounded-full border-2 flex items-center justify-center text-[8px]">{idx + 1}</span>}
+                            {isDone ? <LuCircleCheckBig className="w-3 h-3" /> : <span className="w-3 h-3 rounded-full border-2 flex items-center justify-center text-[8px]">{idx + 1}</span>}
                             {labels[idx]}
                           </div>
-                          {idx < 3 && <ChevronRight className="w-3 h-3 text-zinc-700" />}
+                          {idx < 3 && <LuChevronRight className="w-3 h-3 text-zinc-700" />}
                         </div>
                       );
                     })}
@@ -272,7 +272,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                     onClick={handleSelectFolder}
                     className="w-full flex items-center gap-3 px-4 py-3 rounded-xl border border-zinc-700/50 bg-zinc-800/30 text-zinc-400 hover:text-zinc-200 hover:border-zinc-600/50 transition-colors"
                   >
-                    <FolderOpen className="w-5 h-5" />
+                    <LuFolderOpen className="w-5 h-5" />
                     <span className="flex-1 text-left truncate">{sourceFolder || 'Clique para selecionar a pasta...'}</span>
                   </button>
 
@@ -287,7 +287,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                       >
                         <div className="p-4 bg-retro-warning/10 border border-retro-warning/20 rounded-xl space-y-3">
                           <div className="flex items-center gap-3">
-                            <AlertTriangle className="w-5 h-5 text-retro-warning flex-shrink-0" />
+                            <LuTriangleAlert className="w-5 h-5 text-retro-warning flex-shrink-0" />
                             <div>
                               <p className="text-sm font-medium text-zinc-200">Extrações Anteriores Encontradas</p>
                               <p className="text-xs text-zinc-400">Há extrações incompletas nesta pasta. Deseja retomar?</p>
@@ -332,7 +332,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                               }}
                               className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium bg-retro-primary/10 text-retro-primary border border-retro-primary/30 hover:bg-retro-primary/20 transition-all"
                             >
-                              <Play className="w-4 h-4" />
+                              <LuPlay className="w-4 h-4" />
                               Retomar
                             </button>
                           </div>
@@ -354,7 +354,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                           : 'bg-zinc-800/30 border-zinc-700/30 text-zinc-500 hover:text-zinc-300'
                       }`}
                     >
-                      <FolderPlus className="w-4 h-4" />
+                      <LuFolderPlus className="w-4 h-4" />
                       <div className="text-left">
                         <p className="text-sm font-medium">Pasta própria</p>
                         <p className="text-xs opacity-70">Cria uma pasta para cada arquivo</p>
@@ -368,7 +368,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                           : 'bg-zinc-800/30 border-zinc-700/30 text-zinc-500 hover:text-zinc-300'
                       }`}
                     >
-                      <FolderOpen className="w-4 h-4" />
+                      <LuFolderOpen className="w-4 h-4" />
                       <div className="text-left">
                         <p className="text-sm font-medium">Na pasta atual</p>
                         <p className="text-xs opacity-70">Extrai no mesmo diretório</p>
@@ -380,7 +380,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 {/* Deletar após */}
                 <div className="flex items-center justify-between p-4 bg-zinc-800/30 rounded-xl border border-zinc-700/30">
                   <div className="flex items-center gap-3">
-                    <Trash2 className="w-4 h-4 text-zinc-500" />
+                    <LuTrash2 className="w-4 h-4 text-zinc-500" />
                     <div>
                       <p className="text-sm text-zinc-300">Excluir arquivo após extração</p>
                       <p className="text-xs text-zinc-600">Remove o arquivo original após sucesso</p>
@@ -398,10 +398,10 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                   </button>
                 </div>
 
-                {/* Info de formatos suportados */}
+                {/* LuInfo de formatos suportados */}
                 <div className="p-4 bg-zinc-800/20 rounded-xl border border-zinc-700/20">
                   <div className="flex items-start gap-3">
-                    <FileText className="w-4 h-4 text-zinc-500 mt-0.5" />
+                    <LuFileText className="w-4 h-4 text-zinc-500 mt-0.5" />
                     <div className="space-y-1">
                       <p className="text-xs text-zinc-400">Formatos suportados: <span className="text-zinc-200 font-medium">.zip</span>, <span className="text-zinc-200 font-medium">.rar</span>, <span className="text-zinc-200 font-medium">.7z</span>, <span className="text-zinc-200 font-medium">.tar</span>, <span className="text-zinc-200 font-medium">.gz</span>, <span className="text-zinc-200 font-medium">.tar.gz</span></p>
                     </div>
@@ -419,7 +419,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 exit={{ opacity: 0 }}
                 className="flex flex-col items-center justify-center py-16 space-y-6"
               >
-                <Loader2 className="w-12 h-12 text-retro-primary animate-spin" />
+                <LuLoader className="w-12 h-12 text-retro-primary animate-spin" />
                 <div className="w-full max-w-md space-y-3">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-zinc-400">Escaneando pasta...</span>
@@ -464,7 +464,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 <div className="space-y-1 max-h-64 overflow-y-auto scrollbar-thin">
                   {supportedFiles.map((f) => (
                     <div key={f.path} className="flex items-center gap-3 px-4 py-2.5 bg-zinc-800/20 rounded-lg">
-                      <Archive className="w-4 h-4 text-retro-primary" />
+                      <LuArchive className="w-4 h-4 text-retro-primary" />
                       <span className="flex-1 text-sm text-zinc-300 truncate">{f.name}</span>
                       <span className="text-xs text-zinc-600 font-mono">{f.ext}</span>
                       <span className="text-xs text-zinc-500">{formatSize(f.size)}</span>
@@ -478,7 +478,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                     <p className="text-xs text-zinc-600">Arquivos não suportados (serão ignorados):</p>
                     {unsupportedFiles.map((f) => (
                       <div key={f.path} className="flex items-center gap-3 px-4 py-2 bg-zinc-800/10 rounded-lg opacity-50">
-                        <XCircle className="w-3 h-3 text-zinc-600" />
+                        <LuCircleX className="w-3 h-3 text-zinc-600" />
                         <span className="flex-1 text-xs text-zinc-500 truncate">{f.name}</span>
                         <span className="text-xs text-zinc-700 font-mono">{f.ext}</span>
                       </div>
@@ -529,9 +529,9 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                         }`}
                       >
                         <div className="flex items-center gap-2 mb-2">
-                          {entry.status === 'complete' ? <CheckCircle2 className="w-4 h-4 text-retro-success" /> :
-                           entry.status === 'error' ? <XCircle className="w-4 h-4 text-retro-danger" /> :
-                           <Loader2 className="w-4 h-4 text-retro-primary animate-spin" />}
+                          {entry.status === 'complete' ? <LuCircleCheckBig className="w-4 h-4 text-retro-success" /> :
+                           entry.status === 'error' ? <LuCircleX className="w-4 h-4 text-retro-danger" /> :
+                           <LuLoader className="w-4 h-4 text-retro-primary animate-spin" />}
                           <span className="text-sm text-zinc-300 truncate flex-1">{entry.fileName}</span>
                           <span className="text-xs text-zinc-600">{entry.progress.toFixed(0)}%</span>
                         </div>
@@ -572,20 +572,20 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 {/* Cartões de estatísticas */}
                 <div className="grid grid-cols-3 gap-4">
                   <div className="p-4 bg-retro-success/10 border border-retro-success/20 rounded-xl text-center">
-                    <CheckCircle2 className="w-6 h-6 text-retro-success mx-auto mb-2" />
+                    <LuCircleCheckBig className="w-6 h-6 text-retro-success mx-auto mb-2" />
                     <p className="text-2xl font-bold text-retro-success">{stats.successCount}</p>
                     <p className="text-xs text-zinc-500">Extraídos com sucesso</p>
                   </div>
                   {stats.errorCount > 0 && (
                     <div className="p-4 bg-retro-danger/10 border border-retro-danger/20 rounded-xl text-center">
-                      <XCircle className="w-6 h-6 text-retro-danger mx-auto mb-2" />
+                      <LuCircleX className="w-6 h-6 text-retro-danger mx-auto mb-2" />
                       <p className="text-2xl font-bold text-retro-danger">{stats.errorCount}</p>
                       <p className="text-xs text-zinc-500">Erros</p>
                     </div>
                   )}
                   {stats.cancelledCount > 0 && (
                     <div className="p-4 bg-zinc-700/20 border border-zinc-600/20 rounded-xl text-center">
-                      <AlertTriangle className="w-6 h-6 text-zinc-500 mx-auto mb-2" />
+                      <LuTriangleAlert className="w-6 h-6 text-zinc-500 mx-auto mb-2" />
                       <p className="text-2xl font-bold text-zinc-400">{stats.cancelledCount}</p>
                       <p className="text-xs text-zinc-500">Cancelados</p>
                     </div>
@@ -617,7 +617,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 {results.filter(r => r.status === 'error').length > 0 && (
                   <div className="space-y-2">
                     <p className="text-sm text-zinc-400 flex items-center gap-2">
-                      <AlertTriangle className="w-4 h-4 text-retro-warning" />
+                      <LuTriangleAlert className="w-4 h-4 text-retro-warning" />
                       Erros detalhados
                     </p>
                     {results.filter(r => r.status === 'error').map((r) => (
@@ -639,11 +639,11 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                         r.status === 'error' ? 'bg-retro-danger/5 text-retro-danger' :
                         'bg-zinc-800/20 text-zinc-500'
                       }`}>
-                        {r.status === 'success' ? <CheckCircle2 className="w-3 h-3" /> :
-                         r.status === 'error' ? <XCircle className="w-3 h-3" /> :
-                         <AlertTriangle className="w-3 h-3" />}
+                        {r.status === 'success' ? <LuCircleCheckBig className="w-3 h-3" /> :
+                         r.status === 'error' ? <LuCircleX className="w-3 h-3" /> :
+                         <LuTriangleAlert className="w-3 h-3" />}
                         <span className="flex-1 truncate">{r.name}</span>
-                        <span className="text-zinc-600">{formatSize(r.compressedSize)} → {formatSize(r.extractedSize)}</span>
+                        <span className="text-zinc-600">{formatSize(r.compressedSize)} â†’ {formatSize(r.extractedSize)}</span>
                       </div>
                     ))}
                   </div>
@@ -668,7 +668,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 disabled={!sourceFolder}
                 className="flex items-center gap-2 px-6 py-2.5 bg-retro-primary/10 text-retro-primary border border-retro-primary/30 rounded-xl font-medium hover:bg-retro-primary/20 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <FolderOpen className="w-4 h-4" />
+                <LuFolderOpen className="w-4 h-4" />
                 Escanear Pasta
               </button>
             </>
@@ -686,7 +686,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 onClick={() => handleStartExtraction()}
                 className="flex items-center gap-2 px-6 py-2.5 bg-retro-success/10 text-retro-success border border-retro-success/30 rounded-xl font-medium hover:bg-retro-success/20 transition-all active:scale-95"
               >
-                <Download className="w-4 h-4" />
+                <LuDownload className="w-4 h-4" />
                 Iniciar Extração ({supportedFiles.length})
               </button>
             </>
@@ -701,7 +701,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 onClick={handleCancel}
                 className="flex items-center gap-2 px-6 py-2.5 bg-retro-danger/10 text-retro-danger border border-retro-danger/30 rounded-xl font-medium hover:bg-retro-danger/20 transition-all active:scale-95"
               >
-                <Square className="w-4 h-4" />
+                <LuSquare className="w-4 h-4" />
                 Cancelar
               </button>
             </>
@@ -713,7 +713,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                 onClick={onClose}
                 className="flex items-center gap-2 px-8 py-2.5 bg-retro-primary/10 text-retro-primary border border-retro-primary/30 rounded-xl font-medium hover:bg-retro-primary/20 transition-all active:scale-95"
               >
-                <CheckCircle2 className="w-4 h-4" />
+                <LuCircleCheckBig className="w-4 h-4" />
                 Fechar
               </button>
             </div>

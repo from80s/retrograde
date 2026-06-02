@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { Search, X } from 'lucide-react';
+import { LuSearch, LuX } from "react-icons/lu";
 
 interface SearchInputProps {
   value: string;
@@ -16,7 +16,7 @@ export function SearchInput({ value, onChange, placeholder = 'Buscar...' }: Sear
 
   return (
     <div className="relative">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+      <LuSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
       <input
         type="text"
         placeholder={placeholder}
@@ -29,10 +29,10 @@ export function SearchInput({ value, onChange, placeholder = 'Buscar...' }: Sear
       {focused && value && (
         <button
           type="button"
-          onClick={handleClear}
+          onMouseDown={(e) => { e.preventDefault(); handleClear(); }}
           className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full flex items-center justify-center text-zinc-500 hover:text-zinc-200 hover:bg-zinc-700/50 transition-colors"
         >
-          <X className="w-4 h-4" />
+          <LuX className="w-4 h-4" />
         </button>
       )}
     </div>

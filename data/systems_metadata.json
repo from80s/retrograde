@@ -37,31 +37,31 @@
           "name": "Mortal Kombat II",
           "slug": "mortal-kombat-ii",
           "rating": 76.4115109309212,
-          "cover_path": "assets/system/game_covers/sega_32x/mortal-kombat-ii.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6bxu.jpg"
         },
         {
           "name": "Blackthorne",
           "slug": "blackthorne",
           "rating": 70.40770202638988,
-          "cover_path": "assets/system/game_covers/sega_32x/blackthorne.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3cuc.jpg"
         },
         {
           "name": "Primal Rage",
           "slug": "primal-rage",
           "rating": 61.02468325594474,
-          "cover_path": "assets/system/game_covers/sega_32x/primal-rage.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co309j.jpg"
         },
         {
           "name": "Alien Trilogy",
           "slug": "alien-trilogy",
           "rating": 68.29571422590749,
-          "cover_path": "assets/system/game_covers/sega_32x/alien-trilogy.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co67ti.jpg"
         },
         {
           "name": "Virtua Fighter",
           "slug": "virtua-fighter--1",
           "rating": 56.4862146010631,
-          "cover_path": "assets/system/game_covers/sega_32x/virtua-fighter--1.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co84c6.jpg"
         }
       ]
     },
@@ -115,32 +115,32 @@
         {
           "name": "Super Mario Bros. 3",
           "slug": "super-mario-bros-3",
-          "rating": 89.37415788766094,
-          "cover_path": "assets/system/game_covers/nintendo_3ds/super-mario-bros-3.jpg"
+          "rating": 89.37375670367784,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7ozx.jpg"
         },
         {
           "name": "Super Mario Bros.",
           "slug": "super-mario-bros",
-          "rating": 83.68811675605257,
-          "cover_path": "assets/system/game_covers/nintendo_3ds/super-mario-bros.jpg"
+          "rating": 83.6882158325661,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6pib.jpg"
         },
         {
           "name": "Terraria",
           "slug": "terraria",
-          "rating": 82.37101566334263,
-          "cover_path": "assets/system/game_covers/nintendo_3ds/terraria.jpg"
+          "rating": 82.37060503577709,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coaamg.jpg"
         },
         {
           "name": "The Legend of Zelda",
           "slug": "the-legend-of-zelda",
-          "rating": 80.52648907646105,
-          "cover_path": "assets/system/game_covers/nintendo_3ds/the-legend-of-zelda.jpg"
+          "rating": 80.5257731041674,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1uii.jpg"
         },
         {
           "name": "The Legend of Zelda: A Link Between Worlds",
           "slug": "the-legend-of-zelda-a-link-between-worlds",
-          "rating": 87.2320409815535,
-          "cover_path": "assets/system/game_covers/nintendo_3ds/the-legend-of-zelda-a-link-between-worlds.jpg"
+          "rating": 87.23221091058792,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3p0j.jpg"
         }
       ]
     },
@@ -170,34 +170,34 @@
       "generation": "Arcade",
       "top_games": [
         {
+          "name": "Super Mario World",
+          "slug": "super-mario-world",
+          "rating": 91.70204595334357,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8lo8.jpg"
+        },
+        {
+          "name": "Super Mario Bros. 3",
+          "slug": "super-mario-bros-3",
+          "rating": 89.37375670367784,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7ozx.jpg"
+        },
+        {
           "name": "Super Mario Bros.",
           "slug": "super-mario-bros",
-          "rating": 83.68811675605257,
-          "cover_path": "assets/system/game_covers/arcade/super-mario-bros.jpg"
+          "rating": 83.6882158325661,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6pib.jpg"
         },
         {
-          "name": "The Legend of Zelda",
-          "slug": "the-legend-of-zelda",
-          "rating": 80.52648907646105,
-          "cover_path": "assets/system/game_covers/arcade/the-legend-of-zelda.jpg"
+          "name": "Sonic the Hedgehog",
+          "slug": "sonic-the-hedgehog",
+          "rating": 81.63815967560947,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coanlj.jpg"
         },
         {
-          "name": "Castlevania",
-          "slug": "castlevania",
-          "rating": 78.89439934429028,
-          "cover_path": "assets/system/game_covers/arcade/castlevania.jpg"
-        },
-        {
-          "name": "Zelda II: The Adventure of Link",
-          "slug": "zelda-ii-the-adventure-of-link",
-          "rating": 65.49483512179387,
-          "cover_path": "assets/system/game_covers/arcade/zelda-ii-the-adventure-of-link.jpg"
-        },
-        {
-          "name": "Castlevania II: Simon's Quest",
-          "slug": "castlevania-ii-simon-s-quest",
-          "rating": 61.76185260819832,
-          "cover_path": "assets/system/game_covers/arcade/castlevania-ii-simon-s-quest.jpg"
+          "name": "Tekken 3",
+          "slug": "tekken-3",
+          "rating": 84.4551466418976,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8d7q.jpg"
         }
       ]
     },
@@ -242,31 +242,31 @@
           "name": "Myst",
           "slug": "myst",
           "rating": 75.7261760041352,
-          "cover_path": "assets/system/game_covers/atari_2600/myst.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1y96.jpg"
         },
         {
           "name": "Pitfall!",
           "slug": "pitfall",
           "rating": 71.8637201346169,
-          "cover_path": "assets/system/game_covers/atari_2600/pitfall.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9ck4.jpg"
         },
         {
           "name": "Breakout",
           "slug": "breakout",
           "rating": 72.79133590423564,
-          "cover_path": "assets/system/game_covers/atari_2600/breakout.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co94iu.jpg"
         },
         {
           "name": "Elevator Action",
           "slug": "elevator-action",
           "rating": 67.09581106330864,
-          "cover_path": "assets/system/game_covers/atari_2600/elevator-action.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co65am.jpg"
         },
         {
           "name": "E.T. the Extra-Terrestrial",
           "slug": "e-t-the-extra-terrestrial",
           "rating": 48.10090533775946,
-          "cover_path": "assets/system/game_covers/atari_2600/e-t-the-extra-terrestrial.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co94rk.jpg"
         }
       ]
     },
@@ -311,31 +311,31 @@
           "name": "Pitfall!",
           "slug": "pitfall",
           "rating": 71.8637201346169,
-          "cover_path": "assets/system/game_covers/atari_5200/pitfall.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9ck4.jpg"
         },
         {
           "name": "Pole Position",
           "slug": "pole-position",
           "rating": 70.32111813576758,
-          "cover_path": "assets/system/game_covers/atari_5200/pole-position.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coc1m4.jpg"
         },
         {
           "name": "River Raid",
           "slug": "river-raid",
           "rating": 81.61226930174477,
-          "cover_path": "assets/system/game_covers/atari_5200/river-raid.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6ilj.jpg"
         },
         {
           "name": "Xevious",
           "slug": "xevious",
           "rating": 59.97097538012753,
-          "cover_path": "assets/system/game_covers/atari_5200/xevious.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2baq.jpg"
         },
         {
           "name": "Star Wars",
           "slug": "star-wars",
           "rating": 70.40866145390558,
-          "cover_path": "assets/system/game_covers/atari_5200/star-wars.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2xeu.jpg"
         }
       ]
     },
@@ -380,31 +380,31 @@
           "name": "Commando",
           "slug": "commando",
           "rating": 71.28040058348245,
-          "cover_path": "assets/system/game_covers/atari_7800/commando.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2k3z.jpg"
         },
         {
           "name": "Karateka",
           "slug": "karateka",
           "rating": 66.05539876638112,
-          "cover_path": "assets/system/game_covers/atari_7800/karateka.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2njq.jpg"
         },
         {
           "name": "Xevious",
           "slug": "xevious",
           "rating": 59.97097538012753,
-          "cover_path": "assets/system/game_covers/atari_7800/xevious.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2baq.jpg"
         },
         {
           "name": "Impossible Mission",
           "slug": "impossible-mission",
           "rating": 69.11663899132988,
-          "cover_path": "assets/system/game_covers/atari_7800/impossible-mission.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2gs9.jpg"
         },
         {
           "name": "Robotron: 2084",
           "slug": "robotron-2084",
           "rating": 70.73532805140064,
-          "cover_path": "assets/system/game_covers/atari_7800/robotron-2084.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coc1lx.jpg"
         }
       ]
     },
@@ -447,7 +447,39 @@
       "predecessor": "7800XEGSPanther (cancelado)",
       "wikidata_id": "2782",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_Jaguar",
-      "release_dates": "AN: 23 de novembro de 1993EU: 27 de junho de 1994DE: setembro de 1994JP: 8 de dezembro de 1994ESP: abril de 1995"
+      "release_dates": "AN: 23 de novembro de 1993EU: 27 de junho de 1994DE: setembro de 1994JP: 8 de dezembro de 1994ESP: abril de 1995",
+      "top_games": [
+        {
+          "name": "Worms",
+          "slug": "worms",
+          "rating": 75.67819218530337,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1xqn.jpg"
+        },
+        {
+          "name": "Flashback: The Quest for Identity",
+          "slug": "flashback-the-quest-for-identity",
+          "rating": 82.97266908415749,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6fda.jpg"
+        },
+        {
+          "name": "Theme Park",
+          "slug": "theme-park",
+          "rating": 68.96404260940369,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9fto.jpg"
+        },
+        {
+          "name": "Cannon Fodder",
+          "slug": "cannon-fodder",
+          "rating": 80.9885937217531,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3o3f.jpg"
+        },
+        {
+          "name": "Dragon's Lair",
+          "slug": "dragon-s-lair",
+          "rating": 72.14304104420813,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co790c.jpg"
+        }
+      ]
     },
     {
       "id": "amiga",
@@ -492,34 +524,34 @@
       "generation": "Computador 16/32 bits",
       "top_games": [
         {
-          "name": "Portal 2",
-          "slug": "portal-2",
-          "rating": 91.29932409808389,
-          "cover_path": "assets/system/game_covers/amiga/portal-2.jpg"
+          "name": "Monkey Island 2: LeChuck's Revenge",
+          "slug": "monkey-island-2-lechuck-s-revenge",
+          "rating": 88.30068011844384,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co30yr.jpg"
         },
         {
-          "name": "Portal",
-          "slug": "portal",
-          "rating": 86.40228938907896,
-          "cover_path": "assets/system/game_covers/amiga/portal.jpg"
+          "name": "The Secret of Monkey Island",
+          "slug": "the-secret-of-monkey-island",
+          "rating": 86.65435863863428,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co28bp.jpg"
         },
         {
-          "name": "Half-Life 2",
-          "slug": "half-life-2",
-          "rating": 90.35860614857343,
-          "cover_path": "assets/system/game_covers/amiga/half-life-2.jpg"
+          "name": "Day of the Tentacle",
+          "slug": "day-of-the-tentacle",
+          "rating": 89.25666924420707,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co30yt.jpg"
         },
         {
-          "name": "Half-Life",
-          "slug": "half-life",
-          "rating": 88.39630802144329,
-          "cover_path": "assets/system/game_covers/amiga/half-life.jpg"
+          "name": "Indiana Jones and the Fate of Atlantis",
+          "slug": "indiana-jones-and-the-fate-of-atlantis--1",
+          "rating": 89.5376885973151,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6ys2.jpg"
         },
         {
-          "name": "BioShock Infinite",
-          "slug": "bioshock-infinite",
-          "rating": 85.62760069458895,
-          "cover_path": "assets/system/game_covers/amiga/bioshock-infinite.jpg"
+          "name": "Quake",
+          "slug": "quake",
+          "rating": 82.59996763107955,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9bg9.jpg"
         }
       ]
     },
@@ -560,34 +592,34 @@
       "generation": "Computador 8 bits",
       "top_games": [
         {
-          "name": "Super Mario World",
-          "slug": "super-mario-world",
-          "rating": 91.70191481860208,
-          "cover_path": "assets/system/game_covers/atari_800/super-mario-world.jpg"
+          "name": "Pitfall!",
+          "slug": "pitfall",
+          "rating": 71.8637201346169,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9ck4.jpg"
         },
         {
-          "name": "The Legend of Zelda: A Link to the Past",
-          "slug": "the-legend-of-zelda-a-link-to-the-past",
-          "rating": 91.93906391924232,
-          "cover_path": "assets/system/game_covers/atari_800/the-legend-of-zelda-a-link-to-the-past.jpg"
+          "name": "Ms. Pac-Man",
+          "slug": "ms-pac-man",
+          "rating": 79.69142857889247,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co53rj.jpg"
         },
         {
-          "name": "Chrono Trigger",
-          "slug": "chrono-trigger",
-          "rating": 93.18087777732693,
-          "cover_path": "assets/system/game_covers/atari_800/chrono-trigger.jpg"
+          "name": "Lode Runner",
+          "slug": "lode-runner",
+          "rating": 76.85898744305479,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6s9v.jpg"
         },
         {
-          "name": "Super Metroid",
-          "slug": "super-metroid",
-          "rating": 92.20577065266465,
-          "cover_path": "assets/system/game_covers/atari_800/super-metroid.jpg"
+          "name": "Gauntlet",
+          "slug": "gauntlet",
+          "rating": 70.02233026139842,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8ksx.jpg"
         },
         {
-          "name": "Final Fantasy III",
-          "slug": "final-fantasy-iii--7",
-          "rating": 89.2616804436058,
-          "cover_path": "assets/system/game_covers/atari_800/final-fantasy-iii--7.jpg"
+          "name": "Pole Position",
+          "slug": "pole-position",
+          "rating": 70.32111813576758,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coc1m4.jpg"
         }
       ]
     },
@@ -643,32 +675,32 @@
         {
           "name": "Metal Gear Solid",
           "slug": "metal-gear-solid",
-          "rating": 90.48504009442881,
-          "cover_path": "assets/system/game_covers/sony_playstation/metal-gear-solid.jpg"
+          "rating": 90.48479669546086,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobpak.jpg"
         },
         {
           "name": "Final Fantasy VII",
           "slug": "final-fantasy-vii",
           "rating": 90.46717145408533,
-          "cover_path": "assets/system/game_covers/sony_playstation/final-fantasy-vii.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2kx2.jpg"
         },
         {
           "name": "Final Fantasy IX",
           "slug": "final-fantasy-ix",
           "rating": 88.07081187392251,
-          "cover_path": "assets/system/game_covers/sony_playstation/final-fantasy-ix.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2unc.jpg"
         },
         {
           "name": "Castlevania: Symphony of the Night",
           "slug": "castlevania-symphony-of-the-night",
-          "rating": 92.09234088399384,
-          "cover_path": "assets/system/game_covers/sony_playstation/castlevania-symphony-of-the-night.jpg"
+          "rating": 92.09226016791825,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co53m8.jpg"
         },
         {
           "name": "Crash Bandicoot",
           "slug": "crash-bandicoot",
-          "rating": 80.49111160450875,
-          "cover_path": "assets/system/game_covers/sony_playstation/crash-bandicoot.jpg"
+          "rating": 80.49144354884024,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co555l.jpg"
         }
       ]
     },
@@ -721,32 +753,32 @@
         {
           "name": "Super Mario World",
           "slug": "super-mario-world",
-          "rating": 91.70191481860208,
-          "cover_path": "assets/system/game_covers/snes/super-mario-world.jpg"
+          "rating": 91.70204595334357,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8lo8.jpg"
         },
         {
           "name": "The Legend of Zelda: A Link to the Past",
           "slug": "the-legend-of-zelda-a-link-to-the-past",
-          "rating": 91.93906391924232,
-          "cover_path": "assets/system/game_covers/snes/the-legend-of-zelda-a-link-to-the-past.jpg"
+          "rating": 91.93941495432685,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3vzn.jpg"
         },
         {
           "name": "Chrono Trigger",
           "slug": "chrono-trigger",
-          "rating": 93.18087777732693,
-          "cover_path": "assets/system/game_covers/snes/chrono-trigger.jpg"
+          "rating": 93.18261394502431,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3plw.jpg"
         },
         {
           "name": "Super Metroid",
           "slug": "super-metroid",
           "rating": 92.20577065266465,
-          "cover_path": "assets/system/game_covers/snes/super-metroid.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5osy.jpg"
         },
         {
           "name": "Final Fantasy III",
           "slug": "final-fantasy-iii--7",
           "rating": 89.2616804436058,
-          "cover_path": "assets/system/game_covers/snes/final-fantasy-iii--7.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coaq5k.jpg"
         }
       ]
     },
@@ -796,34 +828,34 @@
       "release_dates": "1984 42 anos atrás (1984)",
       "top_games": [
         {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v",
-          "rating": 89.6486486511894,
-          "cover_path": "assets/system/game_covers/amstrad_cpc/grand-theft-auto-v.jpg"
+          "name": "Golden Axe",
+          "slug": "golden-axe",
+          "rating": 74.89794268914484,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co25qt.jpg"
         },
         {
-          "name": "The Witcher 3: Wild Hunt",
-          "slug": "the-witcher-3-wild-hunt",
-          "rating": 93.7785534399753,
-          "cover_path": "assets/system/game_covers/amstrad_cpc/the-witcher-3-wild-hunt.jpg"
+          "name": "Final Fight",
+          "slug": "final-fight",
+          "rating": 79.1760027876448,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4a0q.jpg"
         },
         {
-          "name": "Red Dead Redemption 2",
-          "slug": "red-dead-redemption-2",
-          "rating": 93.1788518853741,
-          "cover_path": "assets/system/game_covers/amstrad_cpc/red-dead-redemption-2.jpg"
+          "name": "SimCity",
+          "slug": "simcity",
+          "rating": 84.67559692194607,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1vwv.jpg"
         },
         {
-          "name": "Elden Ring",
-          "slug": "elden-ring",
-          "rating": 93.5350869699613,
-          "cover_path": "assets/system/game_covers/amstrad_cpc/elden-ring.jpg"
+          "name": "Altered Beast",
+          "slug": "altered-beast",
+          "rating": 64.49111575618286,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobuxa.jpg"
         },
         {
-          "name": "Hollow Knight",
-          "slug": "hollow-knight",
-          "rating": 91.89756681214497,
-          "cover_path": "assets/system/game_covers/amstrad_cpc/hollow-knight.jpg"
+          "name": "Teenage Mutant Ninja Turtles",
+          "slug": "teenage-mutant-ninja-turtles",
+          "rating": 80.01001250807258,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4iax.jpg"
         }
       ]
     },
@@ -873,31 +905,31 @@
           "name": "Age of Empires II: The Age of Kings",
           "slug": "age-of-empires-ii-the-age-of-kings",
           "rating": 86.14055690028279,
-          "cover_path": "assets/system/game_covers/dreamcast/age-of-empires-ii-the-age-of-kings.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co55xo.jpg"
         },
         {
           "name": "Resident Evil 2",
           "slug": "resident-evil-2",
           "rating": 83.73674172800433,
-          "cover_path": "assets/system/game_covers/dreamcast/resident-evil-2.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2vz0.jpg"
         },
         {
           "name": "Grand Theft Auto 2",
           "slug": "grand-theft-auto-2",
           "rating": 78.62226053833963,
-          "cover_path": "assets/system/game_covers/dreamcast/grand-theft-auto-2.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lb2.jpg"
         },
         {
           "name": "Resident Evil 3: Nemesis",
           "slug": "resident-evil-3-nemesis",
-          "rating": 80.66031672840539,
-          "cover_path": "assets/system/game_covers/dreamcast/resident-evil-3-nemesis.jpg"
+          "rating": 80.66058032748744,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2vvb.jpg"
         },
         {
           "name": "Quake III Arena",
           "slug": "quake-iii-arena",
           "rating": 82.51618402795751,
-          "cover_path": "assets/system/game_covers/dreamcast/quake-iii-arena.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1ybj.jpg"
         }
       ]
     },
@@ -934,39 +966,7 @@
       "best_selling_game": "Videocart-17: Pinball Challenge",
       "wikidata_id": "7487",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Fairchild_Channel_F",
-      "release_dates": "1976–1983",
-      "top_games": [
-        {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v",
-          "rating": 89.6486486511894,
-          "cover_path": "assets/system/game_covers/fairchild_channel_f/grand-theft-auto-v.jpg"
-        },
-        {
-          "name": "The Witcher 3: Wild Hunt",
-          "slug": "the-witcher-3-wild-hunt",
-          "rating": 93.7785534399753,
-          "cover_path": "assets/system/game_covers/fairchild_channel_f/the-witcher-3-wild-hunt.jpg"
-        },
-        {
-          "name": "Grand Theft Auto: San Andreas",
-          "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/fairchild_channel_f/grand-theft-auto-san-andreas.jpg"
-        },
-        {
-          "name": "Red Dead Redemption 2",
-          "slug": "red-dead-redemption-2",
-          "rating": 93.1788518853741,
-          "cover_path": "assets/system/game_covers/fairchild_channel_f/red-dead-redemption-2.jpg"
-        },
-        {
-          "name": "God of War",
-          "slug": "god-of-war--1",
-          "rating": 92.07544639251734,
-          "cover_path": "assets/system/game_covers/fairchild_channel_f/god-of-war--1.jpg"
-        }
-      ]
+      "release_dates": "1976–1983"
     },
     {
       "id": "gamecube",
@@ -1015,32 +1015,32 @@
         {
           "name": "Resident Evil 4",
           "slug": "resident-evil-4",
-          "rating": 87.40091418101315,
-          "cover_path": "assets/system/game_covers/gamecube/resident-evil-4.jpg"
+          "rating": 87.40092798898117,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2wk8.jpg"
         },
         {
           "name": "Super Smash Bros. Melee",
           "slug": "super-smash-bros-melee",
-          "rating": 88.7462100197601,
-          "cover_path": "assets/system/game_covers/gamecube/super-smash-bros-melee.jpg"
+          "rating": 88.74566153451718,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co21yv.jpg"
         },
         {
           "name": "The Legend of Zelda: The Wind Waker",
           "slug": "the-legend-of-zelda-the-wind-waker",
           "rating": 87.1925007191617,
-          "cover_path": "assets/system/game_covers/gamecube/the-legend-of-zelda-the-wind-waker.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3ohz.jpg"
         },
         {
           "name": "Metroid Prime",
           "slug": "metroid-prime",
-          "rating": 91.68765000143827,
-          "cover_path": "assets/system/game_covers/gamecube/metroid-prime.jpg"
+          "rating": 91.68755608591212,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3w4w.jpg"
         },
         {
           "name": "Need for Speed: Underground 2",
           "slug": "need-for-speed-underground-2",
-          "rating": 83.23658589854064,
-          "cover_path": "assets/system/game_covers/gamecube/need-for-speed-underground-2.jpg"
+          "rating": 83.2115994336319,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co209h.jpg"
         }
       ]
     },
@@ -1094,34 +1094,34 @@
       "release_dates": "AN: agosto de 1982 43 anos atrás (1982-08)EU: julho de 1983 42 anos atrás (1983-07)",
       "top_games": [
         {
-          "name": "Doom II: Hell on Earth",
-          "slug": "doom-ii-hell-on-earth",
-          "rating": 85.2481081273006,
-          "cover_path": "assets/system/game_covers/colecovision/doom-ii-hell-on-earth.jpg"
+          "name": "Pitfall!",
+          "slug": "pitfall",
+          "rating": 71.8637201346169,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9ck4.jpg"
         },
         {
-          "name": "Altered Beast",
-          "slug": "altered-beast--2",
-          "rating": 34.6547327496109,
-          "cover_path": "assets/system/game_covers/colecovision/altered-beast--2.jpg"
+          "name": "Antarctic Adventure",
+          "slug": "antarctic-adventure",
+          "rating": 64.86663880289453,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co68ca.jpg"
         },
         {
-          "name": "Fish Tycoon",
-          "slug": "fish-tycoon",
-          "rating": 70,
-          "cover_path": "assets/system/game_covers/colecovision/fish-tycoon.jpg"
+          "name": "BurgerTime",
+          "slug": "burgertime",
+          "rating": 76.46218221528778,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3sj9.jpg"
         },
         {
-          "name": "MTX Mototrax",
-          "slug": "mtx-mototrax",
-          "rating": null,
-          "cover_path": "assets/system/game_covers/colecovision/mtx-mototrax.jpg"
+          "name": "Spy Hunter",
+          "slug": "spy-hunter",
+          "rating": 76.04382566952731,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6owb.jpg"
         },
         {
-          "name": "Warfare Incorporated",
-          "slug": "warfare-incorporated",
-          "rating": null,
-          "cover_path": "assets/system/game_covers/colecovision/warfare-incorporated.jpg"
+          "name": "River Raid",
+          "slug": "river-raid",
+          "rating": 81.61226930174477,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6ilj.jpg"
         }
       ]
     },
@@ -1153,7 +1153,39 @@
         "DOSBox Staging",
         "DOSBox-X"
       ],
-      "generation": "Computador Pessoal"
+      "generation": "Computador Pessoal",
+      "top_games": [
+        {
+          "name": "Doom",
+          "slug": "doom",
+          "rating": 85.0083108467442,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5rav.jpg"
+        },
+        {
+          "name": "Fallout: A Post Nuclear Role Playing Game",
+          "slug": "fallout-a-post-nuclear-role-playing-game",
+          "rating": 85.71735089632955,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1ybn.jpg"
+        },
+        {
+          "name": "Monkey Island 2: LeChuck's Revenge",
+          "slug": "monkey-island-2-lechuck-s-revenge",
+          "rating": 88.30068011844384,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co30yr.jpg"
+        },
+        {
+          "name": "Doom II: Hell on Earth",
+          "slug": "doom-ii-hell-on-earth",
+          "rating": 85.24797060420575,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6iip.jpg"
+        },
+        {
+          "name": "Grand Theft Auto",
+          "slug": "grand-theft-auto",
+          "rating": 75.06933387831451,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lb0.jpg"
+        }
+      ]
     },
     {
       "id": "commodore_64",
@@ -1204,34 +1236,34 @@
       "generation": "Computador 8 bits",
       "top_games": [
         {
-          "name": "Grand Theft Auto: San Andreas",
-          "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/commodore_64/grand-theft-auto-san-andreas.jpg"
+          "name": "Golden Axe",
+          "slug": "golden-axe",
+          "rating": 74.89794268914484,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co25qt.jpg"
         },
         {
-          "name": "Grand Theft Auto: Vice City",
-          "slug": "grand-theft-auto-vice-city",
-          "rating": 87.3832342834808,
-          "cover_path": "assets/system/game_covers/commodore_64/grand-theft-auto-vice-city.jpg"
+          "name": "Final Fight",
+          "slug": "final-fight",
+          "rating": 79.1760027876448,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4a0q.jpg"
         },
         {
-          "name": "Max Payne",
-          "slug": "max-payne",
-          "rating": 85.80905778745775,
-          "cover_path": "assets/system/game_covers/commodore_64/max-payne.jpg"
+          "name": "SimCity",
+          "slug": "simcity",
+          "rating": 84.67559692194607,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1vwv.jpg"
         },
         {
-          "name": "Grand Theft Auto III",
-          "slug": "grand-theft-auto-iii",
-          "rating": 84.57156551373137,
-          "cover_path": "assets/system/game_covers/commodore_64/grand-theft-auto-iii.jpg"
+          "name": "Maniac Mansion",
+          "slug": "maniac-mansion",
+          "rating": 84.26098633720771,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co30ys.jpg"
         },
         {
-          "name": "Mafia",
-          "slug": "mafia",
-          "rating": 86.40377495555259,
-          "cover_path": "assets/system/game_covers/commodore_64/mafia.jpg"
+          "name": "Altered Beast",
+          "slug": "altered-beast",
+          "rating": 64.49111575618286,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobuxa.jpg"
         }
       ]
     },
@@ -1280,32 +1312,32 @@
         {
           "name": "Metal Gear Solid",
           "slug": "metal-gear-solid",
-          "rating": 90.48504009442881,
-          "cover_path": "assets/system/game_covers/sony_psp/metal-gear-solid.jpg"
+          "rating": 90.48479669546086,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobpak.jpg"
         },
         {
           "name": "Final Fantasy VII",
           "slug": "final-fantasy-vii",
           "rating": 90.46717145408533,
-          "cover_path": "assets/system/game_covers/sony_psp/final-fantasy-vii.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2kx2.jpg"
         },
         {
           "name": "Final Fantasy IX",
           "slug": "final-fantasy-ix",
           "rating": 88.07081187392251,
-          "cover_path": "assets/system/game_covers/sony_psp/final-fantasy-ix.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2unc.jpg"
         },
         {
           "name": "Castlevania: Symphony of the Night",
           "slug": "castlevania-symphony-of-the-night",
-          "rating": 92.09234088399384,
-          "cover_path": "assets/system/game_covers/sony_psp/castlevania-symphony-of-the-night.jpg"
+          "rating": 92.09226016791825,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co53m8.jpg"
         },
         {
           "name": "Star Wars: Battlefront II",
           "slug": "star-wars-battlefront-ii",
           "rating": 85.13744880061545,
-          "cover_path": "assets/system/game_covers/sony_psp/star-wars-battlefront-ii.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cob1g4.jpg"
         }
       ]
     },
@@ -1344,7 +1376,39 @@
       "sound": "Internal beeper (and higher)",
       "predecessor": "PC-8000 series",
       "successor": "PC-9800 series",
-      "generation": "Computador 8 bits"
+      "generation": "Computador 8 bits",
+      "top_games": [
+        {
+          "name": "1942",
+          "slug": "1942",
+          "rating": 67.74259210674639,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobtro.jpg"
+        },
+        {
+          "name": "R-Type",
+          "slug": "r-type",
+          "rating": 74.65376650855302,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co20ee.jpg"
+        },
+        {
+          "name": "Commando",
+          "slug": "commando",
+          "rating": 71.28040058348245,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2k3z.jpg"
+        },
+        {
+          "name": "Lode Runner",
+          "slug": "lode-runner",
+          "rating": 76.85898744305479,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6s9v.jpg"
+        },
+        {
+          "name": "Elevator Action",
+          "slug": "elevator-action",
+          "rating": 67.09581106330864,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co65am.jpg"
+        }
+      ]
     },
     {
       "id": "pc_98",
@@ -1379,7 +1443,39 @@
       "os": "N88-BASIC(86), CP/M-86, MS-DOS, Windows, OS/2, PC-UX",
       "cpu": "Intel 8086, 80286, i386, i486, NEC V30, i586",
       "predecessor": "PC-8800 series",
-      "generation": "Computador 16 bits"
+      "generation": "Computador 16 bits",
+      "top_games": [
+        {
+          "name": "Doom",
+          "slug": "doom",
+          "rating": 85.0083108467442,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5rav.jpg"
+        },
+        {
+          "name": "Doom II: Hell on Earth",
+          "slug": "doom-ii-hell-on-earth",
+          "rating": 85.24797060420575,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6iip.jpg"
+        },
+        {
+          "name": "Wolfenstein 3D",
+          "slug": "wolfenstein-3d",
+          "rating": 77.52126026979008,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2604.jpg"
+        },
+        {
+          "name": "Sid Meier's Civilization",
+          "slug": "sid-meiers-civilization",
+          "rating": 90.0581129684922,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1y9x.jpg"
+        },
+        {
+          "name": "SimCity 2000",
+          "slug": "simcity-2000",
+          "rating": 78.62471912361185,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1o4d.jpg"
+        }
+      ]
     },
     {
       "id": "daphne",
@@ -1407,34 +1503,34 @@
       "generation": "Plataforma de Software",
       "top_games": [
         {
+          "name": "Super Mario World",
+          "slug": "super-mario-world",
+          "rating": 91.70204595334357,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8lo8.jpg"
+        },
+        {
+          "name": "Super Mario Bros. 3",
+          "slug": "super-mario-bros-3",
+          "rating": 89.37375670367784,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7ozx.jpg"
+        },
+        {
           "name": "Super Mario Bros.",
           "slug": "super-mario-bros",
-          "rating": 83.68811675605257,
-          "cover_path": "assets/system/game_covers/daphne/super-mario-bros.jpg"
+          "rating": 83.6882158325661,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6pib.jpg"
         },
         {
-          "name": "The Legend of Zelda",
-          "slug": "the-legend-of-zelda",
-          "rating": 80.52648907646105,
-          "cover_path": "assets/system/game_covers/daphne/the-legend-of-zelda.jpg"
+          "name": "Sonic the Hedgehog",
+          "slug": "sonic-the-hedgehog",
+          "rating": 81.63815967560947,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coanlj.jpg"
         },
         {
-          "name": "Castlevania",
-          "slug": "castlevania",
-          "rating": 78.89439934429028,
-          "cover_path": "assets/system/game_covers/daphne/castlevania.jpg"
-        },
-        {
-          "name": "Zelda II: The Adventure of Link",
-          "slug": "zelda-ii-the-adventure-of-link",
-          "rating": 65.49483512179387,
-          "cover_path": "assets/system/game_covers/daphne/zelda-ii-the-adventure-of-link.jpg"
-        },
-        {
-          "name": "Castlevania II: Simon's Quest",
-          "slug": "castlevania-ii-simon-s-quest",
-          "rating": 61.76185260819832,
-          "cover_path": "assets/system/game_covers/daphne/castlevania-ii-simon-s-quest.jpg"
+          "name": "Tekken 3",
+          "slug": "tekken-3",
+          "rating": 84.4551466418976,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8d7q.jpg"
         }
       ]
     },
@@ -1473,7 +1569,39 @@
       "wikidata_id": "2116",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Apple_II",
       "release_dates": "junho de 1977 48 anos atrás (1977-06) (original Apple II)",
-      "generation": "Computador 8 bits"
+      "generation": "Computador 8 bits",
+      "top_games": [
+        {
+          "name": "Prince of Persia",
+          "slug": "prince-of-persia--2",
+          "rating": 81.79816389068674,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1vww.jpg"
+        },
+        {
+          "name": "Maniac Mansion",
+          "slug": "maniac-mansion",
+          "rating": 84.26098633720771,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co30ys.jpg"
+        },
+        {
+          "name": "Paperboy",
+          "slug": "paperboy",
+          "rating": 53.75615786415583,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5yma.jpg"
+        },
+        {
+          "name": "Ms. Pac-Man",
+          "slug": "ms-pac-man",
+          "rating": 79.69142857889247,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co53rj.jpg"
+        },
+        {
+          "name": "Asteroids",
+          "slug": "asteroids",
+          "rating": 73.27144346449892,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6nhi.jpg"
+        }
+      ]
     },
     {
       "id": "doom",
@@ -1548,31 +1676,31 @@
           "name": "Pokémon Platinum Version",
           "slug": "pokemon-platinum-version",
           "rating": 82.75753315413384,
-          "cover_path": "assets/system/game_covers/nintendo_ds/pokemon-platinum-version.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8gvp.jpg"
         },
         {
           "name": "Mario Kart DS",
           "slug": "mario-kart-ds",
           "rating": 81.94561691564631,
-          "cover_path": "assets/system/game_covers/nintendo_ds/mario-kart-ds.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cob9rx.jpg"
         },
         {
           "name": "New Super Mario Bros.",
           "slug": "new-super-mario-bros",
           "rating": 80.67454791162028,
-          "cover_path": "assets/system/game_covers/nintendo_ds/new-super-mario-bros.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co21rm.jpg"
         },
         {
           "name": "Pokémon SoulSilver Version",
           "slug": "pokemon-soulsilver-version",
           "rating": 89.9425195096486,
-          "cover_path": "assets/system/game_covers/nintendo_ds/pokemon-soulsilver-version.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1z59.jpg"
         },
         {
           "name": "Pokémon Black Version",
           "slug": "pokemon-black-version",
           "rating": 81.12457160143703,
-          "cover_path": "assets/system/game_covers/nintendo_ds/pokemon-black-version.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1z1x.jpg"
         }
       ]
     },
@@ -1615,7 +1743,39 @@
       "wikidata_id": "2325792",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Sharp_X1",
       "release_dates": "1982 (1982)",
-      "generation": "Computador 8 bits"
+      "generation": "Computador 8 bits",
+      "top_games": [
+        {
+          "name": "Galaga",
+          "slug": "galaga",
+          "rating": 72.81997784627794,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6njq.jpg"
+        },
+        {
+          "name": "Battle City",
+          "slug": "battle-city",
+          "rating": 78.07200932685879,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2f7d.jpg"
+        },
+        {
+          "name": "1942",
+          "slug": "1942",
+          "rating": 67.74259210674639,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobtro.jpg"
+        },
+        {
+          "name": "Lode Runner",
+          "slug": "lode-runner",
+          "rating": 76.85898744305479,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6s9v.jpg"
+        },
+        {
+          "name": "Elevator Action",
+          "slug": "elevator-action",
+          "rating": 67.09581106330864,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co65am.jpg"
+        }
+      ]
     },
     {
       "id": "famicom_disk_system",
@@ -1651,34 +1811,34 @@
       "release_dates": "JP: 21 de fevereiro de 1986 (1986-02-21)",
       "top_games": [
         {
-          "name": "Super Mario Bros. 3",
-          "slug": "super-mario-bros-3",
-          "rating": 89.37415788766094,
-          "cover_path": "assets/system/game_covers/famicom_disk_system/super-mario-bros-3.jpg"
-        },
-        {
           "name": "Super Mario Bros.",
           "slug": "super-mario-bros",
-          "rating": 83.68811675605257,
-          "cover_path": "assets/system/game_covers/famicom_disk_system/super-mario-bros.jpg"
-        },
-        {
-          "name": "Tetris",
-          "slug": "tetris",
-          "rating": 86.28272589226856,
-          "cover_path": "assets/system/game_covers/famicom_disk_system/tetris.jpg"
+          "rating": 83.6882158325661,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6pib.jpg"
         },
         {
           "name": "The Legend of Zelda",
           "slug": "the-legend-of-zelda",
-          "rating": 80.52648907646105,
-          "cover_path": "assets/system/game_covers/famicom_disk_system/the-legend-of-zelda.jpg"
+          "rating": 80.5257731041674,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1uii.jpg"
         },
         {
-          "name": "Super Mario Bros. 2",
-          "slug": "super-mario-bros-2",
-          "rating": 76.53820214088867,
-          "cover_path": "assets/system/game_covers/famicom_disk_system/super-mario-bros-2.jpg"
+          "name": "Castlevania",
+          "slug": "castlevania",
+          "rating": 78.89439934429028,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coba2o.jpg"
+        },
+        {
+          "name": "Zelda II: The Adventure of Link",
+          "slug": "zelda-ii-the-adventure-of-link",
+          "rating": 65.49483512179387,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1uje.jpg"
+        },
+        {
+          "name": "Castlevania II: Simon's Quest",
+          "slug": "castlevania-ii-simon-s-quest",
+          "rating": 61.87739824845287,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9sn4.jpg"
         }
       ]
     },
@@ -1720,34 +1880,28 @@
       "release_dates": "AN: outubro de 1982EU: 1983JP: 1983",
       "top_games": [
         {
-          "name": "Undertale",
-          "slug": "undertale",
-          "rating": 85.9710874646361,
-          "cover_path": "assets/system/game_covers/vectrex/undertale.jpg"
+          "name": "Pole Position",
+          "slug": "pole-position",
+          "rating": 70.32111813576758,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coc1m4.jpg"
         },
         {
-          "name": "Borderlands 2",
-          "slug": "borderlands-2",
-          "rating": 83.62412830687421,
-          "cover_path": "assets/system/game_covers/vectrex/borderlands-2.jpg"
+          "name": "Scramble",
+          "slug": "scramble",
+          "rating": 60.50364946767195,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/sfbg9rsomsv0digig8ht.jpg"
         },
         {
-          "name": "Stardew Valley",
-          "slug": "stardew-valley",
-          "rating": 86.16210361158443,
-          "cover_path": "assets/system/game_covers/vectrex/stardew-valley.jpg"
+          "name": "Armor Attack",
+          "slug": "armor-attack",
+          "rating": 54.37700452718248,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3c5e.jpg"
         },
         {
-          "name": "The Walking Dead",
-          "slug": "the-walking-dead",
-          "rating": 85.82903464481535,
-          "cover_path": "assets/system/game_covers/vectrex/the-walking-dead.jpg"
-        },
-        {
-          "name": "Limbo",
-          "slug": "limbo",
-          "rating": 80.98891008683509,
-          "cover_path": "assets/system/game_covers/vectrex/limbo.jpg"
+          "name": "Bedlam",
+          "slug": "bedlam",
+          "rating": null,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/u76hza6pgnffhntqcirt.jpg"
         }
       ]
     },
@@ -1792,34 +1946,34 @@
       "release_dates": "21 de abril de 1989 Game Boy:, JP: 21 de abril de 1989NA: 31 de julho de 1989EU: 28 de setembro de 1990Game Boy Pocket:, JP: 20 de julho de 1996NA: 2 de setembro de 1996Game Boy Light:, JP: 14 de abril de 1998",
       "top_games": [
         {
-          "name": "The Legend of Zelda: Ocarina of Time",
-          "slug": "the-legend-of-zelda-ocarina-of-time",
-          "rating": 91.54932253393936,
-          "cover_path": "assets/system/game_covers/game_boy/the-legend-of-zelda-ocarina-of-time.jpg"
+          "name": "Pokémon Red Version",
+          "slug": "pokemon-red-version",
+          "rating": 84.65198687655453,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5pi4.jpg"
         },
         {
-          "name": "Super Mario 64",
-          "slug": "super-mario-64",
-          "rating": 88.7595914703998,
-          "cover_path": "assets/system/game_covers/game_boy/super-mario-64.jpg"
+          "name": "Pokémon Yellow Version: Special Pikachu Edition",
+          "slug": "pokemon-yellow-version-special-pikachu-edition",
+          "rating": 82.63518048752671,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5pih.jpg"
         },
         {
-          "name": "The Legend of Zelda: Majora's Mask",
-          "slug": "the-legend-of-zelda-majora-s-mask",
-          "rating": 86.50658620129278,
-          "cover_path": "assets/system/game_covers/game_boy/the-legend-of-zelda-majora-s-mask.jpg"
+          "name": "Pokémon Blue Version",
+          "slug": "pokemon-blue-version",
+          "rating": 86.00617965540258,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5pi7.jpg"
         },
         {
-          "name": "Mario Kart 64",
-          "slug": "mario-kart-64",
-          "rating": 82.29137587065662,
-          "cover_path": "assets/system/game_covers/game_boy/mario-kart-64.jpg"
+          "name": "Super Mario Land",
+          "slug": "super-mario-land",
+          "rating": 74.32306061098365,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7o14.jpg"
         },
         {
-          "name": "Grand Theft Auto",
-          "slug": "grand-theft-auto",
-          "rating": 75.06933387831451,
-          "cover_path": "assets/system/game_covers/game_boy/grand-theft-auto.jpg"
+          "name": "The Legend of Zelda: Link's Awakening",
+          "slug": "the-legend-of-zelda-links-awakening",
+          "rating": 86.43083443181351,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3nnt.jpg"
         }
       ]
     },
@@ -1865,31 +2019,31 @@
           "name": "Pokémon Emerald Version",
           "slug": "pokemon-emerald-version",
           "rating": 86.07220257591104,
-          "cover_path": "assets/system/game_covers/game_boy_advance/pokemon-emerald-version.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1zhr.jpg"
         },
         {
           "name": "EarthBound",
           "slug": "earthbound",
           "rating": 89.29093944471872,
-          "cover_path": "assets/system/game_covers/game_boy_advance/earthbound.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6v07.jpg"
         },
         {
           "name": "Pokémon FireRed Version",
           "slug": "pokemon-firered-version",
           "rating": 83.10646177132371,
-          "cover_path": "assets/system/game_covers/game_boy_advance/pokemon-firered-version.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1ziq.jpg"
         },
         {
           "name": "The Legend of Zelda: The Minish Cap",
           "slug": "the-legend-of-zelda-the-minish-cap",
           "rating": 84.48195717898359,
-          "cover_path": "assets/system/game_covers/game_boy_advance/the-legend-of-zelda-the-minish-cap.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3nsk.jpg"
         },
         {
           "name": "Pokémon Ruby Version",
           "slug": "pokemon-ruby-version",
           "rating": 81.34872512042647,
-          "cover_path": "assets/system/game_covers/game_boy_advance/pokemon-ruby-version.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1zhq.jpg"
         }
       ]
     },
@@ -1934,34 +2088,34 @@
       "release_dates": "JP: 21 de outubro de 1998NA: 18 de novembro de 1998EU: 23 de novembro de 1998AU: 27 de novembro de 1998",
       "top_games": [
         {
-          "name": "The Legend of Zelda: Ocarina of Time",
-          "slug": "the-legend-of-zelda-ocarina-of-time",
-          "rating": 91.54932253393936,
-          "cover_path": "assets/system/game_covers/game_boy_color/the-legend-of-zelda-ocarina-of-time.jpg"
+          "name": "Pokémon Yellow Version: Special Pikachu Edition",
+          "slug": "pokemon-yellow-version-special-pikachu-edition",
+          "rating": 82.63518048752671,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5pih.jpg"
         },
         {
-          "name": "Super Mario 64",
-          "slug": "super-mario-64",
-          "rating": 88.7595914703998,
-          "cover_path": "assets/system/game_covers/game_boy_color/super-mario-64.jpg"
+          "name": "Pokémon Crystal Version",
+          "slug": "pokemon-crystal-version",
+          "rating": 88.57342003066213,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5pil.jpg"
         },
         {
-          "name": "Super Mario World",
-          "slug": "super-mario-world",
-          "rating": 91.70191481860208,
-          "cover_path": "assets/system/game_covers/game_boy_color/super-mario-world.jpg"
+          "name": "Pokémon Silver Version",
+          "slug": "pokemon-silver-version",
+          "rating": 87.85039588849102,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5pid.jpg"
         },
         {
-          "name": "Super Mario Bros. 3",
-          "slug": "super-mario-bros-3",
-          "rating": 89.37415788766094,
-          "cover_path": "assets/system/game_covers/game_boy_color/super-mario-bros-3.jpg"
+          "name": "Pokémon Gold Version",
+          "slug": "pokemon-gold-version",
+          "rating": 86.68615877274019,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5pia.jpg"
         },
         {
-          "name": "The Legend of Zelda: A Link to the Past",
-          "slug": "the-legend-of-zelda-a-link-to-the-past",
-          "rating": 91.93906391924232,
-          "cover_path": "assets/system/game_covers/game_boy_color/the-legend-of-zelda-a-link-to-the-past.jpg"
+          "name": "The Legend of Zelda: Oracle of Seasons",
+          "slug": "the-legend-of-zelda-oracle-of-seasons",
+          "rating": 81.30201167549086,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2tw0.jpg"
         }
       ]
     },
@@ -2013,31 +2167,31 @@
           "name": "Sonic the Hedgehog",
           "slug": "sonic-the-hedgehog",
           "rating": 81.63815967560947,
-          "cover_path": "assets/system/game_covers/sega_genesis/sonic-the-hedgehog.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coanlj.jpg"
         },
         {
           "name": "Sonic the Hedgehog 2",
           "slug": "sonic-the-hedgehog-2",
           "rating": 86.49102837155118,
-          "cover_path": "assets/system/game_covers/sega_genesis/sonic-the-hedgehog-2.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5kkj.jpg"
         },
         {
           "name": "Mortal Kombat II",
           "slug": "mortal-kombat-ii",
           "rating": 76.4115109309212,
-          "cover_path": "assets/system/game_covers/sega_genesis/mortal-kombat-ii.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6bxu.jpg"
         },
         {
           "name": "Sonic the Hedgehog 3",
           "slug": "sonic-the-hedgehog-3",
           "rating": 82.5615822168294,
-          "cover_path": "assets/system/game_covers/sega_genesis/sonic-the-hedgehog-3.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1zut.jpg"
         },
         {
           "name": "The Lion King",
           "slug": "the-lion-king",
           "rating": 74.52419576249048,
-          "cover_path": "assets/system/game_covers/sega_genesis/the-lion-king.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co63ny.jpg"
         }
       ]
     },
@@ -2080,34 +2234,34 @@
       "release_dates": "JP: 6 de outubro de 1990NA/EU: abril de 1991AU: 1992",
       "top_games": [
         {
-          "name": "Pokémon Red Version",
-          "slug": "pokemon-red-version",
-          "rating": 84.65198687655453,
-          "cover_path": "assets/system/game_covers/game_gear/pokemon-red-version.jpg"
+          "name": "Battletoads",
+          "slug": "battletoads",
+          "rating": 76.17949653866779,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4i2w.jpg"
         },
         {
-          "name": "Pokémon Yellow Version: Special Pikachu Edition",
-          "slug": "pokemon-yellow-version-special-pikachu-edition",
-          "rating": 82.63518048752671,
-          "cover_path": "assets/system/game_covers/game_gear/pokemon-yellow-version-special-pikachu-edition.jpg"
+          "name": "Ms. Pac-Man",
+          "slug": "ms-pac-man",
+          "rating": 79.69142857889247,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co53rj.jpg"
         },
         {
-          "name": "Pokémon Blue Version",
-          "slug": "pokemon-blue-version",
-          "rating": 86.00617965540258,
-          "cover_path": "assets/system/game_covers/game_gear/pokemon-blue-version.jpg"
+          "name": "Super Star Wars: Return of the Jedi",
+          "slug": "super-star-wars-return-of-the-jedi",
+          "rating": 72.11906737391111,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co25xp.jpg"
         },
         {
-          "name": "Super Mario Land",
-          "slug": "super-mario-land",
-          "rating": 74.32306061098365,
-          "cover_path": "assets/system/game_covers/game_gear/super-mario-land.jpg"
+          "name": "Sonic the Hedgehog 2",
+          "slug": "sonic-the-hedgehog-2--1",
+          "rating": 90.42571386256468,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1zus.jpg"
         },
         {
-          "name": "The Legend of Zelda: Link's Awakening",
-          "slug": "the-legend-of-zelda-links-awakening",
-          "rating": 86.43083443181351,
-          "cover_path": "assets/system/game_covers/game_gear/the-legend-of-zelda-links-awakening.jpg"
+          "name": "Fatal Fury Special",
+          "slug": "fatal-fury-special",
+          "rating": 71.98528196013966,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3b7p.jpg"
         }
       ]
     },
@@ -2153,34 +2307,34 @@
       "successor": "PlayStation 3",
       "top_games": [
         {
-          "name": "Metal Gear Solid",
-          "slug": "metal-gear-solid",
-          "rating": 90.48504009442881,
-          "cover_path": "assets/system/game_covers/playstation_2/metal-gear-solid.jpg"
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.10784826424586,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lb9.jpg"
         },
         {
-          "name": "Final Fantasy VII",
-          "slug": "final-fantasy-vii",
-          "rating": 90.46717145408533,
-          "cover_path": "assets/system/game_covers/playstation_2/final-fantasy-vii.jpg"
+          "name": "Grand Theft Auto: Vice City",
+          "slug": "grand-theft-auto-vice-city",
+          "rating": 87.40310389464575,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lbb.jpg"
         },
         {
-          "name": "Final Fantasy IX",
-          "slug": "final-fantasy-ix",
-          "rating": 88.07081187392251,
-          "cover_path": "assets/system/game_covers/playstation_2/final-fantasy-ix.jpg"
+          "name": "Max Payne",
+          "slug": "max-payne",
+          "rating": 85.75311752073526,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3wb2.jpg"
         },
         {
-          "name": "Castlevania: Symphony of the Night",
-          "slug": "castlevania-symphony-of-the-night",
-          "rating": 92.09234088399384,
-          "cover_path": "assets/system/game_covers/playstation_2/castlevania-symphony-of-the-night.jpg"
+          "name": "Grand Theft Auto III",
+          "slug": "grand-theft-auto-iii",
+          "rating": 84.53279230296553,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lb8.jpg"
         },
         {
-          "name": "Crash Bandicoot",
-          "slug": "crash-bandicoot",
-          "rating": 80.49111160450875,
-          "cover_path": "assets/system/game_covers/playstation_2/crash-bandicoot.jpg"
+          "name": "Mafia",
+          "slug": "mafia",
+          "rating": 86.30730239569915,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1qrt.jpg"
         }
       ]
     },
@@ -2220,7 +2374,39 @@
       "graphics": "Standard Television Interface Chip (STIC)",
       "sound": "GI AY-3-8914 (three-channels, one noise generator)",
       "online_services": "PlayCable",
-      "best_selling_game": "Las Vegas Poker & Blackjack 1.939 millionMajor League Baseball 1.085 million (em junho de 1983)"
+      "best_selling_game": "Las Vegas Poker & Blackjack 1.939 millionMajor League Baseball 1.085 million (em junho de 1983)",
+      "top_games": [
+        {
+          "name": "Pitfall!",
+          "slug": "pitfall",
+          "rating": 71.8637201346169,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9ck4.jpg"
+        },
+        {
+          "name": "Commando",
+          "slug": "commando",
+          "rating": 71.28040058348245,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2k3z.jpg"
+        },
+        {
+          "name": "Pole Position",
+          "slug": "pole-position",
+          "rating": 70.32111813576758,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coc1m4.jpg"
+        },
+        {
+          "name": "BurgerTime",
+          "slug": "burgertime",
+          "rating": 76.46218221528778,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3sj9.jpg"
+        },
+        {
+          "name": "River Raid",
+          "slug": "river-raid",
+          "rating": 81.61226930174477,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6ilj.jpg"
+        }
+      ]
     },
     {
       "id": "atari_jaguar_cd",
@@ -2249,7 +2435,39 @@
       "release_dates": "21 de setembro de 1995",
       "launch_price": null,
       "discontinued": "1996",
-      "media": "CD-ROM"
+      "media": "CD-ROM",
+      "top_games": [
+        {
+          "name": "Myst",
+          "slug": "myst",
+          "rating": 75.7261760041352,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1y96.jpg"
+        },
+        {
+          "name": "The King of Fighters '97",
+          "slug": "the-king-of-fighters-97",
+          "rating": 80.88452043654462,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coc5fo.jpg"
+        },
+        {
+          "name": "Primal Rage",
+          "slug": "primal-rage",
+          "rating": 61.02468325594474,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co309j.jpg"
+        },
+        {
+          "name": "Dragon's Lair",
+          "slug": "dragon-s-lair",
+          "rating": 72.14304104420813,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co790c.jpg"
+        },
+        {
+          "name": "Space Ace",
+          "slug": "space-ace",
+          "rating": 69.89998594851373,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1p5y.jpg"
+        }
+      ]
     },
     {
       "id": "atari_lynx",
@@ -2285,7 +2503,39 @@
       "display": "Backlit 3.5\" color LCD; 160 × 102 standard resolution (16,320 addressable pixels)",
       "graphics": "\"Suzy\" (16-bit custom CMOS)",
       "sound": "4 channels, 8-bit DAC or PSG sound",
-      "best_selling_game": "RoadBlasters"
+      "best_selling_game": "RoadBlasters",
+      "top_games": [
+        {
+          "name": "Eye of the Beholder",
+          "slug": "eye-of-the-beholder--1",
+          "rating": 81.66921676593154,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co28s7.jpg"
+        },
+        {
+          "name": "Shadow of the Beast",
+          "slug": "shadow-of-the-beast",
+          "rating": 70.308062174774,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2jhy.jpg"
+        },
+        {
+          "name": "Rygar",
+          "slug": "rygar",
+          "rating": 72.74116851715792,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4i87.jpg"
+        },
+        {
+          "name": "Raiden",
+          "slug": "raiden",
+          "rating": 77.51491269350716,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5z96.jpg"
+        },
+        {
+          "name": "Battlezone",
+          "slug": "battlezone--1",
+          "rating": 76.57794240186024,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3mws.jpg"
+        }
+      ]
     },
     {
       "id": "sega_naomi",
@@ -2311,34 +2561,34 @@
       "generation": "Arcade",
       "top_games": [
         {
-          "name": "Super Mario Bros.",
-          "slug": "super-mario-bros",
-          "rating": 83.68811675605257,
-          "cover_path": "assets/system/game_covers/sega_naomi/super-mario-bros.jpg"
+          "name": "Age of Empires II: The Age of Kings",
+          "slug": "age-of-empires-ii-the-age-of-kings",
+          "rating": 86.14055690028279,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co55xo.jpg"
         },
         {
-          "name": "The Legend of Zelda",
-          "slug": "the-legend-of-zelda",
-          "rating": 80.52648907646105,
-          "cover_path": "assets/system/game_covers/sega_naomi/the-legend-of-zelda.jpg"
+          "name": "Resident Evil 2",
+          "slug": "resident-evil-2",
+          "rating": 83.73674172800433,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2vz0.jpg"
         },
         {
-          "name": "Castlevania",
-          "slug": "castlevania",
-          "rating": 78.89439934429028,
-          "cover_path": "assets/system/game_covers/sega_naomi/castlevania.jpg"
+          "name": "Grand Theft Auto 2",
+          "slug": "grand-theft-auto-2",
+          "rating": 78.62226053833963,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lb2.jpg"
         },
         {
-          "name": "Zelda II: The Adventure of Link",
-          "slug": "zelda-ii-the-adventure-of-link",
-          "rating": 65.49483512179387,
-          "cover_path": "assets/system/game_covers/sega_naomi/zelda-ii-the-adventure-of-link.jpg"
+          "name": "Resident Evil 3: Nemesis",
+          "slug": "resident-evil-3-nemesis",
+          "rating": 80.66058032748744,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2vvb.jpg"
         },
         {
-          "name": "Castlevania II: Simon's Quest",
-          "slug": "castlevania-ii-simon-s-quest",
-          "rating": 61.76185260819832,
-          "cover_path": "assets/system/game_covers/sega_naomi/castlevania-ii-simon-s-quest.jpg"
+          "name": "Quake III Arena",
+          "slug": "quake-iii-arena",
+          "rating": 82.51618402795751,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1ybj.jpg"
         }
       ]
     },
@@ -2373,39 +2623,7 @@
       "storage": "1,792 B ROM",
       "display": "Segmented liquid-crystal display",
       "best_selling_game": "Donkey Kong (8 million)",
-      "successor": "Game Boy",
-      "top_games": [
-        {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v",
-          "rating": 89.6486486511894,
-          "cover_path": "assets/system/game_covers/game_&_watch/grand-theft-auto-v.jpg"
-        },
-        {
-          "name": "The Witcher 3: Wild Hunt",
-          "slug": "the-witcher-3-wild-hunt",
-          "rating": 93.7785534399753,
-          "cover_path": "assets/system/game_covers/game_&_watch/the-witcher-3-wild-hunt.jpg"
-        },
-        {
-          "name": "Grand Theft Auto: San Andreas",
-          "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/game_&_watch/grand-theft-auto-san-andreas.jpg"
-        },
-        {
-          "name": "Red Dead Redemption 2",
-          "slug": "red-dead-redemption-2",
-          "rating": 93.1788518853741,
-          "cover_path": "assets/system/game_covers/game_&_watch/red-dead-redemption-2.jpg"
-        },
-        {
-          "name": "God of War",
-          "slug": "god-of-war--1",
-          "rating": 92.07544639251734,
-          "cover_path": "assets/system/game_covers/game_&_watch/god-of-war--1.jpg"
-        }
-      ]
+      "successor": "Game Boy"
     },
     {
       "id": "pokémon_mini",
@@ -2438,39 +2656,7 @@
       "cpu": "S1C88 @ 4 MHz",
       "memory": "4 KB SRAM",
       "storage": "4 KB BIOS ROM, 8 KB EEPROM (6 save \"files\")",
-      "display": "Monochrome LCD, 96 × 64 px",
-      "top_games": [
-        {
-          "name": "Super Mario Bros. 3",
-          "slug": "super-mario-bros-3",
-          "rating": 89.37415788766094,
-          "cover_path": "assets/system/game_covers/pokémon_mini/super-mario-bros-3.jpg"
-        },
-        {
-          "name": "Super Mario Bros.",
-          "slug": "super-mario-bros",
-          "rating": 83.68811675605257,
-          "cover_path": "assets/system/game_covers/pokémon_mini/super-mario-bros.jpg"
-        },
-        {
-          "name": "Tetris",
-          "slug": "tetris",
-          "rating": 86.28272589226856,
-          "cover_path": "assets/system/game_covers/pokémon_mini/tetris.jpg"
-        },
-        {
-          "name": "The Legend of Zelda",
-          "slug": "the-legend-of-zelda",
-          "rating": 80.52648907646105,
-          "cover_path": "assets/system/game_covers/pokémon_mini/the-legend-of-zelda.jpg"
-        },
-        {
-          "name": "Super Mario Bros. 2",
-          "slug": "super-mario-bros-2",
-          "rating": 76.53820214088867,
-          "cover_path": "assets/system/game_covers/pokémon_mini/super-mario-bros-2.jpg"
-        }
-      ]
+      "display": "Monochrome LCD, 96 × 64 px"
     },
     {
       "id": "atari_st",
@@ -2509,34 +2695,34 @@
       "generation": "Computador 16 bits",
       "top_games": [
         {
-          "name": "The Legend of Zelda: Ocarina of Time",
-          "slug": "the-legend-of-zelda-ocarina-of-time",
-          "rating": 91.54932253393936,
-          "cover_path": "assets/system/game_covers/atari_st/the-legend-of-zelda-ocarina-of-time.jpg"
+          "name": "The Secret of Monkey Island",
+          "slug": "the-secret-of-monkey-island",
+          "rating": 86.65435863863428,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co28bp.jpg"
         },
         {
-          "name": "Super Mario 64",
-          "slug": "super-mario-64",
-          "rating": 88.7595914703998,
-          "cover_path": "assets/system/game_covers/atari_st/super-mario-64.jpg"
+          "name": "Sid Meier's Civilization",
+          "slug": "sid-meiers-civilization",
+          "rating": 90.0581129684922,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1y9x.jpg"
         },
         {
-          "name": "Super Mario World",
-          "slug": "super-mario-world",
-          "rating": 91.70191481860208,
-          "cover_path": "assets/system/game_covers/atari_st/super-mario-world.jpg"
+          "name": "Golden Axe",
+          "slug": "golden-axe",
+          "rating": 74.89794268914484,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co25qt.jpg"
         },
         {
-          "name": "Super Mario Bros. 3",
-          "slug": "super-mario-bros-3",
-          "rating": 89.37415788766094,
-          "cover_path": "assets/system/game_covers/atari_st/super-mario-bros-3.jpg"
+          "name": "Out of This World",
+          "slug": "out-of-this-world",
+          "rating": 84.31778528919351,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9ssg.jpg"
         },
         {
-          "name": "The Legend of Zelda: A Link to the Past",
-          "slug": "the-legend-of-zelda-a-link-to-the-past",
-          "rating": 91.93906391924232,
-          "cover_path": "assets/system/game_covers/atari_st/the-legend-of-zelda-a-link-to-the-past.jpg"
+          "name": "Final Fight",
+          "slug": "final-fight",
+          "rating": 79.1760027876448,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4a0q.jpg"
         }
       ]
     },
@@ -2575,34 +2761,34 @@
       "generation": "Computador 8 bits",
       "top_games": [
         {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v--2",
-          "rating": 87.43949222524442,
-          "cover_path": "assets/system/game_covers/msx/grand-theft-auto-v--2.jpg"
-        },
-        {
-          "name": "Golden Axe",
-          "slug": "golden-axe",
-          "rating": 74.89794268914484,
-          "cover_path": "assets/system/game_covers/msx/golden-axe.jpg"
-        },
-        {
-          "name": "Final Fight",
-          "slug": "final-fight",
-          "rating": 79.1760027876448,
-          "cover_path": "assets/system/game_covers/msx/final-fight.jpg"
-        },
-        {
-          "name": "SimCity",
-          "slug": "simcity",
-          "rating": 84.67559692194607,
-          "cover_path": "assets/system/game_covers/msx/simcity.jpg"
+          "name": "Galaga",
+          "slug": "galaga",
+          "rating": 72.81997784627794,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6njq.jpg"
         },
         {
           "name": "Altered Beast",
           "slug": "altered-beast",
           "rating": 64.49111575618286,
-          "cover_path": "assets/system/game_covers/msx/altered-beast.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobuxa.jpg"
+        },
+        {
+          "name": "Pitfall!",
+          "slug": "pitfall",
+          "rating": 71.8637201346169,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9ck4.jpg"
+        },
+        {
+          "name": "1942",
+          "slug": "1942",
+          "rating": 67.74259210674639,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobtro.jpg"
+        },
+        {
+          "name": "R-Type",
+          "slug": "r-type",
+          "rating": 74.65376650855302,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co20ee.jpg"
         }
       ]
     },
@@ -2640,34 +2826,34 @@
       "generation": "Computador 8 bits",
       "top_games": [
         {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v--2",
-          "rating": 87.43949222524442,
-          "cover_path": "assets/system/game_covers/msx2/grand-theft-auto-v--2.jpg"
+          "name": "Metal Gear",
+          "slug": "metal-gear",
+          "rating": 73.62597598487228,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3ogc.jpg"
         },
         {
-          "name": "Golden Axe",
-          "slug": "golden-axe",
-          "rating": 74.89794268914484,
-          "cover_path": "assets/system/game_covers/msx2/golden-axe.jpg"
+          "name": "Metal Gear 2: Solid Snake",
+          "slug": "metal-gear-2-solid-snake",
+          "rating": 80.9610607152797,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3whu.jpg"
         },
         {
-          "name": "Final Fight",
-          "slug": "final-fight",
-          "rating": 79.1760027876448,
-          "cover_path": "assets/system/game_covers/msx2/final-fight.jpg"
+          "name": "1942",
+          "slug": "1942",
+          "rating": 67.74259210674639,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobtro.jpg"
         },
         {
-          "name": "SimCity",
-          "slug": "simcity",
-          "rating": 84.67559692194607,
-          "cover_path": "assets/system/game_covers/msx2/simcity.jpg"
+          "name": "Dragon Warrior",
+          "slug": "dragon-warrior",
+          "rating": 75.38895831481062,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co55p3.jpg"
         },
         {
-          "name": "Altered Beast",
-          "slug": "altered-beast",
-          "rating": 64.49111575618286,
-          "cover_path": "assets/system/game_covers/msx2/altered-beast.jpg"
+          "name": "The Great Giana Sisters",
+          "slug": "the-great-giana-sisters",
+          "rating": 74.33645093810492,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6aem.jpg"
         }
       ]
     },
@@ -2716,32 +2902,32 @@
         {
           "name": "The Legend of Zelda: Ocarina of Time",
           "slug": "the-legend-of-zelda-ocarina-of-time",
-          "rating": 91.54932253393936,
-          "cover_path": "assets/system/game_covers/nintendo_64/the-legend-of-zelda-ocarina-of-time.jpg"
+          "rating": 91.54906583456327,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3nnx.jpg"
         },
         {
           "name": "Super Mario 64",
           "slug": "super-mario-64",
-          "rating": 88.7595914703998,
-          "cover_path": "assets/system/game_covers/nintendo_64/super-mario-64.jpg"
+          "rating": 88.75954505373525,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co721v.jpg"
         },
         {
           "name": "The Legend of Zelda: Majora's Mask",
           "slug": "the-legend-of-zelda-majora-s-mask",
           "rating": 86.50658620129278,
-          "cover_path": "assets/system/game_covers/nintendo_64/the-legend-of-zelda-majora-s-mask.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3pah.jpg"
         },
         {
           "name": "Mario Kart 64",
           "slug": "mario-kart-64",
           "rating": 82.29137587065662,
-          "cover_path": "assets/system/game_covers/nintendo_64/mario-kart-64.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co67hm.jpg"
         },
         {
           "name": "Grand Theft Auto",
           "slug": "grand-theft-auto",
           "rating": 75.06933387831451,
-          "cover_path": "assets/system/game_covers/nintendo_64/grand-theft-auto.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lb0.jpg"
         }
       ]
     },
@@ -2787,7 +2973,39 @@
       "online_services": "Nintendo eShopNintendo Switch Online",
       "best_selling_game": "Mario Kart 8 Deluxe (70.59 million, em 31 de dezembro de 2025[update]) (list)",
       "predecessor": "Nintendo 3DSWii U",
-      "successor": "Nintendo Switch 2"
+      "successor": "Nintendo Switch 2",
+      "top_games": [
+        {
+          "name": "The Witcher 3: Wild Hunt",
+          "slug": "the-witcher-3-wild-hunt",
+          "rating": 93.82322825044669,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coaarl.jpg"
+        },
+        {
+          "name": "Portal 2",
+          "slug": "portal-2",
+          "rating": 91.29697395492336,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1rs4.jpg"
+        },
+        {
+          "name": "Portal",
+          "slug": "portal",
+          "rating": 86.40094022089968,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coay61.jpg"
+        },
+        {
+          "name": "The Legend of Zelda: Breath of the Wild",
+          "slug": "the-legend-of-zelda-breath-of-the-wild",
+          "rating": 92.5029456052275,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3p2d.jpg"
+        },
+        {
+          "name": "Batman: Arkham City",
+          "slug": "batman-arkham-city",
+          "rating": 87.59286895739477,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1voh.jpg"
+        }
+      ]
     },
     {
       "id": "neo_geo",
@@ -2827,34 +3045,34 @@
       "successor": "Neo Star (cancelado), Hyper Neo Geo 64",
       "top_games": [
         {
-          "name": "Tomb Raider",
-          "slug": "tomb-raider",
-          "rating": 80.77522299268941,
-          "cover_path": "assets/system/game_covers/neo_geo/tomb-raider.jpg"
+          "name": "Metal Slug",
+          "slug": "metal-slug",
+          "rating": 82.40714285121653,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co20gf.jpg"
         },
         {
-          "name": "Quake",
-          "slug": "quake",
-          "rating": 82.59996763107955,
-          "cover_path": "assets/system/game_covers/neo_geo/quake.jpg"
+          "name": "Metal Slug 3",
+          "slug": "metal-slug-3",
+          "rating": 81.25592852902626,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobu6p.jpg"
         },
         {
-          "name": "Warcraft II: Tides of Darkness",
-          "slug": "warcraft-ii-tides-of-darkness",
-          "rating": 84.49170281114868,
-          "cover_path": "assets/system/game_covers/neo_geo/warcraft-ii-tides-of-darkness.jpg"
+          "name": "Metal Slug 2",
+          "slug": "metal-slug-2",
+          "rating": 81.48989527407565,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co24zi.jpg"
         },
         {
-          "name": "Command & Conquer",
-          "slug": "command-conquer",
-          "rating": 84.32359833793606,
-          "cover_path": "assets/system/game_covers/neo_geo/command-conquer.jpg"
+          "name": "Metal Slug X",
+          "slug": "metal-slug-x",
+          "rating": 77.92068524183975,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8ish.jpg"
         },
         {
-          "name": "Mortal Kombat II",
-          "slug": "mortal-kombat-ii",
-          "rating": 76.4115109309212,
-          "cover_path": "assets/system/game_covers/neo_geo/mortal-kombat-ii.jpg"
+          "name": "Metal Slug 4",
+          "slug": "metal-slug-4",
+          "rating": 79.86450208332688,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1ox7.jpg"
         }
       ]
     },
@@ -2902,32 +3120,32 @@
         {
           "name": "Super Mario Bros. 3",
           "slug": "super-mario-bros-3",
-          "rating": 89.37415788766094,
-          "cover_path": "assets/system/game_covers/nes/super-mario-bros-3.jpg"
+          "rating": 89.37375670367784,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7ozx.jpg"
         },
         {
           "name": "Super Mario Bros.",
           "slug": "super-mario-bros",
-          "rating": 83.68811675605257,
-          "cover_path": "assets/system/game_covers/nes/super-mario-bros.jpg"
+          "rating": 83.6882158325661,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6pib.jpg"
         },
         {
           "name": "Tetris",
           "slug": "tetris",
           "rating": 86.28272589226856,
-          "cover_path": "assets/system/game_covers/nes/tetris.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2ufk.jpg"
         },
         {
           "name": "The Legend of Zelda",
           "slug": "the-legend-of-zelda",
-          "rating": 80.52648907646105,
-          "cover_path": "assets/system/game_covers/nes/the-legend-of-zelda.jpg"
+          "rating": 80.5257731041674,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1uii.jpg"
         },
         {
           "name": "Super Mario Bros. 2",
           "slug": "super-mario-bros-2",
           "rating": 76.53820214088867,
-          "cover_path": "assets/system/game_covers/nes/super-mario-bros-2.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7yq7.jpg"
         }
       ]
     },
@@ -2965,34 +3183,28 @@
       "sound": "T6W28 (enhanced SN76489), 6-bit DACs",
       "top_games": [
         {
-          "name": "Galaga",
-          "slug": "galaga",
-          "rating": 72.81997784627794,
-          "cover_path": "assets/system/game_covers/neo_geo_pocket_color/galaga.jpg"
+          "name": "Sonic the Hedgehog Pocket Adventure",
+          "slug": "sonic-the-hedgehog-pocket-adventure",
+          "rating": 78.60452201373816,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4se0.jpg"
         },
         {
-          "name": "Altered Beast",
-          "slug": "altered-beast",
-          "rating": 64.49111575618286,
-          "cover_path": "assets/system/game_covers/neo_geo_pocket_color/altered-beast.jpg"
+          "name": "SNK vs. Capcom: The Match of the Millennium",
+          "slug": "snk-vs-capcom-the-match-of-the-millennium",
+          "rating": null,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co55mi.jpg"
         },
         {
-          "name": "Pitfall!",
-          "slug": "pitfall",
-          "rating": 71.8637201346169,
-          "cover_path": "assets/system/game_covers/neo_geo_pocket_color/pitfall.jpg"
+          "name": "SNK Gals' Fighters",
+          "slug": "snk-gals-fighters",
+          "rating": null,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3mad.jpg"
         },
         {
-          "name": "1942",
-          "slug": "1942",
-          "rating": 67.74259210674639,
-          "cover_path": "assets/system/game_covers/neo_geo_pocket_color/1942.jpg"
-        },
-        {
-          "name": "R-Type",
-          "slug": "r-type",
-          "rating": 74.65376650855302,
-          "cover_path": "assets/system/game_covers/neo_geo_pocket_color/r-type.jpg"
+          "name": "Puyo Pop",
+          "slug": "puyo-pop",
+          "rating": null,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobsso.jpg"
         }
       ]
     },
@@ -3026,39 +3238,7 @@
       "cpu": "Toshiba TLCS900H core (16-bit) @ 6.144 MHz, Zilog Z80 @ 3.072 MHz for sound",
       "memory": "12 KB RAM for 900/H, 4 KB RAM for Z80, 64 KB ROM",
       "display": "2.7\", 160×152 resolution, 146 colors on screen out of a palette of 4,096",
-      "sound": "T6W28 (enhanced SN76489), 6-bit DACs",
-      "top_games": [
-        {
-          "name": "Galaga",
-          "slug": "galaga",
-          "rating": 72.81997784627794,
-          "cover_path": "assets/system/game_covers/neo_geo_pocket/galaga.jpg"
-        },
-        {
-          "name": "Altered Beast",
-          "slug": "altered-beast",
-          "rating": 64.49111575618286,
-          "cover_path": "assets/system/game_covers/neo_geo_pocket/altered-beast.jpg"
-        },
-        {
-          "name": "Pitfall!",
-          "slug": "pitfall",
-          "rating": 71.8637201346169,
-          "cover_path": "assets/system/game_covers/neo_geo_pocket/pitfall.jpg"
-        },
-        {
-          "name": "1942",
-          "slug": "1942",
-          "rating": 67.74259210674639,
-          "cover_path": "assets/system/game_covers/neo_geo_pocket/1942.jpg"
-        },
-        {
-          "name": "R-Type",
-          "slug": "r-type",
-          "rating": 74.65376650855302,
-          "cover_path": "assets/system/game_covers/neo_geo_pocket/r-type.jpg"
-        }
-      ]
+      "sound": "T6W28 (enhanced SN76489), 6-bit DACs"
     },
     {
       "id": "lowres_nx",
@@ -3080,39 +3260,7 @@
       "emulators": [
         "LowRes NX Emulator (oficial)"
       ],
-      "generation": "Console Fantasia",
-      "top_games": [
-        {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v",
-          "rating": 89.6486486511894,
-          "cover_path": "assets/system/game_covers/lowres_nx/grand-theft-auto-v.jpg"
-        },
-        {
-          "name": "The Witcher 3: Wild Hunt",
-          "slug": "the-witcher-3-wild-hunt",
-          "rating": 93.7785534399753,
-          "cover_path": "assets/system/game_covers/lowres_nx/the-witcher-3-wild-hunt.jpg"
-        },
-        {
-          "name": "Grand Theft Auto: San Andreas",
-          "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/lowres_nx/grand-theft-auto-san-andreas.jpg"
-        },
-        {
-          "name": "Red Dead Redemption 2",
-          "slug": "red-dead-redemption-2",
-          "rating": 93.1788518853741,
-          "cover_path": "assets/system/game_covers/lowres_nx/red-dead-redemption-2.jpg"
-        },
-        {
-          "name": "God of War",
-          "slug": "god-of-war--1",
-          "rating": 92.07544639251734,
-          "cover_path": "assets/system/game_covers/lowres_nx/god-of-war--1.jpg"
-        }
-      ]
+      "generation": "Console Fantasia"
     },
     {
       "id": "sinclair_zx81",
@@ -3152,34 +3300,16 @@
       "generation": "Computador 8 bits",
       "top_games": [
         {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v",
-          "rating": 89.6486486511894,
-          "cover_path": "assets/system/game_covers/sinclair_zx81/grand-theft-auto-v.jpg"
+          "name": "Football Manager",
+          "slug": "football-manager",
+          "rating": null,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coab7p.jpg"
         },
         {
-          "name": "Portal 2",
-          "slug": "portal-2",
-          "rating": 91.29932409808389,
-          "cover_path": "assets/system/game_covers/sinclair_zx81/portal-2.jpg"
-        },
-        {
-          "name": "The Elder Scrolls V: Skyrim",
-          "slug": "the-elder-scrolls-v-skyrim",
-          "rating": 87.64466568249945,
-          "cover_path": "assets/system/game_covers/sinclair_zx81/the-elder-scrolls-v-skyrim.jpg"
-        },
-        {
-          "name": "Grand Theft Auto: San Andreas",
-          "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/sinclair_zx81/grand-theft-auto-san-andreas.jpg"
-        },
-        {
-          "name": "Portal",
-          "slug": "portal",
-          "rating": 86.40228938907896,
-          "cover_path": "assets/system/game_covers/sinclair_zx81/portal.jpg"
+          "name": "Flight Simulation",
+          "slug": "flight-simulation",
+          "rating": null,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co393n.jpg"
         }
       ]
     },
@@ -3206,39 +3336,7 @@
         "Retro8 (RetroArch)",
         "Picolove"
       ],
-      "generation": "Console Fantasia",
-      "top_games": [
-        {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v",
-          "rating": 89.6486486511894,
-          "cover_path": "assets/system/game_covers/pico_8/grand-theft-auto-v.jpg"
-        },
-        {
-          "name": "The Witcher 3: Wild Hunt",
-          "slug": "the-witcher-3-wild-hunt",
-          "rating": 93.7785534399753,
-          "cover_path": "assets/system/game_covers/pico_8/the-witcher-3-wild-hunt.jpg"
-        },
-        {
-          "name": "Grand Theft Auto: San Andreas",
-          "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/pico_8/grand-theft-auto-san-andreas.jpg"
-        },
-        {
-          "name": "Red Dead Redemption 2",
-          "slug": "red-dead-redemption-2",
-          "rating": 93.1788518853741,
-          "cover_path": "assets/system/game_covers/pico_8/red-dead-redemption-2.jpg"
-        },
-        {
-          "name": "God of War",
-          "slug": "god-of-war--1",
-          "rating": 92.07544639251734,
-          "cover_path": "assets/system/game_covers/pico_8/god-of-war--1.jpg"
-        }
-      ]
+      "generation": "Console Fantasia"
     },
     {
       "id": "pc_engine",
@@ -3278,34 +3376,34 @@
       "successor": "PC Engine SuperGrafxPC-FX",
       "top_games": [
         {
-          "name": "Pokémon Yellow Version: Special Pikachu Edition",
-          "slug": "pokemon-yellow-version-special-pikachu-edition",
-          "rating": 82.63518048752671,
-          "cover_path": "assets/system/game_covers/pc_engine/pokemon-yellow-version-special-pikachu-edition.jpg"
+          "name": "Columns",
+          "slug": "columns",
+          "rating": 67.05866998807106,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2897.jpg"
         },
         {
-          "name": "Pokémon Crystal Version",
-          "slug": "pokemon-crystal-version",
-          "rating": 88.57342003066213,
-          "cover_path": "assets/system/game_covers/pc_engine/pokemon-crystal-version.jpg"
+          "name": "Shinobi",
+          "slug": "shinobi",
+          "rating": 65.15007535732846,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2wg2.jpg"
         },
         {
-          "name": "Pokémon Silver Version",
-          "slug": "pokemon-silver-version",
-          "rating": 87.85039588849102,
-          "cover_path": "assets/system/game_covers/pc_engine/pokemon-silver-version.jpg"
+          "name": "Populous",
+          "slug": "populous",
+          "rating": 73.94010846999169,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2jjf.jpg"
         },
         {
-          "name": "Pokémon Gold Version",
-          "slug": "pokemon-gold-version",
-          "rating": 86.68615877274019,
-          "cover_path": "assets/system/game_covers/pc_engine/pokemon-gold-version.jpg"
+          "name": "Street Fighter II: Champion Edition",
+          "slug": "street-fighter-ii-champion-edition",
+          "rating": 85.55504910001733,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3t1d.jpg"
         },
         {
-          "name": "The Legend of Zelda: Oracle of Seasons",
-          "slug": "the-legend-of-zelda-oracle-of-seasons",
-          "rating": 81.30201167549086,
-          "cover_path": "assets/system/game_covers/pc_engine/the-legend-of-zelda-oracle-of-seasons.jpg"
+          "name": "Rainbow Islands: The Story of Bubble Bobble 2",
+          "slug": "rainbow-islands-the-story-of-bubble-bobble-2",
+          "rating": 77.28588074562042,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8sc9.jpg"
         }
       ]
     },
@@ -3355,32 +3453,32 @@
         {
           "name": "Grand Theft Auto V",
           "slug": "grand-theft-auto-v",
-          "rating": 89.6486486511894,
-          "cover_path": "assets/system/game_covers/playstation_3/grand-theft-auto-v.jpg"
+          "rating": 89.64921032462038,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lbd.jpg"
         },
         {
           "name": "Portal 2",
           "slug": "portal-2",
-          "rating": 91.29932409808389,
-          "cover_path": "assets/system/game_covers/playstation_3/portal-2.jpg"
+          "rating": 91.29697395492336,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1rs4.jpg"
         },
         {
           "name": "The Elder Scrolls V: Skyrim",
           "slug": "the-elder-scrolls-v-skyrim",
-          "rating": 87.64466568249945,
-          "cover_path": "assets/system/game_covers/playstation_3/the-elder-scrolls-v-skyrim.jpg"
+          "rating": 87.70998844120643,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobt0i.jpg"
         },
         {
           "name": "Grand Theft Auto: San Andreas",
           "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/playstation_3/grand-theft-auto-san-andreas.jpg"
+          "rating": 90.10784826424586,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lb9.jpg"
         },
         {
           "name": "Portal",
           "slug": "portal",
-          "rating": 86.40228938907896,
-          "cover_path": "assets/system/game_covers/playstation_3/portal.jpg"
+          "rating": 86.40094022089968,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coay61.jpg"
         }
       ]
     },
@@ -3424,34 +3522,34 @@
       "successor": "PlayStation 3",
       "top_games": [
         {
-          "name": "Metal Gear Solid",
-          "slug": "metal-gear-solid",
-          "rating": 90.48504009442881,
-          "cover_path": "assets/system/game_covers/sony_playstation_2/metal-gear-solid.jpg"
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.10784826424586,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lb9.jpg"
         },
         {
-          "name": "Final Fantasy VII",
-          "slug": "final-fantasy-vii",
-          "rating": 90.46717145408533,
-          "cover_path": "assets/system/game_covers/sony_playstation_2/final-fantasy-vii.jpg"
+          "name": "Grand Theft Auto: Vice City",
+          "slug": "grand-theft-auto-vice-city",
+          "rating": 87.40310389464575,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lbb.jpg"
         },
         {
-          "name": "Final Fantasy IX",
-          "slug": "final-fantasy-ix",
-          "rating": 88.07081187392251,
-          "cover_path": "assets/system/game_covers/sony_playstation_2/final-fantasy-ix.jpg"
+          "name": "Max Payne",
+          "slug": "max-payne",
+          "rating": 85.75311752073526,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3wb2.jpg"
         },
         {
-          "name": "Castlevania: Symphony of the Night",
-          "slug": "castlevania-symphony-of-the-night",
-          "rating": 92.09234088399384,
-          "cover_path": "assets/system/game_covers/sony_playstation_2/castlevania-symphony-of-the-night.jpg"
+          "name": "Grand Theft Auto III",
+          "slug": "grand-theft-auto-iii",
+          "rating": 84.53279230296553,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lb8.jpg"
         },
         {
-          "name": "Crash Bandicoot",
-          "slug": "crash-bandicoot",
-          "rating": 80.49111160450875,
-          "cover_path": "assets/system/game_covers/sony_playstation_2/crash-bandicoot.jpg"
+          "name": "Mafia",
+          "slug": "mafia",
+          "rating": 86.30730239569915,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1qrt.jpg"
         }
       ]
     },
@@ -3501,32 +3599,32 @@
         {
           "name": "The Legend of Zelda: Breath of the Wild",
           "slug": "the-legend-of-zelda-breath-of-the-wild",
-          "rating": 92.50265766614817,
-          "cover_path": "assets/system/game_covers/wii_u/the-legend-of-zelda-breath-of-the-wild.jpg"
+          "rating": 92.5029456052275,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3p2d.jpg"
         },
         {
           "name": "Hollow Knight",
           "slug": "hollow-knight",
-          "rating": 91.89756681214497,
-          "cover_path": "assets/system/game_covers/wii_u/hollow-knight.jpg"
+          "rating": 91.89581466630091,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobfzp.jpg"
         },
         {
           "name": "The Legend of Zelda: Ocarina of Time",
           "slug": "the-legend-of-zelda-ocarina-of-time",
-          "rating": 91.54932253393936,
-          "cover_path": "assets/system/game_covers/wii_u/the-legend-of-zelda-ocarina-of-time.jpg"
+          "rating": 91.54906583456327,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3nnx.jpg"
         },
         {
           "name": "Super Mario 64",
           "slug": "super-mario-64",
-          "rating": 88.7595914703998,
-          "cover_path": "assets/system/game_covers/wii_u/super-mario-64.jpg"
+          "rating": 88.75954505373525,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co721v.jpg"
         },
         {
           "name": "Super Mario World",
           "slug": "super-mario-world",
-          "rating": 91.70191481860208,
-          "cover_path": "assets/system/game_covers/wii_u/super-mario-world.jpg"
+          "rating": 91.70204595334357,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8lo8.jpg"
         }
       ]
     },
@@ -3574,34 +3672,34 @@
       "release_dates": "1994–2000",
       "top_games": [
         {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v",
-          "rating": 89.6486486511894,
-          "cover_path": "assets/system/game_covers/sega_saturn/grand-theft-auto-v.jpg"
+          "name": "Tomb Raider",
+          "slug": "tomb-raider",
+          "rating": 80.77522299268941,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3hfx.jpg"
         },
         {
-          "name": "The Witcher 3: Wild Hunt",
-          "slug": "the-witcher-3-wild-hunt",
-          "rating": 93.7785534399753,
-          "cover_path": "assets/system/game_covers/sega_saturn/the-witcher-3-wild-hunt.jpg"
+          "name": "Quake",
+          "slug": "quake",
+          "rating": 82.59996763107955,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9bg9.jpg"
         },
         {
-          "name": "Portal 2",
-          "slug": "portal-2",
-          "rating": 91.29932409808389,
-          "cover_path": "assets/system/game_covers/sega_saturn/portal-2.jpg"
+          "name": "Warcraft II: Tides of Darkness",
+          "slug": "warcraft-ii-tides-of-darkness",
+          "rating": 84.49170281114868,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3wix.jpg"
         },
         {
-          "name": "The Elder Scrolls V: Skyrim",
-          "slug": "the-elder-scrolls-v-skyrim",
-          "rating": 87.64466568249945,
-          "cover_path": "assets/system/game_covers/sega_saturn/the-elder-scrolls-v-skyrim.jpg"
+          "name": "Command & Conquer",
+          "slug": "command-conquer",
+          "rating": 84.32359833793606,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co88m7.jpg"
         },
         {
-          "name": "Grand Theft Auto: San Andreas",
-          "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/sega_saturn/grand-theft-auto-san-andreas.jpg"
+          "name": "Mortal Kombat II",
+          "slug": "mortal-kombat-ii",
+          "rating": 76.4115109309212,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6bxu.jpg"
         }
       ]
     },
@@ -3649,34 +3747,34 @@
       "release_dates": "UK: 23 abril de 1982DE: 1983US: novembro de 1983EU: 1984",
       "top_games": [
         {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v",
-          "rating": 89.6486486511894,
-          "cover_path": "assets/system/game_covers/sinclair_zx_spectrum/grand-theft-auto-v.jpg"
+          "name": "Golden Axe",
+          "slug": "golden-axe",
+          "rating": 74.89794268914484,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co25qt.jpg"
         },
         {
-          "name": "Portal 2",
-          "slug": "portal-2",
-          "rating": 91.29932409808389,
-          "cover_path": "assets/system/game_covers/sinclair_zx_spectrum/portal-2.jpg"
+          "name": "Final Fight",
+          "slug": "final-fight",
+          "rating": 79.1760027876448,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4a0q.jpg"
         },
         {
-          "name": "The Elder Scrolls V: Skyrim",
-          "slug": "the-elder-scrolls-v-skyrim",
-          "rating": 87.64466568249945,
-          "cover_path": "assets/system/game_covers/sinclair_zx_spectrum/the-elder-scrolls-v-skyrim.jpg"
+          "name": "SimCity",
+          "slug": "simcity",
+          "rating": 84.67559692194607,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1vwv.jpg"
         },
         {
-          "name": "Grand Theft Auto: San Andreas",
-          "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/sinclair_zx_spectrum/grand-theft-auto-san-andreas.jpg"
+          "name": "Altered Beast",
+          "slug": "altered-beast",
+          "rating": 64.49111575618286,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobuxa.jpg"
         },
         {
-          "name": "Portal",
-          "slug": "portal",
-          "rating": 86.40228938907896,
-          "cover_path": "assets/system/game_covers/sinclair_zx_spectrum/portal.jpg"
+          "name": "Ghosts 'n Goblins",
+          "slug": "ghosts-n-goblins",
+          "rating": 73.83400801268397,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co20fk.jpg"
         }
       ]
     },
@@ -3714,7 +3812,39 @@
       "successor": "Master System",
       "wikidata_id": "290843",
       "wikipedia_url": "https://en.wikipedia.org/wiki/SG-1000",
-      "release_dates": "SG-1000/SC-3000JP: 15 de julho de 1983AU: novembro de 1983SG-1000 IIJP: 31 de julho de 1984TW: 1986"
+      "release_dates": "SG-1000/SC-3000JP: 15 de julho de 1983AU: novembro de 1983SG-1000 IIJP: 31 de julho de 1984TW: 1986",
+      "top_games": [
+        {
+          "name": "Road Fighter",
+          "slug": "road-fighter",
+          "rating": 71.91130359643496,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coaq3b.jpg"
+        },
+        {
+          "name": "Lode Runner",
+          "slug": "lode-runner",
+          "rating": 76.85898744305479,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6s9v.jpg"
+        },
+        {
+          "name": "H.E.R.O.",
+          "slug": "h-e-r-o",
+          "rating": 79.82675446010515,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co97gt.jpg"
+        },
+        {
+          "name": "Zaxxon",
+          "slug": "zaxxon",
+          "rating": 74.89115194508246,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2bag.jpg"
+        },
+        {
+          "name": "Pitfall II: The Lost Caverns",
+          "slug": "pitfall-ii-the-lost-caverns",
+          "rating": 66.1286307919542,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co97gs.jpg"
+        }
+      ]
     },
     {
       "id": "master_system",
@@ -3756,34 +3886,34 @@
       "release_dates": "JP: 1985–1991NA: 1986–1992EU: 1987–1996KO: 1988–1994BR: 1989–present",
       "top_games": [
         {
-          "name": "Battletoads",
-          "slug": "battletoads",
-          "rating": 76.17949653866779,
-          "cover_path": "assets/system/game_covers/master_system/battletoads.jpg"
-        },
-        {
           "name": "Ms. Pac-Man",
           "slug": "ms-pac-man",
           "rating": 79.69142857889247,
-          "cover_path": "assets/system/game_covers/master_system/ms-pac-man.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co53rj.jpg"
         },
         {
-          "name": "Super Star Wars: Return of the Jedi",
-          "slug": "super-star-wars-return-of-the-jedi",
-          "rating": 72.11906737391111,
-          "cover_path": "assets/system/game_covers/master_system/super-star-wars-return-of-the-jedi.jpg"
+          "name": "Alex Kidd in Miracle World",
+          "slug": "alex-kidd-in-miracle-world",
+          "rating": 66.37324730165008,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7ewj.jpg"
         },
         {
-          "name": "Sonic the Hedgehog 2",
-          "slug": "sonic-the-hedgehog-2--1",
-          "rating": 90.42571386256468,
-          "cover_path": "assets/system/game_covers/master_system/sonic-the-hedgehog-2--1.jpg"
+          "name": "Sonic the Hedgehog",
+          "slug": "sonic-the-hedgehog--2",
+          "rating": 82.2168602436331,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobt1i.jpg"
         },
         {
-          "name": "Fatal Fury Special",
-          "slug": "fatal-fury-special",
-          "rating": 71.98528196013966,
-          "cover_path": "assets/system/game_covers/master_system/fatal-fury-special.jpg"
+          "name": "Gauntlet",
+          "slug": "gauntlet",
+          "rating": 70.02233026139842,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8ksx.jpg"
+        },
+        {
+          "name": "Strider",
+          "slug": "strider--3",
+          "rating": 67.6775868574921,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9ijs.jpg"
         }
       ]
     },
@@ -3830,34 +3960,34 @@
       "generation": "Computador 8 bits",
       "top_games": [
         {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v",
-          "rating": 89.6486486511894,
-          "cover_path": "assets/system/game_covers/bbc_micro/grand-theft-auto-v.jpg"
+          "name": "SimCity",
+          "slug": "simcity",
+          "rating": 84.67559692194607,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1vwv.jpg"
         },
         {
-          "name": "The Witcher 3: Wild Hunt",
-          "slug": "the-witcher-3-wild-hunt",
-          "rating": 93.7785534399753,
-          "cover_path": "assets/system/game_covers/bbc_micro/the-witcher-3-wild-hunt.jpg"
+          "name": "Paperboy",
+          "slug": "paperboy",
+          "rating": 53.75615786415583,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5yma.jpg"
         },
         {
-          "name": "Red Dead Redemption 2",
-          "slug": "red-dead-redemption-2",
-          "rating": 93.1788518853741,
-          "cover_path": "assets/system/game_covers/bbc_micro/red-dead-redemption-2.jpg"
+          "name": "Commando",
+          "slug": "commando",
+          "rating": 71.28040058348245,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2k3z.jpg"
         },
         {
-          "name": "Elden Ring",
-          "slug": "elden-ring",
-          "rating": 93.5350869699613,
-          "cover_path": "assets/system/game_covers/bbc_micro/elden-ring.jpg"
+          "name": "Lode Runner",
+          "slug": "lode-runner",
+          "rating": 76.85898744305479,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6s9v.jpg"
         },
         {
-          "name": "Hollow Knight",
-          "slug": "hollow-knight",
-          "rating": 91.89756681214497,
-          "cover_path": "assets/system/game_covers/bbc_micro/hollow-knight.jpg"
+          "name": "Yie Ar Kung-Fu",
+          "slug": "yie-ar-kung-fu",
+          "rating": 61.16032093911642,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co49l0.jpg"
         }
       ]
     },
@@ -3913,39 +4043,7 @@
       "sound": "Mono speakerHeadphone jack",
       "wikidata_id": "803181",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Watara_Supervision",
-      "release_dates": "1992",
-      "top_games": [
-        {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v",
-          "rating": 89.6486486511894,
-          "cover_path": "assets/system/game_covers/watara_supervision/grand-theft-auto-v.jpg"
-        },
-        {
-          "name": "The Witcher 3: Wild Hunt",
-          "slug": "the-witcher-3-wild-hunt",
-          "rating": 93.7785534399753,
-          "cover_path": "assets/system/game_covers/watara_supervision/the-witcher-3-wild-hunt.jpg"
-        },
-        {
-          "name": "Grand Theft Auto: San Andreas",
-          "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/watara_supervision/grand-theft-auto-san-andreas.jpg"
-        },
-        {
-          "name": "Red Dead Redemption 2",
-          "slug": "red-dead-redemption-2",
-          "rating": 93.1788518853741,
-          "cover_path": "assets/system/game_covers/watara_supervision/red-dead-redemption-2.jpg"
-        },
-        {
-          "name": "God of War",
-          "slug": "god-of-war--1",
-          "rating": 92.07544639251734,
-          "cover_path": "assets/system/game_covers/watara_supervision/god-of-war--1.jpg"
-        }
-      ]
+      "release_dates": "1992"
     },
     {
       "id": "tic_80",
@@ -3967,39 +4065,7 @@
       "emulators": [
         "TIC-80 (nativo)"
       ],
-      "generation": "Console Fantasia",
-      "top_games": [
-        {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v",
-          "rating": 89.6486486511894,
-          "cover_path": "assets/system/game_covers/tic_80/grand-theft-auto-v.jpg"
-        },
-        {
-          "name": "The Witcher 3: Wild Hunt",
-          "slug": "the-witcher-3-wild-hunt",
-          "rating": 93.7785534399753,
-          "cover_path": "assets/system/game_covers/tic_80/the-witcher-3-wild-hunt.jpg"
-        },
-        {
-          "name": "Grand Theft Auto: San Andreas",
-          "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/tic_80/grand-theft-auto-san-andreas.jpg"
-        },
-        {
-          "name": "Red Dead Redemption 2",
-          "slug": "red-dead-redemption-2",
-          "rating": 93.1788518853741,
-          "cover_path": "assets/system/game_covers/tic_80/red-dead-redemption-2.jpg"
-        },
-        {
-          "name": "God of War",
-          "slug": "god-of-war--1",
-          "rating": 92.07544639251734,
-          "cover_path": "assets/system/game_covers/tic_80/god-of-war--1.jpg"
-        }
-      ]
+      "generation": "Console Fantasia"
     },
     {
       "id": "pc_fx",
@@ -4035,7 +4101,15 @@
       "predecessor": "TurboDuo",
       "wikidata_id": "24929",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PC-FX",
-      "release_dates": "JP: 23 de dezembro de 1994"
+      "release_dates": "JP: 23 de dezembro de 1994",
+      "top_games": [
+        {
+          "name": "Return to Zork",
+          "slug": "return-to-zork",
+          "rating": 66.33873714240515,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co21y5.jpg"
+        }
+      ]
     },
     {
       "id": "virtual_boy",
@@ -4074,34 +4148,16 @@
       "best_selling_game": "Mario's Tennis (US jogo incluso)",
       "top_games": [
         {
-          "name": "Golden Axe",
-          "slug": "golden-axe",
-          "rating": 74.89794268914484,
-          "cover_path": "assets/system/game_covers/virtual_boy/golden-axe.jpg"
+          "name": "Virtual Boy Wario Land",
+          "slug": "virtual-boy-wario-land",
+          "rating": 63.03998857623985,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1wol.jpg"
         },
         {
-          "name": "Final Fight",
-          "slug": "final-fight",
-          "rating": 79.1760027876448,
-          "cover_path": "assets/system/game_covers/virtual_boy/final-fight.jpg"
-        },
-        {
-          "name": "SimCity",
-          "slug": "simcity",
-          "rating": 84.67559692194607,
-          "cover_path": "assets/system/game_covers/virtual_boy/simcity.jpg"
-        },
-        {
-          "name": "Altered Beast",
-          "slug": "altered-beast",
-          "rating": 64.49111575618286,
-          "cover_path": "assets/system/game_covers/virtual_boy/altered-beast.jpg"
-        },
-        {
-          "name": "Ghosts 'n Goblins",
-          "slug": "ghosts-n-goblins",
-          "rating": 73.83400801268397,
-          "cover_path": "assets/system/game_covers/virtual_boy/ghosts-n-goblins.jpg"
+          "name": "Mario's Tennis",
+          "slug": "marios-tennis",
+          "rating": 60.47082490767038,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co253b.jpg"
         }
       ]
     },
@@ -4144,34 +4200,34 @@
       "predecessor": "PlayStation Portable",
       "top_games": [
         {
-          "name": "Star Wars: The Force Unleashed",
-          "slug": "star-wars-the-force-unleashed",
-          "rating": 73.39286246535514,
-          "cover_path": "assets/system/game_covers/playstation_vita/star-wars-the-force-unleashed.jpg"
+          "name": "Undertale",
+          "slug": "undertale",
+          "rating": 85.9708763308184,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cob1t2.jpg"
         },
         {
-          "name": "Tony Hawk's Pro Skater",
-          "slug": "tony-hawk-s-pro-skater",
-          "rating": 83.05614644752183,
-          "cover_path": "assets/system/game_covers/playstation_vita/tony-hawk-s-pro-skater.jpg"
+          "name": "Borderlands 2",
+          "slug": "borderlands-2",
+          "rating": 83.59131098126242,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9ba3.jpg"
         },
         {
-          "name": "Worms World Party",
-          "slug": "worms-world-party",
-          "rating": 83.54213713529774,
-          "cover_path": "assets/system/game_covers/playstation_vita/worms-world-party.jpg"
+          "name": "Stardew Valley",
+          "slug": "stardew-valley",
+          "rating": 86.1620170756428,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coa93h.jpg"
         },
         {
-          "name": "Pandemonium!",
-          "slug": "pandemonium",
-          "rating": 70.38703188655339,
-          "cover_path": "assets/system/game_covers/playstation_vita/pandemonium.jpg"
+          "name": "The Walking Dead",
+          "slug": "the-walking-dead",
+          "rating": 85.86392569208851,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2j1g.jpg"
         },
         {
-          "name": "Virtua Tennis",
-          "slug": "virtua-tennis",
-          "rating": 86.27977481434473,
-          "cover_path": "assets/system/game_covers/playstation_vita/virtua-tennis.jpg"
+          "name": "Limbo",
+          "slug": "limbo",
+          "rating": 80.98896702484521,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1qrs.jpg"
         }
       ]
     },
@@ -4196,39 +4252,7 @@
         "WASM-4 (nativo)",
         "Navegador (WebAssembly)"
       ],
-      "generation": "Console Fantasia",
-      "top_games": [
-        {
-          "name": "Grand Theft Auto V",
-          "slug": "grand-theft-auto-v",
-          "rating": 89.6486486511894,
-          "cover_path": "assets/system/game_covers/wasm_4/grand-theft-auto-v.jpg"
-        },
-        {
-          "name": "The Witcher 3: Wild Hunt",
-          "slug": "the-witcher-3-wild-hunt",
-          "rating": 93.7785534399753,
-          "cover_path": "assets/system/game_covers/wasm_4/the-witcher-3-wild-hunt.jpg"
-        },
-        {
-          "name": "Grand Theft Auto: San Andreas",
-          "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/wasm_4/grand-theft-auto-san-andreas.jpg"
-        },
-        {
-          "name": "Red Dead Redemption 2",
-          "slug": "red-dead-redemption-2",
-          "rating": 93.1788518853741,
-          "cover_path": "assets/system/game_covers/wasm_4/red-dead-redemption-2.jpg"
-        },
-        {
-          "name": "God of War",
-          "slug": "god-of-war--1",
-          "rating": 92.07544639251734,
-          "cover_path": "assets/system/game_covers/wasm_4/god-of-war--1.jpg"
-        }
-      ]
+      "generation": "Console Fantasia"
     },
     {
       "id": "wii",
@@ -4273,32 +4297,32 @@
         {
           "name": "The Legend of Zelda: Ocarina of Time",
           "slug": "the-legend-of-zelda-ocarina-of-time",
-          "rating": 91.54932253393936,
-          "cover_path": "assets/system/game_covers/wii/the-legend-of-zelda-ocarina-of-time.jpg"
+          "rating": 91.54906583456327,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3nnx.jpg"
         },
         {
           "name": "Super Mario 64",
           "slug": "super-mario-64",
-          "rating": 88.7595914703998,
-          "cover_path": "assets/system/game_covers/wii/super-mario-64.jpg"
+          "rating": 88.75954505373525,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co721v.jpg"
         },
         {
           "name": "Super Mario World",
           "slug": "super-mario-world",
-          "rating": 91.70191481860208,
-          "cover_path": "assets/system/game_covers/wii/super-mario-world.jpg"
+          "rating": 91.70204595334357,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8lo8.jpg"
         },
         {
           "name": "Super Mario Bros. 3",
           "slug": "super-mario-bros-3",
-          "rating": 89.37415788766094,
-          "cover_path": "assets/system/game_covers/wii/super-mario-bros-3.jpg"
+          "rating": 89.37375670367784,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7ozx.jpg"
         },
         {
           "name": "The Legend of Zelda: A Link to the Past",
           "slug": "the-legend-of-zelda-a-link-to-the-past",
-          "rating": 91.93906391924232,
-          "cover_path": "assets/system/game_covers/wii/the-legend-of-zelda-a-link-to-the-past.jpg"
+          "rating": 91.93941495432685,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3vzn.jpg"
         }
       ]
     },
@@ -4344,31 +4368,31 @@
           "name": "Lode Runner",
           "slug": "lode-runner",
           "rating": 76.85898744305479,
-          "cover_path": "assets/system/game_covers/wonderswan/lode-runner.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6s9v.jpg"
         },
         {
           "name": "Bust-A-Move",
           "slug": "bust-a-move",
           "rating": 75.83551669727302,
-          "cover_path": "assets/system/game_covers/wonderswan/bust-a-move.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6bkg.jpg"
         },
         {
           "name": "Pocket Fighter",
           "slug": "pocket-fighter",
           "rating": 85.4482522568624,
-          "cover_path": "assets/system/game_covers/wonderswan/pocket-fighter.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6dfb.jpg"
         },
         {
           "name": "Riviera: The Promised Land",
           "slug": "riviera-the-promised-land",
           "rating": 89.89522628642283,
-          "cover_path": "assets/system/game_covers/wonderswan/riviera-the-promised-land.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2nz4.jpg"
         },
         {
           "name": "Gunpey",
           "slug": "gunpey",
           "rating": null,
-          "cover_path": "assets/system/game_covers/wonderswan/gunpey.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2s78.jpg"
         }
       ]
     },
@@ -4410,34 +4434,34 @@
       "predecessor": "Design Master Senshi Mangajukuu",
       "top_games": [
         {
-          "name": "Lode Runner",
-          "slug": "lode-runner",
-          "rating": 76.85898744305479,
-          "cover_path": "assets/system/game_covers/wonderswan_color/lode-runner.jpg"
+          "name": "Golden Axe",
+          "slug": "golden-axe",
+          "rating": 74.89794268914484,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co25qt.jpg"
         },
         {
-          "name": "Bust-A-Move",
-          "slug": "bust-a-move",
-          "rating": 75.83551669727302,
-          "cover_path": "assets/system/game_covers/wonderswan_color/bust-a-move.jpg"
+          "name": "Final Fantasy",
+          "slug": "final-fantasy--1",
+          "rating": 77.68306984019848,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coayud.jpg"
         },
         {
-          "name": "Pocket Fighter",
-          "slug": "pocket-fighter",
-          "rating": 85.4482522568624,
-          "cover_path": "assets/system/game_covers/wonderswan_color/pocket-fighter.jpg"
+          "name": "Front Mission",
+          "slug": "front-mission",
+          "rating": 85.16551849162026,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2v50.jpg"
         },
         {
-          "name": "Riviera: The Promised Land",
-          "slug": "riviera-the-promised-land",
-          "rating": 89.89522628642283,
-          "cover_path": "assets/system/game_covers/wonderswan_color/riviera-the-promised-land.jpg"
+          "name": "Digimon: Battle Spirit 2",
+          "slug": "digimon-battle-spirit-2",
+          "rating": 83.97100521693912,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2zfk.jpg"
         },
         {
-          "name": "Gunpey",
-          "slug": "gunpey",
-          "rating": null,
-          "cover_path": "assets/system/game_covers/wonderswan_color/gunpey.jpg"
+          "name": "Final Fantasy II",
+          "slug": "final-fantasy-2--2",
+          "rating": 72.05734425007724,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cob25b.jpg"
         }
       ]
     },
@@ -4483,34 +4507,34 @@
       "release_dates": "22 de novembro de 2005 Original Xbox 360US/CA: 22 de novembro de 2005EZ/NO/SE/UK/CH: 2 de dezembro de 2005JP: 10 de dezembro de 2005CO/MX: 2 de fevereiro de 2006KR: 24 de fevereiro de 2006HK/SG/TW: 16 de março de 2006AU: 23 de março de 2006CL: 7 de julho de 2006IN: 25 de setembro de 2006ZA: 29 de setembro de 2006CZ/PL: 3 de novembro de 2006BR: 1 de dezembro de 2006RU: 11 de fevereiro de 2007PE: 25 de fevereiro de 2008UAE: 28 de outubro de 2008NG/TR: 2009SC: Spring 2010 Xbox 360 SNA: 18 de junho de 2010AU: 1 de julho de 2010NZ: 8 de julho de 2010EU: 16 de julho de 2010 Xbox 360 ENA: 10 de junho de 2013EU: 20 de junho de 2013",
       "top_games": [
         {
-          "name": "Golden Axe",
-          "slug": "golden-axe",
-          "rating": 74.89794268914484,
-          "cover_path": "assets/system/game_covers/xbox_360/golden-axe.jpg"
+          "name": "Grand Theft Auto V",
+          "slug": "grand-theft-auto-v",
+          "rating": 89.64921032462038,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lbd.jpg"
         },
         {
-          "name": "Final Fight",
-          "slug": "final-fight",
-          "rating": 79.1760027876448,
-          "cover_path": "assets/system/game_covers/xbox_360/final-fight.jpg"
+          "name": "Portal 2",
+          "slug": "portal-2",
+          "rating": 91.29697395492336,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1rs4.jpg"
         },
         {
-          "name": "SimCity",
-          "slug": "simcity",
-          "rating": 84.67559692194607,
-          "cover_path": "assets/system/game_covers/xbox_360/simcity.jpg"
+          "name": "The Elder Scrolls V: Skyrim",
+          "slug": "the-elder-scrolls-v-skyrim",
+          "rating": 87.70998844120643,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobt0i.jpg"
         },
         {
-          "name": "Maniac Mansion",
-          "slug": "maniac-mansion",
-          "rating": 84.26098633720771,
-          "cover_path": "assets/system/game_covers/xbox_360/maniac-mansion.jpg"
+          "name": "Grand Theft Auto: San Andreas",
+          "slug": "grand-theft-auto-san-andreas",
+          "rating": 90.10784826424586,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lb9.jpg"
         },
         {
-          "name": "Altered Beast",
-          "slug": "altered-beast",
-          "rating": 64.49111575618286,
-          "cover_path": "assets/system/game_covers/xbox_360/altered-beast.jpg"
+          "name": "Portal",
+          "slug": "portal",
+          "rating": 86.40094022089968,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coay61.jpg"
         }
       ]
     },
@@ -4555,34 +4579,34 @@
       "release_dates": "AN: 15 de novembro de 2001JP: 22 de fevereiro de 2002PAL: 14 de março de 2002",
       "top_games": [
         {
-          "name": "Portal 2",
-          "slug": "portal-2",
-          "rating": 91.29932409808389,
-          "cover_path": "assets/system/game_covers/xbox/portal-2.jpg"
-        },
-        {
           "name": "Grand Theft Auto: San Andreas",
           "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/xbox/grand-theft-auto-san-andreas.jpg"
-        },
-        {
-          "name": "Portal",
-          "slug": "portal",
-          "rating": 86.40228938907896,
-          "cover_path": "assets/system/game_covers/xbox/portal.jpg"
+          "rating": 90.10784826424586,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lb9.jpg"
         },
         {
           "name": "Half-Life 2",
           "slug": "half-life-2",
-          "rating": 90.35860614857343,
-          "cover_path": "assets/system/game_covers/xbox/half-life-2.jpg"
+          "rating": 90.28259552385697,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1nmw.jpg"
         },
         {
-          "name": "BioShock",
-          "slug": "bioshock",
-          "rating": 86.61659691859961,
-          "cover_path": "assets/system/game_covers/xbox/bioshock.jpg"
+          "name": "Grand Theft Auto: Vice City",
+          "slug": "grand-theft-auto-vice-city",
+          "rating": 87.40310389464575,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lbb.jpg"
+        },
+        {
+          "name": "Max Payne",
+          "slug": "max-payne",
+          "rating": 85.75311752073526,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3wb2.jpg"
+        },
+        {
+          "name": "Grand Theft Auto III",
+          "slug": "grand-theft-auto-iii",
+          "rating": 84.53279230296553,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2lb8.jpg"
         }
       ]
     },
@@ -4618,7 +4642,39 @@
       "wikidata_id": "248101",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Apple_IIGS",
       "release_dates": "15 de setembro de 1986 39 anos atrás (1986-09-15)",
-      "generation": "Computador 16 bits"
+      "generation": "Computador 16 bits",
+      "top_games": [
+        {
+          "name": "Paperboy",
+          "slug": "paperboy",
+          "rating": 53.75615786415583,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5yma.jpg"
+        },
+        {
+          "name": "Battle Chess",
+          "slug": "battle-chess",
+          "rating": 71.49163111931118,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co26el.jpg"
+        },
+        {
+          "name": "Leisure Suit Larry in the Land of the Lounge Lizards",
+          "slug": "leisure-suit-larry-in-the-land-of-the-lounge-lizards",
+          "rating": 74.6500195210819,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2xny.jpg"
+        },
+        {
+          "name": "Gauntlet",
+          "slug": "gauntlet",
+          "rating": 70.02233026139842,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8ksx.jpg"
+        },
+        {
+          "name": "Sid Meier's Pirates!",
+          "slug": "sid-meiers-pirates",
+          "rating": 75.2778222777462,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6yhf.jpg"
+        }
+      ]
     },
     {
       "id": "3do",
@@ -4628,7 +4684,7 @@
       "manufacturer": "Panasonic",
       "release_year": 1993,
       "origin_country": "Estados Unidos",
-      "description": "3DO is a video gaming hardware format developed by The 3DO Company and conceived by Electronic Arts founder Trip Hawkins. The specifications were originally designed by Dave Needle and RJ Mical of New Technology Group, and were licensed by third parties; most hardware were packaged as home video game consoles under the name Interactive Multiplayer, and Panasonic produced the first models in 1993 with further renditions released afterwards by manufacturers GoldStar, Sanyo, Creative Labs, and Samsung Electronics.",
+      "description": "O 3DO é um formato de hardware de videogame desenvolvido pela The 3DO Company e concebido por Trip Hawkins, fundador da Electronic Arts. As especificações foram originalmente projetadas por Dave Needle e RJ Mical do New Technology Group, e licenciadas para terceiros; a maioria dos hardwares foi comercializada como console de videogame doméstico sob o nome Interactive Multiplayer, e a Panasonic produziu os primeiros modelos em 1993, com versões posteriores lançadas pelos fabricantes GoldStar, Sanyo, Creative Labs e Samsung Electronics.",
       "curiosities": [
         "O 3DO Interactive Multiplayer foi criado por Dave Needle e RJ Mical (ex-engenheiros da Atari) e licenciado para vários fabricantes.",
         "Seu processador ARM60 RISC de 32 bits a 12.5 MHz era potente para 1993, mas o preço de $699 assustava consumidores.",
@@ -4665,34 +4721,34 @@
       "successor": "Panasonic M2 (cancelado)",
       "top_games": [
         {
-          "name": "Monkey Island 2: LeChuck's Revenge",
-          "slug": "monkey-island-2-lechuck-s-revenge",
-          "rating": 88.30068011844384,
-          "cover_path": "assets/system/game_covers/3do/monkey-island-2-lechuck-s-revenge.jpg"
+          "name": "Myst",
+          "slug": "myst",
+          "rating": 75.7261760041352,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1y96.jpg"
         },
         {
-          "name": "The Secret of Monkey Island",
-          "slug": "the-secret-of-monkey-island",
-          "rating": 86.65435863863428,
-          "cover_path": "assets/system/game_covers/3do/the-secret-of-monkey-island.jpg"
+          "name": "Flashback: The Quest for Identity",
+          "slug": "flashback-the-quest-for-identity",
+          "rating": 82.97266908415749,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6fda.jpg"
         },
         {
-          "name": "Day of the Tentacle",
-          "slug": "day-of-the-tentacle",
-          "rating": 89.25666924420707,
-          "cover_path": "assets/system/game_covers/3do/day-of-the-tentacle.jpg"
+          "name": "Theme Park",
+          "slug": "theme-park",
+          "rating": 68.96404260940369,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9fto.jpg"
         },
         {
-          "name": "Indiana Jones and the Fate of Atlantis",
-          "slug": "indiana-jones-and-the-fate-of-atlantis--1",
-          "rating": 89.5376885973151,
-          "cover_path": "assets/system/game_covers/3do/indiana-jones-and-the-fate-of-atlantis--1.jpg"
+          "name": "The Need for Speed",
+          "slug": "the-need-for-speed",
+          "rating": 72.04046185030617,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1oiv.jpg"
         },
         {
-          "name": "Quake",
-          "slug": "quake",
-          "rating": 82.59996763107955,
-          "cover_path": "assets/system/game_covers/3do/quake.jpg"
+          "name": "Alone in the Dark",
+          "slug": "alone-in-the-dark",
+          "rating": 72.45790893819981,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co82bd.jpg"
         }
       ]
     },
@@ -4735,34 +4791,34 @@
       "generation": "Computador 8 bits",
       "top_games": [
         {
-          "name": "Doom II: Hell on Earth",
-          "slug": "doom-ii-hell-on-earth",
-          "rating": 85.2481081273006,
-          "cover_path": "assets/system/game_covers/coleco_adam/doom-ii-hell-on-earth.jpg"
+          "name": "Pitfall!",
+          "slug": "pitfall",
+          "rating": 71.8637201346169,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9ck4.jpg"
         },
         {
-          "name": "Altered Beast",
-          "slug": "altered-beast--2",
-          "rating": 34.6547327496109,
-          "cover_path": "assets/system/game_covers/coleco_adam/altered-beast--2.jpg"
+          "name": "Antarctic Adventure",
+          "slug": "antarctic-adventure",
+          "rating": 64.86663880289453,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co68ca.jpg"
         },
         {
-          "name": "Fish Tycoon",
-          "slug": "fish-tycoon",
-          "rating": 70,
-          "cover_path": "assets/system/game_covers/coleco_adam/fish-tycoon.jpg"
+          "name": "BurgerTime",
+          "slug": "burgertime",
+          "rating": 76.46218221528778,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3sj9.jpg"
         },
         {
-          "name": "MTX Mototrax",
-          "slug": "mtx-mototrax",
-          "rating": null,
-          "cover_path": "assets/system/game_covers/coleco_adam/mtx-mototrax.jpg"
+          "name": "Spy Hunter",
+          "slug": "spy-hunter",
+          "rating": 76.04382566952731,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6owb.jpg"
         },
         {
-          "name": "Warfare Incorporated",
-          "slug": "warfare-incorporated",
-          "rating": null,
-          "cover_path": "assets/system/game_covers/coleco_adam/warfare-incorporated.jpg"
+          "name": "River Raid",
+          "slug": "river-raid",
+          "rating": 81.61226930174477,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6ilj.jpg"
         }
       ]
     },
@@ -4809,34 +4865,34 @@
       "release_dates": "1993–1994",
       "top_games": [
         {
-          "name": "Portal 2",
-          "slug": "portal-2",
-          "rating": 91.29932409808389,
-          "cover_path": "assets/system/game_covers/commodore_amiga_cd32/portal-2.jpg"
+          "name": "Worms",
+          "slug": "worms",
+          "rating": 75.67819218530337,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1xqn.jpg"
         },
         {
-          "name": "Portal",
-          "slug": "portal",
-          "rating": 86.40228938907896,
-          "cover_path": "assets/system/game_covers/commodore_amiga_cd32/portal.jpg"
+          "name": "Lemmings",
+          "slug": "lemmings",
+          "rating": 76.3709972510878,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co25u8.jpg"
         },
         {
-          "name": "Half-Life 2",
-          "slug": "half-life-2",
-          "rating": 90.35860614857343,
-          "cover_path": "assets/system/game_covers/commodore_amiga_cd32/half-life-2.jpg"
+          "name": "Battletoads",
+          "slug": "battletoads",
+          "rating": 76.17949653866779,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4i2w.jpg"
         },
         {
-          "name": "Half-Life",
-          "slug": "half-life",
-          "rating": 88.39630802144329,
-          "cover_path": "assets/system/game_covers/commodore_amiga_cd32/half-life.jpg"
+          "name": "X-COM: UFO Defense",
+          "slug": "x-com-ufo-defense",
+          "rating": 85.14286240792813,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobqqd.jpg"
         },
         {
-          "name": "BioShock Infinite",
-          "slug": "bioshock-infinite",
-          "rating": 85.62760069458895,
-          "cover_path": "assets/system/game_covers/commodore_amiga_cd32/bioshock-infinite.jpg"
+          "name": "Beneath a Steel Sky",
+          "slug": "beneath-a-steel-sky",
+          "rating": 76.39075872109541,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9ciz.jpg"
         }
       ]
     },
@@ -4880,34 +4936,34 @@
       "generation": "Computador 8 bits",
       "top_games": [
         {
-          "name": "Grand Theft Auto: San Andreas",
-          "slug": "grand-theft-auto-san-andreas",
-          "rating": 90.02769814500793,
-          "cover_path": "assets/system/game_covers/commodore_vic_20/grand-theft-auto-san-andreas.jpg"
+          "name": "Ms. Pac-Man",
+          "slug": "ms-pac-man",
+          "rating": 79.69142857889247,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co53rj.jpg"
         },
         {
-          "name": "Grand Theft Auto: Vice City",
-          "slug": "grand-theft-auto-vice-city",
-          "rating": 87.3832342834808,
-          "cover_path": "assets/system/game_covers/commodore_vic_20/grand-theft-auto-vice-city.jpg"
+          "name": "Lode Runner",
+          "slug": "lode-runner",
+          "rating": 76.85898744305479,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6s9v.jpg"
         },
         {
-          "name": "Max Payne",
-          "slug": "max-payne",
-          "rating": 85.80905778745775,
-          "cover_path": "assets/system/game_covers/commodore_vic_20/max-payne.jpg"
+          "name": "Pole Position",
+          "slug": "pole-position",
+          "rating": 70.32111813576758,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coc1m4.jpg"
         },
         {
-          "name": "Grand Theft Auto III",
-          "slug": "grand-theft-auto-iii",
-          "rating": 84.57156551373137,
-          "cover_path": "assets/system/game_covers/commodore_vic_20/grand-theft-auto-iii.jpg"
+          "name": "Shadow of the Beast",
+          "slug": "shadow-of-the-beast",
+          "rating": 70.308062174774,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2jhy.jpg"
         },
         {
-          "name": "Mafia",
-          "slug": "mafia",
-          "rating": 86.40377495555259,
-          "cover_path": "assets/system/game_covers/commodore_vic_20/mafia.jpg"
+          "name": "Moon Patrol",
+          "slug": "moon-patrol",
+          "rating": 79.59918565243362,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coc1lz.jpg"
         }
       ]
     },
@@ -4937,34 +4993,34 @@
       "generation": "Plataforma de Software",
       "top_games": [
         {
+          "name": "Super Mario World",
+          "slug": "super-mario-world",
+          "rating": 91.70204595334357,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8lo8.jpg"
+        },
+        {
+          "name": "Super Mario Bros. 3",
+          "slug": "super-mario-bros-3",
+          "rating": 89.37375670367784,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7ozx.jpg"
+        },
+        {
           "name": "Super Mario Bros.",
           "slug": "super-mario-bros",
-          "rating": 83.68811675605257,
-          "cover_path": "assets/system/game_covers/mame/super-mario-bros.jpg"
+          "rating": 83.6882158325661,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6pib.jpg"
         },
         {
-          "name": "The Legend of Zelda",
-          "slug": "the-legend-of-zelda",
-          "rating": 80.52648907646105,
-          "cover_path": "assets/system/game_covers/mame/the-legend-of-zelda.jpg"
+          "name": "Sonic the Hedgehog",
+          "slug": "sonic-the-hedgehog",
+          "rating": 81.63815967560947,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coanlj.jpg"
         },
         {
-          "name": "Castlevania",
-          "slug": "castlevania",
-          "rating": 78.89439934429028,
-          "cover_path": "assets/system/game_covers/mame/castlevania.jpg"
-        },
-        {
-          "name": "Zelda II: The Adventure of Link",
-          "slug": "zelda-ii-the-adventure-of-link",
-          "rating": 65.49483512179387,
-          "cover_path": "assets/system/game_covers/mame/zelda-ii-the-adventure-of-link.jpg"
-        },
-        {
-          "name": "Castlevania II: Simon's Quest",
-          "slug": "castlevania-ii-simon-s-quest",
-          "rating": 61.76185260819832,
-          "cover_path": "assets/system/game_covers/mame/castlevania-ii-simon-s-quest.jpg"
+          "name": "Tekken 3",
+          "slug": "tekken-3",
+          "rating": 84.4551466418976,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8d7q.jpg"
         }
       ]
     },
@@ -5003,34 +5059,34 @@
       "predecessor": "Neo Geo AES",
       "top_games": [
         {
-          "name": "Tomb Raider",
-          "slug": "tomb-raider",
-          "rating": 80.77522299268941,
-          "cover_path": "assets/system/game_covers/neo_geo_cd/tomb-raider.jpg"
+          "name": "Metal Slug",
+          "slug": "metal-slug",
+          "rating": 82.40714285121653,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co20gf.jpg"
         },
         {
-          "name": "Quake",
-          "slug": "quake",
-          "rating": 82.59996763107955,
-          "cover_path": "assets/system/game_covers/neo_geo_cd/quake.jpg"
+          "name": "Metal Slug 2",
+          "slug": "metal-slug-2",
+          "rating": 81.48989527407565,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co24zi.jpg"
         },
         {
-          "name": "Warcraft II: Tides of Darkness",
-          "slug": "warcraft-ii-tides-of-darkness",
-          "rating": 84.49170281114868,
-          "cover_path": "assets/system/game_covers/neo_geo_cd/warcraft-ii-tides-of-darkness.jpg"
+          "name": "The King of Fighters '98",
+          "slug": "the-king-of-fighters-98",
+          "rating": 77.97054559974664,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobzr3.jpg"
         },
         {
-          "name": "Command & Conquer",
-          "slug": "command-conquer",
-          "rating": 84.32359833793606,
-          "cover_path": "assets/system/game_covers/neo_geo_cd/command-conquer.jpg"
+          "name": "The King of Fighters '97",
+          "slug": "the-king-of-fighters-97",
+          "rating": 80.88452043654462,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coc5fo.jpg"
         },
         {
-          "name": "Mortal Kombat II",
-          "slug": "mortal-kombat-ii",
-          "rating": 76.4115109309212,
-          "cover_path": "assets/system/game_covers/neo_geo_cd/mortal-kombat-ii.jpg"
+          "name": "Samurai Shodown",
+          "slug": "samurai-shodown",
+          "rating": 72.90692310102182,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6a7y.jpg"
         }
       ]
     },
@@ -5075,34 +5131,34 @@
       "successor": "PC Engine SuperGrafxPC-FX",
       "top_games": [
         {
-          "name": "Pokémon Yellow Version: Special Pikachu Edition",
-          "slug": "pokemon-yellow-version-special-pikachu-edition",
-          "rating": 82.63518048752671,
-          "cover_path": "assets/system/game_covers/pc_engine_cd/pokemon-yellow-version-special-pikachu-edition.jpg"
+          "name": "Golden Axe",
+          "slug": "golden-axe",
+          "rating": 74.89794268914484,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co25qt.jpg"
         },
         {
-          "name": "Pokémon Crystal Version",
-          "slug": "pokemon-crystal-version",
-          "rating": 88.57342003066213,
-          "cover_path": "assets/system/game_covers/pc_engine_cd/pokemon-crystal-version.jpg"
+          "name": "Castlevania: Rondo of Blood",
+          "slug": "castlevania-rondo-of-blood--2",
+          "rating": 80.22742834495104,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co20dk.jpg"
         },
         {
-          "name": "Pokémon Silver Version",
-          "slug": "pokemon-silver-version",
-          "rating": 87.85039588849102,
-          "cover_path": "assets/system/game_covers/pc_engine_cd/pokemon-silver-version.jpg"
+          "name": "Loom",
+          "slug": "loom",
+          "rating": 78.5249601980951,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2gjc.jpg"
         },
         {
-          "name": "Pokémon Gold Version",
-          "slug": "pokemon-gold-version",
-          "rating": 86.68615877274019,
-          "cover_path": "assets/system/game_covers/pc_engine_cd/pokemon-gold-version.jpg"
+          "name": "Buster Bros.",
+          "slug": "buster-bros--1",
+          "rating": 76.1626854105173,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2mrh.jpg"
         },
         {
-          "name": "The Legend of Zelda: Oracle of Seasons",
-          "slug": "the-legend-of-zelda-oracle-of-seasons",
-          "rating": 81.30201167549086,
-          "cover_path": "assets/system/game_covers/pc_engine_cd/the-legend-of-zelda-oracle-of-seasons.jpg"
+          "name": "Fatal Fury 2",
+          "slug": "fatal-fury-2",
+          "rating": 68.4531004522891,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cob76n.jpg"
         }
       ]
     },
@@ -5144,34 +5200,34 @@
       "best_selling_game": "Sonic CD, 1.5 million",
       "top_games": [
         {
-          "name": "Sonic the Hedgehog",
-          "slug": "sonic-the-hedgehog",
-          "rating": 81.63815967560947,
-          "cover_path": "assets/system/game_covers/sega_cd/sonic-the-hedgehog.jpg"
+          "name": "The Secret of Monkey Island",
+          "slug": "the-secret-of-monkey-island",
+          "rating": 86.65435863863428,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co28bp.jpg"
         },
         {
-          "name": "Sonic the Hedgehog 2",
-          "slug": "sonic-the-hedgehog-2",
-          "rating": 86.49102837155118,
-          "cover_path": "assets/system/game_covers/sega_cd/sonic-the-hedgehog-2.jpg"
+          "name": "Sonic CD",
+          "slug": "sonic-cd",
+          "rating": 74.28617409045452,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co53t2.jpg"
         },
         {
-          "name": "Mortal Kombat II",
-          "slug": "mortal-kombat-ii",
-          "rating": 76.4115109309212,
-          "cover_path": "assets/system/game_covers/sega_cd/mortal-kombat-ii.jpg"
+          "name": "Flashback: The Quest for Identity",
+          "slug": "flashback-the-quest-for-identity",
+          "rating": 82.97266908415749,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6fda.jpg"
         },
         {
-          "name": "Sonic the Hedgehog 3",
-          "slug": "sonic-the-hedgehog-3",
-          "rating": 82.5615822168294,
-          "cover_path": "assets/system/game_covers/sega_cd/sonic-the-hedgehog-3.jpg"
+          "name": "Theme Park",
+          "slug": "theme-park",
+          "rating": 68.96404260940369,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9fto.jpg"
         },
         {
-          "name": "The Lion King",
-          "slug": "the-lion-king",
-          "rating": 74.52419576249048,
-          "cover_path": "assets/system/game_covers/sega_cd/the-lion-king.jpg"
+          "name": "Ecco the Dolphin",
+          "slug": "ecco-the-dolphin",
+          "rating": 73.59445383305582,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co23oy.jpg"
         }
       ]
     },
@@ -5212,7 +5268,39 @@
       "graphics": "VINAS 1 + 2, VSOP, CYNTHIA / Jr, RESERVE",
       "sound": "Yamaha YM2151, OKI MSM6258",
       "predecessor": "X1",
-      "generation": "Computador 16 bits"
+      "generation": "Computador 16 bits",
+      "top_games": [
+        {
+          "name": "Final Fight",
+          "slug": "final-fight",
+          "rating": 79.1760027876448,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4a0q.jpg"
+        },
+        {
+          "name": "SimCity",
+          "slug": "simcity",
+          "rating": 84.67559692194607,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1vwv.jpg"
+        },
+        {
+          "name": "OutRun",
+          "slug": "outrun",
+          "rating": 71.35340690631391,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2oj4.jpg"
+        },
+        {
+          "name": "Ghouls 'n Ghosts",
+          "slug": "ghouls-n-ghosts",
+          "rating": 80.7183101902892,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co25sq.jpg"
+        },
+        {
+          "name": "Marble Madness",
+          "slug": "marble-madness",
+          "rating": 68.48900979270417,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5r8f.jpg"
+        }
+      ]
     },
     {
       "id": "supergrafx",
@@ -5251,34 +5339,16 @@
       "successor": "PC Engine Duo (updated system)",
       "top_games": [
         {
-          "name": "Pokémon Yellow Version: Special Pikachu Edition",
-          "slug": "pokemon-yellow-version-special-pikachu-edition",
-          "rating": 82.63518048752671,
-          "cover_path": "assets/system/game_covers/supergrafx/pokemon-yellow-version-special-pikachu-edition.jpg"
+          "name": "1941: Counter Attack",
+          "slug": "1941-counter-attack",
+          "rating": 64.43125845621383,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2kqr.jpg"
         },
         {
-          "name": "Pokémon Crystal Version",
-          "slug": "pokemon-crystal-version",
-          "rating": 88.57342003066213,
-          "cover_path": "assets/system/game_covers/supergrafx/pokemon-crystal-version.jpg"
-        },
-        {
-          "name": "Pokémon Silver Version",
-          "slug": "pokemon-silver-version",
-          "rating": 87.85039588849102,
-          "cover_path": "assets/system/game_covers/supergrafx/pokemon-silver-version.jpg"
-        },
-        {
-          "name": "Pokémon Gold Version",
-          "slug": "pokemon-gold-version",
-          "rating": 86.68615877274019,
-          "cover_path": "assets/system/game_covers/supergrafx/pokemon-gold-version.jpg"
-        },
-        {
-          "name": "The Legend of Zelda: Oracle of Seasons",
-          "slug": "the-legend-of-zelda-oracle-of-seasons",
-          "rating": 81.30201167549086,
-          "cover_path": "assets/system/game_covers/supergrafx/the-legend-of-zelda-oracle-of-seasons.jpg"
+          "name": "Impossamole",
+          "slug": "impossamole",
+          "rating": 35.03210741389375,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co43iu.jpg"
         }
       ]
     },
@@ -5313,32 +5383,32 @@
         {
           "name": "Super Mario World",
           "slug": "super-mario-world",
-          "rating": 91.70191481860208,
-          "cover_path": "assets/system/game_covers/sufami_turbo/super-mario-world.jpg"
+          "rating": 91.70204595334357,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8lo8.jpg"
         },
         {
           "name": "The Legend of Zelda: A Link to the Past",
           "slug": "the-legend-of-zelda-a-link-to-the-past",
-          "rating": 91.93906391924232,
-          "cover_path": "assets/system/game_covers/sufami_turbo/the-legend-of-zelda-a-link-to-the-past.jpg"
+          "rating": 91.93941495432685,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3vzn.jpg"
         },
         {
           "name": "Chrono Trigger",
           "slug": "chrono-trigger",
-          "rating": 93.18087777732693,
-          "cover_path": "assets/system/game_covers/sufami_turbo/chrono-trigger.jpg"
+          "rating": 93.18261394502431,
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3plw.jpg"
         },
         {
           "name": "Super Metroid",
           "slug": "super-metroid",
           "rating": 92.20577065266465,
-          "cover_path": "assets/system/game_covers/sufami_turbo/super-metroid.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5osy.jpg"
         },
         {
           "name": "Final Fantasy III",
           "slug": "final-fantasy-iii--7",
           "rating": 89.2616804436058,
-          "cover_path": "assets/system/game_covers/sufami_turbo/final-fantasy-iii--7.jpg"
+          "cover_path": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coaq5k.jpg"
         }
       ]
     }

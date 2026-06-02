@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { X, ExternalLink, Settings, Wifi, CheckCircle2, AlertCircle } from 'lucide-react';
+import { LuX, LuExternalLink, LuSettings, LuWifi, LuCircleCheckBig, LuCircleAlert } from "react-icons/lu";
 
 interface WelcomeModalProps {
   onClose: () => void;
@@ -27,7 +27,7 @@ export function WelcomeModal({ onClose, onOpenSettings, hasConfig }: WelcomeModa
         <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-retro-primary/10 flex items-center justify-center">
-              <Settings className="w-5 h-5 text-retro-primary" />
+              <LuSettings className="w-5 h-5 text-retro-primary" />
             </div>
             <h2 className="text-xl font-bold text-zinc-100">Bem-vindo ao RetroGrade</h2>
           </div>
@@ -35,7 +35,7 @@ export function WelcomeModal({ onClose, onOpenSettings, hasConfig }: WelcomeModa
             onClick={onClose}
             className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
           >
-            <X className="w-5 h-5" />
+            <LuX className="w-5 h-5" />
           </button>
         </div>
 
@@ -48,9 +48,9 @@ export function WelcomeModal({ onClose, onOpenSettings, hasConfig }: WelcomeModa
               : 'bg-retro-danger/10 border border-retro-danger/20'
           }`}>
             {hasConfig ? (
-              <AlertCircle className="w-5 h-5 text-retro-warning flex-shrink-0" />
+              <LuCircleAlert className="w-5 h-5 text-retro-warning flex-shrink-0" />
             ) : (
-              <Wifi className="w-5 h-5 text-retro-danger flex-shrink-0" />
+              <LuWifi className="w-5 h-5 text-retro-danger flex-shrink-0" />
             )}
             <p className="text-sm text-zinc-300">
               {hasConfig
@@ -88,7 +88,7 @@ export function WelcomeModal({ onClose, onOpenSettings, hasConfig }: WelcomeModa
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 px-3 py-2 bg-zinc-800/50 rounded-lg text-xs text-retro-primary hover:bg-zinc-800 transition-colors group"
                     >
-                      <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <LuExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                       IGDB (Twitch Developer) - api-docs.igdb.com
                     </a>
                     <a
@@ -97,7 +97,7 @@ export function WelcomeModal({ onClose, onOpenSettings, hasConfig }: WelcomeModa
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 px-3 py-2 bg-zinc-800/50 rounded-lg text-xs text-retro-secondary hover:bg-zinc-800 transition-colors group"
                     >
-                      <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <LuExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                       TheGamesDB - thegamesdb.net/api
                     </a>
                   </div>
@@ -129,7 +129,7 @@ export function WelcomeModal({ onClose, onOpenSettings, hasConfig }: WelcomeModa
           {/* Informações */}
           <div className="p-3 bg-zinc-800/30 rounded-xl border border-zinc-700/30">
             <div className="flex items-start gap-2">
-              <CheckCircle2 className="w-4 h-4 text-retro-success flex-shrink-0 mt-0.5" />
+              <LuCircleCheckBig className="w-4 h-4 text-retro-success flex-shrink-0 mt-0.5" />
               <p className="text-xs text-zinc-400">
                 Basta configurar <span className="text-zinc-200 font-medium">uma das APIs</span> para que a curadoria seja habilitada. O app usa a IGDB como principal e a TheGamesDB como fallback.
               </p>
@@ -149,7 +149,7 @@ export function WelcomeModal({ onClose, onOpenSettings, hasConfig }: WelcomeModa
             onClick={() => { onClose(); onOpenSettings(); }}
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-retro-primary/10 text-retro-primary border border-retro-primary/30 rounded-xl font-medium hover:bg-retro-primary/20 transition-all text-sm"
           >
-            <Settings className="w-4 h-4" />
+            <LuSettings className="w-4 h-4" />
             Ir para Configurações
           </button>
         </div>

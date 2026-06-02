@@ -1,4 +1,4 @@
-import { Minus, Square, X } from 'lucide-react';
+import { LuMinus, LuSquare, LuX } from "react-icons/lu";
 
 export function TitleBar() {
   return (
@@ -12,19 +12,19 @@ export function TitleBar() {
           onClick={() => window.api.windowMinimize()}
           className="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800 rounded transition-colors"
         >
-          <Minus className="w-4 h-4" />
+          <LuMinus className="w-4 h-4" />
         </button>
         <button
           onClick={() => window.api.windowMaximize()}
           className="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800 rounded transition-colors"
         >
-          <Square className="w-3.5 h-3.5" />
+          <LuSquare className="w-3.5 h-3.5" />
         </button>
         <button
           onClick={() => window.api.windowClose()}
           className="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-retro-danger hover:bg-zinc-800 rounded transition-colors"
         >
-          <X className="w-4 h-4" />
+          <LuX className="w-4 h-4" />
         </button>
       </div>
     </div>

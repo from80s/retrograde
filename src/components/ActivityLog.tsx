@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, CheckCircle2, XCircle, Star } from 'lucide-react';
+import { LuShieldCheck, LuCircleCheckBig, LuCircleX, LuStar } from "react-icons/lu";
 import * as React from 'react';
 import { getSystemLogo } from '../lib/system-logos';
 
@@ -17,9 +17,9 @@ interface ActivityLogProps {
 }
 
 const statusIcons = {
-  classic: ShieldCheck,
-  kept: CheckCircle2,
-  removed: XCircle,
+  classic: LuShieldCheck,
+  kept: LuCircleCheckBig,
+  removed: LuCircleX,
 };
 
 const statusColors = {
@@ -41,7 +41,7 @@ export function ActivityLog({ log, logRef }: ActivityLogProps) {
       >
         <AnimatePresence initial={false}>
           {log.map((entry, index) => {
-            const Icon = statusIcons[entry.status as keyof typeof statusIcons] || CheckCircle2;
+            const Icon = statusIcons[entry.status as keyof typeof statusIcons] || LuCircleCheckBig;
             const color = statusColors[entry.status as keyof typeof statusColors] || 'text-zinc-400';
 
             return (
@@ -68,7 +68,7 @@ export function ActivityLog({ log, logRef }: ActivityLogProps) {
                 })()}
                 {entry.rating !== null && (
                   <div className="flex items-center gap-1 flex-shrink-0">
-                    <Star className="w-3 h-3 text-retro-warning" />
+                    <LuStar className="w-3 h-3 text-retro-warning" />
                     <span className="text-xs font-mono text-retro-warning">
                       {entry.rating.toFixed(0)}
                     </span>

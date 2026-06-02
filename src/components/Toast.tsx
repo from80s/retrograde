@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, XCircle, Info } from 'lucide-react';
+import { LuCircleCheckBig, LuCircleX, LuInfo } from "react-icons/lu";
 
 interface ToastProps {
   message: string;
@@ -15,9 +15,9 @@ export function Toast({ message, type, onClose }: ToastProps) {
   };
 
   const icons = {
-    success: <CheckCircle2 className="w-5 h-5" />,
-    error: <XCircle className="w-5 h-5" />,
-    info: <Info className="w-5 h-5" />,
+    success: <LuCircleCheckBig className="w-5 h-5" />,
+    error: <LuCircleX className="w-5 h-5" />,
+    info: <LuInfo className="w-5 h-5" />,
   };
 
   return (
@@ -34,7 +34,7 @@ export function Toast({ message, type, onClose }: ToastProps) {
           onClick={onClose}
           className="text-zinc-500 hover:text-zinc-300 transition-colors ml-2"
         >
-          ×
+          Ã—
         </button>
       </motion.div>
     </AnimatePresence>

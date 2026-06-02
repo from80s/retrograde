@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
-import { type LucideIcon } from 'lucide-react';
+import { type IconType } from "react-icons";
 
 interface StatCardProps {
   label: string;
   value: number;
-  icon: LucideIcon;
+  icon: IconType;
   color: string;
 }
 

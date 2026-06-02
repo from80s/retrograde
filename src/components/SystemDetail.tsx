@@ -1,14 +1,13 @@
 import { useRef, useEffect, useCallback, useMemo, useState } from "react";
 import {
-  X,
-  Monitor,
-  Calendar,
-  Gamepad2,
-  Cpu,
-  BookOpen,
-  Star,
-} from "lucide-react";
-import { PiMouseScrollLight } from "react-icons/pi";
+  LuX,
+  LuMonitor,
+  LuCalendar,
+  LuGamepad2,
+  LuCpu,
+  LuBookOpen,
+  LuStar,
+} from "react-icons/lu";
 
 function ScrollDownIcon({ className }: { className?: string }) {
   return (
@@ -66,7 +65,6 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
   const maskRef = useRef<HTMLDivElement>(null);
   const scrollIconRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const specsScrollRef = useRef<HTMLDivElement>(null);
   const [contentVisible, setContentVisible] = useState(false);
   const contentVisibleRef = useRef(false);
 
@@ -155,7 +153,7 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
   // Quando o conteúdo fica visível, faz scroll automático do containerRef
   // para alinhar o topo do contentRef com o topo da viewport.
   // Isso garante que o containerRef.scrollTop chegue ao máximo, eliminando
-  // o spacer do scroll chain — a partir daí qualquer wheel event vai
+  // o spacer do scroll chain â€” a partir daí qualquer wheel event vai
   // diretamente para o containerRef (que já está no fim) e naturalmente
   // não avança mais, revertendo a animação ao rolar para cima.
   useEffect(() => {
@@ -172,12 +170,12 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
         onClick={onClose}
         className="fixed top-4 right-8 z-[70] w-10 h-10 rounded-full bg-zinc-900/80 border border-zinc-700/50 flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
       >
-        <X className="w-5 h-5" />
+        <LuX className="w-5 h-5" />
       </button>
 
       {/*
-        containerRef é o ÚNICO scroll container.
-        O contentRef NÃO tem overflow — ele é position:fixed para cobrir
+        containerRef é o ÃšNICO scroll container.
+        O contentRef NÃƒO tem overflow â€” ele é position:fixed para cobrir
         a tela, mas não participa do scroll chain do browser.
         Scroll interno do conteúdo é gerenciado pelo wheel handler abaixo.
       */}
@@ -217,15 +215,14 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
               </div>
 
               {/*
-                MUDANÇA PRINCIPAL:
-                - Removido overflowY dinâmico — contentRef nunca é scroll container
+                MUDANÃ‡A PRINCIPAL:
+                - Removido overflowY dinâmico â€” contentRef nunca é scroll container
                 - Scroll interno simulado via wheel handler no containerRef
                 - contentRef usa position:absolute mas overflow:hidden sempre
                 - Um ref interno (innerScrollRef) controla a posição visual via translateY
               */}
               <ContentPanel
                 contentRef={contentRef}
-                specsScrollRef={specsScrollRef}
                 containerRef={containerRef}
                 contentVisible={contentVisible}
                 meta={meta}
@@ -270,7 +267,6 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
 // ContentPanel isolado para manter o useRef do scroll interno limpo
 function ContentPanel({
   contentRef,
-  specsScrollRef,
   containerRef,
   contentVisible,
   meta,
@@ -278,7 +274,6 @@ function ContentPanel({
   systemName,
 }: {
   contentRef: React.RefObject<HTMLDivElement | null>;
-  specsScrollRef: React.RefObject<HTMLDivElement | null>;
   containerRef: React.RefObject<HTMLDivElement | null>;
   contentVisible: boolean;
   meta: ReturnType<typeof getSystemMetadata>;
@@ -286,7 +281,7 @@ function ContentPanel({
   systemName: string;
 }) {
   // innerScrollTop: posição de scroll virtual do conteúdo interno.
-  // É um ref (não state) para não causar re-renders a cada evento wheel.
+  // Ã‰ um ref (não state) para não causar re-renders a cada evento wheel.
   const innerScrollTop = useRef(0);
   const innerContentRef = useRef<HTMLDivElement>(null);
 
@@ -300,7 +295,7 @@ function ContentPanel({
     }
   }, [contentVisible]);
 
-  // Wheel handler no containerRef — intercepta TODOS os eventos quando
+  // Wheel handler no containerRef â€” intercepta TODOS os eventos quando
   // o conteúdo está visível e decide manualmente para onde vai o scroll.
   // Como o containerRef é o único scroll container, não há disputa.
   useEffect(() => {
@@ -339,7 +334,7 @@ function ContentPanel({
       }
     };
 
-    // Listener no containerRef (não no contentRef) — assim não há
+    // Listener no containerRef (não no contentRef) â€” assim não há
     // segundo scroll container para o browser considerar no hit test.
     outerEl.addEventListener("wheel", onWheel, { passive: false });
     return () => outerEl.removeEventListener("wheel", onWheel);
@@ -347,8 +342,8 @@ function ContentPanel({
 
   return (
     <div
-      ref={contentRef}
-      className="absolute inset-0 z-10 bg-zinc-950/95 backdrop-blur-sm overflow-hidden"
+      ref={contentRef as React.Ref<HTMLDivElement>}
+      className="absolute inset-0 z-10 backdrop-blur-sm overflow-hidden"
       style={{
         opacity: contentVisible ? 1 : 0,
         transform: contentVisible ? "translateY(0)" : "translateY(40px)",
@@ -357,54 +352,45 @@ function ContentPanel({
         pointerEvents: contentVisible ? "auto" : "none",
       }}
     >
-      {/* Camada interna que se move via translateY — nunca tem overflow */}
+      {/* Camada interna que se move via translateY â€” nunca tem overflow */}
       <div ref={innerContentRef} style={{ willChange: "transform" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
           {meta && (
             <>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-auto">
-                {/* 1. Título + Subtítulo */}
-                <div className="col-span-2 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <h1 className="text-xl sm:text-2xl font-bold text-zinc-100">
-                      {meta.name}
-                    </h1>
-                  </div>
-                  <p className="text-sm text-zinc-300 leading-relaxed">
-                    {meta.description}
-                  </p>
-                </div>
-
-                {/* 2. Imagem principal do hardware */}
-                <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800/50 flex items-center justify-center overflow-hidden">
-                  {hardwareUrl ? (
-                    <img
-                      src={hardwareUrl}
-                      alt={meta.name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="flex flex-col items-center gap-2 text-zinc-600 py-4 px-3">
-                      <Monitor className="w-8 h-8" />
-                      <span className="text-[10px] uppercase tracking-wider">
-                        Sem imagem
-                      </span>
-                    </div>
+                {/* 1. Título + Descrição com BG do hardware */}
+                <div className="relative col-span-2 sm:col-span-3 rounded-2xl border border-zinc-800/50 overflow-hidden">
+                  {hardwareUrl && (
+                    <>
+                      <img
+                        src={hardwareUrl}
+                        alt=""
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/90 via-zinc-950/70 to-zinc-950/50" />
+                    </>
                   )}
+                  <div className="relative p-5 sm:p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <h1 className="text-xl sm:text-2xl font-bold text-white">
+                        {meta.name}
+                      </h1>
+                    </div>
+                    <p className="text-sm text-zinc-200 leading-relaxed max-w-2xl">
+                      {meta.description}
+                    </p>
+                  </div>
                 </div>
 
                 {/* 3. Especificações técnicas */}
                 <div className="relative rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6 overflow-hidden">
                   <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                    <Cpu className="w-4 h-4" />
+                    <LuCpu className="w-4 h-4" />
                     <span className="text-xs font-medium uppercase tracking-wider">
                       Especificações
                     </span>
                   </div>
-                  <div
-                    ref={specsScrollRef}
-                    className="scrollbar-auto max-h-[220px] overflow-y-auto space-y-2.5 pr-1"
-                  >
+                  <div className="space-y-2.5">
                     {[
                       ["Fabricante", meta.manufacturer],
                       ["Origem", meta.origin_country],
@@ -432,13 +418,12 @@ function ContentPanel({
                         </div>
                       ))}
                   </div>
-                  <ScrollHint scrollRef={specsScrollRef} />
                 </div>
 
                 {/* 4. Ano de Lançamento */}
                 <div className="col-span-2 sm:col-span-1 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
                   <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                    <Calendar className="w-4 h-4" />
+                    <LuCalendar className="w-4 h-4" />
                     <span className="text-xs font-medium uppercase tracking-wider">
                       Ano de Lançamento
                     </span>
@@ -455,7 +440,7 @@ function ContentPanel({
                 {/* 5. Sistema e periféricos */}
                 <div className="col-span-2 lg:col-span-3 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
                   <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                    <Monitor className="w-4 h-4" />
+                    <LuMonitor className="w-4 h-4" />
                     <span className="text-xs font-medium uppercase tracking-wider">
                       Sistema & Periféricos
                     </span>
@@ -519,7 +504,7 @@ function ContentPanel({
                 {/* 6. Curiosidades */}
                 <div className="col-span-2 lg:col-span-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
                   <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                    <BookOpen className="w-4 h-4" />
+                    <LuBookOpen className="w-4 h-4" />
                     <span className="text-xs font-medium uppercase tracking-wider">
                       Curiosidades
                     </span>
@@ -547,7 +532,7 @@ function ContentPanel({
                 {meta.top_games && meta.top_games.length > 0 && (
                   <div className="col-span-2 lg:col-span-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
                     <div className="flex items-center gap-2 mb-4 text-zinc-400">
-                      <Star className="w-4 h-4" />
+                      <LuStar className="w-4 h-4" />
                       <span className="text-xs font-medium uppercase tracking-wider">
                         Principais Títulos
                       </span>
@@ -572,14 +557,11 @@ function ContentPanel({
                                 />
                               ) : (
                                 <div className="w-full h-full flex items-center justify-center text-zinc-600">
-                                  <Gamepad2 className="w-8 h-8" />
+                                  <LuGamepad2 className="w-8 h-8" />
                                 </div>
                               )}
                             </div>
                             <div className="p-2.5">
-                              <p className="text-xs font-medium text-zinc-300 leading-tight line-clamp-2 group-hover:text-zinc-100 transition-colors">
-                                {game.name}
-                              </p>
                               {(() => {
                                 const r = game.rating;
                                 if (!r) return null;
@@ -613,6 +595,9 @@ function ContentPanel({
                                   </div>
                                 );
                               })()}
+                              <p className="text-xs font-medium text-zinc-300 leading-tight line-clamp-2 group-hover:text-zinc-100 transition-colors mt-4">
+                                {game.name}
+                              </p>
                             </div>
                           </div>
                         );
@@ -626,7 +611,7 @@ function ContentPanel({
 
           {!meta && (
             <div className="flex flex-col items-center justify-center py-20 text-zinc-500">
-              <Gamepad2 className="w-12 h-12 mb-4" />
+              <LuGamepad2 className="w-12 h-12 mb-4" />
               <p className="text-lg font-medium mb-1">Sistema não encontrado</p>
               <p className="text-sm">
                 Nenhum metadado disponível para {systemName}.
@@ -635,44 +620,6 @@ function ContentPanel({
           )}
         </div>
       </div>
-    </div>
-  );
-}
-
-function ScrollHint({
-  scrollRef,
-}: {
-  scrollRef: React.RefObject<HTMLDivElement | null>;
-}) {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const check = () => {
-      setShow(
-        el.scrollHeight > el.clientHeight &&
-          el.scrollTop + el.clientHeight < el.scrollHeight - 2,
-      );
-    };
-
-    check();
-    el.addEventListener("scroll", check, { passive: true });
-    const ro = new ResizeObserver(check);
-    ro.observe(el);
-
-    return () => {
-      el.removeEventListener("scroll", check);
-      ro.disconnect();
-    };
-  }, [scrollRef]);
-
-  if (!show) return null;
-
-  return (
-    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 animate-bounce-slow pointer-events-none">
-      <PiMouseScrollLight className="w-5 h-5 text-zinc-400/80" />
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  X, Play, Filter, Search, Shield, Gamepad2, Calendar,
-  ChevronDown, ChevronUp, Copy, Globe, Star, AlertTriangle,
-  Loader2, XCircle, CheckCircle2, Square
-} from 'lucide-react';
+  LuX, LuPlay, LuFilter, LuSearch, LuShield, LuGamepad2, LuCalendar,
+  LuChevronDown, LuChevronUp, LuCopy, LuGlobe, LuStar, LuTriangleAlert,
+  LuLoader, LuCircleX, LuCircleCheckBig, LuSquare
+} from "react-icons/lu";
 import { getSystemLogo } from '../lib/system-logos';
 
 interface ScanPreviewModalProps {
@@ -208,7 +208,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
     if (rom.protectionStatus.isClassic) {
       return (
         <span className="flex items-center gap-1 px-2 py-0.5 bg-yellow-500/10 border border-yellow-500/20 rounded-full text-xs text-yellow-400">
-          <Shield className="w-3 h-3" />
+          <LuShield className="w-3 h-3" />
           Clássico
         </span>
       );
@@ -216,7 +216,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
     if (rom.protectionStatus.isGenreProtected) {
       return (
         <span className="flex items-center gap-1 px-2 py-0.5 bg-purple-500/10 border border-purple-500/20 rounded-full text-xs text-purple-400">
-          <Shield className="w-3 h-3" />
+          <LuShield className="w-3 h-3" />
           Gênero
         </span>
       );
@@ -224,7 +224,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
     if (rom.protectionStatus.isUserProtected) {
       return (
         <span className="flex items-center gap-1 px-2 py-0.5 bg-teal-500/10 border border-teal-500/20 rounded-full text-xs text-teal-400">
-          <Shield className="w-3 h-3" />
+          <LuShield className="w-3 h-3" />
           Protegido
         </span>
       );
@@ -286,7 +286,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
             onClick={onClose}
             className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
           >
-            <X className="w-5 h-5" />
+            <LuX className="w-5 h-5" />
           </button>
         </div>
 
@@ -308,7 +308,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                   exit={{ scale: 0.9, opacity: 0 }}
                   className="glass rounded-2xl p-8 max-w-md mx-4 text-center space-y-4"
                 >
-                  <AlertTriangle className="w-12 h-12 text-retro-warning mx-auto" />
+                  <LuTriangleAlert className="w-12 h-12 text-retro-warning mx-auto" />
                   <h3 className="text-lg font-bold text-zinc-100">Processamento Anterior Encontrado</h3>
                   <p className="text-sm text-zinc-400">
                     {showResumeDialog === 'simulation'
@@ -326,7 +326,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                       onClick={showResumeDialog === 'simulation' ? handleResumeSimulation : handleResumeCuration}
                       className="flex items-center gap-2 px-6 py-2.5 bg-retro-primary/10 text-retro-primary border border-retro-primary/30 rounded-xl font-medium hover:bg-retro-primary/20 transition-all active:scale-95"
                     >
-                      <Play className="w-4 h-4" />
+                      <LuPlay className="w-4 h-4" />
                       Retomar
                     </button>
                   </div>
@@ -338,7 +338,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
           {scanning ? (
             <div className="flex flex-col items-center justify-center h-64 space-y-6">
               <div className="relative w-16 h-16">
-                <Loader2 className="w-16 h-16 text-retro-primary animate-spin" />
+                <LuLoader className="w-16 h-16 text-retro-primary animate-spin" />
               </div>
               <div className="text-center space-y-2">
                 <p className="text-sm text-zinc-400">
@@ -375,12 +375,12 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
               {/* Filtros */}
               <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-                  <Filter className="w-4 h-4" />
+                  <LuFilter className="w-4 h-4" />
                   Filtros
                 </h3>
                 <div className="grid grid-cols-3 gap-3">
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                    <LuSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                     <input
                       type="text"
                       placeholder="Filtrar por nome..."
@@ -390,7 +390,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                     />
                   </div>
                   <div className="relative">
-                    <Gamepad2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                    <LuGamepad2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                     <input
                       type="text"
                       placeholder="Filtrar por gênero..."
@@ -400,7 +400,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                     />
                   </div>
                   <div className="relative">
-                    <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                    <LuCalendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                     <select
                       value={filters.year}
                       onChange={(e) => setFilters(prev => ({ ...prev, year: e.target.value }))}
@@ -431,9 +431,9 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                         >
                           <div className="flex items-center gap-3">
                             {expandedSystems[system] ? (
-                              <ChevronUp className="w-5 h-5 text-zinc-400" />
+                              <LuChevronUp className="w-5 h-5 text-zinc-400" />
                             ) : (
-                              <ChevronDown className="w-5 h-5 text-zinc-400" />
+                              <LuChevronDown className="w-5 h-5 text-zinc-400" />
                             )}
                             {logo && (
                               <img
@@ -467,19 +467,19 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                                     <div className="flex items-center gap-2 mt-1">
                                       {rom.metadata?.year && (
                                         <span className="text-xs text-zinc-500 flex items-center gap-1">
-                                          <Calendar className="w-3 h-3" />
+                                          <LuCalendar className="w-3 h-3" />
                                           {rom.metadata.year}
                                         </span>
                                       )}
                                       {rom.metadata?.rating && (
                                         <span className="text-xs text-zinc-500 flex items-center gap-1">
-                                          <Star className="w-3 h-3" />
+                                          <LuStar className="w-3 h-3" />
                                           {rom.metadata.rating.toFixed(0)}
                                         </span>
                                       )}
                                       {rom.regionTags.length > 0 && (
                                         <span className="text-xs text-zinc-500 flex items-center gap-1">
-                                          <Globe className="w-3 h-3" />
+                                          <LuGlobe className="w-3 h-3" />
                                           {rom.regionTags.join(', ')}
                                         </span>
                                       )}
@@ -509,13 +509,13 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                     className="w-full flex items-center justify-between p-4 bg-zinc-800/30 rounded-xl hover:bg-zinc-800/50 transition-colors"
                   >
                     <div className="flex items-center gap-3">
-                      <Copy className="w-5 h-5 text-retro-warning" />
+                      <LuCopy className="w-5 h-5 text-retro-warning" />
                       <div className="text-left">
                         <h3 className="text-sm font-semibold text-zinc-200">Detecção de Clones/Duplicados</h3>
                         <p className="text-xs text-zinc-500">{scanData.cloneGroups.length} grupos encontrados</p>
                       </div>
                     </div>
-                    {showCloneOptions ? <ChevronUp className="w-5 h-5 text-zinc-400" /> : <ChevronDown className="w-5 h-5 text-zinc-400" />}
+                    {showCloneOptions ? <LuChevronUp className="w-5 h-5 text-zinc-400" /> : <LuChevronDown className="w-5 h-5 text-zinc-400" />}
                   </button>
 
                   <AnimatePresence>
@@ -554,7 +554,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                                         : 'bg-zinc-700/50 text-zinc-400 border border-zinc-600/30 hover:text-zinc-200'
                                     }`}
                                   >
-                                    {preferredRegions.includes(region) && <CheckCircle2 className="w-3 h-3" />}
+                                    {preferredRegions.includes(region) && <LuCircleCheckBig className="w-3 h-3" />}
                                     {region}
                                   </button>
                                 ))}
@@ -568,7 +568,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                           <div className="max-h-40 overflow-y-auto space-y-2 scrollbar-thin">
                             {scanData.cloneGroups.slice(0, 10).map((group: any, idx: number) => (
                               <div key={idx} className="flex items-start gap-2 p-2 bg-zinc-800/30 rounded-lg">
-                                <AlertTriangle className="w-4 h-4 text-retro-warning flex-shrink-0 mt-0.5" />
+                                <LuTriangleAlert className="w-4 h-4 text-retro-warning flex-shrink-0 mt-0.5" />
                                 <div className="flex-1 min-w-0">
                                   <p className="text-xs text-zinc-300 truncate">{group.baseName}</p>
                                   <p className="text-xs text-zinc-500">{group.roms.length} variantes</p>
@@ -589,7 +589,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
               {/* Jogos Protegidos pelo Usuário */}
               <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-teal-400" />
+                  <LuShield className="w-4 h-4 text-teal-400" />
                   Jogos Protegidos ({userProtectedGames.length})
                 </h3>
                 <div className="flex gap-2">
@@ -606,7 +606,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                     disabled={validatingGame || !newProtectedGame.trim()}
                     className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium bg-teal-500/10 text-teal-400 border border-teal-500/30 hover:bg-teal-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                   >
-                    {validatingGame ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
+                    {validatingGame ? <LuLoader className="w-4 h-4 animate-spin" /> : <LuSearch className="w-4 h-4" />}
                     Validar
                   </button>
                 </div>
@@ -623,7 +623,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                           : 'bg-retro-danger/10 text-retro-danger border border-retro-danger/20'
                       }`}
                     >
-                      {gameValidationResult.valid ? <CheckCircle2 className="w-4 h-4 flex-shrink-0" /> : <XCircle className="w-4 h-4 flex-shrink-0" />}
+                      {gameValidationResult.valid ? <LuCircleCheckBig className="w-4 h-4 flex-shrink-0" /> : <LuCircleX className="w-4 h-4 flex-shrink-0" />}
                       <span>{gameValidationResult.message}</span>
                       {gameValidationResult.valid && (
                         <button
@@ -648,7 +648,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                         onClick={() => handleRemoveProtectedGame(game)}
                         className="ml-1 w-4 h-4 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-retro-danger/20 hover:text-retro-danger transition-all"
                       >
-                        <X className="w-3 h-3" />
+                        <LuX className="w-3 h-3" />
                       </button>
                     </span>
                   ))}
@@ -688,7 +688,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                   onClick={handleCancelSimulation}
                   className="flex items-center gap-2 px-6 py-2.5 bg-retro-danger/10 text-retro-danger border border-retro-danger/30 rounded-xl font-medium hover:bg-retro-danger/20 transition-all active:scale-95"
                 >
-                  <Square className="w-4 h-4" />
+                  <LuSquare className="w-4 h-4" />
                   Cancelar Simulação
                 </button>
               ) : (
@@ -698,7 +698,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                     disabled={simulating || scanning}
                     className="flex items-center gap-2 px-6 py-2.5 bg-zinc-700/50 text-zinc-300 border border-zinc-600/30 rounded-xl font-medium hover:bg-zinc-700 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {simulating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
+                    {simulating ? <LuLoader className="w-4 h-4 animate-spin" /> : <LuSearch className="w-4 h-4" />}
                     Simular Curadoria
                   </button>
                   <button
@@ -706,7 +706,7 @@ export function ScanPreviewModal({ folder, minRating, action, onClose, onStartCu
                     disabled={scanning}
                     className="flex items-center gap-2 px-6 py-2.5 bg-retro-success/10 text-retro-success border border-retro-success/30 rounded-xl font-medium hover:bg-retro-success/20 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Play className="w-4 h-4" />
+                    <LuPlay className="w-4 h-4" />
                     Iniciar Curadoria
                   </button>
                 </>

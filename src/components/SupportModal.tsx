@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { X, Mail, MapPin, Heart, Copy, Check } from 'lucide-react';
+import { LuX, LuMail, LuMapPin, LuHeart, LuCopy, LuCheck } from "react-icons/lu";
 import { useState } from 'react';
 
 interface SupportModalProps {
@@ -33,7 +33,7 @@ export function SupportModal({ onClose }: SupportModalProps) {
         <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-retro-primary/10 flex items-center justify-center">
-              <Heart className="w-5 h-5 text-retro-primary" />
+              <LuHeart className="w-5 h-5 text-retro-primary" />
             </div>
             <h2 className="text-xl font-bold text-zinc-100">Suporte</h2>
           </div>
@@ -41,7 +41,7 @@ export function SupportModal({ onClose }: SupportModalProps) {
             onClick={onClose}
             className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
           >
-            <X className="w-5 h-5" />
+            <LuX className="w-5 h-5" />
           </button>
         </div>
 
@@ -53,7 +53,7 @@ export function SupportModal({ onClose }: SupportModalProps) {
           <div className="space-y-4">
             <div className="flex items-start gap-4 p-4 bg-zinc-800/50 rounded-xl">
               <div className="w-10 h-10 rounded-lg bg-retro-primary/10 flex items-center justify-center flex-shrink-0">
-                <Mail className="w-5 h-5 text-retro-primary" />
+                <LuMail className="w-5 h-5 text-retro-primary" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs text-zinc-500 mb-1">E-mail</p>
@@ -66,13 +66,13 @@ export function SupportModal({ onClose }: SupportModalProps) {
                          hover:bg-retro-primary/20 active:scale-95"
                 title="Copiar email"
               >
-                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                {copied ? <LuCheck className="w-4 h-4" /> : <LuCopy className="w-4 h-4" />}
               </button>
             </div>
 
             <div className="flex items-center gap-4 p-4 bg-zinc-800/50 rounded-xl">
               <div className="w-10 h-10 rounded-lg bg-retro-secondary/10 flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-5 h-5 text-retro-secondary" />
+                <LuMapPin className="w-5 h-5 text-retro-secondary" />
               </div>
               <div>
                 <p className="text-xs text-zinc-500 mb-1">Localização</p>

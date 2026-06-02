@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { X, Github, Code, Award, Heart } from 'lucide-react';
+import { LuX, LuGithub, LuCode, LuAward, LuHeart } from "react-icons/lu";
 import RetroGradeLogo from '../../assets/images/RetroGrade.png';
 
 interface AboutModalProps {
@@ -29,7 +29,7 @@ export function AboutModal({ onClose, version }: AboutModalProps) {
             onClick={onClose}
             className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
           >
-            <X className="w-5 h-5" />
+            <LuX className="w-5 h-5" />
           </button>
         </div>
 
@@ -46,7 +46,7 @@ export function AboutModal({ onClose, version }: AboutModalProps) {
 
           <div className="space-y-3 text-sm">
             <div className="flex items-center justify-center gap-2 text-zinc-400">
-              <Heart className="w-4 h-4 text-retro-danger" />
+              <LuHeart className="w-4 h-4 text-retro-danger" />
               <span>Criado por <span className="text-zinc-200 font-medium">Thiago Teles</span></span>
             </div>
             
@@ -56,7 +56,7 @@ export function AboutModal({ onClose, version }: AboutModalProps) {
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 text-retro-primary hover:underline transition-colors"
             >
-              <Github className="w-4 h-4" />
+              <LuGithub className="w-4 h-4" />
               <span>Repositório no GitHub</span>
             </a>
 
@@ -66,14 +66,14 @@ export function AboutModal({ onClose, version }: AboutModalProps) {
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 text-zinc-400 hover:text-zinc-200 hover:underline transition-colors"
             >
-              <Award className="w-4 h-4" />
+              <LuAward className="w-4 h-4" />
               <span>MIT License</span>
             </a>
           </div>
 
           <div className="bg-zinc-800/30 rounded-xl p-4 space-y-3">
             <h3 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider flex items-center justify-center gap-2">
-              <Code className="w-4 h-4" />
+              <LuCode className="w-4 h-4" />
               Tecnologias
             </h3>
             <div className="flex flex-wrap justify-center gap-2">

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { HardDrive, Trash2, AlertTriangle } from 'lucide-react';
+import { LuHardDrive, LuTrash2, LuTriangleAlert } from "react-icons/lu";
 import { useState } from 'react';
 import { Button } from './Button';
 import { formatBytes } from '../utils/format';
@@ -29,7 +29,7 @@ export function SpaceSavingsCard({ bytesSaved, action, onDeleteRemoved }: SpaceS
     <div className="glass rounded-2xl p-6 space-y-4">
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-xl bg-retro-success/10 flex items-center justify-center">
-          <HardDrive className="w-5 h-5 text-retro-success" />
+          <LuHardDrive className="w-5 h-5 text-retro-success" />
         </div>
         <div>
           <h3 className="text-sm font-semibold text-zinc-200">Economia de Espaço</h3>
@@ -78,7 +78,7 @@ export function SpaceSavingsCard({ bytesSaved, action, onDeleteRemoved }: SpaceS
         >
           <Button
             variant="danger"
-            icon={<Trash2 className="w-4 h-4" />}
+            icon={<LuTrash2 className="w-4 h-4" />}
             onClick={() => setShowDeleteConfirm(true)}
             disabled={deleting}
             className="w-full"
@@ -96,7 +96,7 @@ export function SpaceSavingsCard({ bytesSaved, action, onDeleteRemoved }: SpaceS
           className="bg-retro-danger/5 border border-retro-danger/20 rounded-xl p-4 space-y-3"
         >
           <div className="flex items-start gap-2">
-            <AlertTriangle className="w-5 h-5 text-retro-danger flex-shrink-0 mt-0.5" />
+            <LuTriangleAlert className="w-5 h-5 text-retro-danger flex-shrink-0 mt-0.5" />
             <p className="text-xs text-zinc-300 leading-relaxed">
               Tem certeza que deseja deletar permanentemente a pasta <span className="font-mono text-retro-danger">/removidos</span>? 
               Esta ação não pode ser desfeita e liberará <span className="font-semibold text-retro-danger">{formatBytes(bytesSaved)}</span> de espaço.

@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect, useMemo } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { getFanartUrl } from '@/utils/fanart';
 import { EdgeGlow } from './EdgeGlow';
 import { SearchInput } from './SearchInput';
@@ -58,7 +58,7 @@ const SUPPORTED_SYSTEMS = [
   { name: 'PlayStation Vita', shortName: 'Vita', logo: 'psvita.svg', extensions: ['.vpk'] },
   { name: 'Pokémon Mini', shortName: 'Pokémini', logo: 'pokemini.svg', extensions: ['.min'] },
   { name: 'ScummVM', shortName: 'Scumm', logo: 'scummvm.svg', extensions: ['.svm'] },
-  { name: 'Sega 32X', shortName: '32X', logo: 'sega32x.svg', extensions: ['.32x', '.bin', '.md', '.smd'] },
+  { name: 'Sega 32LuX', shortName: '32LuX', logo: 'sega32x.svg', extensions: ['.32x', '.bin', '.md', '.smd'] },
   { name: 'Sega CD / Mega-CD', shortName: 'Sega CD', logo: 'segacd.svg', extensions: ['.bin', '.cue', '.iso', '.chd'] },
   { name: 'Sega Dreamcast', shortName: 'Dreamcast', logo: 'dreamcast.svg', extensions: ['.gdi', '.cdi', '.bin', '.cue', '.chd'] },
   { name: 'Sega Game Gear', shortName: 'GG', logo: 'gamegear.svg', extensions: ['.gg', '.bin', '.sms'] },
@@ -67,8 +67,8 @@ const SUPPORTED_SYSTEMS = [
   { name: 'Sega NAOMI', shortName: 'NAOMI', logo: 'naomi.svg', extensions: ['.bin', '.dat', '.lst'] },
   { name: 'Sega Saturn', shortName: 'Saturn', logo: 'saturn.svg', extensions: ['.bin', '.cue', '.iso', '.chd'] },
   { name: 'Sega SG-1000', shortName: 'SG-1000', logo: 'sg-1000.svg', extensions: ['.sg', '.bin', '.rom'] },
-  { name: 'Sharp X1', shortName: 'X1', logo: 'x1.svg', extensions: ['.2d', '.2hd', '.dx1'] },
-  { name: 'Sharp X68000', shortName: 'X68k', logo: 'x68000.svg', extensions: ['.d88', '.hdf', '.m3u'] },
+  { name: 'Sharp LuX1', shortName: 'LuX1', logo: 'x1.svg', extensions: ['.2d', '.2hd', '.dx1'] },
+  { name: 'Sharp LuX68000', shortName: 'LuX68k', logo: 'x68000.svg', extensions: ['.d88', '.hdf', '.m3u'] },
   { name: 'SNES / Super Famicom', shortName: 'SNES/SFC', logo: 'snes.svg', extensions: ['.sfc', '.smc', '.fig', '.bs', '.swc'] },
   { name: 'SuperGrafx', shortName: 'SGX', logo: 'supergrafx.svg', extensions: ['.sgx', '.pce'] },
   { name: 'SuFami Turbo', shortName: 'Sufami', logo: 'sufami.svg', extensions: ['.bs', '.sfc', '.smc'] },
@@ -81,7 +81,7 @@ const SUPPORTED_SYSTEMS = [
   { name: 'Wii U', shortName: 'Wii U', logo: 'wiiu.svg', extensions: ['.wux', '.wud', '.rpx', '.app'] },
   { name: 'WonderSwan / Color', shortName: 'WS/WSC', logo: 'wonderswan.svg', extensions: ['.ws', '.wsc'] },
   { name: 'Xbox', shortName: 'Xbox', logo: 'xbox.svg', extensions: ['.iso', '.xiso'] },
-  { name: 'Xbox 360', shortName: 'X360', logo: 'xbox360.svg', extensions: ['.iso', '.xex'] },
+  { name: 'Xbox 360', shortName: 'LuX360', logo: 'xbox360.svg', extensions: ['.iso', '.xex'] },
   { name: 'ZX Spectrum', shortName: 'ZX', logo: 'zxspectrum.svg', extensions: ['.z80', '.sna', '.tap', '.trd', '.scl', '.tzx'] },
   { name: 'Sinclair ZX81', shortName: 'ZX81', logo: 'zx81.svg', extensions: ['.p', '.t81'] },
 ];
@@ -315,7 +315,7 @@ export function SupportedSystems() {
           onClick={() => scrollByAmount(-300)}
           className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-zinc-900/80 border border-zinc-700/50 flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
         >
-          <ChevronLeft className="w-4 h-4" />
+          <LuChevronLeft className="w-4 h-4" />
         </button>
 
         <div
@@ -342,7 +342,7 @@ export function SupportedSystems() {
           onClick={() => scrollByAmount(300)}
           className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-zinc-900/80 border border-zinc-700/50 flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
         >
-          <ChevronRight className="w-4 h-4" />
+          <LuChevronRight className="w-4 h-4" />
         </button>
       </div>
 

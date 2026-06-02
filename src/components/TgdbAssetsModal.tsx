@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  X, Loader2, Image, Monitor, Palette, Flag, Type, FileText,
-  Calendar, Building2, Search, ChevronDown, Download, FolderOpen,
-  CheckCircle2, Copy, Plus, Trash2, Layers, Video, Gamepad2,
-} from 'lucide-react';
+  LuX, LuLoader, LuImage, LuMonitor, LuPalette, LuFlag, LuType, LuFileText,
+  LuCalendar, LuBuilding2, LuSearch, LuChevronDown, LuDownload, LuFolderOpen,
+  LuCircleCheckBig, LuCopy, LuPlus, LuTrash2, LuLayers, LuVideo, LuGamepad2,
+} from "react-icons/lu";
 import { getSystemLogo } from '../lib/system-logos';
 
 interface TgdbAssetsModalProps {
@@ -71,7 +71,7 @@ const TGDB_PLATFORMS = [
   { id: 12, name: 'PlayStation 3', playlist: 'Sony - PlayStation 3' },
   { id: 13, name: 'PSP', playlist: 'Sony - PlayStation Portable' },
   { id: 39, name: 'PlayStation Vita', playlist: 'Sony - PlayStation Vita' },
-  { id: 33, name: 'Sega 32X', playlist: 'Sega - 32X' },
+  { id: 33, name: 'Sega 32LuX', playlist: 'Sega - 32LuX' },
   { id: 21, name: 'Sega CD', playlist: 'Sega - CD' },
   { id: 20, name: 'Sega Game Gear', playlist: 'Sega - Game Gear' },
   { id: 36, name: 'Sega Mega Drive', playlist: 'Sega - Mega Drive' },
@@ -89,7 +89,7 @@ const TGDB_PLATFORMS = [
   { id: 14, name: 'Xbox', playlist: 'Microsoft - Xbox' },
   { id: 15, name: 'Xbox 360', playlist: 'Microsoft - Xbox 360' },
   { id: 4920, name: 'Xbox One', playlist: 'Microsoft - Xbox One' },
-  { id: 4980, name: 'Xbox Series X', playlist: 'Microsoft - Xbox Series X' },
+  { id: 4980, name: 'Xbox Series LuX', playlist: 'Microsoft - Xbox Series LuX' },
   { id: 4913, name: 'ZX Spectrum', playlist: 'Sinclair - ZX Spectrum' },
 ];
 
@@ -107,13 +107,13 @@ function getPlatformName(id: number): string {
   return TGDB_PLATFORMS.find(p => p.id === id)?.name || `Platform ${id}`;
 }
 
-const RETROARCH_INSTRUCTIONS = `1. Abra o RetroArch e vá em Configurações → Diretório
+const RETROARCH_INSTRUCTIONS = `1. Abra o RetroArch e vá em Configurações â†’ Diretório
 2. Verifique o caminho de "Thumbnails"
 3. As mídias exportadas devem estar em: [pasta]/thumbnails/[Playlist]/
 4. Dentro da pasta da playlist, existem 3 subpastas:
-   • Named_Boxarts → Capas dos jogos
-   • Named_Snaps → Screenshots
-   • Named_Titles → Telas de título
+   â€¢ Named_Boxarts â†’ Capas dos jogos
+   â€¢ Named_Snaps â†’ Screenshots
+   â€¢ Named_Titles â†’ Telas de título
 5. O nome do arquivo deve ser EXATAMENTE igual ao nome na playlist
    (caracteres especiais como &*/:\\<>?| são substituídos por _)
 6. Formato: PNG
@@ -123,9 +123,9 @@ const ESDE_INSTRUCTIONS = `1. Localize a pasta de instalação do ES-DE
 2. As mídias são salvas em: [pasta]/media/[sistema]/
 3. O gamelist.xml é atualizado em: [pasta]/gamelists/[sistema]/
 4. Convenção de nomes:
-   • [Nome_Jogo]-image.png → Boxart/capa
-   • [Nome_Jogo]-thumbnail.png → Screenshot
-   • [Nome_Jogo]-fanart.png → Fanart
+   â€¢ [Nome_Jogo]-image.png â†’ Boxart/capa
+   â€¢ [Nome_Jogo]-thumbnail.png â†’ Screenshot
+   â€¢ [Nome_Jogo]-fanart.png â†’ Fanart
 5. Espaços no nome são substituídos por underscore (_)
 6. O RetroGrade atualiza automaticamente o gamelist.xml
 7. Reinicie o ES-DE para ver as mudanças`;
@@ -133,11 +133,11 @@ const ESDE_INSTRUCTIONS = `1. Localize a pasta de instalação do ES-DE
 const MANUAL_INSTRUCTIONS = `1. Escolha uma pasta de destino para exportar as mídias
 2. O RetroGrade cria uma subpasta com o nome do jogo
 3. Os arquivos são salvos com nomes descritivos:
-   • boxart.png → Capa do jogo
-   • screenshot_1.png, screenshot_2.png → Screenshots
-   • fanart_1.png, fanart_2.png → Fanarts
-   • banner.png → Banner
-   • logo.png → Logo
+   â€¢ boxart.png â†’ Capa do jogo
+   â€¢ screenshot_1.png, screenshot_2.png â†’ Screenshots
+   â€¢ fanart_1.png, fanart_2.png â†’ Fanarts
+   â€¢ banner.png â†’ Banner
+   â€¢ logo.png â†’ Logo
 4. Use essas imagens manualmente no seu frontend preferido
 5. Consulte a documentação do seu frontend para a estrutura correta`;
 
@@ -357,9 +357,9 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
     setDownloading(false);
     const successCount = results.filter(r => r.status === 'success').length;
     if (errorCount > 0) {
-      onToast(`Download: ${successCount} sucesso(s), ${errorCount} falha(s).`, errorCount === entries.length ? 'error' : 'info');
+      onToast(`LuDownload: ${successCount} sucesso(s), ${errorCount} falha(s).`, errorCount === entries.length ? 'error' : 'info');
     } else {
-      onToast(`Download concluído: ${successCount}/${entries.length} jogos.`, 'success');
+      onToast(`LuDownload concluído: ${successCount}/${entries.length} jogos.`, 'success');
     }
   };
 
@@ -418,12 +418,12 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
 
   const tabs: { id: AssetTab; label: string; icon: any; count: number }[] = assets
     ? [
-        { id: 'boxart', label: 'Boxart', icon: Image, count: assets.boxart ? 1 : 0 },
-        { id: 'screenshots', label: 'Screenshots', icon: Monitor, count: assets.screenshots.length },
-        { id: 'fanart', label: 'Fanart', icon: Palette, count: assets.fanart.length },
-        { id: 'banner', label: 'Banner', icon: Flag, count: assets.banner ? 1 : 0 },
-        { id: 'videos', label: 'Vídeos', icon: Video, count: assets.videos?.length || 0 },
-        { id: 'details', label: 'Detalhes', icon: FileText, count: 1 },
+        { id: 'boxart', label: 'Boxart', icon: LuImage, count: assets.boxart ? 1 : 0 },
+        { id: 'screenshots', label: 'Screenshots', icon: LuMonitor, count: assets.screenshots.length },
+        { id: 'fanart', label: 'Fanart', icon: LuPalette, count: assets.fanart.length },
+        { id: 'banner', label: 'Banner', icon: LuFlag, count: assets.banner ? 1 : 0 },
+        { id: 'videos', label: 'Vídeos', icon: LuVideo, count: assets.videos?.length || 0 },
+        { id: 'details', label: 'Detalhes', icon: LuFileText, count: 1 },
       ]
     : [];
 
@@ -446,7 +446,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
       >
         <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Download className="w-5 h-5 text-retro-primary" />
+            <LuDownload className="w-5 h-5 text-retro-primary" />
             <div>
               <h3 className="text-lg font-bold text-zinc-100">Mídias</h3>
               {step === 'results' && assets?.gameTitle && (
@@ -458,7 +458,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
             onClick={onClose}
             className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
           >
-            <X className="w-5 h-5" />
+            <LuX className="w-5 h-5" />
           </button>
         </div>
 
@@ -479,7 +479,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                       : 'bg-zinc-800/30 text-zinc-400 border border-zinc-700/30 hover:bg-zinc-800/50'
                   }`}
                 >
-                  <Search className="w-4 h-4 inline mr-2" />
+                  <LuSearch className="w-4 h-4 inline mr-2" />
                   Busca Manual
                 </button>
                 <button
@@ -490,7 +490,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                       : 'bg-zinc-800/30 text-zinc-400 border border-zinc-700/30 hover:bg-zinc-800/50'
                   }`}
                 >
-                  <FolderOpen className="w-4 h-4 inline mr-2" />
+                  <LuFolderOpen className="w-4 h-4 inline mr-2" />
                   Escanear Pastas
                 </button>
               </div>
@@ -518,7 +518,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                       <span className={selectedPlatform ? 'text-zinc-200' : 'text-zinc-600'}>
                         {selectedPlatform ? selectedPlatform.name : 'Selecione uma plataforma...'}
                       </span>
-                      <ChevronDown className={`w-4 h-4 text-zinc-500 transition-transform ${showPlatformDropdown ? 'rotate-180' : ''}`} />
+                      <LuChevronDown className={`w-4 h-4 text-zinc-500 transition-transform ${showPlatformDropdown ? 'rotate-180' : ''}`} />
                     </button>
 
                     <AnimatePresence>
@@ -564,16 +564,16 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                     </AnimatePresence>
                   </div>
 
-                  {/* Media Type Selection */}
+                  {/* Media LuType Selection */}
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-zinc-300">Tipos de Mídia</label>
                     <div className="grid grid-cols-2 gap-2">
                       {[
-                        { key: 'boxart', label: 'Box Art', icon: Image },
-                        { key: 'screenshots', label: 'Screenshots', icon: Monitor },
-                        { key: 'fanart', label: 'Fanart', icon: Palette },
-                        { key: 'banner', label: 'Banner', icon: Flag },
-                        { key: 'logo', label: 'Logo', icon: Layers },
+                        { key: 'boxart', label: 'Box Art', icon: LuImage },
+                        { key: 'screenshots', label: 'Screenshots', icon: LuMonitor },
+                        { key: 'fanart', label: 'Fanart', icon: LuPalette },
+                        { key: 'banner', label: 'Banner', icon: LuFlag },
+                        { key: 'logo', label: 'Logo', icon: LuLayers },
                       ].map(({ key, label, icon: Icon }) => (
                         <button
                           key={key}
@@ -595,7 +595,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                     onClick={handleSearch}
                     className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-retro-primary/10 text-retro-primary border border-retro-primary/30 rounded-xl font-medium hover:bg-retro-primary/20 transition-all active:scale-95"
                   >
-                    <Search className="w-4 h-4" />
+                    <LuSearch className="w-4 h-4" />
                     Buscar Mídias
                   </button>
                 </div>
@@ -611,7 +611,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                         onClick={handleSelectFolder}
                         className="flex items-center gap-2 px-4 py-2.5 bg-zinc-700/50 text-zinc-300 rounded-xl text-sm hover:bg-zinc-700 transition-colors"
                       >
-                        <Plus className="w-4 h-4" />
+                        <LuPlus className="w-4 h-4" />
                         Adicionar Pasta
                       </button>
                     </div>
@@ -619,13 +619,13 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                       <div className="space-y-1">
                         {romFolders.map((folder, i) => (
                           <div key={i} className="flex items-center gap-2 px-3 py-2 bg-zinc-800/30 rounded-lg">
-                            <FolderOpen className="w-3 h-3 text-zinc-500" />
+                            <LuFolderOpen className="w-3 h-3 text-zinc-500" />
                             <span className="text-xs text-zinc-300 flex-1 truncate">{folder}</span>
                             <button
                               onClick={() => setRomFolders(prev => prev.filter((_, idx) => idx !== i))}
                               className="text-zinc-500 hover:text-retro-danger transition-colors"
                             >
-                              <Trash2 className="w-3 h-3" />
+                              <LuTrash2 className="w-3 h-3" />
                             </button>
                           </div>
                         ))}
@@ -641,12 +641,12 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                   >
                     {scanning ? (
                       <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <LuLoader className="w-4 h-4 animate-spin" />
                         Escaneando... {Math.round(scanProgress)}%
                       </>
                     ) : (
                       <>
-                        <Search className="w-4 h-4" />
+                        <LuSearch className="w-4 h-4" />
                         Escanear ROMs
                       </>
                     )}
@@ -670,12 +670,12 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                         <label className="text-sm font-medium text-zinc-300">Tipos de Mídia</label>
                         <div className="grid grid-cols-3 gap-2">
                           {[
-                            { key: 'boxart', label: 'Box Art', icon: Image },
-                            { key: 'screenshots', label: 'Screenshots', icon: Monitor },
-                            { key: 'fanart', label: 'Fanart', icon: Palette },
-                            { key: 'banner', label: 'Banner', icon: Flag },
-                            { key: 'logo', label: 'Logo', icon: Layers },
-                            { key: 'videos', label: 'Vídeos', icon: Video },
+                            { key: 'boxart', label: 'Box Art', icon: LuImage },
+                            { key: 'screenshots', label: 'Screenshots', icon: LuMonitor },
+                            { key: 'fanart', label: 'Fanart', icon: LuPalette },
+                            { key: 'banner', label: 'Banner', icon: LuFlag },
+                            { key: 'logo', label: 'Logo', icon: LuLayers },
+                            { key: 'videos', label: 'Vídeos', icon: LuVideo },
                           ].map(({ key, label, icon: Icon }) => (
                             <button
                               key={key}
@@ -726,7 +726,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                                         onError={(e) => (e.currentTarget.style.display = 'none')}
                                       />
                                     )}
-                                    {!logo && <Gamepad2 className="w-3 h-3 text-retro-primary" />}
+                                    {!logo && <LuGamepad2 className="w-3 h-3 text-retro-primary" />}
                                     <span className="text-xs font-medium text-zinc-300">{system}</span>
                                     <span className="text-xs text-zinc-600">({roms.length})</span>
                                   </div>
@@ -746,7 +746,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                                         <div className={`w-4 h-4 rounded border-2 flex items-center justify-center transition-colors ${
                                           isSelected ? 'bg-retro-primary border-retro-primary' : 'border-zinc-600'
                                         }`}>
-                                          {isSelected && <CheckCircle2 className="w-2.5 h-2.5 text-white" />}
+                                          {isSelected && <LuCircleCheckBig className="w-2.5 h-2.5 text-white" />}
                                         </div>
                                         <span className={`flex-1 text-sm truncate ${isSelected ? 'text-zinc-200' : 'text-zinc-400'}`}>
                                           {rom.name}
@@ -768,12 +768,12 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                       >
                         {downloading ? (
                           <>
-                            <Loader2 className="w-4 h-4 animate-spin" />
+                            <LuLoader className="w-4 h-4 animate-spin" />
                             Baixando {downloadProgress.current}/{downloadProgress.total}...
                           </>
                         ) : (
                           <>
-                            <Download className="w-4 h-4" />
+                            <LuDownload className="w-4 h-4" />
                             Baixar Mídias ({selectedRoms.size} jogos)
                           </>
                         )}
@@ -801,7 +801,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                                 r.status === 'success' ? 'text-retro-success' :
                                 r.status === 'no_assets' ? 'text-retro-warning' : 'text-retro-danger'
                               }>
-                                {r.status === 'success' ? '✓' : r.status === 'no_assets' ? '⚠' : '✗'}
+                                {r.status === 'success' ? 'âœ“' : r.status === 'no_assets' ? 'âš ' : 'âœ—'}
                               </span>
                             </div>
                           ))}
@@ -862,7 +862,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                         onClick={addManualEntry}
                         className="px-3 py-2 bg-retro-primary/10 text-retro-primary rounded-lg text-sm hover:bg-retro-primary/20 transition-colors"
                       >
-                        <Plus className="w-4 h-4" />
+                        <LuPlus className="w-4 h-4" />
                       </button>
                     </div>
 
@@ -873,7 +873,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                             <span className="text-xs text-zinc-300 flex-1">{entry.name}</span>
                             <span className="text-xs text-zinc-600">{entry.platformIds.map(getPlatformName).join(', ')}</span>
                             <button onClick={() => removeManualEntry(i)} className="text-zinc-500 hover:text-retro-danger">
-                              <Trash2 className="w-3 h-3" />
+                              <LuTrash2 className="w-3 h-3" />
                             </button>
                           </div>
                         ))}
@@ -886,7 +886,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                         disabled={downloading}
                         className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-retro-success/10 text-retro-success border border-retro-success/30 rounded-xl font-medium hover:bg-retro-success/20 transition-all active:scale-95 disabled:opacity-50"
                       >
-                        <Download className="w-4 h-4" />
+                        <LuDownload className="w-4 h-4" />
                         Baixar Mídias ({manualEntries.length} jogos)
                       </button>
                     )}
@@ -898,7 +898,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
 
           {step === 'loading' && (
             <div className="flex flex-col items-center justify-center py-20 space-y-4">
-              <Loader2 className="w-12 h-12 text-retro-primary animate-spin" />
+              <LuLoader className="w-12 h-12 text-retro-primary animate-spin" />
               <p className="text-zinc-400">Buscando mídias na TheGamesDB...</p>
               {searchError && (
                 <div className="flex flex-col items-center gap-3 mt-4">
@@ -941,7 +941,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                     onClick={() => setActiveExport('retroarch')}
                     className="ml-auto flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-t-lg transition-colors text-zinc-500 hover:text-zinc-300"
                   >
-                    <Download className="w-4 h-4" />
+                    <LuDownload className="w-4 h-4" />
                     Exportar
                   </button>
                 </div>
@@ -959,7 +959,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                     <div className="flex gap-2">
                       {(['retroarch', 'esde', 'manual'] as ExportMode[]).map((mode) => {
                         const labels = { retroarch: 'RetroArch', esde: 'ES-DE', manual: 'Manual' };
-                        const icons = { retroarch: '🎮', esde: '🖥️', manual: '📁' };
+                        const icons = { retroarch: 'ðŸŽ®', esde: 'ðŸ–¥ï¸', manual: 'ðŸ“' };
                         return (
                           <button
                             key={mode}
@@ -981,7 +981,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                       <div className="space-y-4">
                         <div className="p-4 bg-zinc-800/30 rounded-xl space-y-3">
                           <div className="flex items-center gap-2 text-zinc-300 font-medium">
-                            <FolderOpen className="w-4 h-4" />
+                            <LuFolderOpen className="w-4 h-4" />
                             Pasta de Destino
                           </div>
                           <div className="flex gap-2">
@@ -997,7 +997,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                               onClick={handleSelectFolder}
                               className="px-4 py-2.5 bg-zinc-700/50 text-zinc-300 rounded-lg text-sm hover:bg-zinc-700 transition-colors"
                             >
-                              <FolderOpen className="w-4 h-4" />
+                              <LuFolderOpen className="w-4 h-4" />
                             </button>
                           </div>
                         </div>
@@ -1008,7 +1008,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                               onClick={() => copyInstructions(RETROARCH_INSTRUCTIONS)}
                               className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
                             >
-                              {copiedInstruction ? <CheckCircle2 className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                              {copiedInstruction ? <LuCircleCheckBig className="w-3 h-3" /> : <LuCopy className="w-3 h-3" />}
                               {copiedInstruction ? 'Copiado!' : 'Copiar instruções'}
                             </button>
                           </div>
@@ -1023,7 +1023,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                       <div className="space-y-4">
                         <div className="p-4 bg-zinc-800/30 rounded-xl space-y-3">
                           <div className="flex items-center gap-2 text-zinc-300 font-medium">
-                            <FolderOpen className="w-4 h-4" />
+                            <LuFolderOpen className="w-4 h-4" />
                             Pasta de Destino
                           </div>
                           <div className="flex gap-2">
@@ -1039,7 +1039,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                               onClick={handleSelectFolder}
                               className="px-4 py-2.5 bg-zinc-700/50 text-zinc-300 rounded-lg text-sm hover:bg-zinc-700 transition-colors"
                             >
-                              <FolderOpen className="w-4 h-4" />
+                              <LuFolderOpen className="w-4 h-4" />
                             </button>
                           </div>
                         </div>
@@ -1050,7 +1050,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                               onClick={() => copyInstructions(ESDE_INSTRUCTIONS)}
                               className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
                             >
-                              {copiedInstruction ? <CheckCircle2 className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                              {copiedInstruction ? <LuCircleCheckBig className="w-3 h-3" /> : <LuCopy className="w-3 h-3" />}
                               {copiedInstruction ? 'Copiado!' : 'Copiar instruções'}
                             </button>
                           </div>
@@ -1065,7 +1065,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                       <div className="space-y-4">
                         <div className="p-4 bg-zinc-800/30 rounded-xl space-y-3">
                           <div className="flex items-center gap-2 text-zinc-300 font-medium">
-                            <FolderOpen className="w-4 h-4" />
+                            <LuFolderOpen className="w-4 h-4" />
                             Pasta de Destino
                           </div>
                           <div className="flex gap-2">
@@ -1081,7 +1081,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                               onClick={handleSelectFolder}
                               className="px-4 py-2.5 bg-zinc-700/50 text-zinc-300 rounded-lg text-sm hover:bg-zinc-700 transition-colors"
                             >
-                              <FolderOpen className="w-4 h-4" />
+                              <LuFolderOpen className="w-4 h-4" />
                             </button>
                           </div>
                         </div>
@@ -1092,7 +1092,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                               onClick={() => copyInstructions(MANUAL_INSTRUCTIONS)}
                               className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
                             >
-                              {copiedInstruction ? <CheckCircle2 className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                              {copiedInstruction ? <LuCircleCheckBig className="w-3 h-3" /> : <LuCopy className="w-3 h-3" />}
                               {copiedInstruction ? 'Copiado!' : 'Copiar instruções'}
                             </button>
                           </div>
@@ -1106,7 +1106,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                     {exportResult && (
                       <div className="p-4 bg-zinc-800/30 rounded-xl space-y-3">
                         <div className="flex items-center gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-retro-success" />
+                          <LuCircleCheckBig className="w-5 h-5 text-retro-success" />
                           <span className="text-zinc-200 font-medium">
                             {exportResult.successCount}/{exportResult.total} mídias exportadas
                           </span>
@@ -1133,12 +1133,12 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                     >
                       {exporting ? (
                         <>
-                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <LuLoader className="w-4 h-4 animate-spin" />
                           Exportando...
                         </>
                       ) : (
                         <>
-                          <Download className="w-4 h-4" />
+                          <LuDownload className="w-4 h-4" />
                           Exportar Mídias
                         </>
                       )}
@@ -1189,7 +1189,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                       <motion.div key="videos" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-4">
                         {assets.videos.map((video: { url: string; title: string }, i: number) => (
                           <div key={i} className="p-4 bg-zinc-800/30 rounded-xl">
-                            <div className="flex items-center gap-2 text-zinc-500 text-xs mb-2"><Video className="w-3 h-3" />Vídeo {i + 1}</div>
+                            <div className="flex items-center gap-2 text-zinc-500 text-xs mb-2"><LuVideo className="w-3 h-3" />Vídeo {i + 1}</div>
                             <p className="text-zinc-200 font-medium text-sm mb-3">{video.title}</p>
                             <video
                               src={video.url}
@@ -1204,7 +1204,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
 
                     {activeTab === 'videos' && (!assets.videos || assets.videos.length === 0) && (
                       <motion.div key="no-videos" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center py-12 space-y-3">
-                        <Video className="w-12 h-12 text-zinc-700" />
+                        <LuVideo className="w-12 h-12 text-zinc-700" />
                         <p className="text-zinc-500 font-medium">Nenhum vídeo encontrado</p>
                         <p className="text-xs text-zinc-600">Este jogo não possui vídeos disponíveis na TheGamesDB.</p>
                       </motion.div>
@@ -1219,25 +1219,25 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
                         )}
                         <div className="grid grid-cols-2 gap-4">
                           <div className="p-4 bg-zinc-800/30 rounded-xl">
-                            <div className="flex items-center gap-2 text-zinc-500 text-xs mb-1"><Type className="w-3 h-3" />Título</div>
+                            <div className="flex items-center gap-2 text-zinc-500 text-xs mb-1"><LuType className="w-3 h-3" />Título</div>
                             <p className="text-zinc-200 font-medium">{assets.gameTitle || gameName}</p>
                           </div>
                           <div className="p-4 bg-zinc-800/30 rounded-xl">
-                            <div className="flex items-center gap-2 text-zinc-500 text-xs mb-1"><Calendar className="w-3 h-3" />Lançamento</div>
+                            <div className="flex items-center gap-2 text-zinc-500 text-xs mb-1"><LuCalendar className="w-3 h-3" />Lançamento</div>
                             <p className="text-zinc-200 font-medium">{formatReleaseDate(assets.releaseDate)}</p>
                           </div>
                           <div className="p-4 bg-zinc-800/30 rounded-xl">
-                            <div className="flex items-center gap-2 text-zinc-500 text-xs mb-1"><Building2 className="w-3 h-3" />Desenvolvedor</div>
+                            <div className="flex items-center gap-2 text-zinc-500 text-xs mb-1"><LuBuilding2 className="w-3 h-3" />Desenvolvedor</div>
                             <p className="text-zinc-200 font-medium">{assets.developer || 'Desconhecido'}</p>
                           </div>
                           <div className="p-4 bg-zinc-800/30 rounded-xl">
-                            <div className="flex items-center gap-2 text-zinc-500 text-xs mb-1"><Building2 className="w-3 h-3" />Publicadora</div>
+                            <div className="flex items-center gap-2 text-zinc-500 text-xs mb-1"><LuBuilding2 className="w-3 h-3" />Publicadora</div>
                             <p className="text-zinc-200 font-medium">{assets.publisher || 'Desconhecido'}</p>
                           </div>
                         </div>
                         {assets.overview && (
                           <div className="p-4 bg-zinc-800/30 rounded-xl">
-                            <div className="flex items-center gap-2 text-zinc-500 text-xs mb-2"><FileText className="w-3 h-3" />Sinopse</div>
+                            <div className="flex items-center gap-2 text-zinc-500 text-xs mb-2"><LuFileText className="w-3 h-3" />Sinopse</div>
                             <p className="text-zinc-300 text-sm leading-relaxed">{assets.overview}</p>
                           </div>
                         )}
@@ -1246,7 +1246,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
 
                     {validTabs.length === 0 && (
                       <motion.div key="no-results" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center py-12 space-y-3">
-                        <Image className="w-12 h-12 text-zinc-700" />
+                        <LuImage className="w-12 h-12 text-zinc-700" />
                         <p className="text-zinc-500 font-medium">Nenhuma mídia encontrada</p>
                         <p className="text-xs text-zinc-600">Tente buscar com outro nome ou plataforma.</p>
                       </motion.div>
@@ -1292,7 +1292,7 @@ export function TgdbAssetsModal({ onClose, onToast }: TgdbAssetsModalProps) {
             onClick={() => setSelectedImage(null)}
           >
             <button onClick={() => setSelectedImage(null)} className="absolute top-6 right-6 w-10 h-10 rounded-full bg-zinc-800/50 flex items-center justify-center text-zinc-400 hover:text-zinc-200 transition-colors">
-              <X className="w-6 h-6" />
+              <LuX className="w-6 h-6" />
             </button>
             <motion.img initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }} src={selectedImage} alt="Preview" className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg" onClick={(e) => e.stopPropagation()} />
           </motion.div>

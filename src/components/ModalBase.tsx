@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import { X } from 'lucide-react';
+import { LuX } from "react-icons/lu";
 
 interface ModalBaseProps {
   children: ReactNode;
@@ -35,7 +35,7 @@ export function ModalBase({ children, onClose, icon, title, maxWidth = 'max-w-lg
             onClick={onClose}
             className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
           >
-            <X className="w-5 h-5" />
+            <LuX className="w-5 h-5" />
           </button>
         </div>
         {children}

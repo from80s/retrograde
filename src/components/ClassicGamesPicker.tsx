@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { X, Search, Check, LayoutList, Grid3X3, BookOpen, ChevronDown } from 'lucide-react';
+import { LuX, LuSearch, LuCheck, LuLayoutList, LuGrid3X3, LuBookOpen, LuChevronDown } from "react-icons/lu";
 import type { ClassicGamesData } from '../types/global';
 import { tGenre } from '../locales';
 import { getSystemLogo } from '../lib/system-logos';
@@ -91,14 +91,14 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
       >
         <div className="p-6 border-b border-zinc-800/50 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <BookOpen className="w-5 h-5 text-retro-secondary" />
+            <LuBookOpen className="w-5 h-5 text-retro-secondary" />
             <h3 className="text-lg font-bold text-zinc-100">Popular Clássicos</h3>
           </div>
           <button
             onClick={onClose}
             className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
           >
-            <X className="w-5 h-5" />
+            <LuX className="w-5 h-5" />
           </button>
         </div>
 
@@ -115,7 +115,7 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
                 className="w-full flex items-center justify-between gap-2 px-4 py-2.5 bg-zinc-800/50 border border-zinc-700/50 rounded-xl text-sm text-zinc-200 hover:border-zinc-600/50 transition-colors"
               >
                 <span className="truncate">{systemLabel}</span>
-                <ChevronDown className={`w-4 h-4 text-zinc-500 shrink-0 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                <LuChevronDown className={`w-4 h-4 text-zinc-500 shrink-0 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               {dropdownOpen && (
                 <div className="absolute top-full left-0 right-0 mt-1 bg-zinc-800 border border-zinc-700/50 rounded-xl shadow-2xl shadow-black/50 overflow-hidden z-50 max-h-64 overflow-y-auto scrollbar-thin">
@@ -158,7 +158,7 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
             </div>
 
             <div className="relative flex-1 max-w-xs">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+              <LuSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
               <input
                 type="text"
                 placeholder="Buscar jogos..."
@@ -174,14 +174,14 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
                 className={`p-2 transition-colors ${viewMode === 'list' ? 'bg-retro-secondary/20 text-retro-secondary' : 'text-zinc-500 hover:text-zinc-300'}`}
                 title="Lista"
               >
-                <LayoutList className="w-4 h-4" />
+                <LuLayoutList className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setViewMode('grid')}
                 className={`p-2 transition-colors ${viewMode === 'grid' ? 'bg-retro-secondary/20 text-retro-secondary' : 'text-zinc-500 hover:text-zinc-300'}`}
                 title="Grade"
               >
-                <Grid3X3 className="w-4 h-4" />
+                <LuGrid3X3 className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -216,7 +216,7 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
                     <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
                       isSelected ? 'bg-retro-secondary border-retro-secondary' : 'border-zinc-600'
                     }`}>
-                      {isSelected && <Check className="w-3 h-3 text-white" />}
+                      {isSelected && <LuCheck className="w-3 h-3 text-white" />}
                     </div>
                     <span className="flex-1 font-medium">{g.name}</span>
                     <span className="text-xs text-zinc-500">{tGenre(g.genre)}</span>
@@ -256,7 +256,7 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
                         <img src={src} alt={g.name} className="w-full h-full object-cover" loading="lazy" />
                       ) : (
                         <div className="flex flex-col items-center gap-2 text-zinc-600">
-                          <BookOpen className="w-8 h-8" />
+                          <LuBookOpen className="w-8 h-8" />
                           <span className="text-[10px] px-2 text-center leading-tight">{g.name}</span>
                         </div>
                       )}
@@ -283,7 +283,7 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
                         ? 'bg-retro-secondary border-retro-secondary'
                         : 'border-zinc-500 bg-black/40 opacity-0 group-hover:opacity-100'
                     }`}>
-                      {isSelected && <Check className="w-3 h-3 text-white" />}
+                      {isSelected && <LuCheck className="w-3 h-3 text-white" />}
                     </div>
                   </button>
                 );
@@ -307,7 +307,7 @@ export function ClassicGamesPicker({ onClose, onAddClassics, onToast }: ClassicG
             disabled={selected.size === 0}
             className="flex items-center gap-2 px-6 py-2.5 bg-retro-secondary/10 text-retro-secondary border border-retro-secondary/30 rounded-xl font-medium hover:bg-retro-secondary/20 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Check className="w-4 h-4" />
+            <LuCheck className="w-4 h-4" />
             Adicionar ({selected.size})
           </button>
         </div>
