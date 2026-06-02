@@ -23,9 +23,9 @@
       ],
       "wikidata_id": "29028",
       "wikipedia_url": "https://en.wikipedia.org/wiki/32X",
-      "type": "Video game console add-on",
-      "generation": "5th Generation",
-      "release_dates": "NA: November 21, 1994EU: November 1994JP: December 3, 1994BR: March 1995",
+      "type": "Acessório de console",
+      "generation": "5ª Geração",
+      "release_dates": "AN: 21 de novembro de 1994EU: novembro de 1994JP: 3 de dezembro de 1994BR: março de 1995",
       "launch_price": null,
       "discontinued": "1996",
       "media": "ROM cartridge,, CD-ROM (with Sega CD)",
@@ -91,10 +91,10 @@
         "Citra",
         "Ryujinx (parcial)"
       ],
-      "type": "handheld",
-      "generation": "8th Generation",
+      "type": "Portátil",
+      "generation": "8ª Geração",
       "launch_price": null,
-      "discontinued": "WW: September 16, 2020",
+      "discontinued": "Mundial: 16 de setembro de 2020",
       "media": "Nintendo 3DS Game CardNintendo DSi Game CardNintendo DS Game CardDigital distributionSD/SDHC card",
       "os": "Nintendo 3DS system software",
       "cpu": "Dual-core ARM11 MPCore @ 268 MHzSingle-core ARM9",
@@ -104,13 +104,13 @@
       "graphics": "DMP PICA200 @ 268 MHz",
       "sound": "Stereo speakers (pseudo-surround), microphone",
       "connectivity": "2.4 GHz 802.11b/g Wi-Fi, infrared",
-      "online_services": "Nintendo Network (discontinued) Nintendo eShop (discontinued) Miiverse (discontinued) SpotPass (discontinued) Nintendo Zone (discontinued)",
-      "best_selling_game": "Mario Kart 7, 18.99 million units(as of March 31, 2024[update]) (list)",
+      "online_services": "Nintendo Network (descontinuado) Nintendo eShop (descontinuado) Miiverse (descontinuado) SpotPass (descontinuado) Nintendo Zone (descontinuado)",
+      "best_selling_game": "Mario Kart 7, 18.99 million units(em 31 de março de 2024[update]) (list)",
       "predecessor": "Nintendo DS/DSi",
       "successor": "Nintendo Switch",
       "wikidata_id": "26666629",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Nintendo_3DS",
-      "release_dates": "JP: February 26, 2011EU: March 25, 2011NA: March 27, 2011AU: March 31, 2011 Nintendo 3DS XL:, JP/EU: July 28, 2012[a]NA: August 19, 2012AU: August 23, 2012",
+      "release_dates": "JP: 26 de fevereiro de 2011EU: 25 de março de 2011NA: 27 de março de 2011AU: 31 de março de 2011 Nintendo 3DS XL:, JP/EU: 28 de julho de 2012[a]NA: 19 de agosto de 2012AU: 23 de agosto de 2012",
       "top_games": [
         {
           "name": "Super Mario Bros. 3",
@@ -222,8 +222,8 @@
         "Stella",
         "Z26"
       ],
-      "type": "console",
-      "generation": "2nd Generation",
+      "type": "Console",
+      "generation": "2ª Geração",
       "lifespan": "1977–1992",
       "launch_price": null,
       "discontinued": "1992 (1992)",
@@ -231,7 +231,7 @@
       "cpu": "8-bit MOS Technology 6507 @ 1.19 MHz",
       "memory": "128 bytes RAM",
       "graphics": "Television Interface Adaptor",
-      "best_selling_game": "Pac-Man, 8 million (as of 1990)[b]",
+      "best_selling_game": "Pac-Man, 8 million (em 1990)[b]",
       "predecessor": "Atari Home PongAtari Video Pinball",
       "successor": "Atari 5200",
       "wikidata_id": "2779",
@@ -294,10 +294,10 @@
         "Altirra",
         "MAME"
       ],
-      "type": "console",
-      "generation": "2nd Generation",
+      "type": "Console",
+      "generation": "2ª Geração",
       "launch_price": null,
-      "discontinued": "May 21, 1984 (1984-05-21)",
+      "discontinued": "21 de maio de 1984 (1984-05-21)",
       "media": "ROM cartridge",
       "cpu": "MOS 6502C @ 1.79 MHz",
       "memory": "16 KB RAM",
@@ -305,7 +305,7 @@
       "successor": "Atari 7800",
       "wikidata_id": "2780",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_5200",
-      "release_dates": "NA: October 1982",
+      "release_dates": "AN: outubro de 1982",
       "top_games": [
         {
           "name": "Pitfall!",
@@ -360,21 +360,21 @@
         "ProSystem",
         "MAME"
       ],
-      "type": "console",
-      "generation": "3rd Generation",
+      "type": "Console",
+      "generation": "3ª Geração",
       "launch_price": null,
-      "discontinued": "January 1, 1992",
+      "discontinued": "1 de janeiro de 1992",
       "media": "ROM cartridge",
       "cpu": "Atari SALLY @ 1.19-1.79 MHz",
       "memory": "4 KB RAM on board4 KB BIOS ROM (NTSC), 16 KB BIOS + Game ROM (PAL)48 KB General Purpose Space (ROM, RAM, etc.) accessible at once",
       "display": "160×240, 320×240 (288 vertical for PAL)7, 9, or 25 colors out of 256 (Depending on the mode)",
       "graphics": "MARIA custom chip @ 7.16 MHz",
-      "best_selling_game": "Pole Position II (pack-in)",
+      "best_selling_game": "Pole Position II (incluso)",
       "predecessor": "Atari 5200",
-      "successor": "Atari Panther (canceled)Atari XEGS",
+      "successor": "Atari Panther (cancelado)Atari XEGS",
       "wikidata_id": "2781",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_7800",
-      "release_dates": "NA: May 1986PAL: 1987",
+      "release_dates": "AN: maio de 1986PAL: 1987",
       "top_games": [
         {
           "name": "Commando",
@@ -433,8 +433,8 @@
         "Phoenix",
         "MAME"
       ],
-      "type": "console",
-      "generation": "5th Generation",
+      "type": "Console",
+      "generation": "5ª Geração",
       "discontinued": "1996",
       "media": "ROM cartridge",
       "cpu": "Motorola 68000 @ 13.295 MHz, 2 custom RISC processors @ 26.591 MHz each",
@@ -444,10 +444,10 @@
       "graphics": "Tom chip @ 26.591 MHz (32-bit RISC architecture, 4 KB internal RAM)",
       "sound": "Jerry chip @ 26.591 MHz (16-bit CD-quality stereo sound, two DACs, wavetable and AM synthesis)",
       "best_selling_game": "Alien vs Predator (52,223)",
-      "predecessor": "7800XEGSPanther (canceled)",
+      "predecessor": "7800XEGSPanther (cancelado)",
       "wikidata_id": "2782",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_Jaguar",
-      "release_dates": "NA: November 23, 1993EU: June 27, 1994DE: September 1994JP: December 8, 1994ESP: April 1995"
+      "release_dates": "AN: 23 de novembro de 1993EU: 27 de junho de 1994DE: setembro de 1994JP: 8 de dezembro de 1994ESP: abril de 1995"
     },
     {
       "id": "amiga",
@@ -482,14 +482,14 @@
         "FS-UAE",
         "PUAE (RetroArch)"
       ],
-      "type": "Personal computerHome video game console (CD32)",
+      "type": "Computador pessoal / Console de videogame (CD32)",
       "discontinued": "1994 (1996[a])",
       "os": "AmigaOS on Kickstart",
       "predecessor": "Commodore 128Commodore 64",
       "wikidata_id": "1980",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Amiga",
-      "release_dates": "July 23, 1985 40 years ago (1985-07-23)",
-      "generation": "16/32-bit Computer",
+      "release_dates": "23 de julho de 1985 40 anos atrás (1985-07-23)",
+      "generation": "Computador 16/32 bits",
       "top_games": [
         {
           "name": "Portal 2",
@@ -547,17 +547,17 @@
       ],
       "wikidata_id": "63429",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_8-bit_computers",
-      "type": "Home computer",
-      "release_dates": "November 1979 46 years ago (1979-11)",
+      "type": "Computador doméstico",
+      "release_dates": "novembro de 1979 46 anos atrás (1979-11)",
       "launch_price": null,
-      "discontinued": "January 1, 1992; 34 years ago (1992-01-01)",
+      "discontinued": "1 de janeiro de 1992; 34 anos atrás (1992-01-01)",
       "os": "Custom, Atari DOS (optional)",
       "cpu": "MOS Technology 6502B or, MOS Technology 6502 SALLY @ 1.79 MHz (NTSC) @ 1.77 MHz (PAL)",
       "graphics": "384 pixels per TV line, 256 colors, 8 × sprites, raster interrupts",
       "sound": "4 × oscillators with noise mixing, or 2 × AM digital",
       "connectivity": "2 or 4 × Atari joystick port 1 × Atari SIO 0–1 × PBI 0–1 × Composite monitor 1–2 × ROM cartridge",
       "successor": "Atari ST",
-      "generation": "8-bit Computer",
+      "generation": "Computador 8 bits",
       "top_games": [
         {
           "name": "Super Mario World",
@@ -622,10 +622,10 @@
         "Mednafen",
         "Beetle PSX (RetroArch)"
       ],
-      "type": "console",
-      "generation": "5th Generation",
+      "type": "Console",
+      "generation": "5ª Geração",
       "launch_price": null,
-      "discontinued": "EU: 19 October 2001(PS one only)WW: 23 March 2006",
+      "discontinued": "EU: 19 outubro de 2001(PS one only)WW: 23 março de 2006",
       "media": "CD",
       "cpu": "R3000 @ 33.87 MHz",
       "memory": "2 MB RAM, 1 MB Video RAM (2MB in SCPH-7501 and later)",
@@ -638,7 +638,7 @@
       "successor": "PlayStation 2",
       "wikidata_id": "23964",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_(console)",
-      "release_dates": "3 December 1994 PlayStationJP: 3 December 1994 (1994-12-03)NA: 9 September 1995 (1995-09-09)EU: 29 September 1995 (1995-09-29)AU: 15 November 1995 (1995-11-15)ZA: November 1996 (1996-11)HK/SG/TH/MY: December 1996 (1996-12)TW: December 1997 (1997-12)PS OneJP: 7 July 2000 (2000-07-07)NA: 19 September 2000 (2000-09-19)EU: 29 September 2000 (2000-09-29)HK/SG/TH/MY/TW: November 2000 (2000-11)IND: 24 January 2002 (2002-01-24)KR: 22 February 2002",
+      "release_dates": "3 dezembro de 1994 PlayStationJP: 3 dezembro de 1994 (1994-12-03)NA: 9 setembro de 1995 (1995-09-09)EU: 29 setembro de 1995 (1995-09-29)AU: 15 novembro de 1995 (1995-11-15)ZA: novembro de 1996 (1996-11)HK/SG/TH/MY: dezembro de 1996 (1996-12)TW: dezembro de 1997 (1997-12)PS OneJP: 7 julho de 2000 (2000-07-07)NA: 19 setembro de 2000 (2000-09-19)EU: 29 setembro de 2000 (2000-09-29)HK/SG/TH/MY/TW: novembro de 2000 (2000-11)IND: 24 janeiro de 2002 (2002-01-24)KR: 22 fevereiro de 2002",
       "top_games": [
         {
           "name": "Metal Gear Solid",
@@ -700,10 +700,10 @@
         "Mesen 2",
         "Snes9x (RetroArch)"
       ],
-      "type": "console",
-      "generation": "4th Generation",
+      "type": "Console",
+      "generation": "4ª Geração",
       "launch_price": null,
-      "discontinued": "EU: 1998NA: 1999BR: 2003KOR: April 1, 2003JP: September 25, 2003",
+      "discontinued": "EU: 1998NA: 1999BR: 2003KOR: 1 de abril de 2003JP: 25 de setembro de 2003",
       "media": "Super NES Game Pak",
       "cpu": "Ricoh 5A22 @ 3.58 MHz",
       "memory": "128 KB \"work\" RAM64 KB SRAM64 KB PSRAM",
@@ -711,12 +711,12 @@
       "graphics": "S-PPU1 and S-PPU2",
       "sound": "Nintendo S-SMP",
       "online_services": "JP: SatellaviewJP/NA: XBANDGB: BT Interactive TV (Trial)",
-      "best_selling_game": "Pack-in: Super Mario World (20.6 million) Standalone: Street Fighter II: The World Warrior (6.3 million) (list)",
+      "best_selling_game": "Incluso: Super Mario World (20.6 million) Individual: Street Fighter II: The World Warrior (6.3 million) (list)",
       "predecessor": "Nintendo Entertainment System",
       "successor": "Nintendo 64",
       "wikidata_id": "28314",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Super_Nintendo_Entertainment_System",
-      "release_dates": "November 21, 1990 JP: November 21, 1990NA: August 23, 1991[a]FR/GB/IE: April 11, 1992EU: June 1992CHL: June 8, 1992AU: July 3, 1992DE: August 15, 1992BR: August 30, 1993RU: November 15, 1994",
+      "release_dates": "21 de novembro de 1990 JP: 21 de novembro de 1990NA: 23 de agosto de 1991[a]FR/GB/IE: 11 de abril de 1992EU: junho de 1992CHL: 8 de junho de 1992AU: 3 de julho de 1992DE: 15 de agosto de 1992BR: 30 de agosto de 1993RU: 15 de novembro de 1994",
       "top_games": [
         {
           "name": "Super Mario World",
@@ -780,10 +780,10 @@
         "Arnold",
         "CrocoDS"
       ],
-      "type": "computer",
-      "generation": "8-bit Computer",
+      "type": "Computador",
+      "generation": "Computador 8 bits",
       "launch_price": null,
-      "discontinued": "1990 36 years ago (1990)",
+      "discontinued": "1990 36 anos atrás (1990)",
       "media": "Compact Cassette, 3-inch floppy disks",
       "os": "AMSDOS with Locomotive BASIC 1.0 or 1.1; CP/M 2.2 or 3.0",
       "cpu": "Zilog Z80A @ 4 MHz",
@@ -793,7 +793,7 @@
       "sound": "AY-3-8912, 3-voices, 8-octaves",
       "wikidata_id": "2197",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Amstrad_CPC",
-      "release_dates": "1984 42 years ago (1984)",
+      "release_dates": "1984 42 anos atrás (1984)",
       "top_games": [
         {
           "name": "Grand Theft Auto V",
@@ -851,10 +851,10 @@
         "Demul",
         "Reicast (RetroArch)"
       ],
-      "type": "console",
-      "generation": "6th Generation",
+      "type": "Console",
+      "generation": "6ª Geração",
       "launch_price": null,
-      "discontinued": "WW: March 31, 2001",
+      "discontinued": "Mundial: 31 de março de 2001",
       "media": "GD&#x2011;ROM, CD&#x2011;ROM",
       "cpu": "Hitachi SH-4 @ 200 MHz",
       "memory": "16 MB RAM8 MB video RAM2 MB audio RAM",
@@ -867,7 +867,7 @@
       "predecessor": "Sega Saturn",
       "wikidata_id": "29036",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Dreamcast",
-      "release_dates": "JP: November 27, 1998NA: September 9, 1999EU: October 14, 1999AU: November 30, 1999",
+      "release_dates": "JP: 27 de novembro de 1998NA: 9 de setembro de 1999EU: 14 de outubro de 1999AU: 30 de novembro de 1999",
       "top_games": [
         {
           "name": "Age of Empires II: The Age of Kings",
@@ -922,8 +922,8 @@
         "MAME",
         "MESS"
       ],
-      "type": "console",
-      "generation": "2nd Generation",
+      "type": "Console",
+      "generation": "2ª Geração",
       "lifespan": "1976–1983",
       "launch_price": null,
       "discontinued": "1983",
@@ -992,10 +992,10 @@
       "emulators": [
         "Dolphin"
       ],
-      "type": "console",
-      "generation": "6th Generation",
+      "type": "Console",
+      "generation": "6ª Geração",
       "launch_price": null,
-      "discontinued": "February 2007",
+      "discontinued": "fevereiro de 2007",
       "media": "GameCube Game Disc Game Boy Game Pak[a] Game Boy Color Game Pak[a] Game Boy Advance Game Pak[a]",
       "os": "Proprietary",
       "cpu": "IBM Gekko @ 486 MHz",
@@ -1010,7 +1010,7 @@
       "successor": "Wii",
       "wikidata_id": "53525",
       "wikipedia_url": "https://en.wikipedia.org/wiki/GameCube",
-      "release_dates": "JP: September 14, 2001NA: November 18, 2001EU: May 3, 2002AU: May 17, 2002",
+      "release_dates": "JP: 14 de setembro de 2001NA: 18 de novembro de 2001EU: 3 de maio de 2002AU: 17 de maio de 2002",
       "top_games": [
         {
           "name": "Resident Evil 4",
@@ -1080,18 +1080,18 @@
       ],
       "wikidata_id": "7306",
       "wikipedia_url": "https://en.wikipedia.org/wiki/ColecoVision",
-      "type": "console",
-      "generation": "2nd Generation",
-      "discontinued": "August 1985 40 years ago (1985-08)",
+      "type": "Console",
+      "generation": "2ª Geração",
+      "discontinued": "agosto de 1985 40 anos atrás (1985-08)",
       "media": "ROM cartridge",
       "cpu": "Zilog Z80A @ 3.58 MHz",
       "memory": "1 KB scratchpad RAM16 KB video RAM8 KB ROM",
       "storage": "8/16/24/32 KB",
       "graphics": "TMS9928A (NTSC)TMS9929A (PAL)",
       "sound": "SN76489",
-      "best_selling_game": "Donkey Kong (pack-in)",
+      "best_selling_game": "Donkey Kong (incluso)",
       "predecessor": "Coleco Telstar series (1978)",
-      "release_dates": "NA: August 1982 43 years ago (1982-08)EU: July 1983 42 years ago (1983-07)",
+      "release_dates": "AN: agosto de 1982 43 anos atrás (1982-08)EU: julho de 1983 42 anos atrás (1983-07)",
       "top_games": [
         {
           "name": "Doom II: Hell on Earth",
@@ -1153,7 +1153,7 @@
         "DOSBox Staging",
         "DOSBox-X"
       ],
-      "generation": "Personal Computer"
+      "generation": "Computador Pessoal"
     },
     {
       "id": "commodore_64",
@@ -1187,9 +1187,9 @@
         "CCS64",
         "Frodo"
       ],
-      "type": "computer",
+      "type": "Computador",
       "launch_price": null,
-      "discontinued": "April 1994; 32 years ago (1994-04)",
+      "discontinued": "abril de 1994; 32 anos atrás (1994-04)",
       "os": "Commodore KERNAL/BASIC 2.0GEOS (optionally)",
       "cpu": "MOS Technology 6510/8500@ 1.023 MHz (NTSC version)@ 0.985 MHz (PAL version)",
       "memory": "64 KB RAM + 20 KB ROM",
@@ -1200,8 +1200,8 @@
       "successor": "Commodore 128Amiga",
       "wikidata_id": "7293",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Commodore_64",
-      "release_dates": "August 1982 43 years ago (1982-08)",
-      "generation": "8-bit Computer",
+      "release_dates": "agosto de 1982 43 anos atrás (1982-08)",
+      "generation": "Computador 8 bits",
       "top_games": [
         {
           "name": "Grand Theft Auto: San Andreas",
@@ -1258,11 +1258,11 @@
       ],
       "wikidata_id": "619009",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_Portable",
-      "type": "Handheld game console",
-      "generation": "7th Generation",
+      "type": "Console portátil",
+      "generation": "7ª Geração",
       "release_dates": "2004–2014",
       "launch_price": null,
-      "discontinued": "NA: January 2014JP: June 2014PAL: December 2014",
+      "discontinued": "AN: janeiro de 2014JP: junho de 2014PAL: dezembro de 2014",
       "media": "UMD (except PSP Go), digital distribution",
       "os": "PlayStation Portable system software",
       "cpu": "222–333 MHz MIPS32 R4000-based",
@@ -1334,8 +1334,8 @@
       ],
       "wikidata_id": "948317",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PC-8800_series",
-      "type": "Home computer",
-      "release_dates": "November 1981 44 years ago (1981-11)",
+      "type": "Computador doméstico",
+      "release_dates": "novembro de 1981 44 anos atrás (1981-11)",
       "os": "N-88 BASIC",
       "cpu": "NEC μPD780C-1 @ 4 MHz and higher",
       "memory": "64 kilobytes and higher",
@@ -1344,7 +1344,7 @@
       "sound": "Internal beeper (and higher)",
       "predecessor": "PC-8000 series",
       "successor": "PC-9800 series",
-      "generation": "8-bit Computer"
+      "generation": "Computador 8 bits"
     },
     {
       "id": "pc_98",
@@ -1373,13 +1373,13 @@
       ],
       "wikidata_id": "1917508",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PC-98",
-      "type": "Personal computers",
-      "release_dates": "October 1982 43 years ago (1982-10)",
-      "discontinued": "September 30, 2003; 22 years ago (2003-09-30)",
+      "type": "Computadores pessoais",
+      "release_dates": "outubro de 1982 43 anos atrás (1982-10)",
+      "discontinued": "30 de setembro de 2003; 22 anos atrás (2003-09-30)",
       "os": "N88-BASIC(86), CP/M-86, MS-DOS, Windows, OS/2, PC-UX",
       "cpu": "Intel 8086, 80286, i386, i486, NEC V30, i586",
       "predecessor": "PC-8800 series",
-      "generation": "16-bit Computer"
+      "generation": "Computador 16 bits"
     },
     {
       "id": "daphne",
@@ -1404,7 +1404,7 @@
         "Daphne",
         "Singe (Daphne)"
       ],
-      "generation": "Software Platform",
+      "generation": "Plataforma de Software",
       "top_games": [
         {
           "name": "Super Mario Bros.",
@@ -1462,7 +1462,7 @@
         "MAME",
         "LinApple"
       ],
-      "discontinued": "October 1993; 32 years ago (1993-10)",
+      "discontinued": "outubro de 1993; 32 anos atrás (1993-10)",
       "os": "Integer BASICApple DOSProDOSGS/OSGNO/ME",
       "cpu": "6502 @ 1.023 MHz (II, II Plus, IIe)65C02 @ 1.023 MHz (Enhanced IIe, IIc)65C02 @ 1.023–4 MHz (IIc Plus)65C816 @ 2.8 MHz (IIGS)",
       "storage": "Audio cassette5.25 inch floppy disk3.5 inch floppy disk",
@@ -1472,8 +1472,8 @@
       "successor": "Apple III (intended)",
       "wikidata_id": "2116",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Apple_II",
-      "release_dates": "June 1977 48 years ago (1977-06) (original Apple II)",
-      "generation": "8-bit Computer"
+      "release_dates": "junho de 1977 48 anos atrás (1977-06) (original Apple II)",
+      "generation": "Computador 8 bits"
     },
     {
       "id": "doom",
@@ -1500,7 +1500,7 @@
         "Chocolate Doom",
         "Crispy Doom"
       ],
-      "generation": "Software Platform"
+      "generation": "Plataforma de Software"
     },
     {
       "id": "nintendo_ds",
@@ -1526,8 +1526,8 @@
         "Drastic (Android)",
         "MelonDS (RetroArch)"
       ],
-      "type": "handheld",
-      "generation": "7th Generation",
+      "type": "Portátil",
+      "generation": "7ª Geração",
       "launch_price": null,
       "discontinued": "Yes; date undisclosed",
       "media": "Nintendo DS Game CardGame Boy Advance Game Pak",
@@ -1542,7 +1542,7 @@
       "successor": "Nintendo 3DS",
       "wikidata_id": "438022",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Nintendo_DS",
-      "release_dates": "November 21, 2004 DS: NA: November 21, 2004JP: December 2, 2004AU: February 24, 2005EU: March 11, 2005DS Lite: JP: March 2, 2006AU: June 1, 2006NA: June 11, 2006EU: June 23, 2006",
+      "release_dates": "21 de novembro de 2004 DS: AN: 21 de novembro de 2004JP: 2 de dezembro de 2004AU: 24 de fevereiro de 2005EU: 11 de março de 2005DS Lite: JP: 2 de março de 2006AU: 1 de junho de 2006NA: 11 de junho de 2006EU: 23 de junho de 2006",
       "top_games": [
         {
           "name": "Pokémon Platinum Version",
@@ -1600,7 +1600,7 @@
         "X1 Millennium",
         "XM8"
       ],
-      "type": "computer",
+      "type": "Computador",
       "launch_price": null,
       "discontinued": "1987",
       "media": "Compact Cassette or floppy disk",
@@ -1615,7 +1615,7 @@
       "wikidata_id": "2325792",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Sharp_X1",
       "release_dates": "1982 (1982)",
-      "generation": "8-bit Computer"
+      "generation": "Computador 8 bits"
     },
     {
       "id": "famicom_disk_system",
@@ -1639,16 +1639,16 @@
         "FCEUX",
         "Nestopia"
       ],
-      "type": "Video game console peripheral",
-      "generation": "3rd Generation",
-      "discontinued": "JP: 1993 (device)JP: September 30, 2003 (software)JP: October 31, 2007 (technical support)",
+      "type": "Periférico de console",
+      "generation": "3ª Geração",
+      "discontinued": "JP: 1993 (device)JP: 30 de setembro de 2003 (software)JP: 31 de outubro de 2007 (technical support)",
       "media": "112 KB Disk Card",
       "memory": "32 KB disk cache8 KB game RAM",
       "sound": "1 extra channel of wavetable synth facilitated by Ricoh 2C33",
       "successor": "SatellaviewNintendo 64DD",
       "wikidata_id": "163805",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Famicom_Disk_System",
-      "release_dates": "JP: February 21, 1986 (1986-02-21)",
+      "release_dates": "JP: 21 de fevereiro de 1986 (1986-02-21)",
       "top_games": [
         {
           "name": "Super Mario Bros. 3",
@@ -1705,10 +1705,10 @@
         "DVE",
         "MAME"
       ],
-      "type": "console",
-      "generation": "2nd Generation",
+      "type": "Console",
+      "generation": "2ª Geração",
       "launch_price": null,
-      "discontinued": "February 1984",
+      "discontinued": "fevereiro de 1984",
       "media": "ROM cartridge",
       "cpu": "Motorola MC68A09 @ 1.5 MHz",
       "memory": "1 KB",
@@ -1717,7 +1717,7 @@
       "sound": "AY-3-8912",
       "wikidata_id": "32729",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Vectrex",
-      "release_dates": "NA: October 1982EU: 1983JP: 1983",
+      "release_dates": "AN: outubro de 1982EU: 1983JP: 1983",
       "top_games": [
         {
           "name": "Undertale",
@@ -1776,10 +1776,10 @@
         "mGBA",
         "Gambatte (RetroArch)"
       ],
-      "type": "handheld",
-      "generation": "3rd Generation",
+      "type": "Portátil",
+      "generation": "3ª Geração",
       "launch_price": null,
-      "discontinued": "March 31, 2003",
+      "discontinued": "31 de março de 2003",
       "media": "Game Boy Game Pak",
       "cpu": "Sharp SM83 @ 4.2 MHz",
       "memory": "8 KB RAM, 8 KB Video RAM",
@@ -1789,7 +1789,7 @@
       "successor": "Game Boy Color",
       "wikidata_id": "5591552",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Game_Boy",
-      "release_dates": "April 21, 1989 Game Boy:, JP: April 21, 1989NA: July 31, 1989EU: September 28, 1990Game Boy Pocket:, JP: July 20, 1996NA: September 2, 1996Game Boy Light:, JP: April 14, 1998",
+      "release_dates": "21 de abril de 1989 Game Boy:, JP: 21 de abril de 1989NA: 31 de julho de 1989EU: 28 de setembro de 1990Game Boy Pocket:, JP: 20 de julho de 1996NA: 2 de setembro de 1996Game Boy Light:, JP: 14 de abril de 1998",
       "top_games": [
         {
           "name": "The Legend of Zelda: Ocarina of Time",
@@ -1845,8 +1845,8 @@
         "VisualBoyAdvance-M",
         "Medusa (RetroArch)"
       ],
-      "type": "handheld",
-      "generation": "6th Generation",
+      "type": "Portátil",
+      "generation": "6ª Geração",
       "launch_price": null,
       "discontinued": "2010",
       "media": "Game Boy Game PakGame Boy Color Game PakGame Boy Advance Game Pak",
@@ -1859,7 +1859,7 @@
       "successor": "Nintendo DS",
       "wikidata_id": "12430",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Game_Boy_Advance",
-      "release_dates": "March 21, 2001 JP: March 21, 2001NA: June 11, 2001PAL: June 22, 2001",
+      "release_dates": "21 de março de 2001 JP: 21 de março de 2001NA: 11 de junho de 2001PAL: 22 de junho de 2001",
       "top_games": [
         {
           "name": "Pokémon Emerald Version",
@@ -1916,10 +1916,10 @@
         "SameBoy",
         "TGB Dual"
       ],
-      "type": "handheld",
-      "generation": "5th Generation",
+      "type": "Portátil",
+      "generation": "5ª Geração",
       "launch_price": null,
-      "discontinued": "March 31, 2003 (2003-03-31)",
+      "discontinued": "31 de março de 2003 (2003-03-31)",
       "media": "Game Boy Color Game PakGame Boy Game Pak",
       "cpu": "Sharp SM83 @ 4.2 / 8.4 MHz",
       "memory": "32 KB RAM, 16 KB Video RAM",
@@ -1931,7 +1931,7 @@
       "successor": "Game Boy Advance",
       "wikidata_id": "13097",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Game_Boy_Color",
-      "release_dates": "JP: October 21, 1998NA: November 18, 1998EU: November 23, 1998AU: November 27, 1998",
+      "release_dates": "JP: 21 de outubro de 1998NA: 18 de novembro de 1998EU: 23 de novembro de 1998AU: 27 de novembro de 1998",
       "top_games": [
         {
           "name": "The Legend of Zelda: Ocarina of Time",
@@ -1991,18 +1991,18 @@
         "Picodrive (RetroArch)",
         "Genesis Plus GX (RetroArch)"
       ],
-      "type": "console",
-      "generation": "4th Generation",
+      "type": "Console",
+      "generation": "4ª Geração",
       "lifespan": "1988–1997 (Sega) 1998–1999 (Majesco) 1990–present (Tectoy)",
       "launch_price": null,
-      "discontinued": "WW: 1997 (Sega)NA: 1999 (Majesco Entertainment)",
+      "discontinued": "Mundial: 1997 (Sega)NA: 1999 (Majesco Entertainment)",
       "media": "ROM cartridge",
       "cpu": "Motorola 68000 @ 7.6 MHz Zilog Z80 @ 3.58 MHz",
       "memory": "64 KB RAM, 64 KB VRAM, 8 KB audio RAM",
       "display": "Progressive: 320×224, 256×224 (NTSC) or 320×240, 256×240 (PAL) pixels, 512 color palette, 61 colors on-screen Interlaced: 320×448, 256×448 (NTSC) or 320×480, 256×480 (PAL)",
       "sound": "Yamaha YM2612 Texas Instruments SN76489",
       "online_services": "Sega Meganet Sega Channel XBAND",
-      "best_selling_game": "Sonic the Hedgehog (15 million, pack-in) Sonic the Hedgehog 2 (6 million) (list)",
+      "best_selling_game": "Sonic the Hedgehog (15 million, incluso) Sonic the Hedgehog 2 (6 million) (list)",
       "predecessor": "Master System",
       "successor": "Sega Saturn",
       "wikidata_id": "2639573",
@@ -2063,10 +2063,10 @@
         "SMS Plus",
         "Genesis Plus GX (RetroArch)"
       ],
-      "type": "Handheld video game console",
-      "generation": "4th Generation",
+      "type": "Console portátil",
+      "generation": "4ª Geração",
       "launch_price": null,
-      "discontinued": "WW: April 30, 1997 (Sega)NA: 2002 (Majesco Entertainment)",
+      "discontinued": "Mundial: 30 de abril de 1997 (Sega)NA: 2002 (Majesco Entertainment)",
       "media": "ROM cartridge",
       "cpu": "Zilog Z80 @ 3.5 MHz",
       "memory": "8 KB RAM, 16 KB VRAM",
@@ -2077,7 +2077,7 @@
       "successor": "Genesis Nomad",
       "wikidata_id": "29027",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Game_Gear",
-      "release_dates": "JP: October 6, 1990NA/EU: April 1991AU: 1992",
+      "release_dates": "JP: 6 de outubro de 1990NA/EU: abril de 1991AU: 1992",
       "top_games": [
         {
           "name": "Pokémon Red Version",
@@ -2134,11 +2134,11 @@
       ],
       "wikidata_id": "15822958",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_2",
-      "type": "Home video game console",
-      "generation": "6th Generation",
-      "release_dates": "4 March 2000 PlayStation 2JP: 4 March 2000NA: 26 October 2000EU: 24 November 2000AU/ZA: 30 November 2000HK: 13 December 2001TW: 24 January 2002KR: 22 February 2002RUS: 7 November 2002IND: 13 August 2003CHN: 1 January 2004PlayStation 2 SlimlineEU: 29 October 2004JP: 3 November 2004NA: 25 November 2004AU: 2 December 2004IND: 10 September 2008BRA: 15 October 2009",
+      "type": "Console de videogame doméstico",
+      "generation": "6ª Geração",
+      "release_dates": "4 março de 2000 PlayStation 2JP: 4 março de 2000NA: 26 outubro de 2000EU: 24 novembro de 2000AU/ZA: 30 novembro de 2000HK: 13 dezembro de 2001TW: 24 janeiro de 2002KR: 22 fevereiro de 2002RUS: 7 novembro de 2002IND: 13 agosto de 2003CHN: 1 janeiro de 2004PlayStation 2 SlimlineEU: 29 outubro de 2004JP: 3 novembro de 2004NA: 25 novembro de 2004AU: 2 dezembro de 2004IND: 10 setembro de 2008BRA: 15 outubro de 2009",
       "launch_price": null,
-      "discontinued": "JP: 28 December 2012 WW: 4 January 2013",
+      "discontinued": "JP: 28 dezembro de 2012 Mundial: 4 janeiro de 2013",
       "media": "DVD, CD",
       "cpu": "Emotion Engine @ ~294.912 MHz",
       "memory": "32 MB RAM, 4 MB Video RAM",
@@ -2208,8 +2208,8 @@
       ],
       "wikidata_id": "15309",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Intellivision",
-      "type": "Home video game console",
-      "generation": "2nd Generation",
+      "type": "Console de videogame doméstico",
+      "generation": "2ª Geração",
       "release_dates": "1979 (1979)—1990 (1990)",
       "launch_price": null,
       "discontinued": "1990 (1990)",
@@ -2220,7 +2220,7 @@
       "graphics": "Standard Television Interface Chip (STIC)",
       "sound": "GI AY-3-8914 (three-channels, one noise generator)",
       "online_services": "PlayCable",
-      "best_selling_game": "Las Vegas Poker & Blackjack 1.939 millionMajor League Baseball 1.085 million (as of June 1983)"
+      "best_selling_game": "Las Vegas Poker & Blackjack 1.939 millionMajor League Baseball 1.085 million (em junho de 1983)"
     },
     {
       "id": "atari_jaguar_cd",
@@ -2244,9 +2244,9 @@
       ],
       "wikidata_id": "34847924",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Atari_Jaguar_CD",
-      "type": "Video game console peripheral",
-      "generation": "5th Generation",
-      "release_dates": "September 21, 1995",
+      "type": "Periférico de console",
+      "generation": "5ª Geração",
+      "release_dates": "21 de setembro de 1995",
       "launch_price": null,
       "discontinued": "1996",
       "media": "CD-ROM"
@@ -2274,8 +2274,8 @@
         "Mednafen",
         "Felix"
       ],
-      "type": "Handheld game console",
-      "generation": "3rd Generation",
+      "type": "Console portátil",
+      "generation": "3ª Geração",
       "release_dates": "1989–1995",
       "launch_price": null,
       "discontinued": "1995",
@@ -2363,9 +2363,9 @@
         "MAME",
         "Handheld Electronic (RetroArch)"
       ],
-      "type": "Handheld electronic games",
-      "generation": "2nd Generation",
-      "release_dates": "28 April 1980 (1980-04-28)",
+      "type": "Jogos eletrônicos portáteis",
+      "generation": "2ª Geração",
+      "release_dates": "28 abril de 1980 (1980-04-28)",
       "launch_price": null,
       "discontinued": "1991",
       "cpu": "Sharp SM5xx",
@@ -2429,9 +2429,9 @@
         "PokeMini",
         "MAME"
       ],
-      "type": "Handheld game console",
-      "generation": "5th Generation",
-      "release_dates": "NA: November 16, 2001JP: December 14, 2001EU: March 15, 2002",
+      "type": "Console portátil",
+      "generation": "5ª Geração",
+      "release_dates": "AN: 16 de novembro de 2001JP: 14 de dezembro de 2001EU: 15 de março de 2002",
       "launch_price": null,
       "discontinued": "2002",
       "media": "ROM cartridge",
@@ -2496,17 +2496,17 @@
         "Steem SSE",
         "Aranym"
       ],
-      "type": "Personal computer",
-      "release_dates": "June 1985 40 years ago (1985-06)",
+      "type": "Computador pessoal",
+      "release_dates": "junho de 1985 40 anos atrás (1985-06)",
       "launch_price": "US$799.99 / US$999.99",
-      "discontinued": "1993; 33 years ago (1993)",
+      "discontinued": "1993; 33 anos atrás (1993)",
       "os": "Digital Research's GEM on Atari TOS",
       "cpu": "68000 @ 8+ MHz",
       "memory": "512 KB to 4 MB",
       "graphics": "320 × 200 (16 colors), 640 × 200 (4 colors), 640 × 400 (monochrome)",
       "sound": "YM2149F",
       "predecessor": "Atari 8-bit computers",
-      "generation": "16-bit Computer",
+      "generation": "Computador 16 bits",
       "top_games": [
         {
           "name": "The Legend of Zelda: Ocarina of Time",
@@ -2565,14 +2565,14 @@
       ],
       "wikidata_id": "156210",
       "wikipedia_url": "https://en.wikipedia.org/wiki/MSX",
-      "type": "Home computer",
-      "release_dates": "October 21, 1983 (MSX)",
+      "type": "Computador doméstico",
+      "release_dates": "21 de outubro de 1983 (MSX)",
       "discontinued": "1993 (MSX turboR)",
       "os": "MSX BASIC, MSX-DOS",
       "cpu": "Zilog Z80 or equivalent (MSX1, MSX2, MSX2+)R800 (Turbo R)",
       "memory": "8–64 KB maximum (MSX1)64-512 KB, expandable to up to 4 MB via memory mapper cartridge (MSX2 and higher)",
       "graphics": "TMS9918 or equivalent (MSX1)Yamaha V9938 (MSX2)Yamaha V9958 (MSX2+ and Turbo R)",
-      "generation": "8-bit Computer",
+      "generation": "Computador 8 bits",
       "top_games": [
         {
           "name": "Grand Theft Auto V",
@@ -2630,14 +2630,14 @@
       ],
       "wikidata_id": "156210",
       "wikipedia_url": "https://en.wikipedia.org/wiki/MSX",
-      "type": "Home computer",
-      "release_dates": "October 21, 1983 (MSX)",
+      "type": "Computador doméstico",
+      "release_dates": "21 de outubro de 1983 (MSX)",
       "discontinued": "1993 (MSX turboR)",
       "os": "MSX BASIC, MSX-DOS",
       "cpu": "Zilog Z80 or equivalent (MSX1, MSX2, MSX2+)R800 (Turbo R)",
       "memory": "8–64 KB maximum (MSX1)64-512 KB, expandable to up to 4 MB via memory mapper cartridge (MSX2 and higher)",
       "graphics": "TMS9918 or equivalent (MSX1)Yamaha V9938 (MSX2)Yamaha V9958 (MSX2+ and Turbo R)",
-      "generation": "8-bit Computer",
+      "generation": "Computador 8 bits",
       "top_games": [
         {
           "name": "Grand Theft Auto V",
@@ -2698,9 +2698,9 @@
         "RMG",
         "Parallel RDP (RetroArch)"
       ],
-      "type": "Home video game console",
-      "generation": "5th Generation",
-      "release_dates": "June 21, 1996 JP: June 21, 1996NA: September 27, 1996EU/AU: December 20, 1996CHL/BR: December 10, 1997",
+      "type": "Console de videogame doméstico",
+      "generation": "5ª Geração",
+      "release_dates": "21 de junho de 1996 JP: 21 de junho de 1996NA: 27 de setembro de 1996EU/AU: 20 de dezembro de 1996CHL/BR: 10 de dezembro de 1997",
       "launch_price": null,
       "discontinued": "2002",
       "media": "Nintendo 64 Game Pak64DD magnetic disc",
@@ -2771,9 +2771,9 @@
         "Yuzu",
         "SuYU"
       ],
-      "type": "Video game console",
-      "generation": "8th Generation",
-      "release_dates": "Original: March 3, 2017Lite: September 20, 2019OLED: October 10, 2021",
+      "type": "Console de videogame",
+      "generation": "8ª Geração",
+      "release_dates": "Original: 3 de março de 2017Lite: 20 de setembro de 2019OLED: 10 de outubro de 2021",
       "launch_price": "US$299.99 / US$199.99 / US$349.99",
       "media": "Game carddigital distribution",
       "os": "Nintendo Switch system software",
@@ -2785,7 +2785,7 @@
       "sound": "Undocked: Linear PCM 2.0 ch stereo speakers (with pseudo-surround)Docked: Linear PCM 5.1 ch",
       "connectivity": "Wi-Fi 5 @ 2.4/5 GHzBluetooth 4.11 × USB-CHeadphone jack Dock Nintendo Switch 3 × USB 2.0 Nintendo Switch – OLED Model 2 × USB 2.0 1 x Ethernet",
       "online_services": "Nintendo eShopNintendo Switch Online",
-      "best_selling_game": "Mario Kart 8 Deluxe (70.59 million, as of December 31, 2025[update]) (list)",
+      "best_selling_game": "Mario Kart 8 Deluxe (70.59 million, em 31 de dezembro de 2025[update]) (list)",
       "predecessor": "Nintendo 3DSWii U",
       "successor": "Nintendo Switch 2"
     },
@@ -2812,9 +2812,9 @@
         "NeoCD",
         "NeoGeo EMU"
       ],
-      "type": "Arcade system board, Home video game console",
-      "generation": "4th Generation",
-      "release_dates": "April 16, 1990 JP: April 16, 1990 (MVS)JP: April 26, 1990 (AES)NA: August 22, 1990 (MVS)AU: August 1990 (MVS)NA: July 1, 1991 (AES)EU: 1991",
+      "type": "Placa de sistema arcade / Console de videogame doméstico",
+      "generation": "4ª Geração",
+      "release_dates": "16 de abril de 1990 JP: 16 de abril de 1990 (MVS)JP: 26 de abril de 1990 (AES)NA: 22 de agosto de 1990 (MVS)AU: agosto de 1990 (MVS)NA: 1 de julho de 1991 (AES)EU: 1991",
       "launch_price": "US$649.99",
       "discontinued": "1997",
       "media": "ROM cartridge",
@@ -2824,7 +2824,7 @@
       "display": "320×224 resolution, 3840 on-screen colors out of a palette of 65536",
       "sound": "Yamaha YM2610",
       "best_selling_game": "Samurai Shodown",
-      "successor": "Neo Star (cancelled), Hyper Neo Geo 64",
+      "successor": "Neo Star (cancelado), Hyper Neo Geo 64",
       "top_games": [
         {
           "name": "Tomb Raider",
@@ -2884,18 +2884,18 @@
         "Mesen 2",
         "FCEUmm (RetroArch)"
       ],
-      "type": "Home video game console",
-      "generation": "3rd Generation",
-      "release_dates": "July 15, 1983 JP: July 15, 1983NA: October 18, 1985[a]EU: September 1, 1986[b]UK/IRE/ITA/AU: 1987[c]IND/TW: 1987KOR: 1989CHL: 1991ZA: 1993BRA: March 1993[d]",
+      "type": "Console de videogame doméstico",
+      "generation": "3ª Geração",
+      "release_dates": "15 de julho de 1983 JP: 15 de julho de 1983NA: 18 de outubro de 1985[a]EU: 1 de setembro de 1986[b]UK/IRE/ITA/AU: 1987[c]IND/TW: 1987KOR: 1989CHL: 1991ZA: 1993BRA: março de 1993[d]",
       "launch_price": null,
-      "discontinued": "NA/EU/AU: August 14, 1995 (1995-08-14)BRA/KOR/TW: Early/Mid 2003JP: September 25, 2003 (2003-09-25)",
+      "discontinued": "NA/EU/AU: 14 de agosto de 1995 (1995-08-14)BRA/KOR/TW: Early/Mid 2003JP: 25 de setembro de 2003 (2003-09-25)",
       "media": "Nintendo Entertainment System Game Pak",
       "cpu": "Ricoh 2A03 @ 1.79 MHzRicoh 2A07 @ 1.66 MHz[e]",
       "memory": "2 KB work RAM, 2 KB video RAM, 256 bytes sprite RAM",
       "display": "256 × 240 px",
       "graphics": "PPU (Ricoh 2C02)",
       "sound": "APU, 5 channels: 2 pulse wave, triangle wave, white noise, DPCM",
-      "best_selling_game": "Pack-in: Super Mario Bros. (40 million) Standalone: Super Mario Bros. 3 (18 million) (list)",
+      "best_selling_game": "Incluso: Super Mario Bros. (40 million) Individual: Super Mario Bros. 3 (18 million) (list)",
       "predecessor": "Color TV-Game",
       "successor": "Super Nintendo Entertainment System",
       "top_games": [
@@ -2953,11 +2953,11 @@
         "Mednafen",
         "Beetle NGPC (RetroArch)"
       ],
-      "type": "Handheld game console",
-      "generation": "5th Generation",
-      "release_dates": "Neo Geo Pocket: JP: October 28, 1998Neo Geo Pocket Color: JP: March 19, 1999NA: August 6, 1999EU: October 1, 1999New Neo Geo Pocket Color: JP: October 21, 1999",
+      "type": "Console portátil",
+      "generation": "5ª Geração",
+      "release_dates": "Neo Geo Pocket: JP: 28 de outubro de 1998Neo Geo Pocket Color: JP: 19 de março de 1999NA: 6 de agosto de 1999EU: 1 de outubro de 1999New Neo Geo Pocket Color: JP: 21 de outubro de 1999",
       "launch_price": "US$69.95",
-      "discontinued": "NA/EU: June 13, 2000JP: October 30, 2001",
+      "discontinued": "NA/EU: 13 de junho de 2000JP: 30 de outubro de 2001",
       "media": "ROM cartridge",
       "cpu": "Toshiba TLCS900H core (16-bit) @ 6.144 MHz, Zilog Z80 @ 3.072 MHz for sound",
       "memory": "12 KB RAM for 900/H, 4 KB RAM for Z80, 64 KB ROM",
@@ -3017,11 +3017,11 @@
         "NeoPop",
         "Mednafen"
       ],
-      "type": "Handheld game console",
-      "generation": "5th Generation",
-      "release_dates": "Neo Geo Pocket: JP: October 28, 1998Neo Geo Pocket Color: JP: March 19, 1999NA: August 6, 1999EU: October 1, 1999New Neo Geo Pocket Color: JP: October 21, 1999",
+      "type": "Console portátil",
+      "generation": "5ª Geração",
+      "release_dates": "Neo Geo Pocket: JP: 28 de outubro de 1998Neo Geo Pocket Color: JP: 19 de março de 1999NA: 6 de agosto de 1999EU: 1 de outubro de 1999New Neo Geo Pocket Color: JP: 21 de outubro de 1999",
       "launch_price": "US$69.95",
-      "discontinued": "NA/EU: June 13, 2000JP: October 30, 2001",
+      "discontinued": "NA/EU: 13 de junho de 2000JP: 30 de outubro de 2001",
       "media": "ROM cartridge",
       "cpu": "Toshiba TLCS900H core (16-bit) @ 6.144 MHz, Zilog Z80 @ 3.072 MHz for sound",
       "memory": "12 KB RAM for 900/H, 4 KB RAM for Z80, 64 KB ROM",
@@ -3080,7 +3080,7 @@
       "emulators": [
         "LowRes NX Emulator (oficial)"
       ],
-      "generation": "Fantasy Console",
+      "generation": "Console Fantasia",
       "top_games": [
         {
           "name": "Grand Theft Auto V",
@@ -3137,8 +3137,8 @@
         "ZX81 (RetroArch)",
         "VB81"
       ],
-      "type": "Home computer",
-      "release_dates": "5 March 1981 45 years ago (1981-03-05)",
+      "type": "Computador doméstico",
+      "release_dates": "5 março de 1981 45 anos atrás (1981-03-05)",
       "launch_price": null,
       "discontinued": "1984",
       "os": "Sinclair BASIC",
@@ -3149,7 +3149,7 @@
       "graphics": "24 lines × 32 characters or, 64 × 48 pixels graphics mode",
       "predecessor": "ZX80",
       "successor": "ZX Spectrum",
-      "generation": "8-bit Computer",
+      "generation": "Computador 8 bits",
       "top_games": [
         {
           "name": "Grand Theft Auto V",
@@ -3206,7 +3206,7 @@
         "Retro8 (RetroArch)",
         "Picolove"
       ],
-      "generation": "Fantasy Console",
+      "generation": "Console Fantasia",
       "top_games": [
         {
           "name": "Grand Theft Auto V",
@@ -3264,10 +3264,10 @@
         "Ootake",
         "Beetle PCE (RetroArch)"
       ],
-      "type": "Home video game console",
-      "generation": "4th Generation",
+      "type": "Console de videogame doméstico",
+      "generation": "4ª Geração",
       "release_dates": "1987–1994",
-      "discontinued": "FR: December 25, 1993NA: May 11, 1994JP: December 16, 1994",
+      "discontinued": "FR: 25 de dezembro de 1993NA: 11 de maio de 1994JP: 16 de dezembro de 1994",
       "media": "HuCard",
       "cpu": "HuC6280 @ 7.16 MHz",
       "memory": "8 KB RAM64 KB Video RAM",
@@ -3331,10 +3331,10 @@
       "emulators": [
         "RPCS3"
       ],
-      "type": "console",
-      "generation": "7th Generation",
+      "type": "Console",
+      "generation": "7ª Geração",
       "launch_price": "US$499.99 / US$599.99",
-      "discontinued": "PAL: March 2016NA: October 2016JP: May 29, 2017 (2017-05-29)",
+      "discontinued": "PAL: março de 2016NA: outubro de 2016JP: 29 de maio de 2017 (2017-05-29)",
       "media": "Blu-ray DVD CD Super Audio CD (some models) Digital distribution",
       "os": "PlayStation 3 system software",
       "cpu": "Cell Broadband Engine @ 3.2 GHz",
@@ -3350,7 +3350,7 @@
       "successor": "PlayStation 4",
       "wikidata_id": "24951",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_3",
-      "release_dates": "JP: November 11, 2006 (2006-11-11)NA: November 17, 2006PAL: March 23, 2007",
+      "release_dates": "JP: 11 de novembro de 2006 (2006-11-11)NA: 17 de novembro de 2006PAL: 23 de março de 2007",
       "top_games": [
         {
           "name": "Grand Theft Auto V",
@@ -3406,10 +3406,10 @@
       ],
       "wikidata_id": "15822958",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PlayStation_2",
-      "type": "console",
-      "generation": "6th Generation",
+      "type": "Console",
+      "generation": "6ª Geração",
       "launch_price": null,
-      "discontinued": "JP: 28 December 2012 WW: 4 January 2013",
+      "discontinued": "JP: 28 dezembro de 2012 Mundial: 4 janeiro de 2013",
       "media": "DVD, CD",
       "cpu": "Emotion Engine @ ~294.912 MHz",
       "memory": "32 MB RAM, 4 MB Video RAM",
@@ -3477,10 +3477,10 @@
       "emulators": [
         "Cemu"
       ],
-      "type": "console",
-      "generation": "8th Generation",
+      "type": "Console",
+      "generation": "8ª Geração",
       "launch_price": "US$299 / US$349",
-      "discontinued": "WW: January 31, 2017",
+      "discontinued": "Mundial: 31 de janeiro de 2017",
       "media": "Physical and digital Wii U Optical Disc (25 GB) Wii Optical Disc (4.7 GB/8.54 GB) Digital distribution (Nintendo eShop)",
       "os": "Wii U system software",
       "cpu": "1.24 GHz tri-core IBM PowerPC \"Espresso\"",
@@ -3490,13 +3490,13 @@
       "graphics": "550 MHz AMD Radeon-based \"Latte\"",
       "sound": "5.1 linear PCM, analog stereo",
       "connectivity": "Wi-Fi IEEE 802.11 b/g/nBluetooth 4.04 × USB 2.0",
-      "online_services": "Nintendo Network Nintendo eShop (discontinued) Miiverse (discontinued) Nintendo TVii (discontinued) Wii U Chat (discontinued)",
+      "online_services": "Nintendo Network Nintendo eShop (descontinuado) Miiverse (descontinuado) Nintendo TVii (descontinuado) Wii U Chat (descontinuado)",
       "best_selling_game": "Mario Kart 8, 8.46 million (list)",
       "predecessor": "Wii",
       "successor": "Nintendo Switch",
       "wikidata_id": "31512491",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Wii_U",
-      "release_dates": "NA: November 18, 2012PAL: November 30, 2012JP: December 8, 2012",
+      "release_dates": "AN: 18 de novembro de 2012PAL: 30 de novembro de 2012JP: 8 de dezembro de 2012",
       "top_games": [
         {
           "name": "The Legend of Zelda: Breath of the Wild",
@@ -3554,11 +3554,11 @@
         "Kronos",
         "Beetle Saturn (RetroArch)"
       ],
-      "type": "console",
-      "generation": "5th Generation",
+      "type": "Console",
+      "generation": "5ª Geração",
       "lifespan": "1994–2000",
       "launch_price": null,
-      "discontinued": "EU: 1998NA: March 1998JP: 2000",
+      "discontinued": "EU: 1998NA: março de 1998JP: 2000",
       "media": "CD-ROM, CD+G, CD+EG, Video CD, Mini CD, Photo CD, e-book",
       "cpu": "2× Hitachi SH-2 @ 28.6 MHz",
       "memory": "2 MB RAM, 1.5 MB VRAM, 512 KB sound RAM, expandable with Extended RAM Cartridge",
@@ -3631,8 +3631,8 @@
         "Spectaculator",
         "Fuse (RetroArch)"
       ],
-      "type": "computer",
-      "generation": "8-bit Computer",
+      "type": "Computador",
+      "generation": "Computador 8 bits",
       "launch_price": "$200",
       "discontinued": "1985/1992",
       "media": "Compact Cassette, ZX Microdrive, 3-inch floppy disk on Spectrum +3",
@@ -3646,7 +3646,7 @@
       "successor": "QL, Sinclair PC200",
       "wikidata_id": "34467",
       "wikipedia_url": "https://en.wikipedia.org/wiki/ZX_Spectrum",
-      "release_dates": "UK: 23 April 1982DE: 1983US: November 1983EU: 1984",
+      "release_dates": "UK: 23 abril de 1982DE: 1983US: novembro de 1983EU: 1984",
       "top_games": [
         {
           "name": "Grand Theft Auto V",
@@ -3702,9 +3702,9 @@
         "blueMSX",
         "Genesis Plus GX (RetroArch)"
       ],
-      "type": "console",
-      "generation": "2nd Generation",
-      "discontinued": "SG-1000JP: July 1984SG-1000 IIJP: October 1985",
+      "type": "Console",
+      "generation": "2ª Geração",
+      "discontinued": "SG-1000JP: julho de 1984SG-1000 IIJP: outubro de 1985",
       "media": "ROM cartridge, compact cassette, Sega My Card",
       "cpu": "Zilog Z80A @ 3.58 MHz",
       "memory": "1 KB RAM (SG-1000)2 KB RAM (SC-3000)16 KB VRAM",
@@ -3714,7 +3714,7 @@
       "successor": "Master System",
       "wikidata_id": "290843",
       "wikipedia_url": "https://en.wikipedia.org/wiki/SG-1000",
-      "release_dates": "SG-1000/SC-3000JP: July 15, 1983AU: November 1983SG-1000 IIJP: July 31, 1984TW: 1986"
+      "release_dates": "SG-1000/SC-3000JP: 15 de julho de 1983AU: novembro de 1983SG-1000 IIJP: 31 de julho de 1984TW: 1986"
     },
     {
       "id": "master_system",
@@ -3739,8 +3739,8 @@
         "SMS Plus",
         "Genesis Plus GX (RetroArch)"
       ],
-      "type": "console",
-      "generation": "3rd Generation",
+      "type": "Console",
+      "generation": "3ª Geração",
       "lifespan": "JP: 1985–1991NA: 1986–1992EU: 1987–1996KO: 1988–1994BR: 1989–present[9]",
       "launch_price": null,
       "discontinued": "JP: 1991NA: 1992KO: 1994EU: 1996",
@@ -3809,10 +3809,10 @@
         "B-Em",
         "Model B (RetroArch)"
       ],
-      "type": "8-bit home computer",
+      "type": "Computador doméstico 8 bits",
       "lifespan": "1981–1994",
       "launch_price": null,
-      "discontinued": "1994; 32 years ago (1994)",
+      "discontinued": "1994; 32 anos atrás (1994)",
       "media": "Cassette tape, floppy disk (optional) – 5+14-inch or (later) 3+12-inch, hard disk also known as 'Winchester' (rare), Laserdisc (BBC Domesday Project)",
       "os": "Acorn MOS",
       "cpu": "2 MHz MOS Technology 6502/6512",
@@ -3827,7 +3827,7 @@
       "wikidata_id": "18950885",
       "wikipedia_url": "https://en.wikipedia.org/wiki/BBC_Micro",
       "release_dates": "1981–1994",
-      "generation": "8-bit Computer",
+      "generation": "Computador 8 bits",
       "top_games": [
         {
           "name": "Grand Theft Auto V",
@@ -3881,7 +3881,7 @@
       "emulators": [
         "ScummVM (aplicativo nativo)"
       ],
-      "generation": "Software Platform"
+      "generation": "Plataforma de Software"
     },
     {
       "id": "watara_supervision",
@@ -3904,8 +3904,8 @@
         "MAME",
         "Potator"
       ],
-      "type": "handheld",
-      "generation": "4th Generation",
+      "type": "Portátil",
+      "generation": "4ª Geração",
       "launch_price": null,
       "media": "ROM cartridge",
       "cpu": "8-bit 65SC02 @ 4 MHz",
@@ -3967,7 +3967,7 @@
       "emulators": [
         "TIC-80 (nativo)"
       ],
-      "generation": "Fantasy Console",
+      "generation": "Console Fantasia",
       "top_games": [
         {
           "name": "Grand Theft Auto V",
@@ -4023,9 +4023,9 @@
         "BizHawk",
         "MAME"
       ],
-      "type": "console",
-      "generation": "5th Generation",
-      "discontinued": "JP: February 14, 1998",
+      "type": "Console",
+      "generation": "5ª Geração",
+      "discontinued": "JP: 14 de fevereiro de 1998",
       "media": "CD-ROM",
       "cpu": "NEC V810 @ 21.475 MHz",
       "memory": "2 MB",
@@ -4035,7 +4035,7 @@
       "predecessor": "TurboDuo",
       "wikidata_id": "24929",
       "wikipedia_url": "https://en.wikipedia.org/wiki/PC-FX",
-      "release_dates": "JP: December 23, 1994"
+      "release_dates": "JP: 23 de dezembro de 1994"
     },
     {
       "id": "virtual_boy",
@@ -4062,16 +4062,16 @@
       ],
       "wikidata_id": "21970",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Virtual_Boy",
-      "type": "Video game console",
-      "generation": "5th Generation",
+      "type": "Console de videogame",
+      "generation": "5ª Geração",
       "release_dates": "1995–1996",
       "launch_price": null,
-      "discontinued": "JP: December 22, 1995NA: August 1996BR: 1996",
+      "discontinued": "JP: 22 de dezembro de 1995NA: agosto de 1996BR: 1996",
       "media": "ROM cartridge",
       "cpu": "NEC V810 @ 20 MHz",
       "memory": "64 KB work PSRAM, 128 KB graphics DRAM, 128 KB Video RAM",
       "display": "384×224",
-      "best_selling_game": "Mario's Tennis (US pack-in game)",
+      "best_selling_game": "Mario's Tennis (US jogo incluso)",
       "top_games": [
         {
           "name": "Golden Axe",
@@ -4126,11 +4126,11 @@
         "Vita3k",
         "Ryujinx (parcial)"
       ],
-      "type": "Handheld game console",
-      "generation": "8th Generation",
-      "release_dates": "JP: December 17, 2011NA: February 15, 2012[a]EU: February 22, 2012Other regions: see[note 1]",
+      "type": "Console portátil",
+      "generation": "8ª Geração",
+      "release_dates": "JP: 17 de dezembro de 2011NA: 15 de fevereiro de 2012[a]EU: 22 de fevereiro de 2012Other regions: see[note 1]",
       "launch_price": null,
-      "discontinued": "March 1, 2019",
+      "discontinued": "1 de março de 2019",
       "media": "PS Vita Card, digital distribution through PlayStation Network",
       "os": "PlayStation Vita system software",
       "cpu": "Quad-core ARM Cortex-A9 MPCore",
@@ -4196,7 +4196,7 @@
         "WASM-4 (nativo)",
         "Navegador (WebAssembly)"
       ],
-      "generation": "Fantasy Console",
+      "generation": "Console Fantasia",
       "top_games": [
         {
           "name": "Grand Theft Auto V",
@@ -4250,10 +4250,10 @@
       "emulators": [
         "Dolphin"
       ],
-      "type": "console",
-      "generation": "7th Generation",
+      "type": "Console",
+      "generation": "7ª Geração",
       "launch_price": null,
-      "discontinued": "AU: November 2011JP: October 20, 2013EU: October 24, 2013 Revisions RVL-101 EU: October 24, 2013NA: May 2014",
+      "discontinued": "AU: novembro de 2011JP: 20 de outubro de 2013EU: 24 de outubro de 2013 Revisões RVL-101 EU: 24 de outubro de 2013NA: maio de 2014",
       "media": "Wii optical discGameCube game disc[a]Digital distribution[b]",
       "os": "Wii system software",
       "cpu": "IBM Broadway @ 729 MHz",
@@ -4263,12 +4263,12 @@
       "graphics": "ATI Hollywood @ 243 MHz",
       "connectivity": "Wi-Fi (802.11b/g)Bluetooth 2.02 × USB 2.0",
       "online_services": "Nintendo Wi-Fi Connection[c]WiiConnect24[d]Wii Shop Channel[e]",
-      "best_selling_game": "Pack-in:[f] Wii Sports (82.9 million) Stand-alone: Mario Kart Wii (37.3 million) (list)",
+      "best_selling_game": "Incluso:[f] Wii Sports (82.9 million) Individual: Mario Kart Wii (37.3 million) (list)",
       "predecessor": "GameCube",
       "successor": "Wii U",
       "wikidata_id": "421853",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Wii",
-      "release_dates": "NA: November 19, 2006JP: December 2, 2006AU: December 7, 2006EU: December 8, 2006ZA: September 30, 2007KR: April 26, 2008TW: July 12, 2008IND: September 30, 2008HK: December 12, 2009 Revisions RVL-101NA: October 23, 2011EU: November 4, 2011AU: November 11, 2011 Wii Mini CAN: December 7, 2012EU: March 22, 2013USA: November 17, 2013",
+      "release_dates": "AN: 19 de novembro de 2006JP: 2 de dezembro de 2006AU: 7 de dezembro de 2006EU: 8 de dezembro de 2006ZA: 30 de setembro de 2007KR: 26 de abril de 2008TW: 12 de julho de 2008IND: 30 de setembro de 2008HK: 12 de dezembro de 2009 Revisões RVL-101NA: 23 de outubro de 2011EU: 4 de novembro de 2011AU: 11 de novembro de 2011 Wii Mini CAN: 7 de dezembro de 2012EU: 22 de março de 2013USA: 17 de novembro de 2013",
       "top_games": [
         {
           "name": "The Legend of Zelda: Ocarina of Time",
@@ -4325,8 +4325,8 @@
         "Cygne",
         "Beetle WS (RetroArch)"
       ],
-      "type": "handheld",
-      "generation": "5th Generation",
+      "type": "Portátil",
+      "generation": "5ª Geração",
       "lifespan": "1999–2003",
       "launch_price": null,
       "discontinued": "2003",
@@ -4397,8 +4397,8 @@
       ],
       "wikidata_id": "177472",
       "wikipedia_url": "https://en.wikipedia.org/wiki/WonderSwan",
-      "type": "Handheld game console",
-      "generation": "5th Generation",
+      "type": "Console portátil",
+      "generation": "5ª Geração",
       "release_dates": "1999–2003",
       "launch_price": null,
       "discontinued": "2003",
@@ -4461,10 +4461,10 @@
       "emulators": [
         "Xenia"
       ],
-      "type": "console",
-      "generation": "7th Generation",
+      "type": "Console",
+      "generation": "7ª Geração",
       "launch_price": null,
-      "discontinued": "WW: April 20, 2016",
+      "discontinued": "Mundial: 20 de abril de 2016",
       "media": "DVD, CD, digital distribution Add-on: HD DVD (discontinued)",
       "os": "Xbox 360 system software",
       "cpu": "3.2 GHz PowerPC Tri-Core Xenon",
@@ -4475,12 +4475,12 @@
       "sound": "Analog stereo Stereo LPCM (TOSLINK and HDMI) Dolby Digital 5.1 (TOSLINK and HDMI) Dolby Digital with WMA pro (TOSLINK and HDMI)",
       "connectivity": "Original models: 2.4 GHz wireless, 3 × USB 2.0, IR receiver, 100 Mbit/s EthernetAdd-on: Wifi 802.11 a/b/g, Wifi 802.11a/b/g/nRevised \"S\" models: 2.4 GHz wireless, 5 × USB 2.0, Digital Optical audio out, IR receiver, 100 Mbit/s Ethernet, Wifi 802.11b/g/n, AUX port, HDMI portRevised \"E\" models: 2.4 GHz wireless, 4 × USB 2.0, IR receiver, 100 Mbit/s Ethernet, Wifi 802.11b/g/n, AUX port, HDMI port",
       "online_services": "Xbox Live",
-      "best_selling_game": "Kinect Adventures!, 24 million(bundled with Kinect) Grand Theft Auto V, 22.95 million (non-Kinect game) (list)",
+      "best_selling_game": "Kinect Adventures!, 24 million(incluído com Kinect) Grand Theft Auto V, 22.95 million (non-Kinect game) (list)",
       "predecessor": "Xbox",
       "successor": "Xbox One",
       "wikidata_id": "7514833",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Xbox_360",
-      "release_dates": "November 22, 2005 Original Xbox 360US/CA: November 22, 2005EZ/NO/SE/UK/CH: December 2, 2005JP: December 10, 2005CO/MX: February 2, 2006KR: February 24, 2006HK/SG/TW: March 16, 2006AU: March 23, 2006CL: July 7, 2006IN: September 25, 2006ZA: September 29, 2006CZ/PL: November 3, 2006BR: December 1, 2006RU: February 11, 2007PE: February 25, 2008UAE: October 28, 2008NG/TR: 2009SC: Spring 2010 Xbox 360 SNA: June 18, 2010AU: July 1, 2010NZ: July 8, 2010EU: July 16, 2010 Xbox 360 ENA: June 10, 2013EU: June 20, 2013",
+      "release_dates": "22 de novembro de 2005 Original Xbox 360US/CA: 22 de novembro de 2005EZ/NO/SE/UK/CH: 2 de dezembro de 2005JP: 10 de dezembro de 2005CO/MX: 2 de fevereiro de 2006KR: 24 de fevereiro de 2006HK/SG/TW: 16 de março de 2006AU: 23 de março de 2006CL: 7 de julho de 2006IN: 25 de setembro de 2006ZA: 29 de setembro de 2006CZ/PL: 3 de novembro de 2006BR: 1 de dezembro de 2006RU: 11 de fevereiro de 2007PE: 25 de fevereiro de 2008UAE: 28 de outubro de 2008NG/TR: 2009SC: Spring 2010 Xbox 360 SNA: 18 de junho de 2010AU: 1 de julho de 2010NZ: 8 de julho de 2010EU: 16 de julho de 2010 Xbox 360 ENA: 10 de junho de 2013EU: 20 de junho de 2013",
       "top_games": [
         {
           "name": "Golden Axe",
@@ -4535,8 +4535,8 @@
         "Cxbx-Reloaded",
         "XQEMU"
       ],
-      "type": "console",
-      "generation": "6th Generation",
+      "type": "Console",
+      "generation": "6ª Geração",
       "launch_price": null,
       "discontinued": "JP: 2005WW: 2006",
       "media": "DVD, CD, digital distribution",
@@ -4552,7 +4552,7 @@
       "successor": "Xbox 360",
       "wikidata_id": "17416342",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Xbox_(console)",
-      "release_dates": "NA: November 15, 2001JP: February 22, 2002PAL: March 14, 2002",
+      "release_dates": "AN: 15 de novembro de 2001JP: 22 de fevereiro de 2002PAL: 14 de março de 2002",
       "top_games": [
         {
           "name": "Portal 2",
@@ -4609,7 +4609,7 @@
         "MAME"
       ],
       "launch_price": null,
-      "discontinued": "December 4, 1992; 33 years ago (1992-12-04)",
+      "discontinued": "4 de dezembro de 1992; 33 anos atrás (1992-12-04)",
       "os": "ProDOSGS/OSGNO/ME",
       "cpu": "65C816 @ 2.8 MHz",
       "memory": "256 KB, 512 KB, 1 MB (expandable to 8 MB)",
@@ -4617,8 +4617,8 @@
       "sound": "Ensoniq ES5503 8-bit wavetable synthesis chip,32 channels",
       "wikidata_id": "248101",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Apple_IIGS",
-      "release_dates": "September 15, 1986 39 years ago (1986-09-15)",
-      "generation": "16-bit Computer"
+      "release_dates": "15 de setembro de 1986 39 anos atrás (1986-09-15)",
+      "generation": "Computador 16 bits"
     },
     {
       "id": "3do",
@@ -4648,11 +4648,11 @@
       ],
       "wikidata_id": "36168",
       "wikipedia_url": "https://en.wikipedia.org/wiki/3DO",
-      "type": "Home video game console",
-      "generation": "5th Generation",
-      "release_dates": "NA: October 4, 1993JP: March 20, 1994EU: June 10, 1994KOR: December 3, 1994",
+      "type": "Console de videogame doméstico",
+      "generation": "5ª Geração",
+      "release_dates": "AN: 4 de outubro de 1993JP: 20 de março de 1994EU: 10 de junho de 1994KOR: 3 de dezembro de 1994",
       "launch_price": null,
-      "discontinued": "WW: 1996",
+      "discontinued": "Mundial: 1996",
       "media": "CD-ROM",
       "cpu": "32-bit custom RISC CPU (ARM60) @ 12.5 MHz",
       "memory": "2 MB RAM, 32 KB SRAM, 1 MB VRAM",
@@ -4660,9 +4660,9 @@
       "display": "320×240 @ 60 Hz, 384×288 @ 50 Hz; 16-bit palettized color (from 24-bit) or 24-bit true color.",
       "graphics": "Panasonic FZ-1 \"Madam\" graphics accelerator",
       "sound": "Panasonic FZ-1 \"Clio\" DSP: 16-bit stereo @ 44.1 kHz, 4-Channel Dolby Surround;",
-      "online_services": "Planned but canceled",
+      "online_services": "Planejado, mas cancelado",
       "best_selling_game": "Gex (1+ million)[note 1]",
-      "successor": "Panasonic M2 (canceled)",
+      "successor": "Panasonic M2 (cancelado)",
       "top_games": [
         {
           "name": "Monkey Island 2: LeChuck's Revenge",
@@ -4721,7 +4721,7 @@
         "ADAMem"
       ],
       "launch_price": null,
-      "discontinued": "January 1985 (1985-01)",
+      "discontinued": "janeiro de 1985 (1985-01)",
       "os": "EOS, OS-7 (ColecoVision), CP/M, TDOS",
       "cpu": "Zilog Z80A @ 3.58 MHz",
       "memory": "64 KB RAM16 KB VRAM",
@@ -4731,8 +4731,8 @@
       "sound": "Texas Instruments SN76489AN",
       "wikidata_id": "287134",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Coleco_Adam",
-      "release_dates": "October 1983 42 years ago (1983-10)",
-      "generation": "8-bit Computer",
+      "release_dates": "outubro de 1983 42 anos atrás (1983-10)",
+      "generation": "Computador 8 bits",
       "top_games": [
         {
           "name": "Doom II: Hell on Earth",
@@ -4791,10 +4791,10 @@
         "WinUAE",
         "FS-UAE"
       ],
-      "type": "Home video game consoleGaming computer",
-      "generation": "5th Generation",
+      "type": "Console de videogame doméstico / Computador gamer",
+      "generation": "5ª Geração",
       "lifespan": "1993–1994",
-      "discontinued": "April 29, 1994 (1994-04-29)",
+      "discontinued": "29 de abril de 1994 (1994-04-29)",
       "media": "CD-ROM",
       "os": "AmigaOS 3.1",
       "cpu": "Motorola 68EC020 @ 14.18 MHz (PAL), 14.32 MHz (NTSC)",
@@ -4865,10 +4865,10 @@
       ],
       "wikidata_id": "72155",
       "wikipedia_url": "https://en.wikipedia.org/wiki/VIC-20",
-      "type": "Home computer",
+      "type": "Computador doméstico",
       "release_dates": "5 years",
       "launch_price": null,
-      "discontinued": "January 1985; 41 years ago (1985-01)",
+      "discontinued": "janeiro de 1985; 41 anos atrás (1985-01)",
       "os": "Commodore KERNAL, Commodore BASIC 2.0",
       "cpu": "MOS Technology 6502 @ 1.108 MHz (PAL) @ 1.02 MHz (NTSC)",
       "memory": "20 KB ROM + 5 KB (3.5 KB free) RAM (expandable to 32 KB), 3.5 KB for BASIC (expandable to 27.5 KB)[a]",
@@ -4877,7 +4877,7 @@
       "graphics": "MOS Technology VIC",
       "sound": "MOS Technology VIC; 1 noise and 3 square channels",
       "successor": "Commodore 64, MAX Machine",
-      "generation": "8-bit Computer",
+      "generation": "Computador 8 bits",
       "top_games": [
         {
           "name": "Grand Theft Auto: San Andreas",
@@ -4934,7 +4934,7 @@
         "MAMEUI",
         "RetroArch (MAME Core)"
       ],
-      "generation": "Software Platform",
+      "generation": "Plataforma de Software",
       "top_games": [
         {
           "name": "Super Mario Bros.",
@@ -4993,9 +4993,9 @@
         "FinalBurn Neo",
         "MAME"
       ],
-      "type": "Home video game console",
-      "generation": "4th Generation",
-      "release_dates": "JP: September 9, 1994EU: December 3, 1994AU: December 23, 1994NA: January 15, 1996",
+      "type": "Console de videogame doméstico",
+      "generation": "4ª Geração",
+      "release_dates": "JP: 9 de setembro de 1994EU: 3 de dezembro de 1994AU: 23 de dezembro de 1994NA: 15 de janeiro de 1996",
       "launch_price": "US$399",
       "discontinued": "1997",
       "media": "CD-ROM",
@@ -5061,10 +5061,10 @@
         "BizHawk",
         "Beetle PCE (RetroArch)"
       ],
-      "type": "Home video game console",
-      "generation": "4th Generation",
+      "type": "Console de videogame doméstico",
+      "generation": "4ª Geração",
       "release_dates": "1987–1994",
-      "discontinued": "FR: December 25, 1993NA: May 11, 1994JP: December 16, 1994",
+      "discontinued": "FR: 25 de dezembro de 1993NA: 11 de maio de 1994JP: 16 de dezembro de 1994",
       "media": "HuCard",
       "cpu": "HuC6280 @ 7.16 MHz",
       "memory": "8 KB RAM64 KB Video RAM",
@@ -5131,11 +5131,11 @@
         "Picodrive (RetroArch)",
         "Genesis Plus GX (RetroArch)"
       ],
-      "type": "Video game console add-on",
-      "generation": "4th Generation",
+      "type": "Acessório de console",
+      "generation": "4ª Geração",
       "release_dates": "1991–1996",
       "launch_price": "US$299",
-      "discontinued": "January 1, 1996",
+      "discontinued": "1 de janeiro de 1996",
       "media": "CD-ROM, CD+G",
       "cpu": "Motorola 68000 @ 12.5 MHz",
       "storage": "6.5 Mbit RAM (programs, pictures, and sounds), 128 kbit RAM (CD-ROM cache), 64 kbit RAM (backup memory)",
@@ -5201,7 +5201,7 @@
         "MAME",
         "PX68K (RetroArch)"
       ],
-      "type": "Home computer",
+      "type": "Computador doméstico",
       "release_dates": "1987–1999",
       "discontinued": "1999",
       "media": "Floppy disk",
@@ -5212,7 +5212,7 @@
       "graphics": "VINAS 1 + 2, VSOP, CYNTHIA / Jr, RESERVE",
       "sound": "Yamaha YM2151, OKI MSM6258",
       "predecessor": "X1",
-      "generation": "16-bit Computer"
+      "generation": "Computador 16 bits"
     },
     {
       "id": "supergrafx",
@@ -5237,9 +5237,9 @@
         "BizHawk",
         "Beetle PCE (RetroArch)"
       ],
-      "type": "Home video game console",
-      "generation": "4th Generation",
-      "release_dates": "JP: 8 December 1989",
+      "type": "Console de videogame doméstico",
+      "generation": "4ª Geração",
+      "release_dates": "JP: 8 dezembro de 1989",
       "media": "HuCard, CD-ROM²",
       "cpu": "Hudson Soft HuC6280A @ 1.79 or 7.16 MHz",
       "memory": "32 KB + 128 KB",
@@ -5306,8 +5306,8 @@
         "bsnes",
         "Mesen 2"
       ],
-      "type": "Video game console peripheral",
-      "generation": "4th Generation",
+      "type": "Periférico de console",
+      "generation": "4ª Geração",
       "release_dates": "JP: 1996",
       "top_games": [
         {

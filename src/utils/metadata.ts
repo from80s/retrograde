@@ -77,19 +77,42 @@ export function getSupportedExtensions(name: string): string[] {
 }
 
 const HARDWARE_IMAGE_NAMES = new Set([
-  'Amiga', 'Amstrad CPC', 'Apple II', 'Apple IIGS', 'Arcade',
-  'Atari 2600', 'Atari 5200', 'Atari 7800', 'Atari 800',
-  'Atari Jaguar CD', 'Atari Jaguar', 'Atari Lynx', 'Atari ST',
-  'BBC Micro', 'ColecoVision', 'Commodore 64', 'Daphne', 'Doom',
-  'DOS', 'Dreamcast', 'Fairchild Channel F', 'Famicom Disk System',
-  'Game & Watch', 'Game Boy Advance', 'Game Boy Color', 'Game Boy',
-  'GameCube',
+  '3DO Interactive Multiplayer', 'Amiga', 'Amstrad CPC', 'Apple II',
+  'Apple IIGS', 'Arcade', 'Atari 2600', 'Atari 5200', 'Atari 7800',
+  'Atari 800', 'Atari Jaguar', 'Atari Jaguar CD', 'Atari Lynx',
+  'Atari ST', 'BBC Micro', 'Coleco Adam', 'ColecoVision',
+  'Commodore 64', 'Commodore Amiga CD32', 'Commodore VIC-20',
+  'Daphne', 'Doom', 'DOS', 'Dreamcast', 'Fairchild Channel F',
+  'Famicom Disk System', 'Game & Watch', 'Game and Watch', 'Game Boy', 'Game Boy Advance',
+  'Game Boy Color', 'Game Gear', 'GameCube', 'Intellivision',
+  'LowRes NX', 'MAME', 'Master System', 'MSX', 'MSX2', 'Neo Geo',
+  'Neo Geo CD', 'Neo Geo Pocket', 'Neo Geo Pocket Color', 'NES',
+  'Nintendo 3DS', 'Nintendo 64', 'Nintendo DS', 'Nintendo Switch',
+  'PC Engine', 'PC-88', 'PC-98', 'PC-FX', 'PICO-8',
+  'PC Engine CD', 'PlayStation 2', 'PlayStation 3', 'PlayStation Vita',
+  'Pokémon Mini', 'ScummVM', 'Sega 32X', 'Sega CD', 'Sega Genesis',
+  'Sega NAOMI', 'Sega Saturn', 'Sega SG-1000', 'Sharp X1',
+  'Sharp X68000', 'Sinclair ZX Spectrum', 'Sinclair ZX81', 'SNES',
+  'Sony PlayStation', 'Sony PlayStation 2', 'Sony PSP', 'SuFami Turbo',
+  'SuperGrafx', 'TIC-80', 'Vectrex', 'Virtual Boy', 'WASM-4',
+  'Watara Supervision', 'Wii', 'Wii U', 'WonderSwan',
+  'WonderSwan Color', 'Xbox', 'Xbox 360',
 ]);
+
+const HARDWARE_FILENAME_OVERRIDE: Record<string, string> = {
+  'Game & Watch': 'Game and Watch',
+};
 
 export function getHardwareUrl(name: string): string | null {
   const meta = getSystemMetadata(name);
-  if (!meta || !HARDWARE_IMAGE_NAMES.has(meta.name)) return null;
-  return `system/hardwares/${encodeURIComponent(meta.name)}.png`;
+  if (!meta) return null;
+  let fileName = HARDWARE_FILENAME_OVERRIDE[meta.name] ?? meta.name;
+  const slashIdx = fileName.indexOf(' / ');
+  if (slashIdx !== -1) {
+    fileName = fileName.slice(0, slashIdx);
+  }
+  if (!HARDWARE_IMAGE_NAMES.has(fileName)) return null;
+  return `system/hardwares/${encodeURIComponent(fileName)}.png`;
 }
 
 export function getLogoUrl(name: string): string | null {

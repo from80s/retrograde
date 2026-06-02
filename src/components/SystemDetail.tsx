@@ -1,5 +1,15 @@
 import { useRef, useEffect, useCallback, useMemo, useState } from "react";
-import { X, Monitor, Calendar, Gamepad2, Cpu, BookOpen, Star } from "lucide-react";
+import {
+  X,
+  Monitor,
+  Calendar,
+  Gamepad2,
+  Cpu,
+  BookOpen,
+  Star,
+} from "lucide-react";
+import { PiMouseScrollLight } from "react-icons/pi";
+
 function ScrollDownIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -18,6 +28,7 @@ function ScrollDownIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+
 import {
   getSystemMetadata,
   getLogoUrl,
@@ -29,18 +40,11 @@ function easeInOutCubic(t: number): number {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
 
-const PHASE1_END = 0.3;
 const LOGO_INITIAL = 18;
-const LOGO_SWITCH = 95;
-const LOGO_FINAL = 320;
-const MASK_REMOVE_THRESHOLD = 280;
+const LOGO_FINAL = 500;
+const LOGO_FADE_END = 0.4;
+const MASK_REMOVE_PROGRESS = 0.72;
 
-// Parâmetros do blur progressivo (simula blur diagonal estilo iOS)
-// BLUR_ANGLE: direção do gradiente em graus. 0=topo→base, 90=esquerda→direita, 135=↘, 160≈↙
-// BLUR_FADE: largura da transição suave entre camadas (pontos percentuais)
-// BLUR_LAYERS: cada entrada é uma camada empilhada. `blur`=px gaussiano, `start/end`=faixa de visibilidade ao longo do eixo do gradiente.
-//   Camada 0 (blur=0) é a base nítida. A última camada é o blur mais forte.
-//   Cada camada faz fade in/out através de BLUR_FADE% para criar mesclagem suave.
 const BLUR_ANGLE = 160;
 const BLUR_FADE = 10;
 const BLUR_LAYERS = [
@@ -62,8 +66,9 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
   const maskRef = useRef<HTMLDivElement>(null);
   const scrollIconRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const contentVisibleRef = useRef(false);
+  const specsScrollRef = useRef<HTMLDivElement>(null);
   const [contentVisible, setContentVisible] = useState(false);
+  const contentVisibleRef = useRef(false);
 
   const meta = getSystemMetadata(systemName);
   const logoUrl = getLogoUrl(systemName);
@@ -74,8 +79,6 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
     if (!logoUrl) return undefined;
     return `url(${logoUrl})`;
   }, [logoUrl]);
-
-  const CONTENT_THRESHOLD = 0.85;
 
   const setContentVisibility = useCallback((visible: boolean) => {
     if (visible === contentVisibleRef.current) return;
@@ -89,56 +92,43 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
 
     const scrollTop = el.scrollTop;
     const maxScroll = el.scrollHeight - el.clientHeight;
-    const progress = maxScroll > 0 ? Math.min(scrollTop / maxScroll, 1) : 0;
+    const heroRevealDistance = Math.min(el.clientHeight, maxScroll || Infinity);
+    const progress =
+      heroRevealDistance > 0 ? Math.min(scrollTop / heroRevealDistance, 1) : 0;
 
     const scrollIcon = scrollIconRef.current;
     if (scrollIcon) {
-      scrollIcon.style.opacity = String(Math.max(0, 1 - progress * 10));
+      scrollIcon.style.opacity = String(Math.max(0, 1 - progress * 8));
     }
 
     const logoEl = logoRef.current;
     const maskEl = maskRef.current;
 
     if (!logoEl || !maskEl || !maskImageValue) {
-      setContentVisibility(progress >= CONTENT_THRESHOLD);
+      setContentVisibility(progress >= MASK_REMOVE_PROGRESS);
       return;
     }
 
-    let logoSize: number;
+    const t = easeInOutCubic(progress);
+    const logoSize = LOGO_INITIAL + (LOGO_FINAL - LOGO_INITIAL) * t;
 
-    if (progress <= PHASE1_END) {
-      const t = easeInOutCubic(progress / PHASE1_END);
-      logoSize = LOGO_INITIAL + (LOGO_SWITCH - LOGO_INITIAL) * t;
-      const logoOpacity = 1 - t;
+    const logoFadeProgress = Math.min(progress / LOGO_FADE_END, 1);
+    const logoOpacity = 1 - easeInOutCubic(logoFadeProgress);
+    logoEl.style.opacity = String(logoOpacity);
+    logoEl.style.width = `${logoSize}vw`;
+    logoEl.style.height = `${logoSize}vw`;
 
-      logoEl.style.opacity = String(logoOpacity);
-      logoEl.style.width = `${logoSize}vw`;
-      logoEl.style.height = `${logoSize}vw`;
-
+    if (progress >= MASK_REMOVE_PROGRESS) {
+      maskEl.style.webkitMaskImage = "none";
+      maskEl.style.maskImage = "none";
+    } else {
       maskEl.style.webkitMaskImage = maskImageValue;
       maskEl.style.maskImage = maskImageValue;
       maskEl.style.webkitMaskSize = `${logoSize}vw`;
       maskEl.style.maskSize = `${logoSize}vw`;
-
-      setContentVisibility(false);
-    } else {
-      const t = easeInOutCubic((progress - PHASE1_END) / (1 - PHASE1_END));
-      logoSize = LOGO_SWITCH + (LOGO_FINAL - LOGO_SWITCH) * t;
-
-      logoEl.style.opacity = "0";
-
-      if (logoSize >= MASK_REMOVE_THRESHOLD) {
-        maskEl.style.webkitMaskImage = "none";
-        maskEl.style.maskImage = "none";
-        setContentVisibility(true);
-      } else {
-        maskEl.style.webkitMaskImage = maskImageValue;
-        maskEl.style.maskImage = maskImageValue;
-        maskEl.style.webkitMaskSize = `${logoSize}vw`;
-        maskEl.style.maskSize = `${logoSize}vw`;
-        setContentVisibility(false);
-      }
     }
+
+    setContentVisibility(progress >= MASK_REMOVE_PROGRESS);
   }, [maskImageValue, setContentVisibility]);
 
   useEffect(() => {
@@ -146,7 +136,6 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
     if (!el) return;
 
     let rafId: number | null = null;
-
     const onScroll = () => {
       if (rafId !== null) return;
       rafId = requestAnimationFrame(() => {
@@ -163,6 +152,20 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
     };
   }, [updateAnimation]);
 
+  // Quando o conteúdo fica visível, faz scroll automático do containerRef
+  // para alinhar o topo do contentRef com o topo da viewport.
+  // Isso garante que o containerRef.scrollTop chegue ao máximo, eliminando
+  // o spacer do scroll chain — a partir daí qualquer wheel event vai
+  // diretamente para o containerRef (que já está no fim) e naturalmente
+  // não avança mais, revertendo a animação ao rolar para cima.
+  useEffect(() => {
+    if (!contentVisible) return;
+    const el = containerRef.current;
+    if (!el) return;
+    const maxScroll = el.scrollHeight - el.clientHeight;
+    el.scrollTo({ top: maxScroll, behavior: "instant" });
+  }, [contentVisible]);
+
   return (
     <div className="fixed inset-0 z-50 bg-black">
       <button
@@ -172,9 +175,15 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
         <X className="w-5 h-5" />
       </button>
 
+      {/*
+        containerRef é o ÚNICO scroll container.
+        O contentRef NÃO tem overflow — ele é position:fixed para cobrir
+        a tela, mas não participa do scroll chain do browser.
+        Scroll interno do conteúdo é gerenciado pelo wheel handler abaixo.
+      */}
       <div ref={containerRef} className="h-full overflow-y-auto scrollbar-none">
         <div className="relative">
-          <section className="sticky top-0 z-40 h-screen overflow-hidden bg-black">
+          <section className="sticky top-0 z-40 h-screen bg-black overflow-clip">
             <div
               ref={maskRef}
               className="absolute inset-0"
@@ -207,295 +216,22 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-zinc-950/20" />
               </div>
 
-              <div
-                ref={contentRef}
-                className="absolute inset-0 z-10 bg-zinc-950/95 backdrop-blur-sm"
-                style={{
-                  opacity: contentVisible ? 1 : 0,
-                  transform: contentVisible
-                    ? "translateY(0)"
-                    : "translateY(40px)",
-                  transition:
-                    "opacity 0.4s ease-in-out, transform 0.4s ease-in-out",
-                  overflowY: contentVisible ? "auto" : "hidden",
-                  pointerEvents: contentVisible ? "auto" : "none",
-                }}
-              >
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 min-h-full">
-                  {meta && (
-                    <>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-auto">
-                        {/* 1. Título + Subtítulo */}
-                        <div className="col-span-2 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                          <div className="flex items-center gap-2 mb-4">
-                            {/* {logoUrl && (
-                              <img
-                                src={logoUrl}
-                                alt=""
-                                className="w-6 h-6 object-contain brightness-0 invert"
-                              />
-                            )} */}
-                            <h1 className="text-xl sm:text-2xl font-bold text-zinc-100">
-                              {meta.name}
-                            </h1>
-                          </div>
-                          {/* <p className="text-[10px] uppercase tracking-wider text-zinc-600 font-mono mb-3">
-                            {meta.id.replace(/_/g, " ")}
-                          </p> */}
-                          <p className="text-sm text-zinc-300 leading-relaxed">
-                            {meta.description}
-                          </p>
-                        </div>
-
-                        {/* 2. Imagem principal do hardware */}
-                        <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800/50 flex items-center justify-center overflow-hidden">
-                          {hardwareUrl ? (
-                            <img
-                              src={hardwareUrl}
-                              alt={meta.name}
-                              className="w-full h-full object-contain"
-                            />
-                          ) : (
-                            <div className="flex flex-col items-center gap-2 text-zinc-600 py-4 px-3">
-                              <Monitor className="w-8 h-8" />
-                              <span className="text-[10px] uppercase tracking-wider">
-                                Sem imagem
-                              </span>
-                            </div>
-                          )}
-                        </div>
-
-                        {/* 3. Especificações técnicas */}
-                        <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                          <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                            <Cpu className="w-4 h-4" />
-                            <span className="text-xs font-medium uppercase tracking-wider">
-                              Especificações
-                            </span>
-                          </div>
-                          <div className="scrollbar-auto max-h-[220px] space-y-2.5 pr-1">
-                            {[
-                              ['Fabricante', meta.manufacturer],
-                              ['Origem', meta.origin_country],
-                              ['Tipo', meta.type],
-                              ['Geração', meta.generation],
-                              ['CPU', meta.cpu],
-                              ['Memória', meta.memory],
-                              ['Armazenamento', meta.storage],
-                              ['Mídia', meta.media],
-                              ['SO', meta.os],
-                              ['Display', meta.display],
-                              ['Gráficos', meta.graphics],
-                              ['Som', meta.sound],
-                              ['Conectividade', meta.connectivity],
-                            ].filter(([, v]) => v).map(([label, value]) => (
-                              <div key={label as string}>
-                                <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
-                                  {label as string}
-                                </span>
-                                <p className="text-sm font-semibold text-zinc-200">
-                                  {value as string}
-                                </p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* 4. Ano de Lançamento */}
-                        <div className="col-span-2 sm:col-span-1 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                          <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                            <Calendar className="w-4 h-4" />
-                            <span className="text-xs font-medium uppercase tracking-wider">
-                              Ano de Lançamento
-                            </span>
-                          </div>
-                          {meta.release_year > 0 ? (
-                            <p className="text-2xl font-bold font-mono text-zinc-200">
-                              {meta.release_year}
-                            </p>
-                          ) : (
-                            <p className="text-sm text-zinc-500 italic">
-                              Desconhecido
-                            </p>
-                          )}
-                        </div>
-
-                        {/* 5. Sistema e periféricos */}
-                        <div className="col-span-2 lg:col-span-3 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                          <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                            <Monitor className="w-4 h-4" />
-                            <span className="text-xs font-medium uppercase tracking-wider">
-                              Sistema & Periféricos
-                            </span>
-                          </div>
-
-                          {meta.emulators.length > 0 && (
-                            <div className="mb-3">
-                              <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
-                                Emuladores
-                              </span>
-                              <div className="flex flex-wrap gap-1.5 mt-1">
-                                {meta.emulators.map((emu) => (
-                                  <span
-                                    key={emu}
-                                    className="px-2 py-0.5 rounded-md bg-retro-secondary/10 border border-retro-secondary/20 text-xs text-retro-secondary/80"
-                                  >
-                                    {emu}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {meta.supported_extensions.length > 0 && (
-                            <div className="mb-3">
-                              <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
-                                Mídia Suportada
-                              </span>
-                              <div className="flex flex-wrap gap-1.5 mt-1">
-                                {meta.supported_extensions.map((ext) => (
-                                  <span
-                                    key={ext}
-                                    className="px-2 py-0.5 rounded-md bg-zinc-800/50 border border-zinc-700/30 text-xs font-mono text-zinc-400"
-                                  >
-                                    {ext}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {[
-                            ['Preço de Lançamento', meta.launch_price],
-                            ['Unidades Vendidas', meta.units_sold],
-                            ['Predecessor', meta.predecessor],
-                            ['Sucessor', meta.successor],
-                          ].filter(([, v]) => v).map(([label, value]) => (
-                            <div key={label as string} className="mb-2">
-                              <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
-                                {label as string}
-                              </span>
-                              <p className="text-sm font-semibold text-zinc-200">
-                                {value as string}
-                              </p>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* 6. Curiosidades */}
-                        <div className="col-span-2 lg:col-span-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                          <div className="flex items-center gap-2 mb-3 text-zinc-400">
-                            <BookOpen className="w-4 h-4" />
-                            <span className="text-xs font-medium uppercase tracking-wider">
-                              Curiosidades
-                            </span>
-                          </div>
-                          {meta.curiosities.length > 0 ? (
-                            <ul className="space-y-3">
-                              {meta.curiosities.map((curiosity, i) => (
-                                <li
-                                  key={i}
-                                  className="flex items-start gap-2 text-sm text-zinc-300 leading-relaxed"
-                                >
-                                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-retro-primary shrink-0" />
-                                  {curiosity}
-                                </li>
-                              ))}
-                            </ul>
-                          ) : (
-                            <p className="text-sm text-zinc-500 italic">
-                              Nenhuma curiosidade registrada.
-                            </p>
-                          )}
-                        </div>
-
-                        {/* 7. Jogos em Destaque (top_games) */}
-                        {meta.top_games && meta.top_games.length > 0 && (
-                          <div className="col-span-2 lg:col-span-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
-                            <div className="flex items-center gap-2 mb-4 text-zinc-400">
-                              <Star className="w-4 h-4" />
-                              <span className="text-xs font-medium uppercase tracking-wider">
-                                Principais Títulos
-                              </span>
-                            </div>
-                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-                              {meta.top_games.map((game) => {
-                                const coverUrl = game.cover_path
-                                  ? game.cover_path.replace(/^assets\//, '')
-                                  : null;
-                                return (
-                                  <div
-                                    key={game.slug}
-                                    className="group rounded-xl bg-zinc-800/40 border border-zinc-700/30 overflow-hidden transition-all duration-200 hover:bg-zinc-800/60 hover:border-zinc-600/50 hover:scale-[1.02]"
-                                  >
-                                    <div className="aspect-[3/4] bg-zinc-800/60 overflow-hidden">
-                                      {coverUrl ? (
-                                        <img
-                                          src={coverUrl}
-                                          alt={game.name}
-                                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                          loading="lazy"
-                                        />
-                                      ) : (
-                                        <div className="w-full h-full flex items-center justify-center text-zinc-600">
-                                          <Gamepad2 className="w-8 h-8" />
-                                        </div>
-                                      )}
-                                    </div>
-                                    <div className="p-2.5">
-                                      <p className="text-xs font-medium text-zinc-300 leading-tight line-clamp-2 group-hover:text-zinc-100 transition-colors">
-                                        {game.name}
-                                      </p>
-                                      {(() => {
-                                        const r = game.rating;
-                                        if (!r) return null;
-                                        return (
-                                          <div className="flex gap-0.5 mt-1">
-                                            {[1,2,3,4,5].map((star) => {
-                                              const filled = r >= star * 20 - 10;
-                                              return (
-                                                <svg
-                                                  key={star}
-                                                  viewBox="0 0 24 24"
-                                                  className="w-3 h-3"
-                                                  fill={filled ? '#fbbf24' : 'none'}
-                                                  stroke={filled ? '#f59e0b' : '#52525b'}
-                                                  strokeWidth="1.5"
-                                                  style={filled ? {
-                                                    filter: 'drop-shadow(0 0 3px rgba(251,191,36,0.5))',
-                                                  } : undefined}
-                                                >
-                                                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                                                </svg>
-                                              );
-                                            })}
-                                          </div>
-                                        );
-                                      })()}
-                                    </div>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </>
-                  )}
-
-                  {!meta && (
-                    <div className="flex flex-col items-center justify-center py-20 text-zinc-500">
-                      <Gamepad2 className="w-12 h-12 mb-4" />
-                      <p className="text-lg font-medium mb-1">
-                        Sistema não encontrado
-                      </p>
-                      <p className="text-sm">
-                        Nenhum metadado disponível para {systemName}.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
+              {/*
+                MUDANÇA PRINCIPAL:
+                - Removido overflowY dinâmico — contentRef nunca é scroll container
+                - Scroll interno simulado via wheel handler no containerRef
+                - contentRef usa position:absolute mas overflow:hidden sempre
+                - Um ref interno (innerScrollRef) controla a posição visual via translateY
+              */}
+              <ContentPanel
+                contentRef={contentRef}
+                specsScrollRef={specsScrollRef}
+                containerRef={containerRef}
+                contentVisible={contentVisible}
+                meta={meta}
+                hardwareUrl={hardwareUrl}
+                systemName={systemName}
+              />
             </div>
 
             {logoUrl && (
@@ -527,6 +263,416 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
           <div className="h-[200vh]" />
         </div>
       </div>
+    </div>
+  );
+}
+
+// ContentPanel isolado para manter o useRef do scroll interno limpo
+function ContentPanel({
+  contentRef,
+  specsScrollRef,
+  containerRef,
+  contentVisible,
+  meta,
+  hardwareUrl,
+  systemName,
+}: {
+  contentRef: React.RefObject<HTMLDivElement | null>;
+  specsScrollRef: React.RefObject<HTMLDivElement | null>;
+  containerRef: React.RefObject<HTMLDivElement | null>;
+  contentVisible: boolean;
+  meta: ReturnType<typeof getSystemMetadata>;
+  hardwareUrl: string | null;
+  systemName: string;
+}) {
+  // innerScrollTop: posição de scroll virtual do conteúdo interno.
+  // É um ref (não state) para não causar re-renders a cada evento wheel.
+  const innerScrollTop = useRef(0);
+  const innerContentRef = useRef<HTMLDivElement>(null);
+
+  // Reseta scroll interno quando o painel fecha
+  useEffect(() => {
+    if (!contentVisible) {
+      innerScrollTop.current = 0;
+      if (innerContentRef.current) {
+        innerContentRef.current.style.transform = "translateY(0px)";
+      }
+    }
+  }, [contentVisible]);
+
+  // Wheel handler no containerRef — intercepta TODOS os eventos quando
+  // o conteúdo está visível e decide manualmente para onde vai o scroll.
+  // Como o containerRef é o único scroll container, não há disputa.
+  useEffect(() => {
+    const outerEl = containerRef.current;
+    if (!outerEl || !contentVisible) return;
+
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      let px = e.deltaY;
+      if (e.deltaMode === 1) px *= 24;
+      else if (e.deltaMode === 2) px *= window.innerHeight;
+
+      const inner = innerContentRef.current;
+      const viewport = contentRef.current;
+      if (!inner || !viewport) return;
+
+      const maxInnerScroll = inner.scrollHeight - viewport.clientHeight;
+      const atInnerTop = innerScrollTop.current <= 0;
+      const atInnerBottom = innerScrollTop.current >= maxInnerScroll;
+      const isUp = px < 0;
+      const isDown = px > 0;
+
+      if ((atInnerTop && isUp) || (atInnerBottom && isDown)) {
+        // Limites do scroll interno atingidos: redireciona para o outer
+        outerEl.scrollBy({ top: px, behavior: "instant" });
+      } else {
+        // Scroll dentro do conteúdo via translateY
+        const next = Math.max(
+          0,
+          Math.min(maxInnerScroll, innerScrollTop.current + px),
+        );
+        innerScrollTop.current = next;
+        inner.style.transform = `translateY(${-next}px)`;
+      }
+    };
+
+    // Listener no containerRef (não no contentRef) — assim não há
+    // segundo scroll container para o browser considerar no hit test.
+    outerEl.addEventListener("wheel", onWheel, { passive: false });
+    return () => outerEl.removeEventListener("wheel", onWheel);
+  }, [contentVisible, containerRef, contentRef]);
+
+  return (
+    <div
+      ref={contentRef}
+      className="absolute inset-0 z-10 bg-zinc-950/95 backdrop-blur-sm overflow-hidden"
+      style={{
+        opacity: contentVisible ? 1 : 0,
+        transform: contentVisible ? "translateY(0)" : "translateY(40px)",
+        transition:
+          "opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+        pointerEvents: contentVisible ? "auto" : "none",
+      }}
+    >
+      {/* Camada interna que se move via translateY — nunca tem overflow */}
+      <div ref={innerContentRef} style={{ willChange: "transform" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+          {meta && (
+            <>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-auto">
+                {/* 1. Título + Subtítulo */}
+                <div className="col-span-2 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <h1 className="text-xl sm:text-2xl font-bold text-zinc-100">
+                      {meta.name}
+                    </h1>
+                  </div>
+                  <p className="text-sm text-zinc-300 leading-relaxed">
+                    {meta.description}
+                  </p>
+                </div>
+
+                {/* 2. Imagem principal do hardware */}
+                <div className="rounded-2xl bg-zinc-900/60 border border-zinc-800/50 flex items-center justify-center overflow-hidden">
+                  {hardwareUrl ? (
+                    <img
+                      src={hardwareUrl}
+                      alt={meta.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex flex-col items-center gap-2 text-zinc-600 py-4 px-3">
+                      <Monitor className="w-8 h-8" />
+                      <span className="text-[10px] uppercase tracking-wider">
+                        Sem imagem
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* 3. Especificações técnicas */}
+                <div className="relative rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6 overflow-hidden">
+                  <div className="flex items-center gap-2 mb-3 text-zinc-400">
+                    <Cpu className="w-4 h-4" />
+                    <span className="text-xs font-medium uppercase tracking-wider">
+                      Especificações
+                    </span>
+                  </div>
+                  <div
+                    ref={specsScrollRef}
+                    className="scrollbar-auto max-h-[220px] overflow-y-auto space-y-2.5 pr-1"
+                  >
+                    {[
+                      ["Fabricante", meta.manufacturer],
+                      ["Origem", meta.origin_country],
+                      ["Tipo", meta.type],
+                      ["Geração", meta.generation],
+                      ["CPU", meta.cpu],
+                      ["Memória", meta.memory],
+                      ["Armazenamento", meta.storage],
+                      ["Mídia", meta.media],
+                      ["SO", meta.os],
+                      ["Display", meta.display],
+                      ["Gráficos", meta.graphics],
+                      ["Som", meta.sound],
+                      ["Conectividade", meta.connectivity],
+                    ]
+                      .filter(([, v]) => v)
+                      .map(([label, value]) => (
+                        <div key={label as string}>
+                          <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
+                            {label as string}
+                          </span>
+                          <p className="text-sm font-semibold text-zinc-200">
+                            {value as string}
+                          </p>
+                        </div>
+                      ))}
+                  </div>
+                  <ScrollHint scrollRef={specsScrollRef} />
+                </div>
+
+                {/* 4. Ano de Lançamento */}
+                <div className="col-span-2 sm:col-span-1 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+                  <div className="flex items-center gap-2 mb-3 text-zinc-400">
+                    <Calendar className="w-4 h-4" />
+                    <span className="text-xs font-medium uppercase tracking-wider">
+                      Ano de Lançamento
+                    </span>
+                  </div>
+                  {meta.release_year > 0 ? (
+                    <p className="text-2xl font-bold font-mono text-zinc-200">
+                      {meta.release_year}
+                    </p>
+                  ) : (
+                    <p className="text-sm text-zinc-500 italic">Desconhecido</p>
+                  )}
+                </div>
+
+                {/* 5. Sistema e periféricos */}
+                <div className="col-span-2 lg:col-span-3 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+                  <div className="flex items-center gap-2 mb-3 text-zinc-400">
+                    <Monitor className="w-4 h-4" />
+                    <span className="text-xs font-medium uppercase tracking-wider">
+                      Sistema & Periféricos
+                    </span>
+                  </div>
+
+                  {meta.emulators.length > 0 && (
+                    <div className="mb-3">
+                      <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
+                        Emuladores
+                      </span>
+                      <div className="flex flex-wrap gap-1.5 mt-1">
+                        {meta.emulators.map((emu) => (
+                          <span
+                            key={emu}
+                            className="px-2 py-0.5 rounded-md bg-retro-secondary/10 border border-retro-secondary/20 text-xs text-retro-secondary/80"
+                          >
+                            {emu}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {meta.supported_extensions.length > 0 && (
+                    <div className="mb-3">
+                      <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
+                        Mídia Suportada
+                      </span>
+                      <div className="flex flex-wrap gap-1.5 mt-1">
+                        {meta.supported_extensions.map((ext) => (
+                          <span
+                            key={ext}
+                            className="px-2 py-0.5 rounded-md bg-zinc-800/50 border border-zinc-700/30 text-xs font-mono text-zinc-400"
+                          >
+                            {ext}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {[
+                    ["Preço de Lançamento", meta.launch_price],
+                    ["Unidades Vendidas", meta.units_sold],
+                    ["Predecessor", meta.predecessor],
+                    ["Sucessor", meta.successor],
+                  ]
+                    .filter(([, v]) => v)
+                    .map(([label, value]) => (
+                      <div key={label as string} className="mb-2">
+                        <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
+                          {label as string}
+                        </span>
+                        <p className="text-sm font-semibold text-zinc-200">
+                          {value as string}
+                        </p>
+                      </div>
+                    ))}
+                </div>
+
+                {/* 6. Curiosidades */}
+                <div className="col-span-2 lg:col-span-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+                  <div className="flex items-center gap-2 mb-3 text-zinc-400">
+                    <BookOpen className="w-4 h-4" />
+                    <span className="text-xs font-medium uppercase tracking-wider">
+                      Curiosidades
+                    </span>
+                  </div>
+                  {meta.curiosities.length > 0 ? (
+                    <ul className="space-y-3">
+                      {meta.curiosities.map((curiosity, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-2 text-sm text-zinc-300 leading-relaxed"
+                        >
+                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-retro-primary shrink-0" />
+                          {curiosity}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-sm text-zinc-500 italic">
+                      Nenhuma curiosidade registrada.
+                    </p>
+                  )}
+                </div>
+
+                {/* 7. Jogos em Destaque */}
+                {meta.top_games && meta.top_games.length > 0 && (
+                  <div className="col-span-2 lg:col-span-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+                    <div className="flex items-center gap-2 mb-4 text-zinc-400">
+                      <Star className="w-4 h-4" />
+                      <span className="text-xs font-medium uppercase tracking-wider">
+                        Principais Títulos
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                      {meta.top_games.map((game) => {
+                        const coverUrl = game.cover_path
+                          ? game.cover_path.replace(/^assets\//, "")
+                          : null;
+                        return (
+                          <div
+                            key={game.slug}
+                            className="group rounded-xl bg-zinc-800/40 border border-zinc-700/30 overflow-hidden transition-all duration-200 hover:bg-zinc-800/60 hover:border-zinc-600/50 hover:scale-[1.02]"
+                          >
+                            <div className="aspect-[3/4] bg-zinc-800/60 overflow-hidden">
+                              {coverUrl ? (
+                                <img
+                                  src={coverUrl}
+                                  alt={game.name}
+                                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                  loading="lazy"
+                                />
+                              ) : (
+                                <div className="w-full h-full flex items-center justify-center text-zinc-600">
+                                  <Gamepad2 className="w-8 h-8" />
+                                </div>
+                              )}
+                            </div>
+                            <div className="p-2.5">
+                              <p className="text-xs font-medium text-zinc-300 leading-tight line-clamp-2 group-hover:text-zinc-100 transition-colors">
+                                {game.name}
+                              </p>
+                              {(() => {
+                                const r = game.rating;
+                                if (!r) return null;
+                                return (
+                                  <div className="flex gap-0.5 mt-1">
+                                    {[1, 2, 3, 4, 5].map((star) => {
+                                      const filled = r >= star * 20 - 10;
+                                      return (
+                                        <svg
+                                          key={star}
+                                          viewBox="0 0 24 24"
+                                          className="w-3 h-3"
+                                          fill={filled ? "#fbbf24" : "none"}
+                                          stroke={
+                                            filled ? "#f59e0b" : "#52525b"
+                                          }
+                                          strokeWidth="1.5"
+                                          style={
+                                            filled
+                                              ? {
+                                                  filter:
+                                                    "drop-shadow(0 0 3px rgba(251,191,36,0.5))",
+                                                }
+                                              : undefined
+                                          }
+                                        >
+                                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                        </svg>
+                                      );
+                                    })}
+                                  </div>
+                                );
+                              })()}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </>
+          )}
+
+          {!meta && (
+            <div className="flex flex-col items-center justify-center py-20 text-zinc-500">
+              <Gamepad2 className="w-12 h-12 mb-4" />
+              <p className="text-lg font-medium mb-1">Sistema não encontrado</p>
+              <p className="text-sm">
+                Nenhum metadado disponível para {systemName}.
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ScrollHint({
+  scrollRef,
+}: {
+  scrollRef: React.RefObject<HTMLDivElement | null>;
+}) {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const check = () => {
+      setShow(
+        el.scrollHeight > el.clientHeight &&
+          el.scrollTop + el.clientHeight < el.scrollHeight - 2,
+      );
+    };
+
+    check();
+    el.addEventListener("scroll", check, { passive: true });
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+
+    return () => {
+      el.removeEventListener("scroll", check);
+      ro.disconnect();
+    };
+  }, [scrollRef]);
+
+  if (!show) return null;
+
+  return (
+    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 animate-bounce-slow pointer-events-none">
+      <PiMouseScrollLight className="w-5 h-5 text-zinc-400/80" />
     </div>
   );
 }

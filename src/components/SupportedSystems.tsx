@@ -27,7 +27,7 @@ const SUPPORTED_SYSTEMS = [
   { name: 'Commodore VIC-20', shortName: 'VIC-20', logo: 'vic20.svg', extensions: ['.crt', '.prg', '.tap'] },
   { name: 'Daphne', shortName: 'Daphne', logo: 'daphne.svg', extensions: ['.daphne', '.m2v', '.ogg'] },
   { name: 'DOS', shortName: 'DOS', logo: 'dos.svg', extensions: ['.exe', '.com', '.bat', '.conf', '.iso'] },
-  { name: 'Fairchild Channel F', shortName: 'Ch F', logo: 'astrocade.svg', extensions: ['.chf', '.bin', '.rom'] },
+  { name: 'Fairchild Channel F', shortName: 'Ch F', logo: 'channelf.svg', extensions: ['.chf', '.bin', '.rom'] },
   { name: 'Game & Watch', shortName: 'G&W', logo: 'gameandwatch.svg', extensions: ['.mgw'] },
   { name: 'Game Boy', shortName: 'GB', logo: 'gb.svg', extensions: ['.gb', '.gbs'] },
   { name: 'Game Boy Advance', shortName: 'GBA', logo: 'gba.svg', extensions: ['.gba', '.gbs'] },
@@ -194,12 +194,20 @@ export function SupportedSystems() {
   const inertiaTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const inertiaFrameRef = useRef<number>(0);
 
+  const normalize = (s: string) =>
+    s.toLowerCase()
+      .replace(/&/g, ' and ')
+      .replace(/[/,.-]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
   const filteredSystems = useMemo(() => {
     const sorted = [...SUPPORTED_SYSTEMS].sort((a, b) => a.name.localeCompare(b.name));
     if (!filter.trim()) return sorted;
-    const terms = filter.toLowerCase().split(/\s+/).filter(Boolean);
+    const rawTerms = filter.toLowerCase().split(/\s+/).filter(Boolean);
+    const terms = rawTerms.map(normalize);
     return sorted.filter((sys) => {
-      const searchBase = `${sys.name} ${sys.shortName} ${sys.extensions.join(' ')}`.toLowerCase();
+      const searchBase = normalize(`${sys.name} ${sys.shortName} ${sys.extensions.join(' ')}`);
       return terms.every(term => searchBase.includes(term));
     });
   }, [filter]);
