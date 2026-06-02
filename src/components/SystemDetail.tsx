@@ -150,12 +150,12 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
     };
   }, [updateAnimation]);
 
-  // Quando o conteúdo fica visível, faz scroll automático do containerRef
+  // Quando o conteÃºdo fica visÃ­vel, faz scroll automÃ¡tico do containerRef
   // para alinhar o topo do contentRef com o topo da viewport.
-  // Isso garante que o containerRef.scrollTop chegue ao máximo, eliminando
-  // o spacer do scroll chain â€” a partir daí qualquer wheel event vai
-  // diretamente para o containerRef (que já está no fim) e naturalmente
-  // não avança mais, revertendo a animação ao rolar para cima.
+  // Isso garante que o containerRef.scrollTop chegue ao mÃ¡ximo, eliminando
+  // o spacer do scroll chain Ã¢â‚¬â€ a partir daÃ­ qualquer wheel event vai
+  // diretamente para o containerRef (que jÃ¡ estÃ¡ no fim) e naturalmente
+  // nÃ£o avanÃ§a mais, revertendo a animaÃ§Ã£o ao rolar para cima.
   useEffect(() => {
     if (!contentVisible) return;
     const el = containerRef.current;
@@ -174,10 +174,10 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
       </button>
 
       {/*
-        containerRef é o ÃšNICO scroll container.
-        O contentRef NÃƒO tem overflow â€” ele é position:fixed para cobrir
-        a tela, mas não participa do scroll chain do browser.
-        Scroll interno do conteúdo é gerenciado pelo wheel handler abaixo.
+        containerRef Ã© o ÃƒÅ¡NICO scroll container.
+        O contentRef NÃƒÆ’O tem overflow Ã¢â‚¬â€ ele Ã© position:fixed para cobrir
+        a tela, mas nÃ£o participa do scroll chain do browser.
+        Scroll interno do conteÃºdo Ã© gerenciado pelo wheel handler abaixo.
       */}
       <div ref={containerRef} className="h-full overflow-y-auto scrollbar-none">
         <div className="relative">
@@ -215,11 +215,11 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
               </div>
 
               {/*
-                MUDANÃ‡A PRINCIPAL:
-                - Removido overflowY dinâmico â€” contentRef nunca é scroll container
+                MUDANÃƒâ€¡A PRINCIPAL:
+                - Removido overflowY dinÃ¢mico Ã¢â‚¬â€ contentRef nunca Ã© scroll container
                 - Scroll interno simulado via wheel handler no containerRef
                 - contentRef usa position:absolute mas overflow:hidden sempre
-                - Um ref interno (innerScrollRef) controla a posição visual via translateY
+                - Um ref interno (innerScrollRef) controla a posiÃ§Ã£o visual via translateY
               */}
               <ContentPanel
                 contentRef={contentRef}
@@ -264,6 +264,96 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
   );
 }
 
+function ParallaxCard3D({
+  children,
+  className = "",
+  index = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  index?: number;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const shineRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setRevealed(true), index * 80);
+    return () => clearTimeout(timer);
+  }, [index]);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    const card = cardRef.current;
+    if (!card) return;
+    if (rafRef.current !== null) return;
+
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -8;
+      const rotateY = ((x - centerX) / centerX) * 8;
+
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      card.style.boxShadow = `${-rotateY * 0.8}px ${rotateX * 0.8}px 20px rgba(0,0,0,0.25)`;
+
+      if (shineRef.current) {
+        const shineX = (x / rect.width) * 100;
+        const shineY = (y / rect.height) * 100;
+        shineRef.current.style.background = `radial-gradient(circle at ${shineX}% ${shineY}%, rgba(255,255,255,0.08) 0%, transparent 60%)`;
+        shineRef.current.style.opacity = "1";
+      }
+    });
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    const card = cardRef.current;
+    if (!card) return;
+    card.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+    card.style.boxShadow = "0px 4px 12px rgba(0,0,0,0.1)";
+    if (shineRef.current) {
+      shineRef.current.style.opacity = "0";
+    }
+  }, []);
+
+  return (
+    <div
+      style={{
+        opacity: revealed ? 1 : 0,
+        transform: `translateY(${revealed ? 0 : 16}px)`,
+        transition: "opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+        transitionDelay: `${index * 0.06}s`,
+      }}
+    >
+      <div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className={`relative rounded-2xl bg-zinc-900/60 border border-zinc-800/50 overflow-hidden ${className}`}
+        style={{
+          willChange: "transform",
+          transformStyle: "preserve-3d",
+          transform: "perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
+          boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+          transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+        }}
+      >
+        {children}
+        <div
+          ref={shineRef}
+          className="absolute inset-0 pointer-events-none rounded-2xl"
+          style={{ opacity: 0, transition: "opacity 0.2s" }}
+        />
+      </div>
+    </div>
+  );
+}
+
 // ContentPanel isolado para manter o useRef do scroll interno limpo
 function ContentPanel({
   contentRef,
@@ -280,8 +370,8 @@ function ContentPanel({
   hardwareUrl: string | null;
   systemName: string;
 }) {
-  // innerScrollTop: posição de scroll virtual do conteúdo interno.
-  // Ã‰ um ref (não state) para não causar re-renders a cada evento wheel.
+  // innerScrollTop: posiÃ§Ã£o de scroll virtual do conteÃºdo interno.
+  // Ãƒâ€° um ref (nÃ£o state) para nÃ£o causar re-renders a cada evento wheel.
   const innerScrollTop = useRef(0);
   const innerContentRef = useRef<HTMLDivElement>(null);
 
@@ -295,9 +385,9 @@ function ContentPanel({
     }
   }, [contentVisible]);
 
-  // Wheel handler no containerRef â€” intercepta TODOS os eventos quando
-  // o conteúdo está visível e decide manualmente para onde vai o scroll.
-  // Como o containerRef é o único scroll container, não há disputa.
+  // Wheel handler no containerRef Ã¢â‚¬â€ intercepta TODOS os eventos quando
+  // o conteÃºdo estÃ¡ visÃ­vel e decide manualmente para onde vai o scroll.
+  // Como o containerRef Ã© o Ãºnico scroll container, nÃ£o hÃ¡ disputa.
   useEffect(() => {
     const outerEl = containerRef.current;
     if (!outerEl || !contentVisible) return;
@@ -324,7 +414,7 @@ function ContentPanel({
         // Limites do scroll interno atingidos: redireciona para o outer
         outerEl.scrollBy({ top: px, behavior: "instant" });
       } else {
-        // Scroll dentro do conteúdo via translateY
+        // Scroll dentro do conteÃºdo via translateY
         const next = Math.max(
           0,
           Math.min(maxInnerScroll, innerScrollTop.current + px),
@@ -334,7 +424,7 @@ function ContentPanel({
       }
     };
 
-    // Listener no containerRef (não no contentRef) â€” assim não há
+    // Listener no containerRef (nÃ£o no contentRef) Ã¢â‚¬â€ assim nÃ£o hÃ¡
     // segundo scroll container para o browser considerar no hit test.
     outerEl.addEventListener("wheel", onWheel, { passive: false });
     return () => outerEl.removeEventListener("wheel", onWheel);
@@ -343,7 +433,7 @@ function ContentPanel({
   return (
     <div
       ref={contentRef as React.Ref<HTMLDivElement>}
-      className="absolute inset-0 z-10 backdrop-blur-sm overflow-hidden"
+      className="absolute inset-0 z-10 overflow-hidden"
       style={{
         opacity: contentVisible ? 1 : 0,
         transform: contentVisible ? "translateY(0)" : "translateY(40px)",
@@ -352,209 +442,156 @@ function ContentPanel({
         pointerEvents: contentVisible ? "auto" : "none",
       }}
     >
-      {/* Camada interna que se move via translateY â€” nunca tem overflow */}
-      <div ref={innerContentRef} style={{ willChange: "transform" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-          {meta && (
-            <>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-auto">
-                {/* 1. Título + Descrição com BG do hardware */}
-                <div className="relative col-span-2 sm:col-span-3 rounded-2xl border border-zinc-800/50 overflow-hidden">
-                  {hardwareUrl && (
-                    <>
-                      <img
-                        src={hardwareUrl}
-                        alt=""
-                        className="absolute inset-0 w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/90 via-zinc-950/70 to-zinc-950/50" />
-                    </>
-                  )}
-                  <div className="relative p-5 sm:p-6">
-                    <div className="flex items-center gap-2 mb-4">
-                      <h1 className="text-xl sm:text-2xl font-bold text-white">
-                        {meta.name}
-                      </h1>
-                    </div>
-                    <p className="text-sm text-zinc-200 leading-relaxed max-w-2xl">
-                      {meta.description}
-                    </p>
-                  </div>
-                </div>
+      {meta ? (
+        <div className="flex h-full">
+          {/* LEFT COLUMN - card fixo com descriÃ§Ã£o + BG do hardware */}
+          <div className="w-[55%] flex-shrink-0 p-6">
+            <div className="relative h-full rounded-2xl border border-zinc-800/50 overflow-hidden">
+              {hardwareUrl && (
+                <>
+                  <img
+                    src={hardwareUrl}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30" />
+                </>
+              )}
+              <div className="relative h-full flex flex-col justify-end p-6 sm:p-8">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+                  {meta.name}
+                </h1>
+                <p className="text-sm sm:text-base text-zinc-200 leading-relaxed max-w-xl">
+                  {meta.description}
+                </p>
+              </div>
+            </div>
+          </div>
 
-                {/* 3. Especificações técnicas */}
-                <div className="relative rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6 overflow-hidden">
+          {/* RIGHT COLUMN - cards scrollÃ¡veis com parallax 3D */}
+          <div ref={innerContentRef} className="flex-1 min-w-0" style={{ willChange: "transform" }}>
+            <div className="p-6 pl-0 flex flex-col gap-4">
+              <ParallaxCard3D index={0}>
+                <div className="p-5 sm:p-6">
                   <div className="flex items-center gap-2 mb-3 text-zinc-400">
                     <LuCpu className="w-4 h-4" />
-                    <span className="text-xs font-medium uppercase tracking-wider">
-                      Especificações
-                    </span>
+                    <span className="text-xs font-medium uppercase tracking-wider">EspecificaÃ§Ãµes</span>
                   </div>
                   <div className="space-y-2.5">
                     {[
                       ["Fabricante", meta.manufacturer],
                       ["Origem", meta.origin_country],
                       ["Tipo", meta.type],
-                      ["Geração", meta.generation],
+                      ["GeraÃ§Ã£o", meta.generation],
                       ["CPU", meta.cpu],
-                      ["Memória", meta.memory],
+                      ["MemÃ³ria", meta.memory],
                       ["Armazenamento", meta.storage],
-                      ["Mídia", meta.media],
+                      ["MÃ­dia", meta.media],
                       ["SO", meta.os],
                       ["Display", meta.display],
-                      ["Gráficos", meta.graphics],
+                      ["GrÃ¡ficos", meta.graphics],
                       ["Som", meta.sound],
                       ["Conectividade", meta.connectivity],
-                    ]
-                      .filter(([, v]) => v)
-                      .map(([label, value]) => (
-                        <div key={label as string}>
-                          <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
-                            {label as string}
-                          </span>
-                          <p className="text-sm font-semibold text-zinc-200">
-                            {value as string}
-                          </p>
-                        </div>
-                      ))}
+                    ].filter(([, v]) => v).map(([label, value]) => (
+                      <div key={label as string}>
+                        <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">{label as string}</span>
+                        <p className="text-sm font-semibold text-zinc-200">{value as string}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
+              </ParallaxCard3D>
 
-                {/* 4. Ano de Lançamento */}
-                <div className="col-span-2 sm:col-span-1 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+              <ParallaxCard3D index={1}>
+                <div className="p-5 sm:p-6">
                   <div className="flex items-center gap-2 mb-3 text-zinc-400">
                     <LuCalendar className="w-4 h-4" />
-                    <span className="text-xs font-medium uppercase tracking-wider">
-                      Ano de Lançamento
-                    </span>
+                    <span className="text-xs font-medium uppercase tracking-wider">Ano de LanÃ§amento</span>
                   </div>
                   {meta.release_year > 0 ? (
-                    <p className="text-2xl font-bold font-mono text-zinc-200">
-                      {meta.release_year}
-                    </p>
+                    <p className="text-2xl font-bold font-mono text-zinc-200">{meta.release_year}</p>
                   ) : (
                     <p className="text-sm text-zinc-500 italic">Desconhecido</p>
                   )}
                 </div>
+              </ParallaxCard3D>
 
-                {/* 5. Sistema e periféricos */}
-                <div className="col-span-2 lg:col-span-3 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+              <ParallaxCard3D index={2}>
+                <div className="p-5 sm:p-6">
                   <div className="flex items-center gap-2 mb-3 text-zinc-400">
                     <LuMonitor className="w-4 h-4" />
-                    <span className="text-xs font-medium uppercase tracking-wider">
-                      Sistema & Periféricos
-                    </span>
+                    <span className="text-xs font-medium uppercase tracking-wider">Sistema & PerifÃ©ricos</span>
                   </div>
-
                   {meta.emulators.length > 0 && (
                     <div className="mb-3">
-                      <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
-                        Emuladores
-                      </span>
+                      <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">Emuladores</span>
                       <div className="flex flex-wrap gap-1.5 mt-1">
                         {meta.emulators.map((emu) => (
-                          <span
-                            key={emu}
-                            className="px-2 py-0.5 rounded-md bg-retro-secondary/10 border border-retro-secondary/20 text-xs text-retro-secondary/80"
-                          >
-                            {emu}
-                          </span>
+                          <span key={emu} className="px-2 py-0.5 rounded-md bg-retro-secondary/10 border border-retro-secondary/20 text-xs text-retro-secondary/80">{emu}</span>
                         ))}
                       </div>
                     </div>
                   )}
-
                   {meta.supported_extensions.length > 0 && (
                     <div className="mb-3">
-                      <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
-                        Mídia Suportada
-                      </span>
+                      <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">MÃ­dia Suportada</span>
                       <div className="flex flex-wrap gap-1.5 mt-1">
                         {meta.supported_extensions.map((ext) => (
-                          <span
-                            key={ext}
-                            className="px-2 py-0.5 rounded-md bg-zinc-800/50 border border-zinc-700/30 text-xs font-mono text-zinc-400"
-                          >
-                            {ext}
-                          </span>
+                          <span key={ext} className="px-2 py-0.5 rounded-md bg-zinc-800/50 border border-zinc-700/30 text-xs font-mono text-zinc-400">{ext}</span>
                         ))}
                       </div>
                     </div>
                   )}
-
                   {[
-                    ["Preço de Lançamento", meta.launch_price],
+                    ["PreÃ§o de LanÃ§amento", meta.launch_price],
                     ["Unidades Vendidas", meta.units_sold],
                     ["Predecessor", meta.predecessor],
                     ["Sucessor", meta.successor],
-                  ]
-                    .filter(([, v]) => v)
-                    .map(([label, value]) => (
-                      <div key={label as string} className="mb-2">
-                        <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">
-                          {label as string}
-                        </span>
-                        <p className="text-sm font-semibold text-zinc-200">
-                          {value as string}
-                        </p>
-                      </div>
-                    ))}
+                  ].filter(([, v]) => v).map(([label, value]) => (
+                    <div key={label as string} className="mb-2">
+                      <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">{label as string}</span>
+                      <p className="text-sm font-semibold text-zinc-200">{value as string}</p>
+                    </div>
+                  ))}
                 </div>
+              </ParallaxCard3D>
 
-                {/* 6. Curiosidades */}
-                <div className="col-span-2 lg:col-span-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+              <ParallaxCard3D index={3}>
+                <div className="p-5 sm:p-6">
                   <div className="flex items-center gap-2 mb-3 text-zinc-400">
                     <LuBookOpen className="w-4 h-4" />
-                    <span className="text-xs font-medium uppercase tracking-wider">
-                      Curiosidades
-                    </span>
+                    <span className="text-xs font-medium uppercase tracking-wider">Curiosidades</span>
                   </div>
                   {meta.curiosities.length > 0 ? (
                     <ul className="space-y-3">
                       {meta.curiosities.map((curiosity, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start gap-2 text-sm text-zinc-300 leading-relaxed"
-                        >
+                        <li key={i} className="flex items-start gap-2 text-sm text-zinc-300 leading-relaxed">
                           <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-retro-primary shrink-0" />
                           {curiosity}
                         </li>
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-sm text-zinc-500 italic">
-                      Nenhuma curiosidade registrada.
-                    </p>
+                    <p className="text-sm text-zinc-500 italic">Nenhuma curiosidade registrada.</p>
                   )}
                 </div>
+              </ParallaxCard3D>
 
-                {/* 7. Jogos em Destaque */}
-                {meta.top_games && meta.top_games.length > 0 && (
-                  <div className="col-span-2 lg:col-span-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/50 p-5 sm:p-6">
+              {meta.top_games && meta.top_games.length > 0 && (
+                <ParallaxCard3D index={4}>
+                  <div className="p-5 sm:p-6">
                     <div className="flex items-center gap-2 mb-4 text-zinc-400">
                       <LuStar className="w-4 h-4" />
-                      <span className="text-xs font-medium uppercase tracking-wider">
-                        Principais Títulos
-                      </span>
+                      <span className="text-xs font-medium uppercase tracking-wider">Principais TÃ­tulos</span>
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                       {meta.top_games.map((game) => {
-                        const coverUrl = game.cover_path
-                          ? game.cover_path.replace(/^assets\//, "")
-                          : null;
+                        const coverUrl = game.cover_path ? game.cover_path.replace(/^assets\//, "") : null;
                         return (
-                          <div
-                            key={game.slug}
-                            className="group rounded-xl bg-zinc-800/40 border border-zinc-700/30 overflow-hidden transition-all duration-200 hover:bg-zinc-800/60 hover:border-zinc-600/50 hover:scale-[1.02]"
-                          >
+                          <div key={game.slug} className="group rounded-xl bg-zinc-800/40 border border-zinc-700/30 overflow-hidden transition-all duration-200 hover:bg-zinc-800/60 hover:border-zinc-600/50 hover:scale-[1.02]">
                             <div className="aspect-[3/4] bg-zinc-800/60 overflow-hidden">
                               {coverUrl ? (
-                                <img
-                                  src={coverUrl}
-                                  alt={game.name}
-                                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                  loading="lazy"
-                                />
+                                <img src={coverUrl} alt={game.name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
                               ) : (
                                 <div className="w-full h-full flex items-center justify-center text-zinc-600">
                                   <LuGamepad2 className="w-8 h-8" />
@@ -570,24 +607,7 @@ function ContentPanel({
                                     {[1, 2, 3, 4, 5].map((star) => {
                                       const filled = r >= star * 20 - 10;
                                       return (
-                                        <svg
-                                          key={star}
-                                          viewBox="0 0 24 24"
-                                          className="w-3 h-3"
-                                          fill={filled ? "#fbbf24" : "none"}
-                                          stroke={
-                                            filled ? "#f59e0b" : "#52525b"
-                                          }
-                                          strokeWidth="1.5"
-                                          style={
-                                            filled
-                                              ? {
-                                                  filter:
-                                                    "drop-shadow(0 0 3px rgba(251,191,36,0.5))",
-                                                }
-                                              : undefined
-                                          }
-                                        >
+                                        <svg key={star} viewBox="0 0 24 24" className="w-3 h-3" fill={filled ? "#fbbf24" : "none"} stroke={filled ? "#f59e0b" : "#52525b"} strokeWidth="1.5" style={filled ? { filter: "drop-shadow(0 0 3px rgba(251,191,36,0.5))" } : undefined}>
                                           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                                         </svg>
                                       );
@@ -595,31 +615,27 @@ function ContentPanel({
                                   </div>
                                 );
                               })()}
-                              <p className="text-xs font-medium text-zinc-300 leading-tight line-clamp-2 group-hover:text-zinc-100 transition-colors mt-4">
-                                {game.name}
-                              </p>
+                              <p className="text-xs font-medium text-zinc-300 leading-tight line-clamp-2 group-hover:text-zinc-100 transition-colors mt-4">{game.name}</p>
                             </div>
                           </div>
                         );
                       })}
                     </div>
                   </div>
-                )}
-              </div>
-            </>
-          )}
-
-          {!meta && (
-            <div className="flex flex-col items-center justify-center py-20 text-zinc-500">
-              <LuGamepad2 className="w-12 h-12 mb-4" />
-              <p className="text-lg font-medium mb-1">Sistema não encontrado</p>
-              <p className="text-sm">
-                Nenhum metadado disponível para {systemName}.
-              </p>
+                </ParallaxCard3D>
+              )}
             </div>
-          )}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="flex items-center justify-center h-full text-zinc-500">
+          <div className="text-center">
+            <LuGamepad2 className="w-12 h-12 mx-auto mb-4" />
+            <p className="text-lg font-medium mb-1">Sistema nÃ£o encontrado</p>
+            <p className="text-sm">Nenhum metadado disponÃ­vel para {systemName}.</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
