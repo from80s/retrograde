@@ -150,12 +150,12 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
     };
   }, [updateAnimation]);
 
-  // Quando o conteÃºdo fica visÃ­vel, faz scroll automÃ¡tico do containerRef
+  // Quando o conteúdo fica visível, faz scroll automático do containerRef
   // para alinhar o topo do contentRef com o topo da viewport.
-  // Isso garante que o containerRef.scrollTop chegue ao mÃ¡ximo, eliminando
-  // o spacer do scroll chain Ã¢â‚¬â€ a partir daÃ­ qualquer wheel event vai
-  // diretamente para o containerRef (que jÃ¡ estÃ¡ no fim) e naturalmente
-  // nÃ£o avanÃ§a mais, revertendo a animaÃ§Ã£o ao rolar para cima.
+  // Isso garante que o containerRef.scrollTop chegue ao máximo, eliminando
+  // o spacer do scroll chain — a partir daí qualquer wheel event vai
+  // diretamente para o containerRef (que já está no fim) e naturalmente
+  // não avança mais, revertendo a animação ao rolar para cima.
   useEffect(() => {
     if (!contentVisible) return;
     const el = containerRef.current;
@@ -174,10 +174,10 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
       </button>
 
       {/*
-        containerRef Ã© o ÃƒÅ¡NICO scroll container.
-        O contentRef NÃƒÆ’O tem overflow Ã¢â‚¬â€ ele Ã© position:fixed para cobrir
-        a tela, mas nÃ£o participa do scroll chain do browser.
-        Scroll interno do conteÃºdo Ã© gerenciado pelo wheel handler abaixo.
+        containerRef é o ÚNICO scroll container.
+        O contentRef NÃO tem overflow — ele é position:fixed para cobrir
+        a tela, mas não participa do scroll chain do browser.
+        Scroll interno do conteúdo é gerenciado pelo wheel handler abaixo.
       */}
       <div ref={containerRef} className="h-full overflow-y-auto scrollbar-none">
         <div className="relative">
@@ -215,11 +215,11 @@ export function SystemDetail({ systemName, onClose }: SystemDetailProps) {
               </div>
 
               {/*
-                MUDANÃƒâ€¡A PRINCIPAL:
-                - Removido overflowY dinÃ¢mico Ã¢â‚¬â€ contentRef nunca Ã© scroll container
+                MUDANÇA PRINCIPAL:
+                - Removido overflowY dinâmico — contentRef nunca é scroll container
                 - Scroll interno simulado via wheel handler no containerRef
                 - contentRef usa position:absolute mas overflow:hidden sempre
-                - Um ref interno (innerScrollRef) controla a posiÃ§Ã£o visual via translateY
+                - Um ref interno (innerScrollRef) controla a posição visual via translateY
               */}
               <ContentPanel
                 contentRef={contentRef}
@@ -275,7 +275,6 @@ function ParallaxCard3D({
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const shineRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number | null>(null);
   const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
@@ -286,34 +285,38 @@ function ParallaxCard3D({
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     const card = cardRef.current;
     if (!card) return;
-    if (rafRef.current !== null) return;
 
-    rafRef.current = requestAnimationFrame(() => {
-      rafRef.current = null;
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
 
-      const rotateX = ((y - centerY) / centerY) * -8;
-      const rotateY = ((x - centerX) / centerX) * 8;
+    const rotateX = ((y - centerY) / centerY) * -8;
+    const rotateY = ((x - centerX) / centerX) * 8;
 
-      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-      card.style.boxShadow = `${-rotateY * 0.8}px ${rotateX * 0.8}px 20px rgba(0,0,0,0.25)`;
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    card.style.boxShadow = `${-rotateY * 0.8}px ${rotateX * 0.8}px 20px rgba(0,0,0,0.25)`;
 
-      if (shineRef.current) {
-        const shineX = (x / rect.width) * 100;
-        const shineY = (y / rect.height) * 100;
-        shineRef.current.style.background = `radial-gradient(circle at ${shineX}% ${shineY}%, rgba(255,255,255,0.08) 0%, transparent 60%)`;
-        shineRef.current.style.opacity = "1";
-      }
-    });
+    if (shineRef.current) {
+      const shineX = (x / rect.width) * 100;
+      const shineY = (y / rect.height) * 100;
+      shineRef.current.style.background = `radial-gradient(circle at ${shineX}% ${shineY}%, rgba(255,255,255,0.1) 0%, transparent 50%)`;
+      shineRef.current.style.opacity = "1";
+    }
+  }, []);
+
+  const handleMouseEnter = useCallback(() => {
+    const card = cardRef.current;
+    if (!card) return;
+    card.style.transition = "box-shadow 0.15s ease-out";
+    card.style.boxShadow = "0px 4px 12px rgba(0,0,0,0.1)";
   }, []);
 
   const handleMouseLeave = useCallback(() => {
     const card = cardRef.current;
     if (!card) return;
+    card.style.transition = "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
     card.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
     card.style.boxShadow = "0px 4px 12px rgba(0,0,0,0.1)";
     if (shineRef.current) {
@@ -325,14 +328,15 @@ function ParallaxCard3D({
     <div
       style={{
         opacity: revealed ? 1 : 0,
-        transform: `translateY(${revealed ? 0 : 16}px)`,
-        transition: "opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-        transitionDelay: `${index * 0.06}s`,
+        transform: `translateY(${revealed ? 0 : 12}px)`,
+        transition: "opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
+        transitionDelay: `${index * 0.05}s`,
       }}
     >
       <div
         ref={cardRef}
         onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className={`relative rounded-2xl bg-zinc-900/60 border border-zinc-800/50 overflow-hidden ${className}`}
         style={{
@@ -340,7 +344,6 @@ function ParallaxCard3D({
           transformStyle: "preserve-3d",
           transform: "perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
           boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
-          transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
         {children}
@@ -370,8 +373,8 @@ function ContentPanel({
   hardwareUrl: string | null;
   systemName: string;
 }) {
-  // innerScrollTop: posiÃ§Ã£o de scroll virtual do conteÃºdo interno.
-  // Ãƒâ€° um ref (nÃ£o state) para nÃ£o causar re-renders a cada evento wheel.
+  // innerScrollTop: posição de scroll virtual do conteúdo interno.
+  // É um ref (não state) para não causar re-renders a cada evento wheel.
   const innerScrollTop = useRef(0);
   const innerContentRef = useRef<HTMLDivElement>(null);
 
@@ -385,9 +388,9 @@ function ContentPanel({
     }
   }, [contentVisible]);
 
-  // Wheel handler no containerRef Ã¢â‚¬â€ intercepta TODOS os eventos quando
-  // o conteÃºdo estÃ¡ visÃ­vel e decide manualmente para onde vai o scroll.
-  // Como o containerRef Ã© o Ãºnico scroll container, nÃ£o hÃ¡ disputa.
+  // Wheel handler no containerRef — intercepta TODOS os eventos quando
+  // o conteúdo está visível e decide manualmente para onde vai o scroll.
+  // Como o containerRef é o único scroll container, não há disputa.
   useEffect(() => {
     const outerEl = containerRef.current;
     if (!outerEl || !contentVisible) return;
@@ -414,7 +417,7 @@ function ContentPanel({
         // Limites do scroll interno atingidos: redireciona para o outer
         outerEl.scrollBy({ top: px, behavior: "instant" });
       } else {
-        // Scroll dentro do conteÃºdo via translateY
+        // Scroll dentro do conteúdo via translateY
         const next = Math.max(
           0,
           Math.min(maxInnerScroll, innerScrollTop.current + px),
@@ -424,7 +427,7 @@ function ContentPanel({
       }
     };
 
-    // Listener no containerRef (nÃ£o no contentRef) Ã¢â‚¬â€ assim nÃ£o hÃ¡
+    // Listener no containerRef (não no contentRef) — assim não há
     // segundo scroll container para o browser considerar no hit test.
     outerEl.addEventListener("wheel", onWheel, { passive: false });
     return () => outerEl.removeEventListener("wheel", onWheel);
@@ -444,7 +447,7 @@ function ContentPanel({
     >
       {meta ? (
         <div className="flex h-full">
-          {/* LEFT COLUMN - card fixo com descriÃ§Ã£o + BG do hardware */}
+          {/* LEFT COLUMN - card fixo com descrição + BG do hardware */}
           <div className="w-[55%] flex-shrink-0 p-6">
             <div className="relative h-full rounded-2xl border border-zinc-800/50 overflow-hidden">
               {hardwareUrl && (
@@ -468,28 +471,28 @@ function ContentPanel({
             </div>
           </div>
 
-          {/* RIGHT COLUMN - cards scrollÃ¡veis com parallax 3D */}
+          {/* RIGHT COLUMN - cards scrolláveis com parallax 3D */}
           <div ref={innerContentRef} className="flex-1 min-w-0" style={{ willChange: "transform" }}>
             <div className="p-6 pl-0 flex flex-col gap-4">
               <ParallaxCard3D index={0}>
                 <div className="p-5 sm:p-6">
                   <div className="flex items-center gap-2 mb-3 text-zinc-400">
                     <LuCpu className="w-4 h-4" />
-                    <span className="text-xs font-medium uppercase tracking-wider">EspecificaÃ§Ãµes</span>
+                    <span className="text-xs font-medium uppercase tracking-wider">Especificações</span>
                   </div>
                   <div className="space-y-2.5">
                     {[
                       ["Fabricante", meta.manufacturer],
                       ["Origem", meta.origin_country],
                       ["Tipo", meta.type],
-                      ["GeraÃ§Ã£o", meta.generation],
+                      ["Geração", meta.generation],
                       ["CPU", meta.cpu],
-                      ["MemÃ³ria", meta.memory],
+                      ["Memória", meta.memory],
                       ["Armazenamento", meta.storage],
-                      ["MÃ­dia", meta.media],
+                      ["Mídia", meta.media],
                       ["SO", meta.os],
                       ["Display", meta.display],
-                      ["GrÃ¡ficos", meta.graphics],
+                      ["Gráficos", meta.graphics],
                       ["Som", meta.sound],
                       ["Conectividade", meta.connectivity],
                     ].filter(([, v]) => v).map(([label, value]) => (
@@ -506,7 +509,7 @@ function ContentPanel({
                 <div className="p-5 sm:p-6">
                   <div className="flex items-center gap-2 mb-3 text-zinc-400">
                     <LuCalendar className="w-4 h-4" />
-                    <span className="text-xs font-medium uppercase tracking-wider">Ano de LanÃ§amento</span>
+                    <span className="text-xs font-medium uppercase tracking-wider">Ano de Lançamento</span>
                   </div>
                   {meta.release_year > 0 ? (
                     <p className="text-2xl font-bold font-mono text-zinc-200">{meta.release_year}</p>
@@ -520,7 +523,7 @@ function ContentPanel({
                 <div className="p-5 sm:p-6">
                   <div className="flex items-center gap-2 mb-3 text-zinc-400">
                     <LuMonitor className="w-4 h-4" />
-                    <span className="text-xs font-medium uppercase tracking-wider">Sistema & PerifÃ©ricos</span>
+                    <span className="text-xs font-medium uppercase tracking-wider">Sistema & Periféricos</span>
                   </div>
                   {meta.emulators.length > 0 && (
                     <div className="mb-3">
@@ -534,7 +537,7 @@ function ContentPanel({
                   )}
                   {meta.supported_extensions.length > 0 && (
                     <div className="mb-3">
-                      <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">MÃ­dia Suportada</span>
+                      <span className="text-[10px] uppercase tracking-wider text-zinc-600 font-medium">Mídia Suportada</span>
                       <div className="flex flex-wrap gap-1.5 mt-1">
                         {meta.supported_extensions.map((ext) => (
                           <span key={ext} className="px-2 py-0.5 rounded-md bg-zinc-800/50 border border-zinc-700/30 text-xs font-mono text-zinc-400">{ext}</span>
@@ -543,7 +546,7 @@ function ContentPanel({
                     </div>
                   )}
                   {[
-                    ["PreÃ§o de LanÃ§amento", meta.launch_price],
+                    ["Preço de Lançamento", meta.launch_price],
                     ["Unidades Vendidas", meta.units_sold],
                     ["Predecessor", meta.predecessor],
                     ["Sucessor", meta.successor],
@@ -582,7 +585,7 @@ function ContentPanel({
                   <div className="p-5 sm:p-6">
                     <div className="flex items-center gap-2 mb-4 text-zinc-400">
                       <LuStar className="w-4 h-4" />
-                      <span className="text-xs font-medium uppercase tracking-wider">Principais TÃ­tulos</span>
+                      <span className="text-xs font-medium uppercase tracking-wider">Principais Títulos</span>
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                       {meta.top_games.map((game) => {
@@ -631,8 +634,8 @@ function ContentPanel({
         <div className="flex items-center justify-center h-full text-zinc-500">
           <div className="text-center">
             <LuGamepad2 className="w-12 h-12 mx-auto mb-4" />
-            <p className="text-lg font-medium mb-1">Sistema nÃ£o encontrado</p>
-            <p className="text-sm">Nenhum metadado disponÃ­vel para {systemName}.</p>
+            <p className="text-lg font-medium mb-1">Sistema não encontrado</p>
+            <p className="text-sm">Nenhum metadado disponível para {systemName}.</p>
           </div>
         </div>
       )}

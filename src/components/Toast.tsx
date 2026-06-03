@@ -34,7 +34,7 @@ export function Toast({ message, type, onClose }: ToastProps) {
           onClick={onClose}
           className="text-zinc-500 hover:text-zinc-300 transition-colors ml-2"
         >
-          Ã—
+          ×
         </button>
       </motion.div>
     </AnimatePresence>
