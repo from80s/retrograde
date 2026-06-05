@@ -1,0 +1,1 @@
+export { StatsHistory } from './Component';

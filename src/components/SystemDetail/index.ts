@@ -1,0 +1,1 @@
+export { SystemDetail } from './Component';

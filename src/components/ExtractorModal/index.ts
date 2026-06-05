@@ -1,0 +1,1 @@
+export { ExtractorModal } from './Component';

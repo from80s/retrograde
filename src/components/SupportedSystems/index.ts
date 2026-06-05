@@ -1,0 +1,1 @@
+export { SupportedSystems } from './Component';

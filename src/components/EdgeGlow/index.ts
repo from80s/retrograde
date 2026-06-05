@@ -1,0 +1,1 @@
+export { EdgeGlow } from "./Component";

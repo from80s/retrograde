@@ -1,0 +1,1 @@
+export { TgdbAssetsModal } from "./Component";

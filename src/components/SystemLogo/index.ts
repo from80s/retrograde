@@ -1,0 +1,1 @@
+export { SystemLogo } from "./Component";

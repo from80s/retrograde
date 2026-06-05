@@ -1,0 +1,1 @@
+export { ClassicGamesPicker } from './Component';
