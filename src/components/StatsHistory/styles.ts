@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import type { MotionProps } from 'framer-motion';
+import { thinScrollbar } from "../../styles/scrollbar";
 
 /* Wrapper do motion.div para uso com styled-components */
 export const MotionDiv = motion.div as React.ComponentType<MotionProps & React.HTMLAttributes<HTMLDivElement>>;
@@ -121,27 +122,8 @@ export const TabButton = styled.button<{ $active: boolean }>`
 export const ContentArea = styled.div`
   flex: 1;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #3f3f46 #18181b;
+  ${thinScrollbar}
   padding: 1.5rem;
-
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #18181b;
-    border-radius: 3px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #3f3f46;
-    border-radius: 3px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #52525b;
-  }
 `;
 
 /* Estado vazio */

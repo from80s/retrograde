@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { motion, type MotionProps } from "framer-motion";
+import { thinScrollbar } from "../../styles/scrollbar";
 
 const MotionDiv = motion.div as React.ComponentType<MotionProps & React.HTMLAttributes<HTMLDivElement>>;
 
@@ -71,6 +72,7 @@ export const CloseButton = styled.button`
 export const ContentScroll = styled.div`
   flex: 1;
   overflow-y: auto;
+  ${thinScrollbar}
 `;
 
 export const SearchSection = styled(MotionDiv)`
@@ -223,6 +225,7 @@ export const DropdownSearchInput = styled.input`
 export const DropdownList = styled.div`
   max-height: 12rem;
   overflow-y: auto;
+  ${thinScrollbar}
 `;
 
 export const DropdownItem = styled.button<{ $selected: boolean }>`
@@ -443,6 +446,7 @@ export const ClearAction = styled(SelectAction)`
 export const RomEntriesScroll = styled.div`
   max-height: 16rem;
   overflow-y: auto;
+  ${thinScrollbar}
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -578,6 +582,7 @@ export const DownloadResults = styled.div`
   gap: 0.5rem;
   max-height: 12rem;
   overflow-y: auto;
+  ${thinScrollbar}
 `;
 
 export const DownloadResultsTitle = styled.p`
@@ -673,6 +678,7 @@ export const MultiPlatformDropdown = styled(MotionDiv)`
   border-radius: 0.75rem;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
   overflow-y: auto;
+  ${thinScrollbar}
   z-index: 10;
 `;
 
@@ -983,6 +989,7 @@ export const InstructionsPre = styled.pre`
   line-height: 1.625;
   max-height: 8rem;
   overflow-y: auto;
+  ${thinScrollbar}
 `;
 
 export const ExportResultCard = styled.div`

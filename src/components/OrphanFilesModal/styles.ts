@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 import { LuLoader } from 'react-icons/lu';
+import { thinScrollbar } from "../../styles/scrollbar";
 
 type MotionProps = {
   initial?: object;
@@ -200,6 +201,7 @@ export const FileList = styled.div`
   gap: 0.25rem;
   max-height: 18rem;
   overflow-y: auto;
+  ${thinScrollbar}
 `;
 
 export const FileItem = styled.button<{ $selected: boolean }>`

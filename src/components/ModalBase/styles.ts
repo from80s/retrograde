@@ -18,12 +18,13 @@ export const Modal = styled(MotionDiv)<{ $maxWidth: string }>`
   background: rgba(24, 24, 27, 0.8);
   border: 1px solid rgba(63, 63, 70, 0.5);
   border-radius: 1rem;
-  width: 100%;
+  width: calc(100% - 2rem);
   max-height: 85vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   backdrop-filter: blur(12px);
+  margin: 1rem;
 
   ${({ $maxWidth }) => `max-width: ${$maxWidth};`}
 `;

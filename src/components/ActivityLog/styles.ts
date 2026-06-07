@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { thinScrollbar } from "../../styles/scrollbar";
 
 export const MotionDiv = motion.div as React.ComponentType<
   React.ComponentProps<typeof motion.div>
@@ -39,6 +40,7 @@ export const Count = styled.span`
 export const LogList = styled.div`
   flex: 1;
   overflow-y: auto;
+  ${thinScrollbar}
   padding: 0.5rem;
   display: flex;
   flex-direction: column;

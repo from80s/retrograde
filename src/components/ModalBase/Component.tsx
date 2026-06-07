@@ -10,7 +10,7 @@ interface ModalBaseProps {
   maxWidth?: string;
 }
 
-export function ModalBase({ children, onClose, icon, title, maxWidth = "max-w-lg" }: ModalBaseProps) {
+export function ModalBase({ children, onClose, icon, title, maxWidth = "32rem" }: ModalBaseProps) {
   return (
     <Overlay
       initial={{ opacity: 0 }}

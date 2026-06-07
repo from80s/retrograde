@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 import { LuLoader } from 'react-icons/lu';
+import { thinScrollbar } from "../../styles/scrollbar";
 
 type MotionProps = {
   initial?: object;
@@ -168,6 +169,7 @@ export const PrimaryButton = styled.button`
 export const ContentArea = styled.div`
   flex: 1;
   overflow-y: auto;
+  ${thinScrollbar}
 `;
 
 export const ScanCenter = styled.div`
@@ -361,6 +363,7 @@ export const RomList = styled.div`
   border-top: 1px solid rgba(63, 63, 70, 0.5);
   max-height: 16rem;
   overflow-y: auto;
+  ${thinScrollbar}
 `;
 
 export const RomItem = styled.div`
@@ -529,6 +532,7 @@ export const RegionError = styled.p`
 export const CloneGroupList = styled.div`
   max-height: 10rem;
   overflow-y: auto;
+  ${thinScrollbar}
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -662,6 +666,7 @@ export const ProtectedTags = styled.div`
   gap: 0.5rem;
   max-height: 6rem;
   overflow-y: auto;
+  ${thinScrollbar}
 `;
 
 export const ProtectedTag = styled.span`

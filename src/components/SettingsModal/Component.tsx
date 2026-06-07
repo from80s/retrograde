@@ -215,7 +215,7 @@ export function SettingsModal({ onClose, minRating, action, classics, genres, pr
 
   return (
     <>
-    <ModalBase onClose={onClose} title="Configurações" maxWidth="max-w-2xl">
+    <ModalBase onClose={onClose} title="Configurações" maxWidth="42rem">
       <ContentScroll>
             {/* Config de API */}
             <Section>

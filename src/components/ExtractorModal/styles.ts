@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 import { LuLoader } from 'react-icons/lu';
+import { thinScrollbar } from "../../styles/scrollbar";
 
 type MotionProps = {
   initial?: object;
@@ -126,6 +127,7 @@ export const StepCircle = styled.span`
 export const ContentArea = styled.div`
   flex: 1;
   overflow-y: auto;
+  ${thinScrollbar}
   padding: 1.5rem;
 `;
 
@@ -414,6 +416,7 @@ export const FileList = styled.div`
   gap: 0.25rem;
   max-height: 16rem;
   overflow-y: auto;
+  ${thinScrollbar}
 `;
 
 export const FileItem = styled.div`
@@ -506,6 +509,7 @@ export const ExtractionLog = styled.div`
   gap: 0.5rem;
   max-height: 20rem;
   overflow-y: auto;
+  ${thinScrollbar}
 `;
 
 export const ExtractionEntry = styled.div<{ $status: string }>`
@@ -768,5 +772,6 @@ export const FooterFullWidth = styled.div`
 export const ScrollableContent = styled.div`
   flex: 1;
   overflow-y: auto;
+  ${thinScrollbar}
   padding: 1.5rem;
 `;

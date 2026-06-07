@@ -1,11 +1,13 @@
 import styled, { css } from "styled-components";
 import { motion, type MotionProps } from "framer-motion";
+import { thinScrollbar } from "../../styles/scrollbar";
 
 const MotionDiv = motion.div as React.ComponentType<MotionProps & React.HTMLAttributes<HTMLDivElement>>;
 
 export const ContentScroll = styled.div`
   flex: 1;
   overflow-y: auto;
+  ${thinScrollbar}
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -264,6 +266,7 @@ export const TagsContainer = styled.div`
   gap: 0.5rem;
   max-height: 10rem;
   overflow-y: auto;
+  ${thinScrollbar}
 `;
 
 export const Tag = styled.span<{ $color: string }>`
