@@ -69,6 +69,17 @@ electron_1.contextBridge.exposeInMainWorld('api', {
     exportAssetsRetroarch: (options) => electron_1.ipcRenderer.invoke('export-assets-retroarch', options),
     exportAssetsEsde: (options) => electron_1.ipcRenderer.invoke('export-assets-esde', options),
     exportAssetsManual: (options) => electron_1.ipcRenderer.invoke('export-assets-manual', options),
+    pauseExtraction: () => electron_1.ipcRenderer.invoke('pause-extraction'),
+    resumeExtraction: () => electron_1.ipcRenderer.invoke('resume-extraction'),
+    getExtractionStatus: () => electron_1.ipcRenderer.invoke('get-extraction-status'),
+    getBackgroundExtractionStatus: () => electron_1.ipcRenderer.invoke('get-background-extraction-status'),
+    onBackgroundExtractionProgress: (callback) => {
+        electron_1.ipcRenderer.on('background-extraction-progress', (_, data) => callback(data));
+    },
+    removeBackgroundExtractionProgressListener: () => {
+        electron_1.ipcRenderer.removeAllListeners('background-extraction-progress');
+    },
+    getDiskSpace: (folder) => electron_1.ipcRenderer.invoke('get-disk-space', folder),
     windowMinimize: () => electron_1.ipcRenderer.invoke('window-minimize'),
     windowMaximize: () => electron_1.ipcRenderer.invoke('window-maximize'),
     windowClose: () => electron_1.ipcRenderer.invoke('window-close'),

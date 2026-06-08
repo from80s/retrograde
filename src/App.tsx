@@ -110,7 +110,51 @@ function App() {
   const [version, setVersion] = useState("0.0.0");
   const [apiConnected, setApiConnected] = useState(false);
   const [configChecked, setConfigChecked] = useState(false);
+  const [bgExtraction, setBgExtraction] = useState<{
+    active: boolean;
+    paused: boolean;
+    folder: string;
+    total: number;
+    completed: number;
+    currentFile: string;
+    successCount: number;
+    errorCount: number;
+  } | null>(null);
+  const [extractorInitialStep, setExtractorInitialStep] = useState<"config" | "scanning" | "files" | "extracting" | "summary" | undefined>(undefined);
   const logRef = React.useRef<HTMLDivElement>(null);
+  const bgListenerAttached = React.useRef(false);
+
+  const attachBgExtractionListener = useCallback(() => {
+    if (bgListenerAttached.current) return;
+    window.api.getBackgroundExtractionStatus().then((status) => {
+      if (status?.active) {
+        setBgExtraction(status);
+        bgListenerAttached.current = true;
+        window.api.onBackgroundExtractionProgress((data) => {
+          if (data.active === false && !data.paused) {
+            setBgExtraction(null);
+            bgListenerAttached.current = false;
+            window.api.removeBackgroundExtractionProgressListener();
+          } else {
+            setBgExtraction({
+              active: true,
+              paused: data.paused,
+              folder: data.folder,
+              total: data.total,
+              completed: data.completed,
+              currentFile: data.currentFile,
+              successCount: data.successCount,
+              errorCount: data.errorCount,
+            });
+          }
+        });
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    attachBgExtractionListener();
+  }, [attachBgExtractionListener]);
 
   useEffect(() => {
     window.api.readClassics().then(setClassics);
@@ -427,7 +471,14 @@ function App() {
             </button>
 
             <button
-              onClick={() => setShowExtractor(true)}
+              onClick={() => {
+                if (bgExtraction?.active) {
+                  setExtractorInitialStep('extracting');
+                } else {
+                  setExtractorInitialStep(undefined);
+                }
+                setShowExtractor(true);
+              }}
               className={`w-full flex items-center gap-3 rounded-xl text-left transition-all duration-200
                        bg-zinc-700/30 text-zinc-300 border border-zinc-600/30
                        hover:bg-zinc-700/50 ${isSidebarExpanded ? "px-3 py-2.5" : "px-2 py-2 justify-center"}`}
@@ -652,8 +703,9 @@ function App() {
         )}
         {showExtractor && (
           <ExtractorModal
-            onClose={() => setShowExtractor(false)}
+            onClose={() => { setShowExtractor(false); setExtractorInitialStep(undefined); attachBgExtractionListener(); }}
             onToast={showToast}
+            initialStep={extractorInitialStep}
           />
         )}
         {showOrphanFiles && state.folder && (
@@ -689,6 +741,45 @@ function App() {
           type={toast.type}
           onClose={() => setToast(null)}
         />
+      )}
+
+      {bgExtraction?.active && (
+        <div
+          className="fixed bottom-0 left-0 right-0 z-40 glass border-t border-zinc-800/50 cursor-pointer hover:bg-zinc-800/80 transition-colors"
+          onClick={() => {
+            setExtractorInitialStep('extracting');
+            setShowExtractor(true);
+          }}
+        >
+          <div className="px-4 py-2 flex items-center gap-3">
+            <LuLoader className="w-4 h-4 text-indigo-400 animate-spin flex-shrink-0" />
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs text-zinc-400">
+                  {bgExtraction.paused ? 'Pausado' : 'Extraindo...'}
+                </span>
+                <span className="text-xs text-zinc-500">
+                  {bgExtraction.completed} / {bgExtraction.total}
+                </span>
+              </div>
+              <div className="h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full bg-indigo-500 rounded-full"
+                  initial={{ width: '0%' }}
+                  animate={{
+                    width: `${bgExtraction.total > 0 ? (bgExtraction.completed / bgExtraction.total) * 100 : 0}%`,
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
+              </div>
+              {bgExtraction.currentFile && (
+                <p className="text-[10px] text-zinc-500 mt-0.5 truncate font-mono">
+                  {bgExtraction.currentFile}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

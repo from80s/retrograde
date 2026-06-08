@@ -1609,6 +1609,7 @@ function determineConcurrency(files) {
     return 2;
 }
 async function extractZipFile(zipPath, outputDir, onProgress) {
+    await fs_extra_1.default.mkdir(outputDir, { recursive: true });
     const directory = await unzipper_1.default.Open.file(zipPath);
     const files = directory.files.filter((f) => f.type === 'File');
     const totalSize = files.reduce((sum, f) => sum + (f.uncompressedSize || 0), 0);
@@ -1640,8 +1641,11 @@ async function extractZipFile(zipPath, outputDir, onProgress) {
     return { extractedSize, fileCount };
 }
 async function extract7zFile(archivePath, outputDir, onProgress) {
+    await fs_extra_1.default.mkdir(outputDir, { recursive: true });
     const entries = await new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error('Timeout ao listar arquivos do 7z')), 60000);
         _7zip_min_1.default.list(archivePath, (err, result) => {
+            clearTimeout(timer);
             if (err)
                 reject(err);
             else
@@ -1651,7 +1655,9 @@ async function extract7zFile(archivePath, outputDir, onProgress) {
     const files = entries.filter((e) => e.method !== undefined);
     const totalSize = files.reduce((sum, e) => sum + (e.size || 0), 0);
     await new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error('Timeout ao extrair arquivo 7z')), 300000);
         _7zip_min_1.default.unpack(archivePath, outputDir, (err) => {
+            clearTimeout(timer);
             if (err)
                 reject(err);
             else
@@ -1668,8 +1674,11 @@ async function extract7zFile(archivePath, outputDir, onProgress) {
     return { extractedSize: totalSize, fileCount: files.length };
 }
 async function extractRarFile(archivePath, outputDir, onProgress) {
+    await fs_extra_1.default.mkdir(outputDir, { recursive: true });
     const entries = await new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error('Timeout ao listar arquivos do RAR')), 60000);
         _7zip_min_1.default.list(archivePath, (err, result) => {
+            clearTimeout(timer);
             if (err)
                 reject(err);
             else
@@ -1679,7 +1688,9 @@ async function extractRarFile(archivePath, outputDir, onProgress) {
     const files = entries.filter((e) => e.method !== undefined);
     const totalSize = files.reduce((sum, e) => sum + (e.size || 0), 0);
     await new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error('Timeout ao extrair arquivo RAR')), 300000);
         _7zip_min_1.default.unpack(archivePath, outputDir, (err) => {
+            clearTimeout(timer);
             if (err)
                 reject(err);
             else
@@ -1696,6 +1707,7 @@ async function extractRarFile(archivePath, outputDir, onProgress) {
     return { extractedSize: totalSize, fileCount: files.length };
 }
 async function extractTarFile(tarPath, outputDir, onProgress) {
+    await fs_extra_1.default.mkdir(outputDir, { recursive: true });
     let fileCount = 0;
     let extractedSize = 0;
     await tar.x({
@@ -1725,6 +1737,7 @@ async function extractTarFile(tarPath, outputDir, onProgress) {
     return { extractedSize, fileCount };
 }
 async function extractGzFile(gzPath, outputDir, onProgress) {
+    await fs_extra_1.default.mkdir(outputDir, { recursive: true });
     const baseName = path_1.default.basename(gzPath, '.gz');
     const outputPath = path_1.default.join(outputDir, baseName);
     await new Promise((resolve, reject) => {
@@ -1759,6 +1772,7 @@ async function extractGzFile(gzPath, outputDir, onProgress) {
     return { extractedSize: stat.size, fileCount: 1 };
 }
 async function extractTarGzFile(tarGzPath, outputDir, onProgress) {
+    await fs_extra_1.default.mkdir(outputDir, { recursive: true });
     let fileCount = 0;
     let extractedSize = 0;
     await tar.x({
@@ -1800,9 +1814,41 @@ async function extractFile(filePath, outputDir, onProgress) {
     }
 }
 let extractionCancelled = false;
+let extractionPaused = false;
+let extractionActive = false;
+let currentExtractionState = null;
+let progressLog = null;
+let extractionResults = [];
 electron_1.ipcMain.handle('cancel-extraction', async () => {
     extractionCancelled = true;
     return true;
+});
+electron_1.ipcMain.handle('pause-extraction', async () => {
+    extractionPaused = true;
+    if (progressLog) {
+        progressLog.paused = true;
+        progressLog.lastPausedFile = currentExtractionState?.currentFile || null;
+        progressLog.pausedAt = new Date().toISOString();
+        await writeProgressLog(progressLog.folder, progressLog);
+    }
+    mainWindow?.webContents.send('extraction-progress', { type: 'paused' });
+    return true;
+});
+electron_1.ipcMain.handle('resume-extraction', async () => {
+    extractionPaused = false;
+    if (progressLog) {
+        progressLog.paused = false;
+        await writeProgressLog(progressLog.folder, progressLog);
+    }
+    mainWindow?.webContents.send('extraction-progress', { type: 'resumed' });
+    return true;
+});
+electron_1.ipcMain.handle('get-extraction-status', async () => {
+    return {
+        active: extractionActive,
+        paused: extractionPaused,
+        state: currentExtractionState,
+    };
 });
 let curationCancelled = false;
 let simulationCancelled = false;
@@ -1885,12 +1931,16 @@ electron_1.ipcMain.handle('scan-compressed', async (_, folder) => {
         }
     }
     await scanDirectory(folder);
-    return files;
+    const totalSize = files.reduce((sum, f) => sum + f.size, 0);
+    const COMPRESSION_RATIO = 3;
+    const estimatedExtractedSize = totalSize * COMPRESSION_RATIO;
+    return { files, totalSize, estimatedExtractedSize };
 });
 electron_1.ipcMain.handle('start-extraction', async (_, options) => {
     const { files: rawFiles, mode, deleteAfter, resume } = options;
     extractionCancelled = false;
-    let progressLog = null;
+    extractionPaused = false;
+    progressLog = null;
     if (resume && rawFiles.length > 0) {
         const folder = path_1.default.dirname(rawFiles[0].path);
         progressLog = await readProgressLog(folder);
@@ -1914,11 +1964,11 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
         if (folder)
             await writeProgressLog(folder, progressLog);
     }
-    const results = [];
+    extractionResults = [];
     // Re-adiciona resultados de arquivos já processados se resumindo
     if (resume && progressLog?.completedFiles.length > 0) {
         for (const cf of progressLog.completedFiles) {
-            results.push({
+            extractionResults.push({
                 name: cf.name,
                 status: 'success',
                 compressedSize: 0,
@@ -1930,7 +1980,16 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
     const concurrency = determineConcurrency(files);
     const queue = [...files];
     const running = [];
-    let index = results.length;
+    let index = extractionResults.length;
+    extractionActive = true;
+    currentExtractionState = {
+        folder: files.length > 0 ? path_1.default.dirname(files[0].path) : '',
+        files: rawFiles,
+        mode,
+        deleteAfter,
+        currentIndex: 0,
+        currentFile: '',
+    };
     async function processFile(file, idx) {
         const outputDir = mode === 'own-folder'
             ? path_1.default.join(path_1.default.dirname(file.path), file.name.replace(/\.[^.]+$/, '').replace(/\.tar$/, ''))
@@ -1954,7 +2013,7 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
             if (deleteAfter) {
                 await fs_extra_1.default.remove(file.path);
             }
-            results.push({
+            extractionResults.push({
                 name: file.name,
                 status: 'success',
                 compressedSize: file.size,
@@ -1973,7 +2032,7 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
             });
         }
         catch (error) {
-            results.push({
+            extractionResults.push({
                 name: file.name,
                 status: 'error',
                 compressedSize: file.size,
@@ -1993,20 +2052,45 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
         }
     }
     while (queue.length > 0 || running.length > 0) {
+        while (extractionPaused) {
+            await new Promise(resolve => setTimeout(resolve, 500));
+            if (extractionCancelled)
+                break;
+        }
         while (running.length < concurrency && queue.length > 0) {
             if (extractionCancelled) {
                 while (queue.length > 0) {
                     const file = queue.shift();
-                    results.push({ name: file.name, status: 'cancelled', compressedSize: file.size, extractedSize: 0, fileCount: 0 });
+                    extractionResults.push({ name: file.name, status: 'cancelled', compressedSize: file.size, extractedSize: 0, fileCount: 0 });
                 }
                 break;
             }
             const file = queue.shift();
             const idx = index++;
+            if (currentExtractionState) {
+                currentExtractionState.currentIndex = idx;
+                currentExtractionState.currentFile = file.name;
+            }
+            mainWindow?.webContents.send('extraction-progress', {
+                type: 'status-update',
+                currentIndex: idx,
+                totalFiles: rawFiles.length,
+                currentFile: file.name,
+            });
             const promise = processFile(file, idx).then(() => {
                 const i = running.indexOf(promise);
                 if (i > -1)
                     running.splice(i, 1);
+                mainWindow?.webContents.send('background-extraction-progress', {
+                    active: extractionActive,
+                    paused: extractionPaused,
+                    folder: currentExtractionState?.folder,
+                    total: rawFiles.length,
+                    completed: extractionResults.filter(r => r.status === 'success' || r.status === 'error').length,
+                    currentFile: currentExtractionState?.currentFile,
+                    successCount: extractionResults.filter(r => r.status === 'success').length,
+                    errorCount: extractionResults.filter(r => r.status === 'error').length,
+                });
             });
             running.push(promise);
         }
@@ -2014,6 +2098,8 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
             await Promise.race(running);
         }
     }
+    extractionActive = false;
+    currentExtractionState = null;
     if (extractionCancelled && progressLog) {
         progressLog.cancelled = true;
         await writeProgressLog(progressLog.folder, progressLog);
@@ -2022,15 +2108,15 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
         progressLog.complete = true;
         await writeProgressLog(progressLog.folder, progressLog);
     }
-    const successCount = results.filter(r => r.status === 'success').length;
-    const errorCount = results.filter(r => r.status === 'error').length;
-    const cancelledCount = results.filter(r => r.status === 'cancelled').length;
-    const totalExtracted = results.reduce((sum, r) => sum + r.extractedSize, 0);
-    const totalCompressed = results.reduce((sum, r) => sum + r.compressedSize, 0);
-    const totalFiles = results.reduce((sum, r) => sum + r.fileCount, 0);
+    const successCount = extractionResults.filter(r => r.status === 'success').length;
+    const errorCount = extractionResults.filter(r => r.status === 'error').length;
+    const cancelledCount = extractionResults.filter(r => r.status === 'cancelled').length;
+    const totalExtracted = extractionResults.reduce((sum, r) => sum + r.extractedSize, 0);
+    const totalCompressed = extractionResults.reduce((sum, r) => sum + r.compressedSize, 0);
+    const totalFiles = extractionResults.reduce((sum, r) => sum + r.fileCount, 0);
     mainWindow?.webContents.send('extraction-progress', {
         type: 'complete',
-        results,
+        results: extractionResults,
         successCount,
         errorCount,
         cancelledCount,
@@ -2038,8 +2124,18 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
         totalCompressed,
         totalFiles,
     });
+    mainWindow?.webContents.send('background-extraction-progress', {
+        active: false,
+        paused: false,
+        folder: progressLog?.folder,
+        total: rawFiles.length,
+        completed: extractionResults.length,
+        currentFile: '',
+        successCount,
+        errorCount,
+    });
     return {
-        results,
+        results: extractionResults,
         successCount,
         errorCount,
         cancelledCount,
@@ -2047,6 +2143,35 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
         totalCompressed,
         totalFiles,
     };
+});
+electron_1.ipcMain.handle('get-background-extraction-status', async () => {
+    if (!extractionActive || !currentExtractionState) {
+        return null;
+    }
+    const completedCount = extractionResults.filter(r => r.status === 'success' || r.status === 'error').length;
+    const currentFileName = currentExtractionState.currentFile;
+    return {
+        active: true,
+        paused: extractionPaused,
+        folder: currentExtractionState.folder,
+        total: currentExtractionState.files.length,
+        completed: completedCount,
+        currentFile: currentFileName,
+        successCount: extractionResults.filter(r => r.status === 'success').length,
+        errorCount: extractionResults.filter(r => r.status === 'error').length,
+    };
+});
+electron_1.app.on('before-quit', async (event) => {
+    if (extractionActive && progressLog) {
+        event.preventDefault();
+        extractionCancelled = true;
+        extractionPaused = true;
+        progressLog.paused = true;
+        progressLog.lastPausedFile = currentExtractionState?.currentFile || null;
+        progressLog.pausedAt = new Date().toISOString();
+        await writeProgressLog(progressLog.folder, progressLog);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+    }
 });
 const ORPHAN_EXTENSIONS = new Set([
     '.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp',

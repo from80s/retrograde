@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import {
   LuX, LuFolderOpen, LuArchive, LuFolderPlus, LuTrash2, LuSquare, LuCircleCheckBig,
-  LuCircleX, LuTriangleAlert, LuFileText, LuChevronRight, LuDownload, LuPlay,
+  LuCircleX, LuTriangleAlert, LuFileText, LuChevronRight, LuDownload, LuPlay, LuPause,
 } from "react-icons/lu";
 import {
   MotionDiv, Overlay, ModalContent, Header, HeaderLeft, Title, CloseButton,
@@ -14,8 +14,8 @@ import {
   ToggleRow, ToggleLabel, ToggleDesc, ToggleTrack, ToggleThumb,
   FormatsInfo, FormatsText, FormatExt,
   ScanCenter, ScanProgress, ScanLabel, ScanBarBg, ScanBarFill, ScanFooter, FoundText,
-  FilesSection, FilesHeader, FilesCount, FilesSize, FileList,
-  FileItem, FileItemName, FileItemExt, FileItemSize,
+  FilesSection, FilesHeader, FilesCount, FilesSize, FilesToolbar, ToolbarButton, FileList,
+  FileItem, FileCheckbox, FileItemName, FileItemExt, FileItemSize,
   UnsupportedLabel, UnsupportedItem, UnsupportedName, UnsupportedExt,
   ExtractionSection, ExtractionProgress, ExtractionsBarBg, ExtractionsBarFill,
   ExtractionLog, ExtractionEntry, ExtractionEntryHeader, ExtractionEntryName,
@@ -27,11 +27,16 @@ import {
   FullLogEntry, FullLogName, FullLogSize,
   Footer, FooterButton, FooterStats, FooterFullWidth,
   ScrollableContent,
+  DiskSpaceCard, DiskSpaceRow, DiskSpaceLabel, DiskSpaceValue, DiskSpaceWarning,
+  CurrentFileSection, CurrentFileHeader, CurrentFileName, CurrentFilePercent,
+  CurrentFileBarBg, CurrentFileBarFill,
+  PauseButton, PausedLabel,
 } from './styles';
 
 interface ExtractorModalProps {
   onClose: () => void;
   onToast: (message: string, type: 'success' | 'error' | 'info') => void;
+  initialStep?: Step;
 }
 
 type Step = 'config' | 'scanning' | 'files' | 'extracting' | 'summary';
@@ -45,7 +50,7 @@ interface CompressedFile {
 
 interface ExtractionLogEntry {
   fileName: string;
-  status: 'extracting' | 'progress' | 'complete' | 'error';
+  status: 'extracting' | 'progress' | 'complete' | 'error' | 'pending';
   progress: number;
   compressedSize: number;
   extractedSize: number;
@@ -74,8 +79,8 @@ function formatSize(bytes: number): string {
 const stepsConfig = ['config', 'files', 'extracting', 'summary'] as const;
 const stepLabels = ['Configurar', 'Arquivos', 'Extraindo', 'Resultado'];
 
-export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
-  const [step, setStep] = useState<Step>('config');
+export function ExtractorModal({ onClose, onToast, initialStep }: ExtractorModalProps) {
+  const [step, setStep] = useState<Step>(initialStep ?? 'config');
   const [sourceFolder, setSourceFolder] = useState<string | null>(null);
   const [mode, setMode] = useState<'in-place' | 'own-folder'>('own-folder');
   const [deleteAfter, setDeleteAfter] = useState(false);
@@ -88,6 +93,10 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
   });
   const [scanProgress, setScanProgress] = useState({ progress: 0, scanned: 0, total: 0, found: 0 });
   const [showResumeDialog, setShowResumeDialog] = useState(false);
+  const [diskSpace, setDiskSpace] = useState<{ free: number; estimated: number } | null>(null);
+  const [currentFile, setCurrentFile] = useState<{ name: string; progress: number } | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [selectedFiles, setSelectedFiles] = useState<Set<string>>(new Set());
   const logRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -95,6 +104,114 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
       logRef.current.scrollTop = logRef.current.scrollHeight;
     }
   }, [log]);
+
+  useEffect(() => {
+    if (initialStep !== 'extracting') return;
+
+    const init = async () => {
+      const bgStatus = await window.api.getBackgroundExtractionStatus();
+      if (bgStatus?.active) {
+        setSourceFolder(bgStatus.folder);
+        setStep('extracting');
+        setIsPaused(bgStatus.paused);
+
+        if (bgStatus.completed > 0 && bgStatus.total > 0) {
+          setLog((prev) => {
+            if (prev.length > 0) return prev;
+            return Array.from({ length: bgStatus.total }, (_, i) => ({
+              fileName: `Arquivo ${i + 1}`,
+              status: (i < bgStatus.completed ? 'complete' : 'pending') as 'complete' | 'pending',
+              progress: i < bgStatus.completed ? 100 : 0,
+              compressedSize: 0,
+              extractedSize: 0,
+              fileCount: 0,
+              index: i + 1,
+              total: bgStatus.total,
+            }));
+          });
+        }
+
+        window.api.onExtractionProgress((data: any) => {
+          if (data.type === 'file-start') {
+            setCurrentFile({ name: data.fileName, progress: 0 });
+            setLog((prev) => {
+              const idx = prev.findIndex(l => l.index === data.index);
+              if (idx >= 0) {
+                const updated = [...prev];
+                updated[idx] = { ...updated[idx], fileName: data.fileName, status: 'extracting', progress: 0, compressedSize: data.compressedSize };
+                return updated;
+              }
+              return [...prev, {
+                fileName: data.fileName, status: 'extracting', progress: 0,
+                compressedSize: data.compressedSize, extractedSize: 0,
+                fileCount: 0, index: data.index, total: data.total,
+              }];
+            });
+          } else if (data.type === 'file-progress') {
+            setCurrentFile({ name: data.fileName, progress: data.progress });
+            setLog((prev) => {
+              const idx = prev.findIndex(l => l.fileName === data.fileName || l.index === data.index);
+              if (idx >= 0) {
+                const updated = [...prev];
+                updated[idx] = { ...updated[idx], status: 'progress', progress: data.progress, extractedSize: data.extractedSize };
+                return updated;
+              }
+              return [...prev, {
+                fileName: data.fileName, status: 'progress', progress: data.progress,
+                compressedSize: data.compressedSize || 0, extractedSize: data.extractedSize,
+                fileCount: 0, index: data.index, total: data.total,
+              }];
+            });
+          } else if (data.type === 'file-complete') {
+            setCurrentFile((prev) => prev?.name === data.fileName ? { name: data.fileName, progress: 100 } : prev);
+            setLog((prev) => {
+              const idx = prev.findIndex(l => l.fileName === data.fileName || l.index === data.index);
+              if (idx >= 0) {
+                const updated = [...prev];
+                updated[idx] = { ...updated[idx], status: 'complete', progress: 100, extractedSize: data.extractedSize, fileCount: data.fileCount };
+                return updated;
+              }
+              return [...prev, {
+                fileName: data.fileName, status: 'complete', progress: 100,
+                compressedSize: 0, extractedSize: data.extractedSize,
+                fileCount: data.fileCount, index: data.index, total: data.total,
+              }];
+            });
+          } else if (data.type === 'file-error') {
+            setCurrentFile(null);
+            setLog((prev) => [...prev, {
+              fileName: data.fileName, status: 'error', progress: 0,
+              compressedSize: 0, extractedSize: 0, fileCount: 0,
+              error: data.error, index: data.index, total: data.total,
+            }]);
+          } else if (data.type === 'paused') {
+            setIsPaused(true);
+          } else if (data.type === 'resumed') {
+            setIsPaused(false);
+          } else if (data.type === 'complete') {
+            setCurrentFile(null);
+            setIsPaused(false);
+            setResults(data.results);
+            setStats({
+              successCount: data.successCount, errorCount: data.errorCount,
+              cancelledCount: data.cancelledCount, totalExtracted: data.totalExtracted,
+              totalCompressed: data.totalCompressed, totalFiles: data.totalFiles,
+            });
+            setStep('summary');
+            window.api.removeExtractionProgressListener();
+          }
+        });
+      } else {
+        setStep('config');
+      }
+    };
+
+    init();
+
+    return () => {
+      window.api.removeExtractionProgressListener();
+    };
+  }, [initialStep]);
 
   const handleSelectFolder = useCallback(async () => {
     const folder = await window.api.selectFolder();
@@ -117,10 +234,19 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
     });
 
     try {
-      const found = await window.api.scanCompressed(sourceFolder);
-      setFiles(found);
+      const result = await window.api.scanCompressed(sourceFolder);
+      setFiles(result.files);
+      setSelectedFiles(new Set(result.files.filter(f => ['.zip', '.rar', '.7z', '.tar', '.gz', '.tar.gz'].includes(f.ext)).map(f => f.path)));
       window.api.removeScanCompressedProgressListener();
-      if (found.length === 0) {
+
+      try {
+        const space = await window.api.getDiskSpace(sourceFolder);
+        setDiskSpace({ free: space.free, estimated: result.estimatedExtractedSize });
+      } catch {
+        setDiskSpace(null);
+      }
+
+      if (result.files.length === 0) {
         onToast('Nenhum arquivo comprimido encontrado.', 'info');
         setStep('config');
       } else {
@@ -133,14 +259,40 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
     }
   }, [sourceFolder, onToast]);
 
+  const supportedFiles = files.filter(f => ['.zip', '.rar', '.7z', '.tar', '.gz', '.tar.gz'].includes(f.ext));
+  const unsupportedFiles = files.filter(f => !['.zip', '.rar', '.7z', '.tar', '.gz', '.tar.gz'].includes(f.ext));
+  const selectedSupportedFiles = supportedFiles.filter(f => selectedFiles.has(f.path));
+  const totalCompressedSize = selectedSupportedFiles.reduce((sum, f) => sum + f.size, 0);
+  const allSelected = supportedFiles.length > 0 && supportedFiles.every(f => selectedFiles.has(f.path));
+
+  const handleToggleFile = useCallback((path: string) => {
+    setSelectedFiles((prev) => {
+      const next = new Set(prev);
+      if (next.has(path)) next.delete(path);
+      else next.add(path);
+      return next;
+    });
+  }, []);
+
+  const handleToggleAll = useCallback(() => {
+    if (allSelected) {
+      setSelectedFiles(new Set());
+    } else {
+      setSelectedFiles(new Set(supportedFiles.map(f => f.path)));
+    }
+  }, [allSelected, supportedFiles]);
+
   const handleStartExtraction = useCallback(async (resume?: boolean) => {
     setStep('extracting');
     setLog([]);
     setResults([]);
     setStats({ successCount: 0, errorCount: 0, cancelledCount: 0, totalExtracted: 0, totalCompressed: 0, totalFiles: 0 });
+    setCurrentFile(null);
+    setIsPaused(false);
 
     window.api.onExtractionProgress((data) => {
       if (data.type === 'file-start') {
+        setCurrentFile({ name: data.fileName, progress: 0 });
         setLog((prev) => [
           ...prev,
           {
@@ -155,6 +307,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
           },
         ]);
       } else if (data.type === 'file-progress') {
+        setCurrentFile({ name: data.fileName, progress: data.progress });
         setLog((prev) => {
           const last = prev[prev.length - 1];
           if (last && last.fileName === data.fileName && last.status === 'extracting') {
@@ -172,6 +325,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
           }];
         });
       } else if (data.type === 'file-complete') {
+        setCurrentFile((prev) => prev?.name === data.fileName ? { name: data.fileName, progress: 100 } : prev);
         setLog((prev) => {
           const last = prev[prev.length - 1];
           if (last && last.fileName === data.fileName) {
@@ -189,6 +343,7 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
           }];
         });
       } else if (data.type === 'file-error') {
+        setCurrentFile(null);
         setLog((prev) => [...prev, {
           fileName: data.fileName,
           status: 'error' as const,
@@ -200,7 +355,14 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
           index: data.index,
           total: data.total,
         }]);
+      } else if (data.type === 'paused') {
+        setIsPaused(true);
+        setCurrentFile((prev) => prev ? { name: prev.name, progress: prev.progress } : null);
+      } else if (data.type === 'resumed') {
+        setIsPaused(false);
       } else if (data.type === 'complete') {
+        setCurrentFile(null);
+        setIsPaused(false);
         setResults(data.results);
         setStats({
           successCount: data.successCount,
@@ -215,17 +377,20 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
       }
     });
 
-    window.api.startExtraction({ files, mode, deleteAfter, resume });
-  }, [files, mode, deleteAfter]);
+    window.api.startExtraction({ files: selectedSupportedFiles, mode, deleteAfter, resume });
+  }, [selectedSupportedFiles, mode, deleteAfter]);
 
   const handleCancel = useCallback(async () => {
     await window.api.cancelExtraction();
-    window.api.removeExtractionProgressListener();
   }, []);
 
-  const supportedFiles = files.filter(f => ['.zip', '.rar', '.7z', '.tar', '.gz', '.tar.gz'].includes(f.ext));
-  const unsupportedFiles = files.filter(f => !['.zip', '.rar', '.7z', '.tar', '.gz', '.tar.gz'].includes(f.ext));
-  const totalCompressedSize = files.reduce((sum, f) => sum + f.size, 0);
+  const handlePauseResume = useCallback(async () => {
+    if (isPaused) {
+      await window.api.resumeExtraction();
+    } else {
+      await window.api.pauseExtraction();
+    }
+  }, [isPaused]);
 
   return (
     <Overlay onClick={onClose}>
@@ -311,10 +476,19 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                                 });
 
                                 try {
-                                  const found = await window.api.scanCompressed(sourceFolder);
-                                  setFiles(found);
+                                  const result = await window.api.scanCompressed(sourceFolder);
+                                  setFiles(result.files);
+                                  setSelectedFiles(new Set(result.files.filter(f => ['.zip', '.rar', '.7z', '.tar', '.gz', '.tar.gz'].includes(f.ext)).map(f => f.path)));
                                   window.api.removeScanCompressedProgressListener();
-                                  if (found.length === 0) {
+
+                                  try {
+                                    const space = await window.api.getDiskSpace(sourceFolder);
+                                    setDiskSpace({ free: space.free, estimated: result.estimatedExtractedSize });
+                                  } catch {
+                                    setDiskSpace(null);
+                                  }
+
+                                  if (result.files.length === 0) {
                                     onToast('Nenhum arquivo comprimido encontrado.', 'info');
                                     setStep('config');
                                   } else {
@@ -411,15 +585,50 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
               <FilesSection>
                 <FilesHeader>
                   <FilesCount>
-                    {supportedFiles.length} arquivo(s) compatível(is) encontrado(s)
+                    {selectedSupportedFiles.length} de {supportedFiles.length} arquivo(s) selecionado(s)
                     {unsupportedFiles.length > 0 && ` · ${unsupportedFiles.length} não suportado(s)`}
                   </FilesCount>
                   <FilesSize>{formatSize(totalCompressedSize)} total</FilesSize>
                 </FilesHeader>
 
+                <FilesToolbar>
+                  <ToolbarButton onClick={handleToggleAll}>
+                    {allSelected ? <LuCircleX size={14} /> : <LuCircleCheckBig size={14} />}
+                    {allSelected ? 'Desmarcar Tudo' : 'Selecionar Tudo'}
+                  </ToolbarButton>
+                </FilesToolbar>
+
+                {diskSpace && (
+                  <DiskSpaceCard $warning={diskSpace.estimated > diskSpace.free}>
+                    <DiskSpaceRow>
+                      <DiskSpaceLabel>Tamanho comprimido:</DiskSpaceLabel>
+                      <DiskSpaceValue>{formatSize(totalCompressedSize)}</DiskSpaceValue>
+                    </DiskSpaceRow>
+                    <DiskSpaceRow>
+                      <DiskSpaceLabel>Espaço estimado para extração:</DiskSpaceLabel>
+                      <DiskSpaceValue>{formatSize(diskSpace.estimated * (selectedSupportedFiles.length / Math.max(supportedFiles.length, 1)))} (estimativa)</DiskSpaceValue>
+                    </DiskSpaceRow>
+                    <DiskSpaceRow>
+                      <DiskSpaceLabel>Espaço necessário total:</DiskSpaceLabel>
+                      <DiskSpaceValue $warning={deleteAfter && diskSpace.estimated * (selectedSupportedFiles.length / Math.max(supportedFiles.length, 1)) > diskSpace.free}>
+                        {formatSize(deleteAfter ? diskSpace.estimated * (selectedSupportedFiles.length / Math.max(supportedFiles.length, 1)) : totalCompressedSize + diskSpace.estimated * (selectedSupportedFiles.length / Math.max(supportedFiles.length, 1)))}
+                      </DiskSpaceValue>
+                    </DiskSpaceRow>
+                    {diskSpace.estimated * (selectedSupportedFiles.length / Math.max(supportedFiles.length, 1)) > diskSpace.free && (
+                      <DiskSpaceWarning>
+                        <LuTriangleAlert size={14} />
+                        Espaço insuficiente! Necessário: {formatSize(diskSpace.estimated * (selectedSupportedFiles.length / Math.max(supportedFiles.length, 1)))}, Disponível: {formatSize(diskSpace.free)}
+                      </DiskSpaceWarning>
+                    )}
+                  </DiskSpaceCard>
+                )}
+
                 <FileList>
                   {supportedFiles.map((f) => (
-                    <FileItem key={f.path}>
+                    <FileItem key={f.path} $selected={selectedFiles.has(f.path)} onClick={() => handleToggleFile(f.path)}>
+                      <FileCheckbox $checked={selectedFiles.has(f.path)}>
+                        {selectedFiles.has(f.path) && <LuCircleCheckBig size={12} />}
+                      </FileCheckbox>
                       <LuArchive size={16} color="#818cf8" />
                       <FileItemName>{f.name}</FileItemName>
                       <FileItemExt>{f.ext}</FileItemExt>
@@ -460,6 +669,28 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
                     />
                   </ExtractionsBarBg>
                 </ExtractionProgress>
+
+                {currentFile && (
+                  <CurrentFileSection>
+                    <CurrentFileHeader>
+                      <CurrentFileName title={currentFile.name}>
+                        {currentFile.name.length > 40 ? currentFile.name.substring(0, 37) + '...' : currentFile.name}
+                      </CurrentFileName>
+                      {isPaused ? (
+                        <PausedLabel>Pausado</PausedLabel>
+                      ) : (
+                        <CurrentFilePercent>{currentFile.progress.toFixed(0)}%</CurrentFilePercent>
+                      )}
+                    </CurrentFileHeader>
+                    <CurrentFileBarBg>
+                      <CurrentFileBarFill
+                        initial={{ width: '0%' }}
+                        animate={{ width: `${currentFile.progress}%` }}
+                        transition={{ duration: 0.2 }}
+                      />
+                    </CurrentFileBarBg>
+                  </CurrentFileSection>
+                )}
 
                 <ExtractionLog ref={logRef}>
                   <AnimatePresence>
@@ -591,9 +822,9 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
           {step === 'files' && (
             <>
               <FooterButton onClick={() => setStep('config')}>Voltar</FooterButton>
-              <FooterButton $variant="success" onClick={() => handleStartExtraction()}>
+              <FooterButton $variant="success" onClick={() => handleStartExtraction()} disabled={selectedSupportedFiles.length === 0}>
                 <LuDownload size={16} />
-                Iniciar Extração ({supportedFiles.length})
+                Iniciar Extração ({selectedSupportedFiles.length})
               </FooterButton>
             </>
           )}
@@ -603,10 +834,16 @@ export function ExtractorModal({ onClose, onToast }: ExtractorModalProps) {
               <FooterStats>
                 {log.filter(l => l.status === 'complete').length} concluído(s) · {log.filter(l => l.status === 'error').length} erro(s)
               </FooterStats>
-              <FooterButton $variant="danger" onClick={handleCancel}>
-                <LuSquare size={16} />
-                Cancelar
-              </FooterButton>
+              <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <PauseButton $paused={isPaused} onClick={handlePauseResume}>
+                  {isPaused ? <LuPlay size={16} /> : <LuPause size={16} />}
+                  {isPaused ? 'Retomar' : 'Pausar'}
+                </PauseButton>
+                <FooterButton $variant="danger" onClick={handleCancel}>
+                  <LuSquare size={16} />
+                  Cancelar
+                </FooterButton>
+              </div>
             </>
           )}
 

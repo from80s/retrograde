@@ -60,7 +60,11 @@ export interface ApiBridge {
   onCurationProgress: (callback: (data: any) => void) => void;
   removeCurationProgressListener: () => void;
   deleteRemovedFolder: (folder: string) => Promise<boolean>;
-  scanCompressed: (folder: string) => Promise<{ path: string; name: string; size: number; ext: string }[]>;
+  scanCompressed: (folder: string) => Promise<{
+    files: { path: string; name: string; size: number; ext: string }[];
+    totalSize: number;
+    estimatedExtractedSize: number;
+  }>;
   onScanCompressedProgress: (callback: (data: { progress: number; scanned: number; total: number; found: number }) => void) => void;
   removeScanCompressedProgressListener: () => void;
   startExtraction: (options: { files: { path: string; name: string; size: number; ext: string }[]; mode: string; deleteAfter: boolean; resume?: boolean }) => Promise<{
@@ -75,6 +79,22 @@ export interface ApiBridge {
   cancelExtraction: () => Promise<boolean>;
   onExtractionProgress: (callback: (data: any) => void) => void;
   removeExtractionProgressListener: () => void;
+  pauseExtraction: () => Promise<boolean>;
+  resumeExtraction: () => Promise<boolean>;
+  getExtractionStatus: () => Promise<{ active: boolean; paused: boolean; state: any }>;
+  getBackgroundExtractionStatus: () => Promise<{
+    active: boolean;
+    paused: boolean;
+    folder: string;
+    total: number;
+    completed: number;
+    currentFile: string;
+    successCount: number;
+    errorCount: number;
+  } | null>;
+  onBackgroundExtractionProgress: (callback: (data: any) => void) => void;
+  removeBackgroundExtractionProgressListener: () => void;
+  getDiskSpace: (folder: string) => Promise<{ free: number; total: number }>;
   scanOrphanFiles: (folder: string) => Promise<{ path: string; name: string; size: number; ext: string; category: string }[]>;
   deleteOrphanFiles: (files: { path: string }[]) => Promise<{ deleted: number; freedBytes: number }>;
   fetchTgdbAssets: (gameName: string, platformId: number) => Promise<{

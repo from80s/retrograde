@@ -410,6 +410,31 @@ export const FilesSize = styled.p`
   color: #52525b;
 `;
 
+export const FilesToolbar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const ToolbarButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  color: #a1a1aa;
+  background: rgba(39, 39, 42, 0.4);
+  border: 1px solid rgba(63, 63, 70, 0.4);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: rgba(63, 63, 70, 0.6);
+    color: #d4d4d8;
+  }
+`;
+
 export const FileList = styled.div`
   display: flex;
   flex-direction: column;
@@ -419,13 +444,34 @@ export const FileList = styled.div`
   ${thinScrollbar}
 `;
 
-export const FileItem = styled.div`
+export const FileItem = styled.div<{ $selected?: boolean }>`
   display: flex;
   align-items: center;
   gap: 0.75rem;
   padding: 0.625rem 1rem;
-  background: rgba(39, 39, 42, 0.2);
+  background: ${(p) => p.$selected ? 'rgba(129, 140, 248, 0.08)' : 'rgba(39, 39, 42, 0.2)'};
+  border: 1px solid ${(p) => p.$selected ? 'rgba(129, 140, 248, 0.2)' : 'transparent'};
   border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: ${(p) => p.$selected ? 'rgba(129, 140, 248, 0.12)' : 'rgba(39, 39, 42, 0.4)'};
+  }
+`;
+
+export const FileCheckbox = styled.div<{ $checked?: boolean }>`
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 0.25rem;
+  border: 1.5px solid ${(p) => p.$checked ? '#818cf8' : '#52525b'};
+  background: ${(p) => p.$checked ? '#818cf8' : 'transparent'};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  transition: all 0.15s ease;
 `;
 
 export const FileItemName = styled.span`
@@ -774,4 +820,121 @@ export const ScrollableContent = styled.div`
   overflow-y: auto;
   ${thinScrollbar}
   padding: 1.5rem;
+`;
+
+export const DiskSpaceCard = styled.div<{ $warning: boolean }>`
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid;
+  ${({ $warning }) => $warning && css`
+    background: rgba(251, 191, 36, 0.1);
+    border-color: rgba(251, 191, 36, 0.2);
+  `}
+  ${({ $warning }) => !$warning && css`
+    background: rgba(39, 39, 42, 0.3);
+    border-color: rgba(63, 63, 70, 0.3);
+  `}
+`;
+
+export const DiskSpaceRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+`;
+
+export const DiskSpaceLabel = styled.span`
+  color: #a1a1aa;
+`;
+
+export const DiskSpaceValue = styled.span<{ $warning?: boolean }>`
+  font-weight: 600;
+  color: ${({ $warning }) => $warning ? '#fbbf24' : '#d4d4d8'};
+`;
+
+export const DiskSpaceWarning = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #fbbf24;
+`;
+
+export const CurrentFileSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(39, 39, 42, 0.2);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(63, 63, 70, 0.2);
+`;
+
+export const CurrentFileHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const CurrentFileName = styled.span`
+  font-size: 0.8125rem;
+  color: #d4d4d8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  margin-right: 0.5rem;
+`;
+
+export const CurrentFilePercent = styled.span`
+  font-size: 0.75rem;
+  color: #818cf8;
+  font-weight: 600;
+`;
+
+export const CurrentFileBarBg = styled.div`
+  height: 0.5rem;
+  background: #27272a;
+  border-radius: 9999px;
+  overflow: hidden;
+`;
+
+export const CurrentFileBarFill = styled(motion.div)`
+  height: 100%;
+  background: #818cf8;
+  border-radius: 9999px;
+`;
+
+export const PauseButton = styled.button<{ $paused: boolean }>`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid;
+  background: transparent;
+  font-size: 0.875rem;
+  ${({ $paused }) => $paused && css`
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    border-color: rgba(34, 197, 94, 0.3);
+    &:hover { background: rgba(34, 197, 94, 0.2); }
+  `}
+  ${({ $paused }) => !$paused && css`
+    background: rgba(251, 191, 36, 0.1);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.3);
+    &:hover { background: rgba(251, 191, 36, 0.2); }
+  `}
+  &:active { transform: scale(0.95); }
+`;
+
+export const PausedLabel = styled.span`
+  font-size: 0.75rem;
+  color: #fbbf24;
+  font-weight: 500;
 `;

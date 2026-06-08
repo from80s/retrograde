@@ -74,6 +74,17 @@ contextBridge.exposeInMainWorld('api', {
     ipcRenderer.invoke('export-assets-esde', options),
   exportAssetsManual: (options: { targetDir: string; gameName: string; assets: { boxart: string | null; screenshots: string[]; fanart: string[]; banner: string | null; logo: string | null } }) =>
     ipcRenderer.invoke('export-assets-manual', options),
+  pauseExtraction: () => ipcRenderer.invoke('pause-extraction'),
+  resumeExtraction: () => ipcRenderer.invoke('resume-extraction'),
+  getExtractionStatus: () => ipcRenderer.invoke('get-extraction-status'),
+  getBackgroundExtractionStatus: () => ipcRenderer.invoke('get-background-extraction-status'),
+  onBackgroundExtractionProgress: (callback: (data: any) => void) => {
+    ipcRenderer.on('background-extraction-progress', (_, data) => callback(data));
+  },
+  removeBackgroundExtractionProgressListener: () => {
+    ipcRenderer.removeAllListeners('background-extraction-progress');
+  },
+  getDiskSpace: (folder: string) => ipcRenderer.invoke('get-disk-space', folder),
   windowMinimize: () => ipcRenderer.invoke('window-minimize'),
   windowMaximize: () => ipcRenderer.invoke('window-maximize'),
   windowClose: () => ipcRenderer.invoke('window-close'),
