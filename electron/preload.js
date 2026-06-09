@@ -80,6 +80,10 @@ electron_1.contextBridge.exposeInMainWorld('api', {
         electron_1.ipcRenderer.removeAllListeners('background-extraction-progress');
     },
     getDiskSpace: (folder) => electron_1.ipcRenderer.invoke('get-disk-space', folder),
+    checkFileExists: (filePath) => electron_1.ipcRenderer.invoke('check-file-exists', filePath),
+    checkDirHasContent: (dirPath) => electron_1.ipcRenderer.invoke('check-dir-has-content', dirPath),
+    countDirEntries: (dirPath) => electron_1.ipcRenderer.invoke('count-dir-entries', dirPath),
+    getDirSize: (dirPath) => electron_1.ipcRenderer.invoke('get-dir-size', dirPath),
     windowMinimize: () => electron_1.ipcRenderer.invoke('window-minimize'),
     windowMaximize: () => electron_1.ipcRenderer.invoke('window-maximize'),
     windowClose: () => electron_1.ipcRenderer.invoke('window-close'),

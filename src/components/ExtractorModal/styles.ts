@@ -208,6 +208,9 @@ export const ResumeActions = styled.div`
 `;
 
 export const TextButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
   padding: 0.5rem 1rem;
   border-radius: 0.75rem;
   font-size: 0.75rem;
@@ -827,13 +830,46 @@ export const DiskSpaceCard = styled.div<{ $warning: boolean }>`
   border-radius: 0.75rem;
   border: 1px solid;
   ${({ $warning }) => $warning && css`
-    background: rgba(251, 191, 36, 0.1);
-    border-color: rgba(251, 191, 36, 0.2);
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
   `}
   ${({ $warning }) => !$warning && css`
     background: rgba(39, 39, 42, 0.3);
     border-color: rgba(63, 63, 70, 0.3);
   `}
+`;
+
+export const DiskSpaceBarContainer = styled.div`
+  margin-bottom: 0.75rem;
+`;
+
+export const DiskSpaceBarBg = styled.div`
+  height: 0.5rem;
+  background: #27272a;
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+`;
+
+export const DiskSpaceBarFill = styled(motion.div)<{ $warning: boolean }>`
+  height: 100%;
+  border-radius: 9999px;
+  background: ${({ $warning }) => $warning ? '#ef4444' : '#22c55e'};
+`;
+
+export const DiskSpaceBarPulse = styled(motion.div)<{ $warning: boolean }>`
+  height: 100%;
+  border-radius: 9999px;
+  position: absolute;
+  inset: 0;
+  background: ${({ $warning }) => $warning ? '#ef4444' : 'transparent'};
+  ${({ $warning }) => $warning && css`
+    animation: pulse-red 1.5s ease-in-out infinite;
+  `}
+  @keyframes pulse-red {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
 `;
 
 export const DiskSpaceRow = styled.div`
@@ -849,7 +885,8 @@ export const DiskSpaceLabel = styled.span`
 
 export const DiskSpaceValue = styled.span<{ $warning?: boolean }>`
   font-weight: 600;
-  color: ${({ $warning }) => $warning ? '#fbbf24' : '#d4d4d8'};
+  color: ${({ $warning }) => $warning ? '#ef4444' : '#d4d4d8'};
+  font-variant-numeric: tabular-nums;
 `;
 
 export const DiskSpaceWarning = styled.div`
@@ -858,52 +895,7 @@ export const DiskSpaceWarning = styled.div`
   gap: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.75rem;
-  color: #fbbf24;
-`;
-
-export const CurrentFileSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  background: rgba(39, 39, 42, 0.2);
-  border-radius: 0.75rem;
-  border: 1px solid rgba(63, 63, 70, 0.2);
-`;
-
-export const CurrentFileHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const CurrentFileName = styled.span`
-  font-size: 0.8125rem;
-  color: #d4d4d8;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  flex: 1;
-  margin-right: 0.5rem;
-`;
-
-export const CurrentFilePercent = styled.span`
-  font-size: 0.75rem;
-  color: #818cf8;
-  font-weight: 600;
-`;
-
-export const CurrentFileBarBg = styled.div`
-  height: 0.5rem;
-  background: #27272a;
-  border-radius: 9999px;
-  overflow: hidden;
-`;
-
-export const CurrentFileBarFill = styled(motion.div)`
-  height: 100%;
-  background: #818cf8;
-  border-radius: 9999px;
+  color: #ef4444;
 `;
 
 export const PauseButton = styled.button<{ $paused: boolean }>`
@@ -937,4 +929,50 @@ export const PausedLabel = styled.span`
   font-size: 0.75rem;
   color: #fbbf24;
   font-weight: 500;
+`;
+
+export const ConfirmOverlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  border-radius: 1rem;
+`;
+
+export const ConfirmDialog = styled.div`
+  background: rgba(24, 24, 27, 0.95);
+  border: 1px solid rgba(63, 63, 70, 0.5);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 24rem;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const ConfirmTitle = styled.h4`
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fafafa;
+  margin-bottom: 0.5rem;
+`;
+
+export const ConfirmMessage = styled.p`
+  font-size: 0.8125rem;
+  color: #a1a1aa;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+`;
+
+export const ConfirmActions = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  width: 100%;
 `;

@@ -40,13 +40,28 @@ const electron_1 = require("electron");
 const path_1 = __importDefault(require("path"));
 const fs_extra_1 = __importDefault(require("fs-extra"));
 const axios_1 = __importDefault(require("axios"));
-const unzipper_1 = __importDefault(require("unzipper"));
-const _7zip_min_1 = __importDefault(require("7zip-min"));
-const tar = __importStar(require("tar"));
-const zlib_1 = __importDefault(require("zlib"));
 const child_process_1 = require("child_process");
 const util_1 = require("util");
 const romDetector_1 = require("./romDetector");
+let nodeDiskInfo = null;
+try {
+    nodeDiskInfo = require('node-disk-info');
+    console.log('[RetroGrade] node-disk-info carregado');
+}
+catch (err) {
+    console.warn('[RetroGrade] node-disk-info não disponível:', err);
+}
+let sevenZipModule = null;
+let sevenZipPath = null;
+try {
+    sevenZipModule = require('node-7z');
+    const sevenBin = require('7zip-bin');
+    sevenZipPath = sevenBin.path7za.replace('app.asar', 'app.asar.unpacked');
+    console.log('[RetroGrade] node-7z carregado, binário:', sevenZipPath);
+}
+catch (err) {
+    console.warn('[RetroGrade] node-7z não disponível:', err);
+}
 const execAsync = (0, util_1.promisify)(child_process_1.exec);
 const isDev = process.env.NODE_ENV === 'development' || !!process.env.VITE_DEV_SERVER_URL;
 console.log('[RetroGrade] Starting app...');
@@ -1608,210 +1623,144 @@ function determineConcurrency(files) {
         return 3;
     return 2;
 }
-async function extractZipFile(zipPath, outputDir, onProgress) {
-    await fs_extra_1.default.mkdir(outputDir, { recursive: true });
-    const directory = await unzipper_1.default.Open.file(zipPath);
-    const files = directory.files.filter((f) => f.type === 'File');
-    const totalSize = files.reduce((sum, f) => sum + (f.uncompressedSize || 0), 0);
-    let extractedSize = 0;
-    let fileCount = 0;
-    for (const file of files) {
-        const outputPath = path_1.default.join(outputDir, file.path);
-        await fs_extra_1.default.mkdir(path_1.default.dirname(outputPath), { recursive: true });
-        await new Promise((resolve, reject) => {
-            const stream = file.stream();
-            const writeStream = fs_extra_1.default.createWriteStream(outputPath);
-            stream.pipe(writeStream);
-            writeStream.on('finish', () => {
-                extractedSize += file.uncompressedSize || 0;
-                fileCount++;
-                onProgress({
-                    type: 'file-progress',
-                    fileName: file.path,
-                    progress: totalSize > 0 ? (extractedSize / totalSize) * 100 : 0,
-                    extractedSize,
-                    totalSize,
-                });
-                resolve();
-            });
-            writeStream.on('error', reject);
-            stream.on('error', reject);
-        });
+function getSevenZipPath() {
+    if (!sevenZipPath || !fs_extra_1.default.existsSync(sevenZipPath)) {
+        throw new Error('Binário do 7-Zip não encontrado. Verifique se 7zip-bin está instalado.');
     }
-    return { extractedSize, fileCount };
+    return sevenZipPath;
 }
-async function extract7zFile(archivePath, outputDir, onProgress) {
-    await fs_extra_1.default.mkdir(outputDir, { recursive: true });
-    const entries = await new Promise((resolve, reject) => {
-        const timer = setTimeout(() => reject(new Error('Timeout ao listar arquivos do 7z')), 60000);
-        _7zip_min_1.default.list(archivePath, (err, result) => {
-            clearTimeout(timer);
-            if (err)
-                reject(err);
-            else
-                resolve(result || []);
-        });
-    });
-    const files = entries.filter((e) => e.method !== undefined);
-    const totalSize = files.reduce((sum, e) => sum + (e.size || 0), 0);
-    await new Promise((resolve, reject) => {
-        const timer = setTimeout(() => reject(new Error('Timeout ao extrair arquivo 7z')), 300000);
-        _7zip_min_1.default.unpack(archivePath, outputDir, (err) => {
-            clearTimeout(timer);
-            if (err)
-                reject(err);
-            else
-                resolve();
-        });
-    });
-    onProgress({
-        type: 'file-progress',
-        fileName: path_1.default.basename(archivePath),
-        progress: 100,
-        extractedSize: totalSize,
-        totalSize,
-    });
-    return { extractedSize: totalSize, fileCount: files.length };
-}
-async function extractRarFile(archivePath, outputDir, onProgress) {
-    await fs_extra_1.default.mkdir(outputDir, { recursive: true });
-    const entries = await new Promise((resolve, reject) => {
-        const timer = setTimeout(() => reject(new Error('Timeout ao listar arquivos do RAR')), 60000);
-        _7zip_min_1.default.list(archivePath, (err, result) => {
-            clearTimeout(timer);
-            if (err)
-                reject(err);
-            else
-                resolve(result || []);
-        });
-    });
-    const files = entries.filter((e) => e.method !== undefined);
-    const totalSize = files.reduce((sum, e) => sum + (e.size || 0), 0);
-    await new Promise((resolve, reject) => {
-        const timer = setTimeout(() => reject(new Error('Timeout ao extrair arquivo RAR')), 300000);
-        _7zip_min_1.default.unpack(archivePath, outputDir, (err) => {
-            clearTimeout(timer);
-            if (err)
-                reject(err);
-            else
-                resolve();
-        });
-    });
-    onProgress({
-        type: 'file-progress',
-        fileName: path_1.default.basename(archivePath),
-        progress: 100,
-        extractedSize: totalSize,
-        totalSize,
-    });
-    return { extractedSize: totalSize, fileCount: files.length };
-}
-async function extractTarFile(tarPath, outputDir, onProgress) {
-    await fs_extra_1.default.mkdir(outputDir, { recursive: true });
-    let fileCount = 0;
-    let extractedSize = 0;
-    await tar.x({
-        file: tarPath,
-        cwd: outputDir,
-        onentry: (entry) => {
-            if (entry.type === 'File') {
-                fileCount++;
-                extractedSize += entry.size || 0;
-                onProgress({
-                    type: 'file-progress',
-                    fileName: entry.path,
-                    progress: 0,
-                    extractedSize,
-                    totalSize: 0,
-                });
+function getDirSize(dir) {
+    let total = 0;
+    try {
+        const entries = fs_extra_1.default.readdirSync(dir, { withFileTypes: true });
+        for (const entry of entries) {
+            const full = path_1.default.join(dir, entry.name);
+            if (entry.isDirectory()) {
+                total += getDirSize(full);
             }
-        },
-    });
-    onProgress({
-        type: 'file-progress',
-        fileName: path_1.default.basename(tarPath),
-        progress: 100,
-        extractedSize,
-        totalSize: extractedSize,
-    });
-    return { extractedSize, fileCount };
+            else {
+                total += fs_extra_1.default.statSync(full).size;
+            }
+        }
+    }
+    catch { }
+    return total;
 }
-async function extractGzFile(gzPath, outputDir, onProgress) {
-    await fs_extra_1.default.mkdir(outputDir, { recursive: true });
-    const baseName = path_1.default.basename(gzPath, '.gz');
-    const outputPath = path_1.default.join(outputDir, baseName);
-    await new Promise((resolve, reject) => {
-        const readStream = fs_extra_1.default.createReadStream(gzPath);
-        const writeStream = fs_extra_1.default.createWriteStream(outputPath);
-        const gunzip = zlib_1.default.createGunzip();
-        let extractedSize = 0;
-        readStream.pipe(gunzip).pipe(writeStream);
-        gunzip.on('data', (chunk) => {
-            extractedSize += chunk.length;
-            onProgress({
-                type: 'file-progress',
-                fileName: baseName,
-                progress: 0,
-                extractedSize,
-                totalSize: 0,
+async function getTotalUncompressedSize(archivePath) {
+    if (!sevenZipModule)
+        return 0;
+    try {
+        const listStream = sevenZipModule.list(archivePath, { $bin: getSevenZipPath() });
+        let totalSize = 0;
+        await new Promise((resolve) => {
+            listStream.on('data', (entry) => {
+                if (entry.size && typeof entry.size === 'number' && entry.size > 0) {
+                    totalSize += entry.size;
+                }
             });
+            listStream.on('end', () => resolve());
+            listStream.on('error', () => resolve());
+            setTimeout(() => resolve(), 10000);
         });
-        writeStream.on('finish', () => resolve());
-        readStream.on('error', reject);
-        gunzip.on('error', reject);
-        writeStream.on('error', reject);
-    });
-    const stat = await fs_extra_1.default.stat(outputPath);
-    onProgress({
-        type: 'file-progress',
-        fileName: baseName,
-        progress: 100,
-        extractedSize: stat.size,
-        totalSize: stat.size,
-    });
-    return { extractedSize: stat.size, fileCount: 1 };
+        return totalSize;
+    }
+    catch {
+        return 0;
+    }
 }
-async function extractTarGzFile(tarGzPath, outputDir, onProgress) {
-    await fs_extra_1.default.mkdir(outputDir, { recursive: true });
-    let fileCount = 0;
-    let extractedSize = 0;
-    await tar.x({
-        file: tarGzPath,
-        cwd: outputDir,
-        onentry: (entry) => {
-            if (entry.type === 'File') {
-                fileCount++;
-                extractedSize += entry.size || 0;
-                onProgress({
-                    type: 'file-progress',
-                    fileName: entry.path,
-                    progress: 0,
-                    extractedSize,
-                    totalSize: 0,
-                });
-            }
-        },
-    });
-    onProgress({
-        type: 'file-progress',
-        fileName: path_1.default.basename(tarGzPath),
-        progress: 100,
-        extractedSize,
-        totalSize: extractedSize,
-    });
-    return { extractedSize, fileCount };
+let currentExtractionStream = null;
+function killCurrentExtraction() {
+    // 1) Mata a stream do node-7z (se existir)
+    if (currentExtractionStream) {
+        try {
+            currentExtractionStream.kill('SIGTERM');
+        }
+        catch { }
+        currentExtractionStream = null;
+    }
+    // 2) Força kill do processo 7za.exe via taskkill (Windows mata a árvore inteira)
+    try {
+        const { execSync } = require('child_process');
+        execSync('taskkill /F /T /IM 7za.exe', {
+            timeout: 5000,
+            stdio: 'ignore',
+            windowsHide: true,
+        });
+        console.log('[RetroGrade] 7za.exe morto via taskkill');
+    }
+    catch (e) {
+        // 7za.exe pode já ter terminado — isso é ok
+    }
 }
 async function extractFile(filePath, outputDir, onProgress) {
-    const ext = getExtension(filePath);
-    switch (ext) {
-        case '.zip': return extractZipFile(filePath, outputDir, onProgress);
-        case '.7z': return extract7zFile(filePath, outputDir, onProgress);
-        case '.rar': return extractRarFile(filePath, outputDir, onProgress);
-        case '.tar': return extractTarFile(filePath, outputDir, onProgress);
-        case '.gz': return extractGzFile(filePath, outputDir, onProgress);
-        case '.tar.gz': return extractTarGzFile(filePath, outputDir, onProgress);
-        default: throw new Error(`Formato não suportado: ${ext}`);
+    if (!sevenZipModule) {
+        throw new Error('node-7z não está disponível.');
     }
+    await fs_extra_1.default.mkdir(outputDir, { recursive: true });
+    const binPath = getSevenZipPath();
+    const archiveName = path_1.default.basename(filePath);
+    console.log(`[RetroGrade] Extraindo ${archiveName} -> ${outputDir}`);
+    const totalExpectedSize = await getTotalUncompressedSize(filePath);
+    console.log(`[RetroGrade] Tamanho total descompactado: ${totalExpectedSize} bytes`);
+    return new Promise((resolve, reject) => {
+        let fileCount = 0;
+        let resolved = false;
+        const stream = sevenZipModule.extractFull(filePath, outputDir, {
+            $bin: binPath,
+            $progress: true,
+        });
+        currentExtractionStream = stream;
+        // Progresso real via evento nativo do node-7z (parse do -bsp1 do 7za.exe)
+        stream.on('progress', (progress) => {
+            if (resolved)
+                return;
+            const percent = Math.min(progress.percent || 0, 99);
+            const currentExtracted = totalExpectedSize > 0
+                ? Math.round((percent / 100) * totalExpectedSize)
+                : 0;
+            onProgress({
+                type: 'file-progress',
+                fileName: progress.file || archiveName,
+                progress: percent,
+                extractedSize: currentExtracted,
+                totalSize: totalExpectedSize,
+            });
+        });
+        // Conta arquivos extraídos via data events
+        stream.on('data', () => {
+            fileCount++;
+        });
+        stream.on('end', () => {
+            currentExtractionStream = null;
+            if (resolved)
+                return;
+            resolved = true;
+            const extractedSize = getDirSize(outputDir);
+            onProgress({
+                type: 'file-progress',
+                fileName: archiveName,
+                progress: 100,
+                extractedSize,
+                totalSize: extractedSize,
+            });
+            resolve({ extractedSize, fileCount });
+        });
+        stream.on('error', (err) => {
+            currentExtractionStream = null;
+            if (resolved)
+                return;
+            resolved = true;
+            if (extractionCancelled) {
+                const extractedSize = getDirSize(outputDir);
+                onProgress({ type: 'file-progress', fileName: archiveName, progress: 0, extractedSize, totalSize: totalExpectedSize });
+                reject(new Error('cancelled'));
+            }
+            else {
+                console.error(`[RetroGrade] Erro na extração de ${archiveName}:`, err.message || err);
+                reject(new Error(err.message || `Erro ao extrair ${archiveName}`));
+            }
+        });
+    });
 }
 let extractionCancelled = false;
 let extractionPaused = false;
@@ -1819,29 +1768,80 @@ let extractionActive = false;
 let currentExtractionState = null;
 let progressLog = null;
 let extractionResults = [];
+let extractionFileStatuses = [];
+function sendBgProgress() {
+    if (!mainWindow)
+        return;
+    const completedCount = extractionResults.filter(r => r.status === 'success' || r.status === 'error').length;
+    mainWindow.webContents.send('background-extraction-progress', {
+        active: extractionActive,
+        paused: extractionPaused,
+        folder: currentExtractionState?.folder,
+        total: currentExtractionState?.files.length || 0,
+        completed: completedCount,
+        currentFile: currentExtractionState?.currentFile,
+        successCount: extractionResults.filter(r => r.status === 'success').length,
+        errorCount: extractionResults.filter(r => r.status === 'error').length,
+        fileStatuses: extractionFileStatuses,
+    });
+}
 electron_1.ipcMain.handle('cancel-extraction', async () => {
     extractionCancelled = true;
-    return true;
+    killCurrentExtraction();
+    if (progressLog) {
+        progressLog.cancelled = true;
+        try {
+            await writeProgressLog(progressLog.folder, progressLog);
+        }
+        catch { }
+    }
+    extractionActive = false;
+    currentExtractionState = null;
+    const successCount = extractionResults.filter(r => r.status === 'success').length;
+    const errorCount = extractionResults.filter(r => r.status === 'error').length;
+    const cancelledCount = extractionResults.filter(r => r.status === 'cancelled').length;
+    const totalExtracted = extractionResults.reduce((sum, r) => sum + r.extractedSize, 0);
+    const totalCompressed = extractionResults.reduce((sum, r) => sum + r.compressedSize, 0);
+    const totalFiles = extractionResults.reduce((sum, r) => sum + r.fileCount, 0);
+    mainWindow?.webContents.send('extraction-progress', {
+        type: 'complete',
+        results: extractionResults,
+        successCount,
+        errorCount,
+        cancelledCount,
+        totalExtracted,
+        totalCompressed,
+        totalFiles,
+    });
+    mainWindow?.webContents.send('background-extraction-progress', {
+        active: false,
+        paused: false,
+        folder: progressLog?.folder,
+        total: 0,
+        completed: 0,
+        currentFile: '',
+        successCount: 0,
+        errorCount: 0,
+        fileStatuses: [],
+    });
+    return {
+        results: extractionResults,
+        successCount,
+        errorCount,
+        cancelledCount,
+        totalExtracted,
+        totalCompressed,
+        totalFiles,
+    };
 });
 electron_1.ipcMain.handle('pause-extraction', async () => {
-    extractionPaused = true;
-    if (progressLog) {
-        progressLog.paused = true;
-        progressLog.lastPausedFile = currentExtractionState?.currentFile || null;
-        progressLog.pausedAt = new Date().toISOString();
-        await writeProgressLog(progressLog.folder, progressLog);
-    }
-    mainWindow?.webContents.send('extraction-progress', { type: 'paused' });
-    return true;
+    // Pausa não é suportada — 7za.exe é processo externo que não pode ser suspenso
+    // Mantido como no-op para compatibilidade com o frontend
+    return false;
 });
 electron_1.ipcMain.handle('resume-extraction', async () => {
-    extractionPaused = false;
-    if (progressLog) {
-        progressLog.paused = false;
-        await writeProgressLog(progressLog.folder, progressLog);
-    }
-    mainWindow?.webContents.send('extraction-progress', { type: 'resumed' });
-    return true;
+    // Pausa não é suportada — 7za.exe é processo externo que não pode ser suspenso
+    return false;
 });
 electron_1.ipcMain.handle('get-extraction-status', async () => {
     return {
@@ -1849,6 +1849,27 @@ electron_1.ipcMain.handle('get-extraction-status', async () => {
         paused: extractionPaused,
         state: currentExtractionState,
     };
+});
+// Verifica espaço livre em disco na unidade do destino
+electron_1.ipcMain.handle('get-disk-space', async (_, folder) => {
+    const driveLetter = path_1.default.parse(folder).root.replace('\\', '').toUpperCase();
+    if (!nodeDiskInfo)
+        return { free: 0, total: 0 };
+    try {
+        const disks = await nodeDiskInfo.getDiskInfo();
+        for (const disk of disks) {
+            const mountedLetter = disk.mounted.replace('\\', '').replace(':', '').toUpperCase();
+            if (mountedLetter === driveLetter) {
+                const free = Number(disk.available) || 0;
+                const total = Number(disk.blocks) || 0;
+                return { free, total };
+            }
+        }
+    }
+    catch (err) {
+        console.warn('[RetroGrade] node-disk-info erro:', err);
+    }
+    return { free: 0, total: 0 };
 });
 let curationCancelled = false;
 let simulationCancelled = false;
@@ -1884,6 +1905,85 @@ electron_1.ipcMain.handle('delete-progress-log', async (_, folder) => {
         return true;
     }
     return false;
+});
+// Verifica se um arquivo existe no disco
+electron_1.ipcMain.handle('check-file-exists', async (_, filePath) => {
+    try {
+        return await fs_extra_1.default.pathExists(filePath);
+    }
+    catch {
+        return false;
+    }
+});
+// Verifica se um diretório existe e tem conteúdo (arquivos)
+electron_1.ipcMain.handle('check-dir-has-content', async (_, dirPath) => {
+    try {
+        const stat = await fs_extra_1.default.stat(dirPath);
+        if (!stat.isDirectory()) {
+            return stat.size > 0;
+        }
+        const entries = await fs_extra_1.default.readdir(dirPath);
+        return entries.length > 0;
+    }
+    catch {
+        return false;
+    }
+});
+// Conta entradas recursivamente em um diretório
+function countDirEntriesSync(dirPath) {
+    let count = 0;
+    try {
+        const entries = fs_extra_1.default.readdirSync(dirPath, { withFileTypes: true });
+        for (const entry of entries) {
+            if (entry.isFile())
+                count++;
+            else if (entry.isDirectory()) {
+                count += countDirEntriesSync(path_1.default.join(dirPath, entry.name));
+            }
+        }
+    }
+    catch { }
+    return count;
+}
+electron_1.ipcMain.handle('count-dir-entries', async (_, dirPath) => {
+    try {
+        const stat = await fs_extra_1.default.stat(dirPath);
+        if (!stat.isDirectory())
+            return 1;
+        return countDirEntriesSync(dirPath);
+    }
+    catch {
+        return 0;
+    }
+});
+// Retorna tamanho total de um diretório (recursivo, bytes)
+function getDirSizeSync(dirPath) {
+    let total = 0;
+    try {
+        const entries = fs_extra_1.default.readdirSync(dirPath, { withFileTypes: true });
+        for (const entry of entries) {
+            const full = path_1.default.join(dirPath, entry.name);
+            if (entry.isFile()) {
+                total += fs_extra_1.default.statSync(full).size;
+            }
+            else if (entry.isDirectory()) {
+                total += getDirSizeSync(full);
+            }
+        }
+    }
+    catch { }
+    return total;
+}
+electron_1.ipcMain.handle('get-dir-size', async (_, dirPath) => {
+    try {
+        const stat = await fs_extra_1.default.stat(dirPath);
+        if (!stat.isDirectory())
+            return stat.size;
+        return getDirSizeSync(dirPath);
+    }
+    catch {
+        return 0;
+    }
 });
 async function countEntries(dir) {
     let count = 0;
@@ -1939,7 +2039,6 @@ electron_1.ipcMain.handle('scan-compressed', async (_, folder) => {
 electron_1.ipcMain.handle('start-extraction', async (_, options) => {
     const { files: rawFiles, mode, deleteAfter, resume } = options;
     extractionCancelled = false;
-    extractionPaused = false;
     progressLog = null;
     if (resume && rawFiles.length > 0) {
         const folder = path_1.default.dirname(rawFiles[0].path);
@@ -1950,11 +2049,34 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
     }
     const completedPaths = new Set(progressLog?.completedFiles.map(f => f.path) || []);
     const files = rawFiles.filter(f => !completedPaths.has(f.path));
+    // Verifica espaço em disco antes de iniciar
+    if (files.length > 0) {
+        try {
+            const drive = path_1.default.parse(path_1.default.dirname(files[0].path)).root.charAt(0);
+            const { execSync } = require('child_process');
+            const diskResult = execSync(`powershell -NoProfile -Command (Get-PSDrive ${drive}).Free`, { encoding: 'utf-8', timeout: 5000, windowsHide: true });
+            const freeBytes = parseInt(diskResult.trim(), 10);
+            const totalCompressed = files.reduce((sum, f) => sum + f.size, 0);
+            const estimatedNeeded = totalCompressed * 3;
+            if (!isNaN(freeBytes) && freeBytes > 0 && freeBytes < estimatedNeeded) {
+                mainWindow?.webContents.send('extraction-progress', {
+                    type: 'disk-error',
+                    free: freeBytes,
+                    needed: estimatedNeeded,
+                });
+                return { results: [], successCount: 0, errorCount: 0, cancelledCount: 0, totalExtracted: 0, totalCompressed: 0, totalFiles: 0, diskError: true };
+            }
+        }
+        catch {
+            // Se não conseguir verificar, continua normalmente
+        }
+    }
     if (!progressLog) {
         const folder = files.length > 0 ? path_1.default.dirname(files[0].path) : '';
         progressLog = {
             folder,
             type: 'extraction',
+            mode,
             startedAt: new Date().toISOString(),
             completedFiles: [],
             stats: { total: rawFiles.length },
@@ -1965,6 +2087,14 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
             await writeProgressLog(folder, progressLog);
     }
     extractionResults = [];
+    extractionFileStatuses = rawFiles.map(f => ({
+        fileName: f.name,
+        status: 'pending',
+        progress: 0,
+        compressedSize: f.size,
+        extractedSize: 0,
+        fileCount: 0,
+    }));
     // Re-adiciona resultados de arquivos já processados se resumindo
     if (resume && progressLog?.completedFiles.length > 0) {
         for (const cf of progressLog.completedFiles) {
@@ -1994,6 +2124,10 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
         const outputDir = mode === 'own-folder'
             ? path_1.default.join(path_1.default.dirname(file.path), file.name.replace(/\.[^.]+$/, '').replace(/\.tar$/, ''))
             : path_1.default.dirname(file.path);
+        const fileStatusIdx = extractionFileStatuses.findIndex(s => s.fileName === file.name);
+        if (fileStatusIdx >= 0) {
+            extractionFileStatuses[fileStatusIdx] = { ...extractionFileStatuses[fileStatusIdx], status: 'extracting', progress: 0 };
+        }
         mainWindow?.webContents.send('extraction-progress', {
             type: 'file-start',
             fileName: file.name,
@@ -2001,14 +2135,26 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
             total: rawFiles.length,
             compressedSize: file.size,
         });
+        sendBgProgress();
         try {
             const result = await extractFile(file.path, outputDir, (progress) => {
+                if (fileStatusIdx >= 0) {
+                    extractionFileStatuses[fileStatusIdx] = {
+                        ...extractionFileStatuses[fileStatusIdx],
+                        progress: Math.min(progress.progress, 99),
+                        extractedSize: progress.extractedSize,
+                    };
+                }
                 mainWindow?.webContents.send('extraction-progress', {
+                    type: 'file-progress',
+                    fileName: file.name,
                     index: idx,
                     total: rawFiles.length,
                     compressedSize: file.size,
-                    ...progress,
+                    progress: Math.min(progress.progress, 99),
+                    extractedSize: progress.extractedSize,
                 });
+                sendBgProgress();
             });
             if (deleteAfter) {
                 await fs_extra_1.default.remove(file.path);
@@ -2020,8 +2166,28 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
                 extractedSize: result.extractedSize,
                 fileCount: result.fileCount,
             });
-            progressLog.completedFiles.push({ path: file.path, name: file.name, status: 'success' });
-            await writeProgressLog(progressLog.folder, progressLog);
+            if (fileStatusIdx >= 0) {
+                extractionFileStatuses[fileStatusIdx] = {
+                    ...extractionFileStatuses[fileStatusIdx],
+                    status: 'complete',
+                    progress: 100,
+                    extractedSize: result.extractedSize,
+                    fileCount: result.fileCount,
+                };
+            }
+            progressLog.completedFiles.push({
+                path: file.path,
+                name: file.name,
+                status: 'success',
+                fileCount: result.fileCount,
+                extractedSize: result.extractedSize,
+            });
+            try {
+                await writeProgressLog(progressLog.folder, progressLog);
+            }
+            catch (logErr) {
+                console.error('[RetroGrade] Erro ao salvar progresso:', logErr);
+            }
             mainWindow?.webContents.send('extraction-progress', {
                 type: 'file-complete',
                 fileName: file.name,
@@ -2030,34 +2196,84 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
                 extractedSize: result.extractedSize,
                 fileCount: result.fileCount,
             });
+            sendBgProgress();
         }
         catch (error) {
-            extractionResults.push({
-                name: file.name,
-                status: 'error',
-                compressedSize: file.size,
-                extractedSize: 0,
-                fileCount: 0,
-                error: error.message,
-            });
-            progressLog.completedFiles.push({ path: file.path, name: file.name, status: 'error' });
-            await writeProgressLog(progressLog.folder, progressLog);
-            mainWindow?.webContents.send('extraction-progress', {
-                type: 'file-error',
-                fileName: file.name,
-                index: idx,
-                total: rawFiles.length,
-                error: error.message,
-            });
+            console.error(`[RetroGrade] Erro ao extrair ${file.name}:`, error.message);
+            if (extractionCancelled || error.message === 'cancelled') {
+                extractionResults.push({
+                    name: file.name,
+                    status: 'cancelled',
+                    compressedSize: file.size,
+                    extractedSize: 0,
+                    fileCount: 0,
+                });
+            }
+            else {
+                extractionResults.push({
+                    name: file.name,
+                    status: 'error',
+                    compressedSize: file.size,
+                    extractedSize: 0,
+                    fileCount: 0,
+                    error: error.message,
+                });
+                progressLog.completedFiles.push({ path: file.path, name: file.name, status: 'error' });
+                try {
+                    await writeProgressLog(progressLog.folder, progressLog);
+                }
+                catch (logErr) {
+                    console.error('[RetroGrade] Erro ao salvar progresso (error path):', logErr);
+                }
+                mainWindow?.webContents.send('extraction-progress', {
+                    type: 'file-error',
+                    fileName: file.name,
+                    index: idx,
+                    total: rawFiles.length,
+                    error: error.message,
+                });
+            }
+            sendBgProgress();
         }
     }
-    while (queue.length > 0 || running.length > 0) {
-        while (extractionPaused) {
-            await new Promise(resolve => setTimeout(resolve, 500));
-            if (extractionCancelled)
-                break;
-        }
-        while (running.length < concurrency && queue.length > 0) {
+    try {
+        while (queue.length > 0 || running.length > 0) {
+            while (running.length < concurrency && queue.length > 0) {
+                if (extractionCancelled) {
+                    while (queue.length > 0) {
+                        const file = queue.shift();
+                        extractionResults.push({ name: file.name, status: 'cancelled', compressedSize: file.size, extractedSize: 0, fileCount: 0 });
+                    }
+                    break;
+                }
+                const file = queue.shift();
+                const idx = index++;
+                if (currentExtractionState) {
+                    currentExtractionState.currentIndex = idx;
+                    currentExtractionState.currentFile = file.name;
+                }
+                mainWindow?.webContents.send('extraction-progress', {
+                    type: 'status-update',
+                    currentIndex: idx,
+                    totalFiles: rawFiles.length,
+                    currentFile: file.name,
+                });
+                const promise = processFile(file, idx).then(() => {
+                    const i = running.indexOf(promise);
+                    if (i > -1)
+                        running.splice(i, 1);
+                    sendBgProgress();
+                }).catch((err) => {
+                    console.error('[RetroGrade] processFile inesperadamente rejeitou:', err);
+                    const i = running.indexOf(promise);
+                    if (i > -1)
+                        running.splice(i, 1);
+                });
+                running.push(promise);
+            }
+            if (running.length > 0) {
+                await Promise.race(running);
+            }
             if (extractionCancelled) {
                 while (queue.length > 0) {
                     const file = queue.shift();
@@ -2065,48 +2281,25 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
                 }
                 break;
             }
-            const file = queue.shift();
-            const idx = index++;
-            if (currentExtractionState) {
-                currentExtractionState.currentIndex = idx;
-                currentExtractionState.currentFile = file.name;
-            }
-            mainWindow?.webContents.send('extraction-progress', {
-                type: 'status-update',
-                currentIndex: idx,
-                totalFiles: rawFiles.length,
-                currentFile: file.name,
-            });
-            const promise = processFile(file, idx).then(() => {
-                const i = running.indexOf(promise);
-                if (i > -1)
-                    running.splice(i, 1);
-                mainWindow?.webContents.send('background-extraction-progress', {
-                    active: extractionActive,
-                    paused: extractionPaused,
-                    folder: currentExtractionState?.folder,
-                    total: rawFiles.length,
-                    completed: extractionResults.filter(r => r.status === 'success' || r.status === 'error').length,
-                    currentFile: currentExtractionState?.currentFile,
-                    successCount: extractionResults.filter(r => r.status === 'success').length,
-                    errorCount: extractionResults.filter(r => r.status === 'error').length,
-                });
-            });
-            running.push(promise);
         }
-        if (running.length > 0) {
-            await Promise.race(running);
-        }
+    }
+    catch (loopError) {
+        console.error('[RetroGrade] Erro fatal no loop de extração:', loopError);
     }
     extractionActive = false;
     currentExtractionState = null;
-    if (extractionCancelled && progressLog) {
-        progressLog.cancelled = true;
-        await writeProgressLog(progressLog.folder, progressLog);
+    try {
+        if (extractionCancelled && progressLog) {
+            progressLog.cancelled = true;
+            await writeProgressLog(progressLog.folder, progressLog);
+        }
+        else if (progressLog) {
+            progressLog.complete = true;
+            await writeProgressLog(progressLog.folder, progressLog);
+        }
     }
-    else if (progressLog) {
-        progressLog.complete = true;
-        await writeProgressLog(progressLog.folder, progressLog);
+    catch (logErr) {
+        console.error('[RetroGrade] Erro ao salvar progresso final:', logErr);
     }
     const successCount = extractionResults.filter(r => r.status === 'success').length;
     const errorCount = extractionResults.filter(r => r.status === 'error').length;
@@ -2133,6 +2326,7 @@ electron_1.ipcMain.handle('start-extraction', async (_, options) => {
         currentFile: '',
         successCount,
         errorCount,
+        fileStatuses: extractionFileStatuses,
     });
     return {
         results: extractionResults,
@@ -2159,6 +2353,7 @@ electron_1.ipcMain.handle('get-background-extraction-status', async () => {
         currentFile: currentFileName,
         successCount: extractionResults.filter(r => r.status === 'success').length,
         errorCount: extractionResults.filter(r => r.status === 'error').length,
+        fileStatuses: extractionFileStatuses,
     };
 });
 electron_1.app.on('before-quit', async (event) => {

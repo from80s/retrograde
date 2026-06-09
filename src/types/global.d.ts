@@ -76,7 +76,15 @@ export interface ApiBridge {
     totalCompressed: number;
     totalFiles: number;
   }>;
-  cancelExtraction: () => Promise<boolean>;
+  cancelExtraction: () => Promise<{
+    results: { name: string; status: 'success' | 'error' | 'cancelled'; compressedSize: number; extractedSize: number; fileCount: number; error?: string }[];
+    successCount: number;
+    errorCount: number;
+    cancelledCount: number;
+    totalExtracted: number;
+    totalCompressed: number;
+    totalFiles: number;
+  }>;
   onExtractionProgress: (callback: (data: any) => void) => void;
   removeExtractionProgressListener: () => void;
   pauseExtraction: () => Promise<boolean>;
@@ -91,10 +99,23 @@ export interface ApiBridge {
     currentFile: string;
     successCount: number;
     errorCount: number;
+    fileStatuses: {
+      fileName: string;
+      status: 'pending' | 'extracting' | 'complete' | 'error';
+      progress: number;
+      compressedSize: number;
+      extractedSize: number;
+      fileCount: number;
+      error?: string;
+    }[];
   } | null>;
   onBackgroundExtractionProgress: (callback: (data: any) => void) => void;
   removeBackgroundExtractionProgressListener: () => void;
   getDiskSpace: (folder: string) => Promise<{ free: number; total: number }>;
+  checkFileExists: (filePath: string) => Promise<boolean>;
+  checkDirHasContent: (dirPath: string) => Promise<boolean>;
+  countDirEntries: (dirPath: string) => Promise<number>;
+  getDirSize: (dirPath: string) => Promise<number>;
   scanOrphanFiles: (folder: string) => Promise<{ path: string; name: string; size: number; ext: string; category: string }[]>;
   deleteOrphanFiles: (files: { path: string }[]) => Promise<{ deleted: number; freedBytes: number }>;
   fetchTgdbAssets: (gameName: string, platformId: number) => Promise<{

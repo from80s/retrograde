@@ -85,6 +85,10 @@ contextBridge.exposeInMainWorld('api', {
     ipcRenderer.removeAllListeners('background-extraction-progress');
   },
   getDiskSpace: (folder: string) => ipcRenderer.invoke('get-disk-space', folder),
+  checkFileExists: (filePath: string) => ipcRenderer.invoke('check-file-exists', filePath),
+  checkDirHasContent: (dirPath: string) => ipcRenderer.invoke('check-dir-has-content', dirPath),
+  countDirEntries: (dirPath: string) => ipcRenderer.invoke('count-dir-entries', dirPath),
+  getDirSize: (dirPath: string) => ipcRenderer.invoke('get-dir-size', dirPath),
   windowMinimize: () => ipcRenderer.invoke('window-minimize'),
   windowMaximize: () => ipcRenderer.invoke('window-maximize'),
   windowClose: () => ipcRenderer.invoke('window-close'),
